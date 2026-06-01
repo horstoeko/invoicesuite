@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class OrderedShipmentType
@@ -173,7 +174,7 @@ class OrderedShipmentType
     public function addOnceToPackage(
         Package $package
     ): static {
-        if (!is_array($this->package)) {
+        if (!InvoiceSuiteArrayUtils::is($this->package)) {
             $this->package = [];
         }
 
@@ -187,7 +188,7 @@ class OrderedShipmentType
      */
     public function addOnceToPackageWithCreate(): Package
     {
-        if (!is_array($this->package)) {
+        if (!InvoiceSuiteArrayUtils::is($this->package)) {
             $this->package = [];
         }
 

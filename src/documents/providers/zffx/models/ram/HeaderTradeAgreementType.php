@@ -6,6 +6,7 @@ namespace horstoeko\invoicesuite\documents\providers\zffx\models\ram;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class HeaderTradeAgreementType
@@ -739,7 +740,7 @@ class HeaderTradeAgreementType
     public function addOnceToAdditionalReferencedDocument(
         ReferencedDocumentType $additionalReferencedDocument
     ): static {
-        if (!is_array($this->additionalReferencedDocument)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalReferencedDocument)) {
             $this->additionalReferencedDocument = [];
         }
 
@@ -753,7 +754,7 @@ class HeaderTradeAgreementType
      */
     public function addOnceToAdditionalReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        if (!is_array($this->additionalReferencedDocument)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalReferencedDocument)) {
             $this->additionalReferencedDocument = [];
         }
 
@@ -913,7 +914,7 @@ class HeaderTradeAgreementType
     public function addOnceToUltimateCustomerOrderReferencedDocument(
         ReferencedDocumentType $ultimateCustomerOrderReferencedDocument,
     ): static {
-        if (!is_array($this->ultimateCustomerOrderReferencedDocument)) {
+        if (!InvoiceSuiteArrayUtils::is($this->ultimateCustomerOrderReferencedDocument)) {
             $this->ultimateCustomerOrderReferencedDocument = [];
         }
 
@@ -927,7 +928,7 @@ class HeaderTradeAgreementType
      */
     public function addOnceToUltimateCustomerOrderReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        if (!is_array($this->ultimateCustomerOrderReferencedDocument)) {
+        if (!InvoiceSuiteArrayUtils::is($this->ultimateCustomerOrderReferencedDocument)) {
             $this->ultimateCustomerOrderReferencedDocument = [];
         }
 

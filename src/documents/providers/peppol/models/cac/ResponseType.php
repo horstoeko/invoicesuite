@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ReferenceID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ResponseCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ResponseType
@@ -262,7 +263,7 @@ class ResponseType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -276,7 +277,7 @@ class ResponseType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -446,7 +447,7 @@ class ResponseType
     public function addOnceToStatus(
         Status $status
     ): static {
-        if (!is_array($this->status)) {
+        if (!InvoiceSuiteArrayUtils::is($this->status)) {
             $this->status = [];
         }
 
@@ -460,7 +461,7 @@ class ResponseType
      */
     public function addOnceToStatusWithCreate(): Status
     {
-        if (!is_array($this->status)) {
+        if (!InvoiceSuiteArrayUtils::is($this->status)) {
             $this->status = [];
         }
 

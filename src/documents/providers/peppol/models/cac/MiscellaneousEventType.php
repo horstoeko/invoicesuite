@@ -6,6 +6,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MiscellaneousEventTypeCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class MiscellaneousEventType
@@ -174,7 +175,7 @@ class MiscellaneousEventType
     public function addOnceToEventLineItem(
         EventLineItem $eventLineItem
     ): static {
-        if (!is_array($this->eventLineItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->eventLineItem)) {
             $this->eventLineItem = [];
         }
 
@@ -188,7 +189,7 @@ class MiscellaneousEventType
      */
     public function addOnceToEventLineItemWithCreate(): EventLineItem
     {
-        if (!is_array($this->eventLineItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->eventLineItem)) {
             $this->eventLineItem = [];
         }
 

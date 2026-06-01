@@ -6,6 +6,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UtilityStatementTypeCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ConsumptionType
@@ -270,7 +271,7 @@ class ConsumptionType
     public function addOnceToAllowanceCharge(
         AllowanceCharge $allowanceCharge
     ): static {
-        if (!is_array($this->allowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceCharge)) {
             $this->allowanceCharge = [];
         }
 
@@ -284,7 +285,7 @@ class ConsumptionType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        if (!is_array($this->allowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceCharge)) {
             $this->allowanceCharge = [];
         }
 
@@ -394,7 +395,7 @@ class ConsumptionType
     public function addOnceToTaxTotal(
         TaxTotal $taxTotal
     ): static {
-        if (!is_array($this->taxTotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotal)) {
             $this->taxTotal = [];
         }
 
@@ -408,7 +409,7 @@ class ConsumptionType
      */
     public function addOnceToTaxTotalWithCreate(): TaxTotal
     {
-        if (!is_array($this->taxTotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotal)) {
             $this->taxTotal = [];
         }
 

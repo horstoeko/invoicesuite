@@ -11,6 +11,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AwardingCriteri
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Quantity;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class AwardingCriterionResponseType
@@ -276,7 +277,7 @@ class AwardingCriterionResponseType
     public function addOnceToAwardingCriterionDescription(
         AwardingCriterionDescription $awardingCriterionDescription,
     ): static {
-        if (!is_array($this->awardingCriterionDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->awardingCriterionDescription)) {
             $this->awardingCriterionDescription = [];
         }
 
@@ -290,7 +291,7 @@ class AwardingCriterionResponseType
      */
     public function addOnceToAwardingCriterionDescriptionWithCreate(): AwardingCriterionDescription
     {
-        if (!is_array($this->awardingCriterionDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->awardingCriterionDescription)) {
             $this->awardingCriterionDescription = [];
         }
 
@@ -400,7 +401,7 @@ class AwardingCriterionResponseType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -414,7 +415,7 @@ class AwardingCriterionResponseType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -604,7 +605,7 @@ class AwardingCriterionResponseType
     public function addOnceToSubordinateAwardingCriterionResponse(
         SubordinateAwardingCriterionResponse $subordinateAwardingCriterionResponse,
     ): static {
-        if (!is_array($this->subordinateAwardingCriterionResponse)) {
+        if (!InvoiceSuiteArrayUtils::is($this->subordinateAwardingCriterionResponse)) {
             $this->subordinateAwardingCriterionResponse = [];
         }
 
@@ -618,7 +619,7 @@ class AwardingCriterionResponseType
      */
     public function addOnceToSubordinateAwardingCriterionResponseWithCreate(): SubordinateAwardingCriterionResponse
     {
-        if (!is_array($this->subordinateAwardingCriterionResponse)) {
+        if (!InvoiceSuiteArrayUtils::is($this->subordinateAwardingCriterionResponse)) {
             $this->subordinateAwardingCriterionResponse = [];
         }
 

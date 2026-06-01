@@ -6,6 +6,7 @@ namespace horstoeko\invoicesuite\documents\providers\fatturapa\models;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use JMS\Serializer\Annotation as JMS;
 
@@ -150,7 +151,7 @@ final class DatiDocumentiCorrelati
     public function addToRiferimentoNumeroLinea(
         int $riferimentoNumeroLinea
     ): static {
-        if (!is_array($this->riferimentoNumeroLinea)) {
+        if (!InvoiceSuiteArrayUtils::is($this->riferimentoNumeroLinea)) {
             $this->riferimentoNumeroLinea = [];
         }
 
@@ -168,7 +169,7 @@ final class DatiDocumentiCorrelati
     public function addOnceToRiferimentoNumeroLinea(
         int $riferimentoNumeroLinea
     ): static {
-        if (!is_array($this->riferimentoNumeroLinea)) {
+        if (!InvoiceSuiteArrayUtils::is($this->riferimentoNumeroLinea)) {
             $this->riferimentoNumeroLinea = [];
         }
 

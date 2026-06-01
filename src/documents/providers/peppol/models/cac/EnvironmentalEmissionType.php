@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\EnvironmentalEmissionTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ValueMeasure;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class EnvironmentalEmissionType
@@ -239,7 +240,7 @@ class EnvironmentalEmissionType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -253,7 +254,7 @@ class EnvironmentalEmissionType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -363,7 +364,7 @@ class EnvironmentalEmissionType
     public function addOnceToEmissionCalculationMethod(
         EmissionCalculationMethod $emissionCalculationMethod
     ): static {
-        if (!is_array($this->emissionCalculationMethod)) {
+        if (!InvoiceSuiteArrayUtils::is($this->emissionCalculationMethod)) {
             $this->emissionCalculationMethod = [];
         }
 
@@ -377,7 +378,7 @@ class EnvironmentalEmissionType
      */
     public function addOnceToEmissionCalculationMethodWithCreate(): EmissionCalculationMethod
     {
-        if (!is_array($this->emissionCalculationMethod)) {
+        if (!InvoiceSuiteArrayUtils::is($this->emissionCalculationMethod)) {
             $this->emissionCalculationMethod = [];
         }
 

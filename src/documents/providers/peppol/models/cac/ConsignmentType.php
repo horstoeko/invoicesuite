@@ -49,6 +49,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalGoodsItemQ
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalInvoiceAmount;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalPackagesQuantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalTransportHandlingUnitQuantity;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ConsignmentType
@@ -1598,7 +1599,7 @@ class ConsignmentType
     public function addOnceToSummaryDescription(
         SummaryDescription $summaryDescription
     ): static {
-        if (!is_array($this->summaryDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->summaryDescription)) {
             $this->summaryDescription = [];
         }
 
@@ -1612,7 +1613,7 @@ class ConsignmentType
      */
     public function addOnceToSummaryDescriptionWithCreate(): SummaryDescription
     {
-        if (!is_array($this->summaryDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->summaryDescription)) {
             $this->summaryDescription = [];
         }
 
@@ -1802,7 +1803,7 @@ class ConsignmentType
     public function addOnceToTariffDescription(
         TariffDescription $tariffDescription
     ): static {
-        if (!is_array($this->tariffDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->tariffDescription)) {
             $this->tariffDescription = [];
         }
 
@@ -1816,7 +1817,7 @@ class ConsignmentType
      */
     public function addOnceToTariffDescriptionWithCreate(): TariffDescription
     {
-        if (!is_array($this->tariffDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->tariffDescription)) {
             $this->tariffDescription = [];
         }
 
@@ -2286,7 +2287,7 @@ class ConsignmentType
     public function addOnceToRemarks(
         Remarks $remarks
     ): static {
-        if (!is_array($this->remarks)) {
+        if (!InvoiceSuiteArrayUtils::is($this->remarks)) {
             $this->remarks = [];
         }
 
@@ -2300,7 +2301,7 @@ class ConsignmentType
      */
     public function addOnceToRemarksWithCreate(): Remarks
     {
-        if (!is_array($this->remarks)) {
+        if (!InvoiceSuiteArrayUtils::is($this->remarks)) {
             $this->remarks = [];
         }
 
@@ -2680,7 +2681,7 @@ class ConsignmentType
     public function addOnceToCarrierServiceInstructions(
         CarrierServiceInstructions $carrierServiceInstructions
     ): static {
-        if (!is_array($this->carrierServiceInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->carrierServiceInstructions)) {
             $this->carrierServiceInstructions = [];
         }
 
@@ -2694,7 +2695,7 @@ class ConsignmentType
      */
     public function addOnceToCarrierServiceInstructionsWithCreate(): CarrierServiceInstructions
     {
-        if (!is_array($this->carrierServiceInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->carrierServiceInstructions)) {
             $this->carrierServiceInstructions = [];
         }
 
@@ -2804,7 +2805,7 @@ class ConsignmentType
     public function addOnceToCustomsClearanceServiceInstructions(
         CustomsClearanceServiceInstructions $customsClearanceServiceInstructions,
     ): static {
-        if (!is_array($this->customsClearanceServiceInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->customsClearanceServiceInstructions)) {
             $this->customsClearanceServiceInstructions = [];
         }
 
@@ -2818,7 +2819,7 @@ class ConsignmentType
      */
     public function addOnceToCustomsClearanceServiceInstructionsWithCreate(): CustomsClearanceServiceInstructions
     {
-        if (!is_array($this->customsClearanceServiceInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->customsClearanceServiceInstructions)) {
             $this->customsClearanceServiceInstructions = [];
         }
 
@@ -2928,7 +2929,7 @@ class ConsignmentType
     public function addOnceToForwarderServiceInstructions(
         ForwarderServiceInstructions $forwarderServiceInstructions,
     ): static {
-        if (!is_array($this->forwarderServiceInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->forwarderServiceInstructions)) {
             $this->forwarderServiceInstructions = [];
         }
 
@@ -2942,7 +2943,7 @@ class ConsignmentType
      */
     public function addOnceToForwarderServiceInstructionsWithCreate(): ForwarderServiceInstructions
     {
-        if (!is_array($this->forwarderServiceInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->forwarderServiceInstructions)) {
             $this->forwarderServiceInstructions = [];
         }
 
@@ -3052,7 +3053,7 @@ class ConsignmentType
     public function addOnceToSpecialServiceInstructions(
         SpecialServiceInstructions $specialServiceInstructions
     ): static {
-        if (!is_array($this->specialServiceInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specialServiceInstructions)) {
             $this->specialServiceInstructions = [];
         }
 
@@ -3066,7 +3067,7 @@ class ConsignmentType
      */
     public function addOnceToSpecialServiceInstructionsWithCreate(): SpecialServiceInstructions
     {
-        if (!is_array($this->specialServiceInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specialServiceInstructions)) {
             $this->specialServiceInstructions = [];
         }
 
@@ -3296,7 +3297,7 @@ class ConsignmentType
     public function addOnceToHandlingInstructions(
         HandlingInstructions $handlingInstructions
     ): static {
-        if (!is_array($this->handlingInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->handlingInstructions)) {
             $this->handlingInstructions = [];
         }
 
@@ -3310,7 +3311,7 @@ class ConsignmentType
      */
     public function addOnceToHandlingInstructionsWithCreate(): HandlingInstructions
     {
-        if (!is_array($this->handlingInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->handlingInstructions)) {
             $this->handlingInstructions = [];
         }
 
@@ -3420,7 +3421,7 @@ class ConsignmentType
     public function addOnceToInformation(
         Information $information
     ): static {
-        if (!is_array($this->information)) {
+        if (!InvoiceSuiteArrayUtils::is($this->information)) {
             $this->information = [];
         }
 
@@ -3434,7 +3435,7 @@ class ConsignmentType
      */
     public function addOnceToInformationWithCreate(): Information
     {
-        if (!is_array($this->information)) {
+        if (!InvoiceSuiteArrayUtils::is($this->information)) {
             $this->information = [];
         }
 
@@ -3784,7 +3785,7 @@ class ConsignmentType
     public function addOnceToSpecialInstructions(
         SpecialInstructions $specialInstructions
     ): static {
-        if (!is_array($this->specialInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specialInstructions)) {
             $this->specialInstructions = [];
         }
 
@@ -3798,7 +3799,7 @@ class ConsignmentType
      */
     public function addOnceToSpecialInstructionsWithCreate(): SpecialInstructions
     {
-        if (!is_array($this->specialInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specialInstructions)) {
             $this->specialInstructions = [];
         }
 
@@ -3938,7 +3939,7 @@ class ConsignmentType
     public function addOnceToDeliveryInstructions(
         DeliveryInstructions $deliveryInstructions
     ): static {
-        if (!is_array($this->deliveryInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->deliveryInstructions)) {
             $this->deliveryInstructions = [];
         }
 
@@ -3952,7 +3953,7 @@ class ConsignmentType
      */
     public function addOnceToDeliveryInstructionsWithCreate(): DeliveryInstructions
     {
-        if (!is_array($this->deliveryInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->deliveryInstructions)) {
             $this->deliveryInstructions = [];
         }
 
@@ -4132,7 +4133,7 @@ class ConsignmentType
     public function addOnceToHaulageInstructions(
         HaulageInstructions $haulageInstructions
     ): static {
-        if (!is_array($this->haulageInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->haulageInstructions)) {
             $this->haulageInstructions = [];
         }
 
@@ -4146,7 +4147,7 @@ class ConsignmentType
      */
     public function addOnceToHaulageInstructionsWithCreate(): HaulageInstructions
     {
-        if (!is_array($this->haulageInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->haulageInstructions)) {
             $this->haulageInstructions = [];
         }
 
@@ -4376,7 +4377,7 @@ class ConsignmentType
     public function addOnceToConsolidatedShipment(
         ConsolidatedShipment $consolidatedShipment
     ): static {
-        if (!is_array($this->consolidatedShipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->consolidatedShipment)) {
             $this->consolidatedShipment = [];
         }
 
@@ -4390,7 +4391,7 @@ class ConsignmentType
      */
     public function addOnceToConsolidatedShipmentWithCreate(): ConsolidatedShipment
     {
-        if (!is_array($this->consolidatedShipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->consolidatedShipment)) {
             $this->consolidatedShipment = [];
         }
 
@@ -4500,7 +4501,7 @@ class ConsignmentType
     public function addOnceToCustomsDeclaration(
         CustomsDeclaration $customsDeclaration
     ): static {
-        if (!is_array($this->customsDeclaration)) {
+        if (!InvoiceSuiteArrayUtils::is($this->customsDeclaration)) {
             $this->customsDeclaration = [];
         }
 
@@ -4514,7 +4515,7 @@ class ConsignmentType
      */
     public function addOnceToCustomsDeclarationWithCreate(): CustomsDeclaration
     {
-        if (!is_array($this->customsDeclaration)) {
+        if (!InvoiceSuiteArrayUtils::is($this->customsDeclaration)) {
             $this->customsDeclaration = [];
         }
 
@@ -4784,7 +4785,7 @@ class ConsignmentType
     public function addOnceToStatus(
         Status $status
     ): static {
-        if (!is_array($this->status)) {
+        if (!InvoiceSuiteArrayUtils::is($this->status)) {
             $this->status = [];
         }
 
@@ -4798,7 +4799,7 @@ class ConsignmentType
      */
     public function addOnceToStatusWithCreate(): Status
     {
-        if (!is_array($this->status)) {
+        if (!InvoiceSuiteArrayUtils::is($this->status)) {
             $this->status = [];
         }
 
@@ -4908,7 +4909,7 @@ class ConsignmentType
     public function addOnceToChildConsignment(
         ChildConsignment $childConsignment
     ): static {
-        if (!is_array($this->childConsignment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->childConsignment)) {
             $this->childConsignment = [];
         }
 
@@ -4922,7 +4923,7 @@ class ConsignmentType
      */
     public function addOnceToChildConsignmentWithCreate(): ChildConsignment
     {
-        if (!is_array($this->childConsignment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->childConsignment)) {
             $this->childConsignment = [];
         }
 
@@ -5792,7 +5793,7 @@ class ConsignmentType
     public function addOnceToTransitCountry(
         TransitCountry $transitCountry
     ): static {
-        if (!is_array($this->transitCountry)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transitCountry)) {
             $this->transitCountry = [];
         }
 
@@ -5806,7 +5807,7 @@ class ConsignmentType
      */
     public function addOnceToTransitCountryWithCreate(): TransitCountry
     {
-        if (!is_array($this->transitCountry)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transitCountry)) {
             $this->transitCountry = [];
         }
 
@@ -5956,7 +5957,7 @@ class ConsignmentType
     public function addOnceToTransportEvent(
         TransportEvent $transportEvent
     ): static {
-        if (!is_array($this->transportEvent)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportEvent)) {
             $this->transportEvent = [];
         }
 
@@ -5970,7 +5971,7 @@ class ConsignmentType
      */
     public function addOnceToTransportEventWithCreate(): TransportEvent
     {
-        if (!is_array($this->transportEvent)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportEvent)) {
             $this->transportEvent = [];
         }
 
@@ -6360,7 +6361,7 @@ class ConsignmentType
     public function addOnceToFreightAllowanceCharge(
         FreightAllowanceCharge $freightAllowanceCharge
     ): static {
-        if (!is_array($this->freightAllowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->freightAllowanceCharge)) {
             $this->freightAllowanceCharge = [];
         }
 
@@ -6374,7 +6375,7 @@ class ConsignmentType
      */
     public function addOnceToFreightAllowanceChargeWithCreate(): FreightAllowanceCharge
     {
-        if (!is_array($this->freightAllowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->freightAllowanceCharge)) {
             $this->freightAllowanceCharge = [];
         }
 
@@ -6484,7 +6485,7 @@ class ConsignmentType
     public function addOnceToExtraAllowanceCharge(
         ExtraAllowanceCharge $extraAllowanceCharge
     ): static {
-        if (!is_array($this->extraAllowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->extraAllowanceCharge)) {
             $this->extraAllowanceCharge = [];
         }
 
@@ -6498,7 +6499,7 @@ class ConsignmentType
      */
     public function addOnceToExtraAllowanceChargeWithCreate(): ExtraAllowanceCharge
     {
-        if (!is_array($this->extraAllowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->extraAllowanceCharge)) {
             $this->extraAllowanceCharge = [];
         }
 
@@ -6608,7 +6609,7 @@ class ConsignmentType
     public function addOnceToMainCarriageShipmentStage(
         MainCarriageShipmentStage $mainCarriageShipmentStage
     ): static {
-        if (!is_array($this->mainCarriageShipmentStage)) {
+        if (!InvoiceSuiteArrayUtils::is($this->mainCarriageShipmentStage)) {
             $this->mainCarriageShipmentStage = [];
         }
 
@@ -6622,7 +6623,7 @@ class ConsignmentType
      */
     public function addOnceToMainCarriageShipmentStageWithCreate(): MainCarriageShipmentStage
     {
-        if (!is_array($this->mainCarriageShipmentStage)) {
+        if (!InvoiceSuiteArrayUtils::is($this->mainCarriageShipmentStage)) {
             $this->mainCarriageShipmentStage = [];
         }
 
@@ -6732,7 +6733,7 @@ class ConsignmentType
     public function addOnceToPreCarriageShipmentStage(
         PreCarriageShipmentStage $preCarriageShipmentStage
     ): static {
-        if (!is_array($this->preCarriageShipmentStage)) {
+        if (!InvoiceSuiteArrayUtils::is($this->preCarriageShipmentStage)) {
             $this->preCarriageShipmentStage = [];
         }
 
@@ -6746,7 +6747,7 @@ class ConsignmentType
      */
     public function addOnceToPreCarriageShipmentStageWithCreate(): PreCarriageShipmentStage
     {
-        if (!is_array($this->preCarriageShipmentStage)) {
+        if (!InvoiceSuiteArrayUtils::is($this->preCarriageShipmentStage)) {
             $this->preCarriageShipmentStage = [];
         }
 
@@ -6856,7 +6857,7 @@ class ConsignmentType
     public function addOnceToOnCarriageShipmentStage(
         OnCarriageShipmentStage $onCarriageShipmentStage
     ): static {
-        if (!is_array($this->onCarriageShipmentStage)) {
+        if (!InvoiceSuiteArrayUtils::is($this->onCarriageShipmentStage)) {
             $this->onCarriageShipmentStage = [];
         }
 
@@ -6870,7 +6871,7 @@ class ConsignmentType
      */
     public function addOnceToOnCarriageShipmentStageWithCreate(): OnCarriageShipmentStage
     {
-        if (!is_array($this->onCarriageShipmentStage)) {
+        if (!InvoiceSuiteArrayUtils::is($this->onCarriageShipmentStage)) {
             $this->onCarriageShipmentStage = [];
         }
 
@@ -6980,7 +6981,7 @@ class ConsignmentType
     public function addOnceToTransportHandlingUnit(
         TransportHandlingUnit $transportHandlingUnit
     ): static {
-        if (!is_array($this->transportHandlingUnit)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportHandlingUnit)) {
             $this->transportHandlingUnit = [];
         }
 
@@ -6994,7 +6995,7 @@ class ConsignmentType
      */
     public function addOnceToTransportHandlingUnitWithCreate(): TransportHandlingUnit
     {
-        if (!is_array($this->transportHandlingUnit)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportHandlingUnit)) {
             $this->transportHandlingUnit = [];
         }
 

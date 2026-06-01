@@ -15,6 +15,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\FormatCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\HashAlgorithmMethod;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MimeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\URI;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ExternalReferenceType
@@ -622,7 +623,7 @@ class ExternalReferenceType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -636,7 +637,7 @@ class ExternalReferenceType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 

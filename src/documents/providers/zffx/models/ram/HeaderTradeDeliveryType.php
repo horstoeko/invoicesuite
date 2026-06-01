@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\zffx\models\ram;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class HeaderTradeDeliveryType
@@ -169,7 +170,7 @@ class HeaderTradeDeliveryType
     public function addOnceToRelatedSupplyChainConsignment(
         LogisticsTransportMovementType $relatedSupplyChainConsignment,
     ): static {
-        if (!is_array($this->relatedSupplyChainConsignment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->relatedSupplyChainConsignment)) {
             $this->relatedSupplyChainConsignment = [];
         }
 
@@ -183,7 +184,7 @@ class HeaderTradeDeliveryType
      */
     public function addOnceToRelatedSupplyChainConsignmentWithCreate(): LogisticsTransportMovementType
     {
-        if (!is_array($this->relatedSupplyChainConsignment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->relatedSupplyChainConsignment)) {
             $this->relatedSupplyChainConsignment = [];
         }
 

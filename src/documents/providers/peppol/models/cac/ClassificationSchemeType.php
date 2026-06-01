@@ -17,6 +17,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SchemeURI;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\URI;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UUID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\VersionID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ClassificationSchemeType
@@ -419,7 +420,7 @@ class ClassificationSchemeType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -433,7 +434,7 @@ class ClassificationSchemeType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -583,7 +584,7 @@ class ClassificationSchemeType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -597,7 +598,7 @@ class ClassificationSchemeType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -947,7 +948,7 @@ class ClassificationSchemeType
     public function addOnceToClassificationCategory(
         ClassificationCategory $classificationCategory
     ): static {
-        if (!is_array($this->classificationCategory)) {
+        if (!InvoiceSuiteArrayUtils::is($this->classificationCategory)) {
             $this->classificationCategory = [];
         }
 
@@ -961,7 +962,7 @@ class ClassificationSchemeType
      */
     public function addOnceToClassificationCategoryWithCreate(): ClassificationCategory
     {
-        if (!is_array($this->classificationCategory)) {
+        if (!InvoiceSuiteArrayUtils::is($this->classificationCategory)) {
             $this->classificationCategory = [];
         }
 

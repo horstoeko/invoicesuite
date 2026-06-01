@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ContractSubdivision;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Note;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class CatalogueRequestLineType
@@ -261,7 +262,7 @@ class CatalogueRequestLineType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -275,7 +276,7 @@ class CatalogueRequestLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -425,7 +426,7 @@ class CatalogueRequestLineType
     public function addOnceToRequiredItemLocationQuantity(
         RequiredItemLocationQuantity $requiredItemLocationQuantity,
     ): static {
-        if (!is_array($this->requiredItemLocationQuantity)) {
+        if (!InvoiceSuiteArrayUtils::is($this->requiredItemLocationQuantity)) {
             $this->requiredItemLocationQuantity = [];
         }
 
@@ -439,7 +440,7 @@ class CatalogueRequestLineType
      */
     public function addOnceToRequiredItemLocationQuantityWithCreate(): RequiredItemLocationQuantity
     {
-        if (!is_array($this->requiredItemLocationQuantity)) {
+        if (!InvoiceSuiteArrayUtils::is($this->requiredItemLocationQuantity)) {
             $this->requiredItemLocationQuantity = [];
         }
 

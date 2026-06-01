@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TendererPartyQualificationType
@@ -145,7 +146,7 @@ class TendererPartyQualificationType
     public function addOnceToInterestedProcurementProjectLot(
         InterestedProcurementProjectLot $interestedProcurementProjectLot,
     ): static {
-        if (!is_array($this->interestedProcurementProjectLot)) {
+        if (!InvoiceSuiteArrayUtils::is($this->interestedProcurementProjectLot)) {
             $this->interestedProcurementProjectLot = [];
         }
 
@@ -159,7 +160,7 @@ class TendererPartyQualificationType
      */
     public function addOnceToInterestedProcurementProjectLotWithCreate(): InterestedProcurementProjectLot
     {
-        if (!is_array($this->interestedProcurementProjectLot)) {
+        if (!InvoiceSuiteArrayUtils::is($this->interestedProcurementProjectLot)) {
             $this->interestedProcurementProjectLot = [];
         }
 
@@ -309,7 +310,7 @@ class TendererPartyQualificationType
     public function addOnceToAdditionalQualifyingParty(
         AdditionalQualifyingParty $additionalQualifyingParty
     ): static {
-        if (!is_array($this->additionalQualifyingParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalQualifyingParty)) {
             $this->additionalQualifyingParty = [];
         }
 
@@ -323,7 +324,7 @@ class TendererPartyQualificationType
      */
     public function addOnceToAdditionalQualifyingPartyWithCreate(): AdditionalQualifyingParty
     {
-        if (!is_array($this->additionalQualifyingParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalQualifyingParty)) {
             $this->additionalQualifyingParty = [];
         }
 

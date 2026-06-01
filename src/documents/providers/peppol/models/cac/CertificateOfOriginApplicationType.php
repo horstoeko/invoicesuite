@@ -11,6 +11,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OriginalJobID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PreviousJobID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ReferenceID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Remarks;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class CertificateOfOriginApplicationType
@@ -497,7 +498,7 @@ class CertificateOfOriginApplicationType
     public function addOnceToRemarks(
         Remarks $remarks
     ): static {
-        if (!is_array($this->remarks)) {
+        if (!InvoiceSuiteArrayUtils::is($this->remarks)) {
             $this->remarks = [];
         }
 
@@ -511,7 +512,7 @@ class CertificateOfOriginApplicationType
      */
     public function addOnceToRemarksWithCreate(): Remarks
     {
-        if (!is_array($this->remarks)) {
+        if (!InvoiceSuiteArrayUtils::is($this->remarks)) {
             $this->remarks = [];
         }
 
@@ -661,7 +662,7 @@ class CertificateOfOriginApplicationType
     public function addOnceToEndorserParty(
         EndorserParty $endorserParty
     ): static {
-        if (!is_array($this->endorserParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->endorserParty)) {
             $this->endorserParty = [];
         }
 
@@ -675,7 +676,7 @@ class CertificateOfOriginApplicationType
      */
     public function addOnceToEndorserPartyWithCreate(): EndorserParty
     {
-        if (!is_array($this->endorserParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->endorserParty)) {
             $this->endorserParty = [];
         }
 
@@ -985,7 +986,7 @@ class CertificateOfOriginApplicationType
     public function addOnceToDocumentDistribution(
         DocumentDistribution $documentDistribution
     ): static {
-        if (!is_array($this->documentDistribution)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentDistribution)) {
             $this->documentDistribution = [];
         }
 
@@ -999,7 +1000,7 @@ class CertificateOfOriginApplicationType
      */
     public function addOnceToDocumentDistributionWithCreate(): DocumentDistribution
     {
-        if (!is_array($this->documentDistribution)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentDistribution)) {
             $this->documentDistribution = [];
         }
 
@@ -1109,7 +1110,7 @@ class CertificateOfOriginApplicationType
     public function addOnceToSupportingDocumentReference(
         SupportingDocumentReference $supportingDocumentReference,
     ): static {
-        if (!is_array($this->supportingDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->supportingDocumentReference)) {
             $this->supportingDocumentReference = [];
         }
 
@@ -1123,7 +1124,7 @@ class CertificateOfOriginApplicationType
      */
     public function addOnceToSupportingDocumentReferenceWithCreate(): SupportingDocumentReference
     {
-        if (!is_array($this->supportingDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->supportingDocumentReference)) {
             $this->supportingDocumentReference = [];
         }
 
@@ -1233,7 +1234,7 @@ class CertificateOfOriginApplicationType
     public function addOnceToSignature(
         Signature $signature
     ): static {
-        if (!is_array($this->signature)) {
+        if (!InvoiceSuiteArrayUtils::is($this->signature)) {
             $this->signature = [];
         }
 
@@ -1247,7 +1248,7 @@ class CertificateOfOriginApplicationType
      */
     public function addOnceToSignatureWithCreate(): Signature
     {
-        if (!is_array($this->signature)) {
+        if (!InvoiceSuiteArrayUtils::is($this->signature)) {
             $this->signature = [];
         }
 

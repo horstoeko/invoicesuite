@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\IdentificationID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TypeCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class EventType
@@ -356,7 +357,7 @@ class EventType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -370,7 +371,7 @@ class EventType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -510,7 +511,7 @@ class EventType
     public function addOnceToCurrentStatus(
         CurrentStatus $currentStatus
     ): static {
-        if (!is_array($this->currentStatus)) {
+        if (!InvoiceSuiteArrayUtils::is($this->currentStatus)) {
             $this->currentStatus = [];
         }
 
@@ -524,7 +525,7 @@ class EventType
      */
     public function addOnceToCurrentStatusWithCreate(): CurrentStatus
     {
-        if (!is_array($this->currentStatus)) {
+        if (!InvoiceSuiteArrayUtils::is($this->currentStatus)) {
             $this->currentStatus = [];
         }
 
@@ -634,7 +635,7 @@ class EventType
     public function addOnceToContact(
         Contact $contact
     ): static {
-        if (!is_array($this->contact)) {
+        if (!InvoiceSuiteArrayUtils::is($this->contact)) {
             $this->contact = [];
         }
 
@@ -648,7 +649,7 @@ class EventType
      */
     public function addOnceToContactWithCreate(): Contact
     {
-        if (!is_array($this->contact)) {
+        if (!InvoiceSuiteArrayUtils::is($this->contact)) {
             $this->contact = [];
         }
 

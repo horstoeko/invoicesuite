@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ProductTraceID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RegistrationID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SerialID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ItemInstanceType
@@ -413,7 +414,7 @@ class ItemInstanceType
     public function addOnceToAdditionalItemProperty(
         AdditionalItemProperty $additionalItemProperty
     ): static {
-        if (!is_array($this->additionalItemProperty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalItemProperty)) {
             $this->additionalItemProperty = [];
         }
 
@@ -427,7 +428,7 @@ class ItemInstanceType
      */
     public function addOnceToAdditionalItemPropertyWithCreate(): AdditionalItemProperty
     {
-        if (!is_array($this->additionalItemProperty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalItemProperty)) {
             $this->additionalItemProperty = [];
         }
 

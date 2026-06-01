@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cac\ContractingPartyType as ContractingPartyType1;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\BuyerProfileURI;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ContractingPartyType extends ContractingPartyTypeType
@@ -198,7 +199,7 @@ class ContractingPartyType extends ContractingPartyTypeType
     public function addOnceToContractingPartyType(
         ContractingPartyType1 $contractingPartyType
     ): static {
-        if (!is_array($this->contractingPartyType)) {
+        if (!InvoiceSuiteArrayUtils::is($this->contractingPartyType)) {
             $this->contractingPartyType = [];
         }
 
@@ -212,7 +213,7 @@ class ContractingPartyType extends ContractingPartyTypeType
      */
     public function addOnceToContractingPartyTypeWithCreate(): ContractingPartyType1
     {
-        if (!is_array($this->contractingPartyType)) {
+        if (!InvoiceSuiteArrayUtils::is($this->contractingPartyType)) {
             $this->contractingPartyType = [];
         }
 
@@ -322,7 +323,7 @@ class ContractingPartyType extends ContractingPartyTypeType
     public function addOnceToContractingActivity(
         ContractingActivity $contractingActivity
     ): static {
-        if (!is_array($this->contractingActivity)) {
+        if (!InvoiceSuiteArrayUtils::is($this->contractingActivity)) {
             $this->contractingActivity = [];
         }
 
@@ -336,7 +337,7 @@ class ContractingPartyType extends ContractingPartyTypeType
      */
     public function addOnceToContractingActivityWithCreate(): ContractingActivity
     {
-        if (!is_array($this->contractingActivity)) {
+        if (!InvoiceSuiteArrayUtils::is($this->contractingActivity)) {
             $this->contractingActivity = [];
         }
 

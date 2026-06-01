@@ -11,6 +11,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MaximumPercent;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MinimumPercent;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Rate;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SubcontractingConditionsCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class SubcontractTermsType
@@ -264,7 +265,7 @@ class SubcontractTermsType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -278,7 +279,7 @@ class SubcontractTermsType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 

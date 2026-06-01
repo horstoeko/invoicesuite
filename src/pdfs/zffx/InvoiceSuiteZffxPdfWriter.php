@@ -431,7 +431,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
         parent::_putcatalog();
 
         if ([] !== $this->files) {
-            if (is_array($this->files)) {
+            if (InvoiceSuiteArrayUtils::is($this->files)) {
                 $files_ref_str = '';
                 foreach ($this->files as $file) {
                     if ('' !== $files_ref_str) {

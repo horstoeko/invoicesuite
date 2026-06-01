@@ -48,7 +48,7 @@ class InvoiceSuiteArrayUtils
         array $array,
         string $search
     ): bool {
-        return in_array(InvoiceSuiteStringUtils::lower($search), array_map(InvoiceSuiteStringUtils::lower(...), $array), true);
+        return self::arrayContains(array_map(InvoiceSuiteStringUtils::lower(...), $array), InvoiceSuiteStringUtils::lower($search));
     }
 
     /**

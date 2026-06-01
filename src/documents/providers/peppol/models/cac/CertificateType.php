@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CertificateType
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CertificateTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Remarks;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class CertificateType
@@ -314,7 +315,7 @@ class CertificateType
     public function addOnceToRemarks(
         Remarks $remarks
     ): static {
-        if (!is_array($this->remarks)) {
+        if (!InvoiceSuiteArrayUtils::is($this->remarks)) {
             $this->remarks = [];
         }
 
@@ -328,7 +329,7 @@ class CertificateType
      */
     public function addOnceToRemarksWithCreate(): Remarks
     {
-        if (!is_array($this->remarks)) {
+        if (!InvoiceSuiteArrayUtils::is($this->remarks)) {
             $this->remarks = [];
         }
 
@@ -478,7 +479,7 @@ class CertificateType
     public function addOnceToDocumentReference(
         DocumentReference $documentReference
     ): static {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -492,7 +493,7 @@ class CertificateType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -602,7 +603,7 @@ class CertificateType
     public function addOnceToSignature(
         Signature $signature
     ): static {
-        if (!is_array($this->signature)) {
+        if (!InvoiceSuiteArrayUtils::is($this->signature)) {
             $this->signature = [];
         }
 
@@ -616,7 +617,7 @@ class CertificateType
      */
     public function addOnceToSignatureWithCreate(): Signature
     {
-        if (!is_array($this->signature)) {
+        if (!InvoiceSuiteArrayUtils::is($this->signature)) {
             $this->signature = [];
         }
 

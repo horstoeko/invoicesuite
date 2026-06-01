@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\zffx\models\ram;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class SupplyChainConsignmentType
@@ -92,7 +93,7 @@ class SupplyChainConsignmentType
     public function addOnceToSpecifiedLogisticsTransportMovement(
         LogisticsTransportMovementType $specifiedLogisticsTransportMovement,
     ): static {
-        if (!is_array($this->specifiedLogisticsTransportMovement)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specifiedLogisticsTransportMovement)) {
             $this->specifiedLogisticsTransportMovement = [];
         }
 
@@ -106,7 +107,7 @@ class SupplyChainConsignmentType
      */
     public function addOnceToSpecifiedLogisticsTransportMovementWithCreate(): LogisticsTransportMovementType
     {
-        if (!is_array($this->specifiedLogisticsTransportMovement)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specifiedLogisticsTransportMovement)) {
             $this->specifiedLogisticsTransportMovement = [];
         }
 

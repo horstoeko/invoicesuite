@@ -14,6 +14,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SequenceID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\StatusReason;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\StatusReasonCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Text;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class StatusType
@@ -355,7 +356,7 @@ class StatusType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -369,7 +370,7 @@ class StatusType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -519,7 +520,7 @@ class StatusType
     public function addOnceToStatusReason(
         StatusReason $statusReason
     ): static {
-        if (!is_array($this->statusReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->statusReason)) {
             $this->statusReason = [];
         }
 
@@ -533,7 +534,7 @@ class StatusType
      */
     public function addOnceToStatusReasonWithCreate(): StatusReason
     {
-        if (!is_array($this->statusReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->statusReason)) {
             $this->statusReason = [];
         }
 
@@ -683,7 +684,7 @@ class StatusType
     public function addOnceToText(
         Text $text
     ): static {
-        if (!is_array($this->text)) {
+        if (!InvoiceSuiteArrayUtils::is($this->text)) {
             $this->text = [];
         }
 
@@ -697,7 +698,7 @@ class StatusType
      */
     public function addOnceToTextWithCreate(): Text
     {
-        if (!is_array($this->text)) {
+        if (!InvoiceSuiteArrayUtils::is($this->text)) {
             $this->text = [];
         }
 
@@ -917,7 +918,7 @@ class StatusType
     public function addOnceToCondition(
         Condition $condition
     ): static {
-        if (!is_array($this->condition)) {
+        if (!InvoiceSuiteArrayUtils::is($this->condition)) {
             $this->condition = [];
         }
 
@@ -931,7 +932,7 @@ class StatusType
      */
     public function addOnceToConditionWithCreate(): Condition
     {
-        if (!is_array($this->condition)) {
+        if (!InvoiceSuiteArrayUtils::is($this->condition)) {
             $this->condition = [];
         }
 

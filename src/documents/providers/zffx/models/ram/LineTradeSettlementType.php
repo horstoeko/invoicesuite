@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\zffx\models\ram;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class LineTradeSettlementType
@@ -161,7 +162,7 @@ class LineTradeSettlementType
     public function addOnceToApplicableTradeTax(
         TradeTaxType $applicableTradeTax
     ): static {
-        if (!is_array($this->applicableTradeTax)) {
+        if (!InvoiceSuiteArrayUtils::is($this->applicableTradeTax)) {
             $this->applicableTradeTax = [];
         }
 
@@ -175,7 +176,7 @@ class LineTradeSettlementType
      */
     public function addOnceToApplicableTradeTaxWithCreate(): TradeTaxType
     {
-        if (!is_array($this->applicableTradeTax)) {
+        if (!InvoiceSuiteArrayUtils::is($this->applicableTradeTax)) {
             $this->applicableTradeTax = [];
         }
 
@@ -295,7 +296,7 @@ class LineTradeSettlementType
     public function addOnceToSpecifiedTradeAllowanceCharge(
         TradeAllowanceChargeType $specifiedTradeAllowanceCharge,
     ): static {
-        if (!is_array($this->specifiedTradeAllowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specifiedTradeAllowanceCharge)) {
             $this->specifiedTradeAllowanceCharge = [];
         }
 
@@ -309,7 +310,7 @@ class LineTradeSettlementType
      */
     public function addOnceToSpecifiedTradeAllowanceChargeWithCreate(): TradeAllowanceChargeType
     {
-        if (!is_array($this->specifiedTradeAllowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specifiedTradeAllowanceCharge)) {
             $this->specifiedTradeAllowanceCharge = [];
         }
 
@@ -469,7 +470,7 @@ class LineTradeSettlementType
     public function addOnceToAdditionalReferencedDocument(
         ReferencedDocumentType $additionalReferencedDocument
     ): static {
-        if (!is_array($this->additionalReferencedDocument)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalReferencedDocument)) {
             $this->additionalReferencedDocument = [];
         }
 
@@ -483,7 +484,7 @@ class LineTradeSettlementType
      */
     public function addOnceToAdditionalReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        if (!is_array($this->additionalReferencedDocument)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalReferencedDocument)) {
             $this->additionalReferencedDocument = [];
         }
 
@@ -563,7 +564,7 @@ class LineTradeSettlementType
     public function addOnceToReceivableSpecifiedTradeAccountingAccount(
         TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount,
     ): static {
-        if (!is_array($this->receivableSpecifiedTradeAccountingAccount)) {
+        if (!InvoiceSuiteArrayUtils::is($this->receivableSpecifiedTradeAccountingAccount)) {
             $this->receivableSpecifiedTradeAccountingAccount = [];
         }
 
@@ -577,7 +578,7 @@ class LineTradeSettlementType
      */
     public function addOnceToReceivableSpecifiedTradeAccountingAccountWithCreate(): TradeAccountingAccountType
     {
-        if (!is_array($this->receivableSpecifiedTradeAccountingAccount)) {
+        if (!InvoiceSuiteArrayUtils::is($this->receivableSpecifiedTradeAccountingAccount)) {
             $this->receivableSpecifiedTradeAccountingAccount = [];
         }
 

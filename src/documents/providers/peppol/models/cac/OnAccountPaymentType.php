@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\EstimatedConsumedQuantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Note;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class OnAccountPaymentType
@@ -187,7 +188,7 @@ class OnAccountPaymentType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -201,7 +202,7 @@ class OnAccountPaymentType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -311,7 +312,7 @@ class OnAccountPaymentType
     public function addOnceToPaymentTerms(
         PaymentTerms $paymentTerms
     ): static {
-        if (!is_array($this->paymentTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentTerms)) {
             $this->paymentTerms = [];
         }
 
@@ -325,7 +326,7 @@ class OnAccountPaymentType
      */
     public function addOnceToPaymentTermsWithCreate(): PaymentTerms
     {
-        if (!is_array($this->paymentTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentTerms)) {
             $this->paymentTerms = [];
         }
 

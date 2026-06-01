@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\Natura;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\Ritenuta;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoCessionePrestazione;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use JMS\Serializer\Annotation as JMS;
 
@@ -330,7 +331,7 @@ final class DettaglioLinee
     public function addToCodiceArticolo(
         CodiceArticolo $codiceArticolo
     ): static {
-        if (!is_array($this->codiceArticolo)) {
+        if (!InvoiceSuiteArrayUtils::is($this->codiceArticolo)) {
             $this->codiceArticolo = [];
         }
 
@@ -360,7 +361,7 @@ final class DettaglioLinee
     public function addOnceToCodiceArticolo(
         CodiceArticolo $codiceArticolo
     ): static {
-        if (!is_array($this->codiceArticolo)) {
+        if (!InvoiceSuiteArrayUtils::is($this->codiceArticolo)) {
             $this->codiceArticolo = [];
         }
 
@@ -376,7 +377,7 @@ final class DettaglioLinee
      */
     public function addOnceToCodiceArticoloWithCreate(): CodiceArticolo
     {
-        if (!is_array($this->codiceArticolo)) {
+        if (!InvoiceSuiteArrayUtils::is($this->codiceArticolo)) {
             $this->codiceArticolo = [];
         }
 
@@ -660,7 +661,7 @@ final class DettaglioLinee
     public function addToScontoMaggiorazione(
         ScontoMaggiorazione $scontoMaggiorazione
     ): static {
-        if (!is_array($this->scontoMaggiorazione)) {
+        if (!InvoiceSuiteArrayUtils::is($this->scontoMaggiorazione)) {
             $this->scontoMaggiorazione = [];
         }
 
@@ -690,7 +691,7 @@ final class DettaglioLinee
     public function addOnceToScontoMaggiorazione(
         ScontoMaggiorazione $scontoMaggiorazione
     ): static {
-        if (!is_array($this->scontoMaggiorazione)) {
+        if (!InvoiceSuiteArrayUtils::is($this->scontoMaggiorazione)) {
             $this->scontoMaggiorazione = [];
         }
 
@@ -706,7 +707,7 @@ final class DettaglioLinee
      */
     public function addOnceToScontoMaggiorazioneWithCreate(): ScontoMaggiorazione
     {
-        if (!is_array($this->scontoMaggiorazione)) {
+        if (!InvoiceSuiteArrayUtils::is($this->scontoMaggiorazione)) {
             $this->scontoMaggiorazione = [];
         }
 
@@ -954,7 +955,7 @@ final class DettaglioLinee
     public function addToAltriDatiGestionali(
         AltriDatiGestionali $altriDatiGestionali
     ): static {
-        if (!is_array($this->altriDatiGestionali)) {
+        if (!InvoiceSuiteArrayUtils::is($this->altriDatiGestionali)) {
             $this->altriDatiGestionali = [];
         }
 
@@ -984,7 +985,7 @@ final class DettaglioLinee
     public function addOnceToAltriDatiGestionali(
         AltriDatiGestionali $altriDatiGestionali
     ): static {
-        if (!is_array($this->altriDatiGestionali)) {
+        if (!InvoiceSuiteArrayUtils::is($this->altriDatiGestionali)) {
             $this->altriDatiGestionali = [];
         }
 
@@ -1000,7 +1001,7 @@ final class DettaglioLinee
      */
     public function addOnceToAltriDatiGestionaliWithCreate(): AltriDatiGestionali
     {
-        if (!is_array($this->altriDatiGestionali)) {
+        if (!InvoiceSuiteArrayUtils::is($this->altriDatiGestionali)) {
             $this->altriDatiGestionali = [];
         }
 

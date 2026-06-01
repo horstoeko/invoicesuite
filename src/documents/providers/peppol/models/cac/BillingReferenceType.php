@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class BillingReferenceType
@@ -479,7 +480,7 @@ class BillingReferenceType
     public function addOnceToBillingReferenceLine(
         BillingReferenceLine $billingReferenceLine
     ): static {
-        if (!is_array($this->billingReferenceLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->billingReferenceLine)) {
             $this->billingReferenceLine = [];
         }
 
@@ -493,7 +494,7 @@ class BillingReferenceType
      */
     public function addOnceToBillingReferenceLineWithCreate(): BillingReferenceLine
     {
-        if (!is_array($this->billingReferenceLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->billingReferenceLine)) {
             $this->billingReferenceLine = [];
         }
 

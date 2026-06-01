@@ -10,6 +10,7 @@ use horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\IndicatorType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ExchangedDocumentType
@@ -414,7 +415,7 @@ class ExchangedDocumentType
     public function addOnceToIncludedNote(
         NoteType $includedNote
     ): static {
-        if (!is_array($this->includedNote)) {
+        if (!InvoiceSuiteArrayUtils::is($this->includedNote)) {
             $this->includedNote = [];
         }
 
@@ -428,7 +429,7 @@ class ExchangedDocumentType
      */
     public function addOnceToIncludedNoteWithCreate(): NoteType
     {
-        if (!is_array($this->includedNote)) {
+        if (!InvoiceSuiteArrayUtils::is($this->includedNote)) {
             $this->includedNote = [];
         }
 

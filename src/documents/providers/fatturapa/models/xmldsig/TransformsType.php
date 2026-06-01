@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 /**
@@ -111,7 +112,7 @@ class TransformsType
     public function addOnceToTransform(
         TransformType $transform
     ): static {
-        if (!is_array($this->transform)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transform)) {
             $this->transform = [];
         }
 
@@ -127,7 +128,7 @@ class TransformsType
      */
     public function addOnceToTransformWithCreate(): TransformType
     {
-        if (!is_array($this->transform)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transform)) {
             $this->transform = [];
         }
 

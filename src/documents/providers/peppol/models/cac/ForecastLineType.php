@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ForecastTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Note;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ForecastLineType
@@ -220,7 +221,7 @@ class ForecastLineType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -234,7 +235,7 @@ class ForecastLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 

@@ -16,6 +16,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ResolutionCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SourceValueMeasure;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SupplyChainActivityTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\VarianceQuantity;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ExceptionNotificationLineType
@@ -329,7 +330,7 @@ class ExceptionNotificationLineType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -343,7 +344,7 @@ class ExceptionNotificationLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -453,7 +454,7 @@ class ExceptionNotificationLineType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -467,7 +468,7 @@ class ExceptionNotificationLineType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -937,7 +938,7 @@ class ExceptionNotificationLineType
     public function addOnceToDocumentReference(
         DocumentReference $documentReference
     ): static {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -951,7 +952,7 @@ class ExceptionNotificationLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 

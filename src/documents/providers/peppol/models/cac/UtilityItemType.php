@@ -18,6 +18,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PackSizeNumeric
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SubscriberID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SubscriberType;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SubscriberTypeCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class UtilityItemType
@@ -449,7 +450,7 @@ class UtilityItemType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -463,7 +464,7 @@ class UtilityItemType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 

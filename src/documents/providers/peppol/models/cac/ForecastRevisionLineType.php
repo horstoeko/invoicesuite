@@ -11,6 +11,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Note;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RevisedForecastLineID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ForecastRevisionLineType
@@ -257,7 +258,7 @@ class ForecastRevisionLineType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -271,7 +272,7 @@ class ForecastRevisionLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -381,7 +382,7 @@ class ForecastRevisionLineType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -395,7 +396,7 @@ class ForecastRevisionLineType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 

@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ActionCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TransactionConditionsType
@@ -239,7 +240,7 @@ class TransactionConditionsType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -253,7 +254,7 @@ class TransactionConditionsType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -363,7 +364,7 @@ class TransactionConditionsType
     public function addOnceToDocumentReference(
         DocumentReference $documentReference
     ): static {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -377,7 +378,7 @@ class TransactionConditionsType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 

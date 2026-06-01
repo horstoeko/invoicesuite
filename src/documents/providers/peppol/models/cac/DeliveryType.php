@@ -12,6 +12,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MinimumQuantity
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Quantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ReleaseID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TrackingID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class DeliveryType
@@ -1063,7 +1064,7 @@ class DeliveryType
     public function addOnceToNotifyParty(
         NotifyParty $notifyParty
     ): static {
-        if (!is_array($this->notifyParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->notifyParty)) {
             $this->notifyParty = [];
         }
 
@@ -1077,7 +1078,7 @@ class DeliveryType
      */
     public function addOnceToNotifyPartyWithCreate(): NotifyParty
     {
-        if (!is_array($this->notifyParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->notifyParty)) {
             $this->notifyParty = [];
         }
 
@@ -1227,7 +1228,7 @@ class DeliveryType
     public function addOnceToDeliveryTerms(
         DeliveryTerms $deliveryTerms
     ): static {
-        if (!is_array($this->deliveryTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->deliveryTerms)) {
             $this->deliveryTerms = [];
         }
 
@@ -1241,7 +1242,7 @@ class DeliveryType
      */
     public function addOnceToDeliveryTermsWithCreate(): DeliveryTerms
     {
-        if (!is_array($this->deliveryTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->deliveryTerms)) {
             $this->deliveryTerms = [];
         }
 

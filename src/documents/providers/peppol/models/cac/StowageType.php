@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Location;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LocationID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class StowageType
@@ -187,7 +188,7 @@ class StowageType
     public function addOnceToLocation(
         Location $location
     ): static {
-        if (!is_array($this->location)) {
+        if (!InvoiceSuiteArrayUtils::is($this->location)) {
             $this->location = [];
         }
 
@@ -201,7 +202,7 @@ class StowageType
      */
     public function addOnceToLocationWithCreate(): Location
     {
-        if (!is_array($this->location)) {
+        if (!InvoiceSuiteArrayUtils::is($this->location)) {
             $this->location = [];
         }
 
@@ -311,7 +312,7 @@ class StowageType
     public function addOnceToMeasurementDimension(
         MeasurementDimension $measurementDimension
     ): static {
-        if (!is_array($this->measurementDimension)) {
+        if (!InvoiceSuiteArrayUtils::is($this->measurementDimension)) {
             $this->measurementDimension = [];
         }
 
@@ -325,7 +326,7 @@ class StowageType
      */
     public function addOnceToMeasurementDimensionWithCreate(): MeasurementDimension
     {
-        if (!is_array($this->measurementDimension)) {
+        if (!InvoiceSuiteArrayUtils::is($this->measurementDimension)) {
             $this->measurementDimension = [];
         }
 

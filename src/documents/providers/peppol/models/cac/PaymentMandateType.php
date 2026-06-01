@@ -10,6 +10,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MandateTypeCode
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MaximumPaidAmount;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MaximumPaymentInstructionsNumeric;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SignatureID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class PaymentMandateType
@@ -586,7 +587,7 @@ class PaymentMandateType
     public function addOnceToClause(
         Clause $clause
     ): static {
-        if (!is_array($this->clause)) {
+        if (!InvoiceSuiteArrayUtils::is($this->clause)) {
             $this->clause = [];
         }
 
@@ -600,7 +601,7 @@ class PaymentMandateType
      */
     public function addOnceToClauseWithCreate(): Clause
     {
-        if (!is_array($this->clause)) {
+        if (!InvoiceSuiteArrayUtils::is($this->clause)) {
             $this->clause = [];
         }
 

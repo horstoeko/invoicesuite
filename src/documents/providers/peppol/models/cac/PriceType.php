@@ -11,6 +11,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PriceAmount;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PriceChangeReason;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PriceType as PriceType1;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PriceTypeCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class PriceType
@@ -309,7 +310,7 @@ class PriceType
     public function addOnceToPriceChangeReason(
         PriceChangeReason $priceChangeReason
     ): static {
-        if (!is_array($this->priceChangeReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->priceChangeReason)) {
             $this->priceChangeReason = [];
         }
 
@@ -323,7 +324,7 @@ class PriceType
      */
     public function addOnceToPriceChangeReasonWithCreate(): PriceChangeReason
     {
-        if (!is_array($this->priceChangeReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->priceChangeReason)) {
             $this->priceChangeReason = [];
         }
 
@@ -553,7 +554,7 @@ class PriceType
     public function addOnceToValidityPeriod(
         ValidityPeriod $validityPeriod
     ): static {
-        if (!is_array($this->validityPeriod)) {
+        if (!InvoiceSuiteArrayUtils::is($this->validityPeriod)) {
             $this->validityPeriod = [];
         }
 
@@ -567,7 +568,7 @@ class PriceType
      */
     public function addOnceToValidityPeriodWithCreate(): ValidityPeriod
     {
-        if (!is_array($this->validityPeriod)) {
+        if (!InvoiceSuiteArrayUtils::is($this->validityPeriod)) {
             $this->validityPeriod = [];
         }
 
@@ -717,7 +718,7 @@ class PriceType
     public function addOnceToAllowanceCharge(
         AllowanceCharge $allowanceCharge
     ): static {
-        if (!is_array($this->allowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceCharge)) {
             $this->allowanceCharge = [];
         }
 
@@ -731,7 +732,7 @@ class PriceType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        if (!is_array($this->allowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceCharge)) {
             $this->allowanceCharge = [];
         }
 

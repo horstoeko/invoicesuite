@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Quantity;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class GoodsItemContainerType
@@ -226,7 +227,7 @@ class GoodsItemContainerType
     public function addOnceToTransportEquipment(
         TransportEquipment $transportEquipment
     ): static {
-        if (!is_array($this->transportEquipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportEquipment)) {
             $this->transportEquipment = [];
         }
 
@@ -240,7 +241,7 @@ class GoodsItemContainerType
      */
     public function addOnceToTransportEquipmentWithCreate(): TransportEquipment
     {
-        if (!is_array($this->transportEquipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportEquipment)) {
             $this->transportEquipment = [];
         }
 

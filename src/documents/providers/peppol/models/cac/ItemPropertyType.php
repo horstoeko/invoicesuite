@@ -14,6 +14,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TestMethod;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Value;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ValueQualifier;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ValueQuantity;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ItemPropertyType
@@ -505,7 +506,7 @@ class ItemPropertyType
     public function addOnceToValueQualifier(
         ValueQualifier $valueQualifier
     ): static {
-        if (!is_array($this->valueQualifier)) {
+        if (!InvoiceSuiteArrayUtils::is($this->valueQualifier)) {
             $this->valueQualifier = [];
         }
 
@@ -519,7 +520,7 @@ class ItemPropertyType
      */
     public function addOnceToValueQualifierWithCreate(): ValueQualifier
     {
-        if (!is_array($this->valueQualifier)) {
+        if (!InvoiceSuiteArrayUtils::is($this->valueQualifier)) {
             $this->valueQualifier = [];
         }
 
@@ -669,7 +670,7 @@ class ItemPropertyType
     public function addOnceToListValue(
         ListValue $listValue
     ): static {
-        if (!is_array($this->listValue)) {
+        if (!InvoiceSuiteArrayUtils::is($this->listValue)) {
             $this->listValue = [];
         }
 
@@ -683,7 +684,7 @@ class ItemPropertyType
      */
     public function addOnceToListValueWithCreate(): ListValue
     {
-        if (!is_array($this->listValue)) {
+        if (!InvoiceSuiteArrayUtils::is($this->listValue)) {
             $this->listValue = [];
         }
 
@@ -833,7 +834,7 @@ class ItemPropertyType
     public function addOnceToItemPropertyGroup(
         ItemPropertyGroup $itemPropertyGroup
     ): static {
-        if (!is_array($this->itemPropertyGroup)) {
+        if (!InvoiceSuiteArrayUtils::is($this->itemPropertyGroup)) {
             $this->itemPropertyGroup = [];
         }
 
@@ -847,7 +848,7 @@ class ItemPropertyType
      */
     public function addOnceToItemPropertyGroupWithCreate(): ItemPropertyGroup
     {
-        if (!is_array($this->itemPropertyGroup)) {
+        if (!InvoiceSuiteArrayUtils::is($this->itemPropertyGroup)) {
             $this->itemPropertyGroup = [];
         }
 

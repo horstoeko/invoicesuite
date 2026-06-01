@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\zffx\models\ram;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\QuantityType;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TradePriceType
@@ -207,7 +208,7 @@ class TradePriceType
     public function addOnceToAppliedTradeAllowanceCharge(
         TradeAllowanceChargeType $appliedTradeAllowanceCharge
     ): static {
-        if (!is_array($this->appliedTradeAllowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->appliedTradeAllowanceCharge)) {
             $this->appliedTradeAllowanceCharge = [];
         }
 
@@ -221,7 +222,7 @@ class TradePriceType
      */
     public function addOnceToAppliedTradeAllowanceChargeWithCreate(): TradeAllowanceChargeType
     {
-        if (!is_array($this->appliedTradeAllowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->appliedTradeAllowanceCharge)) {
             $this->appliedTradeAllowanceCharge = [];
         }
 

@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Note;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SubstitutionStatusCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class OrderLineType
@@ -268,7 +269,7 @@ class OrderLineType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -282,7 +283,7 @@ class OrderLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -432,7 +433,7 @@ class OrderLineType
     public function addOnceToSellerProposedSubstituteLineItem(
         SellerProposedSubstituteLineItem $sellerProposedSubstituteLineItem,
     ): static {
-        if (!is_array($this->sellerProposedSubstituteLineItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->sellerProposedSubstituteLineItem)) {
             $this->sellerProposedSubstituteLineItem = [];
         }
 
@@ -446,7 +447,7 @@ class OrderLineType
      */
     public function addOnceToSellerProposedSubstituteLineItemWithCreate(): SellerProposedSubstituteLineItem
     {
-        if (!is_array($this->sellerProposedSubstituteLineItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->sellerProposedSubstituteLineItem)) {
             $this->sellerProposedSubstituteLineItem = [];
         }
 
@@ -556,7 +557,7 @@ class OrderLineType
     public function addOnceToSellerSubstitutedLineItem(
         SellerSubstitutedLineItem $sellerSubstitutedLineItem
     ): static {
-        if (!is_array($this->sellerSubstitutedLineItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->sellerSubstitutedLineItem)) {
             $this->sellerSubstitutedLineItem = [];
         }
 
@@ -570,7 +571,7 @@ class OrderLineType
      */
     public function addOnceToSellerSubstitutedLineItemWithCreate(): SellerSubstitutedLineItem
     {
-        if (!is_array($this->sellerSubstitutedLineItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->sellerSubstitutedLineItem)) {
             $this->sellerSubstitutedLineItem = [];
         }
 
@@ -680,7 +681,7 @@ class OrderLineType
     public function addOnceToBuyerProposedSubstituteLineItem(
         BuyerProposedSubstituteLineItem $buyerProposedSubstituteLineItem,
     ): static {
-        if (!is_array($this->buyerProposedSubstituteLineItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->buyerProposedSubstituteLineItem)) {
             $this->buyerProposedSubstituteLineItem = [];
         }
 
@@ -694,7 +695,7 @@ class OrderLineType
      */
     public function addOnceToBuyerProposedSubstituteLineItemWithCreate(): BuyerProposedSubstituteLineItem
     {
-        if (!is_array($this->buyerProposedSubstituteLineItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->buyerProposedSubstituteLineItem)) {
             $this->buyerProposedSubstituteLineItem = [];
         }
 
@@ -884,7 +885,7 @@ class OrderLineType
     public function addOnceToOrderLineReference(
         OrderLineReference $orderLineReference
     ): static {
-        if (!is_array($this->orderLineReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->orderLineReference)) {
             $this->orderLineReference = [];
         }
 
@@ -898,7 +899,7 @@ class OrderLineType
      */
     public function addOnceToOrderLineReferenceWithCreate(): OrderLineReference
     {
-        if (!is_array($this->orderLineReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->orderLineReference)) {
             $this->orderLineReference = [];
         }
 
@@ -1008,7 +1009,7 @@ class OrderLineType
     public function addOnceToDocumentReference(
         DocumentReference $documentReference
     ): static {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -1022,7 +1023,7 @@ class OrderLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 

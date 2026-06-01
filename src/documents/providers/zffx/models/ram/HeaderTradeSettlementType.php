@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\CurrencyCodeType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class HeaderTradeSettlementType
@@ -711,7 +712,7 @@ class HeaderTradeSettlementType
     public function addOnceToSpecifiedTradeSettlementPaymentMeans(
         TradeSettlementPaymentMeansType $specifiedTradeSettlementPaymentMeans,
     ): static {
-        if (!is_array($this->specifiedTradeSettlementPaymentMeans)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specifiedTradeSettlementPaymentMeans)) {
             $this->specifiedTradeSettlementPaymentMeans = [];
         }
 
@@ -725,7 +726,7 @@ class HeaderTradeSettlementType
      */
     public function addOnceToSpecifiedTradeSettlementPaymentMeansWithCreate(): TradeSettlementPaymentMeansType
     {
-        if (!is_array($this->specifiedTradeSettlementPaymentMeans)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specifiedTradeSettlementPaymentMeans)) {
             $this->specifiedTradeSettlementPaymentMeans = [];
         }
 
@@ -805,7 +806,7 @@ class HeaderTradeSettlementType
     public function addOnceToApplicableTradeTax(
         TradeTaxType $applicableTradeTax
     ): static {
-        if (!is_array($this->applicableTradeTax)) {
+        if (!InvoiceSuiteArrayUtils::is($this->applicableTradeTax)) {
             $this->applicableTradeTax = [];
         }
 
@@ -819,7 +820,7 @@ class HeaderTradeSettlementType
      */
     public function addOnceToApplicableTradeTaxWithCreate(): TradeTaxType
     {
-        if (!is_array($this->applicableTradeTax)) {
+        if (!InvoiceSuiteArrayUtils::is($this->applicableTradeTax)) {
             $this->applicableTradeTax = [];
         }
 
@@ -939,7 +940,7 @@ class HeaderTradeSettlementType
     public function addOnceToSpecifiedTradeAllowanceCharge(
         TradeAllowanceChargeType $specifiedTradeAllowanceCharge,
     ): static {
-        if (!is_array($this->specifiedTradeAllowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specifiedTradeAllowanceCharge)) {
             $this->specifiedTradeAllowanceCharge = [];
         }
 
@@ -953,7 +954,7 @@ class HeaderTradeSettlementType
      */
     public function addOnceToSpecifiedTradeAllowanceChargeWithCreate(): TradeAllowanceChargeType
     {
-        if (!is_array($this->specifiedTradeAllowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specifiedTradeAllowanceCharge)) {
             $this->specifiedTradeAllowanceCharge = [];
         }
 
@@ -1033,7 +1034,7 @@ class HeaderTradeSettlementType
     public function addOnceToSpecifiedLogisticsServiceCharge(
         LogisticsServiceChargeType $specifiedLogisticsServiceCharge,
     ): static {
-        if (!is_array($this->specifiedLogisticsServiceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specifiedLogisticsServiceCharge)) {
             $this->specifiedLogisticsServiceCharge = [];
         }
 
@@ -1047,7 +1048,7 @@ class HeaderTradeSettlementType
      */
     public function addOnceToSpecifiedLogisticsServiceChargeWithCreate(): LogisticsServiceChargeType
     {
-        if (!is_array($this->specifiedLogisticsServiceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specifiedLogisticsServiceCharge)) {
             $this->specifiedLogisticsServiceCharge = [];
         }
 
@@ -1127,7 +1128,7 @@ class HeaderTradeSettlementType
     public function addOnceToSpecifiedTradePaymentTerms(
         TradePaymentTermsType $specifiedTradePaymentTerms
     ): static {
-        if (!is_array($this->specifiedTradePaymentTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specifiedTradePaymentTerms)) {
             $this->specifiedTradePaymentTerms = [];
         }
 
@@ -1141,7 +1142,7 @@ class HeaderTradeSettlementType
      */
     public function addOnceToSpecifiedTradePaymentTermsWithCreate(): TradePaymentTermsType
     {
-        if (!is_array($this->specifiedTradePaymentTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specifiedTradePaymentTerms)) {
             $this->specifiedTradePaymentTerms = [];
         }
 
@@ -1261,7 +1262,7 @@ class HeaderTradeSettlementType
     public function addOnceToInvoiceReferencedDocument(
         ReferencedDocumentType $invoiceReferencedDocument
     ): static {
-        if (!is_array($this->invoiceReferencedDocument)) {
+        if (!InvoiceSuiteArrayUtils::is($this->invoiceReferencedDocument)) {
             $this->invoiceReferencedDocument = [];
         }
 
@@ -1275,7 +1276,7 @@ class HeaderTradeSettlementType
      */
     public function addOnceToInvoiceReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        if (!is_array($this->invoiceReferencedDocument)) {
+        if (!InvoiceSuiteArrayUtils::is($this->invoiceReferencedDocument)) {
             $this->invoiceReferencedDocument = [];
         }
 
@@ -1355,7 +1356,7 @@ class HeaderTradeSettlementType
     public function addOnceToReceivableSpecifiedTradeAccountingAccount(
         TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount,
     ): static {
-        if (!is_array($this->receivableSpecifiedTradeAccountingAccount)) {
+        if (!InvoiceSuiteArrayUtils::is($this->receivableSpecifiedTradeAccountingAccount)) {
             $this->receivableSpecifiedTradeAccountingAccount = [];
         }
 
@@ -1369,7 +1370,7 @@ class HeaderTradeSettlementType
      */
     public function addOnceToReceivableSpecifiedTradeAccountingAccountWithCreate(): TradeAccountingAccountType
     {
-        if (!is_array($this->receivableSpecifiedTradeAccountingAccount)) {
+        if (!InvoiceSuiteArrayUtils::is($this->receivableSpecifiedTradeAccountingAccount)) {
             $this->receivableSpecifiedTradeAccountingAccount = [];
         }
 
@@ -1449,7 +1450,7 @@ class HeaderTradeSettlementType
     public function addOnceToSpecifiedAdvancePayment(
         AdvancePaymentType $specifiedAdvancePayment
     ): static {
-        if (!is_array($this->specifiedAdvancePayment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specifiedAdvancePayment)) {
             $this->specifiedAdvancePayment = [];
         }
 
@@ -1463,7 +1464,7 @@ class HeaderTradeSettlementType
      */
     public function addOnceToSpecifiedAdvancePaymentWithCreate(): AdvancePaymentType
     {
-        if (!is_array($this->specifiedAdvancePayment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specifiedAdvancePayment)) {
             $this->specifiedAdvancePayment = [];
         }
 

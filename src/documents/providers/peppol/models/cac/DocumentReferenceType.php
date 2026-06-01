@@ -16,6 +16,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LocaleCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UUID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\VersionID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\XPath;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class DocumentReferenceType
@@ -560,7 +561,7 @@ class DocumentReferenceType
     public function addOnceToXPath(
         XPath $xPath
     ): static {
-        if (!is_array($this->xPath)) {
+        if (!InvoiceSuiteArrayUtils::is($this->xPath)) {
             $this->xPath = [];
         }
 
@@ -574,7 +575,7 @@ class DocumentReferenceType
      */
     public function addOnceToXPathWithCreate(): XPath
     {
-        if (!is_array($this->xPath)) {
+        if (!InvoiceSuiteArrayUtils::is($this->xPath)) {
             $this->xPath = [];
         }
 
@@ -844,7 +845,7 @@ class DocumentReferenceType
     public function addOnceToDocumentDescription(
         DocumentDescription $documentDescription
     ): static {
-        if (!is_array($this->documentDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentDescription)) {
             $this->documentDescription = [];
         }
 
@@ -858,7 +859,7 @@ class DocumentReferenceType
      */
     public function addOnceToDocumentDescriptionWithCreate(): DocumentDescription
     {
-        if (!is_array($this->documentDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentDescription)) {
             $this->documentDescription = [];
         }
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\fatturapa\models;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 final class DatiBeniServizi
@@ -96,7 +97,7 @@ final class DatiBeniServizi
     public function addToDettaglioLinee(
         DettaglioLinee $dettaglioLinee
     ): static {
-        if (!is_array($this->dettaglioLinee)) {
+        if (!InvoiceSuiteArrayUtils::is($this->dettaglioLinee)) {
             $this->dettaglioLinee = [];
         }
 
@@ -126,7 +127,7 @@ final class DatiBeniServizi
     public function addOnceToDettaglioLinee(
         DettaglioLinee $dettaglioLinee
     ): static {
-        if (!is_array($this->dettaglioLinee)) {
+        if (!InvoiceSuiteArrayUtils::is($this->dettaglioLinee)) {
             $this->dettaglioLinee = [];
         }
 
@@ -142,7 +143,7 @@ final class DatiBeniServizi
      */
     public function addOnceToDettaglioLineeWithCreate(): DettaglioLinee
     {
-        if (!is_array($this->dettaglioLinee)) {
+        if (!InvoiceSuiteArrayUtils::is($this->dettaglioLinee)) {
             $this->dettaglioLinee = [];
         }
 
@@ -237,7 +238,7 @@ final class DatiBeniServizi
     public function addToDatiRiepilogo(
         DatiRiepilogo $datiRiepilogo
     ): static {
-        if (!is_array($this->datiRiepilogo)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiRiepilogo)) {
             $this->datiRiepilogo = [];
         }
 
@@ -267,7 +268,7 @@ final class DatiBeniServizi
     public function addOnceToDatiRiepilogo(
         DatiRiepilogo $datiRiepilogo
     ): static {
-        if (!is_array($this->datiRiepilogo)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiRiepilogo)) {
             $this->datiRiepilogo = [];
         }
 
@@ -283,7 +284,7 @@ final class DatiBeniServizi
      */
     public function addOnceToDatiRiepilogoWithCreate(): DatiRiepilogo
     {
-        if (!is_array($this->datiRiepilogo)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiRiepilogo)) {
             $this->datiRiepilogo = [];
         }
 

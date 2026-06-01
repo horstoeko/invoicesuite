@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ChangeConditions;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TransportServiceProviderSpecialTerms;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TransportUserSpecialTerms;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TransportExecutionTermsType
@@ -241,7 +242,7 @@ class TransportExecutionTermsType
     public function addOnceToTransportUserSpecialTerms(
         TransportUserSpecialTerms $transportUserSpecialTerms
     ): static {
-        if (!is_array($this->transportUserSpecialTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportUserSpecialTerms)) {
             $this->transportUserSpecialTerms = [];
         }
 
@@ -255,7 +256,7 @@ class TransportExecutionTermsType
      */
     public function addOnceToTransportUserSpecialTermsWithCreate(): TransportUserSpecialTerms
     {
-        if (!is_array($this->transportUserSpecialTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportUserSpecialTerms)) {
             $this->transportUserSpecialTerms = [];
         }
 
@@ -365,7 +366,7 @@ class TransportExecutionTermsType
     public function addOnceToTransportServiceProviderSpecialTerms(
         TransportServiceProviderSpecialTerms $transportServiceProviderSpecialTerms,
     ): static {
-        if (!is_array($this->transportServiceProviderSpecialTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportServiceProviderSpecialTerms)) {
             $this->transportServiceProviderSpecialTerms = [];
         }
 
@@ -379,7 +380,7 @@ class TransportExecutionTermsType
      */
     public function addOnceToTransportServiceProviderSpecialTermsWithCreate(): TransportServiceProviderSpecialTerms
     {
-        if (!is_array($this->transportServiceProviderSpecialTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportServiceProviderSpecialTerms)) {
             $this->transportServiceProviderSpecialTerms = [];
         }
 
@@ -489,7 +490,7 @@ class TransportExecutionTermsType
     public function addOnceToChangeConditions(
         ChangeConditions $changeConditions
     ): static {
-        if (!is_array($this->changeConditions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->changeConditions)) {
             $this->changeConditions = [];
         }
 
@@ -503,7 +504,7 @@ class TransportExecutionTermsType
      */
     public function addOnceToChangeConditionsWithCreate(): ChangeConditions
     {
-        if (!is_array($this->changeConditions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->changeConditions)) {
             $this->changeConditions = [];
         }
 
@@ -613,7 +614,7 @@ class TransportExecutionTermsType
     public function addOnceToPaymentTerms(
         PaymentTerms $paymentTerms
     ): static {
-        if (!is_array($this->paymentTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentTerms)) {
             $this->paymentTerms = [];
         }
 
@@ -627,7 +628,7 @@ class TransportExecutionTermsType
      */
     public function addOnceToPaymentTermsWithCreate(): PaymentTerms
     {
-        if (!is_array($this->paymentTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentTerms)) {
             $this->paymentTerms = [];
         }
 
@@ -737,7 +738,7 @@ class TransportExecutionTermsType
     public function addOnceToDeliveryTerms(
         DeliveryTerms $deliveryTerms
     ): static {
-        if (!is_array($this->deliveryTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->deliveryTerms)) {
             $this->deliveryTerms = [];
         }
 
@@ -751,7 +752,7 @@ class TransportExecutionTermsType
      */
     public function addOnceToDeliveryTermsWithCreate(): DeliveryTerms
     {
-        if (!is_array($this->deliveryTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->deliveryTerms)) {
             $this->deliveryTerms = [];
         }
 
@@ -981,7 +982,7 @@ class TransportExecutionTermsType
     public function addOnceToEnvironmentalEmission(
         EnvironmentalEmission $environmentalEmission
     ): static {
-        if (!is_array($this->environmentalEmission)) {
+        if (!InvoiceSuiteArrayUtils::is($this->environmentalEmission)) {
             $this->environmentalEmission = [];
         }
 
@@ -995,7 +996,7 @@ class TransportExecutionTermsType
      */
     public function addOnceToEnvironmentalEmissionWithCreate(): EnvironmentalEmission
     {
-        if (!is_array($this->environmentalEmission)) {
+        if (!InvoiceSuiteArrayUtils::is($this->environmentalEmission)) {
             $this->environmentalEmission = [];
         }
 
@@ -1105,7 +1106,7 @@ class TransportExecutionTermsType
     public function addOnceToNotificationRequirement(
         NotificationRequirement $notificationRequirement
     ): static {
-        if (!is_array($this->notificationRequirement)) {
+        if (!InvoiceSuiteArrayUtils::is($this->notificationRequirement)) {
             $this->notificationRequirement = [];
         }
 
@@ -1119,7 +1120,7 @@ class TransportExecutionTermsType
      */
     public function addOnceToNotificationRequirementWithCreate(): NotificationRequirement
     {
-        if (!is_array($this->notificationRequirement)) {
+        if (!InvoiceSuiteArrayUtils::is($this->notificationRequirement)) {
             $this->notificationRequirement = [];
         }
 

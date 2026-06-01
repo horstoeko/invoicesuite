@@ -14,6 +14,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LineExtensionAm
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Note;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PaymentPurposeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UUID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class DebitNoteLineType
@@ -440,7 +441,7 @@ class DebitNoteLineType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -454,7 +455,7 @@ class DebitNoteLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -794,7 +795,7 @@ class DebitNoteLineType
     public function addOnceToDiscrepancyResponse(
         DiscrepancyResponse $discrepancyResponse
     ): static {
-        if (!is_array($this->discrepancyResponse)) {
+        if (!InvoiceSuiteArrayUtils::is($this->discrepancyResponse)) {
             $this->discrepancyResponse = [];
         }
 
@@ -808,7 +809,7 @@ class DebitNoteLineType
      */
     public function addOnceToDiscrepancyResponseWithCreate(): DiscrepancyResponse
     {
-        if (!is_array($this->discrepancyResponse)) {
+        if (!InvoiceSuiteArrayUtils::is($this->discrepancyResponse)) {
             $this->discrepancyResponse = [];
         }
 
@@ -918,7 +919,7 @@ class DebitNoteLineType
     public function addOnceToDespatchLineReference(
         DespatchLineReference $despatchLineReference
     ): static {
-        if (!is_array($this->despatchLineReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->despatchLineReference)) {
             $this->despatchLineReference = [];
         }
 
@@ -932,7 +933,7 @@ class DebitNoteLineType
      */
     public function addOnceToDespatchLineReferenceWithCreate(): DespatchLineReference
     {
-        if (!is_array($this->despatchLineReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->despatchLineReference)) {
             $this->despatchLineReference = [];
         }
 
@@ -1042,7 +1043,7 @@ class DebitNoteLineType
     public function addOnceToReceiptLineReference(
         ReceiptLineReference $receiptLineReference
     ): static {
-        if (!is_array($this->receiptLineReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->receiptLineReference)) {
             $this->receiptLineReference = [];
         }
 
@@ -1056,7 +1057,7 @@ class DebitNoteLineType
      */
     public function addOnceToReceiptLineReferenceWithCreate(): ReceiptLineReference
     {
-        if (!is_array($this->receiptLineReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->receiptLineReference)) {
             $this->receiptLineReference = [];
         }
 
@@ -1166,7 +1167,7 @@ class DebitNoteLineType
     public function addOnceToBillingReference(
         BillingReference $billingReference
     ): static {
-        if (!is_array($this->billingReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->billingReference)) {
             $this->billingReference = [];
         }
 
@@ -1180,7 +1181,7 @@ class DebitNoteLineType
      */
     public function addOnceToBillingReferenceWithCreate(): BillingReference
     {
-        if (!is_array($this->billingReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->billingReference)) {
             $this->billingReference = [];
         }
 
@@ -1290,7 +1291,7 @@ class DebitNoteLineType
     public function addOnceToDocumentReference(
         DocumentReference $documentReference
     ): static {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -1304,7 +1305,7 @@ class DebitNoteLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -1454,7 +1455,7 @@ class DebitNoteLineType
     public function addOnceToDelivery(
         Delivery $delivery
     ): static {
-        if (!is_array($this->delivery)) {
+        if (!InvoiceSuiteArrayUtils::is($this->delivery)) {
             $this->delivery = [];
         }
 
@@ -1468,7 +1469,7 @@ class DebitNoteLineType
      */
     public function addOnceToDeliveryWithCreate(): Delivery
     {
-        if (!is_array($this->delivery)) {
+        if (!InvoiceSuiteArrayUtils::is($this->delivery)) {
             $this->delivery = [];
         }
 
@@ -1578,7 +1579,7 @@ class DebitNoteLineType
     public function addOnceToTaxTotal(
         TaxTotal $taxTotal
     ): static {
-        if (!is_array($this->taxTotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotal)) {
             $this->taxTotal = [];
         }
 
@@ -1592,7 +1593,7 @@ class DebitNoteLineType
      */
     public function addOnceToTaxTotalWithCreate(): TaxTotal
     {
-        if (!is_array($this->taxTotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotal)) {
             $this->taxTotal = [];
         }
 
@@ -1702,7 +1703,7 @@ class DebitNoteLineType
     public function addOnceToAllowanceCharge(
         AllowanceCharge $allowanceCharge
     ): static {
-        if (!is_array($this->allowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceCharge)) {
             $this->allowanceCharge = [];
         }
 
@@ -1716,7 +1717,7 @@ class DebitNoteLineType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        if (!is_array($this->allowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceCharge)) {
             $this->allowanceCharge = [];
         }
 
@@ -1906,7 +1907,7 @@ class DebitNoteLineType
     public function addOnceToSubDebitNoteLine(
         SubDebitNoteLine $subDebitNoteLine
     ): static {
-        if (!is_array($this->subDebitNoteLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->subDebitNoteLine)) {
             $this->subDebitNoteLine = [];
         }
 
@@ -1920,7 +1921,7 @@ class DebitNoteLineType
      */
     public function addOnceToSubDebitNoteLineWithCreate(): SubDebitNoteLine
     {
-        if (!is_array($this->subDebitNoteLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->subDebitNoteLine)) {
             $this->subDebitNoteLine = [];
         }
 

@@ -6,6 +6,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SpecificationID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class PromotionalSpecificationType
@@ -186,7 +187,7 @@ class PromotionalSpecificationType
     public function addOnceToPromotionalEventLineItem(
         PromotionalEventLineItem $promotionalEventLineItem
     ): static {
-        if (!is_array($this->promotionalEventLineItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->promotionalEventLineItem)) {
             $this->promotionalEventLineItem = [];
         }
 
@@ -200,7 +201,7 @@ class PromotionalSpecificationType
      */
     public function addOnceToPromotionalEventLineItemWithCreate(): PromotionalEventLineItem
     {
-        if (!is_array($this->promotionalEventLineItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->promotionalEventLineItem)) {
             $this->promotionalEventLineItem = [];
         }
 
@@ -310,7 +311,7 @@ class PromotionalSpecificationType
     public function addOnceToEventTactic(
         EventTactic $eventTactic
     ): static {
-        if (!is_array($this->eventTactic)) {
+        if (!InvoiceSuiteArrayUtils::is($this->eventTactic)) {
             $this->eventTactic = [];
         }
 
@@ -324,7 +325,7 @@ class PromotionalSpecificationType
      */
     public function addOnceToEventTacticWithCreate(): EventTactic
     {
-        if (!is_array($this->eventTactic)) {
+        if (!InvoiceSuiteArrayUtils::is($this->eventTactic)) {
             $this->eventTactic = [];
         }
 

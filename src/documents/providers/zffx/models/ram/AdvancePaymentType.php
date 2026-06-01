@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\zffx\models\ram;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\FormattedDateTimeType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class AdvancePaymentType
@@ -207,7 +208,7 @@ class AdvancePaymentType
     public function addOnceToIncludedTradeTax(
         TradeTaxType $includedTradeTax
     ): static {
-        if (!is_array($this->includedTradeTax)) {
+        if (!InvoiceSuiteArrayUtils::is($this->includedTradeTax)) {
             $this->includedTradeTax = [];
         }
 
@@ -221,7 +222,7 @@ class AdvancePaymentType
      */
     public function addOnceToIncludedTradeTaxWithCreate(): TradeTaxType
     {
-        if (!is_array($this->includedTradeTax)) {
+        if (!InvoiceSuiteArrayUtils::is($this->includedTradeTax)) {
             $this->includedTradeTax = [];
         }
 

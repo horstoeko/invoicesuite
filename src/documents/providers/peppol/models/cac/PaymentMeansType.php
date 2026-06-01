@@ -12,6 +12,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\InstructionNote
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PaymentChannelCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PaymentID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PaymentMeansCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class PaymentMeansType
@@ -452,7 +453,7 @@ class PaymentMeansType
     public function addOnceToInstructionNote(
         InstructionNote $instructionNote
     ): static {
-        if (!is_array($this->instructionNote)) {
+        if (!InvoiceSuiteArrayUtils::is($this->instructionNote)) {
             $this->instructionNote = [];
         }
 
@@ -466,7 +467,7 @@ class PaymentMeansType
      */
     public function addOnceToInstructionNoteWithCreate(): InstructionNote
     {
-        if (!is_array($this->instructionNote)) {
+        if (!InvoiceSuiteArrayUtils::is($this->instructionNote)) {
             $this->instructionNote = [];
         }
 
@@ -576,7 +577,7 @@ class PaymentMeansType
     public function addOnceToPaymentID(
         PaymentID $paymentID
     ): static {
-        if (!is_array($this->paymentID)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentID)) {
             $this->paymentID = [];
         }
 
@@ -590,7 +591,7 @@ class PaymentMeansType
      */
     public function addOnceToPaymentIDWithCreate(): PaymentID
     {
-        if (!is_array($this->paymentID)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentID)) {
             $this->paymentID = [];
         }
 

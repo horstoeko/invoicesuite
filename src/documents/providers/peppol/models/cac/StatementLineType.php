@@ -12,6 +12,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Note;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PaymentPurposeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UUID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class StatementLineType
@@ -406,7 +407,7 @@ class StatementLineType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -420,7 +421,7 @@ class StatementLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -800,7 +801,7 @@ class StatementLineType
     public function addOnceToPaymentTerms(
         PaymentTerms $paymentTerms
     ): static {
-        if (!is_array($this->paymentTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentTerms)) {
             $this->paymentTerms = [];
         }
 
@@ -814,7 +815,7 @@ class StatementLineType
      */
     public function addOnceToPaymentTermsWithCreate(): PaymentTerms
     {
-        if (!is_array($this->paymentTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentTerms)) {
             $this->paymentTerms = [];
         }
 
@@ -1164,7 +1165,7 @@ class StatementLineType
     public function addOnceToInvoicePeriod(
         InvoicePeriod $invoicePeriod
     ): static {
-        if (!is_array($this->invoicePeriod)) {
+        if (!InvoiceSuiteArrayUtils::is($this->invoicePeriod)) {
             $this->invoicePeriod = [];
         }
 
@@ -1178,7 +1179,7 @@ class StatementLineType
      */
     public function addOnceToInvoicePeriodWithCreate(): InvoicePeriod
     {
-        if (!is_array($this->invoicePeriod)) {
+        if (!InvoiceSuiteArrayUtils::is($this->invoicePeriod)) {
             $this->invoicePeriod = [];
         }
 
@@ -1288,7 +1289,7 @@ class StatementLineType
     public function addOnceToBillingReference(
         BillingReference $billingReference
     ): static {
-        if (!is_array($this->billingReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->billingReference)) {
             $this->billingReference = [];
         }
 
@@ -1302,7 +1303,7 @@ class StatementLineType
      */
     public function addOnceToBillingReferenceWithCreate(): BillingReference
     {
-        if (!is_array($this->billingReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->billingReference)) {
             $this->billingReference = [];
         }
 
@@ -1412,7 +1413,7 @@ class StatementLineType
     public function addOnceToDocumentReference(
         DocumentReference $documentReference
     ): static {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -1426,7 +1427,7 @@ class StatementLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -1576,7 +1577,7 @@ class StatementLineType
     public function addOnceToAllowanceCharge(
         AllowanceCharge $allowanceCharge
     ): static {
-        if (!is_array($this->allowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceCharge)) {
             $this->allowanceCharge = [];
         }
 
@@ -1590,7 +1591,7 @@ class StatementLineType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        if (!is_array($this->allowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceCharge)) {
             $this->allowanceCharge = [];
         }
 
@@ -1700,7 +1701,7 @@ class StatementLineType
     public function addOnceToCollectedPayment(
         CollectedPayment $collectedPayment
     ): static {
-        if (!is_array($this->collectedPayment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->collectedPayment)) {
             $this->collectedPayment = [];
         }
 
@@ -1714,7 +1715,7 @@ class StatementLineType
      */
     public function addOnceToCollectedPaymentWithCreate(): CollectedPayment
     {
-        if (!is_array($this->collectedPayment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->collectedPayment)) {
             $this->collectedPayment = [];
         }
 

@@ -10,6 +10,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Extension;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PlacardEndorsement;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PlacardNotation;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class SecondaryHazardType
@@ -331,7 +332,7 @@ class SecondaryHazardType
     public function addOnceToExtension(
         Extension $extension
     ): static {
-        if (!is_array($this->extension)) {
+        if (!InvoiceSuiteArrayUtils::is($this->extension)) {
             $this->extension = [];
         }
 
@@ -345,7 +346,7 @@ class SecondaryHazardType
      */
     public function addOnceToExtensionWithCreate(): Extension
     {
-        if (!is_array($this->extension)) {
+        if (!InvoiceSuiteArrayUtils::is($this->extension)) {
             $this->extension = [];
         }
 

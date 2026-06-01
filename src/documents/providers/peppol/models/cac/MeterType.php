@@ -10,6 +10,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MeterConstantCo
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MeterName;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MeterNumber;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalDeliveredQuantity;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class MeterType
@@ -394,7 +395,7 @@ class MeterType
     public function addOnceToMeterReading(
         MeterReading $meterReading
     ): static {
-        if (!is_array($this->meterReading)) {
+        if (!InvoiceSuiteArrayUtils::is($this->meterReading)) {
             $this->meterReading = [];
         }
 
@@ -408,7 +409,7 @@ class MeterType
      */
     public function addOnceToMeterReadingWithCreate(): MeterReading
     {
-        if (!is_array($this->meterReading)) {
+        if (!InvoiceSuiteArrayUtils::is($this->meterReading)) {
             $this->meterReading = [];
         }
 
@@ -518,7 +519,7 @@ class MeterType
     public function addOnceToMeterProperty(
         MeterProperty $meterProperty
     ): static {
-        if (!is_array($this->meterProperty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->meterProperty)) {
             $this->meterProperty = [];
         }
 
@@ -532,7 +533,7 @@ class MeterType
      */
     public function addOnceToMeterPropertyWithCreate(): MeterProperty
     {
-        if (!is_array($this->meterProperty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->meterProperty)) {
             $this->meterProperty = [];
         }
 

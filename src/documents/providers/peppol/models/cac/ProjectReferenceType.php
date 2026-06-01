@@ -8,6 +8,7 @@ use DateTimeInterface;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UUID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ProjectReferenceType
@@ -268,7 +269,7 @@ class ProjectReferenceType
     public function addOnceToWorkPhaseReference(
         WorkPhaseReference $workPhaseReference
     ): static {
-        if (!is_array($this->workPhaseReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->workPhaseReference)) {
             $this->workPhaseReference = [];
         }
 
@@ -282,7 +283,7 @@ class ProjectReferenceType
      */
     public function addOnceToWorkPhaseReferenceWithCreate(): WorkPhaseReference
     {
-        if (!is_array($this->workPhaseReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->workPhaseReference)) {
             $this->workPhaseReference = [];
         }
 

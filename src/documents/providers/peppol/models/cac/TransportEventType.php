@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\IdentificationID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TransportEventTypeCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TransportEventType
@@ -390,7 +391,7 @@ class TransportEventType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -404,7 +405,7 @@ class TransportEventType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -584,7 +585,7 @@ class TransportEventType
     public function addOnceToCurrentStatus(
         CurrentStatus $currentStatus
     ): static {
-        if (!is_array($this->currentStatus)) {
+        if (!InvoiceSuiteArrayUtils::is($this->currentStatus)) {
             $this->currentStatus = [];
         }
 
@@ -598,7 +599,7 @@ class TransportEventType
      */
     public function addOnceToCurrentStatusWithCreate(): CurrentStatus
     {
-        if (!is_array($this->currentStatus)) {
+        if (!InvoiceSuiteArrayUtils::is($this->currentStatus)) {
             $this->currentStatus = [];
         }
 
@@ -708,7 +709,7 @@ class TransportEventType
     public function addOnceToContact(
         Contact $contact
     ): static {
-        if (!is_array($this->contact)) {
+        if (!InvoiceSuiteArrayUtils::is($this->contact)) {
             $this->contact = [];
         }
 
@@ -722,7 +723,7 @@ class TransportEventType
      */
     public function addOnceToContactWithCreate(): Contact
     {
-        if (!is_array($this->contact)) {
+        if (!InvoiceSuiteArrayUtils::is($this->contact)) {
             $this->contact = [];
         }
 
@@ -912,7 +913,7 @@ class TransportEventType
     public function addOnceToPeriod(
         Period $period
     ): static {
-        if (!is_array($this->period)) {
+        if (!InvoiceSuiteArrayUtils::is($this->period)) {
             $this->period = [];
         }
 
@@ -926,7 +927,7 @@ class TransportEventType
      */
     public function addOnceToPeriodWithCreate(): Period
     {
-        if (!is_array($this->period)) {
+        if (!InvoiceSuiteArrayUtils::is($this->period)) {
             $this->period = [];
         }
 

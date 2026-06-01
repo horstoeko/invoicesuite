@@ -16,6 +16,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SuccessiveSeque
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TransitDirectionCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TransportMeansTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TransportModeCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ShipmentStageType
@@ -1223,7 +1224,7 @@ class ShipmentStageType
     public function addOnceToInstructions(
         Instructions $instructions
     ): static {
-        if (!is_array($this->instructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->instructions)) {
             $this->instructions = [];
         }
 
@@ -1237,7 +1238,7 @@ class ShipmentStageType
      */
     public function addOnceToInstructionsWithCreate(): Instructions
     {
-        if (!is_array($this->instructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->instructions)) {
             $this->instructions = [];
         }
 
@@ -1347,7 +1348,7 @@ class ShipmentStageType
     public function addOnceToDemurrageInstructions(
         DemurrageInstructions $demurrageInstructions
     ): static {
-        if (!is_array($this->demurrageInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->demurrageInstructions)) {
             $this->demurrageInstructions = [];
         }
 
@@ -1361,7 +1362,7 @@ class ShipmentStageType
      */
     public function addOnceToDemurrageInstructionsWithCreate(): DemurrageInstructions
     {
-        if (!is_array($this->demurrageInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->demurrageInstructions)) {
             $this->demurrageInstructions = [];
         }
 
@@ -1591,7 +1592,7 @@ class ShipmentStageType
     public function addOnceToCarrierParty(
         CarrierParty $carrierParty
     ): static {
-        if (!is_array($this->carrierParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->carrierParty)) {
             $this->carrierParty = [];
         }
 
@@ -1605,7 +1606,7 @@ class ShipmentStageType
      */
     public function addOnceToCarrierPartyWithCreate(): CarrierParty
     {
-        if (!is_array($this->carrierParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->carrierParty)) {
             $this->carrierParty = [];
         }
 
@@ -2555,7 +2556,7 @@ class ShipmentStageType
     public function addOnceToFreightAllowanceCharge(
         FreightAllowanceCharge $freightAllowanceCharge
     ): static {
-        if (!is_array($this->freightAllowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->freightAllowanceCharge)) {
             $this->freightAllowanceCharge = [];
         }
 
@@ -2569,7 +2570,7 @@ class ShipmentStageType
      */
     public function addOnceToFreightAllowanceChargeWithCreate(): FreightAllowanceCharge
     {
-        if (!is_array($this->freightAllowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->freightAllowanceCharge)) {
             $this->freightAllowanceCharge = [];
         }
 
@@ -2719,7 +2720,7 @@ class ShipmentStageType
     public function addOnceToDetentionTransportEvent(
         DetentionTransportEvent $detentionTransportEvent
     ): static {
-        if (!is_array($this->detentionTransportEvent)) {
+        if (!InvoiceSuiteArrayUtils::is($this->detentionTransportEvent)) {
             $this->detentionTransportEvent = [];
         }
 
@@ -2733,7 +2734,7 @@ class ShipmentStageType
      */
     public function addOnceToDetentionTransportEventWithCreate(): DetentionTransportEvent
     {
-        if (!is_array($this->detentionTransportEvent)) {
+        if (!InvoiceSuiteArrayUtils::is($this->detentionTransportEvent)) {
             $this->detentionTransportEvent = [];
         }
 
@@ -2923,7 +2924,7 @@ class ShipmentStageType
     public function addOnceToRequestedWaypointTransportEvent(
         RequestedWaypointTransportEvent $requestedWaypointTransportEvent,
     ): static {
-        if (!is_array($this->requestedWaypointTransportEvent)) {
+        if (!InvoiceSuiteArrayUtils::is($this->requestedWaypointTransportEvent)) {
             $this->requestedWaypointTransportEvent = [];
         }
 
@@ -2937,7 +2938,7 @@ class ShipmentStageType
      */
     public function addOnceToRequestedWaypointTransportEventWithCreate(): RequestedWaypointTransportEvent
     {
-        if (!is_array($this->requestedWaypointTransportEvent)) {
+        if (!InvoiceSuiteArrayUtils::is($this->requestedWaypointTransportEvent)) {
             $this->requestedWaypointTransportEvent = [];
         }
 
@@ -3127,7 +3128,7 @@ class ShipmentStageType
     public function addOnceToPlannedWaypointTransportEvent(
         PlannedWaypointTransportEvent $plannedWaypointTransportEvent,
     ): static {
-        if (!is_array($this->plannedWaypointTransportEvent)) {
+        if (!InvoiceSuiteArrayUtils::is($this->plannedWaypointTransportEvent)) {
             $this->plannedWaypointTransportEvent = [];
         }
 
@@ -3141,7 +3142,7 @@ class ShipmentStageType
      */
     public function addOnceToPlannedWaypointTransportEventWithCreate(): PlannedWaypointTransportEvent
     {
-        if (!is_array($this->plannedWaypointTransportEvent)) {
+        if (!InvoiceSuiteArrayUtils::is($this->plannedWaypointTransportEvent)) {
             $this->plannedWaypointTransportEvent = [];
         }
 
@@ -3371,7 +3372,7 @@ class ShipmentStageType
     public function addOnceToTransportEvent(
         TransportEvent $transportEvent
     ): static {
-        if (!is_array($this->transportEvent)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportEvent)) {
             $this->transportEvent = [];
         }
 
@@ -3385,7 +3386,7 @@ class ShipmentStageType
      */
     public function addOnceToTransportEventWithCreate(): TransportEvent
     {
-        if (!is_array($this->transportEvent)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportEvent)) {
             $this->transportEvent = [];
         }
 
@@ -3575,7 +3576,7 @@ class ShipmentStageType
     public function addOnceToPassengerPerson(
         PassengerPerson $passengerPerson
     ): static {
-        if (!is_array($this->passengerPerson)) {
+        if (!InvoiceSuiteArrayUtils::is($this->passengerPerson)) {
             $this->passengerPerson = [];
         }
 
@@ -3589,7 +3590,7 @@ class ShipmentStageType
      */
     public function addOnceToPassengerPersonWithCreate(): PassengerPerson
     {
-        if (!is_array($this->passengerPerson)) {
+        if (!InvoiceSuiteArrayUtils::is($this->passengerPerson)) {
             $this->passengerPerson = [];
         }
 
@@ -3699,7 +3700,7 @@ class ShipmentStageType
     public function addOnceToDriverPerson(
         DriverPerson $driverPerson
     ): static {
-        if (!is_array($this->driverPerson)) {
+        if (!InvoiceSuiteArrayUtils::is($this->driverPerson)) {
             $this->driverPerson = [];
         }
 
@@ -3713,7 +3714,7 @@ class ShipmentStageType
      */
     public function addOnceToDriverPersonWithCreate(): DriverPerson
     {
-        if (!is_array($this->driverPerson)) {
+        if (!InvoiceSuiteArrayUtils::is($this->driverPerson)) {
             $this->driverPerson = [];
         }
 
@@ -3863,7 +3864,7 @@ class ShipmentStageType
     public function addOnceToCrewMemberPerson(
         CrewMemberPerson $crewMemberPerson
     ): static {
-        if (!is_array($this->crewMemberPerson)) {
+        if (!InvoiceSuiteArrayUtils::is($this->crewMemberPerson)) {
             $this->crewMemberPerson = [];
         }
 
@@ -3877,7 +3878,7 @@ class ShipmentStageType
      */
     public function addOnceToCrewMemberPersonWithCreate(): CrewMemberPerson
     {
-        if (!is_array($this->crewMemberPerson)) {
+        if (!InvoiceSuiteArrayUtils::is($this->crewMemberPerson)) {
             $this->crewMemberPerson = [];
         }
 

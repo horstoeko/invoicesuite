@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 use DateTimeInterface;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PromotionalEventTypeCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class PromotionalEventType
@@ -298,7 +299,7 @@ class PromotionalEventType
     public function addOnceToPromotionalSpecification(
         PromotionalSpecification $promotionalSpecification
     ): static {
-        if (!is_array($this->promotionalSpecification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->promotionalSpecification)) {
             $this->promotionalSpecification = [];
         }
 
@@ -312,7 +313,7 @@ class PromotionalEventType
      */
     public function addOnceToPromotionalSpecificationWithCreate(): PromotionalSpecification
     {
-        if (!is_array($this->promotionalSpecification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->promotionalSpecification)) {
             $this->promotionalSpecification = [];
         }
 

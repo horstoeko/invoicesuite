@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\peppol\models\ext;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class UBLExtensionsType
@@ -122,7 +123,7 @@ class UBLExtensionsType
     public function addOnceToUBLExtension(
         UBLExtension $uBLExtension
     ): static {
-        if (!is_array($this->uBLExtension)) {
+        if (!InvoiceSuiteArrayUtils::is($this->uBLExtension)) {
             $this->uBLExtension = [];
         }
 
@@ -136,7 +137,7 @@ class UBLExtensionsType
      */
     public function addOnceToUBLExtensionWithCreate(): UBLExtension
     {
-        if (!is_array($this->uBLExtension)) {
+        if (!InvoiceSuiteArrayUtils::is($this->uBLExtension)) {
             $this->uBLExtension = [];
         }
 

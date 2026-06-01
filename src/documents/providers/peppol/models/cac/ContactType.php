@@ -11,6 +11,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Name;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Note;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Telefax;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Telephone;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ContactType
@@ -395,7 +396,7 @@ class ContactType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -409,7 +410,7 @@ class ContactType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -519,7 +520,7 @@ class ContactType
     public function addOnceToOtherCommunication(
         OtherCommunication $otherCommunication
     ): static {
-        if (!is_array($this->otherCommunication)) {
+        if (!InvoiceSuiteArrayUtils::is($this->otherCommunication)) {
             $this->otherCommunication = [];
         }
 
@@ -533,7 +534,7 @@ class ContactType
      */
     public function addOnceToOtherCommunicationWithCreate(): OtherCommunication
     {
-        if (!is_array($this->otherCommunication)) {
+        if (!InvoiceSuiteArrayUtils::is($this->otherCommunication)) {
             $this->otherCommunication = [];
         }
 

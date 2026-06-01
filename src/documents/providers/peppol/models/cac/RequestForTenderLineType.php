@@ -14,6 +14,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MinimumQuantity
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Note;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Quantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UUID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class RequestForTenderLineType
@@ -380,7 +381,7 @@ class RequestForTenderLineType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -394,7 +395,7 @@ class RequestForTenderLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -774,7 +775,7 @@ class RequestForTenderLineType
     public function addOnceToDocumentReference(
         DocumentReference $documentReference
     ): static {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -788,7 +789,7 @@ class RequestForTenderLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -898,7 +899,7 @@ class RequestForTenderLineType
     public function addOnceToDeliveryPeriod(
         DeliveryPeriod $deliveryPeriod
     ): static {
-        if (!is_array($this->deliveryPeriod)) {
+        if (!InvoiceSuiteArrayUtils::is($this->deliveryPeriod)) {
             $this->deliveryPeriod = [];
         }
 
@@ -912,7 +913,7 @@ class RequestForTenderLineType
      */
     public function addOnceToDeliveryPeriodWithCreate(): DeliveryPeriod
     {
-        if (!is_array($this->deliveryPeriod)) {
+        if (!InvoiceSuiteArrayUtils::is($this->deliveryPeriod)) {
             $this->deliveryPeriod = [];
         }
 
@@ -1022,7 +1023,7 @@ class RequestForTenderLineType
     public function addOnceToRequiredItemLocationQuantity(
         RequiredItemLocationQuantity $requiredItemLocationQuantity,
     ): static {
-        if (!is_array($this->requiredItemLocationQuantity)) {
+        if (!InvoiceSuiteArrayUtils::is($this->requiredItemLocationQuantity)) {
             $this->requiredItemLocationQuantity = [];
         }
 
@@ -1036,7 +1037,7 @@ class RequestForTenderLineType
      */
     public function addOnceToRequiredItemLocationQuantityWithCreate(): RequiredItemLocationQuantity
     {
-        if (!is_array($this->requiredItemLocationQuantity)) {
+        if (!InvoiceSuiteArrayUtils::is($this->requiredItemLocationQuantity)) {
             $this->requiredItemLocationQuantity = [];
         }
 
@@ -1226,7 +1227,7 @@ class RequestForTenderLineType
     public function addOnceToSubRequestForTenderLine(
         SubRequestForTenderLine $subRequestForTenderLine
     ): static {
-        if (!is_array($this->subRequestForTenderLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->subRequestForTenderLine)) {
             $this->subRequestForTenderLine = [];
         }
 
@@ -1240,7 +1241,7 @@ class RequestForTenderLineType
      */
     public function addOnceToSubRequestForTenderLineWithCreate(): SubRequestForTenderLine
     {
-        if (!is_array($this->subRequestForTenderLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->subRequestForTenderLine)) {
             $this->subRequestForTenderLine = [];
         }
 

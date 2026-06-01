@@ -11,6 +11,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PaymentDescript
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PrizeDescription;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TechnicalCommitteeDescription;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\WeightingAlgorithmCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class AwardingTermsType
@@ -284,7 +285,7 @@ class AwardingTermsType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -298,7 +299,7 @@ class AwardingTermsType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -408,7 +409,7 @@ class AwardingTermsType
     public function addOnceToTechnicalCommitteeDescription(
         TechnicalCommitteeDescription $technicalCommitteeDescription,
     ): static {
-        if (!is_array($this->technicalCommitteeDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->technicalCommitteeDescription)) {
             $this->technicalCommitteeDescription = [];
         }
 
@@ -422,7 +423,7 @@ class AwardingTermsType
      */
     public function addOnceToTechnicalCommitteeDescriptionWithCreate(): TechnicalCommitteeDescription
     {
-        if (!is_array($this->technicalCommitteeDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->technicalCommitteeDescription)) {
             $this->technicalCommitteeDescription = [];
         }
 
@@ -532,7 +533,7 @@ class AwardingTermsType
     public function addOnceToLowTendersDescription(
         LowTendersDescription $lowTendersDescription
     ): static {
-        if (!is_array($this->lowTendersDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->lowTendersDescription)) {
             $this->lowTendersDescription = [];
         }
 
@@ -546,7 +547,7 @@ class AwardingTermsType
      */
     public function addOnceToLowTendersDescriptionWithCreate(): LowTendersDescription
     {
-        if (!is_array($this->lowTendersDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->lowTendersDescription)) {
             $this->lowTendersDescription = [];
         }
 
@@ -686,7 +687,7 @@ class AwardingTermsType
     public function addOnceToPrizeDescription(
         PrizeDescription $prizeDescription
     ): static {
-        if (!is_array($this->prizeDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->prizeDescription)) {
             $this->prizeDescription = [];
         }
 
@@ -700,7 +701,7 @@ class AwardingTermsType
      */
     public function addOnceToPrizeDescriptionWithCreate(): PrizeDescription
     {
-        if (!is_array($this->prizeDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->prizeDescription)) {
             $this->prizeDescription = [];
         }
 
@@ -810,7 +811,7 @@ class AwardingTermsType
     public function addOnceToPaymentDescription(
         PaymentDescription $paymentDescription
     ): static {
-        if (!is_array($this->paymentDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentDescription)) {
             $this->paymentDescription = [];
         }
 
@@ -824,7 +825,7 @@ class AwardingTermsType
      */
     public function addOnceToPaymentDescriptionWithCreate(): PaymentDescription
     {
-        if (!is_array($this->paymentDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentDescription)) {
             $this->paymentDescription = [];
         }
 
@@ -994,7 +995,7 @@ class AwardingTermsType
     public function addOnceToAwardingCriterion(
         AwardingCriterion $awardingCriterion
     ): static {
-        if (!is_array($this->awardingCriterion)) {
+        if (!InvoiceSuiteArrayUtils::is($this->awardingCriterion)) {
             $this->awardingCriterion = [];
         }
 
@@ -1008,7 +1009,7 @@ class AwardingTermsType
      */
     public function addOnceToAwardingCriterionWithCreate(): AwardingCriterion
     {
-        if (!is_array($this->awardingCriterion)) {
+        if (!InvoiceSuiteArrayUtils::is($this->awardingCriterion)) {
             $this->awardingCriterion = [];
         }
 
@@ -1118,7 +1119,7 @@ class AwardingTermsType
     public function addOnceToTechnicalCommitteePerson(
         TechnicalCommitteePerson $technicalCommitteePerson
     ): static {
-        if (!is_array($this->technicalCommitteePerson)) {
+        if (!InvoiceSuiteArrayUtils::is($this->technicalCommitteePerson)) {
             $this->technicalCommitteePerson = [];
         }
 
@@ -1132,7 +1133,7 @@ class AwardingTermsType
      */
     public function addOnceToTechnicalCommitteePersonWithCreate(): TechnicalCommitteePerson
     {
-        if (!is_array($this->technicalCommitteePerson)) {
+        if (!InvoiceSuiteArrayUtils::is($this->technicalCommitteePerson)) {
             $this->technicalCommitteePerson = [];
         }
 

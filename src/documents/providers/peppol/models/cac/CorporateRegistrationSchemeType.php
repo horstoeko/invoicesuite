@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CorporateRegistrationTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Name;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class CorporateRegistrationSchemeType
@@ -278,7 +279,7 @@ class CorporateRegistrationSchemeType
     public function addOnceToJurisdictionRegionAddress(
         JurisdictionRegionAddress $jurisdictionRegionAddress
     ): static {
-        if (!is_array($this->jurisdictionRegionAddress)) {
+        if (!InvoiceSuiteArrayUtils::is($this->jurisdictionRegionAddress)) {
             $this->jurisdictionRegionAddress = [];
         }
 
@@ -292,7 +293,7 @@ class CorporateRegistrationSchemeType
      */
     public function addOnceToJurisdictionRegionAddressWithCreate(): JurisdictionRegionAddress
     {
-        if (!is_array($this->jurisdictionRegionAddress)) {
+        if (!InvoiceSuiteArrayUtils::is($this->jurisdictionRegionAddress)) {
             $this->jurisdictionRegionAddress = [];
         }
 

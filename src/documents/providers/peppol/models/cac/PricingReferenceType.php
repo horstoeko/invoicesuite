@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class PricingReferenceType
@@ -173,7 +174,7 @@ class PricingReferenceType
     public function addOnceToAlternativeConditionPrice(
         AlternativeConditionPrice $alternativeConditionPrice
     ): static {
-        if (!is_array($this->alternativeConditionPrice)) {
+        if (!InvoiceSuiteArrayUtils::is($this->alternativeConditionPrice)) {
             $this->alternativeConditionPrice = [];
         }
 
@@ -187,7 +188,7 @@ class PricingReferenceType
      */
     public function addOnceToAlternativeConditionPriceWithCreate(): AlternativeConditionPrice
     {
-        if (!is_array($this->alternativeConditionPrice)) {
+        if (!InvoiceSuiteArrayUtils::is($this->alternativeConditionPrice)) {
             $this->alternativeConditionPrice = [];
         }
 

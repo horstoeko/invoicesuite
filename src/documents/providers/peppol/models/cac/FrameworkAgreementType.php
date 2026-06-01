@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ExpectedOperato
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Frequency;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Justification;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MaximumOperatorQuantity;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class FrameworkAgreementType
@@ -263,7 +264,7 @@ class FrameworkAgreementType
     public function addOnceToJustification(
         Justification $justification
     ): static {
-        if (!is_array($this->justification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->justification)) {
             $this->justification = [];
         }
 
@@ -277,7 +278,7 @@ class FrameworkAgreementType
      */
     public function addOnceToJustificationWithCreate(): Justification
     {
-        if (!is_array($this->justification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->justification)) {
             $this->justification = [];
         }
 
@@ -387,7 +388,7 @@ class FrameworkAgreementType
     public function addOnceToFrequency(
         Frequency $frequency
     ): static {
-        if (!is_array($this->frequency)) {
+        if (!InvoiceSuiteArrayUtils::is($this->frequency)) {
             $this->frequency = [];
         }
 
@@ -401,7 +402,7 @@ class FrameworkAgreementType
      */
     public function addOnceToFrequencyWithCreate(): Frequency
     {
-        if (!is_array($this->frequency)) {
+        if (!InvoiceSuiteArrayUtils::is($this->frequency)) {
             $this->frequency = [];
         }
 
@@ -551,7 +552,7 @@ class FrameworkAgreementType
     public function addOnceToSubsequentProcessTenderRequirement(
         SubsequentProcessTenderRequirement $subsequentProcessTenderRequirement,
     ): static {
-        if (!is_array($this->subsequentProcessTenderRequirement)) {
+        if (!InvoiceSuiteArrayUtils::is($this->subsequentProcessTenderRequirement)) {
             $this->subsequentProcessTenderRequirement = [];
         }
 
@@ -565,7 +566,7 @@ class FrameworkAgreementType
      */
     public function addOnceToSubsequentProcessTenderRequirementWithCreate(): SubsequentProcessTenderRequirement
     {
-        if (!is_array($this->subsequentProcessTenderRequirement)) {
+        if (!InvoiceSuiteArrayUtils::is($this->subsequentProcessTenderRequirement)) {
             $this->subsequentProcessTenderRequirement = [];
         }
 

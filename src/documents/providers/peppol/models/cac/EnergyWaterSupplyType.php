@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class EnergyWaterSupplyType
@@ -158,7 +159,7 @@ class EnergyWaterSupplyType
     public function addOnceToConsumptionReport(
         ConsumptionReport $consumptionReport
     ): static {
-        if (!is_array($this->consumptionReport)) {
+        if (!InvoiceSuiteArrayUtils::is($this->consumptionReport)) {
             $this->consumptionReport = [];
         }
 
@@ -172,7 +173,7 @@ class EnergyWaterSupplyType
      */
     public function addOnceToConsumptionReportWithCreate(): ConsumptionReport
     {
-        if (!is_array($this->consumptionReport)) {
+        if (!InvoiceSuiteArrayUtils::is($this->consumptionReport)) {
             $this->consumptionReport = [];
         }
 
@@ -282,7 +283,7 @@ class EnergyWaterSupplyType
     public function addOnceToEnergyTaxReport(
         EnergyTaxReport $energyTaxReport
     ): static {
-        if (!is_array($this->energyTaxReport)) {
+        if (!InvoiceSuiteArrayUtils::is($this->energyTaxReport)) {
             $this->energyTaxReport = [];
         }
 
@@ -296,7 +297,7 @@ class EnergyWaterSupplyType
      */
     public function addOnceToEnergyTaxReportWithCreate(): EnergyTaxReport
     {
-        if (!is_array($this->energyTaxReport)) {
+        if (!InvoiceSuiteArrayUtils::is($this->energyTaxReport)) {
             $this->energyTaxReport = [];
         }
 
@@ -406,7 +407,7 @@ class EnergyWaterSupplyType
     public function addOnceToConsumptionAverage(
         ConsumptionAverage $consumptionAverage
     ): static {
-        if (!is_array($this->consumptionAverage)) {
+        if (!InvoiceSuiteArrayUtils::is($this->consumptionAverage)) {
             $this->consumptionAverage = [];
         }
 
@@ -420,7 +421,7 @@ class EnergyWaterSupplyType
      */
     public function addOnceToConsumptionAverageWithCreate(): ConsumptionAverage
     {
-        if (!is_array($this->consumptionAverage)) {
+        if (!InvoiceSuiteArrayUtils::is($this->consumptionAverage)) {
             $this->consumptionAverage = [];
         }
 
@@ -530,7 +531,7 @@ class EnergyWaterSupplyType
     public function addOnceToEnergyWaterConsumptionCorrection(
         EnergyWaterConsumptionCorrection $energyWaterConsumptionCorrection,
     ): static {
-        if (!is_array($this->energyWaterConsumptionCorrection)) {
+        if (!InvoiceSuiteArrayUtils::is($this->energyWaterConsumptionCorrection)) {
             $this->energyWaterConsumptionCorrection = [];
         }
 
@@ -544,7 +545,7 @@ class EnergyWaterSupplyType
      */
     public function addOnceToEnergyWaterConsumptionCorrectionWithCreate(): EnergyWaterConsumptionCorrection
     {
-        if (!is_array($this->energyWaterConsumptionCorrection)) {
+        if (!InvoiceSuiteArrayUtils::is($this->energyWaterConsumptionCorrection)) {
             $this->energyWaterConsumptionCorrection = [];
         }
 

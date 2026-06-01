@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PreviousCancellationReasonCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ProcessReason;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ProcessReasonCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ProcessJustificationType
@@ -240,7 +241,7 @@ class ProcessJustificationType
     public function addOnceToProcessReason(
         ProcessReason $processReason
     ): static {
-        if (!is_array($this->processReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->processReason)) {
             $this->processReason = [];
         }
 
@@ -254,7 +255,7 @@ class ProcessJustificationType
      */
     public function addOnceToProcessReasonWithCreate(): ProcessReason
     {
-        if (!is_array($this->processReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->processReason)) {
             $this->processReason = [];
         }
 
@@ -364,7 +365,7 @@ class ProcessJustificationType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -378,7 +379,7 @@ class ProcessJustificationType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 

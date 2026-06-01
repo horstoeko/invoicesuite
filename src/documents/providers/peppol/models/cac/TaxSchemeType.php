@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CurrencyCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Name;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TaxTypeCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TaxSchemeType
@@ -330,7 +331,7 @@ class TaxSchemeType
     public function addOnceToJurisdictionRegionAddress(
         JurisdictionRegionAddress $jurisdictionRegionAddress
     ): static {
-        if (!is_array($this->jurisdictionRegionAddress)) {
+        if (!InvoiceSuiteArrayUtils::is($this->jurisdictionRegionAddress)) {
             $this->jurisdictionRegionAddress = [];
         }
 
@@ -344,7 +345,7 @@ class TaxSchemeType
      */
     public function addOnceToJurisdictionRegionAddressWithCreate(): JurisdictionRegionAddress
     {
-        if (!is_array($this->jurisdictionRegionAddress)) {
+        if (!InvoiceSuiteArrayUtils::is($this->jurisdictionRegionAddress)) {
             $this->jurisdictionRegionAddress = [];
         }
 

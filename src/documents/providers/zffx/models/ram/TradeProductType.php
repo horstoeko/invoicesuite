@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\zffx\models\ram;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TradeProductType
@@ -583,7 +584,7 @@ class TradeProductType
     public function addOnceToBatchID(
         IDType $batchID
     ): static {
-        if (!is_array($this->batchID)) {
+        if (!InvoiceSuiteArrayUtils::is($this->batchID)) {
             $this->batchID = [];
         }
 
@@ -597,7 +598,7 @@ class TradeProductType
      */
     public function addOnceToBatchIDWithCreate(): IDType
     {
-        if (!is_array($this->batchID)) {
+        if (!InvoiceSuiteArrayUtils::is($this->batchID)) {
             $this->batchID = [];
         }
 
@@ -757,7 +758,7 @@ class TradeProductType
     public function addOnceToApplicableProductCharacteristic(
         ProductCharacteristicType $applicableProductCharacteristic,
     ): static {
-        if (!is_array($this->applicableProductCharacteristic)) {
+        if (!InvoiceSuiteArrayUtils::is($this->applicableProductCharacteristic)) {
             $this->applicableProductCharacteristic = [];
         }
 
@@ -771,7 +772,7 @@ class TradeProductType
      */
     public function addOnceToApplicableProductCharacteristicWithCreate(): ProductCharacteristicType
     {
-        if (!is_array($this->applicableProductCharacteristic)) {
+        if (!InvoiceSuiteArrayUtils::is($this->applicableProductCharacteristic)) {
             $this->applicableProductCharacteristic = [];
         }
 
@@ -851,7 +852,7 @@ class TradeProductType
     public function addOnceToDesignatedProductClassification(
         ProductClassificationType $designatedProductClassification,
     ): static {
-        if (!is_array($this->designatedProductClassification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->designatedProductClassification)) {
             $this->designatedProductClassification = [];
         }
 
@@ -865,7 +866,7 @@ class TradeProductType
      */
     public function addOnceToDesignatedProductClassificationWithCreate(): ProductClassificationType
     {
-        if (!is_array($this->designatedProductClassification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->designatedProductClassification)) {
             $this->designatedProductClassification = [];
         }
 
@@ -945,7 +946,7 @@ class TradeProductType
     public function addOnceToIndividualTradeProductInstance(
         TradeProductInstanceType $individualTradeProductInstance,
     ): static {
-        if (!is_array($this->individualTradeProductInstance)) {
+        if (!InvoiceSuiteArrayUtils::is($this->individualTradeProductInstance)) {
             $this->individualTradeProductInstance = [];
         }
 
@@ -959,7 +960,7 @@ class TradeProductType
      */
     public function addOnceToIndividualTradeProductInstanceWithCreate(): TradeProductInstanceType
     {
-        if (!is_array($this->individualTradeProductInstance)) {
+        if (!InvoiceSuiteArrayUtils::is($this->individualTradeProductInstance)) {
             $this->individualTradeProductInstance = [];
         }
 
@@ -1079,7 +1080,7 @@ class TradeProductType
     public function addOnceToIncludedReferencedProduct(
         ReferencedProductType $includedReferencedProduct
     ): static {
-        if (!is_array($this->includedReferencedProduct)) {
+        if (!InvoiceSuiteArrayUtils::is($this->includedReferencedProduct)) {
             $this->includedReferencedProduct = [];
         }
 
@@ -1093,7 +1094,7 @@ class TradeProductType
      */
     public function addOnceToIncludedReferencedProductWithCreate(): ReferencedProductType
     {
-        if (!is_array($this->includedReferencedProduct)) {
+        if (!InvoiceSuiteArrayUtils::is($this->includedReferencedProduct)) {
             $this->includedReferencedProduct = [];
         }
 

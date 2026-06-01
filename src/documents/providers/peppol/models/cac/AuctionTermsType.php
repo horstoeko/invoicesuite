@@ -11,6 +11,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ElectronicDeviceDescription;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\JustificationDescription;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ProcessDescription;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class AuctionTermsType
@@ -228,7 +229,7 @@ class AuctionTermsType
     public function addOnceToJustificationDescription(
         JustificationDescription $justificationDescription
     ): static {
-        if (!is_array($this->justificationDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->justificationDescription)) {
             $this->justificationDescription = [];
         }
 
@@ -242,7 +243,7 @@ class AuctionTermsType
      */
     public function addOnceToJustificationDescriptionWithCreate(): JustificationDescription
     {
-        if (!is_array($this->justificationDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->justificationDescription)) {
             $this->justificationDescription = [];
         }
 
@@ -352,7 +353,7 @@ class AuctionTermsType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -366,7 +367,7 @@ class AuctionTermsType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -476,7 +477,7 @@ class AuctionTermsType
     public function addOnceToProcessDescription(
         ProcessDescription $processDescription
     ): static {
-        if (!is_array($this->processDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->processDescription)) {
             $this->processDescription = [];
         }
 
@@ -490,7 +491,7 @@ class AuctionTermsType
      */
     public function addOnceToProcessDescriptionWithCreate(): ProcessDescription
     {
-        if (!is_array($this->processDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->processDescription)) {
             $this->processDescription = [];
         }
 
@@ -600,7 +601,7 @@ class AuctionTermsType
     public function addOnceToConditionsDescription(
         ConditionsDescription $conditionsDescription
     ): static {
-        if (!is_array($this->conditionsDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->conditionsDescription)) {
             $this->conditionsDescription = [];
         }
 
@@ -614,7 +615,7 @@ class AuctionTermsType
      */
     public function addOnceToConditionsDescriptionWithCreate(): ConditionsDescription
     {
-        if (!is_array($this->conditionsDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->conditionsDescription)) {
             $this->conditionsDescription = [];
         }
 
@@ -724,7 +725,7 @@ class AuctionTermsType
     public function addOnceToElectronicDeviceDescription(
         ElectronicDeviceDescription $electronicDeviceDescription,
     ): static {
-        if (!is_array($this->electronicDeviceDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->electronicDeviceDescription)) {
             $this->electronicDeviceDescription = [];
         }
 
@@ -738,7 +739,7 @@ class AuctionTermsType
      */
     public function addOnceToElectronicDeviceDescriptionWithCreate(): ElectronicDeviceDescription
     {
-        if (!is_array($this->electronicDeviceDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->electronicDeviceDescription)) {
             $this->electronicDeviceDescription = [];
         }
 

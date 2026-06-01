@@ -8,6 +8,7 @@ use DateTimeInterface;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\Art73;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoDocumento;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use JMS\Serializer\Annotation as JMS;
 
@@ -360,7 +361,7 @@ final class DatiGeneraliDocumento
     public function addToDatiRitenuta(
         DatiRitenuta $datiRitenuta
     ): static {
-        if (!is_array($this->datiRitenuta)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiRitenuta)) {
             $this->datiRitenuta = [];
         }
 
@@ -390,7 +391,7 @@ final class DatiGeneraliDocumento
     public function addOnceToDatiRitenuta(
         DatiRitenuta $datiRitenuta
     ): static {
-        if (!is_array($this->datiRitenuta)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiRitenuta)) {
             $this->datiRitenuta = [];
         }
 
@@ -406,7 +407,7 @@ final class DatiGeneraliDocumento
      */
     public function addOnceToDatiRitenutaWithCreate(): DatiRitenuta
     {
-        if (!is_array($this->datiRitenuta)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiRitenuta)) {
             $this->datiRitenuta = [];
         }
 
@@ -522,7 +523,7 @@ final class DatiGeneraliDocumento
     public function addToDatiCassaPrevidenziale(
         DatiCassaPrevidenziale $datiCassaPrevidenziale
     ): static {
-        if (!is_array($this->datiCassaPrevidenziale)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiCassaPrevidenziale)) {
             $this->datiCassaPrevidenziale = [];
         }
 
@@ -552,7 +553,7 @@ final class DatiGeneraliDocumento
     public function addOnceToDatiCassaPrevidenziale(
         DatiCassaPrevidenziale $datiCassaPrevidenziale
     ): static {
-        if (!is_array($this->datiCassaPrevidenziale)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiCassaPrevidenziale)) {
             $this->datiCassaPrevidenziale = [];
         }
 
@@ -568,7 +569,7 @@ final class DatiGeneraliDocumento
      */
     public function addOnceToDatiCassaPrevidenzialeWithCreate(): DatiCassaPrevidenziale
     {
-        if (!is_array($this->datiCassaPrevidenziale)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiCassaPrevidenziale)) {
             $this->datiCassaPrevidenziale = [];
         }
 
@@ -636,7 +637,7 @@ final class DatiGeneraliDocumento
     public function addToScontoMaggiorazione(
         ScontoMaggiorazione $scontoMaggiorazione
     ): static {
-        if (!is_array($this->scontoMaggiorazione)) {
+        if (!InvoiceSuiteArrayUtils::is($this->scontoMaggiorazione)) {
             $this->scontoMaggiorazione = [];
         }
 
@@ -666,7 +667,7 @@ final class DatiGeneraliDocumento
     public function addOnceToScontoMaggiorazione(
         ScontoMaggiorazione $scontoMaggiorazione
     ): static {
-        if (!is_array($this->scontoMaggiorazione)) {
+        if (!InvoiceSuiteArrayUtils::is($this->scontoMaggiorazione)) {
             $this->scontoMaggiorazione = [];
         }
 
@@ -682,7 +683,7 @@ final class DatiGeneraliDocumento
      */
     public function addOnceToScontoMaggiorazioneWithCreate(): ScontoMaggiorazione
     {
-        if (!is_array($this->scontoMaggiorazione)) {
+        if (!InvoiceSuiteArrayUtils::is($this->scontoMaggiorazione)) {
             $this->scontoMaggiorazione = [];
         }
 
@@ -822,7 +823,7 @@ final class DatiGeneraliDocumento
     public function addToCausale(
         string $causale
     ): static {
-        if (!is_array($this->causale)) {
+        if (!InvoiceSuiteArrayUtils::is($this->causale)) {
             $this->causale = [];
         }
 
@@ -840,7 +841,7 @@ final class DatiGeneraliDocumento
     public function addOnceToCausale(
         string $causale
     ): static {
-        if (!is_array($this->causale)) {
+        if (!InvoiceSuiteArrayUtils::is($this->causale)) {
             $this->causale = [];
         }
 

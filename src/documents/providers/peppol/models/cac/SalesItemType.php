@@ -6,6 +6,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Quantity;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class SalesItemType
@@ -209,7 +210,7 @@ class SalesItemType
     public function addOnceToActivityProperty(
         ActivityProperty $activityProperty
     ): static {
-        if (!is_array($this->activityProperty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->activityProperty)) {
             $this->activityProperty = [];
         }
 
@@ -223,7 +224,7 @@ class SalesItemType
      */
     public function addOnceToActivityPropertyWithCreate(): ActivityProperty
     {
-        if (!is_array($this->activityProperty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->activityProperty)) {
             $this->activityProperty = [];
         }
 
@@ -333,7 +334,7 @@ class SalesItemType
     public function addOnceToTaxExclusivePrice(
         TaxExclusivePrice $taxExclusivePrice
     ): static {
-        if (!is_array($this->taxExclusivePrice)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxExclusivePrice)) {
             $this->taxExclusivePrice = [];
         }
 
@@ -347,7 +348,7 @@ class SalesItemType
      */
     public function addOnceToTaxExclusivePriceWithCreate(): TaxExclusivePrice
     {
-        if (!is_array($this->taxExclusivePrice)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxExclusivePrice)) {
             $this->taxExclusivePrice = [];
         }
 
@@ -457,7 +458,7 @@ class SalesItemType
     public function addOnceToTaxInclusivePrice(
         TaxInclusivePrice $taxInclusivePrice
     ): static {
-        if (!is_array($this->taxInclusivePrice)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxInclusivePrice)) {
             $this->taxInclusivePrice = [];
         }
 
@@ -471,7 +472,7 @@ class SalesItemType
      */
     public function addOnceToTaxInclusivePriceWithCreate(): TaxInclusivePrice
     {
-        if (!is_array($this->taxInclusivePrice)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxInclusivePrice)) {
             $this->taxInclusivePrice = [];
         }
 

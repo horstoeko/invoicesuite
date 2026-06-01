@@ -27,6 +27,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteMessageBagItem;
 use horstoeko\invoicesuite\utils\InvoiceSuiteMessageSeverity;
@@ -2637,7 +2638,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
             $attachment = InvoiceSuiteAttachment::fromBase64String($base64EncodedData, $binaryDataFilename);
         }
 
-        $name = is_array($name)
+        $name = InvoiceSuiteArrayUtils::is($name)
             ? ($name[array_key_first($name)] ?? '')
             : $name;
 
@@ -3277,15 +3278,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
         ?array $taxCategoryCodes = null,
         ?array $rateApplicablePercents = null
     ): static {
-        $taxTypeCodes = is_array($taxTypeCodes)
+        $taxTypeCodes = InvoiceSuiteArrayUtils::is($taxTypeCodes)
             ? ($taxTypeCodes[array_key_first($taxTypeCodes)] ?? '')
             : $taxTypeCodes;
 
-        $taxCategoryCodes = is_array($taxCategoryCodes)
+        $taxCategoryCodes = InvoiceSuiteArrayUtils::is($taxCategoryCodes)
             ? ($taxCategoryCodes[array_key_first($taxCategoryCodes)] ?? '')
             : $taxCategoryCodes;
 
-        $rateApplicablePercents = is_array($rateApplicablePercents)
+        $rateApplicablePercents = InvoiceSuiteArrayUtils::is($rateApplicablePercents)
             ? ($rateApplicablePercents[array_key_first($rateApplicablePercents)] ?? '')
             : $rateApplicablePercents;
 

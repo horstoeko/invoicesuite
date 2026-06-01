@@ -11,6 +11,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RadioCallSignID
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ShipsRequirements;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\VesselID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\VesselName;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class MaritimeTransportType
@@ -325,7 +326,7 @@ class MaritimeTransportType
     public function addOnceToShipsRequirements(
         ShipsRequirements $shipsRequirements
     ): static {
-        if (!is_array($this->shipsRequirements)) {
+        if (!InvoiceSuiteArrayUtils::is($this->shipsRequirements)) {
             $this->shipsRequirements = [];
         }
 
@@ -339,7 +340,7 @@ class MaritimeTransportType
      */
     public function addOnceToShipsRequirementsWithCreate(): ShipsRequirements
     {
-        if (!is_array($this->shipsRequirements)) {
+        if (!InvoiceSuiteArrayUtils::is($this->shipsRequirements)) {
             $this->shipsRequirements = [];
         }
 

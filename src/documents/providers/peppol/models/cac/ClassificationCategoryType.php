@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CodeValue;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Name;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ClassificationCategoryType
@@ -239,7 +240,7 @@ class ClassificationCategoryType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -253,7 +254,7 @@ class ClassificationCategoryType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -363,7 +364,7 @@ class ClassificationCategoryType
     public function addOnceToCategorizesClassificationCategory(
         CategorizesClassificationCategory $categorizesClassificationCategory,
     ): static {
-        if (!is_array($this->categorizesClassificationCategory)) {
+        if (!InvoiceSuiteArrayUtils::is($this->categorizesClassificationCategory)) {
             $this->categorizesClassificationCategory = [];
         }
 
@@ -377,7 +378,7 @@ class ClassificationCategoryType
      */
     public function addOnceToCategorizesClassificationCategoryWithCreate(): CategorizesClassificationCategory
     {
-        if (!is_array($this->categorizesClassificationCategory)) {
+        if (!InvoiceSuiteArrayUtils::is($this->categorizesClassificationCategory)) {
             $this->categorizesClassificationCategory = [];
         }
 

@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ReliabilityPercent;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Remarks;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SequenceNumeric;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TransportScheduleType
@@ -387,7 +388,7 @@ class TransportScheduleType
     public function addOnceToRemarks(
         Remarks $remarks
     ): static {
-        if (!is_array($this->remarks)) {
+        if (!InvoiceSuiteArrayUtils::is($this->remarks)) {
             $this->remarks = [];
         }
 
@@ -401,7 +402,7 @@ class TransportScheduleType
      */
     public function addOnceToRemarksWithCreate(): Remarks
     {
-        if (!is_array($this->remarks)) {
+        if (!InvoiceSuiteArrayUtils::is($this->remarks)) {
             $this->remarks = [];
         }
 

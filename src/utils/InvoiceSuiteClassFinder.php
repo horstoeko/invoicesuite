@@ -113,7 +113,7 @@ class InvoiceSuiteClassFinder
         if (!$disableCache && InvoiceSuiteFileUtils::isReadableFile($cacheFilenameFq)) {
             $cached = @require $cacheFilenameFq;
 
-            if (is_array($cached)) {
+            if (InvoiceSuiteArrayUtils::is($cached)) {
                 $this->subClassNames[$isSubClassOf] = $cached;
 
                 return $cached;

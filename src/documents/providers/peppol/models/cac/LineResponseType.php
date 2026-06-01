@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class LineResponseType
@@ -173,7 +174,7 @@ class LineResponseType
     public function addOnceToResponse(
         Response $response
     ): static {
-        if (!is_array($this->response)) {
+        if (!InvoiceSuiteArrayUtils::is($this->response)) {
             $this->response = [];
         }
 
@@ -187,7 +188,7 @@ class LineResponseType
      */
     public function addOnceToResponseWithCreate(): Response
     {
-        if (!is_array($this->response)) {
+        if (!InvoiceSuiteArrayUtils::is($this->response)) {
             $this->response = [];
         }
 

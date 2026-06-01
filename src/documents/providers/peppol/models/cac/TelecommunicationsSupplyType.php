@@ -10,6 +10,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PrivacyCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TelecommunicationsSupplyType as TelecommunicationsSupplyType1;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TelecommunicationsSupplyTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalAmount;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TelecommunicationsSupplyType
@@ -303,7 +304,7 @@ class TelecommunicationsSupplyType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -317,7 +318,7 @@ class TelecommunicationsSupplyType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -467,7 +468,7 @@ class TelecommunicationsSupplyType
     public function addOnceToTelecommunicationsSupplyLine(
         TelecommunicationsSupplyLine $telecommunicationsSupplyLine,
     ): static {
-        if (!is_array($this->telecommunicationsSupplyLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->telecommunicationsSupplyLine)) {
             $this->telecommunicationsSupplyLine = [];
         }
 
@@ -481,7 +482,7 @@ class TelecommunicationsSupplyType
      */
     public function addOnceToTelecommunicationsSupplyLineWithCreate(): TelecommunicationsSupplyLine
     {
-        if (!is_array($this->telecommunicationsSupplyLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->telecommunicationsSupplyLine)) {
             $this->telecommunicationsSupplyLine = [];
         }
 

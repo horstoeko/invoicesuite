@@ -19,6 +19,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PrepaidPaymentR
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ReferenceEventCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SettlementDiscountAmount;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SettlementDiscountPercent;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class PaymentTermsType
@@ -375,7 +376,7 @@ class PaymentTermsType
     public function addOnceToPaymentMeansID(
         PaymentMeansID $paymentMeansID
     ): static {
-        if (!is_array($this->paymentMeansID)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentMeansID)) {
             $this->paymentMeansID = [];
         }
 
@@ -389,7 +390,7 @@ class PaymentTermsType
      */
     public function addOnceToPaymentMeansIDWithCreate(): PaymentMeansID
     {
-        if (!is_array($this->paymentMeansID)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentMeansID)) {
             $this->paymentMeansID = [];
         }
 
@@ -539,7 +540,7 @@ class PaymentTermsType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -553,7 +554,7 @@ class PaymentTermsType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 

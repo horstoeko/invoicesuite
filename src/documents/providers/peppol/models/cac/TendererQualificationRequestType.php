@@ -11,6 +11,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\EmployeeQuantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OperatingYearsQuantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PersonalSituation;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TendererQualificationRequestType
@@ -324,7 +325,7 @@ class TendererQualificationRequestType
     public function addOnceToPersonalSituation(
         PersonalSituation $personalSituation
     ): static {
-        if (!is_array($this->personalSituation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->personalSituation)) {
             $this->personalSituation = [];
         }
 
@@ -338,7 +339,7 @@ class TendererQualificationRequestType
      */
     public function addOnceToPersonalSituationWithCreate(): PersonalSituation
     {
-        if (!is_array($this->personalSituation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->personalSituation)) {
             $this->personalSituation = [];
         }
 
@@ -528,7 +529,7 @@ class TendererQualificationRequestType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -542,7 +543,7 @@ class TendererQualificationRequestType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -652,7 +653,7 @@ class TendererQualificationRequestType
     public function addOnceToRequiredBusinessClassificationScheme(
         RequiredBusinessClassificationScheme $requiredBusinessClassificationScheme,
     ): static {
-        if (!is_array($this->requiredBusinessClassificationScheme)) {
+        if (!InvoiceSuiteArrayUtils::is($this->requiredBusinessClassificationScheme)) {
             $this->requiredBusinessClassificationScheme = [];
         }
 
@@ -666,7 +667,7 @@ class TendererQualificationRequestType
      */
     public function addOnceToRequiredBusinessClassificationSchemeWithCreate(): RequiredBusinessClassificationScheme
     {
-        if (!is_array($this->requiredBusinessClassificationScheme)) {
+        if (!InvoiceSuiteArrayUtils::is($this->requiredBusinessClassificationScheme)) {
             $this->requiredBusinessClassificationScheme = [];
         }
 
@@ -776,7 +777,7 @@ class TendererQualificationRequestType
     public function addOnceToTechnicalEvaluationCriterion(
         TechnicalEvaluationCriterion $technicalEvaluationCriterion,
     ): static {
-        if (!is_array($this->technicalEvaluationCriterion)) {
+        if (!InvoiceSuiteArrayUtils::is($this->technicalEvaluationCriterion)) {
             $this->technicalEvaluationCriterion = [];
         }
 
@@ -790,7 +791,7 @@ class TendererQualificationRequestType
      */
     public function addOnceToTechnicalEvaluationCriterionWithCreate(): TechnicalEvaluationCriterion
     {
-        if (!is_array($this->technicalEvaluationCriterion)) {
+        if (!InvoiceSuiteArrayUtils::is($this->technicalEvaluationCriterion)) {
             $this->technicalEvaluationCriterion = [];
         }
 
@@ -900,7 +901,7 @@ class TendererQualificationRequestType
     public function addOnceToFinancialEvaluationCriterion(
         FinancialEvaluationCriterion $financialEvaluationCriterion,
     ): static {
-        if (!is_array($this->financialEvaluationCriterion)) {
+        if (!InvoiceSuiteArrayUtils::is($this->financialEvaluationCriterion)) {
             $this->financialEvaluationCriterion = [];
         }
 
@@ -914,7 +915,7 @@ class TendererQualificationRequestType
      */
     public function addOnceToFinancialEvaluationCriterionWithCreate(): FinancialEvaluationCriterion
     {
-        if (!is_array($this->financialEvaluationCriterion)) {
+        if (!InvoiceSuiteArrayUtils::is($this->financialEvaluationCriterion)) {
             $this->financialEvaluationCriterion = [];
         }
 
@@ -1024,7 +1025,7 @@ class TendererQualificationRequestType
     public function addOnceToSpecificTendererRequirement(
         SpecificTendererRequirement $specificTendererRequirement,
     ): static {
-        if (!is_array($this->specificTendererRequirement)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specificTendererRequirement)) {
             $this->specificTendererRequirement = [];
         }
 
@@ -1038,7 +1039,7 @@ class TendererQualificationRequestType
      */
     public function addOnceToSpecificTendererRequirementWithCreate(): SpecificTendererRequirement
     {
-        if (!is_array($this->specificTendererRequirement)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specificTendererRequirement)) {
             $this->specificTendererRequirement = [];
         }
 
@@ -1148,7 +1149,7 @@ class TendererQualificationRequestType
     public function addOnceToEconomicOperatorRole(
         EconomicOperatorRole $economicOperatorRole
     ): static {
-        if (!is_array($this->economicOperatorRole)) {
+        if (!InvoiceSuiteArrayUtils::is($this->economicOperatorRole)) {
             $this->economicOperatorRole = [];
         }
 
@@ -1162,7 +1163,7 @@ class TendererQualificationRequestType
      */
     public function addOnceToEconomicOperatorRoleWithCreate(): EconomicOperatorRole
     {
-        if (!is_array($this->economicOperatorRole)) {
+        if (!InvoiceSuiteArrayUtils::is($this->economicOperatorRole)) {
             $this->economicOperatorRole = [];
         }
 

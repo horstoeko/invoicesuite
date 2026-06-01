@@ -18,6 +18,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Telecommunicati
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TelecommunicationsServiceCallCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TelecommunicationsServiceCategory;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TelecommunicationsServiceCategoryCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TelecommunicationsServiceType
@@ -979,7 +980,7 @@ class TelecommunicationsServiceType
     public function addOnceToExchangeRate(
         ExchangeRate $exchangeRate
     ): static {
-        if (!is_array($this->exchangeRate)) {
+        if (!InvoiceSuiteArrayUtils::is($this->exchangeRate)) {
             $this->exchangeRate = [];
         }
 
@@ -993,7 +994,7 @@ class TelecommunicationsServiceType
      */
     public function addOnceToExchangeRateWithCreate(): ExchangeRate
     {
-        if (!is_array($this->exchangeRate)) {
+        if (!InvoiceSuiteArrayUtils::is($this->exchangeRate)) {
             $this->exchangeRate = [];
         }
 
@@ -1103,7 +1104,7 @@ class TelecommunicationsServiceType
     public function addOnceToAllowanceCharge(
         AllowanceCharge $allowanceCharge
     ): static {
-        if (!is_array($this->allowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceCharge)) {
             $this->allowanceCharge = [];
         }
 
@@ -1117,7 +1118,7 @@ class TelecommunicationsServiceType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        if (!is_array($this->allowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceCharge)) {
             $this->allowanceCharge = [];
         }
 
@@ -1227,7 +1228,7 @@ class TelecommunicationsServiceType
     public function addOnceToTaxTotal(
         TaxTotal $taxTotal
     ): static {
-        if (!is_array($this->taxTotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotal)) {
             $this->taxTotal = [];
         }
 
@@ -1241,7 +1242,7 @@ class TelecommunicationsServiceType
      */
     public function addOnceToTaxTotalWithCreate(): TaxTotal
     {
-        if (!is_array($this->taxTotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotal)) {
             $this->taxTotal = [];
         }
 
@@ -1351,7 +1352,7 @@ class TelecommunicationsServiceType
     public function addOnceToCallDuty(
         CallDuty $callDuty
     ): static {
-        if (!is_array($this->callDuty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->callDuty)) {
             $this->callDuty = [];
         }
 
@@ -1365,7 +1366,7 @@ class TelecommunicationsServiceType
      */
     public function addOnceToCallDutyWithCreate(): CallDuty
     {
-        if (!is_array($this->callDuty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->callDuty)) {
             $this->callDuty = [];
         }
 
@@ -1475,7 +1476,7 @@ class TelecommunicationsServiceType
     public function addOnceToTimeDuty(
         TimeDuty $timeDuty
     ): static {
-        if (!is_array($this->timeDuty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->timeDuty)) {
             $this->timeDuty = [];
         }
 
@@ -1489,7 +1490,7 @@ class TelecommunicationsServiceType
      */
     public function addOnceToTimeDutyWithCreate(): TimeDuty
     {
-        if (!is_array($this->timeDuty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->timeDuty)) {
             $this->timeDuty = [];
         }
 

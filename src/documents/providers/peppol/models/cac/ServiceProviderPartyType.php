@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ServiceType;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ServiceTypeCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ServiceProviderPartyType
@@ -249,7 +250,7 @@ class ServiceProviderPartyType
     public function addOnceToServiceType(
         ServiceType $serviceType
     ): static {
-        if (!is_array($this->serviceType)) {
+        if (!InvoiceSuiteArrayUtils::is($this->serviceType)) {
             $this->serviceType = [];
         }
 
@@ -263,7 +264,7 @@ class ServiceProviderPartyType
      */
     public function addOnceToServiceTypeWithCreate(): ServiceType
     {
-        if (!is_array($this->serviceType)) {
+        if (!InvoiceSuiteArrayUtils::is($this->serviceType)) {
             $this->serviceType = [];
         }
 

@@ -15,6 +15,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PartPresentatio
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ProcedureCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SubmissionMethodCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UrgencyCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TenderingProcessType
@@ -459,7 +460,7 @@ class TenderingProcessType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -473,7 +474,7 @@ class TenderingProcessType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -583,7 +584,7 @@ class TenderingProcessType
     public function addOnceToNegotiationDescription(
         NegotiationDescription $negotiationDescription
     ): static {
-        if (!is_array($this->negotiationDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->negotiationDescription)) {
             $this->negotiationDescription = [];
         }
 
@@ -597,7 +598,7 @@ class TenderingProcessType
      */
     public function addOnceToNegotiationDescriptionWithCreate(): NegotiationDescription
     {
-        if (!is_array($this->negotiationDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->negotiationDescription)) {
             $this->negotiationDescription = [];
         }
 
@@ -1167,7 +1168,7 @@ class TenderingProcessType
     public function addOnceToNoticeDocumentReference(
         NoticeDocumentReference $noticeDocumentReference
     ): static {
-        if (!is_array($this->noticeDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->noticeDocumentReference)) {
             $this->noticeDocumentReference = [];
         }
 
@@ -1181,7 +1182,7 @@ class TenderingProcessType
      */
     public function addOnceToNoticeDocumentReferenceWithCreate(): NoticeDocumentReference
     {
-        if (!is_array($this->noticeDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->noticeDocumentReference)) {
             $this->noticeDocumentReference = [];
         }
 
@@ -1291,7 +1292,7 @@ class TenderingProcessType
     public function addOnceToAdditionalDocumentReference(
         AdditionalDocumentReference $additionalDocumentReference,
     ): static {
-        if (!is_array($this->additionalDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalDocumentReference)) {
             $this->additionalDocumentReference = [];
         }
 
@@ -1305,7 +1306,7 @@ class TenderingProcessType
      */
     public function addOnceToAdditionalDocumentReferenceWithCreate(): AdditionalDocumentReference
     {
-        if (!is_array($this->additionalDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalDocumentReference)) {
             $this->additionalDocumentReference = [];
         }
 
@@ -1415,7 +1416,7 @@ class TenderingProcessType
     public function addOnceToProcessJustification(
         ProcessJustification $processJustification
     ): static {
-        if (!is_array($this->processJustification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->processJustification)) {
             $this->processJustification = [];
         }
 
@@ -1429,7 +1430,7 @@ class TenderingProcessType
      */
     public function addOnceToProcessJustificationWithCreate(): ProcessJustification
     {
-        if (!is_array($this->processJustification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->processJustification)) {
             $this->processJustification = [];
         }
 
@@ -1579,7 +1580,7 @@ class TenderingProcessType
     public function addOnceToOpenTenderEvent(
         OpenTenderEvent $openTenderEvent
     ): static {
-        if (!is_array($this->openTenderEvent)) {
+        if (!InvoiceSuiteArrayUtils::is($this->openTenderEvent)) {
             $this->openTenderEvent = [];
         }
 
@@ -1593,7 +1594,7 @@ class TenderingProcessType
      */
     public function addOnceToOpenTenderEventWithCreate(): OpenTenderEvent
     {
-        if (!is_array($this->openTenderEvent)) {
+        if (!InvoiceSuiteArrayUtils::is($this->openTenderEvent)) {
             $this->openTenderEvent = [];
         }
 

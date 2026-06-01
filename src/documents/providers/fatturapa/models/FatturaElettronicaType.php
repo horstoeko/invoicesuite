@@ -6,6 +6,7 @@ namespace horstoeko\invoicesuite\documents\providers\fatturapa\models;
 
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\FormatoTrasmissione;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\Signature;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use JMS\Serializer\Annotation as JMS;
 
@@ -212,7 +213,7 @@ class FatturaElettronicaType
     public function addToFatturaElettronicaBody(
         FatturaElettronicaBody $fatturaElettronicaBody
     ): static {
-        if (!is_array($this->fatturaElettronicaBody)) {
+        if (!InvoiceSuiteArrayUtils::is($this->fatturaElettronicaBody)) {
             $this->fatturaElettronicaBody = [];
         }
 
@@ -242,7 +243,7 @@ class FatturaElettronicaType
     public function addOnceToFatturaElettronicaBody(
         FatturaElettronicaBody $fatturaElettronicaBody
     ): static {
-        if (!is_array($this->fatturaElettronicaBody)) {
+        if (!InvoiceSuiteArrayUtils::is($this->fatturaElettronicaBody)) {
             $this->fatturaElettronicaBody = [];
         }
 
@@ -258,7 +259,7 @@ class FatturaElettronicaType
      */
     public function addOnceToFatturaElettronicaBodyWithCreate(): FatturaElettronicaBody
     {
-        if (!is_array($this->fatturaElettronicaBody)) {
+        if (!InvoiceSuiteArrayUtils::is($this->fatturaElettronicaBody)) {
             $this->fatturaElettronicaBody = [];
         }
 
@@ -278,7 +279,7 @@ class FatturaElettronicaType
      */
     public function getFirstFatturaElettronicaBody(): ?FatturaElettronicaBody
     {
-        if (!is_array($this->fatturaElettronicaBody)) {
+        if (!InvoiceSuiteArrayUtils::is($this->fatturaElettronicaBody)) {
             return null;
         }
 

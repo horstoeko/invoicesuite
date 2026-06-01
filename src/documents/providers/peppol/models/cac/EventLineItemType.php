@@ -6,6 +6,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LineNumberNumeric;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class EventLineItemType
@@ -236,7 +237,7 @@ class EventLineItemType
     public function addOnceToRetailPlannedImpact(
         RetailPlannedImpact $retailPlannedImpact
     ): static {
-        if (!is_array($this->retailPlannedImpact)) {
+        if (!InvoiceSuiteArrayUtils::is($this->retailPlannedImpact)) {
             $this->retailPlannedImpact = [];
         }
 
@@ -250,7 +251,7 @@ class EventLineItemType
      */
     public function addOnceToRetailPlannedImpactWithCreate(): RetailPlannedImpact
     {
-        if (!is_array($this->retailPlannedImpact)) {
+        if (!InvoiceSuiteArrayUtils::is($this->retailPlannedImpact)) {
             $this->retailPlannedImpact = [];
         }
 

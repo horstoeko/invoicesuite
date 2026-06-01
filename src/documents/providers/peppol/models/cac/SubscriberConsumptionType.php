@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ConsumptionID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Note;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SpecificationTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalMeteredQuantity;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class SubscriberConsumptionType
@@ -296,7 +297,7 @@ class SubscriberConsumptionType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -310,7 +311,7 @@ class SubscriberConsumptionType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -540,7 +541,7 @@ class SubscriberConsumptionType
     public function addOnceToOnAccountPayment(
         OnAccountPayment $onAccountPayment
     ): static {
-        if (!is_array($this->onAccountPayment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->onAccountPayment)) {
             $this->onAccountPayment = [];
         }
 
@@ -554,7 +555,7 @@ class SubscriberConsumptionType
      */
     public function addOnceToOnAccountPaymentWithCreate(): OnAccountPayment
     {
-        if (!is_array($this->onAccountPayment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->onAccountPayment)) {
             $this->onAccountPayment = [];
         }
 
@@ -704,7 +705,7 @@ class SubscriberConsumptionType
     public function addOnceToSupplierConsumption(
         SupplierConsumption $supplierConsumption
     ): static {
-        if (!is_array($this->supplierConsumption)) {
+        if (!InvoiceSuiteArrayUtils::is($this->supplierConsumption)) {
             $this->supplierConsumption = [];
         }
 
@@ -718,7 +719,7 @@ class SubscriberConsumptionType
      */
     public function addOnceToSupplierConsumptionWithCreate(): SupplierConsumption
     {
-        if (!is_array($this->supplierConsumption)) {
+        if (!InvoiceSuiteArrayUtils::is($this->supplierConsumption)) {
             $this->supplierConsumption = [];
         }
 

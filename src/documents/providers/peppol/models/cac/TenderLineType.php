@@ -17,6 +17,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PackLevelCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Quantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalTaxAmount;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\WarrantyInformation;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TenderLineType
@@ -399,7 +400,7 @@ class TenderLineType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -413,7 +414,7 @@ class TenderLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -843,7 +844,7 @@ class TenderLineType
     public function addOnceToWarrantyInformation(
         WarrantyInformation $warrantyInformation
     ): static {
-        if (!is_array($this->warrantyInformation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->warrantyInformation)) {
             $this->warrantyInformation = [];
         }
 
@@ -857,7 +858,7 @@ class TenderLineType
      */
     public function addOnceToWarrantyInformationWithCreate(): WarrantyInformation
     {
-        if (!is_array($this->warrantyInformation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->warrantyInformation)) {
             $this->warrantyInformation = [];
         }
 
@@ -1007,7 +1008,7 @@ class TenderLineType
     public function addOnceToDocumentReference(
         DocumentReference $documentReference
     ): static {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -1021,7 +1022,7 @@ class TenderLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -1171,7 +1172,7 @@ class TenderLineType
     public function addOnceToOfferedItemLocationQuantity(
         OfferedItemLocationQuantity $offeredItemLocationQuantity,
     ): static {
-        if (!is_array($this->offeredItemLocationQuantity)) {
+        if (!InvoiceSuiteArrayUtils::is($this->offeredItemLocationQuantity)) {
             $this->offeredItemLocationQuantity = [];
         }
 
@@ -1185,7 +1186,7 @@ class TenderLineType
      */
     public function addOnceToOfferedItemLocationQuantityWithCreate(): OfferedItemLocationQuantity
     {
-        if (!is_array($this->offeredItemLocationQuantity)) {
+        if (!InvoiceSuiteArrayUtils::is($this->offeredItemLocationQuantity)) {
             $this->offeredItemLocationQuantity = [];
         }
 
@@ -1295,7 +1296,7 @@ class TenderLineType
     public function addOnceToReplacementRelatedItem(
         ReplacementRelatedItem $replacementRelatedItem
     ): static {
-        if (!is_array($this->replacementRelatedItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->replacementRelatedItem)) {
             $this->replacementRelatedItem = [];
         }
 
@@ -1309,7 +1310,7 @@ class TenderLineType
      */
     public function addOnceToReplacementRelatedItemWithCreate(): ReplacementRelatedItem
     {
-        if (!is_array($this->replacementRelatedItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->replacementRelatedItem)) {
             $this->replacementRelatedItem = [];
         }
 
@@ -1499,7 +1500,7 @@ class TenderLineType
     public function addOnceToSubTenderLine(
         SubTenderLine $subTenderLine
     ): static {
-        if (!is_array($this->subTenderLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->subTenderLine)) {
             $this->subTenderLine = [];
         }
 
@@ -1513,7 +1514,7 @@ class TenderLineType
      */
     public function addOnceToSubTenderLineWithCreate(): SubTenderLine
     {
-        if (!is_array($this->subTenderLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->subTenderLine)) {
             $this->subTenderLine = [];
         }
 

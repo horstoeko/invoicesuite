@@ -13,6 +13,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ModelName;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Name;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PackQuantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PackSizeNumeric;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ItemType
@@ -466,7 +467,7 @@ class ItemType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -480,7 +481,7 @@ class ItemType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -770,7 +771,7 @@ class ItemType
     public function addOnceToAdditionalInformation(
         AdditionalInformation $additionalInformation
     ): static {
-        if (!is_array($this->additionalInformation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalInformation)) {
             $this->additionalInformation = [];
         }
 
@@ -784,7 +785,7 @@ class ItemType
      */
     public function addOnceToAdditionalInformationWithCreate(): AdditionalInformation
     {
-        if (!is_array($this->additionalInformation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalInformation)) {
             $this->additionalInformation = [];
         }
 
@@ -894,7 +895,7 @@ class ItemType
     public function addOnceToKeyword(
         Keyword $keyword
     ): static {
-        if (!is_array($this->keyword)) {
+        if (!InvoiceSuiteArrayUtils::is($this->keyword)) {
             $this->keyword = [];
         }
 
@@ -908,7 +909,7 @@ class ItemType
      */
     public function addOnceToKeywordWithCreate(): Keyword
     {
-        if (!is_array($this->keyword)) {
+        if (!InvoiceSuiteArrayUtils::is($this->keyword)) {
             $this->keyword = [];
         }
 
@@ -1018,7 +1019,7 @@ class ItemType
     public function addOnceToBrandName(
         BrandName $brandName
     ): static {
-        if (!is_array($this->brandName)) {
+        if (!InvoiceSuiteArrayUtils::is($this->brandName)) {
             $this->brandName = [];
         }
 
@@ -1032,7 +1033,7 @@ class ItemType
      */
     public function addOnceToBrandNameWithCreate(): BrandName
     {
-        if (!is_array($this->brandName)) {
+        if (!InvoiceSuiteArrayUtils::is($this->brandName)) {
             $this->brandName = [];
         }
 
@@ -1142,7 +1143,7 @@ class ItemType
     public function addOnceToModelName(
         ModelName $modelName
     ): static {
-        if (!is_array($this->modelName)) {
+        if (!InvoiceSuiteArrayUtils::is($this->modelName)) {
             $this->modelName = [];
         }
 
@@ -1156,7 +1157,7 @@ class ItemType
      */
     public function addOnceToModelNameWithCreate(): ModelName
     {
-        if (!is_array($this->modelName)) {
+        if (!InvoiceSuiteArrayUtils::is($this->modelName)) {
             $this->modelName = [];
         }
 
@@ -1346,7 +1347,7 @@ class ItemType
     public function addOnceToManufacturersItemIdentification(
         ManufacturersItemIdentification $manufacturersItemIdentification,
     ): static {
-        if (!is_array($this->manufacturersItemIdentification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->manufacturersItemIdentification)) {
             $this->manufacturersItemIdentification = [];
         }
 
@@ -1360,7 +1361,7 @@ class ItemType
      */
     public function addOnceToManufacturersItemIdentificationWithCreate(): ManufacturersItemIdentification
     {
-        if (!is_array($this->manufacturersItemIdentification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->manufacturersItemIdentification)) {
             $this->manufacturersItemIdentification = [];
         }
 
@@ -1550,7 +1551,7 @@ class ItemType
     public function addOnceToAdditionalItemIdentification(
         AdditionalItemIdentification $additionalItemIdentification,
     ): static {
-        if (!is_array($this->additionalItemIdentification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalItemIdentification)) {
             $this->additionalItemIdentification = [];
         }
 
@@ -1564,7 +1565,7 @@ class ItemType
      */
     public function addOnceToAdditionalItemIdentificationWithCreate(): AdditionalItemIdentification
     {
-        if (!is_array($this->additionalItemIdentification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalItemIdentification)) {
             $this->additionalItemIdentification = [];
         }
 
@@ -1714,7 +1715,7 @@ class ItemType
     public function addOnceToItemSpecificationDocumentReference(
         ItemSpecificationDocumentReference $itemSpecificationDocumentReference,
     ): static {
-        if (!is_array($this->itemSpecificationDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->itemSpecificationDocumentReference)) {
             $this->itemSpecificationDocumentReference = [];
         }
 
@@ -1728,7 +1729,7 @@ class ItemType
      */
     public function addOnceToItemSpecificationDocumentReferenceWithCreate(): ItemSpecificationDocumentReference
     {
-        if (!is_array($this->itemSpecificationDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->itemSpecificationDocumentReference)) {
             $this->itemSpecificationDocumentReference = [];
         }
 
@@ -1878,7 +1879,7 @@ class ItemType
     public function addOnceToCommodityClassification(
         CommodityClassification $commodityClassification
     ): static {
-        if (!is_array($this->commodityClassification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->commodityClassification)) {
             $this->commodityClassification = [];
         }
 
@@ -1892,7 +1893,7 @@ class ItemType
      */
     public function addOnceToCommodityClassificationWithCreate(): CommodityClassification
     {
-        if (!is_array($this->commodityClassification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->commodityClassification)) {
             $this->commodityClassification = [];
         }
 
@@ -2002,7 +2003,7 @@ class ItemType
     public function addOnceToTransactionConditions(
         TransactionConditions $transactionConditions
     ): static {
-        if (!is_array($this->transactionConditions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transactionConditions)) {
             $this->transactionConditions = [];
         }
 
@@ -2016,7 +2017,7 @@ class ItemType
      */
     public function addOnceToTransactionConditionsWithCreate(): TransactionConditions
     {
-        if (!is_array($this->transactionConditions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transactionConditions)) {
             $this->transactionConditions = [];
         }
 
@@ -2126,7 +2127,7 @@ class ItemType
     public function addOnceToHazardousItem(
         HazardousItem $hazardousItem
     ): static {
-        if (!is_array($this->hazardousItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->hazardousItem)) {
             $this->hazardousItem = [];
         }
 
@@ -2140,7 +2141,7 @@ class ItemType
      */
     public function addOnceToHazardousItemWithCreate(): HazardousItem
     {
-        if (!is_array($this->hazardousItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->hazardousItem)) {
             $this->hazardousItem = [];
         }
 
@@ -2250,7 +2251,7 @@ class ItemType
     public function addOnceToClassifiedTaxCategory(
         ClassifiedTaxCategory $classifiedTaxCategory
     ): static {
-        if (!is_array($this->classifiedTaxCategory)) {
+        if (!InvoiceSuiteArrayUtils::is($this->classifiedTaxCategory)) {
             $this->classifiedTaxCategory = [];
         }
 
@@ -2264,7 +2265,7 @@ class ItemType
      */
     public function addOnceToClassifiedTaxCategoryWithCreate(): ClassifiedTaxCategory
     {
-        if (!is_array($this->classifiedTaxCategory)) {
+        if (!InvoiceSuiteArrayUtils::is($this->classifiedTaxCategory)) {
             $this->classifiedTaxCategory = [];
         }
 
@@ -2374,7 +2375,7 @@ class ItemType
     public function addOnceToAdditionalItemProperty(
         AdditionalItemProperty $additionalItemProperty
     ): static {
-        if (!is_array($this->additionalItemProperty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalItemProperty)) {
             $this->additionalItemProperty = [];
         }
 
@@ -2388,7 +2389,7 @@ class ItemType
      */
     public function addOnceToAdditionalItemPropertyWithCreate(): AdditionalItemProperty
     {
-        if (!is_array($this->additionalItemProperty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalItemProperty)) {
             $this->additionalItemProperty = [];
         }
 
@@ -2498,7 +2499,7 @@ class ItemType
     public function addOnceToManufacturerParty(
         ManufacturerParty $manufacturerParty
     ): static {
-        if (!is_array($this->manufacturerParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->manufacturerParty)) {
             $this->manufacturerParty = [];
         }
 
@@ -2512,7 +2513,7 @@ class ItemType
      */
     public function addOnceToManufacturerPartyWithCreate(): ManufacturerParty
     {
-        if (!is_array($this->manufacturerParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->manufacturerParty)) {
             $this->manufacturerParty = [];
         }
 
@@ -2662,7 +2663,7 @@ class ItemType
     public function addOnceToOriginAddress(
         OriginAddress $originAddress
     ): static {
-        if (!is_array($this->originAddress)) {
+        if (!InvoiceSuiteArrayUtils::is($this->originAddress)) {
             $this->originAddress = [];
         }
 
@@ -2676,7 +2677,7 @@ class ItemType
      */
     public function addOnceToOriginAddressWithCreate(): OriginAddress
     {
-        if (!is_array($this->originAddress)) {
+        if (!InvoiceSuiteArrayUtils::is($this->originAddress)) {
             $this->originAddress = [];
         }
 
@@ -2786,7 +2787,7 @@ class ItemType
     public function addOnceToItemInstance(
         ItemInstance $itemInstance
     ): static {
-        if (!is_array($this->itemInstance)) {
+        if (!InvoiceSuiteArrayUtils::is($this->itemInstance)) {
             $this->itemInstance = [];
         }
 
@@ -2800,7 +2801,7 @@ class ItemType
      */
     public function addOnceToItemInstanceWithCreate(): ItemInstance
     {
-        if (!is_array($this->itemInstance)) {
+        if (!InvoiceSuiteArrayUtils::is($this->itemInstance)) {
             $this->itemInstance = [];
         }
 
@@ -2910,7 +2911,7 @@ class ItemType
     public function addOnceToCertificate(
         Certificate $certificate
     ): static {
-        if (!is_array($this->certificate)) {
+        if (!InvoiceSuiteArrayUtils::is($this->certificate)) {
             $this->certificate = [];
         }
 
@@ -2924,7 +2925,7 @@ class ItemType
      */
     public function addOnceToCertificateWithCreate(): Certificate
     {
-        if (!is_array($this->certificate)) {
+        if (!InvoiceSuiteArrayUtils::is($this->certificate)) {
             $this->certificate = [];
         }
 
@@ -3034,7 +3035,7 @@ class ItemType
     public function addOnceToDimension(
         Dimension $dimension
     ): static {
-        if (!is_array($this->dimension)) {
+        if (!InvoiceSuiteArrayUtils::is($this->dimension)) {
             $this->dimension = [];
         }
 
@@ -3048,7 +3049,7 @@ class ItemType
      */
     public function addOnceToDimensionWithCreate(): Dimension
     {
-        if (!is_array($this->dimension)) {
+        if (!InvoiceSuiteArrayUtils::is($this->dimension)) {
             $this->dimension = [];
         }
 

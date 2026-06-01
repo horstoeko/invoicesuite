@@ -19,6 +19,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Note;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PaymentFrequencyCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PriceEvaluationCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PriceRevisionFormulaDescription;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TenderingTermsType
@@ -763,7 +764,7 @@ class TenderingTermsType
     public function addOnceToAcceptedVariantsDescription(
         AcceptedVariantsDescription $acceptedVariantsDescription,
     ): static {
-        if (!is_array($this->acceptedVariantsDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->acceptedVariantsDescription)) {
             $this->acceptedVariantsDescription = [];
         }
 
@@ -777,7 +778,7 @@ class TenderingTermsType
      */
     public function addOnceToAcceptedVariantsDescriptionWithCreate(): AcceptedVariantsDescription
     {
-        if (!is_array($this->acceptedVariantsDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->acceptedVariantsDescription)) {
             $this->acceptedVariantsDescription = [];
         }
 
@@ -887,7 +888,7 @@ class TenderingTermsType
     public function addOnceToPriceRevisionFormulaDescription(
         PriceRevisionFormulaDescription $priceRevisionFormulaDescription,
     ): static {
-        if (!is_array($this->priceRevisionFormulaDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->priceRevisionFormulaDescription)) {
             $this->priceRevisionFormulaDescription = [];
         }
 
@@ -901,7 +902,7 @@ class TenderingTermsType
      */
     public function addOnceToPriceRevisionFormulaDescriptionWithCreate(): PriceRevisionFormulaDescription
     {
-        if (!is_array($this->priceRevisionFormulaDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->priceRevisionFormulaDescription)) {
             $this->priceRevisionFormulaDescription = [];
         }
 
@@ -1051,7 +1052,7 @@ class TenderingTermsType
     public function addOnceToFundingProgram(
         FundingProgram $fundingProgram
     ): static {
-        if (!is_array($this->fundingProgram)) {
+        if (!InvoiceSuiteArrayUtils::is($this->fundingProgram)) {
             $this->fundingProgram = [];
         }
 
@@ -1065,7 +1066,7 @@ class TenderingTermsType
      */
     public function addOnceToFundingProgramWithCreate(): FundingProgram
     {
-        if (!is_array($this->fundingProgram)) {
+        if (!InvoiceSuiteArrayUtils::is($this->fundingProgram)) {
             $this->fundingProgram = [];
         }
 
@@ -1215,7 +1216,7 @@ class TenderingTermsType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -1229,7 +1230,7 @@ class TenderingTermsType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -1479,7 +1480,7 @@ class TenderingTermsType
     public function addOnceToAdditionalConditions(
         AdditionalConditions $additionalConditions
     ): static {
-        if (!is_array($this->additionalConditions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalConditions)) {
             $this->additionalConditions = [];
         }
 
@@ -1493,7 +1494,7 @@ class TenderingTermsType
      */
     public function addOnceToAdditionalConditionsWithCreate(): AdditionalConditions
     {
-        if (!is_array($this->additionalConditions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalConditions)) {
             $this->additionalConditions = [];
         }
 
@@ -1673,7 +1674,7 @@ class TenderingTermsType
     public function addOnceToPenaltyClause(
         PenaltyClause $penaltyClause
     ): static {
-        if (!is_array($this->penaltyClause)) {
+        if (!InvoiceSuiteArrayUtils::is($this->penaltyClause)) {
             $this->penaltyClause = [];
         }
 
@@ -1687,7 +1688,7 @@ class TenderingTermsType
      */
     public function addOnceToPenaltyClauseWithCreate(): PenaltyClause
     {
-        if (!is_array($this->penaltyClause)) {
+        if (!InvoiceSuiteArrayUtils::is($this->penaltyClause)) {
             $this->penaltyClause = [];
         }
 
@@ -1797,7 +1798,7 @@ class TenderingTermsType
     public function addOnceToRequiredFinancialGuarantee(
         RequiredFinancialGuarantee $requiredFinancialGuarantee
     ): static {
-        if (!is_array($this->requiredFinancialGuarantee)) {
+        if (!InvoiceSuiteArrayUtils::is($this->requiredFinancialGuarantee)) {
             $this->requiredFinancialGuarantee = [];
         }
 
@@ -1811,7 +1812,7 @@ class TenderingTermsType
      */
     public function addOnceToRequiredFinancialGuaranteeWithCreate(): RequiredFinancialGuarantee
     {
-        if (!is_array($this->requiredFinancialGuarantee)) {
+        if (!InvoiceSuiteArrayUtils::is($this->requiredFinancialGuarantee)) {
             $this->requiredFinancialGuarantee = [];
         }
 
@@ -2081,7 +2082,7 @@ class TenderingTermsType
     public function addOnceToContractualDocumentReference(
         ContractualDocumentReference $contractualDocumentReference,
     ): static {
-        if (!is_array($this->contractualDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->contractualDocumentReference)) {
             $this->contractualDocumentReference = [];
         }
 
@@ -2095,7 +2096,7 @@ class TenderingTermsType
      */
     public function addOnceToContractualDocumentReferenceWithCreate(): ContractualDocumentReference
     {
-        if (!is_array($this->contractualDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->contractualDocumentReference)) {
             $this->contractualDocumentReference = [];
         }
 
@@ -2285,7 +2286,7 @@ class TenderingTermsType
     public function addOnceToPaymentTerms(
         PaymentTerms $paymentTerms
     ): static {
-        if (!is_array($this->paymentTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentTerms)) {
             $this->paymentTerms = [];
         }
 
@@ -2299,7 +2300,7 @@ class TenderingTermsType
      */
     public function addOnceToPaymentTermsWithCreate(): PaymentTerms
     {
-        if (!is_array($this->paymentTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentTerms)) {
             $this->paymentTerms = [];
         }
 
@@ -2409,7 +2410,7 @@ class TenderingTermsType
     public function addOnceToTendererQualificationRequest(
         TendererQualificationRequest $tendererQualificationRequest,
     ): static {
-        if (!is_array($this->tendererQualificationRequest)) {
+        if (!InvoiceSuiteArrayUtils::is($this->tendererQualificationRequest)) {
             $this->tendererQualificationRequest = [];
         }
 
@@ -2423,7 +2424,7 @@ class TenderingTermsType
      */
     public function addOnceToTendererQualificationRequestWithCreate(): TendererQualificationRequest
     {
-        if (!is_array($this->tendererQualificationRequest)) {
+        if (!InvoiceSuiteArrayUtils::is($this->tendererQualificationRequest)) {
             $this->tendererQualificationRequest = [];
         }
 
@@ -2533,7 +2534,7 @@ class TenderingTermsType
     public function addOnceToAllowedSubcontractTerms(
         AllowedSubcontractTerms $allowedSubcontractTerms
     ): static {
-        if (!is_array($this->allowedSubcontractTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowedSubcontractTerms)) {
             $this->allowedSubcontractTerms = [];
         }
 
@@ -2547,7 +2548,7 @@ class TenderingTermsType
      */
     public function addOnceToAllowedSubcontractTermsWithCreate(): AllowedSubcontractTerms
     {
-        if (!is_array($this->allowedSubcontractTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowedSubcontractTerms)) {
             $this->allowedSubcontractTerms = [];
         }
 
@@ -2657,7 +2658,7 @@ class TenderingTermsType
     public function addOnceToTenderPreparation(
         TenderPreparation $tenderPreparation
     ): static {
-        if (!is_array($this->tenderPreparation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->tenderPreparation)) {
             $this->tenderPreparation = [];
         }
 
@@ -2671,7 +2672,7 @@ class TenderingTermsType
      */
     public function addOnceToTenderPreparationWithCreate(): TenderPreparation
     {
-        if (!is_array($this->tenderPreparation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->tenderPreparation)) {
             $this->tenderPreparation = [];
         }
 
@@ -2781,7 +2782,7 @@ class TenderingTermsType
     public function addOnceToContractExecutionRequirement(
         ContractExecutionRequirement $contractExecutionRequirement,
     ): static {
-        if (!is_array($this->contractExecutionRequirement)) {
+        if (!InvoiceSuiteArrayUtils::is($this->contractExecutionRequirement)) {
             $this->contractExecutionRequirement = [];
         }
 
@@ -2795,7 +2796,7 @@ class TenderingTermsType
      */
     public function addOnceToContractExecutionRequirementWithCreate(): ContractExecutionRequirement
     {
-        if (!is_array($this->contractExecutionRequirement)) {
+        if (!InvoiceSuiteArrayUtils::is($this->contractExecutionRequirement)) {
             $this->contractExecutionRequirement = [];
         }
 
@@ -3105,7 +3106,7 @@ class TenderingTermsType
     public function addOnceToTenderEvaluationParty(
         TenderEvaluationParty $tenderEvaluationParty
     ): static {
-        if (!is_array($this->tenderEvaluationParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->tenderEvaluationParty)) {
             $this->tenderEvaluationParty = [];
         }
 
@@ -3119,7 +3120,7 @@ class TenderingTermsType
      */
     public function addOnceToTenderEvaluationPartyWithCreate(): TenderEvaluationParty
     {
-        if (!is_array($this->tenderEvaluationParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->tenderEvaluationParty)) {
             $this->tenderEvaluationParty = [];
         }
 
@@ -3349,7 +3350,7 @@ class TenderingTermsType
     public function addOnceToLanguage(
         Language $language
     ): static {
-        if (!is_array($this->language)) {
+        if (!InvoiceSuiteArrayUtils::is($this->language)) {
             $this->language = [];
         }
 
@@ -3363,7 +3364,7 @@ class TenderingTermsType
      */
     public function addOnceToLanguageWithCreate(): Language
     {
-        if (!is_array($this->language)) {
+        if (!InvoiceSuiteArrayUtils::is($this->language)) {
             $this->language = [];
         }
 
@@ -3473,7 +3474,7 @@ class TenderingTermsType
     public function addOnceToBudgetAccountLine(
         BudgetAccountLine $budgetAccountLine
     ): static {
-        if (!is_array($this->budgetAccountLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->budgetAccountLine)) {
             $this->budgetAccountLine = [];
         }
 
@@ -3487,7 +3488,7 @@ class TenderingTermsType
      */
     public function addOnceToBudgetAccountLineWithCreate(): BudgetAccountLine
     {
-        if (!is_array($this->budgetAccountLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->budgetAccountLine)) {
             $this->budgetAccountLine = [];
         }
 

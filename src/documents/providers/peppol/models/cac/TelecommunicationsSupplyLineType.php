@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LineExtensionAmount;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PhoneNumber;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TelecommunicationsSupplyLineType
@@ -287,7 +288,7 @@ class TelecommunicationsSupplyLineType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -301,7 +302,7 @@ class TelecommunicationsSupplyLineType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -451,7 +452,7 @@ class TelecommunicationsSupplyLineType
     public function addOnceToExchangeRate(
         ExchangeRate $exchangeRate
     ): static {
-        if (!is_array($this->exchangeRate)) {
+        if (!InvoiceSuiteArrayUtils::is($this->exchangeRate)) {
             $this->exchangeRate = [];
         }
 
@@ -465,7 +466,7 @@ class TelecommunicationsSupplyLineType
      */
     public function addOnceToExchangeRateWithCreate(): ExchangeRate
     {
-        if (!is_array($this->exchangeRate)) {
+        if (!InvoiceSuiteArrayUtils::is($this->exchangeRate)) {
             $this->exchangeRate = [];
         }
 
@@ -575,7 +576,7 @@ class TelecommunicationsSupplyLineType
     public function addOnceToAllowanceCharge(
         AllowanceCharge $allowanceCharge
     ): static {
-        if (!is_array($this->allowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceCharge)) {
             $this->allowanceCharge = [];
         }
 
@@ -589,7 +590,7 @@ class TelecommunicationsSupplyLineType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        if (!is_array($this->allowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceCharge)) {
             $this->allowanceCharge = [];
         }
 
@@ -699,7 +700,7 @@ class TelecommunicationsSupplyLineType
     public function addOnceToTaxTotal(
         TaxTotal $taxTotal
     ): static {
-        if (!is_array($this->taxTotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotal)) {
             $this->taxTotal = [];
         }
 
@@ -713,7 +714,7 @@ class TelecommunicationsSupplyLineType
      */
     public function addOnceToTaxTotalWithCreate(): TaxTotal
     {
-        if (!is_array($this->taxTotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotal)) {
             $this->taxTotal = [];
         }
 
@@ -823,7 +824,7 @@ class TelecommunicationsSupplyLineType
     public function addOnceToTelecommunicationsService(
         TelecommunicationsService $telecommunicationsService
     ): static {
-        if (!is_array($this->telecommunicationsService)) {
+        if (!InvoiceSuiteArrayUtils::is($this->telecommunicationsService)) {
             $this->telecommunicationsService = [];
         }
 
@@ -837,7 +838,7 @@ class TelecommunicationsSupplyLineType
      */
     public function addOnceToTelecommunicationsServiceWithCreate(): TelecommunicationsService
     {
-        if (!is_array($this->telecommunicationsService)) {
+        if (!InvoiceSuiteArrayUtils::is($this->telecommunicationsService)) {
             $this->telecommunicationsService = [];
         }
 

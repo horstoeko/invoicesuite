@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CapabilityTypeC
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ValueAmount;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ValueQuantity;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class CapabilityType
@@ -222,7 +223,7 @@ class CapabilityType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -236,7 +237,7 @@ class CapabilityType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -426,7 +427,7 @@ class CapabilityType
     public function addOnceToEvidenceSupplied(
         EvidenceSupplied $evidenceSupplied
     ): static {
-        if (!is_array($this->evidenceSupplied)) {
+        if (!InvoiceSuiteArrayUtils::is($this->evidenceSupplied)) {
             $this->evidenceSupplied = [];
         }
 
@@ -440,7 +441,7 @@ class CapabilityType
      */
     public function addOnceToEvidenceSuppliedWithCreate(): EvidenceSupplied
     {
-        if (!is_array($this->evidenceSupplied)) {
+        if (!InvoiceSuiteArrayUtils::is($this->evidenceSupplied)) {
             $this->evidenceSupplied = [];
         }
 

@@ -11,6 +11,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Note;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Quantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RequestForQuotationLineID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalTaxAmount;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class QuotationLineType
@@ -281,7 +282,7 @@ class QuotationLineType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -295,7 +296,7 @@ class QuotationLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -565,7 +566,7 @@ class QuotationLineType
     public function addOnceToDocumentReference(
         DocumentReference $documentReference
     ): static {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -579,7 +580,7 @@ class QuotationLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -729,7 +730,7 @@ class QuotationLineType
     public function addOnceToSellerProposedSubstituteLineItem(
         SellerProposedSubstituteLineItem $sellerProposedSubstituteLineItem,
     ): static {
-        if (!is_array($this->sellerProposedSubstituteLineItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->sellerProposedSubstituteLineItem)) {
             $this->sellerProposedSubstituteLineItem = [];
         }
 
@@ -743,7 +744,7 @@ class QuotationLineType
      */
     public function addOnceToSellerProposedSubstituteLineItemWithCreate(): SellerProposedSubstituteLineItem
     {
-        if (!is_array($this->sellerProposedSubstituteLineItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->sellerProposedSubstituteLineItem)) {
             $this->sellerProposedSubstituteLineItem = [];
         }
 
@@ -853,7 +854,7 @@ class QuotationLineType
     public function addOnceToAlternativeLineItem(
         AlternativeLineItem $alternativeLineItem
     ): static {
-        if (!is_array($this->alternativeLineItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->alternativeLineItem)) {
             $this->alternativeLineItem = [];
         }
 
@@ -867,7 +868,7 @@ class QuotationLineType
      */
     public function addOnceToAlternativeLineItemWithCreate(): AlternativeLineItem
     {
-        if (!is_array($this->alternativeLineItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->alternativeLineItem)) {
             $this->alternativeLineItem = [];
         }
 

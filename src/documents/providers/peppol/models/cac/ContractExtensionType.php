@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MaximumNumberNumeric;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MinimumNumberNumeric;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OptionsDescription;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ContractExtensionType
@@ -170,7 +171,7 @@ class ContractExtensionType
     public function addOnceToOptionsDescription(
         OptionsDescription $optionsDescription
     ): static {
-        if (!is_array($this->optionsDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->optionsDescription)) {
             $this->optionsDescription = [];
         }
 
@@ -184,7 +185,7 @@ class ContractExtensionType
      */
     public function addOnceToOptionsDescriptionWithCreate(): OptionsDescription
     {
-        if (!is_array($this->optionsDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->optionsDescription)) {
             $this->optionsDescription = [];
         }
 
@@ -414,7 +415,7 @@ class ContractExtensionType
     public function addOnceToRenewal(
         Renewal $renewal
     ): static {
-        if (!is_array($this->renewal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->renewal)) {
             $this->renewal = [];
         }
 
@@ -428,7 +429,7 @@ class ContractExtensionType
      */
     public function addOnceToRenewalWithCreate(): Renewal
     {
-        if (!is_array($this->renewal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->renewal)) {
             $this->renewal = [];
         }
 

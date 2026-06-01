@@ -14,6 +14,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ReceivedElectro
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ReceivedForeignTenderQuantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ReceivedTenderQuantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TenderResultCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TenderResultType
@@ -338,7 +339,7 @@ class TenderResultType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -352,7 +353,7 @@ class TenderResultType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -912,7 +913,7 @@ class TenderResultType
     public function addOnceToSubcontractTerms(
         SubcontractTerms $subcontractTerms
     ): static {
-        if (!is_array($this->subcontractTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->subcontractTerms)) {
             $this->subcontractTerms = [];
         }
 
@@ -926,7 +927,7 @@ class TenderResultType
      */
     public function addOnceToSubcontractTermsWithCreate(): SubcontractTerms
     {
-        if (!is_array($this->subcontractTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->subcontractTerms)) {
             $this->subcontractTerms = [];
         }
 
@@ -1036,7 +1037,7 @@ class TenderResultType
     public function addOnceToWinningParty(
         WinningParty $winningParty
     ): static {
-        if (!is_array($this->winningParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->winningParty)) {
             $this->winningParty = [];
         }
 
@@ -1050,7 +1051,7 @@ class TenderResultType
      */
     public function addOnceToWinningPartyWithCreate(): WinningParty
     {
-        if (!is_array($this->winningParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->winningParty)) {
             $this->winningParty = [];
         }
 

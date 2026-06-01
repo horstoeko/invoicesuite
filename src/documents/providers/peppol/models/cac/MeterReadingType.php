@@ -17,6 +17,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MeterReadingTyp
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PreviousMeterQuantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PreviousMeterReadingMethod;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PreviousMeterReadingMethodCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class MeterReadingType
@@ -686,7 +687,7 @@ class MeterReadingType
     public function addOnceToMeterReadingComments(
         MeterReadingComments $meterReadingComments
     ): static {
-        if (!is_array($this->meterReadingComments)) {
+        if (!InvoiceSuiteArrayUtils::is($this->meterReadingComments)) {
             $this->meterReadingComments = [];
         }
 
@@ -700,7 +701,7 @@ class MeterReadingType
      */
     public function addOnceToMeterReadingCommentsWithCreate(): MeterReadingComments
     {
-        if (!is_array($this->meterReadingComments)) {
+        if (!InvoiceSuiteArrayUtils::is($this->meterReadingComments)) {
             $this->meterReadingComments = [];
         }
 

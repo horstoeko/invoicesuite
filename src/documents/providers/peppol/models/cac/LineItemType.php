@@ -21,6 +21,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SalesOrderID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalTaxAmount;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UUID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\WarrantyInformation;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class LineItemType
@@ -606,7 +607,7 @@ class LineItemType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -620,7 +621,7 @@ class LineItemType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -1230,7 +1231,7 @@ class LineItemType
     public function addOnceToWarrantyInformation(
         WarrantyInformation $warrantyInformation
     ): static {
-        if (!is_array($this->warrantyInformation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->warrantyInformation)) {
             $this->warrantyInformation = [];
         }
 
@@ -1244,7 +1245,7 @@ class LineItemType
      */
     public function addOnceToWarrantyInformationWithCreate(): WarrantyInformation
     {
-        if (!is_array($this->warrantyInformation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->warrantyInformation)) {
             $this->warrantyInformation = [];
         }
 
@@ -1354,7 +1355,7 @@ class LineItemType
     public function addOnceToDelivery(
         Delivery $delivery
     ): static {
-        if (!is_array($this->delivery)) {
+        if (!InvoiceSuiteArrayUtils::is($this->delivery)) {
             $this->delivery = [];
         }
 
@@ -1368,7 +1369,7 @@ class LineItemType
      */
     public function addOnceToDeliveryWithCreate(): Delivery
     {
-        if (!is_array($this->delivery)) {
+        if (!InvoiceSuiteArrayUtils::is($this->delivery)) {
             $this->delivery = [];
         }
 
@@ -1558,7 +1559,7 @@ class LineItemType
     public function addOnceToOrderedShipment(
         OrderedShipment $orderedShipment
     ): static {
-        if (!is_array($this->orderedShipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->orderedShipment)) {
             $this->orderedShipment = [];
         }
 
@@ -1572,7 +1573,7 @@ class LineItemType
      */
     public function addOnceToOrderedShipmentWithCreate(): OrderedShipment
     {
-        if (!is_array($this->orderedShipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->orderedShipment)) {
             $this->orderedShipment = [];
         }
 
@@ -1722,7 +1723,7 @@ class LineItemType
     public function addOnceToAllowanceCharge(
         AllowanceCharge $allowanceCharge
     ): static {
-        if (!is_array($this->allowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceCharge)) {
             $this->allowanceCharge = [];
         }
 
@@ -1736,7 +1737,7 @@ class LineItemType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        if (!is_array($this->allowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceCharge)) {
             $this->allowanceCharge = [];
         }
 
@@ -1926,7 +1927,7 @@ class LineItemType
     public function addOnceToSubLineItem(
         SubLineItem $subLineItem
     ): static {
-        if (!is_array($this->subLineItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->subLineItem)) {
             $this->subLineItem = [];
         }
 
@@ -1940,7 +1941,7 @@ class LineItemType
      */
     public function addOnceToSubLineItemWithCreate(): SubLineItem
     {
-        if (!is_array($this->subLineItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->subLineItem)) {
             $this->subLineItem = [];
         }
 
@@ -2130,7 +2131,7 @@ class LineItemType
     public function addOnceToTaxTotal(
         TaxTotal $taxTotal
     ): static {
-        if (!is_array($this->taxTotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotal)) {
             $this->taxTotal = [];
         }
 
@@ -2144,7 +2145,7 @@ class LineItemType
      */
     public function addOnceToTaxTotalWithCreate(): TaxTotal
     {
-        if (!is_array($this->taxTotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotal)) {
             $this->taxTotal = [];
         }
 
@@ -2294,7 +2295,7 @@ class LineItemType
     public function addOnceToLineReference(
         LineReference $lineReference
     ): static {
-        if (!is_array($this->lineReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->lineReference)) {
             $this->lineReference = [];
         }
 
@@ -2308,7 +2309,7 @@ class LineItemType
      */
     public function addOnceToLineReferenceWithCreate(): LineReference
     {
-        if (!is_array($this->lineReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->lineReference)) {
             $this->lineReference = [];
         }
 

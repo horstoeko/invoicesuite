@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\zffx\models\ram;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use JMS\Serializer\Annotation as JMS;
 
@@ -197,7 +198,7 @@ class TradePartyType
     public function addOnceToID(
         IDType $iD
     ): static {
-        if (!is_array($this->iD)) {
+        if (!InvoiceSuiteArrayUtils::is($this->iD)) {
             $this->iD = [];
         }
 
@@ -211,7 +212,7 @@ class TradePartyType
      */
     public function addOnceToIDWithCreate(): IDType
     {
-        if (!is_array($this->iD)) {
+        if (!InvoiceSuiteArrayUtils::is($this->iD)) {
             $this->iD = [];
         }
 
@@ -291,7 +292,7 @@ class TradePartyType
     public function addOnceToGlobalID(
         IDType $globalID
     ): static {
-        if (!is_array($this->globalID)) {
+        if (!InvoiceSuiteArrayUtils::is($this->globalID)) {
             $this->globalID = [];
         }
 
@@ -305,7 +306,7 @@ class TradePartyType
      */
     public function addOnceToGlobalIDWithCreate(): IDType
     {
-        if (!is_array($this->globalID)) {
+        if (!InvoiceSuiteArrayUtils::is($this->globalID)) {
             $this->globalID = [];
         }
 
@@ -535,7 +536,7 @@ class TradePartyType
     public function addOnceToDefinedTradeContact(
         TradeContactType $definedTradeContact
     ): static {
-        if (!is_array($this->definedTradeContact)) {
+        if (!InvoiceSuiteArrayUtils::is($this->definedTradeContact)) {
             $this->definedTradeContact = [];
         }
 
@@ -549,7 +550,7 @@ class TradePartyType
      */
     public function addOnceToDefinedTradeContactWithCreate(): TradeContactType
     {
-        if (!is_array($this->definedTradeContact)) {
+        if (!InvoiceSuiteArrayUtils::is($this->definedTradeContact)) {
             $this->definedTradeContact = [];
         }
 
@@ -709,7 +710,7 @@ class TradePartyType
     public function addOnceToSpecifiedTaxRegistration(
         TaxRegistrationType $specifiedTaxRegistration
     ): static {
-        if (!is_array($this->specifiedTaxRegistration)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specifiedTaxRegistration)) {
             $this->specifiedTaxRegistration = [];
         }
 
@@ -723,7 +724,7 @@ class TradePartyType
      */
     public function addOnceToSpecifiedTaxRegistrationWithCreate(): TaxRegistrationType
     {
-        if (!is_array($this->specifiedTaxRegistration)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specifiedTaxRegistration)) {
             $this->specifiedTaxRegistration = [];
         }
 

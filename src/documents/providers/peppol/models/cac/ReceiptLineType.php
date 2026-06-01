@@ -20,6 +20,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ShortQuantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TimingComplaint;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TimingComplaintCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UUID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ReceiptLineType
@@ -431,7 +432,7 @@ class ReceiptLineType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -445,7 +446,7 @@ class ReceiptLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -755,7 +756,7 @@ class ReceiptLineType
     public function addOnceToRejectReason(
         RejectReason $rejectReason
     ): static {
-        if (!is_array($this->rejectReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->rejectReason)) {
             $this->rejectReason = [];
         }
 
@@ -769,7 +770,7 @@ class ReceiptLineType
      */
     public function addOnceToRejectReasonWithCreate(): RejectReason
     {
-        if (!is_array($this->rejectReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->rejectReason)) {
             $this->rejectReason = [];
         }
 
@@ -1149,7 +1150,7 @@ class ReceiptLineType
     public function addOnceToDespatchLineReference(
         DespatchLineReference $despatchLineReference
     ): static {
-        if (!is_array($this->despatchLineReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->despatchLineReference)) {
             $this->despatchLineReference = [];
         }
 
@@ -1163,7 +1164,7 @@ class ReceiptLineType
      */
     public function addOnceToDespatchLineReferenceWithCreate(): DespatchLineReference
     {
-        if (!is_array($this->despatchLineReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->despatchLineReference)) {
             $this->despatchLineReference = [];
         }
 
@@ -1273,7 +1274,7 @@ class ReceiptLineType
     public function addOnceToDocumentReference(
         DocumentReference $documentReference
     ): static {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -1287,7 +1288,7 @@ class ReceiptLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -1397,7 +1398,7 @@ class ReceiptLineType
     public function addOnceToItem(
         Item $item
     ): static {
-        if (!is_array($this->item)) {
+        if (!InvoiceSuiteArrayUtils::is($this->item)) {
             $this->item = [];
         }
 
@@ -1411,7 +1412,7 @@ class ReceiptLineType
      */
     public function addOnceToItemWithCreate(): Item
     {
-        if (!is_array($this->item)) {
+        if (!InvoiceSuiteArrayUtils::is($this->item)) {
             $this->item = [];
         }
 
@@ -1521,7 +1522,7 @@ class ReceiptLineType
     public function addOnceToShipment(
         Shipment $shipment
     ): static {
-        if (!is_array($this->shipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->shipment)) {
             $this->shipment = [];
         }
 
@@ -1535,7 +1536,7 @@ class ReceiptLineType
      */
     public function addOnceToShipmentWithCreate(): Shipment
     {
-        if (!is_array($this->shipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->shipment)) {
             $this->shipment = [];
         }
 

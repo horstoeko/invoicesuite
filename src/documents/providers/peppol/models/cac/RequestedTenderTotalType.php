@@ -11,6 +11,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MaximumAmount;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MinimumAmount;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MonetaryScope;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalAmount;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class RequestedTenderTotalType
@@ -396,7 +397,7 @@ class RequestedTenderTotalType
     public function addOnceToMonetaryScope(
         MonetaryScope $monetaryScope
     ): static {
-        if (!is_array($this->monetaryScope)) {
+        if (!InvoiceSuiteArrayUtils::is($this->monetaryScope)) {
             $this->monetaryScope = [];
         }
 
@@ -410,7 +411,7 @@ class RequestedTenderTotalType
      */
     public function addOnceToMonetaryScopeWithCreate(): MonetaryScope
     {
-        if (!is_array($this->monetaryScope)) {
+        if (!InvoiceSuiteArrayUtils::is($this->monetaryScope)) {
             $this->monetaryScope = [];
         }
 
@@ -560,7 +561,7 @@ class RequestedTenderTotalType
     public function addOnceToApplicableTaxCategory(
         ApplicableTaxCategory $applicableTaxCategory
     ): static {
-        if (!is_array($this->applicableTaxCategory)) {
+        if (!InvoiceSuiteArrayUtils::is($this->applicableTaxCategory)) {
             $this->applicableTaxCategory = [];
         }
 
@@ -574,7 +575,7 @@ class RequestedTenderTotalType
      */
     public function addOnceToApplicableTaxCategoryWithCreate(): ApplicableTaxCategory
     {
-        if (!is_array($this->applicableTaxCategory)) {
+        if (!InvoiceSuiteArrayUtils::is($this->applicableTaxCategory)) {
             $this->applicableTaxCategory = [];
         }
 

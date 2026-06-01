@@ -29,6 +29,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Region;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Room;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\StreetName;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TimezoneOffset;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class AddressType
@@ -1393,7 +1394,7 @@ class AddressType
     public function addOnceToAddressLine(
         AddressLine $addressLine
     ): static {
-        if (!is_array($this->addressLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->addressLine)) {
             $this->addressLine = [];
         }
 
@@ -1407,7 +1408,7 @@ class AddressType
      */
     public function addOnceToAddressLineWithCreate(): AddressLine
     {
-        if (!is_array($this->addressLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->addressLine)) {
             $this->addressLine = [];
         }
 
@@ -1557,7 +1558,7 @@ class AddressType
     public function addOnceToLocationCoordinate(
         LocationCoordinate $locationCoordinate
     ): static {
-        if (!is_array($this->locationCoordinate)) {
+        if (!InvoiceSuiteArrayUtils::is($this->locationCoordinate)) {
             $this->locationCoordinate = [];
         }
 
@@ -1571,7 +1572,7 @@ class AddressType
      */
     public function addOnceToLocationCoordinateWithCreate(): LocationCoordinate
     {
-        if (!is_array($this->locationCoordinate)) {
+        if (!InvoiceSuiteArrayUtils::is($this->locationCoordinate)) {
             $this->locationCoordinate = [];
         }
 

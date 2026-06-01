@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\fatturapa\models;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 final class DatiGenerali
@@ -247,7 +248,7 @@ final class DatiGenerali
     public function addToDatiOrdineAcquisto(
         DatiDocumentiCorrelati $datiOrdineAcquisto
     ): static {
-        if (!is_array($this->datiOrdineAcquisto)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiOrdineAcquisto)) {
             $this->datiOrdineAcquisto = [];
         }
 
@@ -277,7 +278,7 @@ final class DatiGenerali
     public function addOnceToDatiOrdineAcquisto(
         DatiDocumentiCorrelati $datiOrdineAcquisto
     ): static {
-        if (!is_array($this->datiOrdineAcquisto)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiOrdineAcquisto)) {
             $this->datiOrdineAcquisto = [];
         }
 
@@ -293,7 +294,7 @@ final class DatiGenerali
      */
     public function addOnceToDatiOrdineAcquistoWithCreate(): DatiDocumentiCorrelati
     {
-        if (!is_array($this->datiOrdineAcquisto)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiOrdineAcquisto)) {
             $this->datiOrdineAcquisto = [];
         }
 
@@ -361,7 +362,7 @@ final class DatiGenerali
     public function addToDatiContratto(
         DatiDocumentiCorrelati $datiContratto
     ): static {
-        if (!is_array($this->datiContratto)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiContratto)) {
             $this->datiContratto = [];
         }
 
@@ -391,7 +392,7 @@ final class DatiGenerali
     public function addOnceToDatiContratto(
         DatiDocumentiCorrelati $datiContratto
     ): static {
-        if (!is_array($this->datiContratto)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiContratto)) {
             $this->datiContratto = [];
         }
 
@@ -407,7 +408,7 @@ final class DatiGenerali
      */
     public function addOnceToDatiContrattoWithCreate(): DatiDocumentiCorrelati
     {
-        if (!is_array($this->datiContratto)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiContratto)) {
             $this->datiContratto = [];
         }
 
@@ -475,7 +476,7 @@ final class DatiGenerali
     public function addToDatiConvenzione(
         DatiDocumentiCorrelati $datiConvenzione
     ): static {
-        if (!is_array($this->datiConvenzione)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiConvenzione)) {
             $this->datiConvenzione = [];
         }
 
@@ -505,7 +506,7 @@ final class DatiGenerali
     public function addOnceToDatiConvenzione(
         DatiDocumentiCorrelati $datiConvenzione
     ): static {
-        if (!is_array($this->datiConvenzione)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiConvenzione)) {
             $this->datiConvenzione = [];
         }
 
@@ -521,7 +522,7 @@ final class DatiGenerali
      */
     public function addOnceToDatiConvenzioneWithCreate(): DatiDocumentiCorrelati
     {
-        if (!is_array($this->datiConvenzione)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiConvenzione)) {
             $this->datiConvenzione = [];
         }
 
@@ -589,7 +590,7 @@ final class DatiGenerali
     public function addToDatiRicezione(
         DatiDocumentiCorrelati $datiRicezione
     ): static {
-        if (!is_array($this->datiRicezione)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiRicezione)) {
             $this->datiRicezione = [];
         }
 
@@ -619,7 +620,7 @@ final class DatiGenerali
     public function addOnceToDatiRicezione(
         DatiDocumentiCorrelati $datiRicezione
     ): static {
-        if (!is_array($this->datiRicezione)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiRicezione)) {
             $this->datiRicezione = [];
         }
 
@@ -635,7 +636,7 @@ final class DatiGenerali
      */
     public function addOnceToDatiRicezioneWithCreate(): DatiDocumentiCorrelati
     {
-        if (!is_array($this->datiRicezione)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiRicezione)) {
             $this->datiRicezione = [];
         }
 
@@ -703,7 +704,7 @@ final class DatiGenerali
     public function addToDatiFattureCollegate(
         DatiDocumentiCorrelati $datiFattureCollegate
     ): static {
-        if (!is_array($this->datiFattureCollegate)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiFattureCollegate)) {
             $this->datiFattureCollegate = [];
         }
 
@@ -733,7 +734,7 @@ final class DatiGenerali
     public function addOnceToDatiFattureCollegate(
         DatiDocumentiCorrelati $datiFattureCollegate
     ): static {
-        if (!is_array($this->datiFattureCollegate)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiFattureCollegate)) {
             $this->datiFattureCollegate = [];
         }
 
@@ -749,7 +750,7 @@ final class DatiGenerali
      */
     public function addOnceToDatiFattureCollegateWithCreate(): DatiDocumentiCorrelati
     {
-        if (!is_array($this->datiFattureCollegate)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiFattureCollegate)) {
             $this->datiFattureCollegate = [];
         }
 
@@ -817,7 +818,7 @@ final class DatiGenerali
     public function addToDatiSAL(
         DatiSAL $datiSAL
     ): static {
-        if (!is_array($this->datiSAL)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiSAL)) {
             $this->datiSAL = [];
         }
 
@@ -847,7 +848,7 @@ final class DatiGenerali
     public function addOnceToDatiSAL(
         DatiSAL $datiSAL
     ): static {
-        if (!is_array($this->datiSAL)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiSAL)) {
             $this->datiSAL = [];
         }
 
@@ -863,7 +864,7 @@ final class DatiGenerali
      */
     public function addOnceToDatiSALWithCreate(): DatiSAL
     {
-        if (!is_array($this->datiSAL)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiSAL)) {
             $this->datiSAL = [];
         }
 
@@ -931,7 +932,7 @@ final class DatiGenerali
     public function addToDatiDDT(
         DatiDDT $datiDDT
     ): static {
-        if (!is_array($this->datiDDT)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiDDT)) {
             $this->datiDDT = [];
         }
 
@@ -961,7 +962,7 @@ final class DatiGenerali
     public function addOnceToDatiDDT(
         DatiDDT $datiDDT
     ): static {
-        if (!is_array($this->datiDDT)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiDDT)) {
             $this->datiDDT = [];
         }
 
@@ -977,7 +978,7 @@ final class DatiGenerali
      */
     public function addOnceToDatiDDTWithCreate(): DatiDDT
     {
-        if (!is_array($this->datiDDT)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiDDT)) {
             $this->datiDDT = [];
         }
 

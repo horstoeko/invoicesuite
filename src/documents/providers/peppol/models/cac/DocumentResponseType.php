@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class DocumentResponseType
@@ -207,7 +208,7 @@ class DocumentResponseType
     public function addOnceToDocumentReference(
         DocumentReference $documentReference
     ): static {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -221,7 +222,7 @@ class DocumentResponseType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -411,7 +412,7 @@ class DocumentResponseType
     public function addOnceToLineResponse(
         LineResponse $lineResponse
     ): static {
-        if (!is_array($this->lineResponse)) {
+        if (!InvoiceSuiteArrayUtils::is($this->lineResponse)) {
             $this->lineResponse = [];
         }
 
@@ -425,7 +426,7 @@ class DocumentResponseType
      */
     public function addOnceToLineResponseWithCreate(): LineResponse
     {
-        if (!is_array($this->lineResponse)) {
+        if (!InvoiceSuiteArrayUtils::is($this->lineResponse)) {
             $this->lineResponse = [];
         }
 

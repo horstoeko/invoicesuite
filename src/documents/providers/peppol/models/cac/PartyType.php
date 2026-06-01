@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\EndpointID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\IndustryClassificationCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LogoReferenceID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\WebsiteURI;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class PartyType
@@ -550,7 +551,7 @@ class PartyType
     public function addOnceToPartyIdentification(
         PartyIdentification $partyIdentification
     ): static {
-        if (!is_array($this->partyIdentification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->partyIdentification)) {
             $this->partyIdentification = [];
         }
 
@@ -564,7 +565,7 @@ class PartyType
      */
     public function addOnceToPartyIdentificationWithCreate(): PartyIdentification
     {
-        if (!is_array($this->partyIdentification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->partyIdentification)) {
             $this->partyIdentification = [];
         }
 
@@ -674,7 +675,7 @@ class PartyType
     public function addOnceToPartyName(
         PartyName $partyName
     ): static {
-        if (!is_array($this->partyName)) {
+        if (!InvoiceSuiteArrayUtils::is($this->partyName)) {
             $this->partyName = [];
         }
 
@@ -688,7 +689,7 @@ class PartyType
      */
     public function addOnceToPartyNameWithCreate(): PartyName
     {
-        if (!is_array($this->partyName)) {
+        if (!InvoiceSuiteArrayUtils::is($this->partyName)) {
             $this->partyName = [];
         }
 
@@ -918,7 +919,7 @@ class PartyType
     public function addOnceToPartyTaxScheme(
         PartyTaxScheme $partyTaxScheme
     ): static {
-        if (!is_array($this->partyTaxScheme)) {
+        if (!InvoiceSuiteArrayUtils::is($this->partyTaxScheme)) {
             $this->partyTaxScheme = [];
         }
 
@@ -932,7 +933,7 @@ class PartyType
      */
     public function addOnceToPartyTaxSchemeWithCreate(): PartyTaxScheme
     {
-        if (!is_array($this->partyTaxScheme)) {
+        if (!InvoiceSuiteArrayUtils::is($this->partyTaxScheme)) {
             $this->partyTaxScheme = [];
         }
 
@@ -1042,7 +1043,7 @@ class PartyType
     public function addOnceToPartyLegalEntity(
         PartyLegalEntity $partyLegalEntity
     ): static {
-        if (!is_array($this->partyLegalEntity)) {
+        if (!InvoiceSuiteArrayUtils::is($this->partyLegalEntity)) {
             $this->partyLegalEntity = [];
         }
 
@@ -1056,7 +1057,7 @@ class PartyType
      */
     public function addOnceToPartyLegalEntityWithCreate(): PartyLegalEntity
     {
-        if (!is_array($this->partyLegalEntity)) {
+        if (!InvoiceSuiteArrayUtils::is($this->partyLegalEntity)) {
             $this->partyLegalEntity = [];
         }
 
@@ -1206,7 +1207,7 @@ class PartyType
     public function addOnceToPerson(
         Person $person
     ): static {
-        if (!is_array($this->person)) {
+        if (!InvoiceSuiteArrayUtils::is($this->person)) {
             $this->person = [];
         }
 
@@ -1220,7 +1221,7 @@ class PartyType
      */
     public function addOnceToPersonWithCreate(): Person
     {
-        if (!is_array($this->person)) {
+        if (!InvoiceSuiteArrayUtils::is($this->person)) {
             $this->person = [];
         }
 
@@ -1370,7 +1371,7 @@ class PartyType
     public function addOnceToServiceProviderParty(
         ServiceProviderParty $serviceProviderParty
     ): static {
-        if (!is_array($this->serviceProviderParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->serviceProviderParty)) {
             $this->serviceProviderParty = [];
         }
 
@@ -1384,7 +1385,7 @@ class PartyType
      */
     public function addOnceToServiceProviderPartyWithCreate(): ServiceProviderParty
     {
-        if (!is_array($this->serviceProviderParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->serviceProviderParty)) {
             $this->serviceProviderParty = [];
         }
 
@@ -1494,7 +1495,7 @@ class PartyType
     public function addOnceToPowerOfAttorney(
         PowerOfAttorney $powerOfAttorney
     ): static {
-        if (!is_array($this->powerOfAttorney)) {
+        if (!InvoiceSuiteArrayUtils::is($this->powerOfAttorney)) {
             $this->powerOfAttorney = [];
         }
 
@@ -1508,7 +1509,7 @@ class PartyType
      */
     public function addOnceToPowerOfAttorneyWithCreate(): PowerOfAttorney
     {
-        if (!is_array($this->powerOfAttorney)) {
+        if (!InvoiceSuiteArrayUtils::is($this->powerOfAttorney)) {
             $this->powerOfAttorney = [];
         }
 

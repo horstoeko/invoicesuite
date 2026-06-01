@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SequenceNumeric;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TransportExecutionPlanReferenceID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TransportationSegmentType
@@ -379,7 +380,7 @@ class TransportationSegmentType
     public function addOnceToShipmentStage(
         ShipmentStage $shipmentStage
     ): static {
-        if (!is_array($this->shipmentStage)) {
+        if (!InvoiceSuiteArrayUtils::is($this->shipmentStage)) {
             $this->shipmentStage = [];
         }
 
@@ -393,7 +394,7 @@ class TransportationSegmentType
      */
     public function addOnceToShipmentStageWithCreate(): ShipmentStage
     {
-        if (!is_array($this->shipmentStage)) {
+        if (!InvoiceSuiteArrayUtils::is($this->shipmentStage)) {
             $this->shipmentStage = [];
         }
 

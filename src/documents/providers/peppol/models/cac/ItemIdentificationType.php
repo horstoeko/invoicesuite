@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\BarcodeSymbologyID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ExtendedID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ItemIdentificationType
@@ -301,7 +302,7 @@ class ItemIdentificationType
     public function addOnceToPhysicalAttribute(
         PhysicalAttribute $physicalAttribute
     ): static {
-        if (!is_array($this->physicalAttribute)) {
+        if (!InvoiceSuiteArrayUtils::is($this->physicalAttribute)) {
             $this->physicalAttribute = [];
         }
 
@@ -315,7 +316,7 @@ class ItemIdentificationType
      */
     public function addOnceToPhysicalAttributeWithCreate(): PhysicalAttribute
     {
-        if (!is_array($this->physicalAttribute)) {
+        if (!InvoiceSuiteArrayUtils::is($this->physicalAttribute)) {
             $this->physicalAttribute = [];
         }
 
@@ -425,7 +426,7 @@ class ItemIdentificationType
     public function addOnceToMeasurementDimension(
         MeasurementDimension $measurementDimension
     ): static {
-        if (!is_array($this->measurementDimension)) {
+        if (!InvoiceSuiteArrayUtils::is($this->measurementDimension)) {
             $this->measurementDimension = [];
         }
 
@@ -439,7 +440,7 @@ class ItemIdentificationType
      */
     public function addOnceToMeasurementDimensionWithCreate(): MeasurementDimension
     {
-        if (!is_array($this->measurementDimension)) {
+        if (!InvoiceSuiteArrayUtils::is($this->measurementDimension)) {
             $this->measurementDimension = [];
         }
 

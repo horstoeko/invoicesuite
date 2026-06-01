@@ -79,7 +79,7 @@ class InvoiceSuiteContentTypeResolver
         try {
             $jsonDecoded = json_decode($fromContent, false, 512, JSON_THROW_ON_ERROR);
 
-            return is_object($jsonDecoded) || is_array($jsonDecoded);
+            return is_object($jsonDecoded) || InvoiceSuiteArrayUtils::is($jsonDecoded);
         } catch (Throwable) {
             return false;
         }

@@ -6,6 +6,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class CataloguePricingUpdateLineType
@@ -276,7 +277,7 @@ class CataloguePricingUpdateLineType
     public function addOnceToRequiredItemLocationQuantity(
         RequiredItemLocationQuantity $requiredItemLocationQuantity,
     ): static {
-        if (!is_array($this->requiredItemLocationQuantity)) {
+        if (!InvoiceSuiteArrayUtils::is($this->requiredItemLocationQuantity)) {
             $this->requiredItemLocationQuantity = [];
         }
 
@@ -290,7 +291,7 @@ class CataloguePricingUpdateLineType
      */
     public function addOnceToRequiredItemLocationQuantityWithCreate(): RequiredItemLocationQuantity
     {
-        if (!is_array($this->requiredItemLocationQuantity)) {
+        if (!InvoiceSuiteArrayUtils::is($this->requiredItemLocationQuantity)) {
             $this->requiredItemLocationQuantity = [];
         }
 

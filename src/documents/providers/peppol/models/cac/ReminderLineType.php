@@ -15,6 +15,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Note;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PaymentPurposeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PenaltySurchargePercent;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UUID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ReminderLineType
@@ -317,7 +318,7 @@ class ReminderLineType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -331,7 +332,7 @@ class ReminderLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -791,7 +792,7 @@ class ReminderLineType
     public function addOnceToReminderPeriod(
         ReminderPeriod $reminderPeriod
     ): static {
-        if (!is_array($this->reminderPeriod)) {
+        if (!InvoiceSuiteArrayUtils::is($this->reminderPeriod)) {
             $this->reminderPeriod = [];
         }
 
@@ -805,7 +806,7 @@ class ReminderLineType
      */
     public function addOnceToReminderPeriodWithCreate(): ReminderPeriod
     {
-        if (!is_array($this->reminderPeriod)) {
+        if (!InvoiceSuiteArrayUtils::is($this->reminderPeriod)) {
             $this->reminderPeriod = [];
         }
 
@@ -915,7 +916,7 @@ class ReminderLineType
     public function addOnceToBillingReference(
         BillingReference $billingReference
     ): static {
-        if (!is_array($this->billingReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->billingReference)) {
             $this->billingReference = [];
         }
 
@@ -929,7 +930,7 @@ class ReminderLineType
      */
     public function addOnceToBillingReferenceWithCreate(): BillingReference
     {
-        if (!is_array($this->billingReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->billingReference)) {
             $this->billingReference = [];
         }
 

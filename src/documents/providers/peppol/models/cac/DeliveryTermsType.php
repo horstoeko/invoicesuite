@@ -10,6 +10,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LossRisk;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LossRiskResponsibilityCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SpecialTerms;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class DeliveryTermsType
@@ -234,7 +235,7 @@ class DeliveryTermsType
     public function addOnceToSpecialTerms(
         SpecialTerms $specialTerms
     ): static {
-        if (!is_array($this->specialTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specialTerms)) {
             $this->specialTerms = [];
         }
 
@@ -248,7 +249,7 @@ class DeliveryTermsType
      */
     public function addOnceToSpecialTermsWithCreate(): SpecialTerms
     {
-        if (!is_array($this->specialTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specialTerms)) {
             $this->specialTerms = [];
         }
 
@@ -398,7 +399,7 @@ class DeliveryTermsType
     public function addOnceToLossRisk(
         LossRisk $lossRisk
     ): static {
-        if (!is_array($this->lossRisk)) {
+        if (!InvoiceSuiteArrayUtils::is($this->lossRisk)) {
             $this->lossRisk = [];
         }
 
@@ -412,7 +413,7 @@ class DeliveryTermsType
      */
     public function addOnceToLossRiskWithCreate(): LossRisk
     {
-        if (!is_array($this->lossRisk)) {
+        if (!InvoiceSuiteArrayUtils::is($this->lossRisk)) {
             $this->lossRisk = [];
         }
 

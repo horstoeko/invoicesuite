@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\LineStatusCodeType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\CodeType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class DocumentLineDocumentType
@@ -299,7 +300,7 @@ class DocumentLineDocumentType
     public function addOnceToIncludedNote(
         NoteType $includedNote
     ): static {
-        if (!is_array($this->includedNote)) {
+        if (!InvoiceSuiteArrayUtils::is($this->includedNote)) {
             $this->includedNote = [];
         }
 
@@ -313,7 +314,7 @@ class DocumentLineDocumentType
      */
     public function addOnceToIncludedNoteWithCreate(): NoteType
     {
-        if (!is_array($this->includedNote)) {
+        if (!InvoiceSuiteArrayUtils::is($this->includedNote)) {
             $this->includedNote = [];
         }
 

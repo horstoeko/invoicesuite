@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Instructions;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ReleaseID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class DespatchType
@@ -645,7 +646,7 @@ class DespatchType
     public function addOnceToInstructions(
         Instructions $instructions
     ): static {
-        if (!is_array($this->instructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->instructions)) {
             $this->instructions = [];
         }
 
@@ -659,7 +660,7 @@ class DespatchType
      */
     public function addOnceToInstructionsWithCreate(): Instructions
     {
-        if (!is_array($this->instructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->instructions)) {
             $this->instructions = [];
         }
 
@@ -929,7 +930,7 @@ class DespatchType
     public function addOnceToNotifyParty(
         NotifyParty $notifyParty
     ): static {
-        if (!is_array($this->notifyParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->notifyParty)) {
             $this->notifyParty = [];
         }
 
@@ -943,7 +944,7 @@ class DespatchType
      */
     public function addOnceToNotifyPartyWithCreate(): NotifyParty
     {
-        if (!is_array($this->notifyParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->notifyParty)) {
             $this->notifyParty = [];
         }
 

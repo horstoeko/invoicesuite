@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AdditionalAccountID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CustomerAssignedAccountID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SupplierAssignedAccountID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class CustomerPartyType
@@ -271,7 +272,7 @@ class CustomerPartyType
     public function addOnceToAdditionalAccountID(
         AdditionalAccountID $additionalAccountID
     ): static {
-        if (!is_array($this->additionalAccountID)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalAccountID)) {
             $this->additionalAccountID = [];
         }
 
@@ -285,7 +286,7 @@ class CustomerPartyType
      */
     public function addOnceToAdditionalAccountIDWithCreate(): AdditionalAccountID
     {
-        if (!is_array($this->additionalAccountID)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalAccountID)) {
             $this->additionalAccountID = [];
         }
 

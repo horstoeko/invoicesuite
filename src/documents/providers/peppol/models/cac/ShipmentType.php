@@ -25,6 +25,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ShippingPriorit
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SpecialInstructions;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalGoodsItemQuantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalTransportHandlingUnitQuantity;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ShipmentType
@@ -611,7 +612,7 @@ class ShipmentType
     public function addOnceToHandlingInstructions(
         HandlingInstructions $handlingInstructions
     ): static {
-        if (!is_array($this->handlingInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->handlingInstructions)) {
             $this->handlingInstructions = [];
         }
 
@@ -625,7 +626,7 @@ class ShipmentType
      */
     public function addOnceToHandlingInstructionsWithCreate(): HandlingInstructions
     {
-        if (!is_array($this->handlingInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->handlingInstructions)) {
             $this->handlingInstructions = [];
         }
 
@@ -735,7 +736,7 @@ class ShipmentType
     public function addOnceToInformation(
         Information $information
     ): static {
-        if (!is_array($this->information)) {
+        if (!InvoiceSuiteArrayUtils::is($this->information)) {
             $this->information = [];
         }
 
@@ -749,7 +750,7 @@ class ShipmentType
      */
     public function addOnceToInformationWithCreate(): Information
     {
-        if (!is_array($this->information)) {
+        if (!InvoiceSuiteArrayUtils::is($this->information)) {
             $this->information = [];
         }
 
@@ -1339,7 +1340,7 @@ class ShipmentType
     public function addOnceToSpecialInstructions(
         SpecialInstructions $specialInstructions
     ): static {
-        if (!is_array($this->specialInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specialInstructions)) {
             $this->specialInstructions = [];
         }
 
@@ -1353,7 +1354,7 @@ class ShipmentType
      */
     public function addOnceToSpecialInstructionsWithCreate(): SpecialInstructions
     {
-        if (!is_array($this->specialInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->specialInstructions)) {
             $this->specialInstructions = [];
         }
 
@@ -1463,7 +1464,7 @@ class ShipmentType
     public function addOnceToDeliveryInstructions(
         DeliveryInstructions $deliveryInstructions
     ): static {
-        if (!is_array($this->deliveryInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->deliveryInstructions)) {
             $this->deliveryInstructions = [];
         }
 
@@ -1477,7 +1478,7 @@ class ShipmentType
      */
     public function addOnceToDeliveryInstructionsWithCreate(): DeliveryInstructions
     {
-        if (!is_array($this->deliveryInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->deliveryInstructions)) {
             $this->deliveryInstructions = [];
         }
 
@@ -1657,7 +1658,7 @@ class ShipmentType
     public function addOnceToConsignment(
         Consignment $consignment
     ): static {
-        if (!is_array($this->consignment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->consignment)) {
             $this->consignment = [];
         }
 
@@ -1671,7 +1672,7 @@ class ShipmentType
      */
     public function addOnceToConsignmentWithCreate(): Consignment
     {
-        if (!is_array($this->consignment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->consignment)) {
             $this->consignment = [];
         }
 
@@ -1781,7 +1782,7 @@ class ShipmentType
     public function addOnceToGoodsItem(
         GoodsItem $goodsItem
     ): static {
-        if (!is_array($this->goodsItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->goodsItem)) {
             $this->goodsItem = [];
         }
 
@@ -1795,7 +1796,7 @@ class ShipmentType
      */
     public function addOnceToGoodsItemWithCreate(): GoodsItem
     {
-        if (!is_array($this->goodsItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->goodsItem)) {
             $this->goodsItem = [];
         }
 
@@ -1905,7 +1906,7 @@ class ShipmentType
     public function addOnceToShipmentStage(
         ShipmentStage $shipmentStage
     ): static {
-        if (!is_array($this->shipmentStage)) {
+        if (!InvoiceSuiteArrayUtils::is($this->shipmentStage)) {
             $this->shipmentStage = [];
         }
 
@@ -1919,7 +1920,7 @@ class ShipmentType
      */
     public function addOnceToShipmentStageWithCreate(): ShipmentStage
     {
-        if (!is_array($this->shipmentStage)) {
+        if (!InvoiceSuiteArrayUtils::is($this->shipmentStage)) {
             $this->shipmentStage = [];
         }
 
@@ -2069,7 +2070,7 @@ class ShipmentType
     public function addOnceToTransportHandlingUnit(
         TransportHandlingUnit $transportHandlingUnit
     ): static {
-        if (!is_array($this->transportHandlingUnit)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportHandlingUnit)) {
             $this->transportHandlingUnit = [];
         }
 
@@ -2083,7 +2084,7 @@ class ShipmentType
      */
     public function addOnceToTransportHandlingUnitWithCreate(): TransportHandlingUnit
     {
-        if (!is_array($this->transportHandlingUnit)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportHandlingUnit)) {
             $this->transportHandlingUnit = [];
         }
 
@@ -2393,7 +2394,7 @@ class ShipmentType
     public function addOnceToFreightAllowanceCharge(
         FreightAllowanceCharge $freightAllowanceCharge
     ): static {
-        if (!is_array($this->freightAllowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->freightAllowanceCharge)) {
             $this->freightAllowanceCharge = [];
         }
 
@@ -2407,7 +2408,7 @@ class ShipmentType
      */
     public function addOnceToFreightAllowanceChargeWithCreate(): FreightAllowanceCharge
     {
-        if (!is_array($this->freightAllowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->freightAllowanceCharge)) {
             $this->freightAllowanceCharge = [];
         }
 

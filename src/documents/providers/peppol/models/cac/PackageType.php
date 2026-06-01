@@ -11,6 +11,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PackagingTypeCo
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PackingMaterial;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Quantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TraceID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class PackageType
@@ -476,7 +477,7 @@ class PackageType
     public function addOnceToPackingMaterial(
         PackingMaterial $packingMaterial
     ): static {
-        if (!is_array($this->packingMaterial)) {
+        if (!InvoiceSuiteArrayUtils::is($this->packingMaterial)) {
             $this->packingMaterial = [];
         }
 
@@ -490,7 +491,7 @@ class PackageType
      */
     public function addOnceToPackingMaterialWithCreate(): PackingMaterial
     {
-        if (!is_array($this->packingMaterial)) {
+        if (!InvoiceSuiteArrayUtils::is($this->packingMaterial)) {
             $this->packingMaterial = [];
         }
 
@@ -640,7 +641,7 @@ class PackageType
     public function addOnceToContainedPackage(
         ContainedPackage $containedPackage
     ): static {
-        if (!is_array($this->containedPackage)) {
+        if (!InvoiceSuiteArrayUtils::is($this->containedPackage)) {
             $this->containedPackage = [];
         }
 
@@ -654,7 +655,7 @@ class PackageType
      */
     public function addOnceToContainedPackageWithCreate(): ContainedPackage
     {
-        if (!is_array($this->containedPackage)) {
+        if (!InvoiceSuiteArrayUtils::is($this->containedPackage)) {
             $this->containedPackage = [];
         }
 
@@ -804,7 +805,7 @@ class PackageType
     public function addOnceToGoodsItem(
         GoodsItem $goodsItem
     ): static {
-        if (!is_array($this->goodsItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->goodsItem)) {
             $this->goodsItem = [];
         }
 
@@ -818,7 +819,7 @@ class PackageType
      */
     public function addOnceToGoodsItemWithCreate(): GoodsItem
     {
-        if (!is_array($this->goodsItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->goodsItem)) {
             $this->goodsItem = [];
         }
 
@@ -928,7 +929,7 @@ class PackageType
     public function addOnceToMeasurementDimension(
         MeasurementDimension $measurementDimension
     ): static {
-        if (!is_array($this->measurementDimension)) {
+        if (!InvoiceSuiteArrayUtils::is($this->measurementDimension)) {
             $this->measurementDimension = [];
         }
 
@@ -942,7 +943,7 @@ class PackageType
      */
     public function addOnceToMeasurementDimensionWithCreate(): MeasurementDimension
     {
-        if (!is_array($this->measurementDimension)) {
+        if (!InvoiceSuiteArrayUtils::is($this->measurementDimension)) {
             $this->measurementDimension = [];
         }
 
@@ -1052,7 +1053,7 @@ class PackageType
     public function addOnceToDeliveryUnit(
         DeliveryUnit $deliveryUnit
     ): static {
-        if (!is_array($this->deliveryUnit)) {
+        if (!InvoiceSuiteArrayUtils::is($this->deliveryUnit)) {
             $this->deliveryUnit = [];
         }
 
@@ -1066,7 +1067,7 @@ class PackageType
      */
     public function addOnceToDeliveryUnitWithCreate(): DeliveryUnit
     {
-        if (!is_array($this->deliveryUnit)) {
+        if (!InvoiceSuiteArrayUtils::is($this->deliveryUnit)) {
             $this->deliveryUnit = [];
         }
 

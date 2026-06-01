@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 /**
@@ -307,7 +308,7 @@ class SignatureType
     public function addOnceToObject(
         ObjectType $object
     ): static {
-        if (!is_array($this->object)) {
+        if (!InvoiceSuiteArrayUtils::is($this->object)) {
             $this->object = [];
         }
 
@@ -323,7 +324,7 @@ class SignatureType
      */
     public function addOnceToObjectWithCreate(): ObjectType
     {
-        if (!is_array($this->object)) {
+        if (!InvoiceSuiteArrayUtils::is($this->object)) {
             $this->object = [];
         }
 

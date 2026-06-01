@@ -13,6 +13,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\InformationURI;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LocationTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Name;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class LocationType
@@ -295,7 +296,7 @@ class LocationType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -309,7 +310,7 @@ class LocationType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -419,7 +420,7 @@ class LocationType
     public function addOnceToConditions(
         Conditions $conditions
     ): static {
-        if (!is_array($this->conditions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->conditions)) {
             $this->conditions = [];
         }
 
@@ -433,7 +434,7 @@ class LocationType
      */
     public function addOnceToConditionsWithCreate(): Conditions
     {
-        if (!is_array($this->conditions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->conditions)) {
             $this->conditions = [];
         }
 
@@ -743,7 +744,7 @@ class LocationType
     public function addOnceToValidityPeriod(
         ValidityPeriod $validityPeriod
     ): static {
-        if (!is_array($this->validityPeriod)) {
+        if (!InvoiceSuiteArrayUtils::is($this->validityPeriod)) {
             $this->validityPeriod = [];
         }
 
@@ -757,7 +758,7 @@ class LocationType
      */
     public function addOnceToValidityPeriodWithCreate(): ValidityPeriod
     {
-        if (!is_array($this->validityPeriod)) {
+        if (!InvoiceSuiteArrayUtils::is($this->validityPeriod)) {
             $this->validityPeriod = [];
         }
 
@@ -907,7 +908,7 @@ class LocationType
     public function addOnceToSubsidiaryLocation(
         SubsidiaryLocation $subsidiaryLocation
     ): static {
-        if (!is_array($this->subsidiaryLocation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->subsidiaryLocation)) {
             $this->subsidiaryLocation = [];
         }
 
@@ -921,7 +922,7 @@ class LocationType
      */
     public function addOnceToSubsidiaryLocationWithCreate(): SubsidiaryLocation
     {
-        if (!is_array($this->subsidiaryLocation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->subsidiaryLocation)) {
             $this->subsidiaryLocation = [];
         }
 
@@ -1031,7 +1032,7 @@ class LocationType
     public function addOnceToLocationCoordinate(
         LocationCoordinate $locationCoordinate
     ): static {
-        if (!is_array($this->locationCoordinate)) {
+        if (!InvoiceSuiteArrayUtils::is($this->locationCoordinate)) {
             $this->locationCoordinate = [];
         }
 
@@ -1045,7 +1046,7 @@ class LocationType
      */
     public function addOnceToLocationCoordinateWithCreate(): LocationCoordinate
     {
-        if (!is_array($this->locationCoordinate)) {
+        if (!InvoiceSuiteArrayUtils::is($this->locationCoordinate)) {
             $this->locationCoordinate = [];
         }
 

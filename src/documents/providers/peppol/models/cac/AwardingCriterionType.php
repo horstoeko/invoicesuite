@@ -17,6 +17,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MinimumImprovem
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MinimumQuantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Weight;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\WeightNumeric;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class AwardingCriterionType
@@ -350,7 +351,7 @@ class AwardingCriterionType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -364,7 +365,7 @@ class AwardingCriterionType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -514,7 +515,7 @@ class AwardingCriterionType
     public function addOnceToWeight(
         Weight $weight
     ): static {
-        if (!is_array($this->weight)) {
+        if (!InvoiceSuiteArrayUtils::is($this->weight)) {
             $this->weight = [];
         }
 
@@ -528,7 +529,7 @@ class AwardingCriterionType
      */
     public function addOnceToWeightWithCreate(): Weight
     {
-        if (!is_array($this->weight)) {
+        if (!InvoiceSuiteArrayUtils::is($this->weight)) {
             $this->weight = [];
         }
 
@@ -638,7 +639,7 @@ class AwardingCriterionType
     public function addOnceToCalculationExpression(
         CalculationExpression $calculationExpression
     ): static {
-        if (!is_array($this->calculationExpression)) {
+        if (!InvoiceSuiteArrayUtils::is($this->calculationExpression)) {
             $this->calculationExpression = [];
         }
 
@@ -652,7 +653,7 @@ class AwardingCriterionType
      */
     public function addOnceToCalculationExpressionWithCreate(): CalculationExpression
     {
-        if (!is_array($this->calculationExpression)) {
+        if (!InvoiceSuiteArrayUtils::is($this->calculationExpression)) {
             $this->calculationExpression = [];
         }
 
@@ -962,7 +963,7 @@ class AwardingCriterionType
     public function addOnceToMinimumImprovementBid(
         MinimumImprovementBid $minimumImprovementBid
     ): static {
-        if (!is_array($this->minimumImprovementBid)) {
+        if (!InvoiceSuiteArrayUtils::is($this->minimumImprovementBid)) {
             $this->minimumImprovementBid = [];
         }
 
@@ -976,7 +977,7 @@ class AwardingCriterionType
      */
     public function addOnceToMinimumImprovementBidWithCreate(): MinimumImprovementBid
     {
-        if (!is_array($this->minimumImprovementBid)) {
+        if (!InvoiceSuiteArrayUtils::is($this->minimumImprovementBid)) {
             $this->minimumImprovementBid = [];
         }
 
@@ -1086,7 +1087,7 @@ class AwardingCriterionType
     public function addOnceToSubordinateAwardingCriterion(
         SubordinateAwardingCriterion $subordinateAwardingCriterion,
     ): static {
-        if (!is_array($this->subordinateAwardingCriterion)) {
+        if (!InvoiceSuiteArrayUtils::is($this->subordinateAwardingCriterion)) {
             $this->subordinateAwardingCriterion = [];
         }
 
@@ -1100,7 +1101,7 @@ class AwardingCriterionType
      */
     public function addOnceToSubordinateAwardingCriterionWithCreate(): SubordinateAwardingCriterion
     {
-        if (!is_array($this->subordinateAwardingCriterion)) {
+        if (!InvoiceSuiteArrayUtils::is($this->subordinateAwardingCriterion)) {
             $this->subordinateAwardingCriterion = [];
         }
 

@@ -10,6 +10,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ExemptionReason
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ExemptionReasonCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RegistrationName;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TaxLevelCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class PartyTaxSchemeType
@@ -353,7 +354,7 @@ class PartyTaxSchemeType
     public function addOnceToExemptionReason(
         ExemptionReason $exemptionReason
     ): static {
-        if (!is_array($this->exemptionReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->exemptionReason)) {
             $this->exemptionReason = [];
         }
 
@@ -367,7 +368,7 @@ class PartyTaxSchemeType
      */
     public function addOnceToExemptionReasonWithCreate(): ExemptionReason
     {
-        if (!is_array($this->exemptionReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->exemptionReason)) {
             $this->exemptionReason = [];
         }
 

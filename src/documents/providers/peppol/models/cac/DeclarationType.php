@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\DeclarationTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Name;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class DeclarationType
@@ -160,7 +161,7 @@ class DeclarationType
     public function addOnceToName(
         Name $name
     ): static {
-        if (!is_array($this->name)) {
+        if (!InvoiceSuiteArrayUtils::is($this->name)) {
             $this->name = [];
         }
 
@@ -174,7 +175,7 @@ class DeclarationType
      */
     public function addOnceToNameWithCreate(): Name
     {
-        if (!is_array($this->name)) {
+        if (!InvoiceSuiteArrayUtils::is($this->name)) {
             $this->name = [];
         }
 
@@ -324,7 +325,7 @@ class DeclarationType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -338,7 +339,7 @@ class DeclarationType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -448,7 +449,7 @@ class DeclarationType
     public function addOnceToEvidenceSupplied(
         EvidenceSupplied $evidenceSupplied
     ): static {
-        if (!is_array($this->evidenceSupplied)) {
+        if (!InvoiceSuiteArrayUtils::is($this->evidenceSupplied)) {
             $this->evidenceSupplied = [];
         }
 
@@ -462,7 +463,7 @@ class DeclarationType
      */
     public function addOnceToEvidenceSuppliedWithCreate(): EvidenceSupplied
     {
-        if (!is_array($this->evidenceSupplied)) {
+        if (!InvoiceSuiteArrayUtils::is($this->evidenceSupplied)) {
             $this->evidenceSupplied = [];
         }
 

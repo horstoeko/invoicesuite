@@ -12,6 +12,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OperatingYearsQ
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ParticipationPercent;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PersonalSituation;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TendererRoleCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class QualifyingPartyType
@@ -316,7 +317,7 @@ class QualifyingPartyType
     public function addOnceToPersonalSituation(
         PersonalSituation $personalSituation
     ): static {
-        if (!is_array($this->personalSituation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->personalSituation)) {
             $this->personalSituation = [];
         }
 
@@ -330,7 +331,7 @@ class QualifyingPartyType
      */
     public function addOnceToPersonalSituationWithCreate(): PersonalSituation
     {
-        if (!is_array($this->personalSituation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->personalSituation)) {
             $this->personalSituation = [];
         }
 
@@ -680,7 +681,7 @@ class QualifyingPartyType
     public function addOnceToTechnicalCapability(
         TechnicalCapability $technicalCapability
     ): static {
-        if (!is_array($this->technicalCapability)) {
+        if (!InvoiceSuiteArrayUtils::is($this->technicalCapability)) {
             $this->technicalCapability = [];
         }
 
@@ -694,7 +695,7 @@ class QualifyingPartyType
      */
     public function addOnceToTechnicalCapabilityWithCreate(): TechnicalCapability
     {
-        if (!is_array($this->technicalCapability)) {
+        if (!InvoiceSuiteArrayUtils::is($this->technicalCapability)) {
             $this->technicalCapability = [];
         }
 
@@ -804,7 +805,7 @@ class QualifyingPartyType
     public function addOnceToFinancialCapability(
         FinancialCapability $financialCapability
     ): static {
-        if (!is_array($this->financialCapability)) {
+        if (!InvoiceSuiteArrayUtils::is($this->financialCapability)) {
             $this->financialCapability = [];
         }
 
@@ -818,7 +819,7 @@ class QualifyingPartyType
      */
     public function addOnceToFinancialCapabilityWithCreate(): FinancialCapability
     {
-        if (!is_array($this->financialCapability)) {
+        if (!InvoiceSuiteArrayUtils::is($this->financialCapability)) {
             $this->financialCapability = [];
         }
 
@@ -928,7 +929,7 @@ class QualifyingPartyType
     public function addOnceToCompletedTask(
         CompletedTask $completedTask
     ): static {
-        if (!is_array($this->completedTask)) {
+        if (!InvoiceSuiteArrayUtils::is($this->completedTask)) {
             $this->completedTask = [];
         }
 
@@ -942,7 +943,7 @@ class QualifyingPartyType
      */
     public function addOnceToCompletedTaskWithCreate(): CompletedTask
     {
-        if (!is_array($this->completedTask)) {
+        if (!InvoiceSuiteArrayUtils::is($this->completedTask)) {
             $this->completedTask = [];
         }
 
@@ -1052,7 +1053,7 @@ class QualifyingPartyType
     public function addOnceToDeclaration(
         Declaration $declaration
     ): static {
-        if (!is_array($this->declaration)) {
+        if (!InvoiceSuiteArrayUtils::is($this->declaration)) {
             $this->declaration = [];
         }
 
@@ -1066,7 +1067,7 @@ class QualifyingPartyType
      */
     public function addOnceToDeclarationWithCreate(): Declaration
     {
-        if (!is_array($this->declaration)) {
+        if (!InvoiceSuiteArrayUtils::is($this->declaration)) {
             $this->declaration = [];
         }
 

@@ -14,6 +14,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TariffClassCode
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TransportationServiceDescription;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TransportationServiceDetailsURI;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TransportServiceCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TransportationServiceType
@@ -543,7 +544,7 @@ class TransportationServiceType
     public function addOnceToTransportationServiceDescription(
         TransportationServiceDescription $transportationServiceDescription,
     ): static {
-        if (!is_array($this->transportationServiceDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportationServiceDescription)) {
             $this->transportationServiceDescription = [];
         }
 
@@ -557,7 +558,7 @@ class TransportationServiceType
      */
     public function addOnceToTransportationServiceDescriptionWithCreate(): TransportationServiceDescription
     {
-        if (!is_array($this->transportationServiceDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportationServiceDescription)) {
             $this->transportationServiceDescription = [];
         }
 
@@ -847,7 +848,7 @@ class TransportationServiceType
     public function addOnceToTransportEquipment(
         TransportEquipment $transportEquipment
     ): static {
-        if (!is_array($this->transportEquipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportEquipment)) {
             $this->transportEquipment = [];
         }
 
@@ -861,7 +862,7 @@ class TransportationServiceType
      */
     public function addOnceToTransportEquipmentWithCreate(): TransportEquipment
     {
-        if (!is_array($this->transportEquipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportEquipment)) {
             $this->transportEquipment = [];
         }
 
@@ -971,7 +972,7 @@ class TransportationServiceType
     public function addOnceToSupportedTransportEquipment(
         SupportedTransportEquipment $supportedTransportEquipment,
     ): static {
-        if (!is_array($this->supportedTransportEquipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->supportedTransportEquipment)) {
             $this->supportedTransportEquipment = [];
         }
 
@@ -985,7 +986,7 @@ class TransportationServiceType
      */
     public function addOnceToSupportedTransportEquipmentWithCreate(): SupportedTransportEquipment
     {
-        if (!is_array($this->supportedTransportEquipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->supportedTransportEquipment)) {
             $this->supportedTransportEquipment = [];
         }
 
@@ -1095,7 +1096,7 @@ class TransportationServiceType
     public function addOnceToUnsupportedTransportEquipment(
         UnsupportedTransportEquipment $unsupportedTransportEquipment,
     ): static {
-        if (!is_array($this->unsupportedTransportEquipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->unsupportedTransportEquipment)) {
             $this->unsupportedTransportEquipment = [];
         }
 
@@ -1109,7 +1110,7 @@ class TransportationServiceType
      */
     public function addOnceToUnsupportedTransportEquipmentWithCreate(): UnsupportedTransportEquipment
     {
-        if (!is_array($this->unsupportedTransportEquipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->unsupportedTransportEquipment)) {
             $this->unsupportedTransportEquipment = [];
         }
 
@@ -1219,7 +1220,7 @@ class TransportationServiceType
     public function addOnceToCommodityClassification(
         CommodityClassification $commodityClassification
     ): static {
-        if (!is_array($this->commodityClassification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->commodityClassification)) {
             $this->commodityClassification = [];
         }
 
@@ -1233,7 +1234,7 @@ class TransportationServiceType
      */
     public function addOnceToCommodityClassificationWithCreate(): CommodityClassification
     {
-        if (!is_array($this->commodityClassification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->commodityClassification)) {
             $this->commodityClassification = [];
         }
 
@@ -1343,7 +1344,7 @@ class TransportationServiceType
     public function addOnceToSupportedCommodityClassification(
         SupportedCommodityClassification $supportedCommodityClassification,
     ): static {
-        if (!is_array($this->supportedCommodityClassification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->supportedCommodityClassification)) {
             $this->supportedCommodityClassification = [];
         }
 
@@ -1357,7 +1358,7 @@ class TransportationServiceType
      */
     public function addOnceToSupportedCommodityClassificationWithCreate(): SupportedCommodityClassification
     {
-        if (!is_array($this->supportedCommodityClassification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->supportedCommodityClassification)) {
             $this->supportedCommodityClassification = [];
         }
 
@@ -1467,7 +1468,7 @@ class TransportationServiceType
     public function addOnceToUnsupportedCommodityClassification(
         UnsupportedCommodityClassification $unsupportedCommodityClassification,
     ): static {
-        if (!is_array($this->unsupportedCommodityClassification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->unsupportedCommodityClassification)) {
             $this->unsupportedCommodityClassification = [];
         }
 
@@ -1481,7 +1482,7 @@ class TransportationServiceType
      */
     public function addOnceToUnsupportedCommodityClassificationWithCreate(): UnsupportedCommodityClassification
     {
-        if (!is_array($this->unsupportedCommodityClassification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->unsupportedCommodityClassification)) {
             $this->unsupportedCommodityClassification = [];
         }
 
@@ -1631,7 +1632,7 @@ class TransportationServiceType
     public function addOnceToShipmentStage(
         ShipmentStage $shipmentStage
     ): static {
-        if (!is_array($this->shipmentStage)) {
+        if (!InvoiceSuiteArrayUtils::is($this->shipmentStage)) {
             $this->shipmentStage = [];
         }
 
@@ -1645,7 +1646,7 @@ class TransportationServiceType
      */
     public function addOnceToShipmentStageWithCreate(): ShipmentStage
     {
-        if (!is_array($this->shipmentStage)) {
+        if (!InvoiceSuiteArrayUtils::is($this->shipmentStage)) {
             $this->shipmentStage = [];
         }
 
@@ -1755,7 +1756,7 @@ class TransportationServiceType
     public function addOnceToTransportEvent(
         TransportEvent $transportEvent
     ): static {
-        if (!is_array($this->transportEvent)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportEvent)) {
             $this->transportEvent = [];
         }
 
@@ -1769,7 +1770,7 @@ class TransportationServiceType
      */
     public function addOnceToTransportEventWithCreate(): TransportEvent
     {
-        if (!is_array($this->transportEvent)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportEvent)) {
             $this->transportEvent = [];
         }
 
@@ -1919,7 +1920,7 @@ class TransportationServiceType
     public function addOnceToEnvironmentalEmission(
         EnvironmentalEmission $environmentalEmission
     ): static {
-        if (!is_array($this->environmentalEmission)) {
+        if (!InvoiceSuiteArrayUtils::is($this->environmentalEmission)) {
             $this->environmentalEmission = [];
         }
 
@@ -1933,7 +1934,7 @@ class TransportationServiceType
      */
     public function addOnceToEnvironmentalEmissionWithCreate(): EnvironmentalEmission
     {
-        if (!is_array($this->environmentalEmission)) {
+        if (!InvoiceSuiteArrayUtils::is($this->environmentalEmission)) {
             $this->environmentalEmission = [];
         }
 
@@ -2083,7 +2084,7 @@ class TransportationServiceType
     public function addOnceToScheduledServiceFrequency(
         ScheduledServiceFrequency $scheduledServiceFrequency
     ): static {
-        if (!is_array($this->scheduledServiceFrequency)) {
+        if (!InvoiceSuiteArrayUtils::is($this->scheduledServiceFrequency)) {
             $this->scheduledServiceFrequency = [];
         }
 
@@ -2097,7 +2098,7 @@ class TransportationServiceType
      */
     public function addOnceToScheduledServiceFrequencyWithCreate(): ScheduledServiceFrequency
     {
-        if (!is_array($this->scheduledServiceFrequency)) {
+        if (!InvoiceSuiteArrayUtils::is($this->scheduledServiceFrequency)) {
             $this->scheduledServiceFrequency = [];
         }
 

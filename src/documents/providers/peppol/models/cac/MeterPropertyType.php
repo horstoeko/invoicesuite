@@ -10,6 +10,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NameCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Value;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ValueQualifier;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ValueQuantity;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class MeterPropertyType
@@ -331,7 +332,7 @@ class MeterPropertyType
     public function addOnceToValueQualifier(
         ValueQualifier $valueQualifier
     ): static {
-        if (!is_array($this->valueQualifier)) {
+        if (!InvoiceSuiteArrayUtils::is($this->valueQualifier)) {
             $this->valueQualifier = [];
         }
 
@@ -345,7 +346,7 @@ class MeterPropertyType
      */
     public function addOnceToValueQualifierWithCreate(): ValueQualifier
     {
-        if (!is_array($this->valueQualifier)) {
+        if (!InvoiceSuiteArrayUtils::is($this->valueQualifier)) {
             $this->valueQualifier = [];
         }
 

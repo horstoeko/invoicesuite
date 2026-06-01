@@ -14,6 +14,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PerformanceMetr
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SupplyChainActivityTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ThresholdQuantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ThresholdValueComparisonCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ExceptionCriteriaLineType
@@ -293,7 +294,7 @@ class ExceptionCriteriaLineType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -307,7 +308,7 @@ class ExceptionCriteriaLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -737,7 +738,7 @@ class ExceptionCriteriaLineType
     public function addOnceToSupplyItem(
         SupplyItem $supplyItem
     ): static {
-        if (!is_array($this->supplyItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->supplyItem)) {
             $this->supplyItem = [];
         }
 
@@ -751,7 +752,7 @@ class ExceptionCriteriaLineType
      */
     public function addOnceToSupplyItemWithCreate(): SupplyItem
     {
-        if (!is_array($this->supplyItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->supplyItem)) {
             $this->supplyItem = [];
         }
 

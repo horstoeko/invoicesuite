@@ -16,6 +16,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ProcurementSubT
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ProcurementTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\QualityControlCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RequiredFeeAmount;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ProcurementProjectType
@@ -366,7 +367,7 @@ class ProcurementProjectType
     public function addOnceToName(
         Name $name
     ): static {
-        if (!is_array($this->name)) {
+        if (!InvoiceSuiteArrayUtils::is($this->name)) {
             $this->name = [];
         }
 
@@ -380,7 +381,7 @@ class ProcurementProjectType
      */
     public function addOnceToNameWithCreate(): Name
     {
-        if (!is_array($this->name)) {
+        if (!InvoiceSuiteArrayUtils::is($this->name)) {
             $this->name = [];
         }
 
@@ -490,7 +491,7 @@ class ProcurementProjectType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -504,7 +505,7 @@ class ProcurementProjectType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -774,7 +775,7 @@ class ProcurementProjectType
     public function addOnceToFeeDescription(
         FeeDescription $feeDescription
     ): static {
-        if (!is_array($this->feeDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->feeDescription)) {
             $this->feeDescription = [];
         }
 
@@ -788,7 +789,7 @@ class ProcurementProjectType
      */
     public function addOnceToFeeDescriptionWithCreate(): FeeDescription
     {
-        if (!is_array($this->feeDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->feeDescription)) {
             $this->feeDescription = [];
         }
 
@@ -968,7 +969,7 @@ class ProcurementProjectType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -982,7 +983,7 @@ class ProcurementProjectType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -1172,7 +1173,7 @@ class ProcurementProjectType
     public function addOnceToAdditionalCommodityClassification(
         AdditionalCommodityClassification $additionalCommodityClassification,
     ): static {
-        if (!is_array($this->additionalCommodityClassification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalCommodityClassification)) {
             $this->additionalCommodityClassification = [];
         }
 
@@ -1186,7 +1187,7 @@ class ProcurementProjectType
      */
     public function addOnceToAdditionalCommodityClassificationWithCreate(): AdditionalCommodityClassification
     {
-        if (!is_array($this->additionalCommodityClassification)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalCommodityClassification)) {
             $this->additionalCommodityClassification = [];
         }
 
@@ -1296,7 +1297,7 @@ class ProcurementProjectType
     public function addOnceToRealizedLocation(
         RealizedLocation $realizedLocation
     ): static {
-        if (!is_array($this->realizedLocation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->realizedLocation)) {
             $this->realizedLocation = [];
         }
 
@@ -1310,7 +1311,7 @@ class ProcurementProjectType
      */
     public function addOnceToRealizedLocationWithCreate(): RealizedLocation
     {
-        if (!is_array($this->realizedLocation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->realizedLocation)) {
             $this->realizedLocation = [];
         }
 
@@ -1500,7 +1501,7 @@ class ProcurementProjectType
     public function addOnceToRequestForTenderLine(
         RequestForTenderLine $requestForTenderLine
     ): static {
-        if (!is_array($this->requestForTenderLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->requestForTenderLine)) {
             $this->requestForTenderLine = [];
         }
 
@@ -1514,7 +1515,7 @@ class ProcurementProjectType
      */
     public function addOnceToRequestForTenderLineWithCreate(): RequestForTenderLine
     {
-        if (!is_array($this->requestForTenderLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->requestForTenderLine)) {
             $this->requestForTenderLine = [];
         }
 

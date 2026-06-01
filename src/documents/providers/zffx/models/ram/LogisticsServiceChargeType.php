@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\zffx\models\ram;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class LogisticsServiceChargeType
@@ -196,7 +197,7 @@ class LogisticsServiceChargeType
     public function addOnceToAppliedTradeTax(
         TradeTaxType $appliedTradeTax
     ): static {
-        if (!is_array($this->appliedTradeTax)) {
+        if (!InvoiceSuiteArrayUtils::is($this->appliedTradeTax)) {
             $this->appliedTradeTax = [];
         }
 
@@ -210,7 +211,7 @@ class LogisticsServiceChargeType
      */
     public function addOnceToAppliedTradeTaxWithCreate(): TradeTaxType
     {
-        if (!is_array($this->appliedTradeTax)) {
+        if (!InvoiceSuiteArrayUtils::is($this->appliedTradeTax)) {
             $this->appliedTradeTax = [];
         }
 

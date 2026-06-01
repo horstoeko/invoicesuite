@@ -22,6 +22,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Quantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TechnicalName;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UNDGCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UpperOrangeHazardPlacardID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class HazardousItemType
@@ -504,7 +505,7 @@ class HazardousItemType
     public function addOnceToAdditionalInformation(
         AdditionalInformation $additionalInformation
     ): static {
-        if (!is_array($this->additionalInformation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalInformation)) {
             $this->additionalInformation = [];
         }
 
@@ -518,7 +519,7 @@ class HazardousItemType
      */
     public function addOnceToAdditionalInformationWithCreate(): AdditionalInformation
     {
-        if (!is_array($this->additionalInformation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalInformation)) {
             $this->additionalInformation = [];
         }
 
@@ -1188,7 +1189,7 @@ class HazardousItemType
     public function addOnceToSecondaryHazard(
         SecondaryHazard $secondaryHazard
     ): static {
-        if (!is_array($this->secondaryHazard)) {
+        if (!InvoiceSuiteArrayUtils::is($this->secondaryHazard)) {
             $this->secondaryHazard = [];
         }
 
@@ -1202,7 +1203,7 @@ class HazardousItemType
      */
     public function addOnceToSecondaryHazardWithCreate(): SecondaryHazard
     {
-        if (!is_array($this->secondaryHazard)) {
+        if (!InvoiceSuiteArrayUtils::is($this->secondaryHazard)) {
             $this->secondaryHazard = [];
         }
 
@@ -1312,7 +1313,7 @@ class HazardousItemType
     public function addOnceToHazardousGoodsTransit(
         HazardousGoodsTransit $hazardousGoodsTransit
     ): static {
-        if (!is_array($this->hazardousGoodsTransit)) {
+        if (!InvoiceSuiteArrayUtils::is($this->hazardousGoodsTransit)) {
             $this->hazardousGoodsTransit = [];
         }
 
@@ -1326,7 +1327,7 @@ class HazardousItemType
      */
     public function addOnceToHazardousGoodsTransitWithCreate(): HazardousGoodsTransit
     {
-        if (!is_array($this->hazardousGoodsTransit)) {
+        if (!InvoiceSuiteArrayUtils::is($this->hazardousGoodsTransit)) {
             $this->hazardousGoodsTransit = [];
         }
 
@@ -1516,7 +1517,7 @@ class HazardousItemType
     public function addOnceToAdditionalTemperature(
         AdditionalTemperature $additionalTemperature
     ): static {
-        if (!is_array($this->additionalTemperature)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalTemperature)) {
             $this->additionalTemperature = [];
         }
 
@@ -1530,7 +1531,7 @@ class HazardousItemType
      */
     public function addOnceToAdditionalTemperatureWithCreate(): AdditionalTemperature
     {
-        if (!is_array($this->additionalTemperature)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalTemperature)) {
             $this->additionalTemperature = [];
         }
 

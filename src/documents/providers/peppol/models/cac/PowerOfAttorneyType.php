@@ -8,6 +8,7 @@ use DateTimeInterface;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class PowerOfAttorneyType
@@ -304,7 +305,7 @@ class PowerOfAttorneyType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -318,7 +319,7 @@ class PowerOfAttorneyType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -508,7 +509,7 @@ class PowerOfAttorneyType
     public function addOnceToWitnessParty(
         WitnessParty $witnessParty
     ): static {
-        if (!is_array($this->witnessParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->witnessParty)) {
             $this->witnessParty = [];
         }
 
@@ -522,7 +523,7 @@ class PowerOfAttorneyType
      */
     public function addOnceToWitnessPartyWithCreate(): WitnessParty
     {
-        if (!is_array($this->witnessParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->witnessParty)) {
             $this->witnessParty = [];
         }
 
@@ -632,7 +633,7 @@ class PowerOfAttorneyType
     public function addOnceToMandateDocumentReference(
         MandateDocumentReference $mandateDocumentReference
     ): static {
-        if (!is_array($this->mandateDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->mandateDocumentReference)) {
             $this->mandateDocumentReference = [];
         }
 
@@ -646,7 +647,7 @@ class PowerOfAttorneyType
      */
     public function addOnceToMandateDocumentReferenceWithCreate(): MandateDocumentReference
     {
-        if (!is_array($this->mandateDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->mandateDocumentReference)) {
             $this->mandateDocumentReference = [];
         }
 

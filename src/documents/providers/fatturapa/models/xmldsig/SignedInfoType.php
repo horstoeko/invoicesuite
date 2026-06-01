@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 /**
@@ -246,7 +247,7 @@ class SignedInfoType
     public function addOnceToReference(
         ReferenceType $reference
     ): static {
-        if (!is_array($this->reference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->reference)) {
             $this->reference = [];
         }
 
@@ -262,7 +263,7 @@ class SignedInfoType
      */
     public function addOnceToReferenceWithCreate(): ReferenceType
     {
-        if (!is_array($this->reference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->reference)) {
             $this->reference = [];
         }
 

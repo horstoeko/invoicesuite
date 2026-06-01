@@ -15,6 +15,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OutstandingQuan
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OutstandingReason;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OversupplyQuantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UUID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class DespatchLineType
@@ -360,7 +361,7 @@ class DespatchLineType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -374,7 +375,7 @@ class DespatchLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -604,7 +605,7 @@ class DespatchLineType
     public function addOnceToBackorderReason(
         BackorderReason $backorderReason
     ): static {
-        if (!is_array($this->backorderReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->backorderReason)) {
             $this->backorderReason = [];
         }
 
@@ -618,7 +619,7 @@ class DespatchLineType
      */
     public function addOnceToBackorderReasonWithCreate(): BackorderReason
     {
-        if (!is_array($this->backorderReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->backorderReason)) {
             $this->backorderReason = [];
         }
 
@@ -768,7 +769,7 @@ class DespatchLineType
     public function addOnceToOutstandingReason(
         OutstandingReason $outstandingReason
     ): static {
-        if (!is_array($this->outstandingReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->outstandingReason)) {
             $this->outstandingReason = [];
         }
 
@@ -782,7 +783,7 @@ class DespatchLineType
      */
     public function addOnceToOutstandingReasonWithCreate(): OutstandingReason
     {
-        if (!is_array($this->outstandingReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->outstandingReason)) {
             $this->outstandingReason = [];
         }
 
@@ -932,7 +933,7 @@ class DespatchLineType
     public function addOnceToOrderLineReference(
         OrderLineReference $orderLineReference
     ): static {
-        if (!is_array($this->orderLineReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->orderLineReference)) {
             $this->orderLineReference = [];
         }
 
@@ -946,7 +947,7 @@ class DespatchLineType
      */
     public function addOnceToOrderLineReferenceWithCreate(): OrderLineReference
     {
-        if (!is_array($this->orderLineReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->orderLineReference)) {
             $this->orderLineReference = [];
         }
 
@@ -1056,7 +1057,7 @@ class DespatchLineType
     public function addOnceToDocumentReference(
         DocumentReference $documentReference
     ): static {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -1070,7 +1071,7 @@ class DespatchLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -1220,7 +1221,7 @@ class DespatchLineType
     public function addOnceToShipment(
         Shipment $shipment
     ): static {
-        if (!is_array($this->shipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->shipment)) {
             $this->shipment = [];
         }
 
@@ -1234,7 +1235,7 @@ class DespatchLineType
      */
     public function addOnceToShipmentWithCreate(): Shipment
     {
-        if (!is_array($this->shipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->shipment)) {
             $this->shipment = [];
         }
 

@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AnnualAverageAm
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PartyCapacityAmount;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalTaskAmount;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class CompletedTaskType
@@ -313,7 +314,7 @@ class CompletedTaskType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -327,7 +328,7 @@ class CompletedTaskType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -437,7 +438,7 @@ class CompletedTaskType
     public function addOnceToEvidenceSupplied(
         EvidenceSupplied $evidenceSupplied
     ): static {
-        if (!is_array($this->evidenceSupplied)) {
+        if (!InvoiceSuiteArrayUtils::is($this->evidenceSupplied)) {
             $this->evidenceSupplied = [];
         }
 
@@ -451,7 +452,7 @@ class CompletedTaskType
      */
     public function addOnceToEvidenceSuppliedWithCreate(): EvidenceSupplied
     {
-        if (!is_array($this->evidenceSupplied)) {
+        if (!InvoiceSuiteArrayUtils::is($this->evidenceSupplied)) {
             $this->evidenceSupplied = [];
         }
 

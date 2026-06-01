@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ForecastTypeCod
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PerformanceMetricTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SupplyChainActivityTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TimeFrequencyCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ItemInformationRequestLineType
@@ -342,7 +343,7 @@ class ItemInformationRequestLineType
     public function addOnceToPeriod(
         Period $period
     ): static {
-        if (!is_array($this->period)) {
+        if (!InvoiceSuiteArrayUtils::is($this->period)) {
             $this->period = [];
         }
 
@@ -356,7 +357,7 @@ class ItemInformationRequestLineType
      */
     public function addOnceToPeriodWithCreate(): Period
     {
-        if (!is_array($this->period)) {
+        if (!InvoiceSuiteArrayUtils::is($this->period)) {
             $this->period = [];
         }
 
@@ -466,7 +467,7 @@ class ItemInformationRequestLineType
     public function addOnceToSalesItem(
         SalesItem $salesItem
     ): static {
-        if (!is_array($this->salesItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->salesItem)) {
             $this->salesItem = [];
         }
 
@@ -480,7 +481,7 @@ class ItemInformationRequestLineType
      */
     public function addOnceToSalesItemWithCreate(): SalesItem
     {
-        if (!is_array($this->salesItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->salesItem)) {
             $this->salesItem = [];
         }
 

@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalAmount;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class BudgetAccountLineType
@@ -226,7 +227,7 @@ class BudgetAccountLineType
     public function addOnceToBudgetAccount(
         BudgetAccount $budgetAccount
     ): static {
-        if (!is_array($this->budgetAccount)) {
+        if (!InvoiceSuiteArrayUtils::is($this->budgetAccount)) {
             $this->budgetAccount = [];
         }
 
@@ -240,7 +241,7 @@ class BudgetAccountLineType
      */
     public function addOnceToBudgetAccountWithCreate(): BudgetAccount
     {
-        if (!is_array($this->budgetAccount)) {
+        if (!InvoiceSuiteArrayUtils::is($this->budgetAccount)) {
             $this->budgetAccount = [];
         }
 

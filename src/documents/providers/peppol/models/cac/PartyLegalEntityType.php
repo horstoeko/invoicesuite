@@ -12,6 +12,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CompanyLegalFor
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CompanyLiquidationStatusCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CorporateStockAmount;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RegistrationName;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class PartyLegalEntityType
@@ -752,7 +753,7 @@ class PartyLegalEntityType
     public function addOnceToShareholderParty(
         ShareholderParty $shareholderParty
     ): static {
-        if (!is_array($this->shareholderParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->shareholderParty)) {
             $this->shareholderParty = [];
         }
 
@@ -766,7 +767,7 @@ class PartyLegalEntityType
      */
     public function addOnceToShareholderPartyWithCreate(): ShareholderParty
     {
-        if (!is_array($this->shareholderParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->shareholderParty)) {
             $this->shareholderParty = [];
         }
 

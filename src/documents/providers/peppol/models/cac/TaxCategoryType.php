@@ -14,6 +14,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TaxExemptionRea
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TaxExemptionReasonCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TierRange;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TierRatePercent;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TaxCategoryType
@@ -470,7 +471,7 @@ class TaxCategoryType
     public function addOnceToTaxExemptionReason(
         TaxExemptionReason $taxExemptionReason
     ): static {
-        if (!is_array($this->taxExemptionReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxExemptionReason)) {
             $this->taxExemptionReason = [];
         }
 
@@ -484,7 +485,7 @@ class TaxCategoryType
      */
     public function addOnceToTaxExemptionReasonWithCreate(): TaxExemptionReason
     {
-        if (!is_array($this->taxExemptionReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxExemptionReason)) {
             $this->taxExemptionReason = [];
         }
 

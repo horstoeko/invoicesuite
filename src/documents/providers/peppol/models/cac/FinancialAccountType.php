@@ -12,6 +12,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CurrencyCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Name;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PaymentNote;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class FinancialAccountType
@@ -457,7 +458,7 @@ class FinancialAccountType
     public function addOnceToPaymentNote(
         PaymentNote $paymentNote
     ): static {
-        if (!is_array($this->paymentNote)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentNote)) {
             $this->paymentNote = [];
         }
 
@@ -471,7 +472,7 @@ class FinancialAccountType
      */
     public function addOnceToPaymentNoteWithCreate(): PaymentNote
     {
-        if (!is_array($this->paymentNote)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentNote)) {
             $this->paymentNote = [];
         }
 

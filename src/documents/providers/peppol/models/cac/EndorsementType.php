@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ApprovalStatus;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\DocumentID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Remarks;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class EndorsementType
@@ -250,7 +251,7 @@ class EndorsementType
     public function addOnceToRemarks(
         Remarks $remarks
     ): static {
-        if (!is_array($this->remarks)) {
+        if (!InvoiceSuiteArrayUtils::is($this->remarks)) {
             $this->remarks = [];
         }
 
@@ -264,7 +265,7 @@ class EndorsementType
      */
     public function addOnceToRemarksWithCreate(): Remarks
     {
-        if (!is_array($this->remarks)) {
+        if (!InvoiceSuiteArrayUtils::is($this->remarks)) {
             $this->remarks = [];
         }
 
@@ -414,7 +415,7 @@ class EndorsementType
     public function addOnceToSignature(
         Signature $signature
     ): static {
-        if (!is_array($this->signature)) {
+        if (!InvoiceSuiteArrayUtils::is($this->signature)) {
             $this->signature = [];
         }
 
@@ -428,7 +429,7 @@ class EndorsementType
      */
     public function addOnceToSignatureWithCreate(): Signature
     {
-        if (!is_array($this->signature)) {
+        if (!InvoiceSuiteArrayUtils::is($this->signature)) {
             $this->signature = [];
         }
 

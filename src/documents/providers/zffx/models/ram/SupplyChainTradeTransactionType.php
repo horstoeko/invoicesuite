@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\zffx\models\ram;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class SupplyChainTradeTransactionType
@@ -125,7 +126,7 @@ class SupplyChainTradeTransactionType
     public function addOnceToIncludedSupplyChainTradeLineItem(
         SupplyChainTradeLineItemType $includedSupplyChainTradeLineItem,
     ): static {
-        if (!is_array($this->includedSupplyChainTradeLineItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->includedSupplyChainTradeLineItem)) {
             $this->includedSupplyChainTradeLineItem = [];
         }
 
@@ -139,7 +140,7 @@ class SupplyChainTradeTransactionType
      */
     public function addOnceToIncludedSupplyChainTradeLineItemWithCreate(): SupplyChainTradeLineItemType
     {
-        if (!is_array($this->includedSupplyChainTradeLineItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->includedSupplyChainTradeLineItem)) {
             $this->includedSupplyChainTradeLineItem = [];
         }
 

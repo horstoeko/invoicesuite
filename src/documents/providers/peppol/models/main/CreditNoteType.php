@@ -53,6 +53,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TaxCurrencyCode
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UBLVersionID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UUID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\ext\UBLExtension;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 #[JMS\XmlNamespace(uri: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', prefix: 'cac')]
@@ -741,7 +742,7 @@ class CreditNoteType
     public function addOnceToUBLExtensions(
         UBLExtension $uBLExtensions
     ): static {
-        if (!is_array($this->uBLExtensions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->uBLExtensions)) {
             $this->uBLExtensions = [];
         }
 
@@ -755,7 +756,7 @@ class CreditNoteType
      */
     public function addOnceToUBLExtensionsWithCreate(): UBLExtension
     {
-        if (!is_array($this->uBLExtensions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->uBLExtensions)) {
             $this->uBLExtensions = [];
         }
 
@@ -1265,7 +1266,7 @@ class CreditNoteType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -1279,7 +1280,7 @@ class CreditNoteType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -1749,7 +1750,7 @@ class CreditNoteType
     public function addOnceToInvoicePeriod(
         InvoicePeriod $invoicePeriod
     ): static {
-        if (!is_array($this->invoicePeriod)) {
+        if (!InvoiceSuiteArrayUtils::is($this->invoicePeriod)) {
             $this->invoicePeriod = [];
         }
 
@@ -1763,7 +1764,7 @@ class CreditNoteType
      */
     public function addOnceToInvoicePeriodWithCreate(): InvoicePeriod
     {
-        if (!is_array($this->invoicePeriod)) {
+        if (!InvoiceSuiteArrayUtils::is($this->invoicePeriod)) {
             $this->invoicePeriod = [];
         }
 
@@ -1873,7 +1874,7 @@ class CreditNoteType
     public function addOnceToDiscrepancyResponse(
         DiscrepancyResponse $discrepancyResponse
     ): static {
-        if (!is_array($this->discrepancyResponse)) {
+        if (!InvoiceSuiteArrayUtils::is($this->discrepancyResponse)) {
             $this->discrepancyResponse = [];
         }
 
@@ -1887,7 +1888,7 @@ class CreditNoteType
      */
     public function addOnceToDiscrepancyResponseWithCreate(): DiscrepancyResponse
     {
-        if (!is_array($this->discrepancyResponse)) {
+        if (!InvoiceSuiteArrayUtils::is($this->discrepancyResponse)) {
             $this->discrepancyResponse = [];
         }
 
@@ -2037,7 +2038,7 @@ class CreditNoteType
     public function addOnceToBillingReference(
         BillingReference $billingReference
     ): static {
-        if (!is_array($this->billingReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->billingReference)) {
             $this->billingReference = [];
         }
 
@@ -2051,7 +2052,7 @@ class CreditNoteType
      */
     public function addOnceToBillingReferenceWithCreate(): BillingReference
     {
-        if (!is_array($this->billingReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->billingReference)) {
             $this->billingReference = [];
         }
 
@@ -2161,7 +2162,7 @@ class CreditNoteType
     public function addOnceToDespatchDocumentReference(
         DespatchDocumentReference $despatchDocumentReference
     ): static {
-        if (!is_array($this->despatchDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->despatchDocumentReference)) {
             $this->despatchDocumentReference = [];
         }
 
@@ -2175,7 +2176,7 @@ class CreditNoteType
      */
     public function addOnceToDespatchDocumentReferenceWithCreate(): DespatchDocumentReference
     {
-        if (!is_array($this->despatchDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->despatchDocumentReference)) {
             $this->despatchDocumentReference = [];
         }
 
@@ -2285,7 +2286,7 @@ class CreditNoteType
     public function addOnceToReceiptDocumentReference(
         ReceiptDocumentReference $receiptDocumentReference
     ): static {
-        if (!is_array($this->receiptDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->receiptDocumentReference)) {
             $this->receiptDocumentReference = [];
         }
 
@@ -2299,7 +2300,7 @@ class CreditNoteType
      */
     public function addOnceToReceiptDocumentReferenceWithCreate(): ReceiptDocumentReference
     {
-        if (!is_array($this->receiptDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->receiptDocumentReference)) {
             $this->receiptDocumentReference = [];
         }
 
@@ -2409,7 +2410,7 @@ class CreditNoteType
     public function addOnceToContractDocumentReference(
         ContractDocumentReference $contractDocumentReference
     ): static {
-        if (!is_array($this->contractDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->contractDocumentReference)) {
             $this->contractDocumentReference = [];
         }
 
@@ -2423,7 +2424,7 @@ class CreditNoteType
      */
     public function addOnceToContractDocumentReferenceWithCreate(): ContractDocumentReference
     {
-        if (!is_array($this->contractDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->contractDocumentReference)) {
             $this->contractDocumentReference = [];
         }
 
@@ -2533,7 +2534,7 @@ class CreditNoteType
     public function addOnceToAdditionalDocumentReference(
         AdditionalDocumentReference $additionalDocumentReference,
     ): static {
-        if (!is_array($this->additionalDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalDocumentReference)) {
             $this->additionalDocumentReference = [];
         }
 
@@ -2547,7 +2548,7 @@ class CreditNoteType
      */
     public function addOnceToAdditionalDocumentReferenceWithCreate(): AdditionalDocumentReference
     {
-        if (!is_array($this->additionalDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->additionalDocumentReference)) {
             $this->additionalDocumentReference = [];
         }
 
@@ -2657,7 +2658,7 @@ class CreditNoteType
     public function addOnceToStatementDocumentReference(
         StatementDocumentReference $statementDocumentReference
     ): static {
-        if (!is_array($this->statementDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->statementDocumentReference)) {
             $this->statementDocumentReference = [];
         }
 
@@ -2671,7 +2672,7 @@ class CreditNoteType
      */
     public function addOnceToStatementDocumentReferenceWithCreate(): StatementDocumentReference
     {
-        if (!is_array($this->statementDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->statementDocumentReference)) {
             $this->statementDocumentReference = [];
         }
 
@@ -2781,7 +2782,7 @@ class CreditNoteType
     public function addOnceToOriginatorDocumentReference(
         OriginatorDocumentReference $originatorDocumentReference,
     ): static {
-        if (!is_array($this->originatorDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->originatorDocumentReference)) {
             $this->originatorDocumentReference = [];
         }
 
@@ -2795,7 +2796,7 @@ class CreditNoteType
      */
     public function addOnceToOriginatorDocumentReferenceWithCreate(): OriginatorDocumentReference
     {
-        if (!is_array($this->originatorDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->originatorDocumentReference)) {
             $this->originatorDocumentReference = [];
         }
 
@@ -2905,7 +2906,7 @@ class CreditNoteType
     public function addOnceToSignature(
         Signature $signature
     ): static {
-        if (!is_array($this->signature)) {
+        if (!InvoiceSuiteArrayUtils::is($this->signature)) {
             $this->signature = [];
         }
 
@@ -2919,7 +2920,7 @@ class CreditNoteType
      */
     public function addOnceToSignatureWithCreate(): Signature
     {
-        if (!is_array($this->signature)) {
+        if (!InvoiceSuiteArrayUtils::is($this->signature)) {
             $this->signature = [];
         }
 
@@ -3269,7 +3270,7 @@ class CreditNoteType
     public function addOnceToDelivery(
         Delivery $delivery
     ): static {
-        if (!is_array($this->delivery)) {
+        if (!InvoiceSuiteArrayUtils::is($this->delivery)) {
             $this->delivery = [];
         }
 
@@ -3283,7 +3284,7 @@ class CreditNoteType
      */
     public function addOnceToDeliveryWithCreate(): Delivery
     {
-        if (!is_array($this->delivery)) {
+        if (!InvoiceSuiteArrayUtils::is($this->delivery)) {
             $this->delivery = [];
         }
 
@@ -3393,7 +3394,7 @@ class CreditNoteType
     public function addOnceToDeliveryTerms(
         DeliveryTerms $deliveryTerms
     ): static {
-        if (!is_array($this->deliveryTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->deliveryTerms)) {
             $this->deliveryTerms = [];
         }
 
@@ -3407,7 +3408,7 @@ class CreditNoteType
      */
     public function addOnceToDeliveryTermsWithCreate(): DeliveryTerms
     {
-        if (!is_array($this->deliveryTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->deliveryTerms)) {
             $this->deliveryTerms = [];
         }
 
@@ -3517,7 +3518,7 @@ class CreditNoteType
     public function addOnceToPaymentMeans(
         PaymentMeans $paymentMeans
     ): static {
-        if (!is_array($this->paymentMeans)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentMeans)) {
             $this->paymentMeans = [];
         }
 
@@ -3531,7 +3532,7 @@ class CreditNoteType
      */
     public function addOnceToPaymentMeansWithCreate(): PaymentMeans
     {
-        if (!is_array($this->paymentMeans)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentMeans)) {
             $this->paymentMeans = [];
         }
 
@@ -3641,7 +3642,7 @@ class CreditNoteType
     public function addOnceToPaymentTerms(
         PaymentTerms $paymentTerms
     ): static {
-        if (!is_array($this->paymentTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentTerms)) {
             $this->paymentTerms = [];
         }
 
@@ -3655,7 +3656,7 @@ class CreditNoteType
      */
     public function addOnceToPaymentTermsWithCreate(): PaymentTerms
     {
-        if (!is_array($this->paymentTerms)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentTerms)) {
             $this->paymentTerms = [];
         }
 
@@ -3925,7 +3926,7 @@ class CreditNoteType
     public function addOnceToAllowanceCharge(
         AllowanceCharge $allowanceCharge
     ): static {
-        if (!is_array($this->allowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceCharge)) {
             $this->allowanceCharge = [];
         }
 
@@ -3939,7 +3940,7 @@ class CreditNoteType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        if (!is_array($this->allowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceCharge)) {
             $this->allowanceCharge = [];
         }
 
@@ -3965,7 +3966,7 @@ class CreditNoteType
     public function getTaxTotalAtIndex(
         int $index
     ): ?TaxTotal {
-        if (!is_array($this->taxTotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotal)) {
             return null;
         }
 
@@ -4067,7 +4068,7 @@ class CreditNoteType
     public function addToTaxTotalWithCreateAtIndex(
         int $index
     ): TaxTotal {
-        if (!is_array($this->taxTotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotal)) {
             $this->taxTotal = [];
         }
 
@@ -4085,7 +4086,7 @@ class CreditNoteType
     public function unsetTaxTotalAtIndex(
         int $index
     ): static {
-        if (!is_array($this->taxTotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotal)) {
             return $this;
         }
 
@@ -4105,7 +4106,7 @@ class CreditNoteType
     public function addOnceToTaxTotal(
         TaxTotal $taxTotal
     ): static {
-        if (!is_array($this->taxTotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotal)) {
             $this->taxTotal = [];
         }
 
@@ -4119,7 +4120,7 @@ class CreditNoteType
      */
     public function addOnceToTaxTotalWithCreate(): TaxTotal
     {
-        if (!is_array($this->taxTotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotal)) {
             $this->taxTotal = [];
         }
 
@@ -4269,7 +4270,7 @@ class CreditNoteType
     public function addOnceToCreditNoteLine(
         CreditNoteLine $creditNoteLine
     ): static {
-        if (!is_array($this->creditNoteLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->creditNoteLine)) {
             $this->creditNoteLine = [];
         }
 
@@ -4283,7 +4284,7 @@ class CreditNoteType
      */
     public function addOnceToCreditNoteLineWithCreate(): CreditNoteLine
     {
-        if (!is_array($this->creditNoteLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->creditNoteLine)) {
             $this->creditNoteLine = [];
         }
 

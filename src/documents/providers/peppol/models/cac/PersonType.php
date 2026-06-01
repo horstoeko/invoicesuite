@@ -18,6 +18,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NationalityID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OrganizationDepartment;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OtherName;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Title;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class PersonType
@@ -901,7 +902,7 @@ class PersonType
     public function addOnceToIdentityDocumentReference(
         IdentityDocumentReference $identityDocumentReference
     ): static {
-        if (!is_array($this->identityDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->identityDocumentReference)) {
             $this->identityDocumentReference = [];
         }
 
@@ -915,7 +916,7 @@ class PersonType
      */
     public function addOnceToIdentityDocumentReferenceWithCreate(): IdentityDocumentReference
     {
-        if (!is_array($this->identityDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->identityDocumentReference)) {
             $this->identityDocumentReference = [];
         }
 

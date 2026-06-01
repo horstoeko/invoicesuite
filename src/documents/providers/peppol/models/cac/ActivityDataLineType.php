@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SupplyChainActivityTypeCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ActivityDataLineType
@@ -481,7 +482,7 @@ class ActivityDataLineType
     public function addOnceToSalesItem(
         SalesItem $salesItem
     ): static {
-        if (!is_array($this->salesItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->salesItem)) {
             $this->salesItem = [];
         }
 
@@ -495,7 +496,7 @@ class ActivityDataLineType
      */
     public function addOnceToSalesItemWithCreate(): SalesItem
     {
-        if (!is_array($this->salesItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->salesItem)) {
             $this->salesItem = [];
         }
 

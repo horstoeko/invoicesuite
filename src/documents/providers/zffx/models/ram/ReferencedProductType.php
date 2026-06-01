@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\QuantityType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ReferencedProductType
@@ -212,7 +213,7 @@ class ReferencedProductType
     public function addOnceToGlobalID(
         IDType $globalID
     ): static {
-        if (!is_array($this->globalID)) {
+        if (!InvoiceSuiteArrayUtils::is($this->globalID)) {
             $this->globalID = [];
         }
 
@@ -226,7 +227,7 @@ class ReferencedProductType
      */
     public function addOnceToGlobalIDWithCreate(): IDType
     {
-        if (!is_array($this->globalID)) {
+        if (!InvoiceSuiteArrayUtils::is($this->globalID)) {
             $this->globalID = [];
         }
 

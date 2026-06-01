@@ -12,6 +12,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OrderIntervalDa
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ReplenishmentOwnerDescription;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TargetInventoryQuantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TargetServicePercent;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ItemManagementProfileType
@@ -388,7 +389,7 @@ class ItemManagementProfileType
     public function addOnceToReplenishmentOwnerDescription(
         ReplenishmentOwnerDescription $replenishmentOwnerDescription,
     ): static {
-        if (!is_array($this->replenishmentOwnerDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->replenishmentOwnerDescription)) {
             $this->replenishmentOwnerDescription = [];
         }
 
@@ -402,7 +403,7 @@ class ItemManagementProfileType
      */
     public function addOnceToReplenishmentOwnerDescriptionWithCreate(): ReplenishmentOwnerDescription
     {
-        if (!is_array($this->replenishmentOwnerDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->replenishmentOwnerDescription)) {
             $this->replenishmentOwnerDescription = [];
         }
 

@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RoleCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RoleDescription;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class EconomicOperatorRoleType
@@ -175,7 +176,7 @@ class EconomicOperatorRoleType
     public function addOnceToRoleDescription(
         RoleDescription $roleDescription
     ): static {
-        if (!is_array($this->roleDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->roleDescription)) {
             $this->roleDescription = [];
         }
 
@@ -189,7 +190,7 @@ class EconomicOperatorRoleType
      */
     public function addOnceToRoleDescriptionWithCreate(): RoleDescription
     {
-        if (!is_array($this->roleDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->roleDescription)) {
             $this->roleDescription = [];
         }
 

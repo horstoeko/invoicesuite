@@ -11,6 +11,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RegistrationNat
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RegistrationNationalityID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TradeServiceCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TransportMeansTypeCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TransportMeansType
@@ -341,7 +342,7 @@ class TransportMeansType
     public function addOnceToRegistrationNationality(
         RegistrationNationality $registrationNationality
     ): static {
-        if (!is_array($this->registrationNationality)) {
+        if (!InvoiceSuiteArrayUtils::is($this->registrationNationality)) {
             $this->registrationNationality = [];
         }
 
@@ -355,7 +356,7 @@ class TransportMeansType
      */
     public function addOnceToRegistrationNationalityWithCreate(): RegistrationNationality
     {
-        if (!is_array($this->registrationNationality)) {
+        if (!InvoiceSuiteArrayUtils::is($this->registrationNationality)) {
             $this->registrationNationality = [];
         }
 
@@ -825,7 +826,7 @@ class TransportMeansType
     public function addOnceToMeasurementDimension(
         MeasurementDimension $measurementDimension
     ): static {
-        if (!is_array($this->measurementDimension)) {
+        if (!InvoiceSuiteArrayUtils::is($this->measurementDimension)) {
             $this->measurementDimension = [];
         }
 
@@ -839,7 +840,7 @@ class TransportMeansType
      */
     public function addOnceToMeasurementDimensionWithCreate(): MeasurementDimension
     {
-        if (!is_array($this->measurementDimension)) {
+        if (!InvoiceSuiteArrayUtils::is($this->measurementDimension)) {
             $this->measurementDimension = [];
         }
 

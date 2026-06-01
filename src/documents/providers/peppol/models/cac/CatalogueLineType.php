@@ -17,6 +17,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OrderableUnit;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OrderQuantityIncrementNumeric;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PackLevelCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\WarrantyInformation;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class CatalogueLineType
@@ -635,7 +636,7 @@ class CatalogueLineType
     public function addOnceToNote(
         Note $note
     ): static {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -649,7 +650,7 @@ class CatalogueLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
-        if (!is_array($this->note)) {
+        if (!InvoiceSuiteArrayUtils::is($this->note)) {
             $this->note = [];
         }
 
@@ -989,7 +990,7 @@ class CatalogueLineType
     public function addOnceToWarrantyInformation(
         WarrantyInformation $warrantyInformation
     ): static {
-        if (!is_array($this->warrantyInformation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->warrantyInformation)) {
             $this->warrantyInformation = [];
         }
 
@@ -1003,7 +1004,7 @@ class CatalogueLineType
      */
     public function addOnceToWarrantyInformationWithCreate(): WarrantyInformation
     {
-        if (!is_array($this->warrantyInformation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->warrantyInformation)) {
             $this->warrantyInformation = [];
         }
 
@@ -1353,7 +1354,7 @@ class CatalogueLineType
     public function addOnceToItemComparison(
         ItemComparison $itemComparison
     ): static {
-        if (!is_array($this->itemComparison)) {
+        if (!InvoiceSuiteArrayUtils::is($this->itemComparison)) {
             $this->itemComparison = [];
         }
 
@@ -1367,7 +1368,7 @@ class CatalogueLineType
      */
     public function addOnceToItemComparisonWithCreate(): ItemComparison
     {
-        if (!is_array($this->itemComparison)) {
+        if (!InvoiceSuiteArrayUtils::is($this->itemComparison)) {
             $this->itemComparison = [];
         }
 
@@ -1477,7 +1478,7 @@ class CatalogueLineType
     public function addOnceToComponentRelatedItem(
         ComponentRelatedItem $componentRelatedItem
     ): static {
-        if (!is_array($this->componentRelatedItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->componentRelatedItem)) {
             $this->componentRelatedItem = [];
         }
 
@@ -1491,7 +1492,7 @@ class CatalogueLineType
      */
     public function addOnceToComponentRelatedItemWithCreate(): ComponentRelatedItem
     {
-        if (!is_array($this->componentRelatedItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->componentRelatedItem)) {
             $this->componentRelatedItem = [];
         }
 
@@ -1601,7 +1602,7 @@ class CatalogueLineType
     public function addOnceToAccessoryRelatedItem(
         AccessoryRelatedItem $accessoryRelatedItem
     ): static {
-        if (!is_array($this->accessoryRelatedItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->accessoryRelatedItem)) {
             $this->accessoryRelatedItem = [];
         }
 
@@ -1615,7 +1616,7 @@ class CatalogueLineType
      */
     public function addOnceToAccessoryRelatedItemWithCreate(): AccessoryRelatedItem
     {
-        if (!is_array($this->accessoryRelatedItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->accessoryRelatedItem)) {
             $this->accessoryRelatedItem = [];
         }
 
@@ -1725,7 +1726,7 @@ class CatalogueLineType
     public function addOnceToRequiredRelatedItem(
         RequiredRelatedItem $requiredRelatedItem
     ): static {
-        if (!is_array($this->requiredRelatedItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->requiredRelatedItem)) {
             $this->requiredRelatedItem = [];
         }
 
@@ -1739,7 +1740,7 @@ class CatalogueLineType
      */
     public function addOnceToRequiredRelatedItemWithCreate(): RequiredRelatedItem
     {
-        if (!is_array($this->requiredRelatedItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->requiredRelatedItem)) {
             $this->requiredRelatedItem = [];
         }
 
@@ -1849,7 +1850,7 @@ class CatalogueLineType
     public function addOnceToReplacementRelatedItem(
         ReplacementRelatedItem $replacementRelatedItem
     ): static {
-        if (!is_array($this->replacementRelatedItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->replacementRelatedItem)) {
             $this->replacementRelatedItem = [];
         }
 
@@ -1863,7 +1864,7 @@ class CatalogueLineType
      */
     public function addOnceToReplacementRelatedItemWithCreate(): ReplacementRelatedItem
     {
-        if (!is_array($this->replacementRelatedItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->replacementRelatedItem)) {
             $this->replacementRelatedItem = [];
         }
 
@@ -1973,7 +1974,7 @@ class CatalogueLineType
     public function addOnceToComplementaryRelatedItem(
         ComplementaryRelatedItem $complementaryRelatedItem
     ): static {
-        if (!is_array($this->complementaryRelatedItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->complementaryRelatedItem)) {
             $this->complementaryRelatedItem = [];
         }
 
@@ -1987,7 +1988,7 @@ class CatalogueLineType
      */
     public function addOnceToComplementaryRelatedItemWithCreate(): ComplementaryRelatedItem
     {
-        if (!is_array($this->complementaryRelatedItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->complementaryRelatedItem)) {
             $this->complementaryRelatedItem = [];
         }
 
@@ -2097,7 +2098,7 @@ class CatalogueLineType
     public function addOnceToReplacedRelatedItem(
         ReplacedRelatedItem $replacedRelatedItem
     ): static {
-        if (!is_array($this->replacedRelatedItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->replacedRelatedItem)) {
             $this->replacedRelatedItem = [];
         }
 
@@ -2111,7 +2112,7 @@ class CatalogueLineType
      */
     public function addOnceToReplacedRelatedItemWithCreate(): ReplacedRelatedItem
     {
-        if (!is_array($this->replacedRelatedItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->replacedRelatedItem)) {
             $this->replacedRelatedItem = [];
         }
 
@@ -2221,7 +2222,7 @@ class CatalogueLineType
     public function addOnceToRequiredItemLocationQuantity(
         RequiredItemLocationQuantity $requiredItemLocationQuantity,
     ): static {
-        if (!is_array($this->requiredItemLocationQuantity)) {
+        if (!InvoiceSuiteArrayUtils::is($this->requiredItemLocationQuantity)) {
             $this->requiredItemLocationQuantity = [];
         }
 
@@ -2235,7 +2236,7 @@ class CatalogueLineType
      */
     public function addOnceToRequiredItemLocationQuantityWithCreate(): RequiredItemLocationQuantity
     {
-        if (!is_array($this->requiredItemLocationQuantity)) {
+        if (!InvoiceSuiteArrayUtils::is($this->requiredItemLocationQuantity)) {
             $this->requiredItemLocationQuantity = [];
         }
 
@@ -2345,7 +2346,7 @@ class CatalogueLineType
     public function addOnceToDocumentReference(
         DocumentReference $documentReference
     ): static {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -2359,7 +2360,7 @@ class CatalogueLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -2509,7 +2510,7 @@ class CatalogueLineType
     public function addOnceToKeywordItemProperty(
         KeywordItemProperty $keywordItemProperty
     ): static {
-        if (!is_array($this->keywordItemProperty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->keywordItemProperty)) {
             $this->keywordItemProperty = [];
         }
 
@@ -2523,7 +2524,7 @@ class CatalogueLineType
      */
     public function addOnceToKeywordItemPropertyWithCreate(): KeywordItemProperty
     {
-        if (!is_array($this->keywordItemProperty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->keywordItemProperty)) {
             $this->keywordItemProperty = [];
         }
 

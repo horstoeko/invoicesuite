@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LegalReference;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Name;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TendererRequirementTypeCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TendererRequirementType
@@ -172,7 +173,7 @@ class TendererRequirementType
     public function addOnceToName(
         Name $name
     ): static {
-        if (!is_array($this->name)) {
+        if (!InvoiceSuiteArrayUtils::is($this->name)) {
             $this->name = [];
         }
 
@@ -186,7 +187,7 @@ class TendererRequirementType
      */
     public function addOnceToNameWithCreate(): Name
     {
-        if (!is_array($this->name)) {
+        if (!InvoiceSuiteArrayUtils::is($this->name)) {
             $this->name = [];
         }
 
@@ -336,7 +337,7 @@ class TendererRequirementType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -350,7 +351,7 @@ class TendererRequirementType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -500,7 +501,7 @@ class TendererRequirementType
     public function addOnceToSuggestedEvidence(
         SuggestedEvidence $suggestedEvidence
     ): static {
-        if (!is_array($this->suggestedEvidence)) {
+        if (!InvoiceSuiteArrayUtils::is($this->suggestedEvidence)) {
             $this->suggestedEvidence = [];
         }
 
@@ -514,7 +515,7 @@ class TendererRequirementType
      */
     public function addOnceToSuggestedEvidenceWithCreate(): SuggestedEvidence
     {
-        if (!is_array($this->suggestedEvidence)) {
+        if (!InvoiceSuiteArrayUtils::is($this->suggestedEvidence)) {
             $this->suggestedEvidence = [];
         }
 

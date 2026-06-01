@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ExecutionRequirementCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Name;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ContractExecutionRequirementType
@@ -148,7 +149,7 @@ class ContractExecutionRequirementType
     public function addOnceToName(
         Name $name
     ): static {
-        if (!is_array($this->name)) {
+        if (!InvoiceSuiteArrayUtils::is($this->name)) {
             $this->name = [];
         }
 
@@ -162,7 +163,7 @@ class ContractExecutionRequirementType
      */
     public function addOnceToNameWithCreate(): Name
     {
-        if (!is_array($this->name)) {
+        if (!InvoiceSuiteArrayUtils::is($this->name)) {
             $this->name = [];
         }
 
@@ -312,7 +313,7 @@ class ContractExecutionRequirementType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -326,7 +327,7 @@ class ContractExecutionRequirementType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 

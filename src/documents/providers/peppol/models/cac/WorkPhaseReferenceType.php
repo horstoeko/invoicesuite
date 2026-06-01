@@ -10,6 +10,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ProgressPercent;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\WorkPhase;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\WorkPhaseCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class WorkPhaseReferenceType
@@ -274,7 +275,7 @@ class WorkPhaseReferenceType
     public function addOnceToWorkPhase(
         WorkPhase $workPhase
     ): static {
-        if (!is_array($this->workPhase)) {
+        if (!InvoiceSuiteArrayUtils::is($this->workPhase)) {
             $this->workPhase = [];
         }
 
@@ -288,7 +289,7 @@ class WorkPhaseReferenceType
      */
     public function addOnceToWorkPhaseWithCreate(): WorkPhase
     {
-        if (!is_array($this->workPhase)) {
+        if (!InvoiceSuiteArrayUtils::is($this->workPhase)) {
             $this->workPhase = [];
         }
 
@@ -498,7 +499,7 @@ class WorkPhaseReferenceType
     public function addOnceToWorkOrderDocumentReference(
         WorkOrderDocumentReference $workOrderDocumentReference
     ): static {
-        if (!is_array($this->workOrderDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->workOrderDocumentReference)) {
             $this->workOrderDocumentReference = [];
         }
 
@@ -512,7 +513,7 @@ class WorkPhaseReferenceType
      */
     public function addOnceToWorkOrderDocumentReferenceWithCreate(): WorkOrderDocumentReference
     {
-        if (!is_array($this->workOrderDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->workOrderDocumentReference)) {
             $this->workOrderDocumentReference = [];
         }
 

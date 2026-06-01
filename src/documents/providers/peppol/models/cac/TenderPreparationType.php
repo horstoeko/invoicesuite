@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OpenTenderID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TenderEnvelopeID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TenderEnvelopeTypeCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TenderPreparationType
@@ -263,7 +264,7 @@ class TenderPreparationType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -277,7 +278,7 @@ class TenderPreparationType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -427,7 +428,7 @@ class TenderPreparationType
     public function addOnceToProcurementProjectLot(
         ProcurementProjectLot $procurementProjectLot
     ): static {
-        if (!is_array($this->procurementProjectLot)) {
+        if (!InvoiceSuiteArrayUtils::is($this->procurementProjectLot)) {
             $this->procurementProjectLot = [];
         }
 
@@ -441,7 +442,7 @@ class TenderPreparationType
      */
     public function addOnceToProcurementProjectLotWithCreate(): ProcurementProjectLot
     {
-        if (!is_array($this->procurementProjectLot)) {
+        if (!InvoiceSuiteArrayUtils::is($this->procurementProjectLot)) {
             $this->procurementProjectLot = [];
         }
 
@@ -551,7 +552,7 @@ class TenderPreparationType
     public function addOnceToDocumentTenderRequirement(
         DocumentTenderRequirement $documentTenderRequirement
     ): static {
-        if (!is_array($this->documentTenderRequirement)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentTenderRequirement)) {
             $this->documentTenderRequirement = [];
         }
 
@@ -565,7 +566,7 @@ class TenderPreparationType
      */
     public function addOnceToDocumentTenderRequirementWithCreate(): DocumentTenderRequirement
     {
-        if (!is_array($this->documentTenderRequirement)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentTenderRequirement)) {
             $this->documentTenderRequirement = [];
         }
 

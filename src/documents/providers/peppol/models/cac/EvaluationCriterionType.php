@@ -11,6 +11,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Expression;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ExpressionCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ThresholdAmount;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ThresholdQuantity;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class EvaluationCriterionType
@@ -247,7 +248,7 @@ class EvaluationCriterionType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -261,7 +262,7 @@ class EvaluationCriterionType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -491,7 +492,7 @@ class EvaluationCriterionType
     public function addOnceToExpression(
         Expression $expression
     ): static {
-        if (!is_array($this->expression)) {
+        if (!InvoiceSuiteArrayUtils::is($this->expression)) {
             $this->expression = [];
         }
 
@@ -505,7 +506,7 @@ class EvaluationCriterionType
      */
     public function addOnceToExpressionWithCreate(): Expression
     {
-        if (!is_array($this->expression)) {
+        if (!InvoiceSuiteArrayUtils::is($this->expression)) {
             $this->expression = [];
         }
 
@@ -655,7 +656,7 @@ class EvaluationCriterionType
     public function addOnceToSuggestedEvidence(
         SuggestedEvidence $suggestedEvidence
     ): static {
-        if (!is_array($this->suggestedEvidence)) {
+        if (!InvoiceSuiteArrayUtils::is($this->suggestedEvidence)) {
             $this->suggestedEvidence = [];
         }
 
@@ -669,7 +670,7 @@ class EvaluationCriterionType
      */
     public function addOnceToSuggestedEvidenceWithCreate(): SuggestedEvidence
     {
-        if (!is_array($this->suggestedEvidence)) {
+        if (!InvoiceSuiteArrayUtils::is($this->suggestedEvidence)) {
             $this->suggestedEvidence = [];
         }
 

@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\StatusCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class PriceListType
@@ -237,7 +238,7 @@ class PriceListType
     public function addOnceToValidityPeriod(
         ValidityPeriod $validityPeriod
     ): static {
-        if (!is_array($this->validityPeriod)) {
+        if (!InvoiceSuiteArrayUtils::is($this->validityPeriod)) {
             $this->validityPeriod = [];
         }
 
@@ -251,7 +252,7 @@ class PriceListType
      */
     public function addOnceToValidityPeriodWithCreate(): ValidityPeriod
     {
-        if (!is_array($this->validityPeriod)) {
+        if (!InvoiceSuiteArrayUtils::is($this->validityPeriod)) {
             $this->validityPeriod = [];
         }
 

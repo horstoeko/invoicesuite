@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ExpectedQuantit
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LimitationDescription;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MaximumQuantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MinimumQuantity;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class EconomicOperatorShortListType
@@ -171,7 +172,7 @@ class EconomicOperatorShortListType
     public function addOnceToLimitationDescription(
         LimitationDescription $limitationDescription
     ): static {
-        if (!is_array($this->limitationDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->limitationDescription)) {
             $this->limitationDescription = [];
         }
 
@@ -185,7 +186,7 @@ class EconomicOperatorShortListType
      */
     public function addOnceToLimitationDescriptionWithCreate(): LimitationDescription
     {
-        if (!is_array($this->limitationDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->limitationDescription)) {
             $this->limitationDescription = [];
         }
 
@@ -415,7 +416,7 @@ class EconomicOperatorShortListType
     public function addOnceToPreSelectedParty(
         PreSelectedParty $preSelectedParty
     ): static {
-        if (!is_array($this->preSelectedParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->preSelectedParty)) {
             $this->preSelectedParty = [];
         }
 
@@ -429,7 +430,7 @@ class EconomicOperatorShortListType
      */
     public function addOnceToPreSelectedPartyWithCreate(): PreSelectedParty
     {
-        if (!is_array($this->preSelectedParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->preSelectedParty)) {
             $this->preSelectedParty = [];
         }
 

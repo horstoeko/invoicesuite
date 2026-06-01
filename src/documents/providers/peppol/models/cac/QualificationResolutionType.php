@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AdmissionCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ExclusionReason;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Resolution;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class QualificationResolutionType
@@ -222,7 +223,7 @@ class QualificationResolutionType
     public function addOnceToExclusionReason(
         ExclusionReason $exclusionReason
     ): static {
-        if (!is_array($this->exclusionReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->exclusionReason)) {
             $this->exclusionReason = [];
         }
 
@@ -236,7 +237,7 @@ class QualificationResolutionType
      */
     public function addOnceToExclusionReasonWithCreate(): ExclusionReason
     {
-        if (!is_array($this->exclusionReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->exclusionReason)) {
             $this->exclusionReason = [];
         }
 
@@ -346,7 +347,7 @@ class QualificationResolutionType
     public function addOnceToResolution(
         Resolution $resolution
     ): static {
-        if (!is_array($this->resolution)) {
+        if (!InvoiceSuiteArrayUtils::is($this->resolution)) {
             $this->resolution = [];
         }
 
@@ -360,7 +361,7 @@ class QualificationResolutionType
      */
     public function addOnceToResolutionWithCreate(): Resolution
     {
-        if (!is_array($this->resolution)) {
+        if (!InvoiceSuiteArrayUtils::is($this->resolution)) {
             $this->resolution = [];
         }
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 /**
@@ -124,7 +125,7 @@ class SignaturePropertiesType
     public function addOnceToSignatureProperty(
         SignaturePropertyType $signatureProperty
     ): static {
-        if (!is_array($this->signatureProperty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->signatureProperty)) {
             $this->signatureProperty = [];
         }
 
@@ -140,7 +141,7 @@ class SignaturePropertiesType
      */
     public function addOnceToSignaturePropertyWithCreate(): SignaturePropertyType
     {
-        if (!is_array($this->signatureProperty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->signatureProperty)) {
             $this->signatureProperty = [];
         }
 

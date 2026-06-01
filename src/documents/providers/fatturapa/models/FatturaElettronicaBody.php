@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\fatturapa\models;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 final class FatturaElettronicaBody
@@ -273,7 +274,7 @@ final class FatturaElettronicaBody
     public function addToDatiPagamento(
         DatiPagamento $datiPagamento
     ): static {
-        if (!is_array($this->datiPagamento)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiPagamento)) {
             $this->datiPagamento = [];
         }
 
@@ -303,7 +304,7 @@ final class FatturaElettronicaBody
     public function addOnceToDatiPagamento(
         DatiPagamento $datiPagamento
     ): static {
-        if (!is_array($this->datiPagamento)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiPagamento)) {
             $this->datiPagamento = [];
         }
 
@@ -319,7 +320,7 @@ final class FatturaElettronicaBody
      */
     public function addOnceToDatiPagamentoWithCreate(): DatiPagamento
     {
-        if (!is_array($this->datiPagamento)) {
+        if (!InvoiceSuiteArrayUtils::is($this->datiPagamento)) {
             $this->datiPagamento = [];
         }
 
@@ -387,7 +388,7 @@ final class FatturaElettronicaBody
     public function addToAllegati(
         Allegati $allegati
     ): static {
-        if (!is_array($this->allegati)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allegati)) {
             $this->allegati = [];
         }
 
@@ -417,7 +418,7 @@ final class FatturaElettronicaBody
     public function addOnceToAllegati(
         Allegati $allegati
     ): static {
-        if (!is_array($this->allegati)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allegati)) {
             $this->allegati = [];
         }
 
@@ -433,7 +434,7 @@ final class FatturaElettronicaBody
      */
     public function addOnceToAllegatiWithCreate(): Allegati
     {
-        if (!is_array($this->allegati)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allegati)) {
             $this->allegati = [];
         }
 

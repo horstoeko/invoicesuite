@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\FinancingInstrumentCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TradeFinancingType
@@ -311,7 +312,7 @@ class TradeFinancingType
     public function addOnceToDocumentReference(
         DocumentReference $documentReference
     ): static {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -325,7 +326,7 @@ class TradeFinancingType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
-        if (!is_array($this->documentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->documentReference)) {
             $this->documentReference = [];
         }
 
@@ -515,7 +516,7 @@ class TradeFinancingType
     public function addOnceToClause(
         Clause $clause
     ): static {
-        if (!is_array($this->clause)) {
+        if (!InvoiceSuiteArrayUtils::is($this->clause)) {
             $this->clause = [];
         }
 
@@ -529,7 +530,7 @@ class TradeFinancingType
      */
     public function addOnceToClauseWithCreate(): Clause
     {
-        if (!is_array($this->clause)) {
+        if (!InvoiceSuiteArrayUtils::is($this->clause)) {
             $this->clause = [];
         }
 

@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Information;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Reference;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TradingTermsType
@@ -146,7 +147,7 @@ class TradingTermsType
     public function addOnceToInformation(
         Information $information
     ): static {
-        if (!is_array($this->information)) {
+        if (!InvoiceSuiteArrayUtils::is($this->information)) {
             $this->information = [];
         }
 
@@ -160,7 +161,7 @@ class TradingTermsType
      */
     public function addOnceToInformationWithCreate(): Information
     {
-        if (!is_array($this->information)) {
+        if (!InvoiceSuiteArrayUtils::is($this->information)) {
             $this->information = [];
         }
 

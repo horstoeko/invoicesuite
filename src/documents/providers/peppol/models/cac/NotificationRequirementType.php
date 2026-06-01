@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NotificationTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PostEventNotificationDurationMeasure;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PreEventNotificationDurationMeasure;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class NotificationRequirementType
@@ -302,7 +303,7 @@ class NotificationRequirementType
     public function addOnceToNotifyParty(
         NotifyParty $notifyParty
     ): static {
-        if (!is_array($this->notifyParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->notifyParty)) {
             $this->notifyParty = [];
         }
 
@@ -316,7 +317,7 @@ class NotificationRequirementType
      */
     public function addOnceToNotifyPartyWithCreate(): NotifyParty
     {
-        if (!is_array($this->notifyParty)) {
+        if (!InvoiceSuiteArrayUtils::is($this->notifyParty)) {
             $this->notifyParty = [];
         }
 
@@ -426,7 +427,7 @@ class NotificationRequirementType
     public function addOnceToNotificationPeriod(
         NotificationPeriod $notificationPeriod
     ): static {
-        if (!is_array($this->notificationPeriod)) {
+        if (!InvoiceSuiteArrayUtils::is($this->notificationPeriod)) {
             $this->notificationPeriod = [];
         }
 
@@ -440,7 +441,7 @@ class NotificationRequirementType
      */
     public function addOnceToNotificationPeriodWithCreate(): NotificationPeriod
     {
-        if (!is_array($this->notificationPeriod)) {
+        if (!InvoiceSuiteArrayUtils::is($this->notificationPeriod)) {
             $this->notificationPeriod = [];
         }
 
@@ -550,7 +551,7 @@ class NotificationRequirementType
     public function addOnceToNotificationLocation(
         NotificationLocation $notificationLocation
     ): static {
-        if (!is_array($this->notificationLocation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->notificationLocation)) {
             $this->notificationLocation = [];
         }
 
@@ -564,7 +565,7 @@ class NotificationRequirementType
      */
     public function addOnceToNotificationLocationWithCreate(): NotificationLocation
     {
-        if (!is_array($this->notificationLocation)) {
+        if (!InvoiceSuiteArrayUtils::is($this->notificationLocation)) {
             $this->notificationLocation = [];
         }
 

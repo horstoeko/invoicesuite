@@ -14,6 +14,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalGoodsItemQ
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalPackageQuantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TraceID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TransportHandlingUnitTypeCode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TransportHandlingUnitType
@@ -552,7 +553,7 @@ class TransportHandlingUnitType
     public function addOnceToHandlingInstructions(
         HandlingInstructions $handlingInstructions
     ): static {
-        if (!is_array($this->handlingInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->handlingInstructions)) {
             $this->handlingInstructions = [];
         }
 
@@ -566,7 +567,7 @@ class TransportHandlingUnitType
      */
     public function addOnceToHandlingInstructionsWithCreate(): HandlingInstructions
     {
-        if (!is_array($this->handlingInstructions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->handlingInstructions)) {
             $this->handlingInstructions = [];
         }
 
@@ -786,7 +787,7 @@ class TransportHandlingUnitType
     public function addOnceToDamageRemarks(
         DamageRemarks $damageRemarks
     ): static {
-        if (!is_array($this->damageRemarks)) {
+        if (!InvoiceSuiteArrayUtils::is($this->damageRemarks)) {
             $this->damageRemarks = [];
         }
 
@@ -800,7 +801,7 @@ class TransportHandlingUnitType
      */
     public function addOnceToDamageRemarksWithCreate(): DamageRemarks
     {
-        if (!is_array($this->damageRemarks)) {
+        if (!InvoiceSuiteArrayUtils::is($this->damageRemarks)) {
             $this->damageRemarks = [];
         }
 
@@ -910,7 +911,7 @@ class TransportHandlingUnitType
     public function addOnceToShippingMarks(
         ShippingMarks $shippingMarks
     ): static {
-        if (!is_array($this->shippingMarks)) {
+        if (!InvoiceSuiteArrayUtils::is($this->shippingMarks)) {
             $this->shippingMarks = [];
         }
 
@@ -924,7 +925,7 @@ class TransportHandlingUnitType
      */
     public function addOnceToShippingMarksWithCreate(): ShippingMarks
     {
-        if (!is_array($this->shippingMarks)) {
+        if (!InvoiceSuiteArrayUtils::is($this->shippingMarks)) {
             $this->shippingMarks = [];
         }
 
@@ -1074,7 +1075,7 @@ class TransportHandlingUnitType
     public function addOnceToHandlingUnitDespatchLine(
         HandlingUnitDespatchLine $handlingUnitDespatchLine
     ): static {
-        if (!is_array($this->handlingUnitDespatchLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->handlingUnitDespatchLine)) {
             $this->handlingUnitDespatchLine = [];
         }
 
@@ -1088,7 +1089,7 @@ class TransportHandlingUnitType
      */
     public function addOnceToHandlingUnitDespatchLineWithCreate(): HandlingUnitDespatchLine
     {
-        if (!is_array($this->handlingUnitDespatchLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->handlingUnitDespatchLine)) {
             $this->handlingUnitDespatchLine = [];
         }
 
@@ -1198,7 +1199,7 @@ class TransportHandlingUnitType
     public function addOnceToActualPackage(
         ActualPackage $actualPackage
     ): static {
-        if (!is_array($this->actualPackage)) {
+        if (!InvoiceSuiteArrayUtils::is($this->actualPackage)) {
             $this->actualPackage = [];
         }
 
@@ -1212,7 +1213,7 @@ class TransportHandlingUnitType
      */
     public function addOnceToActualPackageWithCreate(): ActualPackage
     {
-        if (!is_array($this->actualPackage)) {
+        if (!InvoiceSuiteArrayUtils::is($this->actualPackage)) {
             $this->actualPackage = [];
         }
 
@@ -1322,7 +1323,7 @@ class TransportHandlingUnitType
     public function addOnceToReceivedHandlingUnitReceiptLine(
         ReceivedHandlingUnitReceiptLine $receivedHandlingUnitReceiptLine,
     ): static {
-        if (!is_array($this->receivedHandlingUnitReceiptLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->receivedHandlingUnitReceiptLine)) {
             $this->receivedHandlingUnitReceiptLine = [];
         }
 
@@ -1336,7 +1337,7 @@ class TransportHandlingUnitType
      */
     public function addOnceToReceivedHandlingUnitReceiptLineWithCreate(): ReceivedHandlingUnitReceiptLine
     {
-        if (!is_array($this->receivedHandlingUnitReceiptLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->receivedHandlingUnitReceiptLine)) {
             $this->receivedHandlingUnitReceiptLine = [];
         }
 
@@ -1446,7 +1447,7 @@ class TransportHandlingUnitType
     public function addOnceToTransportEquipment(
         TransportEquipment $transportEquipment
     ): static {
-        if (!is_array($this->transportEquipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportEquipment)) {
             $this->transportEquipment = [];
         }
 
@@ -1460,7 +1461,7 @@ class TransportHandlingUnitType
      */
     public function addOnceToTransportEquipmentWithCreate(): TransportEquipment
     {
-        if (!is_array($this->transportEquipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportEquipment)) {
             $this->transportEquipment = [];
         }
 
@@ -1570,7 +1571,7 @@ class TransportHandlingUnitType
     public function addOnceToTransportMeans(
         TransportMeans $transportMeans
     ): static {
-        if (!is_array($this->transportMeans)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportMeans)) {
             $this->transportMeans = [];
         }
 
@@ -1584,7 +1585,7 @@ class TransportHandlingUnitType
      */
     public function addOnceToTransportMeansWithCreate(): TransportMeans
     {
-        if (!is_array($this->transportMeans)) {
+        if (!InvoiceSuiteArrayUtils::is($this->transportMeans)) {
             $this->transportMeans = [];
         }
 
@@ -1694,7 +1695,7 @@ class TransportHandlingUnitType
     public function addOnceToHazardousGoodsTransit(
         HazardousGoodsTransit $hazardousGoodsTransit
     ): static {
-        if (!is_array($this->hazardousGoodsTransit)) {
+        if (!InvoiceSuiteArrayUtils::is($this->hazardousGoodsTransit)) {
             $this->hazardousGoodsTransit = [];
         }
 
@@ -1708,7 +1709,7 @@ class TransportHandlingUnitType
      */
     public function addOnceToHazardousGoodsTransitWithCreate(): HazardousGoodsTransit
     {
-        if (!is_array($this->hazardousGoodsTransit)) {
+        if (!InvoiceSuiteArrayUtils::is($this->hazardousGoodsTransit)) {
             $this->hazardousGoodsTransit = [];
         }
 
@@ -1818,7 +1819,7 @@ class TransportHandlingUnitType
     public function addOnceToMeasurementDimension(
         MeasurementDimension $measurementDimension
     ): static {
-        if (!is_array($this->measurementDimension)) {
+        if (!InvoiceSuiteArrayUtils::is($this->measurementDimension)) {
             $this->measurementDimension = [];
         }
 
@@ -1832,7 +1833,7 @@ class TransportHandlingUnitType
      */
     public function addOnceToMeasurementDimensionWithCreate(): MeasurementDimension
     {
-        if (!is_array($this->measurementDimension)) {
+        if (!InvoiceSuiteArrayUtils::is($this->measurementDimension)) {
             $this->measurementDimension = [];
         }
 
@@ -2022,7 +2023,7 @@ class TransportHandlingUnitType
     public function addOnceToGoodsItem(
         GoodsItem $goodsItem
     ): static {
-        if (!is_array($this->goodsItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->goodsItem)) {
             $this->goodsItem = [];
         }
 
@@ -2036,7 +2037,7 @@ class TransportHandlingUnitType
      */
     public function addOnceToGoodsItemWithCreate(): GoodsItem
     {
-        if (!is_array($this->goodsItem)) {
+        if (!InvoiceSuiteArrayUtils::is($this->goodsItem)) {
             $this->goodsItem = [];
         }
 
@@ -2226,7 +2227,7 @@ class TransportHandlingUnitType
     public function addOnceToShipmentDocumentReference(
         ShipmentDocumentReference $shipmentDocumentReference
     ): static {
-        if (!is_array($this->shipmentDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->shipmentDocumentReference)) {
             $this->shipmentDocumentReference = [];
         }
 
@@ -2240,7 +2241,7 @@ class TransportHandlingUnitType
      */
     public function addOnceToShipmentDocumentReferenceWithCreate(): ShipmentDocumentReference
     {
-        if (!is_array($this->shipmentDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->shipmentDocumentReference)) {
             $this->shipmentDocumentReference = [];
         }
 
@@ -2350,7 +2351,7 @@ class TransportHandlingUnitType
     public function addOnceToStatus(
         Status $status
     ): static {
-        if (!is_array($this->status)) {
+        if (!InvoiceSuiteArrayUtils::is($this->status)) {
             $this->status = [];
         }
 
@@ -2364,7 +2365,7 @@ class TransportHandlingUnitType
      */
     public function addOnceToStatusWithCreate(): Status
     {
-        if (!is_array($this->status)) {
+        if (!InvoiceSuiteArrayUtils::is($this->status)) {
             $this->status = [];
         }
 
@@ -2474,7 +2475,7 @@ class TransportHandlingUnitType
     public function addOnceToCustomsDeclaration(
         CustomsDeclaration $customsDeclaration
     ): static {
-        if (!is_array($this->customsDeclaration)) {
+        if (!InvoiceSuiteArrayUtils::is($this->customsDeclaration)) {
             $this->customsDeclaration = [];
         }
 
@@ -2488,7 +2489,7 @@ class TransportHandlingUnitType
      */
     public function addOnceToCustomsDeclarationWithCreate(): CustomsDeclaration
     {
-        if (!is_array($this->customsDeclaration)) {
+        if (!InvoiceSuiteArrayUtils::is($this->customsDeclaration)) {
             $this->customsDeclaration = [];
         }
 
@@ -2598,7 +2599,7 @@ class TransportHandlingUnitType
     public function addOnceToReferencedShipment(
         ReferencedShipment $referencedShipment
     ): static {
-        if (!is_array($this->referencedShipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->referencedShipment)) {
             $this->referencedShipment = [];
         }
 
@@ -2612,7 +2613,7 @@ class TransportHandlingUnitType
      */
     public function addOnceToReferencedShipmentWithCreate(): ReferencedShipment
     {
-        if (!is_array($this->referencedShipment)) {
+        if (!InvoiceSuiteArrayUtils::is($this->referencedShipment)) {
             $this->referencedShipment = [];
         }
 
@@ -2722,7 +2723,7 @@ class TransportHandlingUnitType
     public function addOnceToPackage(
         Package $package
     ): static {
-        if (!is_array($this->package)) {
+        if (!InvoiceSuiteArrayUtils::is($this->package)) {
             $this->package = [];
         }
 
@@ -2736,7 +2737,7 @@ class TransportHandlingUnitType
      */
     public function addOnceToPackageWithCreate(): Package
     {
-        if (!is_array($this->package)) {
+        if (!InvoiceSuiteArrayUtils::is($this->package)) {
             $this->package = [];
         }
 

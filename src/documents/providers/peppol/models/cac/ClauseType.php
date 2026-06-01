@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Content;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ClauseType
@@ -175,7 +176,7 @@ class ClauseType
     public function addOnceToContent(
         Content $content
     ): static {
-        if (!is_array($this->content)) {
+        if (!InvoiceSuiteArrayUtils::is($this->content)) {
             $this->content = [];
         }
 
@@ -189,7 +190,7 @@ class ClauseType
      */
     public function addOnceToContentWithCreate(): Content
     {
-        if (!is_array($this->content)) {
+        if (!InvoiceSuiteArrayUtils::is($this->content)) {
             $this->content = [];
         }
 

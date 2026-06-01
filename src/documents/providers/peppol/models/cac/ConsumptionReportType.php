@@ -18,6 +18,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ResidenceType;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ResidenceTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ResidentOccupantsNumeric;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalConsumedQuantity;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ConsumptionReportType
@@ -444,7 +445,7 @@ class ConsumptionReportType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -458,7 +459,7 @@ class ConsumptionReportType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -1048,7 +1049,7 @@ class ConsumptionReportType
     public function addOnceToConsumptionReportReference(
         ConsumptionReportReference $consumptionReportReference
     ): static {
-        if (!is_array($this->consumptionReportReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->consumptionReportReference)) {
             $this->consumptionReportReference = [];
         }
 
@@ -1062,7 +1063,7 @@ class ConsumptionReportType
      */
     public function addOnceToConsumptionReportReferenceWithCreate(): ConsumptionReportReference
     {
-        if (!is_array($this->consumptionReportReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->consumptionReportReference)) {
             $this->consumptionReportReference = [];
         }
 
@@ -1172,7 +1173,7 @@ class ConsumptionReportType
     public function addOnceToConsumptionHistory(
         ConsumptionHistory $consumptionHistory
     ): static {
-        if (!is_array($this->consumptionHistory)) {
+        if (!InvoiceSuiteArrayUtils::is($this->consumptionHistory)) {
             $this->consumptionHistory = [];
         }
 
@@ -1186,7 +1187,7 @@ class ConsumptionReportType
      */
     public function addOnceToConsumptionHistoryWithCreate(): ConsumptionHistory
     {
-        if (!is_array($this->consumptionHistory)) {
+        if (!InvoiceSuiteArrayUtils::is($this->consumptionHistory)) {
             $this->consumptionHistory = [];
         }
 

@@ -11,6 +11,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SubscriberID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SubscriberType;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SubscriberTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalDeliveredQuantity;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ConsumptionPointType
@@ -257,7 +258,7 @@ class ConsumptionPointType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -271,7 +272,7 @@ class ConsumptionPointType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -621,7 +622,7 @@ class ConsumptionPointType
     public function addOnceToUtilityMeter(
         UtilityMeter $utilityMeter
     ): static {
-        if (!is_array($this->utilityMeter)) {
+        if (!InvoiceSuiteArrayUtils::is($this->utilityMeter)) {
             $this->utilityMeter = [];
         }
 
@@ -635,7 +636,7 @@ class ConsumptionPointType
      */
     public function addOnceToUtilityMeterWithCreate(): UtilityMeter
     {
-        if (!is_array($this->utilityMeter)) {
+        if (!InvoiceSuiteArrayUtils::is($this->utilityMeter)) {
             $this->utilityMeter = [];
         }
 

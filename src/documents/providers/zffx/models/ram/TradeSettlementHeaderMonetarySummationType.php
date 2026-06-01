@@ -6,6 +6,7 @@ namespace horstoeko\invoicesuite\documents\providers\zffx\models\ram;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TradeSettlementHeaderMonetarySummationType
@@ -341,7 +342,7 @@ class TradeSettlementHeaderMonetarySummationType
     public function addOnceToTaxTotalAmount(
         AmountType $taxTotalAmount
     ): static {
-        if (!is_array($this->taxTotalAmount)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotalAmount)) {
             $this->taxTotalAmount = [];
         }
 
@@ -355,7 +356,7 @@ class TradeSettlementHeaderMonetarySummationType
      */
     public function addOnceToTaxTotalAmountWithCreate(): AmountType
     {
-        if (!is_array($this->taxTotalAmount)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotalAmount)) {
             $this->taxTotalAmount = [];
         }
 

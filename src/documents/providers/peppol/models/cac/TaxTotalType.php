@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\cac;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RoundingAmount;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TaxAmount;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TaxTotalType
@@ -308,7 +309,7 @@ class TaxTotalType
     public function addOnceToTaxSubtotal(
         TaxSubtotal $taxSubtotal
     ): static {
-        if (!is_array($this->taxSubtotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxSubtotal)) {
             $this->taxSubtotal = [];
         }
 
@@ -322,7 +323,7 @@ class TaxTotalType
      */
     public function addOnceToTaxSubtotalWithCreate(): TaxSubtotal
     {
-        if (!is_array($this->taxSubtotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxSubtotal)) {
             $this->taxSubtotal = [];
         }
 

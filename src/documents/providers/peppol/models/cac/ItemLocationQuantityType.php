@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LeadTimeMeasure
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MaximumQuantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MinimumQuantity;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TradingRestrictions;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class ItemLocationQuantityType
@@ -401,7 +402,7 @@ class ItemLocationQuantityType
     public function addOnceToTradingRestrictions(
         TradingRestrictions $tradingRestrictions
     ): static {
-        if (!is_array($this->tradingRestrictions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->tradingRestrictions)) {
             $this->tradingRestrictions = [];
         }
 
@@ -415,7 +416,7 @@ class ItemLocationQuantityType
      */
     public function addOnceToTradingRestrictionsWithCreate(): TradingRestrictions
     {
-        if (!is_array($this->tradingRestrictions)) {
+        if (!InvoiceSuiteArrayUtils::is($this->tradingRestrictions)) {
             $this->tradingRestrictions = [];
         }
 
@@ -525,7 +526,7 @@ class ItemLocationQuantityType
     public function addOnceToApplicableTerritoryAddress(
         ApplicableTerritoryAddress $applicableTerritoryAddress
     ): static {
-        if (!is_array($this->applicableTerritoryAddress)) {
+        if (!InvoiceSuiteArrayUtils::is($this->applicableTerritoryAddress)) {
             $this->applicableTerritoryAddress = [];
         }
 
@@ -539,7 +540,7 @@ class ItemLocationQuantityType
      */
     public function addOnceToApplicableTerritoryAddressWithCreate(): ApplicableTerritoryAddress
     {
-        if (!is_array($this->applicableTerritoryAddress)) {
+        if (!InvoiceSuiteArrayUtils::is($this->applicableTerritoryAddress)) {
             $this->applicableTerritoryAddress = [];
         }
 
@@ -689,7 +690,7 @@ class ItemLocationQuantityType
     public function addOnceToDeliveryUnit(
         DeliveryUnit $deliveryUnit
     ): static {
-        if (!is_array($this->deliveryUnit)) {
+        if (!InvoiceSuiteArrayUtils::is($this->deliveryUnit)) {
             $this->deliveryUnit = [];
         }
 
@@ -703,7 +704,7 @@ class ItemLocationQuantityType
      */
     public function addOnceToDeliveryUnitWithCreate(): DeliveryUnit
     {
-        if (!is_array($this->deliveryUnit)) {
+        if (!InvoiceSuiteArrayUtils::is($this->deliveryUnit)) {
             $this->deliveryUnit = [];
         }
 
@@ -813,7 +814,7 @@ class ItemLocationQuantityType
     public function addOnceToApplicableTaxCategory(
         ApplicableTaxCategory $applicableTaxCategory
     ): static {
-        if (!is_array($this->applicableTaxCategory)) {
+        if (!InvoiceSuiteArrayUtils::is($this->applicableTaxCategory)) {
             $this->applicableTaxCategory = [];
         }
 
@@ -827,7 +828,7 @@ class ItemLocationQuantityType
      */
     public function addOnceToApplicableTaxCategoryWithCreate(): ApplicableTaxCategory
     {
-        if (!is_array($this->applicableTaxCategory)) {
+        if (!InvoiceSuiteArrayUtils::is($this->applicableTaxCategory)) {
             $this->applicableTaxCategory = [];
         }
 
@@ -977,7 +978,7 @@ class ItemLocationQuantityType
     public function addOnceToAllowanceCharge(
         AllowanceCharge $allowanceCharge
     ): static {
-        if (!is_array($this->allowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceCharge)) {
             $this->allowanceCharge = [];
         }
 
@@ -991,7 +992,7 @@ class ItemLocationQuantityType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        if (!is_array($this->allowanceCharge)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceCharge)) {
             $this->allowanceCharge = [];
         }
 

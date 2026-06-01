@@ -6,6 +6,7 @@ namespace horstoeko\invoicesuite\documents\providers\fatturapa\models;
 
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\CondizioniPagamento;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 final class DatiPagamento
@@ -130,7 +131,7 @@ final class DatiPagamento
     public function addToDettaglioPagamento(
         DettaglioPagamento $dettaglioPagamento
     ): static {
-        if (!is_array($this->dettaglioPagamento)) {
+        if (!InvoiceSuiteArrayUtils::is($this->dettaglioPagamento)) {
             $this->dettaglioPagamento = [];
         }
 
@@ -160,7 +161,7 @@ final class DatiPagamento
     public function addOnceToDettaglioPagamento(
         DettaglioPagamento $dettaglioPagamento
     ): static {
-        if (!is_array($this->dettaglioPagamento)) {
+        if (!InvoiceSuiteArrayUtils::is($this->dettaglioPagamento)) {
             $this->dettaglioPagamento = [];
         }
 
@@ -176,7 +177,7 @@ final class DatiPagamento
      */
     public function addOnceToDettaglioPagamentoWithCreate(): DettaglioPagamento
     {
-        if (!is_array($this->dettaglioPagamento)) {
+        if (!InvoiceSuiteArrayUtils::is($this->dettaglioPagamento)) {
             $this->dettaglioPagamento = [];
         }
 

@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CandidateStatem
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\EvidenceTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class EvidenceType
@@ -273,7 +274,7 @@ class EvidenceType
     public function addOnceToDescription(
         Description $description
     ): static {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -287,7 +288,7 @@ class EvidenceType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
-        if (!is_array($this->description)) {
+        if (!InvoiceSuiteArrayUtils::is($this->description)) {
             $this->description = [];
         }
 
@@ -397,7 +398,7 @@ class EvidenceType
     public function addOnceToCandidateStatement(
         CandidateStatement $candidateStatement
     ): static {
-        if (!is_array($this->candidateStatement)) {
+        if (!InvoiceSuiteArrayUtils::is($this->candidateStatement)) {
             $this->candidateStatement = [];
         }
 
@@ -411,7 +412,7 @@ class EvidenceType
      */
     public function addOnceToCandidateStatementWithCreate(): CandidateStatement
     {
-        if (!is_array($this->candidateStatement)) {
+        if (!InvoiceSuiteArrayUtils::is($this->candidateStatement)) {
             $this->candidateStatement = [];
         }
 

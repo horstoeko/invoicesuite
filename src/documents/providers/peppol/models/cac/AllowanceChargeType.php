@@ -15,6 +15,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MultiplierFactorNumeric;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PerUnitAmount;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SequenceNumeric;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class AllowanceChargeType
@@ -398,7 +399,7 @@ class AllowanceChargeType
     public function addOnceToAllowanceChargeReason(
         AllowanceChargeReason $allowanceChargeReason
     ): static {
-        if (!is_array($this->allowanceChargeReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceChargeReason)) {
             $this->allowanceChargeReason = [];
         }
 
@@ -412,7 +413,7 @@ class AllowanceChargeType
      */
     public function addOnceToAllowanceChargeReasonWithCreate(): AllowanceChargeReason
     {
-        if (!is_array($this->allowanceChargeReason)) {
+        if (!InvoiceSuiteArrayUtils::is($this->allowanceChargeReason)) {
             $this->allowanceChargeReason = [];
         }
 
@@ -832,7 +833,7 @@ class AllowanceChargeType
     public function addOnceToTaxCategory(
         TaxCategory $taxCategory
     ): static {
-        if (!is_array($this->taxCategory)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxCategory)) {
             $this->taxCategory = [];
         }
 
@@ -846,7 +847,7 @@ class AllowanceChargeType
      */
     public function addOnceToTaxCategoryWithCreate(): TaxCategory
     {
-        if (!is_array($this->taxCategory)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxCategory)) {
             $this->taxCategory = [];
         }
 
@@ -996,7 +997,7 @@ class AllowanceChargeType
     public function addOnceToPaymentMeans(
         PaymentMeans $paymentMeans
     ): static {
-        if (!is_array($this->paymentMeans)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentMeans)) {
             $this->paymentMeans = [];
         }
 
@@ -1010,7 +1011,7 @@ class AllowanceChargeType
      */
     public function addOnceToPaymentMeansWithCreate(): PaymentMeans
     {
-        if (!is_array($this->paymentMeans)) {
+        if (!InvoiceSuiteArrayUtils::is($this->paymentMeans)) {
             $this->paymentMeans = [];
         }
 

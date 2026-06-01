@@ -10,6 +10,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\FeeDescription;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TenderEnvelopeID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TenderEnvelopeTypeCode;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\VariantID;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use JMS\Serializer\Annotation as JMS;
 
 class TenderedProjectType
@@ -321,7 +322,7 @@ class TenderedProjectType
     public function addOnceToFeeDescription(
         FeeDescription $feeDescription
     ): static {
-        if (!is_array($this->feeDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->feeDescription)) {
             $this->feeDescription = [];
         }
 
@@ -335,7 +336,7 @@ class TenderedProjectType
      */
     public function addOnceToFeeDescriptionWithCreate(): FeeDescription
     {
-        if (!is_array($this->feeDescription)) {
+        if (!InvoiceSuiteArrayUtils::is($this->feeDescription)) {
             $this->feeDescription = [];
         }
 
@@ -565,7 +566,7 @@ class TenderedProjectType
     public function addOnceToEvidenceDocumentReference(
         EvidenceDocumentReference $evidenceDocumentReference
     ): static {
-        if (!is_array($this->evidenceDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->evidenceDocumentReference)) {
             $this->evidenceDocumentReference = [];
         }
 
@@ -579,7 +580,7 @@ class TenderedProjectType
      */
     public function addOnceToEvidenceDocumentReferenceWithCreate(): EvidenceDocumentReference
     {
-        if (!is_array($this->evidenceDocumentReference)) {
+        if (!InvoiceSuiteArrayUtils::is($this->evidenceDocumentReference)) {
             $this->evidenceDocumentReference = [];
         }
 
@@ -689,7 +690,7 @@ class TenderedProjectType
     public function addOnceToTaxTotal(
         TaxTotal $taxTotal
     ): static {
-        if (!is_array($this->taxTotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotal)) {
             $this->taxTotal = [];
         }
 
@@ -703,7 +704,7 @@ class TenderedProjectType
      */
     public function addOnceToTaxTotalWithCreate(): TaxTotal
     {
-        if (!is_array($this->taxTotal)) {
+        if (!InvoiceSuiteArrayUtils::is($this->taxTotal)) {
             $this->taxTotal = [];
         }
 
@@ -853,7 +854,7 @@ class TenderedProjectType
     public function addOnceToTenderLine(
         TenderLine $tenderLine
     ): static {
-        if (!is_array($this->tenderLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->tenderLine)) {
             $this->tenderLine = [];
         }
 
@@ -867,7 +868,7 @@ class TenderedProjectType
      */
     public function addOnceToTenderLineWithCreate(): TenderLine
     {
-        if (!is_array($this->tenderLine)) {
+        if (!InvoiceSuiteArrayUtils::is($this->tenderLine)) {
             $this->tenderLine = [];
         }
 
@@ -977,7 +978,7 @@ class TenderedProjectType
     public function addOnceToAwardingCriterionResponse(
         AwardingCriterionResponse $awardingCriterionResponse
     ): static {
-        if (!is_array($this->awardingCriterionResponse)) {
+        if (!InvoiceSuiteArrayUtils::is($this->awardingCriterionResponse)) {
             $this->awardingCriterionResponse = [];
         }
 
@@ -991,7 +992,7 @@ class TenderedProjectType
      */
     public function addOnceToAwardingCriterionResponseWithCreate(): AwardingCriterionResponse
     {
-        if (!is_array($this->awardingCriterionResponse)) {
+        if (!InvoiceSuiteArrayUtils::is($this->awardingCriterionResponse)) {
             $this->awardingCriterionResponse = [];
         }
 
