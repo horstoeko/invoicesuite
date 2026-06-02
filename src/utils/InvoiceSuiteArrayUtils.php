@@ -22,7 +22,7 @@ class InvoiceSuiteArrayUtils
      * @param  mixed $value
      * @return bool
      *
-     * @phpstan-assert-if-true array<array-key,mixed> $value
+     * @phpstan-assert-if-true array<array-key, mixed> $value
      */
     public static function is(mixed $value): bool
     {
@@ -32,8 +32,8 @@ class InvoiceSuiteArrayUtils
     /**
      * Ensure that $value is an array
      *
-     * @param  mixed              $value
-     * @return array<mixed,mixed>
+     * @param  mixed                   $value
+     * @return array<array-key, mixed>
      */
     public static function ensure(
         $value
@@ -44,8 +44,8 @@ class InvoiceSuiteArrayUtils
     /**
      * Search an array of string for a value (case-insensitive)
      *
-     * @param  array<string> $array
-     * @param  string        $search
+     * @param  array<array-key, string> $array
+     * @param  string                   $search
      * @return bool
      */
     public static function inArrayNoCase(
@@ -58,13 +58,15 @@ class InvoiceSuiteArrayUtils
     /**
      * Search an array for a value
      *
-     * @param  array<mixed> $array
-     * @param  mixed        $search
+     * @param  array<array-key, mixed> $array
+     * @param  mixed                   $search
+     * @param  bool                    $strict
      * @return bool
      */
     public static function arrayContains(
         array $array,
-        mixed $search
+        mixed $search,
+        bool $strict = true
     ): bool {
         return in_array($search, $array, true);
     }
@@ -72,11 +74,11 @@ class InvoiceSuiteArrayUtils
     /**
      * Push a nullable string to an int-indexed array. The string ($value) is only pushed when it is not null or an empty one
      *
-     * @param  array<int,string> $array
-     * @param  null|string       $value
+     * @param  array<int, string> $array
+     * @param  null|string        $value
      * @return void
      *
-     * @phpstan-param-out array<int,string> $array
+     * @phpstan-param-out array<int, string> $array
      */
     public static function pushStringToIntIndexedArray(array &$array, ?string $value): void
     {
@@ -88,12 +90,12 @@ class InvoiceSuiteArrayUtils
     /**
      * Push a nullable string to an string-indexed ($key) array. The string ($value) is only pushed when it is not null or an empty one
      *
-     * @param  array<string,string> $array
-     * @param  null|string          $key
-     * @param  null|string          $value
+     * @param  array<string, string> $array
+     * @param  null|string           $key
+     * @param  null|string           $value
      * @return void
      *
-     * @phpstan-param-out array<string,string> $array
+     * @phpstan-param-out array<string, string> $array
      */
     public static function pushStringToStringIndexedArray(array &$array, ?string $key, ?string $value): void
     {
@@ -105,11 +107,11 @@ class InvoiceSuiteArrayUtils
     /**
      * Push a nullable float to an int-indexed array. The string ($value) is only pushed when it is not null or an empty one
      *
-     * @param  array<int,float> $array
-     * @param  null|float       $value
+     * @param  array<int, float> $array
+     * @param  null|float        $value
      * @return void
      *
-     * @phpstan-param-out array<int,float> $array
+     * @phpstan-param-out array<int, float> $array
      */
     public static function pushFloatToIntIndexedArray(array &$array, ?float $value): void
     {
@@ -121,12 +123,12 @@ class InvoiceSuiteArrayUtils
     /**
      * Push a nullable float to an string-indexed ($key) array. The string ($value) is only pushed when it is not null or an empty one
      *
-     * @param  array<string,float> $array
-     * @param  null|string         $key
-     * @param  null|float          $value
+     * @param  array<string, float> $array
+     * @param  null|string          $key
+     * @param  null|float           $value
      * @return void
      *
-     * @phpstan-param-out array<string,float> $array
+     * @phpstan-param-out array<string, float> $array
      */
     public static function pushFloatToStringIndexedArray(array &$array, ?string $key, ?float $value): void
     {
@@ -138,11 +140,11 @@ class InvoiceSuiteArrayUtils
     /**
      * Push a nullable boolean to an int-indexed array. The string ($value) is only pushed when it is not null or an empty one
      *
-     * @param  array<int,bool> $array
-     * @param  null|bool       $value
+     * @param  array<int, bool> $array
+     * @param  null|bool        $value
      * @return void
      *
-     * @phpstan-param-out array<int,bool> $array
+     * @phpstan-param-out array<int, bool> $array
      */
     public static function pushBooleanToIntIndexedArray(array &$array, ?bool $value): void
     {
@@ -154,12 +156,12 @@ class InvoiceSuiteArrayUtils
     /**
      * Push a nullable boolean to an string-indexed ($key) array. The string ($value) is only pushed when it is not null or an empty one
      *
-     * @param  array<string,bool> $array
-     * @param  null|string        $key
-     * @param  null|bool          $value
+     * @param  array<string, bool> $array
+     * @param  null|string         $key
+     * @param  null|bool           $value
      * @return void
      *
-     * @phpstan-param-out array<string,bool> $array
+     * @phpstan-param-out array<string, bool> $array
      */
     public static function pushBooleanToStringIndexedArray(array &$array, ?string $key, ?bool $value): void
     {
@@ -192,9 +194,9 @@ class InvoiceSuiteArrayUtils
     /**
      * Limit array to n elements
      *
-     * @param  array<mixed,mixed> $array
-     * @param  int                $limit
-     * @return array<mixed,mixed>
+     * @param  array<array-key, mixed> $array
+     * @param  int                     $limit
+     * @return array<array-key, mixed>
      */
     public static function limit(
         array $array,
@@ -207,10 +209,10 @@ class InvoiceSuiteArrayUtils
      * Limit array to n elements if $limitCondition evaluates to true, otherwise
      * the original array is returned
      *
-     * @param  bool               $limitCondition
-     * @param  array<mixed,mixed> $array
-     * @param  int                $limit
-     * @return array<mixed,mixed>
+     * @param  bool                    $limitCondition
+     * @param  array<array-key, mixed> $array
+     * @param  int                     $limit
+     * @return array<array-key, mixed>
      */
     public static function limitWhen(
         bool $limitCondition,
@@ -223,8 +225,8 @@ class InvoiceSuiteArrayUtils
     /**
      * Limit array to one element
      *
-     * @param  array<mixed,mixed> $array
-     * @return array<mixed,mixed>
+     * @param  array<array-key, mixed> $array
+     * @return array<array-key, mixed>
      */
     public static function limitToOne(
         array $array
@@ -236,9 +238,9 @@ class InvoiceSuiteArrayUtils
      * Limit array to 1 element if $limitCondition evaluates to true, otherwise
      * the original array is returned
      *
-     * @param  bool               $limitCondition
-     * @param  array<mixed,mixed> $array
-     * @return array<mixed,mixed>
+     * @param  bool                    $limitCondition
+     * @param  array<array-key, mixed> $array
+     * @return array<array-key, mixed>
      */
     public static function limitToOneWhen(
         bool $limitCondition,
@@ -266,10 +268,10 @@ class InvoiceSuiteArrayUtils
      * @template TKey of array-key
      * @template TValue
      *
-     * @param  array<TKey,TValue> $array
-     * @param  null|callable      $callback
-     * @param  int                $mode
-     * @return array<TKey,TValue>
+     * @param  array<TKey, TValue> $array
+     * @param  null|callable       $callback
+     * @param  int                 $mode
+     * @return array<TKey, TValue>
      */
     public static function filter(array $array, ?callable $callback = null, int $mode = 0): array
     {
@@ -279,8 +281,8 @@ class InvoiceSuiteArrayUtils
     /**
      * Check whether an array key exists
      *
-     * @param  array<array-key,mixed> $array
-     * @param  int|string             $key
+     * @param  array<array-key, mixed> $array
+     * @param  int|string              $key
      * @return bool
      */
     public static function keyExists(array $array, int|string $key): bool
@@ -291,7 +293,7 @@ class InvoiceSuiteArrayUtils
     /**
      * Gets the first key of an array
      *
-     * @param  array<array-key,mixed> $array
+     * @param  array<array-key, mixed> $array
      * @return null|int|string
      */
     public static function firstKey(array $array): int|string|null
@@ -302,9 +304,9 @@ class InvoiceSuiteArrayUtils
     /**
      * Return all the keys or a subset of the keys of an array
      *
-     * @param  array<array-key,mixed> $array
-     * @param  mixed                  ...$arguments
-     * @return array<int,int|string>
+     * @param  array<array-key, mixed> $array
+     * @param  mixed                   ...$arguments
+     * @return array<int, int|string>
      */
     public static function keys(array $array, mixed ...$arguments): array
     {
@@ -318,10 +320,10 @@ class InvoiceSuiteArrayUtils
     /**
      * Applies the callback to the elements of the given arrays
      *
-     * @param  null|callable          $callback
-     * @param  array<array-key,mixed> $array
-     * @param  array<array-key,mixed> ...$arrays
-     * @return array<array-key,mixed>
+     * @param  null|callable           $callback
+     * @param  array<array-key, mixed> $array
+     * @param  array<array-key, mixed> ...$arrays
+     * @return array<array-key, mixed>
      */
     public static function map(?callable $callback, array $array, array ...$arrays): array
     {
@@ -331,8 +333,8 @@ class InvoiceSuiteArrayUtils
     /**
      * Merge one or more arrays
      *
-     * @param  array<array-key,mixed> ...$arrays
-     * @return array<array-key,mixed>
+     * @param  array<array-key, mixed> ...$arrays
+     * @return array<array-key, mixed>
      */
     public static function merge(array ...$arrays): array
     {
@@ -342,9 +344,9 @@ class InvoiceSuiteArrayUtils
     /**
      * Searches the array for a given value and returns the first corresponding key
      *
-     * @param  array<array-key,mixed> $array
-     * @param  mixed                  $search
-     * @param  bool                   $strict
+     * @param  array<array-key, mixed> $array
+     * @param  mixed                   $search
+     * @param  bool                    $strict
      * @return false|int|string
      */
     public static function search(array $array, mixed $search, bool $strict = true): false|int|string
@@ -357,8 +359,8 @@ class InvoiceSuiteArrayUtils
      *
      * @template TValue
      *
-     * @param  array<array-key,TValue> $array
-     * @return array<int,TValue>
+     * @param  array<array-key, TValue> $array
+     * @return array<int, TValue>
      */
     public static function values(array $array): array
     {
@@ -368,8 +370,8 @@ class InvoiceSuiteArrayUtils
     /**
      * Count all elements in an array or a Countable object
      *
-     * @param  array<array-key,mixed>|Countable $value
-     * @param  0|1                              $mode
+     * @param  array<array-key, mixed>|Countable $value
+     * @param  0|1                               $mode
      * @return int
      */
     public static function count(array|Countable $value, int $mode = COUNT_NORMAL): int
@@ -382,7 +384,7 @@ class InvoiceSuiteArrayUtils
      *
      * @template TValue
      *
-     * @param  array<array-key,TValue> $array
+     * @param  array<array-key, TValue> $array
      * @return false|TValue
      */
     public static function first(array &$array): mixed
@@ -395,7 +397,7 @@ class InvoiceSuiteArrayUtils
      *
      * @template TValue
      *
-     * @param  array<array-key,TValue> $array
+     * @param  array<array-key, TValue> $array
      * @return false|TValue
      */
     public static function last(array &$array): mixed
@@ -408,7 +410,7 @@ class InvoiceSuiteArrayUtils
      *
      * @template TValue
      *
-     * @param  array<array-key,TValue> $array
+     * @param  array<array-key, TValue> $array
      * @return false|TValue
      */
     public static function next(array &$array): mixed
@@ -421,7 +423,7 @@ class InvoiceSuiteArrayUtils
      *
      * @template TValue
      *
-     * @param  array<array-key,TValue> $array
+     * @param  array<array-key, TValue> $array
      * @return false|TValue
      */
     public static function previous(array &$array): mixed
@@ -432,8 +434,8 @@ class InvoiceSuiteArrayUtils
     /**
      * Sort an array by values using a user-defined comparison function
      *
-     * @param  array<array-key,mixed> $array
-     * @param  callable               $callback
+     * @param  array<array-key, mixed> $array
+     * @param  callable                $callback
      * @return bool
      */
     public static function sortWithCallback(array &$array, callable $callback): bool
