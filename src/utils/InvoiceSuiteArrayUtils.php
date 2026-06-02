@@ -344,10 +344,9 @@ class InvoiceSuiteArrayUtils
      *
      * @param  array<array-key, mixed> $array
      * @param  mixed                   $search
-     * @param  bool                    $strict
      * @return false|int|string
      */
-    public static function search(array $array, mixed $search, bool $strict = true): false|int|string
+    public static function search(array $array, mixed $search): false|int|string
     {
         return array_search($search, $array, true);
     }

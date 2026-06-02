@@ -362,6 +362,156 @@ final class UtilsTest extends TestCase
         $this->assertSame(3, $limitedVariable[5]);
     }
 
+    public function testInvoiceSuiteArrayUtilsEmpty(): void
+    {
+        $variable = [];
+
+        $this->assertTrue(InvoiceSuiteArrayUtils::empty($variable));
+
+        $variable = [1, 2, 3];
+
+        $this->assertFalse(InvoiceSuiteArrayUtils::empty($variable));
+
+        $variable = 'abc';
+
+        $this->assertFalse(InvoiceSuiteArrayUtils::empty($variable));
+    }
+
+    public function testInvoiceSuiteArrayUtilsFilter(): void
+    {
+        $variable = [1, 2, 3];
+
+        $filtered = InvoiceSuiteArrayUtils::filter($variable, static fn ($item) => 2 == $item);
+
+        $this->assertCount(1, $filtered);
+        $this->assertArrayNotHasKey(0, $filtered);
+        $this->assertArrayHasKey(1, $filtered);
+        $this->assertArrayNotHasKey(2, $filtered);
+        $this->assertSame(2, $filtered[1]);
+    }
+
+    public function testInvoiceSuiteArrayUtilsKeyExists(): void
+    {
+        $variable = [1, 2, 3];
+
+        $this->assertTrue(InvoiceSuiteArrayUtils::keyExists($variable, 0));
+        $this->assertTrue(InvoiceSuiteArrayUtils::keyExists($variable, 1));
+        $this->assertTrue(InvoiceSuiteArrayUtils::keyExists($variable, 2));
+        $this->assertFalse(InvoiceSuiteArrayUtils::keyExists($variable, 3));
+
+        $variable = ['a' => 1, 'b' => 2, 'c' => 3];
+
+        $this->assertTrue(InvoiceSuiteArrayUtils::keyExists($variable, 'a'));
+        $this->assertTrue(InvoiceSuiteArrayUtils::keyExists($variable, 'b'));
+        $this->assertTrue(InvoiceSuiteArrayUtils::keyExists($variable, 'c'));
+        $this->assertFalse(InvoiceSuiteArrayUtils::keyExists($variable, 'd'));
+    }
+
+    public function testInvoiceSuiteArrayUtilsFirstKey(): void
+    {
+        $variable = [1, 2, 3];
+
+        $this->assertSame(0, InvoiceSuiteArrayUtils::firstKey($variable));
+
+        $variable = ['a' => 1, 'b' => 2, 'c' => 3];
+
+        $this->assertSame('a', InvoiceSuiteArrayUtils::firstKey($variable));
+    }
+
+    public function testInvoiceSuiteArrayUtilsKeys(): void
+    {
+        $variable = [1, 2, 3];
+
+        $this->assertSame([0, 1, 2], InvoiceSuiteArrayUtils::keys($variable));
+
+        $variable = ['a' => 1, 'b' => 2, 'c' => 3];
+
+        $this->assertSame(['a', 'b', 'c'], InvoiceSuiteArrayUtils::keys($variable));
+    }
+
+    public function testInvoiceSuiteArrayUtilsMap(): void
+    {
+        $variable = ['Jim', 'Jack', 'John'];
+
+        $mapped = InvoiceSuiteArrayUtils::map(static fn ($item) => sprintf('My name is %s', $item), $variable);
+
+        $this->assertSame(['My name is Jim', 'My name is Jack', 'My name is John'], $mapped);
+    }
+
+    public function testInvoiceSuiteArrayUtilsMerge(): void
+    {
+        $variable1 = ['Jim', 'Jack', 'John'];
+        $variable2 = ['Otto', 'Fritz', 'Heinz'];
+
+        $merged = InvoiceSuiteArrayUtils::merge($variable1, $variable2);
+
+        $this->assertSame(['Jim', 'Jack', 'John', 'Otto', 'Fritz', 'Heinz'], $merged);
+    }
+
+    public function testInvoiceSuiteArrayUtilsSearch(): void
+    {
+        $variable = [1, 2, 3];
+
+        $this->assertFalse(InvoiceSuiteArrayUtils::search($variable, 0));
+        $this->assertSame(0, InvoiceSuiteArrayUtils::search($variable, 1));
+        $this->assertSame(1, InvoiceSuiteArrayUtils::search($variable, 2));
+        $this->assertSame(2, InvoiceSuiteArrayUtils::search($variable, 3));
+
+        $variable = ['Jim', 'Jack', 'John'];
+
+        $this->assertFalse(InvoiceSuiteArrayUtils::search($variable, 'unknown'));
+        $this->assertSame(0, InvoiceSuiteArrayUtils::search($variable, 'Jim'));
+        $this->assertSame(1, InvoiceSuiteArrayUtils::search($variable, 'Jack'));
+        $this->assertSame(2, InvoiceSuiteArrayUtils::search($variable, 'John'));
+    }
+
+    public function testInvoiceSuiteArrayUtilsValues(): void
+    {
+        $variable = [1, 2, 3];
+
+        $this->assertSame([1, 2, 3], InvoiceSuiteArrayUtils::values($variable));
+
+        $variable = ['a' => 1, 'b' => 2, 'c' => 3];
+
+        $this->assertSame([1, 2, 3], InvoiceSuiteArrayUtils::values($variable));
+    }
+
+    public function testInvoiceSuiteArrayUtilsCount(): void
+    {
+        $variable = [1, 2, 3];
+
+        $this->assertSame(3, InvoiceSuiteArrayUtils::count($variable));
+    }
+
+    public function testInvoiceSuiteArrayUtilsFirstNextPreviousLast(): void
+    {
+        $variable = [1, 2, 3, 4, 5];
+
+        $this->assertSame(1, InvoiceSuiteArrayUtils::first($variable));
+        $this->assertSame(2, InvoiceSuiteArrayUtils::next($variable));
+        $this->assertSame(3, InvoiceSuiteArrayUtils::next($variable));
+        $this->assertSame(2, InvoiceSuiteArrayUtils::previous($variable));
+        $this->assertSame(5, InvoiceSuiteArrayUtils::last($variable));
+
+        $variable = [];
+
+        $this->assertFalse(InvoiceSuiteArrayUtils::first($variable));
+        $this->assertFalse(InvoiceSuiteArrayUtils::next($variable));
+        $this->assertFalse(InvoiceSuiteArrayUtils::previous($variable));
+        $this->assertFalse(InvoiceSuiteArrayUtils::last($variable));
+    }
+
+    public function testInvoiceSuiteArrayUtilsSortWithCallback(): void
+    {
+        $variable = ['John', 'Jack', 'Jim'];
+
+        InvoiceSuiteArrayUtils::sortWithCallback($variable, static function ($a, $b) {
+            return strcmp($a, $b);
+        });
+
+        $this->assertSame(['Jack', 'Jim', 'John'], $variable);
+    }
+
     public function testInvoiceSuiteDateTimeUtilsIsNullOrEmpty(): void
     {
         $dateTimeValue = null;
