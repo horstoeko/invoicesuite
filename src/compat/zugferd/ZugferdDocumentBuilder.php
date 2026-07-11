@@ -380,17 +380,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
      *
      * @return DOMDocument
      *
+     * @throws \RuntimeException
      * @throws RuntimeException
      */
     public function getContentAsDomDocument(): DOMDocument
     {
-        $domDocument = InvoiceSuiteXmlUtils::loadXml($this->getContent());
-
-        if (false === $domDocument) {
-            throw new RuntimeException('Failed to create DOMDocument from content');
-        }
-
-        return $domDocument;
+        return InvoiceSuiteXmlUtils::loadXmlOrFail($this->getContent());
     }
 
     /**
@@ -398,6 +393,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
      *
      * @return DOMXPath
      *
+     * @throws \RuntimeException
      * @throws RuntimeException
      */
     public function getContentAsDOMXPath(): DOMXPath

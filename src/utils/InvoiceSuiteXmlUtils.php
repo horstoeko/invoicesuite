@@ -6,6 +6,7 @@ namespace horstoeko\invoicesuite\utils;
 
 use DOMDocument;
 use DOMXPath;
+use RuntimeException;
 use SimpleXMLElement;
 
 /**
@@ -62,6 +63,30 @@ class InvoiceSuiteXmlUtils
     }
 
     /**
+     * Create DOMDocument and load XML or throw an exception
+     *
+     * @param  string      $source
+     * @param  int         $options
+     * @param  string      $exceptionMessage
+     * @return DOMDocument
+     *
+     * @throws RuntimeException
+     */
+    public static function loadXmlOrFail(
+        string $source,
+        int $options = LIBXML_NONET | LIBXML_NOERROR | LIBXML_NOWARNING,
+        string $exceptionMessage = 'Failed to create DOMDocument from content'
+    ): DOMDocument {
+        $domDocument = static::loadXml($source, $options);
+
+        if (false === $domDocument) {
+            throw new RuntimeException($exceptionMessage);
+        }
+
+        return $domDocument;
+    }
+
+    /**
      * Create DOMDocument and load XML from a file
      *
      * @param  string            $filename
@@ -89,5 +114,29 @@ class InvoiceSuiteXmlUtils
     public static function loadSimpleXmlFile(string $filename, int $options = LIBXML_NONET | LIBXML_NOERROR | LIBXML_NOWARNING): false|SimpleXMLElement
     {
         return simplexml_load_file($filename, SimpleXMLElement::class, $options);
+    }
+
+    /**
+     * Load SimpleXML from a file or throw an exception
+     *
+     * @param  string           $filename
+     * @param  int              $options
+     * @param  string           $exceptionMessage
+     * @return SimpleXMLElement
+     *
+     * @throws RuntimeException
+     */
+    public static function loadSimpleXmlFileOrFail(
+        string $filename,
+        int $options = LIBXML_NONET | LIBXML_NOERROR | LIBXML_NOWARNING,
+        string $exceptionMessage = 'Failed to load SimpleXML file'
+    ): SimpleXMLElement {
+        $simpleXmlElement = static::loadSimpleXmlFile($filename, $options);
+
+        if (false === $simpleXmlElement) {
+            throw new RuntimeException($exceptionMessage);
+        }
+
+        return $simpleXmlElement;
     }
 }

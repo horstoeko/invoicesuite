@@ -157,11 +157,7 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
      */
     protected function extractInvoiceInformations(): array
     {
-        $domDocument = InvoiceSuiteXmlUtils::loadXml($this->getRawDocumentContent(), LIBXML_NONET);
-
-        if (false === $domDocument) {
-            throw new RuntimeException('Failed to create DOMDocument from content');
-        }
+        $domDocument = InvoiceSuiteXmlUtils::loadXmlOrFail($this->getRawDocumentContent());
 
         $xpath = InvoiceSuiteXmlUtils::createDomXPath($domDocument);
 
@@ -225,11 +221,10 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
         $pdfMetadataInfos = $this->preparePdfMetadata();
         $this->pdfWriter->setPdfMetadataInfos($pdfMetadataInfos);
 
-        $xmp = InvoiceSuiteXmlUtils::loadSimpleXmlFile(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, 'assets'), 'facturx_extension_schema.xmp'));
-
-        if (false === $xmp) {
-            throw new RuntimeException('Failed to load PDF metadata extension schema');
-        }
+        $xmp = InvoiceSuiteXmlUtils::loadSimpleXmlFileOrFail(
+            filename: InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, 'assets'), 'facturx_extension_schema.xmp'),
+            exceptionMessage: 'Failed to load PDF metadata extension schema'
+        );
 
         $descriptionNodes = $xmp->xpath('rdf:Description');
 
