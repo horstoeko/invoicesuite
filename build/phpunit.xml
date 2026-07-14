@@ -135,6 +135,9 @@
             <file>../tests/testcases/pdf/InvoiceSuitePdfDocumentBuilderTest.php</file>
             <file>../tests/testcases/pdf/InvoiceSuitePdfMergerTest.php</file>
         </testsuite>
+        <testsuite name="visualizer">
+            <file>../tests/testcases/visualizers/InvoiceSuiteVisualizerTest.php</file>
+        </testsuite>
         <!--
         <testsuite name="validator">
             <file>../tests/testcases/validators/InvoiceSuiteAbstractDocumentValidatorTest.php</file>
