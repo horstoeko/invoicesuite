@@ -628,7 +628,7 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
             );
         }
 
-        // Document-Level Seller seller's tax representative party
+        // Document-Level Seller's tax representative party
 
         $newDocumentDTO->setSellerTaxRepresentativeParty(new InvoiceSuitePartyDTO());
 
@@ -745,7 +745,7 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
             );
         }
 
-        // Document-Level Buyer buyer's tax representative party
+        // Document-Level Buyer's tax representative party
 
         $newDocumentDTO->setBuyerTaxRepresentativeParty(new InvoiceSuitePartyDTO());
 
@@ -858,6 +858,123 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
                 new InvoiceSuiteCommunicationDTO(
                     $newDocumentBuyerTaxRepresentativeCommunicationUri,
                     $newDocumentBuyerTaxRepresentativeCommunicationType
+                )
+            );
+        }
+
+        // Document-Level Sales Agent party
+
+        $newDocumentDTO->setSalesAgentParty(new InvoiceSuitePartyDTO());
+
+        $this->getDocumentSalesAgentName($newDocumentSalesAgentName);
+        $newDocumentDTO->getSalesAgentParty()->addName($newDocumentSalesAgentName);
+
+        while ($this->nextDocumentSalesAgentId()) {
+            $this->getDocumentSalesAgentId(
+                $newDocumentSalesAgentId
+            );
+
+            $newDocumentDTO->getSalesAgentParty()->addId(
+                new InvoiceSuiteIdDTO(
+                    $newDocumentSalesAgentId
+                )
+            );
+        }
+
+        while ($this->nextDocumentSalesAgentGlobalId()) {
+            $this->getDocumentSalesAgentGlobalId(
+                $newDocumentSalesAgentGlobalId,
+                $newDocumentSalesAgentGlobalIdType
+            );
+
+            $newDocumentDTO->getSalesAgentParty()->addGlobalId(
+                new InvoiceSuiteIdDTO(
+                    $newDocumentSalesAgentGlobalId,
+                    $newDocumentSalesAgentGlobalIdType
+                )
+            );
+        }
+
+        while ($this->nextDocumentSalesAgentTaxRegistration()) {
+            $this->getDocumentSalesAgentTaxRegistration(
+                $newDocumentSalesAgentTaxRegistationType,
+                $newDocumentSalesAgentTaxRegistationId
+            );
+
+            $newDocumentDTO->getSalesAgentParty()->addTaxRegistration(
+                new InvoiceSuiteIdDTO(
+                    $newDocumentSalesAgentTaxRegistationId,
+                    $newDocumentSalesAgentTaxRegistationType
+                )
+            );
+        }
+
+        while ($this->nextDocumentSalesAgentAddress()) {
+            $this->getDocumentSalesAgentAddress(
+                $documentSalesAgentAddressLine1,
+                $documentSalesAgentAddressLine2,
+                $documentSalesAgentAddressLine3,
+                $documentSalesAgentAddressPostCode,
+                $documentSalesAgentAddressCity,
+                $documentSalesAgentAddressCountry,
+                $documentSalesAgentAddressSubDivision
+            );
+
+            $newDocumentDTO->getSalesAgentParty()->addAddress(new InvoiceSuiteAddressDTO(
+                $documentSalesAgentAddressLine1,
+                $documentSalesAgentAddressLine2,
+                $documentSalesAgentAddressLine3,
+                $documentSalesAgentAddressPostCode,
+                $documentSalesAgentAddressCity,
+                $documentSalesAgentAddressCountry,
+                $documentSalesAgentAddressSubDivision
+            ));
+        }
+
+        while ($this->nextDocumentSalesAgentLegalOrganisation()) {
+            $this->getDocumentSalesAgentLegalOrganisation(
+                $newDocumentSalesAgentLegalOrganisationType,
+                $newDocumentSalesAgentLegalOrganisationId,
+                $newDocumentSalesAgentLegalOrganisationName
+            );
+
+            $newDocumentDTO->getSalesAgentParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
+                $newDocumentSalesAgentLegalOrganisationId,
+                $newDocumentSalesAgentLegalOrganisationType,
+                $newDocumentSalesAgentLegalOrganisationName
+            ));
+        }
+
+        while ($this->nextDocumentSalesAgentContact()) {
+            $this->getDocumentSalesAgentContact(
+                $newDocumentSalesAgentContactPersonName,
+                $newDocumentSalesAgentContactDepartmentName,
+                $newDocumentSalesAgentContactPhoneNumber,
+                $newDocumentSalesAgentContactFaxNumber,
+                $newDocumentSalesAgentContactEmailAddress
+            );
+
+            $newDocumentDTO->getSalesAgentParty()->addContact(
+                new InvoiceSuiteContactDTO(
+                    $newDocumentSalesAgentContactPersonName,
+                    $newDocumentSalesAgentContactDepartmentName,
+                    $newDocumentSalesAgentContactPhoneNumber,
+                    $newDocumentSalesAgentContactFaxNumber,
+                    $newDocumentSalesAgentContactEmailAddress
+                )
+            );
+        }
+
+        while ($this->nextDocumentSalesAgentCommunication()) {
+            $this->getDocumentSalesAgentCommunication(
+                $newDocumentSalesAgentCommunicationType,
+                $newDocumentSalesAgentCommunicationUri
+            );
+
+            $newDocumentDTO->getSalesAgentParty()->addCommunication(
+                new InvoiceSuiteCommunicationDTO(
+                    $newDocumentSalesAgentCommunicationUri,
+                    $newDocumentSalesAgentCommunicationType
                 )
             );
         }
@@ -5549,6 +5666,343 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newUri
      */
     public function getDocumentBuyerTaxRepresentativeCommunication(?string &$newType, ?string &$newUri): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newType = '';
+        $newUri = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the name of the sales agent party
+     *
+     * @param  null|string $newName the full formal name under which the party is registered
+     * @return static
+     *
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentSalesAgentName(?string &$newName): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newName = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first ID of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentId(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next ID of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentId(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the ID of the sales agent party
+     *
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
+     * @return static
+     *
+     * @phpstan-param-out string $newId
+     */
+    public function getDocumentSalesAgentId(?string &$newId): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newId = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first global ID of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentGlobalId(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next global ID of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentGlobalId(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the Global ID of the sales agent party
+     *
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
+     * @return static
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
+     */
+    public function getDocumentSalesAgentGlobalId(?string &$newGlobalId, ?string &$newGlobalIdType): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newGlobalId = '';
+        $newGlobalIdType = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Tax Registration of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentTaxRegistration(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next Tax Registration of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentTaxRegistration(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the Tax Registration of the sales agent party
+     *
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
+     * @return static
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
+     */
+    public function getDocumentSalesAgentTaxRegistration(?string &$newTaxRegistrationType, ?string &$newTaxRegistrationId): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newTaxRegistrationType = '';
+        $newTaxRegistrationId = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first address of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentAddress(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next address of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentAddress(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the address of the sales agent party
+     *
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
+     * @return static
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
+     */
+    public function getDocumentSalesAgentAddress(?string &$newAddressLine1, ?string &$newAddressLine2, ?string &$newAddressLine3, ?string &$newPostcode, ?string &$newCity, ?string &$newCountryId, ?string &$newSubDivision): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newAddressLine1 = '';
+        $newAddressLine2 = '';
+        $newAddressLine3 = '';
+        $newPostcode = '';
+        $newCity = '';
+        $newCountryId = '';
+        $newSubDivision = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first the legal information of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentLegalOrganisation(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next the legal information of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentLegalOrganisation(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the legal information of the sales agent party
+     *
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
+     * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentSalesAgentLegalOrganisation(?string &$newType, ?string &$newId, ?string &$newName): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newType = '';
+        $newId = '';
+        $newName = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first contact information of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentContact(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next contact information of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentContact(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the contact information of the sales agent party
+     *
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
+     * @return static
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
+     */
+    public function getDocumentSalesAgentContact(?string &$newPersonName, ?string &$newDepartmentName, ?string &$newPhoneNumber, ?string &$newFaxNumber, ?string &$newEmailAddress): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newPersonName = '';
+        $newDepartmentName = '';
+        $newPhoneNumber = '';
+        $newFaxNumber = '';
+        $newEmailAddress = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first communication information of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentCommunication(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next communication information of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentCommunication(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get communication information of the sales agent party
+     *
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
+     * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
+     */
+    public function getDocumentSalesAgentCommunication(?string &$newType, ?string &$newUri): static
     {
         $this->traceMethodEnter(__METHOD__);
 
@@ -11238,6 +11692,13 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         InvoiceSuitePointerUtils::resetSingle('documentbuyertaxrepresentativelegalorganisation');
         InvoiceSuitePointerUtils::resetSingle('documentbuyertaxrepresentativecontact');
         InvoiceSuitePointerUtils::resetSingle('documentbuyertaxrepresentativeecommunication');
+        InvoiceSuitePointerUtils::resetSingle('documentsalesagentid');
+        InvoiceSuitePointerUtils::resetSingle('documentsalesagentglobalid');
+        InvoiceSuitePointerUtils::resetSingle('documentsalesagenttaxregistration');
+        InvoiceSuitePointerUtils::resetSingle('documentsalesagentaddress');
+        InvoiceSuitePointerUtils::resetSingle('documentsalesagentlegalorganisation');
+        InvoiceSuitePointerUtils::resetSingle('documentsalesagentcontact');
+        InvoiceSuitePointerUtils::resetSingle('documentsalesagentecommunication');
         InvoiceSuitePointerUtils::resetSingle('documentproductenduserid');
         InvoiceSuitePointerUtils::resetSingle('documentproductenduserglobalid');
         InvoiceSuitePointerUtils::resetSingle('documentproductendusertaxregistration');

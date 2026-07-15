@@ -378,7 +378,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 )
             );
 
-        // Document-Level Seller seller's tax representative party
+        // Document-Level Seller's tax representative party
 
         $newDocumentDTO
             ->getSellerTaxRepresentativeParty()
@@ -428,7 +428,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 )
             );
 
-        // Document-Level Buyer buyer's tax representative party
+        // Document-Level Buyer's tax representative party
 
         $newDocumentDTO
             ->getBuyerTaxRepresentativeParty()
@@ -473,6 +473,56 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             )
             ?->firstCommunication(
                 fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentBuyerTaxRepresentativeCommunication(
+                    $item->getIdType(),
+                    $item->getId()
+                )
+            );
+
+        // Document-Level Sales Agent party
+
+        $newDocumentDTO
+            ->getSalesAgentParty()
+            ?->firstName(
+                fn (string $item) => $this->setDocumentSalesAgentName($item)
+            )
+            ?->firstId(
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentSalesAgentId($item->getId())
+            )
+            ?->forEachGlobalId(
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentSalesAgentGlobalId($item->getId(), $item->getIdType())
+            )
+            ?->firstTaxRegistration(
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentSalesAgentTaxRegistration($item->getIdType(), $item->getId())
+            )
+            ?->firstAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentSalesAgentAddress(
+                    $item->getAddressLine1(),
+                    $item->getAddressLine2(),
+                    $item->getAddressLine3(),
+                    $item->getPostcode(),
+                    $item->getCity(),
+                    $item->getCountry(),
+                    $item->getSubDivision()
+                )
+            )
+            ?->firstLegalOrganisation(
+                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentSalesAgentLegalOrganisation(
+                    $item->getIdType(),
+                    $item->getId(),
+                    $item->getName()
+                )
+            )
+            ?->forEachContact(
+                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentSalesAgentContact(
+                    $item->getPersonName(),
+                    $item->getDepartmentName(),
+                    $item->getPhoneNumber(),
+                    $item->getFaxNumber(),
+                    $item->getEmailAddress()
+                )
+            )
+            ?->firstCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentSalesAgentCommunication(
                     $item->getIdType(),
                     $item->getId()
                 )
@@ -5700,6 +5750,679 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         $this->setDocumentBuyerTaxRepresentativeCommunication($newType, $newUri);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the name of the sales agent party
+     *
+     * @param  null|string $newName __BT-X-335, From EXTENDED__ The full formal name under which the party is registered
+     * @return static
+     */
+    public function setDocumentSalesAgentName(
+        ?string $newName = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getSalesAgentTradeParty()
+            ?->unsetName();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getSalesAgentTradePartyWithCreate()
+            ->getNameWithCreate()
+            ->setValue($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a name of the sales agent party
+     *
+     * @param  null|string $newName __BT-X-335, From EXTENDED__ The full formal name under which the party is registered
+     * @return static
+     */
+    public function addDocumentSalesAgentName(
+        ?string $newName = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)');
+        }
+
+        $this->setDocumentSalesAgentName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the ID of the sales agent party
+     *
+     * @param  null|string $newId __BT-X-337, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @return static
+     */
+    public function setDocumentSalesAgentId(
+        ?string $newId = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getSalesAgentTradeParty()
+            ?->unsetID();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newId)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newId)');
+        }
+
+        $this->addDocumentSalesAgentId($newId);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add an ID to the sales agent party
+     *
+     * @param  null|string $newId __BT-X-337, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @return static
+     */
+    public function addDocumentSalesAgentId(
+        ?string $newId = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newId)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newId)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getSalesAgentTradePartyWithCreate()
+            ->addToIDWithCreate()
+            ->setValue($newId);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the Global ID of the sales agent party
+     *
+     * @param  null|string $newGlobalId     __BT-X-338, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-338-0, From EXTENDED__ Type of the global identifier of the party
+     * @return static
+     */
+    public function setDocumentSalesAgentGlobalId(
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null,
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getSalesAgentTradeParty()
+            ?->unsetGlobalID();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])');
+        }
+
+        $this->addDocumentSalesAgentGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add an ID to the sales agent party
+     *
+     * @param  null|string $newGlobalId     __BT-X-338, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-338-0, From EXTENDED__ Type of the global identifier of the party
+     * @return static
+     */
+    public function addDocumentSalesAgentGlobalId(
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null,
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getSalesAgentTradePartyWithCreate()
+            ->addToGlobalIDWithCreate()
+            ->setValue($newGlobalId)
+            ->setSchemeID($newGlobalIdType);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the Tax Registration of the sales agent party
+     *
+     * @param  null|string $newTaxRegistrationType __BT-340-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-340, From EXTENDED__ Tax identification number
+     * @return static
+     */
+    public function setDocumentSalesAgentTaxRegistration(
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null,
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getSalesAgentTradeParty()
+            ?->unsetSpecifiedTaxRegistration();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])');
+        }
+
+        $this->addDocumentSalesAgentTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add an Tax Registration to the sales agent party
+     *
+     * @param  null|string $newTaxRegistrationType __BT-340-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-340, From EXTENDED__ Tax identification number
+     * @return static
+     */
+    public function addDocumentSalesAgentTaxRegistration(
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null,
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getSalesAgentTradePartyWithCreate()
+            ->addToSpecifiedTaxRegistrationWithCreate()
+            ->getIDWithCreate()
+            ->setValue($newTaxRegistrationId)
+            ->setSchemeID($newTaxRegistrationType);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the address of the sales agent party
+     *
+     * @param  null|string $newAddressLine1 __BT-349, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-350, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-351, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-348, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-352, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-353, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-354, From EXTENDED__ Region or federal state in which the party's address is located
+     * @return static
+     */
+    public function setDocumentSalesAgentAddress(
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null,
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getSalesAgentTradeParty()
+            ?->unsetPostalTradeAddress();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
+        }
+
+        $taxRepresentativeTradeParty = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getSalesAgentTradePartyWithCreate();
+
+        $taxRepresentativeTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newAddressLine1)) {
+            $taxRepresentativeTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newAddressLine2)) {
+            $taxRepresentativeTradeParty->getPostalTradeAddressWithCreate()->getLineTwoWithCreate()->setValue($newAddressLine2);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newAddressLine3)) {
+            $taxRepresentativeTradeParty->getPostalTradeAddressWithCreate()->getLineThreeWithCreate()->setValue($newAddressLine3);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPostcode)) {
+            $taxRepresentativeTradeParty->getPostalTradeAddressWithCreate()->getPostcodeCodeWithCreate()->setValue($newPostcode);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCity)) {
+            $taxRepresentativeTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newSubDivision)) {
+            $taxRepresentativeTradeParty->getPostalTradeAddressWithCreate()->getCountrySubDivisionNameWithCreate()->setValue($newSubDivision);
+        }
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add an address to the sales agent party
+     *
+     * @param  null|string $newAddressLine1 __BT-349, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-350, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-351, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-348, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-352, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-353, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-354, From EXTENDED__ Region or federal state in which the party's address is located
+     * @return static
+     */
+    public function addDocumentSalesAgentAddress(
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null,
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
+        }
+
+        $this->setDocumentSalesAgentAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the legal information of the sales agent party
+     *
+     * @param  null|string $newType __BT-X-339-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-339, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-336, From EXTENDED__ Name by which the party is known, if different from the party's name
+     * @return static
+     */
+    public function setDocumentSalesAgentLegalOrganisation(
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null,
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getSalesAgentTradeParty()
+            ?->unsetSpecifiedLegalOrganization();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])');
+        }
+
+        $taxRepresentativeTradeParty = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getSalesAgentTradePartyWithCreate();
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newId)) {
+            $taxRepresentativeTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
+
+            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newType)) {
+                $taxRepresentativeTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
+            }
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)) {
+            $taxRepresentativeTradeParty->getSpecifiedLegalOrganizationWithCreate()->getTradingBusinessNameWithCreate()->setValue($newName);
+        }
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the legal information of the sales agent party
+     *
+     * @param  null|string $newType __BT-X-339-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-339, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-336, From EXTENDED__ Name by which the party is known, if different from the party's name
+     * @return static
+     */
+    public function addDocumentSalesAgentLegalOrganisation(
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null,
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])');
+        }
+
+        $this->setDocumentSalesAgentLegalOrganisation($newType, $newId, $newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the contact information of the sales agent party
+     *
+     * @param  null|string $newPersonName     __BT-X-342, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-343, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-344, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-345, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-346, From EXTENDED__ E-Mail address of the contact point
+     * @return static
+     */
+    public function setDocumentSalesAgentContact(
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null,
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getSalesAgentTradeParty()
+            ?->unsetDefinedTradeContact();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress,
+            ])
+        ) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress, ])');
+        }
+
+        $this->addDocumentSalesAgentContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add contact information of the sales agent party
+     *
+     * @param  null|string $newPersonName     __BT-X-342, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-343, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-344, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-345, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-346, From EXTENDED__ E-Mail address of the contact point
+     * @return static
+     */
+    public function addDocumentSalesAgentContact(
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null,
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress,
+            ])
+        ) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress, ])');
+        }
+
+        $taxRepresentativeTradeContact = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getSalesAgentTradePartyWithCreate()
+            ->addToDefinedTradeContactWithCreate();
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPersonName)) {
+            $taxRepresentativeTradeContact->getPersonNameWithCreate()->setValue($newPersonName);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDepartmentName)) {
+            $taxRepresentativeTradeContact->getDepartmentNameWithCreate()->setValue($newDepartmentName);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPhoneNumber)) {
+            $taxRepresentativeTradeContact->getTelephoneUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newPhoneNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newFaxNumber)) {
+            $taxRepresentativeTradeContact->getFaxUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newFaxNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newEmailAddress)) {
+            $taxRepresentativeTradeContact->getEmailURIUniversalCommunicationWithCreate()->getURIIDWithCreate()->setValue($newEmailAddress);
+        }
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set communication information of the sales agent party
+     *
+     * @param  null|string $newType __BT-X-341-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-341, From EXTENDED__ The party's electronic address
+     * @return static
+     */
+    public function setDocumentSalesAgentCommunication(
+        ?string $newType = null,
+        ?string $newUri = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getSalesAgentTradeParty()
+            ?->unsetURIUniversalCommunication();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])');
+        }
+
+        $taxRepresentativeUniversalCommunication = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getSalesAgentTradePartyWithCreate()
+            ->getURIUniversalCommunicationWithCreate();
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newType)) {
+            $taxRepresentativeUniversalCommunication->getURIIDWithCreate()->setSchemeID($newType);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newUri)) {
+            $taxRepresentativeUniversalCommunication->getURIIDWithCreate()->setValue($newUri);
+        }
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a communication information of the sales agent party
+     *
+     * @param  null|string $newType __BT-X-341-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-341, From EXTENDED__ The party's electronic address
+     * @return static
+     */
+    public function addDocumentSalesAgentCommunication(
+        ?string $newType = null,
+        ?string $newUri = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])');
+        }
+
+        $this->setDocumentSalesAgentCommunication($newType, $newUri);
 
         $this->traceMethodExit(__METHOD__);
 

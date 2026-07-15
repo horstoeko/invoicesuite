@@ -58,6 +58,7 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $this->assertNotInstanceOf(InvoiceSuitePartyDTO::class, $invoiceSuiteDocumentHeaderDTO->getBuyerParty());
         $this->assertNotInstanceOf(InvoiceSuitePartyDTO::class, $invoiceSuiteDocumentHeaderDTO->getSellerTaxRepresentativeParty());
         $this->assertNotInstanceOf(InvoiceSuitePartyDTO::class, $invoiceSuiteDocumentHeaderDTO->getBuyerTaxRepresentativeParty());
+        $this->assertNotInstanceOf(InvoiceSuitePartyDTO::class, $invoiceSuiteDocumentHeaderDTO->getSalesAgentParty());
         $this->assertNotInstanceOf(InvoiceSuitePartyDTO::class, $invoiceSuiteDocumentHeaderDTO->getProductEndUserParty());
         $this->assertNotInstanceOf(InvoiceSuitePartyDTO::class, $invoiceSuiteDocumentHeaderDTO->getShipToParty());
         $this->assertNotInstanceOf(InvoiceSuitePartyDTO::class, $invoiceSuiteDocumentHeaderDTO->getUltimateShipToParty());
@@ -337,6 +338,15 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $invoiceSuiteDocumentHeaderDTO->setBuyerTaxRepresentativeParty($buyerTaxRepresentativePartyValue);
 
         $this->assertSame($buyerTaxRepresentativePartyValue, $invoiceSuiteDocumentHeaderDTO->getBuyerTaxRepresentativeParty());
+    }
+
+    public function testSalesAgentPartyGetterAndSetter(): void
+    {
+        $invoiceSuiteDocumentHeaderDTO = new InvoiceSuiteDocumentHeaderDTO();
+        $salesAgentPartyValue = new InvoiceSuitePartyDTO();
+        $invoiceSuiteDocumentHeaderDTO->setSalesAgentParty($salesAgentPartyValue);
+
+        $this->assertSame($salesAgentPartyValue, $invoiceSuiteDocumentHeaderDTO->getSalesAgentParty());
     }
 
     public function testProductEndUserPartyGetterAndSetter(): void

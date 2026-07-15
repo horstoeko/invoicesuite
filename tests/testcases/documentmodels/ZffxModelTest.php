@@ -1193,6 +1193,22 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(TradePartyType::class, $testValueForBuyerTaxRepresentativeTradeParty);
         $this->assertSame($testValueForBuyerTaxRepresentativeTradeParty, $model->getBuyerTaxRepresentativeTradeParty());
 
+        // Property SalesAgentTradeParty
+
+        $testValue = new TradePartyType();
+        $model->setSalesAgentTradeParty($testValue);
+
+        $this->assertEquals($testValue, $model->getSalesAgentTradeParty());
+
+        $model->unsetSalesAgentTradeParty();
+
+        $this->assertNotInstanceOf(TradePartyType::class, $model->getSalesAgentTradeParty());
+
+        $testValueForSalesAgentTradeParty = $model->getSalesAgentTradePartyWithCreate();
+
+        $this->assertInstanceOf(TradePartyType::class, $testValueForSalesAgentTradeParty);
+        $this->assertSame($testValueForSalesAgentTradeParty, $model->getSalesAgentTradeParty());
+
         // Property SellerTaxRepresentativeTradeParty
 
         $testValue = new TradePartyType();

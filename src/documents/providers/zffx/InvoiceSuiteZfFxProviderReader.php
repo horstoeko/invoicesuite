@@ -627,7 +627,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
             );
         }
 
-        // Document-Level Seller seller's tax representative party
+        // Document-Level Seller's tax representative party
 
         $newDocumentDTO->setSellerTaxRepresentativeParty(new InvoiceSuitePartyDTO());
 
@@ -744,7 +744,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
             );
         }
 
-        // Document-Level Buyer buyer's tax representative party
+        // Document-Level Buyer's tax representative party
 
         $newDocumentDTO->setBuyerTaxRepresentativeParty(new InvoiceSuitePartyDTO());
 
@@ -857,6 +857,123 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
                 new InvoiceSuiteCommunicationDTO(
                     $newDocumentBuyerTaxRepresentativeCommunicationUri,
                     $newDocumentBuyerTaxRepresentativeCommunicationType
+                )
+            );
+        }
+
+        // Document-Level Sales Agent party
+
+        $newDocumentDTO->setSalesAgentParty(new InvoiceSuitePartyDTO());
+
+        $this->getDocumentSalesAgentName($newDocumentSalesAgentName);
+        $newDocumentDTO->getSalesAgentParty()->addName($newDocumentSalesAgentName);
+
+        while ($this->nextDocumentSalesAgentId()) {
+            $this->getDocumentSalesAgentId(
+                $newDocumentSalesAgentId
+            );
+
+            $newDocumentDTO->getSalesAgentParty()->addId(
+                new InvoiceSuiteIdDTO(
+                    $newDocumentSalesAgentId
+                )
+            );
+        }
+
+        while ($this->nextDocumentSalesAgentGlobalId()) {
+            $this->getDocumentSalesAgentGlobalId(
+                $newDocumentSalesAgentGlobalId,
+                $newDocumentSalesAgentGlobalIdType
+            );
+
+            $newDocumentDTO->getSalesAgentParty()->addGlobalId(
+                new InvoiceSuiteIdDTO(
+                    $newDocumentSalesAgentGlobalId,
+                    $newDocumentSalesAgentGlobalIdType
+                )
+            );
+        }
+
+        while ($this->nextDocumentSalesAgentTaxRegistration()) {
+            $this->getDocumentSalesAgentTaxRegistration(
+                $newDocumentSalesAgentTaxRegistationType,
+                $newDocumentSalesAgentTaxRegistationId
+            );
+
+            $newDocumentDTO->getSalesAgentParty()->addTaxRegistration(
+                new InvoiceSuiteIdDTO(
+                    $newDocumentSalesAgentTaxRegistationId,
+                    $newDocumentSalesAgentTaxRegistationType
+                )
+            );
+        }
+
+        while ($this->nextDocumentSalesAgentAddress()) {
+            $this->getDocumentSalesAgentAddress(
+                $documentSalesAgentAddressLine1,
+                $documentSalesAgentAddressLine2,
+                $documentSalesAgentAddressLine3,
+                $documentSalesAgentAddressPostCode,
+                $documentSalesAgentAddressCity,
+                $documentSalesAgentAddressCountry,
+                $documentSalesAgentAddressSubDivision
+            );
+
+            $newDocumentDTO->getSalesAgentParty()->addAddress(new InvoiceSuiteAddressDTO(
+                $documentSalesAgentAddressLine1,
+                $documentSalesAgentAddressLine2,
+                $documentSalesAgentAddressLine3,
+                $documentSalesAgentAddressPostCode,
+                $documentSalesAgentAddressCity,
+                $documentSalesAgentAddressCountry,
+                $documentSalesAgentAddressSubDivision
+            ));
+        }
+
+        while ($this->nextDocumentSalesAgentLegalOrganisation()) {
+            $this->getDocumentSalesAgentLegalOrganisation(
+                $newDocumentSalesAgentLegalOrganisationType,
+                $newDocumentSalesAgentLegalOrganisationId,
+                $newDocumentSalesAgentLegalOrganisationName
+            );
+
+            $newDocumentDTO->getSalesAgentParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
+                $newDocumentSalesAgentLegalOrganisationId,
+                $newDocumentSalesAgentLegalOrganisationType,
+                $newDocumentSalesAgentLegalOrganisationName
+            ));
+        }
+
+        while ($this->nextDocumentSalesAgentContact()) {
+            $this->getDocumentSalesAgentContact(
+                $newDocumentSalesAgentContactPersonName,
+                $newDocumentSalesAgentContactDepartmentName,
+                $newDocumentSalesAgentContactPhoneNumber,
+                $newDocumentSalesAgentContactFaxNumber,
+                $newDocumentSalesAgentContactEmailAddress
+            );
+
+            $newDocumentDTO->getSalesAgentParty()->addContact(
+                new InvoiceSuiteContactDTO(
+                    $newDocumentSalesAgentContactPersonName,
+                    $newDocumentSalesAgentContactDepartmentName,
+                    $newDocumentSalesAgentContactPhoneNumber,
+                    $newDocumentSalesAgentContactFaxNumber,
+                    $newDocumentSalesAgentContactEmailAddress
+                )
+            );
+        }
+
+        while ($this->nextDocumentSalesAgentCommunication()) {
+            $this->getDocumentSalesAgentCommunication(
+                $newDocumentSalesAgentCommunicationType,
+                $newDocumentSalesAgentCommunicationUri
+            );
+
+            $newDocumentDTO->getSalesAgentParty()->addCommunication(
+                new InvoiceSuiteCommunicationDTO(
+                    $newDocumentSalesAgentCommunicationUri,
+                    $newDocumentSalesAgentCommunicationType
                 )
             );
         }
@@ -6777,6 +6894,625 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
 
         $newType = $documentBuyerTaxRepresentativeElectronicCommunication->getURIID()?->getSchemeID() ?? '';
         $newUri = $documentBuyerTaxRepresentativeElectronicCommunication->getURIID()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the name of the sales agent party
+     *
+     * @param  null|string $newName __BT-X-335, From EXTENDED__ The full formal name under which the party is registered
+     * @return static
+     *
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentSalesAgentName(
+        ?string &$newName
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newName = '';
+
+        if ($this->supportsNotAtLeastBasicWlWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        $newName = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getName()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first ID of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentId(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getID() ?? []
+            ),
+            'documentsalesagentid'
+        );
+    }
+
+    /**
+     * Go to the next ID of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentId(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getID() ?? []
+            ),
+            'documentsalesagentid'
+        );
+    }
+
+    /**
+     * Get the ID of the sales agent party
+     *
+     * @param  null|string $newId __BT-X-337, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @return static
+     *
+     * @phpstan-param-out string $newId
+     */
+    public function getDocumentSalesAgentId(
+        ?string &$newId
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newId = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        /**
+         * @var array<IDType>
+         */
+        $documentSalesAgentIds = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getID() ?? []);
+
+        /**
+         * @var IDType
+         */
+        $documentSalesAgentId = $documentSalesAgentIds[InvoiceSuitePointerUtils::getValue('documentsalesagentid')];
+
+        $newId = $documentSalesAgentId->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first ID of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentGlobalId(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getGlobalID() ?? []
+            ),
+            'documentsalesagentglobalid'
+        );
+    }
+
+    /**
+     * Go to the next ID of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentGlobalId(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getGlobalID() ?? []
+            ),
+            'documentsalesagentglobalid'
+        );
+    }
+
+    /**
+     * Get the Global ID of the sales agent party
+     *
+     * @param  null|string $newGlobalId     __BT-X-338, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-338-0, From EXTENDED__ Type of the global identifier of the party
+     * @return static
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
+     */
+    public function getDocumentSalesAgentGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newGlobalId = '';
+        $newGlobalIdType = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        /**
+         * @var array<IDType>
+         */
+        $documentSalesAgentGlobalIds = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getGlobalID() ?? []);
+
+        /**
+         * @var IDType
+         */
+        $documentSalesAgentGlobalId = $documentSalesAgentGlobalIds[InvoiceSuitePointerUtils::getValue('documentsalesagentglobalid')];
+
+        $newGlobalId = $documentSalesAgentGlobalId->getValue() ?? '';
+        $newGlobalIdType = $documentSalesAgentGlobalId->getSchemeID() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Tax Registration of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentTaxRegistration(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getSpecifiedTaxRegistration() ?? []
+            ),
+            'documentsalesagenttaxregistration'
+        );
+    }
+
+    /**
+     * Go to the next Tax Registration of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentTaxRegistration(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getSpecifiedTaxRegistration() ?? []
+            ),
+            'documentsalesagenttaxregistration'
+        );
+    }
+
+    /**
+     * Get the Tax Registration of the sales agent party
+     *
+     * @param  null|string $newTaxRegistrationType __BT-340-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-340, From EXTENDED__ Tax identification number
+     * @return static
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
+     */
+    public function getDocumentSalesAgentTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newTaxRegistrationType = '';
+        $newTaxRegistrationId = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        /**
+         * @var array<TaxRegistrationType>
+         */
+        $documentSalesAgentTaxRegistrations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getSpecifiedTaxRegistration() ?? []);
+
+        /**
+         * @var TaxRegistrationType
+         */
+        $documentSalesAgentTaxRegistration = $documentSalesAgentTaxRegistrations[InvoiceSuitePointerUtils::getValue('documentsalesagenttaxregistration')];
+
+        $newTaxRegistrationType = $documentSalesAgentTaxRegistration->getID()?->getSchemeID() ?? '';
+        $newTaxRegistrationId = $documentSalesAgentTaxRegistration->getID()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first address of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentAddress(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getPostalTradeAddress() ?? []
+            ),
+            'documentsalesagentaddress'
+        );
+    }
+
+    /**
+     * Go to the next address of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentAddress(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getPostalTradeAddress() ?? []
+            ),
+            'documentsalesagentaddress'
+        );
+    }
+
+    /**
+     * Set the address of the sales agent party
+     *
+     * @param  null|string $newAddressLine1 __BT-349, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-350, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-351, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-348, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-352, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-353, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-354, From EXTENDED__ Region or federal state in which the party's address is located
+     * @return static
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
+     */
+    public function getDocumentSalesAgentAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newAddressLine1 = '';
+        $newAddressLine2 = '';
+        $newAddressLine3 = '';
+        $newPostcode = '';
+        $newCity = '';
+        $newCountryId = '';
+        $newSubDivision = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        /**
+         * @var array<TradeAddressType>
+         */
+        $documentSalesAgentAddresses = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getPostalTradeAddress() ?? []);
+
+        /**
+         * @var TradeAddressType
+         */
+        $documentSalesAgentAddress = $documentSalesAgentAddresses[InvoiceSuitePointerUtils::getValue('documentsalesagentaddress')];
+
+        $newAddressLine1 = $documentSalesAgentAddress->getLineOne()?->getValue() ?? '';
+        $newAddressLine2 = $documentSalesAgentAddress->getLineTwo()?->getValue() ?? '';
+        $newAddressLine3 = $documentSalesAgentAddress->getLineThree()?->getValue() ?? '';
+        $newPostcode = $documentSalesAgentAddress->getPostcodeCode()?->getValue() ?? '';
+        $newCity = $documentSalesAgentAddress->getCityName()?->getValue() ?? '';
+        $newCountryId = $documentSalesAgentAddress->getCountryID()?->getValue() ?? '';
+        $newSubDivision = $documentSalesAgentAddress->getCountrySubDivisionName()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first the legal information of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentLegalOrganisation(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getSpecifiedLegalOrganization() ?? []
+            ),
+            'documentsalesagentlegalorganisation'
+        );
+    }
+
+    /**
+     * Go to the next the legal information of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentLegalOrganisation(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getSpecifiedLegalOrganization() ?? []
+            ),
+            'documentsalesagentlegalorganisation'
+        );
+    }
+
+    /**
+     * Get the legal information of the sales agent party
+     *
+     * @param  null|string $newType __BT-X-339-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-339, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-336, From EXTENDED__ Name by which the party is known, if different from the party's name
+     * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentSalesAgentLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newType = '';
+        $newId = '';
+        $newName = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        /**
+         * @var array<LegalOrganizationType>
+         */
+        $documentSalesAgentLegalOrganisations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getSpecifiedLegalOrganization() ?? []);
+
+        /**
+         * @var LegalOrganizationType
+         */
+        $documentSalesAgentLegalOrganisation = $documentSalesAgentLegalOrganisations[InvoiceSuitePointerUtils::getValue('documentsalesagentlegalorganisation')];
+
+        $newType = $documentSalesAgentLegalOrganisation->getID()?->getSchemeID() ?? '';
+        $newId = $documentSalesAgentLegalOrganisation->getID()?->getValue() ?? '';
+        $newName = $documentSalesAgentLegalOrganisation->getTradingBusinessName()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first contact information of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentContact(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getDefinedTradeContact() ?? []
+            ),
+            'documentsalesagentcontact'
+        );
+    }
+
+    /**
+     * Go to the next contact information of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentContact(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getDefinedTradeContact() ?? []
+            ),
+            'documentsalesagentcontact'
+        );
+    }
+
+    /**
+     * Get the contact information of the sales agent party
+     *
+     * @param  null|string $newPersonName     __BT-X-342, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-343, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-344, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-345, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-346, From EXTENDED__ E-Mail address of the contact point
+     * @return static
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
+     */
+    public function getDocumentSalesAgentContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newPersonName = '';
+        $newDepartmentName = '';
+        $newPhoneNumber = '';
+        $newFaxNumber = '';
+        $newEmailAddress = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        /**
+         * @var array<TradeContactType>
+         */
+        $documentSalesAgentContacts = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getDefinedTradeContact() ?? []);
+
+        /**
+         * @var TradeContactType
+         */
+        $documentSalesAgentContact = $documentSalesAgentContacts[InvoiceSuitePointerUtils::getValue('documentsalesagentcontact')];
+
+        $newPersonName = $documentSalesAgentContact->getPersonName()?->getValue() ?? '';
+        $newDepartmentName = $documentSalesAgentContact->getDepartmentName()?->getValue() ?? '';
+        $newPhoneNumber = $documentSalesAgentContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
+        $newFaxNumber = $documentSalesAgentContact->getFaxUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
+        $newEmailAddress = $documentSalesAgentContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first communication information of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentCommunication(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getURIUniversalCommunication() ?? []
+            ),
+            'documentsalesagentcommunication'
+        );
+    }
+
+    /**
+     * Go to the next communication information of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentCommunication(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getURIUniversalCommunication() ?? []
+            ),
+            'documentsalesagentcommunication'
+        );
+    }
+
+    /**
+     * Get communication information of the sales agent party
+     *
+     * @param  null|string $newType __BT-X-341-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-341, From EXTENDED__ The party's electronic address
+     * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
+     */
+    public function getDocumentSalesAgentCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newType = '';
+        $newUri = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        /**
+         * @var array<UniversalCommunicationType>
+         */
+        $documentsalesagentlectronicCommunications = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getURIUniversalCommunication() ?? []);
+
+        /**
+         * @var UniversalCommunicationType
+         */
+        $documentsalesagentlectronicCommunication = $documentsalesagentlectronicCommunications[InvoiceSuitePointerUtils::getValue('documentsalesagentcommunication')];
+
+        $newType = $documentsalesagentlectronicCommunication->getURIID()?->getSchemeID() ?? '';
+        $newUri = $documentsalesagentlectronicCommunication->getURIID()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -15829,6 +16565,13 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         InvoiceSuitePointerUtils::resetSingle('documentbuyertaxrepresentativelegalorganisation');
         InvoiceSuitePointerUtils::resetSingle('documentbuyertaxrepresentativecontact');
         InvoiceSuitePointerUtils::resetSingle('documentbuyertaxrepresentativeecommunication');
+        InvoiceSuitePointerUtils::resetSingle('documentsalesagentid');
+        InvoiceSuitePointerUtils::resetSingle('documentsalesagentglobalid');
+        InvoiceSuitePointerUtils::resetSingle('documentsalesagenttaxregistration');
+        InvoiceSuitePointerUtils::resetSingle('documentsalesagentaddress');
+        InvoiceSuitePointerUtils::resetSingle('documentsalesagentlegalorganisation');
+        InvoiceSuitePointerUtils::resetSingle('documentsalesagentcontact');
+        InvoiceSuitePointerUtils::resetSingle('documentsalesagentcommunication');
         InvoiceSuitePointerUtils::resetSingle('documentproductenduserid');
         InvoiceSuitePointerUtils::resetSingle('documentproductenduserglobalid');
         InvoiceSuitePointerUtils::resetSingle('documentproductendusertaxregistration');

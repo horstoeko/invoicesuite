@@ -1424,6 +1424,226 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set the name of the sales agent party
+     *
+     * @param  null|string $newName the full formal name under which the party is registered
+     * @return static
+     */
+    abstract public function setDocumentSalesAgentName(
+        ?string $newName = null
+    ): static;
+
+    /**
+     * Add a name of the sales agent party
+     *
+     * @param  null|string $newName the full formal name under which the party is registered
+     * @return static
+     */
+    abstract public function addDocumentSalesAgentName(
+        ?string $newName = null
+    ): static;
+
+    /**
+     * Set the ID of the sales agent party
+     *
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
+     * @return static
+     */
+    abstract public function setDocumentSalesAgentId(
+        ?string $newId = null
+    ): static;
+
+    /**
+     * Add an ID to the sales agent party
+     *
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
+     * @return static
+     */
+    abstract public function addDocumentSalesAgentId(
+        ?string $newId = null
+    ): static;
+
+    /**
+     * Set the Global ID of the sales agent party
+     *
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
+     * @return static
+     */
+    abstract public function setDocumentSalesAgentGlobalId(
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
+    ): static;
+
+    /**
+     * Add an ID to the sales agent party
+     *
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
+     * @return static
+     */
+    abstract public function addDocumentSalesAgentGlobalId(
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
+    ): static;
+
+    /**
+     * Set the Tax Registration of the sales agent party
+     *
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
+     * @return static
+     */
+    abstract public function setDocumentSalesAgentTaxRegistration(
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null
+    ): static;
+
+    /**
+     * Add an Tax Registration to the sales agent party
+     *
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
+     * @return static
+     */
+    abstract public function addDocumentSalesAgentTaxRegistration(
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null
+    ): static;
+
+    /**
+     * Set the address of the sales agent party
+     *
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
+     * @return static
+     */
+    abstract public function setDocumentSalesAgentAddress(
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null
+    ): static;
+
+    /**
+     * Add an address to the sales agent party
+     *
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
+     * @return static
+     */
+    abstract public function addDocumentSalesAgentAddress(
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null
+    ): static;
+
+    /**
+     * Set the legal information of the sales agent party
+     *
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
+     * @return static
+     */
+    abstract public function setDocumentSalesAgentLegalOrganisation(
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null
+    ): static;
+
+    /**
+     * Add a legal information of the sales agent party
+     *
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
+     * @return static
+     */
+    abstract public function addDocumentSalesAgentLegalOrganisation(
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null
+    ): static;
+
+    /**
+     * Set the contact information of the sales agent party
+     *
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
+     * @return static
+     */
+    abstract public function setDocumentSalesAgentContact(
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null
+    ): static;
+
+    /**
+     * Add contact information of the sales agent party
+     *
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
+     * @return static
+     */
+    abstract public function addDocumentSalesAgentContact(
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null
+    ): static;
+
+    /**
+     * Set communication information of the sales agent party
+     *
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
+     * @return static
+     */
+    abstract public function setDocumentSalesAgentCommunication(
+        ?string $newType = null,
+        ?string $newUri = null
+    ): static;
+
+    /**
+     * Add a communication information of the sales agent party
+     *
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
+     * @return static
+     */
+    abstract public function addDocumentSalesAgentCommunication(
+        ?string $newType = null,
+        ?string $newUri = null
+    ): static;
+
+    /**
      * Set the name of the product end-user party
      *
      * @param  null|string $newName the full formal name under which the party is registered

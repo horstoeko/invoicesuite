@@ -1553,6 +1553,12 @@ $definitions = [
                 'isarray' => false,
                 'isobject' => true,
             ],
+            'salesAgentParty' => [
+                'type' => 'horstoeko\invoicesuite\documents\dto\InvoiceSuitePartyDTO',
+                'caption' => 'The Sales Agent Party',
+                'isarray' => false,
+                'isobject' => true,
+            ],
             'productEndUserParty' => [
                 'type' => 'horstoeko\invoicesuite\documents\dto\InvoiceSuitePartyDTO',
                 'caption' => 'The Product Enduser Party',
