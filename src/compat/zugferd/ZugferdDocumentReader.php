@@ -1466,6 +1466,227 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Get detailed information about the sales agent.
+     *
+     * @param  null|string            $name        __BT-X-335, From EXTENDED__ The full name of the sales agent
+     * @param  null|array<int,string> $id          __BT-X-337, From EXTENDED__ An array of identifiers of the sales agent
+     * @param  null|string            $description __BT-X-334, From EXTENDED__ Further legal information that is relevant for the sales agent
+     * @return static
+     *
+     * @phpstan-param-out string $name
+     * @phpstan-param-out array<int,string> $id
+     * @phpstan-param-out string $description
+     */
+    public function getDocumentSalesAgent(
+        ?string &$name,
+        ?array &$id,
+        ?string &$description
+    ): static {
+        $id = [];
+        $name = '';
+        $description = '';
+
+        $this->documentReader->getDocumentSalesAgentName($name);
+
+        if ($this->documentReader->firstDocumentSalesAgentId()) {
+            do {
+                $this->documentReader->getDocumentSalesAgentId($newId);
+                InvoiceSuiteArrayUtils::pushStringToIntIndexedArray($id, $newId);
+            } while ($this->documentReader->nextDocumentSalesAgentId());
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get document sales agent global ids.
+     *
+     * @param  null|array<string,string> $globalID __BT-X-338/BT-X-338-0, From EXTENDED__ Returns an array of the sales agent identifiers indexed by the identification scheme
+     * @return static
+     *
+     * @phpstan-param-out array<string,string> $globalID
+     */
+    public function getDocumentSalesAgentGlobalId(
+        ?array &$globalID
+    ): static {
+        $globalID = [];
+
+        if ($this->documentReader->firstDocumentSalesAgentGlobalId()) {
+            do {
+                $this->documentReader->getDocumentSalesAgentGlobalId($newGlobalId, $newGlobalIdType);
+                InvoiceSuiteArrayUtils::pushStringToStringIndexedArray($globalID, $newGlobalIdType, $newGlobalId);
+            } while ($this->documentReader->nextDocumentSalesAgentGlobalId());
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get detailed information on the sales agent tax information.
+     *
+     * @param  null|array<string,string> $taxReg __BT-X-340/BT-X-340-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
+     * @return static
+     *
+     * @phpstan-param-out array<string,string> $taxReg
+     */
+    public function getDocumentSalesAgentTaxRegistration(
+        ?array &$taxReg
+    ): static {
+        $taxReg = [];
+
+        if ($this->documentReader->firstDocumentSalesAgentTaxRegistration()) {
+            do {
+                $this->documentReader->getDocumentSalesAgentTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+                InvoiceSuiteArrayUtils::pushStringToStringIndexedArray($taxReg, $newTaxRegistrationType, $newTaxRegistrationId);
+            } while ($this->documentReader->nextDocumentSalesAgentTaxRegistration());
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the address of the sales agent.
+     *
+     * @param  null|string            $lineOne     __BT-X-349, From EXTENDED__ The main line in the sales agent address
+     * @param  null|string            $lineTwo     __BT-X-350, From EXTENDED__ Line 2 of the sales agent address
+     * @param  null|string            $lineThree   __BT-X-351, From EXTENDED__ Line 3 of the sales agent address
+     * @param  null|string            $postCode    __BT-X-348, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  null|string            $city        __BT-X-352, From EXTENDED__ Usual name of the city or municipality in which the sales agent address is located
+     * @param  null|string            $country     __BT-X-353, From EXTENDED__ Code used to identify the country. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency "Codes for the representation of names of countries and their subdivisions"
+     * @param  null|array<int,string> $subDivision __BT-X-354, From EXTENDED__ The sales agent state
+     * @return static
+     *
+     * @phpstan-param-out string $lineOne
+     * @phpstan-param-out string $lineTwo
+     * @phpstan-param-out string $lineThree
+     * @phpstan-param-out string $postCode
+     * @phpstan-param-out string $city
+     * @phpstan-param-out string $country
+     * @phpstan-param-out array<int,string> $subDivision
+     */
+    public function getDocumentSalesAgentAddress(
+        ?string &$lineOne,
+        ?string &$lineTwo,
+        ?string &$lineThree,
+        ?string &$postCode,
+        ?string &$city,
+        ?string &$country,
+        ?array &$subDivision
+    ): static {
+        $lineOne = '';
+        $lineTwo = '';
+        $lineThree = '';
+        $postCode = '';
+        $city = '';
+        $country = '';
+        $subDivision = [];
+
+        if ($this->documentReader->firstDocumentSalesAgentAddress()) {
+            $this->documentReader->getDocumentSalesAgentAddress(
+                $lineOne,
+                $lineTwo,
+                $lineThree,
+                $postCode,
+                $city,
+                $country,
+                $newSubDivision
+            );
+
+            InvoiceSuiteArrayUtils::pushStringToIntIndexedArray($subDivision, $newSubDivision);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the legal organisation of sales agent.
+     *
+     * @param  null|string $legalOrgId   __BT-X-339, From EXTENDED__ An identifier issued by an official registrar that identifies the sales agent as a legal entity or legal person
+     * @param  null|string $legalOrgType __BT-X-339-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the sales agent. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
+     * @param  null|string $legalOrgName __BT-X-336, From EXTENDED__ A name by which the sales agent is known, if different from the sales agent name (also known as the company name)
+     * @return static
+     *
+     * @phpstan-param-out string $legalOrgId
+     * @phpstan-param-out string $legalOrgType
+     * @phpstan-param-out string $legalOrgName
+     */
+    public function getDocumentSalesAgentLegalOrganisation(
+        ?string &$legalOrgId,
+        ?string &$legalOrgType,
+        ?string &$legalOrgName
+    ): static {
+        $legalOrgId = '';
+        $legalOrgType = '';
+        $legalOrgName = '';
+
+        if ($this->documentReader->firstDocumentSalesAgentLegalOrganisation()) {
+            $this->documentReader->getDocumentSalesAgentLegalOrganisation(
+                $legalOrgType,
+                $legalOrgId,
+                $legalOrgName
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Seek to the first sales agent contact of the document. Returns true if a first contact is available, otherwise false.
+     * You may use this together with ZugferdDocumentReader::getDocumentSalesAgentContact.
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentContact(): bool
+    {
+        return $this->documentReader->firstDocumentSalesAgentContact();
+    }
+
+    /**
+     * Seek to the next available sales agent contact of the document. Returns true if another contact is available, otherwise false.
+     * You may use this together with ZugferdDocumentReader::getDocumentSalesAgentContact.
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentContact(): bool
+    {
+        return $this->documentReader->nextDocumentSalesAgentContact();
+    }
+
+    /**
+     * Get contact information of the sales agent.
+     *
+     * @param  null|string $contactPersonName     __BT-X-342, From EXTENDED__ Such as personal name, name of contact person or department or office
+     * @param  null|string $contactDepartmentName __BT-X-343, From EXTENDED__ If a contact person is specified, either the name or the department must be transmitted
+     * @param  null|string $contactPhoneNo        __BT-X-344, From EXTENDED__ A telephone number for the contact point
+     * @param  null|string $contactFaxNo          __BT-X-345, From EXTENDED__ A fax number of the contact point
+     * @param  null|string $contactEmailAddress   __BT-X-346, From EXTENDED__ An e-mail address of the contact point
+     * @return static
+     *
+     * @phpstan-param-out string $contactPersonName
+     * @phpstan-param-out string $contactDepartmentName
+     * @phpstan-param-out string $contactPhoneNo
+     * @phpstan-param-out string $contactFaxNo
+     * @phpstan-param-out string $contactEmailAddress
+     */
+    public function getDocumentSalesAgentContact(
+        ?string &$contactPersonName,
+        ?string &$contactDepartmentName,
+        ?string &$contactPhoneNo,
+        ?string &$contactFaxNo,
+        ?string &$contactEmailAddress
+    ): static {
+        $this->documentReader->getDocumentSalesAgentContact(
+            $contactPersonName,
+            $contactDepartmentName,
+            $contactPhoneNo,
+            $contactFaxNo,
+            $contactEmailAddress
+        );
+
+        return $this;
+    }
+
+    /**
      * Get detailed information on the product end user (general information).
      *
      * @param  null|string            $name        __BT-X-128, From EXTENDED__ Name/company name of the end user

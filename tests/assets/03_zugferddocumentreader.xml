@@ -256,6 +256,56 @@
                     <ram:CountryID>DE</ram:CountryID>
                 </ram:PostalTradeAddress>
             </ram:BuyerTradeParty>
+            <ram:SalesAgentTradeParty>
+                <ram:ID>SA-549910</ram:ID>
+                <ram:GlobalID schemeID="0088">4000001123452</ram:GlobalID>
+                <ram:Name>Sales Agent GmbH</ram:Name>
+                <ram:SpecifiedLegalOrganization>
+                    <ram:ID schemeID="0060">SA-LEGAL-1</ram:ID>
+                    <ram:TradingBusinessName>Sales Agent AG</ram:TradingBusinessName>
+                </ram:SpecifiedLegalOrganization>
+                <ram:DefinedTradeContact>
+                    <ram:PersonName>Sabrina Agent</ram:PersonName>
+                    <ram:DepartmentName>Sales Agency</ram:DepartmentName>
+                    <ram:TelephoneUniversalCommunication>
+                        <ram:CompleteNumber>+49-30-1000001</ram:CompleteNumber>
+                    </ram:TelephoneUniversalCommunication>
+                    <ram:FaxUniversalCommunication>
+                        <ram:CompleteNumber>+49-30-1000002</ram:CompleteNumber>
+                    </ram:FaxUniversalCommunication>
+                    <ram:EmailURIUniversalCommunication>
+                        <ram:URIID>sabrina.agent@sales-agent.example</ram:URIID>
+                    </ram:EmailURIUniversalCommunication>
+                </ram:DefinedTradeContact>
+                <ram:DefinedTradeContact>
+                    <ram:PersonName>Simon Agent</ram:PersonName>
+                    <ram:DepartmentName>Agency Support</ram:DepartmentName>
+                    <ram:TelephoneUniversalCommunication>
+                        <ram:CompleteNumber>+49-30-1000003</ram:CompleteNumber>
+                    </ram:TelephoneUniversalCommunication>
+                    <ram:FaxUniversalCommunication>
+                        <ram:CompleteNumber>+49-30-1000004</ram:CompleteNumber>
+                    </ram:FaxUniversalCommunication>
+                    <ram:EmailURIUniversalCommunication>
+                        <ram:URIID>simon.agent@sales-agent.example</ram:URIID>
+                    </ram:EmailURIUniversalCommunication>
+                </ram:DefinedTradeContact>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>10115</ram:PostcodeCode>
+                    <ram:LineOne>Agenturstrasse 20</ram:LineOne>
+                    <ram:LineTwo>Sales Floor</ram:LineTwo>
+                    <ram:LineThree>Building A</ram:LineThree>
+                    <ram:CityName>Berlin</ram:CityName>
+                    <ram:CountryID>DE</ram:CountryID>
+                    <ram:CountrySubDivisionName>Berlin</ram:CountrySubDivisionName>
+                </ram:PostalTradeAddress>
+                <ram:URIUniversalCommunication>
+                    <ram:URIID schemeID="EM">contact@sales-agent.example</ram:URIID>
+                </ram:URIUniversalCommunication>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="VA">DE123456789</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:SalesAgentTradeParty>
             <ram:AdditionalReferencedDocument>
                 <ram:IssuerAssignedID>A777123</ram:IssuerAssignedID>
                 <ram:TypeCode>130</ram:TypeCode>

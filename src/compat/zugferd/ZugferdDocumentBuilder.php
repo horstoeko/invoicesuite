@@ -1389,6 +1389,176 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
     }
 
     /**
+     * Sets the Information about the sales agent
+     *
+     * @param  string      $name        __BT-X-335, From EXTENDED__ The full name of the sales agent
+     * @param  null|string $id          __BT-X-337, From EXTENDED__ An identifier of the sales agent
+     * @param  null|string $description __BT-X-334, From EXTENDED__ Further legal information that is relevant for the sales agent
+     * @return static
+     */
+    public function setDocumentSalesAgentTradeParty(
+        string $name,
+        ?string $id = null,
+        ?string $description = null
+    ): static {
+        $this->unsetSalesAgent();
+        $this->documentBuilder->setDocumentSalesAgentName($name);
+        $this->documentBuilder->setDocumentSalesAgentId($id);
+
+        return $this;
+    }
+
+    /**
+     * Add a global ID of the sales agent party
+     *
+     * @param  null|string $globalID     __BT-X-338, From EXTENDED__ The sales agent identifier identification scheme is an identifier uniquely assigned to a party by a global registration organization
+     * @param  null|string $globalIDType __BT-X-338-0, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency
+     * @return static
+     */
+    public function addDocumentSalesAgentGlobalId(
+        ?string $globalID = null,
+        ?string $globalIDType = null
+    ): static {
+        $this->documentBuilder->addDocumentSalesAgentGlobalId(
+            $globalID,
+            $globalIDType
+        );
+
+        return $this;
+    }
+
+    /**
+     * Set the Tax Registration of the sales agent party
+     *
+     * @param  null|string $taxRegType __BT-X-340-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param  null|string $taxRegId   __BT-X-340, From EXTENDED__ Tax number or sales tax identification number
+     * @return static
+     */
+    public function addDocumentSalesAgentTaxRegistration(
+        ?string $taxRegType = null,
+        ?string $taxRegId = null
+    ): static {
+        $this->documentBuilder->addDocumentSalesAgentTaxRegistration(
+            $taxRegType,
+            $taxRegId
+        );
+
+        return $this;
+    }
+
+    /**
+     * Set the address of the sales agent party
+     *
+     * @param  null|string $lineOne     __BT-X-349, From EXTENDED__ The main line in the sales agent address
+     * @param  null|string $lineTwo     __BT-X-350, From EXTENDED__ Line 2 of the sales agent address
+     * @param  null|string $lineThree   __BT-X-351, From EXTENDED__ Line 3 of the sales agent address
+     * @param  null|string $postCode    __BT-X-348, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  null|string $city        __BT-X-352, From EXTENDED__ Usual name of the city or municipality in which the sales agent address is located
+     * @param  null|string $country     __BT-X-353, From EXTENDED__ Code used to identify the country. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency "Codes for the representation of names of countries and their subdivisions"
+     * @param  null|string $subDivision __BT-X-354, From EXTENDED__ The sales agent state
+     * @return static
+     */
+    public function setDocumentSalesAgentAddress(
+        ?string $lineOne = null,
+        ?string $lineTwo = null,
+        ?string $lineThree = null,
+        ?string $postCode = null,
+        ?string $city = null,
+        ?string $country = null,
+        ?string $subDivision = null
+    ): static {
+        $this->documentBuilder->setDocumentSalesAgentAddress(
+            $lineOne,
+            $lineTwo,
+            $lineThree,
+            $postCode,
+            $city,
+            $country,
+            $subDivision
+        );
+
+        return $this;
+    }
+
+    /**
+     * Set legal organisation of the sales agent party
+     *
+     * @param  null|string $legalOrgId   __BT-X-339, From EXTENDED__ An identifier issued by an official registrar that identifies the sales agent as a legal entity or legal person
+     * @param  null|string $legalOrgType __BT-X-339-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the sales agent. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
+     * @param  null|string $legalOrgName __BT-X-336, From EXTENDED__ A name by which the sales agent is known, if different from the sales agent name (also known as the company name)
+     * @return static
+     */
+    public function setDocumentSalesAgentLegalOrganisation(
+        ?string $legalOrgId = null,
+        ?string $legalOrgType = null,
+        ?string $legalOrgName = null
+    ): static {
+        $this->documentBuilder->setDocumentSalesAgentLegalOrganisation(
+            $legalOrgType,
+            $legalOrgId,
+            $legalOrgName
+        );
+
+        return $this;
+    }
+
+    /**
+     * Set the contact information of the sales agent party
+     *
+     * @param  null|string $contactPersonName     __BT-X-342, From EXTENDED__ Such as personal name, name of contact person or department or office
+     * @param  null|string $contactDepartmentName __BT-X-343, From EXTENDED__ If a contact person is specified, either the name or the department must be transmitted
+     * @param  null|string $contactPhoneNo        __BT-X-344, From EXTENDED__ A telephone number for the contact point
+     * @param  null|string $contactFaxNo          __BT-X-345, From EXTENDED__ A fax number of the contact point
+     * @param  null|string $contactEmailAddress   __BT-X-346, From EXTENDED__ An e-mail address of the contact point
+     * @return static
+     */
+    public function setDocumentSalesAgentContact(
+        ?string $contactPersonName = null,
+        ?string $contactDepartmentName = null,
+        ?string $contactPhoneNo = null,
+        ?string $contactFaxNo = null,
+        ?string $contactEmailAddress = null
+    ): static {
+        $this->documentBuilder->setDocumentSalesAgentContact(
+            $contactPersonName,
+            $contactDepartmentName,
+            $contactPhoneNo,
+            $contactFaxNo,
+            $contactEmailAddress
+        );
+
+        return $this;
+    }
+
+    /**
+     * Add contact information of the sales agent party
+     *
+     * @param  null|string $contactPersonName     __BT-X-342, From EXTENDED__ Such as personal name, name of contact person or department or office
+     * @param  null|string $contactDepartmentName __BT-X-343, From EXTENDED__ If a contact person is specified, either the name or the department must be transmitted
+     * @param  null|string $contactPhoneNo        __BT-X-344, From EXTENDED__ A telephone number for the contact point
+     * @param  null|string $contactFaxNo          __BT-X-345, From EXTENDED__ A fax number of the contact point
+     * @param  null|string $contactEmailAddress   __BT-X-336, From EXTENDED__ An e-mail address of the contact point
+     * @return static
+     */
+    public function addDocumentSalesAgentContact(
+        ?string $contactPersonName = null,
+        ?string $contactDepartmentName = null,
+        ?string $contactPhoneNo = null,
+        ?string $contactFaxNo = null,
+        ?string $contactEmailAddress = null
+    ): static {
+        $this->documentBuilder->addDocumentSalesAgentContact(
+            $contactPersonName,
+            $contactDepartmentName,
+            $contactPhoneNo,
+            $contactFaxNo,
+            $contactEmailAddress
+        );
+
+        return $this;
+    }
+
+    /**
      * Detailed information on the deviating end user (general informaton)
      *
      * @param  string      $name        __BT-X-128, From EXTENDED__ The full formal name under which the party is registered
@@ -4893,6 +5063,20 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
         $this->safeInvokeTryCallByPath(
             $this->documentBuilder->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject(),
             'getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.setBuyerTaxRepresentativeTradeParty',
+            null
+        );
+    }
+
+    /**
+     * Remove the sales agent party
+     *
+     * @return void
+     */
+    protected function unsetSalesAgent(): void
+    {
+        $this->safeInvokeTryCallByPath(
+            $this->documentBuilder->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject(),
+            'getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.setSalesAgentTradeParty',
             null
         );
     }

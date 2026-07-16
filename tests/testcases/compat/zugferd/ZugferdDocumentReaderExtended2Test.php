@@ -357,6 +357,67 @@ final class ZugferdDocumentReaderExtended2Test extends TestCase
         );
     }
 
+    public function testDocumentSalesAgentGeneral(): void
+    {
+        self::$document->getDocumentSalesAgent($salesagentname, $salesagentids, $salesagentdescription);
+        $this->assertSame('Sales Agent GmbH', $salesagentname);
+        $this->assertSame(['SA-549910'], $salesagentids);
+        $this->assertSame('', $salesagentdescription);
+    }
+
+    public function testDocumentSalesAgentGlobalId(): void
+    {
+        self::$document->getDocumentSalesAgentGlobalId($salesagentglobalids);
+        $this->assertSame(['0088' => '4000001123452'], $salesagentglobalids);
+    }
+
+    public function testDocumentSalesAgentTaxRegistration(): void
+    {
+        self::$document->getDocumentSalesAgentTaxRegistration($salesagenttaxreg);
+        $this->assertSame(['VA' => 'DE123456789'], $salesagenttaxreg);
+    }
+
+    public function testDocumentSalesAgentAddress(): void
+    {
+        self::$document->getDocumentSalesAgentAddress($salesagentlineone, $salesagentlinetwo, $salesagentlinethree, $salesagentpostcode, $salesagentcity, $salesagentcountry, $salesagentsubdivision);
+        $this->assertSame('Agenturstrasse 20', $salesagentlineone);
+        $this->assertSame('Sales Floor', $salesagentlinetwo);
+        $this->assertSame('Building A', $salesagentlinethree);
+        $this->assertSame('10115', $salesagentpostcode);
+        $this->assertSame('Berlin', $salesagentcity);
+        $this->assertSame('DE', $salesagentcountry);
+        $this->assertSame(['Berlin'], $salesagentsubdivision);
+    }
+
+    public function testDocumentSalesAgentLegalOrganization(): void
+    {
+        self::$document->getDocumentSalesAgentLegalOrganisation($salesagentlegalorgid, $salesagentlegalorgtype, $salesagentlegalorgname);
+        $this->assertSame('SA-LEGAL-1', $salesagentlegalorgid);
+        $this->assertSame('0060', $salesagentlegalorgtype);
+        $this->assertSame('Sales Agent AG', $salesagentlegalorgname);
+    }
+
+    public function testDocumentSalesAgentContact(): void
+    {
+        $this->assertTrue(self::$document->firstDocumentSalesAgentContact());
+        self::$document->getDocumentSalesAgentContact($salesagentcontactpersonname, $salesagentcontactdepartmentname, $salesagentcontactphoneno, $salesagentcontactfaxno, $salesagentcontactemailaddr);
+        $this->assertSame('Sabrina Agent', $salesagentcontactpersonname);
+        $this->assertSame('Sales Agency', $salesagentcontactdepartmentname);
+        $this->assertSame('+49-30-1000001', $salesagentcontactphoneno);
+        $this->assertSame('+49-30-1000002', $salesagentcontactfaxno);
+        $this->assertSame('sabrina.agent@sales-agent.example', $salesagentcontactemailaddr);
+
+        $this->assertTrue(self::$document->nextDocumentSalesAgentContact());
+        self::$document->getDocumentSalesAgentContact($salesagentcontactpersonname, $salesagentcontactdepartmentname, $salesagentcontactphoneno, $salesagentcontactfaxno, $salesagentcontactemailaddr);
+        $this->assertSame('Simon Agent', $salesagentcontactpersonname);
+        $this->assertSame('Agency Support', $salesagentcontactdepartmentname);
+        $this->assertSame('+49-30-1000003', $salesagentcontactphoneno);
+        $this->assertSame('+49-30-1000004', $salesagentcontactfaxno);
+        $this->assertSame('simon.agent@sales-agent.example', $salesagentcontactemailaddr);
+
+        $this->assertFalse(self::$document->nextDocumentSalesAgentContact());
+    }
+
     public function testDocumentShipToGeneral(): void
     {
         self::$document->getDocumentShipTo($shiptoname, $shiptoids, $shiptodescription);
