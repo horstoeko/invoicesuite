@@ -3642,6 +3642,134 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:TaxRepresentativeParty/cbc:EndpointID', 1);
     }
 
+    public function testSetAddDocumentBuyerTaxRepresentativeName(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerTaxRepresentativeName('Buyer Tax Representative Name');
+            static::$document->addDocumentBuyerTaxRepresentativeName('Buyer Tax Representative Name 2');
+        });
+    }
+
+    public function testSetAddDocumentBuyerTaxRepresentativeId(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerTaxRepresentativeId('Buyer Tax Representative Id 1');
+            static::$document->addDocumentBuyerTaxRepresentativeId('Buyer Tax Representative Id 2');
+        });
+    }
+
+    public function testSetAddDocumentBuyerTaxRepresentativeGlobalId(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerTaxRepresentativeGlobalId('Buyer Tax Representative Global Id 1', '0088');
+            static::$document->addDocumentBuyerTaxRepresentativeGlobalId('Buyer Tax Representative Global Id 2', '0088');
+        });
+    }
+
+    public function testSetAddDocumentBuyerTaxRepresentativeTaxRegistration(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerTaxRepresentativeTaxRegistration('VAT', '123456789');
+            static::$document->addDocumentBuyerTaxRepresentativeTaxRegistration('VAT', '123456789');
+        });
+    }
+
+    public function testSetAddDocumentBuyerTaxRepresentativeAddress(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerTaxRepresentativeAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
+            static::$document->addDocumentBuyerTaxRepresentativeAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
+        });
+    }
+
+    public function testSetAddDocumentBuyerTaxRepresentativeLegalOrganisation(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerTaxRepresentativeLegalOrganisation('8884', '123456789', 'Company Name');
+            static::$document->addDocumentBuyerTaxRepresentativeLegalOrganisation('8885', '987654321', 'Company Name 2');
+        });
+    }
+
+    public function testSetAddDocumentBuyerTaxRepresentativeContact(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerTaxRepresentativeContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
+            static::$document->addDocumentBuyerTaxRepresentativeContact('Name 2', 'Departement Name 2', '+49-222-123456789', '+49-222-987654321', 'user2@nowhere.all');
+        });
+    }
+
+    public function testSetAddDocumentBuyerTaxRepresentativeCommunication(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerTaxRepresentativeCommunication('EM', 'user@somewhere.all');
+            static::$document->addDocumentBuyerTaxRepresentativeCommunication('EM', 'user2@somewhere.all');
+        });
+    }
+
+    public function testSetAddDocumentSalesAgentName(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentSalesAgentName('SalesAgent Name');
+            static::$document->addDocumentSalesAgentName('SalesAgent Name 2');
+        });
+    }
+
+    public function testSetAddDocumentSalesAgentId(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentSalesAgentId('SalesAgent Id 1');
+            static::$document->addDocumentSalesAgentId('SalesAgent Id 2');
+        });
+    }
+
+    public function testSetAddDocumentSalesAgentGlobalId(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentSalesAgentGlobalId('SalesAgent Global Id 1', '0088');
+            static::$document->addDocumentSalesAgentGlobalId('SalesAgent Global Id 2', '0088');
+        });
+    }
+
+    public function testSetAddDocumentSalesAgentTaxRegistration(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentSalesAgentTaxRegistration('VAT', '123456789');
+            static::$document->addDocumentSalesAgentTaxRegistration('VAT', '123456789');
+        });
+    }
+
+    public function testSetAddDocumentSalesAgentAddress(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentSalesAgentAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
+            static::$document->addDocumentSalesAgentAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
+        });
+    }
+
+    public function testSetAddDocumentSalesAgentLegalOrganisation(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentSalesAgentLegalOrganisation('8884', '123456789', 'Company Name');
+            static::$document->addDocumentSalesAgentLegalOrganisation('8885', '987654321', 'Company Name 2');
+        });
+    }
+
+    public function testSetAddDocumentSalesAgentContact(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentSalesAgentContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
+            static::$document->addDocumentSalesAgentContact('Name 2', 'Departement Name 2', '+49-222-123456789', '+49-222-987654321', 'user2@nowhere.all');
+        });
+    }
+
+    public function testSetAddDocumentSalesAgentCommunication(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentSalesAgentCommunication('EM', 'user@somewhere.all');
+            static::$document->addDocumentSalesAgentCommunication('EM', 'user2@somewhere.all');
+        });
+    }
+
     public function testSetAddDocumentProductEndUserName(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
