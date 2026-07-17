@@ -5134,6 +5134,70 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:PayeeParty/cbc:EndpointID', 1);
     }
 
+    public function testSetAddDocumentPayerName(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPayerName('Payer Name');
+            static::$document->addDocumentPayerName('Payer Name 2');
+        });
+    }
+
+    public function testSetAddDocumentPayerId(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPayerId('Payer Id 1');
+            static::$document->addDocumentPayerId('Payer Id 2');
+        });
+    }
+
+    public function testSetAddDocumentPayerGlobalId(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPayerGlobalId('Payer Global Id 1', '0088');
+            static::$document->addDocumentPayerGlobalId('Payer Global Id 2', '0088');
+        });
+    }
+
+    public function testSetAddDocumentPayerTaxRegistration(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPayerTaxRegistration('VAT', '123456789');
+            static::$document->addDocumentPayerTaxRegistration('VAT', '123456789');
+        });
+    }
+
+    public function testSetAddDocumentPayerAddress(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPayerAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
+            static::$document->addDocumentPayerAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
+        });
+    }
+
+    public function testSetAddDocumentPayerLegalOrganisation(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPayerLegalOrganisation('8884', '123456789', 'Company Name');
+            static::$document->addDocumentPayerLegalOrganisation('8885', '987654321', 'Company Name 2');
+        });
+    }
+
+    public function testSetAddDocumentPayerContact(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPayerContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
+            static::$document->addDocumentPayerContact('Name 2', 'Departement Name 2', '+49-222-123456789', '+49-222-987654321', 'user2@nowhere.all');
+        });
+    }
+
+    public function testSetAddDocumentPayerCommunication(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPayerCommunication('EM', 'user@somewhere.all');
+            static::$document->addDocumentPayerCommunication('EM', 'user2@somewhere.all');
+        });
+    }
+
     public function testSetAddDocumentPaymentMean(): void
     {
         $this->disableRenderXmlContent();

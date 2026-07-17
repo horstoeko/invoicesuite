@@ -787,6 +787,73 @@ final class ZugferdPdfDocumentReaderMinimumTest extends TestCase
         $this->assertSame('', $invoiceecontactemailaddr);
     }
 
+    public function testDocumentPayerGeneral(): void
+    {
+        self::$document->getDocumentPayer($payername, $payerids, $payerdescription);
+        $this->assertSame('', $payername);
+        $this->assertIsArray($payerids);
+        $this->assertEmpty($payerids);
+        $this->assertSame('', $payerdescription);
+    }
+
+    public function testDocumentPayerGlobalId(): void
+    {
+        self::$document->getDocumentPayerGlobalId($payerglobalids);
+        $this->assertIsArray($payerglobalids);
+        $this->assertEmpty($payerglobalids);
+    }
+
+    public function testDocumentPayerTaxRegistration(): void
+    {
+        self::$document->getDocumentPayerTaxRegistration($payertaxreg);
+        $this->assertIsArray($payertaxreg);
+        $this->assertEmpty($payertaxreg);
+    }
+
+    public function testDocumentPayerAddress(): void
+    {
+        self::$document->getDocumentPayerAddress($payerlineone, $payerlinetwo, $payerlinethree, $payerpostcode, $payercity, $payercountry, $payersubdivision);
+        $this->assertSame('', $payerlineone);
+        $this->assertSame('', $payerlinetwo);
+        $this->assertSame('', $payerlinethree);
+        $this->assertSame('', $payerpostcode);
+        $this->assertSame('', $payercity);
+        $this->assertSame('', $payercountry);
+        $this->assertIsArray($payersubdivision);
+        $this->assertEmpty($payersubdivision);
+    }
+
+    public function testDocumentPayerLegalOrganization(): void
+    {
+        self::$document->getDocumentPayerLegalOrganisation($payerlegalorgid, $payerlegalorgtype, $payerlegalorgname);
+        $this->assertSame('', $payerlegalorgid);
+        $this->assertSame('', $payerlegalorgtype);
+        $this->assertSame('', $payerlegalorgname);
+    }
+
+    public function testDocumentPayerContact(): void
+    {
+        $this->assertFalse(self::$document->firstDocumentPayerContact());
+
+        self::$document->getDocumentPayerContact($payercontactpersonname, $payercontactdepartmentname, $payercontactphoneno, $payercontactfaxno, $payercontactemailaddr);
+
+        $this->assertSame('', $payercontactpersonname);
+        $this->assertSame('', $payercontactdepartmentname);
+        $this->assertSame('', $payercontactphoneno);
+        $this->assertSame('', $payercontactfaxno);
+        $this->assertSame('', $payercontactemailaddr);
+
+        $this->assertFalse(self::$document->nextDocumentPayerContact());
+
+        self::$document->getDocumentPayerContact($payercontactpersonname, $payercontactdepartmentname, $payercontactphoneno, $payercontactfaxno, $payercontactemailaddr);
+
+        $this->assertSame('', $payercontactpersonname);
+        $this->assertSame('', $payercontactdepartmentname);
+        $this->assertSame('', $payercontactphoneno);
+        $this->assertSame('', $payercontactfaxno);
+        $this->assertSame('', $payercontactemailaddr);
+    }
+
     public function testDocumentPayeeGeneral(): void
     {
         self::$document->getDocumentPayee($payeename, $payeeids, $payeedescription);

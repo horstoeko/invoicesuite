@@ -5101,6 +5101,333 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     }
 
     /**
+     * Get the name of the Payer party
+     *
+     * @param  null|string $newName the full formal name under which the party is registered
+     * @return static
+     *
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentPayerName(
+        ?string &$newName
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayerName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first ID of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerId(): bool
+    {
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayerId();
+    }
+
+    /**
+     * Go to the next ID of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerId(): bool
+    {
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayerId();
+    }
+
+    /**
+     * Get the ID of the Payer party
+     *
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
+     * @return static
+     *
+     * @phpstan-param-out string $newId
+     */
+    public function getDocumentPayerId(
+        ?string &$newId
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayerId($newId);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first global ID of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerGlobalId(): bool
+    {
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayerGlobalId();
+    }
+
+    /**
+     * Go to the next global ID of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerGlobalId(): bool
+    {
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayerGlobalId();
+    }
+
+    /**
+     * Get the Global ID of the Payer party
+     *
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
+     * @return static
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
+     */
+    public function getDocumentPayerGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayerGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Tax Registration of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerTaxRegistration(): bool
+    {
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayerTaxRegistration();
+    }
+
+    /**
+     * Go to the next Tax Registration of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerTaxRegistration(): bool
+    {
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayerTaxRegistration();
+    }
+
+    /**
+     * Get the Tax Registration of the Payer party
+     *
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
+     * @return static
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
+     */
+    public function getDocumentPayerTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first address of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerAddress(): bool
+    {
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayerAddress();
+    }
+
+    /**
+     * Go to the next address of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerAddress(): bool
+    {
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayerAddress();
+    }
+
+    /**
+     * Set the address of the Payer party
+     *
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
+     * @return static
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
+     */
+    public function getDocumentPayerAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayerAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        return $this;
+    }
+
+    /**
+     * Go to the first the legal information of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerLegalOrganisation(): bool
+    {
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayerLegalOrganisation();
+    }
+
+    /**
+     * Go to the next the legal information of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerLegalOrganisation(): bool
+    {
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayerLegalOrganisation();
+    }
+
+    /**
+     * Get the legal information of the Payer party
+     *
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
+     * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentPayerLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayerLegalOrganisation($newType, $newId, $newName);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first contact information of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerContact(): bool
+    {
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayerContact();
+    }
+
+    /**
+     * Go to the next contact information of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerContact(): bool
+    {
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayerContact();
+    }
+
+    /**
+     * Get the contact information of the Payer party
+     *
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
+     * @return static
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
+     */
+    public function getDocumentPayerContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayerContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        return $this;
+    }
+
+    /**
+     * Go to the first communication information of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerCommunication(): bool
+    {
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayerCommunication();
+    }
+
+    /**
+     * Go to the next communication information of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerCommunication(): bool
+    {
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayerCommunication();
+    }
+
+    /**
+     * Get communication information of the Payer party
+     *
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
+     * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
+     */
+    public function getDocumentPayerCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayerCommunication($newType, $newUri);
+
+        return $this;
+    }
+
+    /**
      * Go to the first Payment mean
      *
      * @return bool

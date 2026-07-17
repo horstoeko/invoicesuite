@@ -286,6 +286,13 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     protected ?InvoiceSuitePartyDTO $payeeParty = null;
 
     /**
+     * The Payer Party
+     *
+     * @var null|InvoiceSuitePartyDTO
+     */
+    protected ?InvoiceSuitePartyDTO $payerParty = null;
+
+    /**
      * The payment means
      *
      * @var array<InvoiceSuitePaymentMeanDTO>
@@ -402,6 +409,7 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
      * @param null|InvoiceSuitePartyDTO                  $invoicerParty                   The Invoicer Party
      * @param null|InvoiceSuitePartyDTO                  $invoiceeParty                   The Invoicee Party
      * @param null|InvoiceSuitePartyDTO                  $payeeParty                      The Payee Party
+     * @param null|InvoiceSuitePartyDTO                  $payerParty                      The Payer Party
      * @param array<InvoiceSuitePaymentMeanDTO>          $paymentMeans                    The payment means
      * @param array<InvoiceSuitePaymentTermDTO>          $paymentTerms                    The payment terms
      * @param array<InvoiceSuiteIdDTO>                   $creditorReferences              The creditor identifier
@@ -452,6 +460,7 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
         ?InvoiceSuitePartyDTO $invoicerParty = null,
         ?InvoiceSuitePartyDTO $invoiceeParty = null,
         ?InvoiceSuitePartyDTO $payeeParty = null,
+        ?InvoiceSuitePartyDTO $payerParty = null,
         array $paymentMeans = [],
         array $paymentTerms = [],
         array $creditorReferences = [],
@@ -501,6 +510,7 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
         $this->setInvoicerParty($invoicerParty);
         $this->setInvoiceeParty($invoiceeParty);
         $this->setPayeeParty($payeeParty);
+        $this->setPayerParty($payerParty);
         $this->setPaymentMeans($paymentMeans);
         $this->setPaymentTerms($paymentTerms);
         $this->setCreditorReferences($creditorReferences);
@@ -4858,6 +4868,30 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
         ?InvoiceSuitePartyDTO $payeeParty
     ): static {
         $this->payeeParty = $payeeParty;
+
+        return $this;
+    }
+
+    /**
+     * Returns the Payer Party
+     *
+     * @return null|InvoiceSuitePartyDTO
+     */
+    public function getPayerParty(): ?InvoiceSuitePartyDTO
+    {
+        return $this->payerParty;
+    }
+
+    /**
+     * Sets the Payer Party
+     *
+     * @param  null|InvoiceSuitePartyDTO $payerParty The Payer Party
+     * @return static
+     */
+    public function setPayerParty(
+        ?InvoiceSuitePartyDTO $payerParty
+    ): static {
+        $this->payerParty = $payerParty;
 
         return $this;
     }

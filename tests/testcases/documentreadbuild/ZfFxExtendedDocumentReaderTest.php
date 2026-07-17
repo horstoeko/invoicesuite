@@ -2351,6 +2351,165 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
     }
 
+    public function testDocumentPayer(): void
+    {
+        // Name
+
+        static::$document->getDocumentPayerName($newName);
+
+        $this->assertSame('Payer GmbH', $newName);
+
+        // ID
+
+        $this->assertTrue(static::$document->firstDocumentPayerId());
+
+        static::$document->getDocumentPayerId($newId);
+
+        $this->assertSame('PAYER-0815-4711', $newId);
+
+        $this->assertFalse(static::$document->nextDocumentPayerId());
+
+        // Global ID
+
+        $this->assertTrue(static::$document->firstDocumentPayerGlobalId());
+
+        static::$document->getDocumentPayerGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('4000001123452', $newGlobalId);
+        $this->assertSame('0088', $newGlobalIdType);
+
+        $this->assertTrue(static::$document->nextDocumentPayerGlobalId());
+
+        static::$document->getDocumentPayerGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('4000001123469', $newGlobalId);
+        $this->assertSame('0088', $newGlobalIdType);
+
+        $this->assertFalse(static::$document->nextDocumentPayerGlobalId());
+
+        // Tax Registration
+
+        $this->assertTrue(static::$document->firstDocumentPayerTaxRegistration());
+
+        static::$document->getDocumentPayerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        $this->assertSame('DE987654321', $newTaxRegistrationId);
+        $this->assertSame('VA', $newTaxRegistrationType);
+
+        $this->assertFalse(static::$document->nextDocumentPayerTaxRegistration());
+
+        // Address
+
+        $this->assertTrue(static::$document->firstDocumentPayerAddress());
+
+        static::$document->getDocumentPayerAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        $this->assertSame('Payerstrasse 10', $newAddressLine1);
+        $this->assertSame('Payment Floor', $newAddressLine2);
+        $this->assertSame('Building P', $newAddressLine3);
+        $this->assertSame('10117', $newPostcode);
+        $this->assertSame('Berlin', $newCity);
+        $this->assertSame('DE', $newCountryId);
+        $this->assertSame('Berlin', $newSubDivision);
+
+        $this->assertFalse(static::$document->nextDocumentPayerAddress());
+
+        // Legal Organisation
+
+        $this->assertTrue(static::$document->firstDocumentPayerLegalOrganisation());
+
+        static::$document->getDocumentPayerLegalOrganisation($newType, $newId, $newName);
+
+        $this->assertSame('0060', $newType);
+        $this->assertSame('123456789', $newId);
+        $this->assertSame('Payer AG', $newName);
+
+        $this->assertFalse(static::$document->nextDocumentPayerLegalOrganisation());
+
+        // Contact
+
+        $this->assertTrue(static::$document->firstDocumentPayerContact());
+
+        static::$document->getDocumentPayerContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        $this->assertSame('Paula Payer', $newPersonName);
+        $this->assertSame('Payment Management', $newDepartmentName);
+        $this->assertSame('+49-30-2000001', $newPhoneNumber);
+        $this->assertSame('+49-30-2000002', $newFaxNumber);
+        $this->assertSame('paula.payer@payer.example', $newEmailAddress);
+
+        $this->assertFalse(static::$document->nextDocumentPayerContact());
+
+        // Communication
+
+        $this->assertTrue(static::$document->firstDocumentPayerCommunication());
+
+        static::$document->getDocumentPayerCommunication($newType, $newUri);
+
+        $this->assertSame('EM', $newType);
+        $this->assertSame('info@payer.example', $newUri);
+
+        $this->assertFalse(static::$document->nextDocumentPayerCommunication());
+
+        // Finals
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentPayerId($newId);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentPayerGlobalId($newGlobalId, $newGlobalIdType);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentPayerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentPayerAddress(
+                $newAddressLine1,
+                $newAddressLine2,
+                $newAddressLine3,
+                $newPostcode,
+                $newCity,
+                $newCountryId,
+                $newSubDivision
+            );
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentPayerLegalOrganisation($newType, $newId, $newName);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentPayerContact(
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            );
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentPayerCommunication($newType, $newUri);
+        }, '/Undefined (array key|index)/');
+    }
+
     public function testFirstNextGetDocumentPaymentMean(): void
     {
         $this->assertTrue(static::$document->firstDocumentPaymentMean());

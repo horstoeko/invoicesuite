@@ -1849,6 +1849,121 @@ final class ZfFxBasicDocumentReaderTest extends TestCase
         $this->assertFalse(static::$document->nextDocumentPayeeCommunication());
     }
 
+    public function testDocumentPayer(): void
+    {
+        // Name
+
+        static::$document->getDocumentPayerName($newName);
+
+        $this->assertSame('', $newName);
+
+        // ID
+
+        $this->assertFalse(static::$document->firstDocumentPayerId());
+
+        static::$document->getDocumentPayerId($newId);
+
+        $this->assertSame('', $newId);
+
+        $this->assertFalse(static::$document->nextDocumentPayerId());
+
+        // Global ID
+
+        $this->assertFalse(static::$document->firstDocumentPayerGlobalId());
+
+        static::$document->getDocumentPayerGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('', $newGlobalId);
+        $this->assertSame('', $newGlobalIdType);
+
+        $this->assertFalse(static::$document->nextDocumentPayerGlobalId());
+
+        static::$document->getDocumentPayerGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('', $newGlobalId);
+        $this->assertSame('', $newGlobalIdType);
+
+        $this->assertFalse(static::$document->nextDocumentPayerGlobalId());
+
+        // Tax Registration
+
+        $this->assertFalse(static::$document->firstDocumentPayerTaxRegistration());
+
+        static::$document->getDocumentPayerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        $this->assertSame('', $newTaxRegistrationId);
+        $this->assertSame('', $newTaxRegistrationType);
+
+        $this->assertFalse(static::$document->nextDocumentPayerTaxRegistration());
+
+        // Address
+
+        $this->assertFalse(static::$document->firstDocumentPayerAddress());
+
+        static::$document->getDocumentPayerAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        $this->assertSame('', $newAddressLine1);
+        $this->assertSame('', $newAddressLine2);
+        $this->assertSame('', $newAddressLine3);
+        $this->assertSame('', $newPostcode);
+        $this->assertSame('', $newCity);
+        $this->assertSame('', $newCountryId);
+        $this->assertSame('', $newSubDivision);
+
+        $this->assertFalse(static::$document->nextDocumentPayerAddress());
+
+        // Legal Organisation
+
+        $this->assertFalse(static::$document->firstDocumentPayerLegalOrganisation());
+
+        static::$document->getDocumentPayerLegalOrganisation($newType, $newId, $newName);
+
+        $this->assertSame('', $newType);
+        $this->assertSame('', $newId);
+        $this->assertSame('', $newName);
+
+        $this->assertFalse(static::$document->nextDocumentPayerLegalOrganisation());
+
+        // Contact
+
+        $this->assertFalse(static::$document->firstDocumentPayerContact());
+
+        static::$document->getDocumentPayerContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        $this->assertSame('', $newPersonName);
+        $this->assertSame('', $newDepartmentName);
+        $this->assertSame('', $newPhoneNumber);
+        $this->assertSame('', $newFaxNumber);
+        $this->assertSame('', $newEmailAddress);
+
+        $this->assertFalse(static::$document->nextDocumentPayerContact());
+
+        // Communication
+
+        $this->assertFalse(static::$document->firstDocumentPayerCommunication());
+
+        static::$document->getDocumentPayerCommunication($newType, $newUri);
+
+        $this->assertSame('', $newType);
+        $this->assertSame('', $newUri);
+
+        $this->assertFalse(static::$document->nextDocumentPayerCommunication());
+    }
+
     public function testFirstNextGetDocumentPaymentMean(): void
     {
         $this->assertTrue(static::$document->firstDocumentPaymentMean());

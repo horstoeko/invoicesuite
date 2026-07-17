@@ -1601,6 +1601,12 @@ $definitions = [
                 'isarray' => false,
                 'isobject' => true,
             ],
+            'payerParty' => [
+                'type' => 'horstoeko\invoicesuite\documents\dto\InvoiceSuitePartyDTO',
+                'caption' => 'The Payer Party',
+                'isarray' => false,
+                'isobject' => true,
+            ],
             'paymentMean' => [
                 'type' => 'horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentMeanDTO',
                 'caption' => 'The payment means',

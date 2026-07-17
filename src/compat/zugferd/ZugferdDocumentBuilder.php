@@ -2844,6 +2844,191 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
     }
 
     /**
+     * Set detailed information about the payer, i.e. about the place that receives the payment.
+     * The role of the payer may also be performed by a party other than the seller, e.g. by a factoring service.
+     *
+     * @param  string      $name        __BT-X-476, From EXTENDED__ The full formal name under which the party is registered
+     * @param  null|string $id          __BT-X-478, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $description __BT-, From __ Further legal information that is relevant for the party
+     * @return static
+     */
+    public function setDocumentPayer(
+        string $name,
+        ?string $id = null,
+        ?string $description = null
+    ): static {
+        $this->unsetPayer();
+        $this->documentBuilder->setDocumentPayerName($name);
+        $this->documentBuilder->setDocumentPayerId($id);
+
+        return $this;
+    }
+
+    /**
+     * Add an ID to the Payer party
+     *
+     * @param  string $id __BT-X-478, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @return static
+     */
+    public function addDocumentPayerId(
+        string $id
+    ): static {
+        $this->documentBuilder->addDocumentPayerId($id);
+
+        return $this;
+    }
+
+    /**
+     * Add a global ID to the Payer party
+     *
+     * @param  null|string $globalID     __BT-X-479, From EXTENDED__ A global identifier of the party
+     * @param  null|string $globalIDType __BT-X-479-0, From EXTENDED__ Type of the global identifier of the party
+     * @return static
+     */
+    public function addDocumentPayerGlobalId(
+        ?string $globalID = null,
+        ?string $globalIDType = null
+    ): static {
+        $this->documentBuilder->addDocumentPayerGlobalId(
+            $globalID,
+            $globalIDType
+        );
+
+        return $this;
+    }
+
+    /**
+     * Add a Tax Registration to the Payer party
+     *
+     * @param  null|string $taxRegType __BT-, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $taxRegId   __BT-, From EXTENDED__ Tax identification number
+     * @return static
+     */
+    public function addDocumentPayerTaxRegistration(
+        ?string $taxRegType = null,
+        ?string $taxRegId = null
+    ): static {
+        $this->documentBuilder->addDocumentPayerTaxRegistration(
+            $taxRegType,
+            $taxRegId
+        );
+
+        return $this;
+    }
+
+    /**
+     * Set the address of the Payer party
+     *
+     * @param  null|string $lineOne     __BT-X-498, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $lineTwo     __BT-X-499, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $lineThree   __BT-X-500, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $postCode    __BT-X-497, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $city        __BT-X-501, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $country     __BT-X-502, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $subDivision __BT-X-503, From EXTENDED__ Region or federal state in which the party's address is located
+     * @return static
+     */
+    public function setDocumentPayerAddress(
+        ?string $lineOne = null,
+        ?string $lineTwo = null,
+        ?string $lineThree = null,
+        ?string $postCode = null,
+        ?string $city = null,
+        ?string $country = null,
+        ?string $subDivision = null
+    ): static {
+        $this->documentBuilder->setDocumentPayerAddress(
+            $lineOne,
+            $lineTwo,
+            $lineThree,
+            $postCode,
+            $city,
+            $country,
+            $subDivision
+        );
+
+        return $this;
+    }
+
+    /**
+     * Set the legal information of the Payer party
+     *
+     * @param  null|string $legalOrgId   __BT-X-480, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $legalOrgType __BT-X-480-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $legalOrgName __BT-X-477, From EXTENDED__ Name by which the party is known, if different from the party's name
+     * @return static
+     */
+    public function setDocumentPayerLegalOrganisation(
+        ?string $legalOrgId = null,
+        ?string $legalOrgType = null,
+        ?string $legalOrgName = null
+    ): static {
+        $this->documentBuilder->setDocumentPayerLegalOrganisation(
+            $legalOrgType,
+            $legalOrgId,
+            $legalOrgName
+        );
+
+        return $this;
+    }
+
+    /**
+     * Set the contact information of the Payer party
+     *
+     * @param  null|string $contactPersonName     __BT-X-484, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $contactDepartmentName __BT-X-485, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $contactPhoneNo        __BT-X-487, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $contactFaxNo          __BT-X-488, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $contactEmailAddress   __BT-X-489, From EXTENDED__ E-Mail address of the contact point
+     * @return static
+     */
+    public function setDocumentPayerContact(
+        ?string $contactPersonName = null,
+        ?string $contactDepartmentName = null,
+        ?string $contactPhoneNo = null,
+        ?string $contactFaxNo = null,
+        ?string $contactEmailAddress = null
+    ): static {
+        $this->documentBuilder->setDocumentPayerContact(
+            $contactPersonName,
+            $contactDepartmentName,
+            $contactPhoneNo,
+            $contactFaxNo,
+            $contactEmailAddress
+        );
+
+        return $this;
+    }
+
+    /**
+     * Add contact information of the Payer party
+     *
+     * @param  null|string $contactPersonName     __BT-X-484, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $contactDepartmentName __BT-X-485, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $contactPhoneNo        __BT-X-487, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $contactFaxNo          __BT-X-488, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $contactEmailAddress   __BT-X-489, From EXTENDED__ E-Mail address of the contact point
+     * @return static
+     */
+    public function addDocumentPayerContact(
+        ?string $contactPersonName = null,
+        ?string $contactDepartmentName = null,
+        ?string $contactPhoneNo = null,
+        ?string $contactFaxNo = null,
+        ?string $contactEmailAddress = null
+    ): static {
+        $this->documentBuilder->addDocumentPayerContact(
+            $contactPersonName,
+            $contactDepartmentName,
+            $contactPhoneNo,
+            $contactFaxNo,
+            $contactEmailAddress
+        );
+
+        return $this;
+    }
+
+    /**
      * Set information on the delivery conditions
      *
      * @param  null|string $code __BT-X-145, From EXTENDED__ The code indicating the type of delivery for these commercial delivery terms. To be selected from the entries in the list UNTDID 4053 + INCOTERMS
@@ -5161,6 +5346,20 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
         $this->safeInvokeTryCallByPath(
             $this->documentBuilder->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject(),
             'getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.setInvoiceeTradeParty',
+            null
+        );
+    }
+
+    /**
+     * Remove the payer party
+     *
+     * @return void
+     */
+    protected function unsetPayer(): void
+    {
+        $this->safeInvokeTryCallByPath(
+            $this->documentBuilder->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject(),
+            'getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.setPayerTradeParty',
             null
         );
     }

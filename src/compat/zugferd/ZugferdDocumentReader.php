@@ -3235,6 +3235,228 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Get detailed information about the payer, i.e. about the place that receives the payment.
+     * The role of the payer may also be performed by a party other than the seller, e.g. by a factoring service.
+     *
+     * @param  null|string            $name        __BT-X-476, From EXTENDED__ The name of the party. Must be used if the payer is not the same as the seller. However, the name of the payer may match the name of the seller.
+     * @param  null|array<int,string> $id          __BT-X-478, From EXTENDED__ An array of identifiers
+     * @param  null|string            $description __BT-, From __ Further legal information that is relevant for the party
+     * @return static
+     *
+     * @phpstan-param-out string $name
+     * @phpstan-param-out array<int,string> $id
+     * @phpstan-param-out string $description
+     */
+    public function getDocumentPayer(
+        ?string &$name,
+        ?array &$id,
+        ?string &$description
+    ): static {
+        $id = [];
+        $name = '';
+        $description = '';
+
+        $this->documentReader->getDocumentPayerName($name);
+
+        if ($this->documentReader->firstDocumentPayerId()) {
+            do {
+                $this->documentReader->getDocumentPayerId($newId);
+                InvoiceSuiteArrayUtils::pushStringToIntIndexedArray($id, $newId);
+            } while ($this->documentReader->nextDocumentPayerId());
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get global identifier of the payer party.
+     *
+     * @param  null|array<string,string> $globalID __BT-X-479-0/BT-X-479, From EXTENDED__ Array of global ids indexed by the identification scheme
+     * @return static
+     *
+     * @phpstan-param-out array<string,string> $globalID
+     */
+    public function getDocumentPayerGlobalId(
+        ?array &$globalID
+    ): static {
+        $globalID = [];
+
+        if ($this->documentReader->firstDocumentPayerGlobalId()) {
+            do {
+                $this->documentReader->getDocumentPayerGlobalId($newGlobalId, $newGlobalIdType);
+                InvoiceSuiteArrayUtils::pushStringToStringIndexedArray($globalID, $newGlobalIdType, $newGlobalId);
+            } while ($this->documentReader->nextDocumentPayerGlobalId());
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get detailed information on tax details of the payer party.
+     *
+     * @param  null|array<string,string> $taxReg __BT-, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
+     * @return static
+     *
+     * @phpstan-param-out array<string,string> $taxReg
+     */
+    public function getDocumentPayerTaxRegistration(
+        ?array &$taxReg
+    ): static {
+        $taxReg = [];
+
+        if ($this->documentReader->firstDocumentPayerTaxRegistration()) {
+            do {
+                $this->documentReader->getDocumentPayerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+                InvoiceSuiteArrayUtils::pushStringToStringIndexedArray($taxReg, $newTaxRegistrationType, $newTaxRegistrationId);
+            } while ($this->documentReader->nextDocumentPayerTaxRegistration());
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get Detailed information on the address of the payer party.
+     *
+     * @param  null|string            $lineOne     __BT-X-498, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  null|string            $lineTwo     __BT-X-499, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  null|string            $lineThree   __BT-X-500, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  null|string            $postCode    __BT-X-497, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  null|string            $city        __BT-X-501, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
+     * @param  null|string            $country     __BT-X-502, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
+     * @param  null|array<int,string> $subDivision __BT-X-503, From EXTENDED__ The party's state
+     * @return static
+     *
+     * @phpstan-param-out string $lineOne
+     * @phpstan-param-out string $lineTwo
+     * @phpstan-param-out string $lineThree
+     * @phpstan-param-out string $postCode
+     * @phpstan-param-out string $city
+     * @phpstan-param-out string $country
+     * @phpstan-param-out array<int,string> $subDivision
+     */
+    public function getDocumentPayerAddress(
+        ?string &$lineOne,
+        ?string &$lineTwo,
+        ?string &$lineThree,
+        ?string &$postCode,
+        ?string &$city,
+        ?string &$country,
+        ?array &$subDivision
+    ): static {
+        $lineOne = '';
+        $lineTwo = '';
+        $lineThree = '';
+        $postCode = '';
+        $city = '';
+        $country = '';
+        $subDivision = [];
+
+        if ($this->documentReader->firstDocumentPayerAddress()) {
+            $this->documentReader->getDocumentPayerAddress(
+                $lineOne,
+                $lineTwo,
+                $lineThree,
+                $postCode,
+                $city,
+                $country,
+                $newSubDivision
+            );
+
+            InvoiceSuiteArrayUtils::pushStringToIntIndexedArray($subDivision, $newSubDivision);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get information about the legal organisation of the payer party.
+     *
+     * @param  null|string $legalOrgId   __BT-X-480, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  null|string $legalOrgType __BT-X-480-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  null|string $legalOrgName __BT-X-477, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @return static
+     *
+     * @phpstan-param-out string $legalOrgId
+     * @phpstan-param-out string $legalOrgType
+     * @phpstan-param-out string $legalOrgName
+     */
+    public function getDocumentPayerLegalOrganisation(
+        ?string &$legalOrgId,
+        ?string &$legalOrgType,
+        ?string &$legalOrgName
+    ): static {
+        $legalOrgId = '';
+        $legalOrgType = '';
+        $legalOrgName = '';
+
+        if ($this->documentReader->firstDocumentPayerLegalOrganisation()) {
+            $this->documentReader->getDocumentPayerLegalOrganisation(
+                $legalOrgType,
+                $legalOrgId,
+                $legalOrgName
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Seek to the first contact information of the payer party of the document. Returns true if a first contact information of the payer party is available, otherwise false.
+     * You may use this together with ZugferdDocumentReader::getDocumentPayerContact.
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerContact(): bool
+    {
+        return $this->documentReader->firstDocumentPayerContact();
+    }
+
+    /**
+     * Seek to the next available contact information of the payer party of the document. Returns true if another contact information of the payer party is available, otherwise false.
+     * You may use this together with ZugferdDocumentReader::getDocumentPayerContact.
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerContact(): bool
+    {
+        return $this->documentReader->nextDocumentPayerContact();
+    }
+
+    /**
+     * Get contact information of the payer party.
+     *
+     * @param  null|string $contactPersonName     __BT-X-484, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  null|string $contactDepartmentName __BT-X-485, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  null|string $contactPhoneNo        __BT-X-487, From EXTENDED__ A telephone number for the contact point
+     * @param  null|string $contactFaxNo          __BT-X-488, From EXTENDED__ A fax number of the contact point
+     * @param  null|string $contactEmailAddress   __BT-X-489, From EXTENDED__ An e-mail address of the contact point
+     * @return static
+     *
+     * @phpstan-param-out string $contactPersonName
+     * @phpstan-param-out string $contactDepartmentName
+     * @phpstan-param-out string $contactPhoneNo
+     * @phpstan-param-out string $contactFaxNo
+     * @phpstan-param-out string $contactEmailAddress
+     */
+    public function getDocumentPayerContact(
+        ?string &$contactPersonName,
+        ?string &$contactDepartmentName,
+        ?string &$contactPhoneNo,
+        ?string &$contactFaxNo,
+        ?string &$contactEmailAddress
+    ): static {
+        $this->documentReader->getDocumentPayerContact(
+            $contactPersonName,
+            $contactDepartmentName,
+            $contactPhoneNo,
+            $contactFaxNo,
+            $contactEmailAddress
+        );
+
+        return $this;
+    }
+
+    /**
      * Get detailed information on the delivery conditions.
      *
      * @param  null|string $code __BT-X-145, From EXTENDED__ The code indicating the type of delivery for these commercial delivery terms. To be selected from the entries in the list UNTDID 4053 + INCOTERMS

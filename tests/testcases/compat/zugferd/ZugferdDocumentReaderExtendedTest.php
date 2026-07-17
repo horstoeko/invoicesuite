@@ -781,6 +781,77 @@ final class ZugferdDocumentReaderExtendedTest extends TestCase
         );
     }
 
+    public function testDocumentPayerGeneral(): void
+    {
+        self::$document->getDocumentPayer($payername, $payerids, $payerdescription);
+        $this->assertSame('Payer GmbH', $payername);
+        $this->assertIsArray($payerids);
+        $this->assertNotEmpty($payerids);
+        $this->assertArrayHasKey(0, $payerids);
+        $this->assertSame('PAYER-339420', $payerids[0]);
+        $this->assertSame('', $payerdescription);
+    }
+
+    public function testDocumentPayerGlobalId(): void
+    {
+        self::$document->getDocumentPayerGlobalId($payerglobalids);
+        $this->assertIsArray($payerglobalids);
+        $this->assertNotEmpty($payerglobalids);
+        $this->assertArrayHasKey('0088', $payerglobalids);
+        $this->assertSame('4000001123452', $payerglobalids['0088']);
+    }
+
+    public function testDocumentPayerTaxRegistration(): void
+    {
+        self::$document->getDocumentPayerTaxRegistration($payertaxreg);
+        $this->assertIsArray($payertaxreg);
+        $this->assertArrayHasKey('VA', $payertaxreg);
+        $this->assertSame('DE987654321', $payertaxreg['VA']);
+    }
+
+    public function testDocumentPayerAddress(): void
+    {
+        self::$document->getDocumentPayerAddress($payerlineone, $payerlinetwo, $payerlinethree, $payerpostcode, $payercity, $payercountry, $payersubdivision);
+        $this->assertSame('Payerstrasse 10', $payerlineone);
+        $this->assertSame('Payment Floor', $payerlinetwo);
+        $this->assertSame('Building P', $payerlinethree);
+        $this->assertSame('10117', $payerpostcode);
+        $this->assertSame('Berlin', $payercity);
+        $this->assertSame('DE', $payercountry);
+        $this->assertIsArray($payersubdivision);
+        $this->assertArrayHasKey(0, $payersubdivision);
+        $this->assertSame('Berlin', $payersubdivision[0]);
+    }
+
+    public function testDocumentPayerLegalOrganization(): void
+    {
+        self::$document->getDocumentPayerLegalOrganisation($payerlegalorgid, $payerlegalorgtype, $payerlegalorgname);
+        $this->assertSame('123456789', $payerlegalorgid);
+        $this->assertSame('0060', $payerlegalorgtype);
+        $this->assertSame('Payer AG', $payerlegalorgname);
+    }
+
+    public function testDocumentPayerContact(): void
+    {
+        $this->assertTrue(self::$document->firstDocumentPayerContact());
+        self::$document->getDocumentPayerContact($payercontactpersonname, $payercontactdepartmentname, $payercontactphoneno, $payercontactfaxno, $payercontactemailaddr);
+        $this->assertSame('Paula Payer', $payercontactpersonname);
+        $this->assertSame('Payment Management', $payercontactdepartmentname);
+        $this->assertSame('+49-30-2000001', $payercontactphoneno);
+        $this->assertSame('+49-30-2000002', $payercontactfaxno);
+        $this->assertSame('paula.payer@payer.example', $payercontactemailaddr);
+
+        $this->assertTrue(self::$document->nextDocumentPayerContact());
+        self::$document->getDocumentPayerContact($payercontactpersonname, $payercontactdepartmentname, $payercontactphoneno, $payercontactfaxno, $payercontactemailaddr);
+        $this->assertSame('Peter Payer', $payercontactpersonname);
+        $this->assertSame('Payment Support', $payercontactdepartmentname);
+        $this->assertSame('+49-30-2000003', $payercontactphoneno);
+        $this->assertSame('+49-30-2000004', $payercontactfaxno);
+        $this->assertSame('peter.payer@payer.example', $payercontactemailaddr);
+
+        $this->assertFalse(self::$document->nextDocumentPayerContact());
+    }
+
     public function testDocumentPayeeGeneral(): void
     {
         self::$document->getDocumentPayee($payeename, $payeeids, $payeedescription);

@@ -1797,6 +1797,123 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
             );
         }
 
+        // Document-Level Payer Party
+
+        $newDocumentDTO->setPayerParty(new InvoiceSuitePartyDTO());
+
+        $this->getDocumentPayerName($newDocumentPayerName);
+        $newDocumentDTO->getPayerParty()->addName($newDocumentPayerName);
+
+        while ($this->nextDocumentPayerId()) {
+            $this->getDocumentPayerId(
+                $newDocumentPayerId
+            );
+
+            $newDocumentDTO->getPayerParty()->addId(
+                new InvoiceSuiteIdDTO(
+                    $newDocumentPayerId
+                )
+            );
+        }
+
+        while ($this->nextDocumentPayerGlobalId()) {
+            $this->getDocumentPayerGlobalId(
+                $newDocumentPayerGlobalId,
+                $newDocumentPayerGlobalIdType
+            );
+
+            $newDocumentDTO->getPayerParty()->addGlobalId(
+                new InvoiceSuiteIdDTO(
+                    $newDocumentPayerGlobalId,
+                    $newDocumentPayerGlobalIdType
+                )
+            );
+        }
+
+        while ($this->nextDocumentPayerTaxRegistration()) {
+            $this->getDocumentPayerTaxRegistration(
+                $newDocumentPayerTaxRegistationType,
+                $newDocumentPayerTaxRegistationId
+            );
+
+            $newDocumentDTO->getPayerParty()->addTaxRegistration(
+                new InvoiceSuiteIdDTO(
+                    $newDocumentPayerTaxRegistationId,
+                    $newDocumentPayerTaxRegistationType
+                )
+            );
+        }
+
+        while ($this->nextDocumentPayerAddress()) {
+            $this->getDocumentPayerAddress(
+                $documentPayerAddressLine1,
+                $documentPayerAddressLine2,
+                $documentPayerAddressLine3,
+                $documentPayerAddressPostCode,
+                $documentPayerAddressCity,
+                $documentPayerAddressCountry,
+                $documentPayerAddressSubDivision
+            );
+
+            $newDocumentDTO->getPayerParty()->addAddress(new InvoiceSuiteAddressDTO(
+                $documentPayerAddressLine1,
+                $documentPayerAddressLine2,
+                $documentPayerAddressLine3,
+                $documentPayerAddressPostCode,
+                $documentPayerAddressCity,
+                $documentPayerAddressCountry,
+                $documentPayerAddressSubDivision
+            ));
+        }
+
+        while ($this->nextDocumentPayerLegalOrganisation()) {
+            $this->getDocumentPayerLegalOrganisation(
+                $newDocumentPayerLegalOrganisationType,
+                $newDocumentPayerLegalOrganisationId,
+                $newDocumentPayerLegalOrganisationName
+            );
+
+            $newDocumentDTO->getPayerParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
+                $newDocumentPayerLegalOrganisationId,
+                $newDocumentPayerLegalOrganisationType,
+                $newDocumentPayerLegalOrganisationName
+            ));
+        }
+
+        while ($this->nextDocumentPayerContact()) {
+            $this->getDocumentPayerContact(
+                $newDocumentPayerContactPersonName,
+                $newDocumentPayerContactDepartmentName,
+                $newDocumentPayerContactPhoneNumber,
+                $newDocumentPayerContactFaxNumber,
+                $newDocumentPayerContactEmailAddress
+            );
+
+            $newDocumentDTO->getPayerParty()->addContact(
+                new InvoiceSuiteContactDTO(
+                    $newDocumentPayerContactPersonName,
+                    $newDocumentPayerContactDepartmentName,
+                    $newDocumentPayerContactPhoneNumber,
+                    $newDocumentPayerContactFaxNumber,
+                    $newDocumentPayerContactEmailAddress
+                )
+            );
+        }
+
+        while ($this->nextDocumentPayerCommunication()) {
+            $this->getDocumentPayerCommunication(
+                $newDocumentPayerCommunicationType,
+                $newDocumentPayerCommunicationUri
+            );
+
+            $newDocumentDTO->getPayerParty()->addCommunication(
+                new InvoiceSuiteCommunicationDTO(
+                    $newDocumentPayerCommunicationUri,
+                    $newDocumentPayerCommunicationType
+                )
+            );
+        }
+
         // Document-Level Payment Means
 
         while ($this->nextDocumentPaymentMean()) {
@@ -11853,6 +11970,623 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     }
 
     /**
+     * Get the name of the Payer party
+     *
+     * @param  null|string $newName __BT-X-476, From EXTENDED__ The full formal name under which the party is registered
+     * @return static
+     *
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentPayerName(
+        ?string &$newName
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newName = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        $newName = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getName()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first ID of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerId(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getID() ?? []
+            ),
+            'documentpayerid'
+        );
+    }
+
+    /**
+     * Go to the next ID of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerId(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getID() ?? []
+            ),
+            'documentpayerid'
+        );
+    }
+
+    /**
+     * Get the ID of the Payer party
+     *
+     * @param  null|string $newId __BT-X-478, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @return static
+     *
+     * @phpstan-param-out string $newId
+     */
+    public function getDocumentPayerId(
+        ?string &$newId
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newId = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        /**
+         * @var array<IDType>
+         */
+        $documentPayerIds = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getID() ?? []);
+
+        /**
+         * @var IDType
+         */
+        $documentPayerId = $documentPayerIds[InvoiceSuitePointerUtils::getValue('documentpayerid')];
+
+        $newId = $documentPayerId->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first ID of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerGlobalId(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getGlobalID() ?? []
+            ),
+            'documentpayerglobalid'
+        );
+    }
+
+    /**
+     * Go to the next ID of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerGlobalId(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getGlobalID() ?? []
+            ),
+            'documentpayerglobalid'
+        );
+    }
+
+    /**
+     * Get the Global ID of the Payer party
+     *
+     * @param  null|string $newGlobalId     __BT-X-479, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-479-0, From EXTENDED__  Type of the global identifier of the party
+     * @return static
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
+     */
+    public function getDocumentPayerGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newGlobalId = '';
+        $newGlobalIdType = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        /**
+         * @var array<IDType>
+         */
+        $documentPayerGlobalIds = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getGlobalID() ?? []);
+
+        /**
+         * @var IDType
+         */
+        $documentPayerGlobalId = $documentPayerGlobalIds[InvoiceSuitePointerUtils::getValue('documentpayerglobalid')];
+
+        $newGlobalId = $documentPayerGlobalId->getValue() ?? '';
+        $newGlobalIdType = $documentPayerGlobalId->getSchemeID() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Tax Registration of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerTaxRegistration(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getSpecifiedTaxRegistration() ?? []
+            ),
+            'documentpayertaxregistration'
+        );
+    }
+
+    /**
+     * Go to the next Tax Registration of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerTaxRegistration(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getSpecifiedTaxRegistration() ?? []
+            ),
+            'documentpayertaxregistration'
+        );
+    }
+
+    /**
+     * Get the Tax Registration of the Payer party
+     *
+     * @param  null|string $newTaxRegistrationType __BT-, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-, From EXTENDED__ Tax identification number
+     * @return static
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
+     */
+    public function getDocumentPayerTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newTaxRegistrationType = '';
+        $newTaxRegistrationId = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        /**
+         * @var array<TaxRegistrationType>
+         */
+        $documentPayerTaxRegistrations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getSpecifiedTaxRegistration() ?? []);
+
+        /**
+         * @var TaxRegistrationType
+         */
+        $documentPayerTaxRegistration = $documentPayerTaxRegistrations[InvoiceSuitePointerUtils::getValue('documentpayertaxregistration')];
+
+        $newTaxRegistrationType = $documentPayerTaxRegistration->getID()?->getSchemeID() ?? '';
+        $newTaxRegistrationId = $documentPayerTaxRegistration->getID()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first address of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerAddress(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getPostalTradeAddress() ?? []
+            ),
+            'documentpayeraddress'
+        );
+    }
+
+    /**
+     * Go to the next address of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerAddress(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getPostalTradeAddress() ?? []
+            ),
+            'documentpayeraddress'
+        );
+    }
+
+    /**
+     * Get the address of the Payer party
+     *
+     * @param  null|string $newAddressLine1 __BT-X-498, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-X-499, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-X-500, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-X-497, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-X-501, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-X-502, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-X-503, From EXTENDED__ Region or federal state in which the party's address is located
+     * @return static
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
+     */
+    public function getDocumentPayerAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newAddressLine1 = '';
+        $newAddressLine2 = '';
+        $newAddressLine3 = '';
+        $newPostcode = '';
+        $newCity = '';
+        $newCountryId = '';
+        $newSubDivision = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        /**
+         * @var array<TradeAddressType>
+         */
+        $documentPayerAddresses = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getPostalTradeAddress() ?? []);
+
+        /**
+         * @var TradeAddressType
+         */
+        $documentPayerAddress = $documentPayerAddresses[InvoiceSuitePointerUtils::getValue('documentpayeraddress')];
+
+        $newAddressLine1 = $documentPayerAddress->getLineOne()?->getValue() ?? '';
+        $newAddressLine2 = $documentPayerAddress->getLineTwo()?->getValue() ?? '';
+        $newAddressLine3 = $documentPayerAddress->getLineThree()?->getValue() ?? '';
+        $newPostcode = $documentPayerAddress->getPostcodeCode()?->getValue() ?? '';
+        $newCity = $documentPayerAddress->getCityName()?->getValue() ?? '';
+        $newCountryId = $documentPayerAddress->getCountryID()?->getValue() ?? '';
+        $newSubDivision = $documentPayerAddress->getCountrySubDivisionName()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first the legal information of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerLegalOrganisation(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getSpecifiedLegalOrganization() ?? []
+            ),
+            'documentpayerlegalorganisation'
+        );
+    }
+
+    /**
+     * Go to the next the legal information of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerLegalOrganisation(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getSpecifiedLegalOrganization() ?? []
+            ),
+            'documentpayerlegalorganisation'
+        );
+    }
+
+    /**
+     * Get the legal information of the Payer party
+     *
+     * @param  null|string $newType __BT-X-480-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-480, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-477, From EXTENDED__ Name by which the party is known, if different from the party's name
+     * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentPayerLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newType = '';
+        $newId = '';
+        $newName = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        /**
+         * @var array<LegalOrganizationType>
+         */
+        $documentPayerLegalOrganisations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getSpecifiedLegalOrganization() ?? []);
+
+        /**
+         * @var LegalOrganizationType
+         */
+        $documentPayerLegalOrganisation = $documentPayerLegalOrganisations[InvoiceSuitePointerUtils::getValue('documentpayerlegalorganisation')];
+
+        $newType = $documentPayerLegalOrganisation->getID()?->getSchemeID() ?? '';
+        $newId = $documentPayerLegalOrganisation->getID()?->getValue() ?? '';
+        $newName = $documentPayerLegalOrganisation->getTradingBusinessName()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first contact information of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerContact(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getDefinedTradeContact() ?? []
+            ),
+            'documentpayercontact'
+        );
+    }
+
+    /**
+     * Go to the next contact information of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerContact(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getDefinedTradeContact() ?? []
+            ),
+            'documentpayercontact'
+        );
+    }
+
+    /**
+     * Get the contact information of the Payer party
+     *
+     * @param  null|string $newPersonName     __BT-X-484, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-485, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-487, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-488, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-489, From EXTENDED__ E-Mail address of the contact point
+     * @return static
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
+     */
+    public function getDocumentPayerContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newPersonName = '';
+        $newDepartmentName = '';
+        $newPhoneNumber = '';
+        $newFaxNumber = '';
+        $newEmailAddress = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        /**
+         * @var array<TradeContactType>
+         */
+        $documentPayerContacts = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getDefinedTradeContact() ?? []);
+
+        /**
+         * @var TradeContactType
+         */
+        $documentPayerContact = $documentPayerContacts[InvoiceSuitePointerUtils::getValue('documentpayercontact')];
+
+        $newPersonName = $documentPayerContact->getPersonName()?->getValue() ?? '';
+        $newDepartmentName = $documentPayerContact->getDepartmentName()?->getValue() ?? '';
+        $newPhoneNumber = $documentPayerContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
+        $newFaxNumber = $documentPayerContact->getFaxUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
+        $newEmailAddress = $documentPayerContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first communication information of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerCommunication(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getURIUniversalCommunication() ?? []
+            ),
+            'documentpayercommunication'
+        );
+    }
+
+    /**
+     * Go to the next communication information of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerCommunication(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getURIUniversalCommunication() ?? []
+            ),
+            'documentpayercommunication'
+        );
+    }
+
+    /**
+     * Get communication information of the Payer party
+     *
+     * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
+     */
+    public function getDocumentPayerCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newType = '';
+        $newUri = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        /**
+         * @var array<UniversalCommunicationType>
+         */
+        $documentPayerElectronicCommunications = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getURIUniversalCommunication() ?? []);
+
+        /**
+         * @var UniversalCommunicationType
+         */
+        $documentPayerElectronicCommunication = $documentPayerElectronicCommunications[InvoiceSuitePointerUtils::getValue('documentpayercommunication')];
+
+        $newType = $documentPayerElectronicCommunication->getURIID()?->getSchemeID() ?? '';
+        $newUri = $documentPayerElectronicCommunication->getURIID()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first Payment mean
      *
      * @return bool
@@ -16621,6 +17355,13 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         InvoiceSuitePointerUtils::resetSingle('documentpayeelegalorganisation');
         InvoiceSuitePointerUtils::resetSingle('documentpayeecontact');
         InvoiceSuitePointerUtils::resetSingle('documentpayeecommunication');
+        InvoiceSuitePointerUtils::resetSingle('documentpayerid');
+        InvoiceSuitePointerUtils::resetSingle('documentpayerglobalid');
+        InvoiceSuitePointerUtils::resetSingle('documentpayertaxregistration');
+        InvoiceSuitePointerUtils::resetSingle('documentpayeraddress');
+        InvoiceSuitePointerUtils::resetSingle('documentpayerlegalorganisation');
+        InvoiceSuitePointerUtils::resetSingle('documentpayercontact');
+        InvoiceSuitePointerUtils::resetSingle('documentpayercommunication');
         InvoiceSuitePointerUtils::resetSingle('documentpaymentmean');
         InvoiceSuitePointerUtils::resetSingle('documentcreditorreference');
         InvoiceSuitePointerUtils::resetSingle('documentpaymentreference');

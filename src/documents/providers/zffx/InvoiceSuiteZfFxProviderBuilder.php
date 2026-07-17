@@ -888,6 +888,66 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 )
             );
 
+        // Document-Level Payer Party
+
+        $newDocumentDTO
+            ->getPayerParty()
+            ?->firstName(
+                fn (string $item) => $this->setDocumentPayerName(
+                    $item
+                )
+            )
+            ?->firstId(
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPayerId(
+                    $item->getId()
+                )
+            )
+            ?->forEachGlobalId(
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentPayerGlobalId(
+                    $item->getId(),
+                    $item->getIdType()
+                )
+            )
+            ?->firstTaxRegistration(
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPayerTaxRegistration(
+                    $item->getIdType(),
+                    $item->getId()
+                )
+            )
+            ?->firstAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentPayerAddress(
+                    $item->getAddressLine1(),
+                    $item->getAddressLine2(),
+                    $item->getAddressLine3(),
+                    $item->getPostcode(),
+                    $item->getCity(),
+                    $item->getCountry(),
+                    $item->getSubDivision()
+                )
+            )
+            ?->firstLegalOrganisation(
+                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentPayerLegalOrganisation(
+                    $item->getIdType(),
+                    $item->getId(),
+                    $item->getName()
+                )
+            )
+            ?->forEachContact(
+                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentPayerContact(
+                    $item->getPersonName(),
+                    $item->getDepartmentName(),
+                    $item->getPhoneNumber(),
+                    $item->getFaxNumber(),
+                    $item->getEmailAddress()
+                )
+            )
+            ?->firstCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentPayerCommunication(
+                    $item->getIdType(),
+                    $item->getId()
+                )
+            );
+
         // Document-Level Payment Means
 
         $newDocumentDTO->forEachPaymentMean(
@@ -11129,6 +11189,679 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         $this->setDocumentPayeeCommunication($newType, $newUri);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the name of the Payer party
+     *
+     * @param  null|string $newName __BT-X-476, From EXTENDED__ The full formal name under which the party is registered
+     * @return static
+     */
+    public function setDocumentPayerName(
+        ?string $newName = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getPayerTradeParty()
+            ?->unsetName();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayerTradePartyWithCreate()
+            ->getNameWithCreate()
+            ->setValue($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a name of the Payer party
+     *
+     * @param  null|string $newName __BT-X-476, From EXTENDED__ The full formal name under which the party is registered
+     * @return static
+     */
+    public function addDocumentPayerName(
+        ?string $newName = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)');
+        }
+
+        $this->setDocumentPayerName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the ID of the Payer party
+     *
+     * @param  null|string $newId __BT-X-478, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @return static
+     */
+    public function setDocumentPayerId(
+        ?string $newId = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getPayerTradeParty()
+            ?->unsetID();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newId)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newId)');
+        }
+
+        $this->addDocumentPayerId($newId);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add an ID to the Payer party
+     *
+     * @param  null|string $newId __BT-X-478, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @return static
+     */
+    public function addDocumentPayerId(
+        ?string $newId = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newId)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newId)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayerTradePartyWithCreate()
+            ->addToIDWithCreate()
+            ->setValue($newId);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the Global ID of the Payer party
+     *
+     * @param  null|string $newGlobalId     __BT-X-479, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-479-0, From EXTENDED__  Type of the global identifier of the party
+     * @return static
+     */
+    public function setDocumentPayerGlobalId(
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getPayerTradeParty()
+            ?->unsetGlobalID();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])');
+        }
+
+        $this->addDocumentPayerGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add an ID to the Payer party
+     *
+     * @param  null|string $newGlobalId     __BT-X-479, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-479-0, From EXTENDED__  Type of the global identifier of the party
+     * @return static
+     */
+    public function addDocumentPayerGlobalId(
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayerTradePartyWithCreate()
+            ->addToGlobalIDWithCreate()
+            ->setValue($newGlobalId)
+            ->setSchemeID($newGlobalIdType);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the Tax Registration of the Payer party
+     *
+     * @param  null|string $newTaxRegistrationType __BT-, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-, From EXTENDED__ Tax identification number
+     * @return static
+     */
+    public function setDocumentPayerTaxRegistration(
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null,
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getPayerTradeParty()
+            ?->unsetSpecifiedTaxRegistration();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])');
+        }
+
+        $this->addDocumentPayerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add an Tax Registration to the Payer party
+     *
+     * @param  null|string $newTaxRegistrationType __BT-, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-, From EXTENDED__ Tax identification number
+     * @return static
+     */
+    public function addDocumentPayerTaxRegistration(
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null,
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayerTradePartyWithCreate()
+            ->addToSpecifiedTaxRegistrationWithCreate()
+            ->getIDWithCreate()
+            ->setValue($newTaxRegistrationId)
+            ->setSchemeID($newTaxRegistrationType);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the address of the Payer party
+     *
+     * @param  null|string $newAddressLine1 __BT-X-498, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-X-499, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-X-500, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-X-497, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-X-501, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-X-502, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-X-503, From EXTENDED__ Region or federal state in which the party's address is located
+     * @return static
+     */
+    public function setDocumentPayerAddress(
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null,
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getPayerTradeParty()
+            ?->unsetPostalTradeAddress();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
+        }
+
+        $payerTradeParty = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayerTradePartyWithCreate();
+
+        $payerTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newAddressLine1)) {
+            $payerTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newAddressLine2)) {
+            $payerTradeParty->getPostalTradeAddressWithCreate()->getLineTwoWithCreate()->setValue($newAddressLine2);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newAddressLine3)) {
+            $payerTradeParty->getPostalTradeAddressWithCreate()->getLineThreeWithCreate()->setValue($newAddressLine3);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPostcode)) {
+            $payerTradeParty->getPostalTradeAddressWithCreate()->getPostcodeCodeWithCreate()->setValue($newPostcode);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCity)) {
+            $payerTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newSubDivision)) {
+            $payerTradeParty->getPostalTradeAddressWithCreate()->getCountrySubDivisionNameWithCreate()->setValue($newSubDivision);
+        }
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add an address to the Payer party
+     *
+     * @param  null|string $newAddressLine1 __BT-X-498, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-X-499, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-X-500, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-X-497, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-X-501, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-X-502, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-X-503, From EXTENDED__ Region or federal state in which the party's address is located
+     * @return static
+     */
+    public function addDocumentPayerAddress(
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null,
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
+        }
+
+        $this->setDocumentPayerAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the legal information of the Payer party
+     *
+     * @param  null|string $newType __BT-X-480-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-480, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-477, From EXTENDED__ Name by which the party is known, if different from the party's name
+     * @return static
+     */
+    public function setDocumentPayerLegalOrganisation(
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null,
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getPayerTradeParty()
+            ?->unsetSpecifiedLegalOrganization();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])');
+        }
+
+        $payerTradeParty = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayerTradePartyWithCreate();
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newId)) {
+            $payerTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
+
+            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newType)) {
+                $payerTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
+            }
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)) {
+            $payerTradeParty->getSpecifiedLegalOrganizationWithCreate()->getTradingBusinessNameWithCreate()->setValue($newName);
+        }
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a legal information of the Payer party
+     *
+     * @param  null|string $newType __BT-X-480-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-480, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-477, From EXTENDED__ Name by which the party is known, if different from the party's name
+     * @return static
+     */
+    public function addDocumentPayerLegalOrganisation(
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null,
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])');
+        }
+
+        $this->setDocumentPayerLegalOrganisation($newType, $newId, $newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the contact information of the Payer party
+     *
+     * @param  null|string $newPersonName     __BT-X-484, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-485, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-487, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-488, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-489, From EXTENDED__ E-Mail address of the contact point
+     * @return static
+     */
+    public function setDocumentPayerContact(
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null,
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getPayerTradeParty()
+            ?->unsetDefinedTradeContact();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress,
+            ])
+        ) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress, ])');
+        }
+
+        $this->addDocumentPayerContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add contact information of the Payer party
+     *
+     * @param  null|string $newPersonName     __BT-X-484, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-485, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-487, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-488, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-489, From EXTENDED__ E-Mail address of the contact point
+     * @return static
+     */
+    public function addDocumentPayerContact(
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null,
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress,
+            ])
+        ) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress, ])');
+        }
+
+        $payerTradeContact = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayerTradePartyWithCreate()
+            ->addToDefinedTradeContactWithCreate();
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPersonName)) {
+            $payerTradeContact->getPersonNameWithCreate()->setValue($newPersonName);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDepartmentName)) {
+            $payerTradeContact->getDepartmentNameWithCreate()->setValue($newDepartmentName);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPhoneNumber)) {
+            $payerTradeContact->getTelephoneUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newPhoneNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newFaxNumber)) {
+            $payerTradeContact->getFaxUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newFaxNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newEmailAddress)) {
+            $payerTradeContact->getEmailURIUniversalCommunicationWithCreate()->getURIIDWithCreate()->setValue($newEmailAddress);
+        }
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set communication information of the Payer party
+     *
+     * @param  null|string $newType __BT-X-482-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-482, From EXTENDED__ The party's electronic address
+     * @return static
+     */
+    public function setDocumentPayerCommunication(
+        ?string $newType = null,
+        ?string $newUri = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getPayerTradeParty()
+            ?->unsetURIUniversalCommunication();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])');
+        }
+
+        $payerUniversalCommunication = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayerTradePartyWithCreate()
+            ->getURIUniversalCommunicationWithCreate();
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newType)) {
+            $payerUniversalCommunication->getURIIDWithCreate()->setSchemeID($newType);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newUri)) {
+            $payerUniversalCommunication->getURIIDWithCreate()->setValue($newUri);
+        }
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a communication information of the Payer party
+     *
+     * @param  null|string $newType __BT-X-482-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-482, From EXTENDED__ The party's electronic address
+     * @return static
+     */
+    public function addDocumentPayerCommunication(
+        ?string $newType = null,
+        ?string $newUri = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])');
+        }
+
+        $this->setDocumentPayerCommunication($newType, $newUri);
 
         $this->traceMethodExit(__METHOD__);
 

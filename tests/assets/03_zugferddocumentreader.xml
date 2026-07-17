@@ -353,6 +353,53 @@
                     <ram:CountryID>DE</ram:CountryID>
                 </ram:PostalTradeAddress>
             </ram:InvoiceeTradeParty>
+            <ram:PayerTradeParty>
+                <ram:ID>PAYER-339420</ram:ID>
+                <ram:GlobalID schemeID="0088">4000001123452</ram:GlobalID>
+                <ram:Name>Payer GmbH</ram:Name>
+                <ram:SpecifiedLegalOrganization>
+                    <ram:ID schemeID="0060">123456789</ram:ID>
+                    <ram:TradingBusinessName>Payer AG</ram:TradingBusinessName>
+                </ram:SpecifiedLegalOrganization>
+                <ram:DefinedTradeContact>
+                    <ram:PersonName>Paula Payer</ram:PersonName>
+                    <ram:DepartmentName>Payment Management</ram:DepartmentName>
+                    <ram:TelephoneUniversalCommunication>
+                        <ram:CompleteNumber>+49-30-2000001</ram:CompleteNumber>
+                    </ram:TelephoneUniversalCommunication>
+                    <ram:FaxUniversalCommunication>
+                        <ram:CompleteNumber>+49-30-2000002</ram:CompleteNumber>
+                    </ram:FaxUniversalCommunication>
+                    <ram:EmailURIUniversalCommunication>
+                        <ram:URIID>paula.payer@payer.example</ram:URIID>
+                    </ram:EmailURIUniversalCommunication>
+                </ram:DefinedTradeContact>
+                <ram:DefinedTradeContact>
+                    <ram:PersonName>Peter Payer</ram:PersonName>
+                    <ram:DepartmentName>Payment Support</ram:DepartmentName>
+                    <ram:TelephoneUniversalCommunication>
+                        <ram:CompleteNumber>+49-30-2000003</ram:CompleteNumber>
+                    </ram:TelephoneUniversalCommunication>
+                    <ram:FaxUniversalCommunication>
+                        <ram:CompleteNumber>+49-30-2000004</ram:CompleteNumber>
+                    </ram:FaxUniversalCommunication>
+                    <ram:EmailURIUniversalCommunication>
+                        <ram:URIID>peter.payer@payer.example</ram:URIID>
+                    </ram:EmailURIUniversalCommunication>
+                </ram:DefinedTradeContact>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>10117</ram:PostcodeCode>
+                    <ram:LineOne>Payerstrasse 10</ram:LineOne>
+                    <ram:LineTwo>Payment Floor</ram:LineTwo>
+                    <ram:LineThree>Building P</ram:LineThree>
+                    <ram:CityName>Berlin</ram:CityName>
+                    <ram:CountryID>DE</ram:CountryID>
+                    <ram:CountrySubDivisionName>Berlin</ram:CountrySubDivisionName>
+                </ram:PostalTradeAddress>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="VA">DE987654321</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:PayerTradeParty>
             <ram:ApplicableTradeTax>
                 <ram:CalculatedAmount>76.67</ram:CalculatedAmount>
                 <ram:TypeCode>VAT</ram:TypeCode>
