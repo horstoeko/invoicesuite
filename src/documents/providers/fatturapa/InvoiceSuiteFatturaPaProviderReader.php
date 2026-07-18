@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\documents\providers\fatturapa;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatReader;
+use horstoeko\invoicesuite\documents\concerns\HandlesReaderPointers;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAllowanceChargeDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteCommunicationDTO;
@@ -65,6 +66,8 @@ use ValueError;
 
 class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFormatReader
 {
+    use HandlesReaderPointers;
+
     /**
      * Create a DTO from this document
      *
@@ -11954,47 +11957,6 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
     protected function getFatturaPaRootObject(): FatturaElettronica
     {
         return $this->getDocumentRootObject();
-    }
-
-    /**
-     * Reset all document-level pointers.
-     *
-     * @return void
-     */
-    protected function resetCurrentDocumentSubPointers(): void
-    {
-        InvoiceSuitePointerUtils::resetSingle('documentnote');
-        InvoiceSuitePointerUtils::resetSingle('documentbuyerorderreference');
-        InvoiceSuitePointerUtils::resetSingle('documentcontractreference');
-        InvoiceSuitePointerUtils::resetSingle('documentinvoicereference');
-        InvoiceSuitePointerUtils::resetSingle('documentsellerid');
-        InvoiceSuitePointerUtils::resetSingle('documentsellertaxregistration');
-        InvoiceSuitePointerUtils::resetSingle('documentselleraddress');
-        InvoiceSuitePointerUtils::resetSingle('documentsellercontact');
-        InvoiceSuitePointerUtils::resetSingle('documentbuyerid');
-        InvoiceSuitePointerUtils::resetSingle('documentbuyertaxregistration');
-        InvoiceSuitePointerUtils::resetSingle('documentbuyeraddress');
-        InvoiceSuitePointerUtils::resetSingle('documentsellertaxrepresentativeid');
-        InvoiceSuitePointerUtils::resetSingle('documentsellertaxrepresentativetaxregistration');
-        InvoiceSuitePointerUtils::resetSingle('documentpaymentmean');
-        InvoiceSuitePointerUtils::resetSingle('documentpaymentreference');
-        InvoiceSuitePointerUtils::resetSingle('documentpaymentterm');
-        InvoiceSuitePointerUtils::resetSingle('documenttax');
-        InvoiceSuitePointerUtils::resetSingle('documentposition');
-
-        $this->resetCurrentDocumentPositionSubPointers();
-    }
-
-    /**
-     * Reset all position-level pointers.
-     *
-     * @return void
-     */
-    protected function resetCurrentDocumentPositionSubPointers(): void
-    {
-        InvoiceSuitePointerUtils::resetSingle('documentpositionbillingperiod');
-        InvoiceSuitePointerUtils::resetSingle('documentpositiontax');
-        InvoiceSuitePointerUtils::resetSingle('documentpositionallowancecharge');
     }
 
     /**
