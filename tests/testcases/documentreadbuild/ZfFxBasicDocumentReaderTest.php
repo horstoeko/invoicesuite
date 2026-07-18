@@ -1044,6 +1044,121 @@ final class ZfFxBasicDocumentReaderTest extends TestCase
         $this->assertFalse(static::$document->nextDocumentSalesAgentCommunication());
     }
 
+    public function testDocumentBuyerAgent(): void
+    {
+        // Name
+
+        static::$document->getDocumentBuyerAgentName($newName);
+
+        $this->assertSame('', $newName);
+
+        // ID
+
+        $this->assertFalse(static::$document->firstDocumentBuyerAgentId());
+
+        static::$document->getDocumentBuyerAgentId($newId);
+
+        $this->assertSame('', $newId);
+
+        $this->assertFalse(static::$document->nextDocumentBuyerAgentId());
+
+        // Global ID
+
+        $this->assertFalse(static::$document->firstDocumentBuyerAgentGlobalId());
+
+        static::$document->getDocumentBuyerAgentGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('', $newGlobalId);
+        $this->assertSame('', $newGlobalIdType);
+
+        $this->assertFalse(static::$document->nextDocumentBuyerAgentGlobalId());
+
+        static::$document->getDocumentBuyerAgentGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('', $newGlobalId);
+        $this->assertSame('', $newGlobalIdType);
+
+        $this->assertFalse(static::$document->nextDocumentBuyerAgentGlobalId());
+
+        // Tax Registration
+
+        $this->assertFalse(static::$document->firstDocumentBuyerAgentTaxRegistration());
+
+        static::$document->getDocumentBuyerAgentTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        $this->assertSame('', $newTaxRegistrationId);
+        $this->assertSame('', $newTaxRegistrationType);
+
+        $this->assertFalse(static::$document->nextDocumentBuyerAgentTaxRegistration());
+
+        // Address
+
+        $this->assertFalse(static::$document->firstDocumentBuyerAgentAddress());
+
+        static::$document->getDocumentBuyerAgentAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        $this->assertSame('', $newAddressLine1);
+        $this->assertSame('', $newAddressLine2);
+        $this->assertSame('', $newAddressLine3);
+        $this->assertSame('', $newPostcode);
+        $this->assertSame('', $newCity);
+        $this->assertSame('', $newCountryId);
+        $this->assertSame('', $newSubDivision);
+
+        $this->assertFalse(static::$document->nextDocumentBuyerAgentAddress());
+
+        // Legal Organisation
+
+        $this->assertFalse(static::$document->firstDocumentBuyerAgentLegalOrganisation());
+
+        static::$document->getDocumentBuyerAgentLegalOrganisation($newType, $newId, $newName);
+
+        $this->assertSame('', $newType);
+        $this->assertSame('', $newId);
+        $this->assertSame('', $newName);
+
+        $this->assertFalse(static::$document->nextDocumentBuyerAgentLegalOrganisation());
+
+        // Contact
+
+        $this->assertFalse(static::$document->firstDocumentBuyerAgentContact());
+
+        static::$document->getDocumentBuyerAgentContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        $this->assertSame('', $newPersonName);
+        $this->assertSame('', $newDepartmentName);
+        $this->assertSame('', $newPhoneNumber);
+        $this->assertSame('', $newFaxNumber);
+        $this->assertSame('', $newEmailAddress);
+
+        $this->assertFalse(static::$document->nextDocumentBuyerAgentContact());
+
+        // Communication
+
+        $this->assertFalse(static::$document->firstDocumentBuyerAgentCommunication());
+
+        static::$document->getDocumentBuyerAgentCommunication($newType, $newUri);
+
+        $this->assertSame('', $newType);
+        $this->assertSame('', $newUri);
+
+        $this->assertFalse(static::$document->nextDocumentBuyerAgentCommunication());
+    }
+
     public function testDocumentProductEndUser(): void
     {
         // Name

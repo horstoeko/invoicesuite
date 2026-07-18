@@ -446,6 +446,73 @@ final class ZugferdDocumentReaderComfortTest extends TestCase
         $this->assertSame('', $salesagentcontactemailaddr);
     }
 
+    public function testDocumentBuyerAgentGeneral(): void
+    {
+        self::$document->getDocumentBuyerAgent($buyeragentname, $buyeragentids, $buyeragentdescription);
+        $this->assertSame('', $buyeragentname);
+        $this->assertIsArray($buyeragentids);
+        $this->assertEmpty($buyeragentids);
+        $this->assertSame('', $buyeragentdescription);
+    }
+
+    public function testDocumentBuyerAgentGlobalId(): void
+    {
+        self::$document->getDocumentBuyerAgentGlobalId($buyeragentglobalids);
+        $this->assertIsArray($buyeragentglobalids);
+        $this->assertEmpty($buyeragentglobalids);
+    }
+
+    public function testDocumentBuyerAgentTaxRegistration(): void
+    {
+        self::$document->getDocumentBuyerAgentTaxRegistration($buyeragenttaxreg);
+        $this->assertIsArray($buyeragenttaxreg);
+        $this->assertEmpty($buyeragenttaxreg);
+    }
+
+    public function testDocumentBuyerAgentAddress(): void
+    {
+        self::$document->getDocumentBuyerAgentAddress($buyeragentlineone, $buyeragentlinetwo, $buyeragentlinethree, $buyeragentpostcode, $buyeragentcity, $buyeragentcountry, $buyeragentsubdivision);
+        $this->assertSame('', $buyeragentlineone);
+        $this->assertSame('', $buyeragentlinetwo);
+        $this->assertSame('', $buyeragentlinethree);
+        $this->assertSame('', $buyeragentpostcode);
+        $this->assertSame('', $buyeragentcity);
+        $this->assertSame('', $buyeragentcountry);
+        $this->assertIsArray($buyeragentsubdivision);
+        $this->assertEmpty($buyeragentsubdivision);
+    }
+
+    public function testDocumentBuyerAgentLegalOrganization(): void
+    {
+        self::$document->getDocumentBuyerAgentLegalOrganisation($buyeragentlegalorgid, $buyeragentlegalorgtype, $buyeragentlegalorgname);
+        $this->assertSame('', $buyeragentlegalorgid);
+        $this->assertSame('', $buyeragentlegalorgtype);
+        $this->assertSame('', $buyeragentlegalorgname);
+    }
+
+    public function testDocumentBuyerAgentContact(): void
+    {
+        $this->assertFalse(self::$document->firstDocumentBuyerAgentContact());
+
+        self::$document->getDocumentBuyerAgentContact($buyeragentcontactpersonname, $buyeragentcontactdepartmentname, $buyeragentcontactphoneno, $buyeragentcontactfaxno, $buyeragentcontactemailaddr);
+
+        $this->assertSame('', $buyeragentcontactpersonname);
+        $this->assertSame('', $buyeragentcontactdepartmentname);
+        $this->assertSame('', $buyeragentcontactphoneno);
+        $this->assertSame('', $buyeragentcontactfaxno);
+        $this->assertSame('', $buyeragentcontactemailaddr);
+
+        $this->assertFalse(self::$document->nextDocumentBuyerAgentContact());
+
+        self::$document->getDocumentBuyerAgentContact($buyeragentcontactpersonname, $buyeragentcontactdepartmentname, $buyeragentcontactphoneno, $buyeragentcontactfaxno, $buyeragentcontactemailaddr);
+
+        $this->assertSame('', $buyeragentcontactpersonname);
+        $this->assertSame('', $buyeragentcontactdepartmentname);
+        $this->assertSame('', $buyeragentcontactphoneno);
+        $this->assertSame('', $buyeragentcontactfaxno);
+        $this->assertSame('', $buyeragentcontactemailaddr);
+    }
+
     public function testDocumentShipToGeneral(): void
     {
         self::$document->getDocumentShipTo($shiptoname, $shiptoids, $shiptodescription);

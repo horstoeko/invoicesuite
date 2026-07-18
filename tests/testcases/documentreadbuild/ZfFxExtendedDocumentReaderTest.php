@@ -1238,6 +1238,165 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
     }
 
+    public function testDocumentBuyerAgent(): void
+    {
+        // Name
+
+        static::$document->getDocumentBuyerAgentName($newName);
+
+        $this->assertSame('Buyer Agent GmbH', $newName);
+
+        // ID
+
+        $this->assertTrue(static::$document->firstDocumentBuyerAgentId());
+
+        static::$document->getDocumentBuyerAgentId($newId);
+
+        $this->assertSame('0815-1147', $newId);
+
+        $this->assertFalse(static::$document->nextDocumentBuyerAgentId());
+
+        // Global ID
+
+        $this->assertTrue(static::$document->firstDocumentBuyerAgentGlobalId());
+
+        static::$document->getDocumentBuyerAgentGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('11111-SA', $newGlobalId);
+        $this->assertSame('0088', $newGlobalIdType);
+
+        $this->assertTrue(static::$document->nextDocumentBuyerAgentGlobalId());
+
+        static::$document->getDocumentBuyerAgentGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('22222-SA', $newGlobalId);
+        $this->assertSame('0088', $newGlobalIdType);
+
+        $this->assertFalse(static::$document->nextDocumentBuyerAgentGlobalId());
+
+        // Tax Registration
+
+        $this->assertTrue(static::$document->firstDocumentBuyerAgentTaxRegistration());
+
+        static::$document->getDocumentBuyerAgentTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        $this->assertSame('893489787987', $newTaxRegistrationId);
+        $this->assertSame('VA', $newTaxRegistrationType);
+
+        $this->assertFalse(static::$document->nextDocumentBuyerAgentTaxRegistration());
+
+        // Address
+
+        $this->assertTrue(static::$document->firstDocumentBuyerAgentAddress());
+
+        static::$document->getDocumentBuyerAgentAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        $this->assertSame('Line 1', $newAddressLine1);
+        $this->assertSame('Line 2', $newAddressLine2);
+        $this->assertSame('Line 3', $newAddressLine3);
+        $this->assertSame('06108', $newPostcode);
+        $this->assertSame('City', $newCity);
+        $this->assertSame('DE', $newCountryId);
+        $this->assertSame('Bavaria', $newSubDivision);
+
+        $this->assertFalse(static::$document->nextDocumentBuyerAgentAddress());
+
+        // Legal Organisation
+
+        $this->assertTrue(static::$document->firstDocumentBuyerAgentLegalOrganisation());
+
+        static::$document->getDocumentBuyerAgentLegalOrganisation($newType, $newId, $newName);
+
+        $this->assertSame('8884', $newType);
+        $this->assertSame('19283746555', $newId);
+        $this->assertSame('Buyer Agent AG', $newName);
+
+        $this->assertFalse(static::$document->nextDocumentBuyerAgentLegalOrganisation());
+
+        // Contact
+
+        $this->assertTrue(static::$document->firstDocumentBuyerAgentContact());
+
+        static::$document->getDocumentBuyerAgentContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        $this->assertSame('Horst Meier', $newPersonName);
+        $this->assertSame('Buchhaltung', $newDepartmentName);
+        $this->assertSame('0815-4711-0', $newPhoneNumber);
+        $this->assertSame('0815-4712-0', $newFaxNumber);
+        $this->assertSame('horst.meier@buyeragent.de', $newEmailAddress);
+
+        $this->assertFalse(static::$document->nextDocumentBuyerAgentContact());
+
+        // Communication
+
+        $this->assertTrue(static::$document->firstDocumentBuyerAgentCommunication());
+
+        static::$document->getDocumentBuyerAgentCommunication($newType, $newUri);
+
+        $this->assertSame('EM', $newType);
+        $this->assertSame('info@buyeragent.de', $newUri);
+
+        $this->assertFalse(static::$document->nextDocumentBuyerAgentCommunication());
+
+        // Finals
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentBuyerAgentId($newId);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentBuyerAgentGlobalId($newGlobalId, $newGlobalIdType);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentBuyerAgentTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentBuyerAgentAddress(
+                $newAddressLine1,
+                $newAddressLine2,
+                $newAddressLine3,
+                $newPostcode,
+                $newCity,
+                $newCountryId,
+                $newSubDivision
+            );
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentBuyerAgentLegalOrganisation($newType, $newId, $newName);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentBuyerAgentContact(
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            );
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentBuyerAgentCommunication($newType, $newUri);
+        }, '/Undefined (array key|index)/');
+    }
+
     public function testDocumentProductEndUser(): void
     {
         // Name
@@ -4022,6 +4181,8 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
         $this->assertInstanceOf(InvoiceSuiteDocumentHeaderDTO::class, $newDocmentDTO);
 
         $this->assertSame('2025-04-000001', $newDocmentDTO?->getNumber());
+        $this->assertSame(['Sales Agent GmbH'], $newDocmentDTO?->getSalesAgentParty()?->getNames());
+        $this->assertSame(['Buyer Agent GmbH'], $newDocmentDTO?->getBuyerAgentParty()?->getNames());
     }
 
     public function testCopyToBuilder(): void

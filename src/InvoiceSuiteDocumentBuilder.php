@@ -2407,6 +2407,290 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set the name of the buyer agent party
+     *
+     * @param  null|string $newName the full formal name under which the party is registered
+     * @return static
+     */
+    public function setDocumentBuyerAgentName(
+        ?string $newName = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerAgentName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Add a name of the buyer agent party
+     *
+     * @param  null|string $newName the full formal name under which the party is registered
+     * @return static
+     */
+    public function addDocumentBuyerAgentName(
+        ?string $newName = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerAgentName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Set the ID of the buyer agent party
+     *
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
+     * @return static
+     */
+    public function setDocumentBuyerAgentId(
+        ?string $newId = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerAgentId($newId);
+
+        return $this;
+    }
+
+    /**
+     * Add an ID to the buyer agent party
+     *
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
+     * @return static
+     */
+    public function addDocumentBuyerAgentId(
+        ?string $newId = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerAgentId($newId);
+
+        return $this;
+    }
+
+    /**
+     * Set the Global ID of the buyer agent party
+     *
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
+     * @return static
+     */
+    public function setDocumentBuyerAgentGlobalId(
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null,
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerAgentGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * Add an ID to the buyer agent party
+     *
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
+     * @return static
+     */
+    public function addDocumentBuyerAgentGlobalId(
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null,
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerAgentGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * Set the Tax Registration of the buyer agent party
+     *
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
+     * @return static
+     */
+    public function setDocumentBuyerAgentTaxRegistration(
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null,
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerAgentTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * Add an Tax Registration to the buyer agent party
+     *
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
+     * @return static
+     */
+    public function addDocumentBuyerAgentTaxRegistration(
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null,
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerAgentTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * Set the address of the buyer agent party
+     *
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
+     * @return static
+     */
+    public function setDocumentBuyerAgentAddress(
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null,
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerAgentAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
+
+        return $this;
+    }
+
+    /**
+     * Add an address to the buyer agent party
+     *
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
+     * @return static
+     */
+    public function addDocumentBuyerAgentAddress(
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null,
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerAgentAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
+
+        return $this;
+    }
+
+    /**
+     * Set the legal information of the buyer agent party
+     *
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
+     * @return static
+     */
+    public function setDocumentBuyerAgentLegalOrganisation(
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null,
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerAgentLegalOrganisation($newType, $newId, $newName);
+
+        return $this;
+    }
+
+    /**
+     * Add a legal information of the buyer agent party
+     *
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
+     * @return static
+     */
+    public function addDocumentBuyerAgentLegalOrganisation(
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null,
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerAgentLegalOrganisation($newType, $newId, $newName);
+
+        return $this;
+    }
+
+    /**
+     * Set the contact information of the buyer agent party
+     *
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
+     * @return static
+     */
+    public function setDocumentBuyerAgentContact(
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null,
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerAgentContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
+    }
+
+    /**
+     * Add contact information of the buyer agent party
+     *
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
+     * @return static
+     */
+    public function addDocumentBuyerAgentContact(
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null,
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerAgentContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
+    }
+
+    /**
+     * Set communication information of the buyer agent party
+     *
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
+     * @return static
+     */
+    public function setDocumentBuyerAgentCommunication(
+        ?string $newType = null,
+        ?string $newUri = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerAgentCommunication($newType, $newUri);
+
+        return $this;
+    }
+
+    /**
+     * Add a communication information of the buyer agent party
+     *
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
+     * @return static
+     */
+    public function addDocumentBuyerAgentCommunication(
+        ?string $newType = null,
+        ?string $newUri = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerAgentCommunication($newType, $newUri);
+
+        return $this;
+    }
+
+    /**
      * Set the name of the product end-user party
      *
      * @param  null|string $newName the full formal name under which the party is registered

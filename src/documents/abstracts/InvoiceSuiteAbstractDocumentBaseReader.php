@@ -1833,6 +1833,245 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Get the name of the buyer agent party
+     *
+     * @param  null|string $newName the full formal name under which the party is registered
+     * @return static
+     *
+     * @phpstan-param-out string $newName
+     */
+    abstract public function getDocumentBuyerAgentName(
+        ?string &$newName
+    ): static;
+
+    /**
+     * Go to the first ID of the buyer agent party
+     *
+     * @return bool
+     */
+    abstract public function firstDocumentBuyerAgentId(): bool;
+
+    /**
+     * Go to the next ID of the buyer agent party
+     *
+     * @return bool
+     */
+    abstract public function nextDocumentBuyerAgentId(): bool;
+
+    /**
+     * Get the ID of the buyer agent party
+     *
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
+     * @return static
+     *
+     * @phpstan-param-out string $newId
+     */
+    abstract public function getDocumentBuyerAgentId(
+        ?string &$newId
+    ): static;
+
+    /**
+     * Go to the first global ID of the buyer agent party
+     *
+     * @return bool
+     */
+    abstract public function firstDocumentBuyerAgentGlobalId(): bool;
+
+    /**
+     * Go to the next global ID of the buyer agent party
+     *
+     * @return bool
+     */
+    abstract public function nextDocumentBuyerAgentGlobalId(): bool;
+
+    /**
+     * Get the Global ID of the buyer agent party
+     *
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
+     * @return static
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
+     */
+    abstract public function getDocumentBuyerAgentGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): static;
+
+    /**
+     * Go to the first Tax Registration of the buyer agent party
+     *
+     * @return bool
+     */
+    abstract public function firstDocumentBuyerAgentTaxRegistration(): bool;
+
+    /**
+     * Go to the next Tax Registration of the buyer agent party
+     *
+     * @return bool
+     */
+    abstract public function nextDocumentBuyerAgentTaxRegistration(): bool;
+
+    /**
+     * Get the Tax Registration of the buyer agent party
+     *
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
+     * @return static
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
+     */
+    abstract public function getDocumentBuyerAgentTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): static;
+
+    /**
+     * Go to the first address of the buyer agent party
+     *
+     * @return bool
+     */
+    abstract public function firstDocumentBuyerAgentAddress(): bool;
+
+    /**
+     * Go to the next address of the buyer agent party
+     *
+     * @return bool
+     */
+    abstract public function nextDocumentBuyerAgentAddress(): bool;
+
+    /**
+     * Get the address of the buyer agent party
+     *
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
+     * @return static
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
+     */
+    abstract public function getDocumentBuyerAgentAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): static;
+
+    /**
+     * Go to the first the legal information of the buyer agent party
+     *
+     * @return bool
+     */
+    abstract public function firstDocumentBuyerAgentLegalOrganisation(): bool;
+
+    /**
+     * Go to the next the legal information of the buyer agent party
+     *
+     * @return bool
+     */
+    abstract public function nextDocumentBuyerAgentLegalOrganisation(): bool;
+
+    /**
+     * Get the legal information of the buyer agent party
+     *
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
+     * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
+     */
+    abstract public function getDocumentBuyerAgentLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): static;
+
+    /**
+     * Go to the first contact information of the buyer agent party
+     *
+     * @return bool
+     */
+    abstract public function firstDocumentBuyerAgentContact(): bool;
+
+    /**
+     * Go to the next contact information of the buyer agent party
+     *
+     * @return bool
+     */
+    abstract public function nextDocumentBuyerAgentContact(): bool;
+
+    /**
+     * Get the contact information of the buyer agent party
+     *
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
+     * @return static
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
+     */
+    abstract public function getDocumentBuyerAgentContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): static;
+
+    /**
+     * Go to the first communication information of the buyer agent party
+     *
+     * @return bool
+     */
+    abstract public function firstDocumentBuyerAgentCommunication(): bool;
+
+    /**
+     * Go to the next communication information of the buyer agent party
+     *
+     * @return bool
+     */
+    abstract public function nextDocumentBuyerAgentCommunication(): bool;
+
+    /**
+     * Get communication information of the buyer agent party
+     *
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
+     * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
+     */
+    abstract public function getDocumentBuyerAgentCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): static;
+
+    /**
      * Get the name of the product end-user party
      *
      * @param  null|string $newName the full formal name under which the party is registered

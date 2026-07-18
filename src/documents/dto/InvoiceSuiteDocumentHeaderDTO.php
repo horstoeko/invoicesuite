@@ -237,6 +237,13 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     protected ?InvoiceSuitePartyDTO $salesAgentParty = null;
 
     /**
+     * The Buyer Agent Party
+     *
+     * @var null|InvoiceSuitePartyDTO
+     */
+    protected ?InvoiceSuitePartyDTO $buyerAgentParty = null;
+
+    /**
      * The Product Enduser Party
      *
      * @var null|InvoiceSuitePartyDTO
@@ -402,6 +409,7 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
      * @param null|InvoiceSuitePartyDTO                  $sellerTaxRepresentativeParty    The Seller's Tax Representativ Party
      * @param null|InvoiceSuitePartyDTO                  $buyerTaxRepresentativeParty     The Buyer's Tax Representativ Party
      * @param null|InvoiceSuitePartyDTO                  $salesAgentParty                 The Sales Agent Party
+     * @param null|InvoiceSuitePartyDTO                  $buyerAgentParty                 The Buyer Agent Party
      * @param null|InvoiceSuitePartyDTO                  $productEndUserParty             The Product Enduser Party
      * @param null|InvoiceSuitePartyDTO                  $shipToParty                     The Ship-To Party
      * @param null|InvoiceSuitePartyDTO                  $ultimateShipToParty             The Ultimate Ship-To Party
@@ -453,6 +461,7 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
         ?InvoiceSuitePartyDTO $sellerTaxRepresentativeParty = null,
         ?InvoiceSuitePartyDTO $buyerTaxRepresentativeParty = null,
         ?InvoiceSuitePartyDTO $salesAgentParty = null,
+        ?InvoiceSuitePartyDTO $buyerAgentParty = null,
         ?InvoiceSuitePartyDTO $productEndUserParty = null,
         ?InvoiceSuitePartyDTO $shipToParty = null,
         ?InvoiceSuitePartyDTO $ultimateShipToParty = null,
@@ -503,6 +512,7 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
         $this->setSellerTaxRepresentativeParty($sellerTaxRepresentativeParty);
         $this->setBuyerTaxRepresentativeParty($buyerTaxRepresentativeParty);
         $this->setSalesAgentParty($salesAgentParty);
+        $this->setBuyerAgentParty($buyerAgentParty);
         $this->setProductEndUserParty($productEndUserParty);
         $this->setShipToParty($shipToParty);
         $this->setUltimateShipToParty($ultimateShipToParty);
@@ -4700,6 +4710,30 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
         ?InvoiceSuitePartyDTO $salesAgentParty
     ): static {
         $this->salesAgentParty = $salesAgentParty;
+
+        return $this;
+    }
+
+    /**
+     * Returns the Buyer Agent Party
+     *
+     * @return null|InvoiceSuitePartyDTO
+     */
+    public function getBuyerAgentParty(): ?InvoiceSuitePartyDTO
+    {
+        return $this->buyerAgentParty;
+    }
+
+    /**
+     * Sets the Buyer Agent Party
+     *
+     * @param  null|InvoiceSuitePartyDTO $buyerAgentParty The Buyer Agent Party
+     * @return static
+     */
+    public function setBuyerAgentParty(
+        ?InvoiceSuitePartyDTO $buyerAgentParty
+    ): static {
+        $this->buyerAgentParty = $buyerAgentParty;
 
         return $this;
     }

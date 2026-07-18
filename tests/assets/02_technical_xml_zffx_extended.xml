@@ -671,6 +671,44 @@
           <qdt:DateTimeString format="102">19700102</qdt:DateTimeString>
         </ram:FormattedIssueDateTime>
       </ram:AdditionalReferencedDocument>
+      <ram:BuyerAgentTradeParty>
+        <ram:ID>0815-1147</ram:ID>
+        <ram:GlobalID schemeID="0088">11111-SA</ram:GlobalID>
+        <ram:GlobalID schemeID="0088">22222-SA</ram:GlobalID>
+        <ram:Name>Buyer Agent GmbH</ram:Name>
+        <ram:SpecifiedLegalOrganization>
+          <ram:ID schemeID="8884">19283746555</ram:ID>
+          <ram:TradingBusinessName>Buyer Agent AG</ram:TradingBusinessName>
+        </ram:SpecifiedLegalOrganization>
+        <ram:DefinedTradeContact>
+          <ram:PersonName>Horst Meier</ram:PersonName>
+          <ram:DepartmentName>Buchhaltung</ram:DepartmentName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>0815-4711-0</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:FaxUniversalCommunication>
+            <ram:CompleteNumber>0815-4712-0</ram:CompleteNumber>
+          </ram:FaxUniversalCommunication>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>horst.meier@buyeragent.de</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>06108</ram:PostcodeCode>
+          <ram:LineOne>Line 1</ram:LineOne>
+          <ram:LineTwo>Line 2</ram:LineTwo>
+          <ram:LineThree>Line 3</ram:LineThree>
+          <ram:CityName>City</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+          <ram:CountrySubDivisionName>Bavaria</ram:CountrySubDivisionName>
+        </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="EM">info@buyeragent.de</ram:URIID>
+        </ram:URIUniversalCommunication>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">893489787987</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+      </ram:BuyerAgentTradeParty>
       <ram:SpecifiedProcuringProject>
         <ram:ID>PROJECT-1</ram:ID>
         <ram:Name>Project 1</ram:Name>

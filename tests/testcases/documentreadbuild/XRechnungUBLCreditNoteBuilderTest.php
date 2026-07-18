@@ -8072,6 +8072,21 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                     ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@salesagent.de'))
                     ->addCommunication(new InvoiceSuiteCommunicationDTO('info@salesagent.de', 'EM'))
             )
+            ->setBuyerAgentParty(
+                (new InvoiceSuitePartyDTO())
+                    ->addName('Buyer Agent GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Buyer Agent AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@buyeragent.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@buyeragent.de', 'EM'))
+            )
             ->setProductEndUserParty(
                 (new InvoiceSuitePartyDTO())
                     ->addName('Product End User GmbH')
@@ -8679,6 +8694,10 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
         // Sales Agent Party
 
         $this->assertXPathNotExists('/ns:CreditNote/cac:SalesAgentParty');
+
+        // Buyer Agent Party
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:BuyerAgentParty');
 
         // Product End User Party
 

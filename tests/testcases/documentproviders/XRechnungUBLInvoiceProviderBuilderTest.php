@@ -3770,6 +3770,70 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         });
     }
 
+    public function testSetAddDocumentBuyerAgentName(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerAgentName('BuyerAgent Name');
+            static::$document->addDocumentBuyerAgentName('BuyerAgent Name 2');
+        });
+    }
+
+    public function testSetAddDocumentBuyerAgentId(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerAgentId('BuyerAgent Id 1');
+            static::$document->addDocumentBuyerAgentId('BuyerAgent Id 2');
+        });
+    }
+
+    public function testSetAddDocumentBuyerAgentGlobalId(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerAgentGlobalId('BuyerAgent Global Id 1', '0088');
+            static::$document->addDocumentBuyerAgentGlobalId('BuyerAgent Global Id 2', '0088');
+        });
+    }
+
+    public function testSetAddDocumentBuyerAgentTaxRegistration(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerAgentTaxRegistration('VAT', '123456789');
+            static::$document->addDocumentBuyerAgentTaxRegistration('VAT', '123456789');
+        });
+    }
+
+    public function testSetAddDocumentBuyerAgentAddress(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerAgentAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
+            static::$document->addDocumentBuyerAgentAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
+        });
+    }
+
+    public function testSetAddDocumentBuyerAgentLegalOrganisation(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerAgentLegalOrganisation('8884', '123456789', 'Company Name');
+            static::$document->addDocumentBuyerAgentLegalOrganisation('8885', '987654321', 'Company Name 2');
+        });
+    }
+
+    public function testSetAddDocumentBuyerAgentContact(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerAgentContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
+            static::$document->addDocumentBuyerAgentContact('Name 2', 'Departement Name 2', '+49-222-123456789', '+49-222-987654321', 'user2@nowhere.all');
+        });
+    }
+
+    public function testSetAddDocumentBuyerAgentCommunication(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerAgentCommunication('EM', 'user@somewhere.all');
+            static::$document->addDocumentBuyerAgentCommunication('EM', 'user2@somewhere.all');
+        });
+    }
+
     public function testSetAddDocumentProductEndUserName(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
