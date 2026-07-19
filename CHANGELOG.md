@@ -1,3 +1,27 @@
+## v0.0.14
+
+``Previous version v0.0.13``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [56c075c0](https://github.com/horstoeko/invoicesuite/commit/56c075c0) | 2026-07-19 12:56:08 CEST | HorstOeko | [ENH] Added tests for FatturaPA | 
+| :new:  | [69c5f506](https://github.com/horstoeko/invoicesuite/commit/69c5f506) | 2026-07-18 15:21:57 CEST | HorstOeko | [ENH] Improved FatturaPA implementation | 
+| :new:  | [9b6e0a4f](https://github.com/horstoeko/invoicesuite/commit/9b6e0a4f) | 2026-07-18 12:47:11 CEST | HorstOeko | [ENH] Improved Provider-Reader Pointer-Handling, Added HandlesReaderPointers | 
+| :new:  | [f72d9a00](https://github.com/horstoeko/invoicesuite/commit/f72d9a00) | 2026-07-18 09:01:54 CEST | HorstOeko | [ENH] Added support for BuyerAgent Party | 
+| :new:  | [eadebef4](https://github.com/horstoeko/invoicesuite/commit/eadebef4) | 2026-07-17 17:53:54 CEST | HorstOeko | [ENH] Update Factur-X schema to 1.09 / ZUGFeRD 2.5 | 
+| :new:  | [3568a7bf](https://github.com/horstoeko/invoicesuite/commit/3568a7bf) | 2026-07-17 17:09:40 CEST | HorstOeko | [ENH] Updated XSD-Files | 
+| :new:  | [7de87976](https://github.com/horstoeko/invoicesuite/commit/7de87976) | 2026-07-17 16:58:19 CEST | HorstOeko | [ENH] Added required extensions to composer | 
+| :new:  | [691534db](https://github.com/horstoeko/invoicesuite/commit/691534db) | 2026-07-17 15:45:53 CEST | HorstOeko | [ENH] Added missing tests for SalesAgent and PayerParty | 
+| :new:  | [dcc21586](https://github.com/horstoeko/invoicesuite/commit/dcc21586) | 2026-07-17 05:39:33 CEST | HorstOeko | [ENH] Added support for Payer Party | 
+| :new:  | [fc835d2b](https://github.com/horstoeko/invoicesuite/commit/fc835d2b) | 2026-07-16 05:12:28 CEST | HorstOeko | [ENH] Added support for Sales Agent (Compat) | 
+| :new:  | [f8f73228](https://github.com/horstoeko/invoicesuite/commit/f8f73228) | 2026-07-15 18:07:47 CEST | HorstOeko | [ENH] Added tests for Sales Agent | 
+| :new:  | [3cbb03eb](https://github.com/horstoeko/invoicesuite/commit/3cbb03eb) | 2026-07-15 16:36:40 CEST | HorstOeko | [ENH] Added support for Sales Agent (ZF/FX supports this) | 
+| :new:  | [907e4842](https://github.com/horstoeko/invoicesuite/commit/907e4842) | 2026-07-15 04:45:59 CEST | HorstOeko | [ENH] Added basic validator tests | 
+| :new:  | [3b55539d](https://github.com/horstoeko/invoicesuite/commit/3b55539d) | 2026-07-14 16:17:13 CEST | HorstOeko | [ENH] Added Visualizer Tests | 
+| :new:  | [1a9386ac](https://github.com/horstoeko/invoicesuite/commit/1a9386ac) | 2026-07-14 05:11:46 CEST | HorstOeko | [ENH] Securred visualizer's default template (Prevent HTML-/XSS-Injection) | 
+
+:exclamation: _There are 7 internal commit(s)_
+
 ## v0.0.13
 
 ``Previous version v0.0.12``
