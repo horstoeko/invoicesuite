@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\utils;
 
 use Composer\Autoload\ClassLoader;
+use Symfony\Component\Finder\Finder;
 use Throwable;
 
 /**
@@ -122,6 +123,15 @@ class InvoiceSuiteClassFinder
 
         $classes = [];
 
+        foreach (ClassLoader::getRegisteredLoaders() as $vendorDirectory => $loader) {
+            $this->classNames = InvoiceSuiteArrayUtils::merge(
+                $this->classNames,
+                $this->getProjectPsr4ClassNames($loader, $vendorDirectory)
+            );
+        }
+
+        $this->classNames = InvoiceSuiteArrayUtils::values(array_unique($this->classNames));
+
         $previousErrorReportingState = error_reporting();
         error_reporting(E_ALL & ~E_DEPRECATED);
 
@@ -173,5 +183,54 @@ class InvoiceSuiteClassFinder
                 unlink($file);
             }
         }
+    }
+
+    /**
+     * Returns class names from PSR-4 source directories outside Composer's vendor directory
+     *
+     * @param  ClassLoader   $loader
+     * @param  string        $vendorDirectory
+     * @return array<string>
+     */
+    private function getProjectPsr4ClassNames(ClassLoader $loader, string $vendorDirectory): array
+    {
+        $invoiceSuiteSourceDirectory = realpath(__DIR__ . '/..');
+        $vendorDirectory = realpath($vendorDirectory);
+        $classNames = [];
+
+        if (false === $invoiceSuiteSourceDirectory || false === $vendorDirectory) {
+            return $classNames;
+        }
+
+        foreach ($loader->getPrefixesPsr4() as $namespacePrefix => $sourceDirectories) {
+            foreach ($sourceDirectories as $sourceDirectory) {
+                $sourceDirectory = realpath($sourceDirectory);
+
+                if (false === $sourceDirectory) {
+                    continue;
+                }
+
+                $sourceDirectoryWithSeparator = $sourceDirectory . DIRECTORY_SEPARATOR;
+
+                if (
+                    str_starts_with($sourceDirectoryWithSeparator, $vendorDirectory . DIRECTORY_SEPARATOR)
+                    || str_starts_with($sourceDirectoryWithSeparator, $invoiceSuiteSourceDirectory . DIRECTORY_SEPARATOR)
+                ) {
+                    continue;
+                }
+
+                try {
+                    $sourceFiles = (new Finder())->files()->name('*.php')->in($sourceDirectory);
+
+                    foreach ($sourceFiles as $sourceFile) {
+                        $relativeClassName = substr($sourceFile->getRelativePathname(), 0, -4);
+                        $classNames[] = $namespacePrefix . str_replace(['/', '\\'], '\\', $relativeClassName);
+                    }
+                } catch (Throwable) {
+                }
+            }
+        }
+
+        return $classNames;
     }
 }

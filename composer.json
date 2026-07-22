@@ -52,7 +52,10 @@
         "psr-4": {
             "horstoeko\\invoicesuite\\": "src/",
             "horstoeko\\zugferd\\": "src/compat/zugferd"
-        }
+        },
+        "classmap": [
+            "src/documents/providers/"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
