@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\utils;
 
 use Composer\Autoload\ClassLoader;
+use Symfony\Component\Finder\Finder;
 use Throwable;
 
 /**
@@ -84,8 +85,44 @@ class InvoiceSuiteClassFinder
     {
         $this->clear();
 
-        foreach (ClassLoader::getRegisteredLoaders() as $loader) {
+        foreach (ClassLoader::getRegisteredLoaders() as $vendorDirectory => $loader) {
             $this->classNames = InvoiceSuiteArrayUtils::merge($this->classNames, InvoiceSuiteArrayUtils::keys($loader->getClassMap()));
+
+            $vendorDirectory = realpath($vendorDirectory);
+
+            foreach ($loader->getPrefixesPsr4() as $namespacePrefix => $sourceDirectories) {
+                foreach ($sourceDirectories as $sourceDirectory) {
+                    $sourceDirectory = realpath($sourceDirectory);
+
+                    if (false === $sourceDirectory) {
+                        continue;
+                    }
+
+                    if ($sourceDirectory === $vendorDirectory) {
+                        continue;
+                    }
+
+                    if (InvoiceSuiteStringUtils::startsWith($sourceDirectory, $vendorDirectory . DIRECTORY_SEPARATOR)) {
+                        continue;
+                    }
+
+                    if (InvoiceSuiteStringUtils::startsWith(__DIR__, $sourceDirectory . DIRECTORY_SEPARATOR)) {
+                        continue;
+                    }
+
+                    try {
+                        foreach (Finder::create()->files()->name('*.php')->in($sourceDirectory) as $sourceFile) {
+                            $relativeFilename = InvoiceSuiteStringUtils::substring($sourceFile->getRelativePathname(), 0, -4);
+                            $className = $namespacePrefix . InvoiceSuiteStringUtils::replace(['/', '\\'], '\\', $relativeFilename);
+
+                            if (!InvoiceSuiteArrayUtils::arrayContains($this->classNames, $className) && class_exists($className)) {
+                                $this->classNames[] = $className;
+                            }
+                        }
+                    } catch (Throwable) {
+                    }
+                }
+            }
         }
 
         return $this;

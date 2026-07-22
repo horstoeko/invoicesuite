@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\utils;
 
+use Composer\Autoload\ClassLoader;
 use DateTime;
 use DateTimeInterface;
 use Exception;
@@ -1268,6 +1269,75 @@ final class UtilsTest extends TestCase
         $this->assertFileExists(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache'), 'fb2c9c3d46a7d2650a8813477106ebca.cache'));
         InvoiceSuiteClassFinder::clearCache();
         $this->assertFileDoesNotExist(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache'), 'fb2c9c3d46a7d2650a8813477106ebca.cache'));
+    }
+
+    public function testInvoiceSuiteClassFinderFindsClassMapAndPsr4Classes(): void
+    {
+        $sourceDirectory = InvoiceSuitePathUtils::combineAllPaths(
+            sys_get_temp_dir(),
+            InvoiceSuiteStringUtils::sprintf('invoicesuite-classfinder-%s', InvoiceSuiteStringUtils::replace('.', '', uniqid('', true)))
+        );
+        $classMapSourceDirectory = InvoiceSuitePathUtils::combinePathWithPath($sourceDirectory, 'classmap');
+        $psr4SourceDirectory = InvoiceSuitePathUtils::combinePathWithPath($sourceDirectory, 'psr4');
+        $classMapProviderFilename = InvoiceSuitePathUtils::combinePathWithFile($classMapSourceDirectory, 'CustomClassMapProvider.php');
+        $psr4ProviderDirectory = InvoiceSuitePathUtils::combinePathWithPath($psr4SourceDirectory, 'Provider');
+        $psr4ProviderFilename = InvoiceSuitePathUtils::combinePathWithFile($psr4ProviderDirectory, 'CustomPsr4Provider.php');
+        $classMapProviderClassName = 'InvoiceSuiteClassFinderClassMapTest\CustomClassMapProvider';
+        $psr4ProviderClassName = 'InvoiceSuiteClassFinderPsr4Test\Provider\CustomPsr4Provider';
+
+        @mkdir($classMapSourceDirectory, recursive: true);
+        @mkdir($psr4ProviderDirectory, recursive: true);
+
+        $classMapProviderSourceCode = <<<'PHP'
+<?php
+
+declare(strict_types=1);
+
+namespace InvoiceSuiteClassFinderClassMapTest;
+
+use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxMinimumProvider;
+
+class CustomClassMapProvider extends InvoiceSuiteZfFxMinimumProvider {}
+PHP;
+
+        $psr4ProviderSourceCode = <<<'PHP'
+<?php
+
+declare(strict_types=1);
+
+namespace InvoiceSuiteClassFinderPsr4Test\Provider;
+
+use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxMinimumProvider;
+
+class CustomPsr4Provider extends InvoiceSuiteZfFxMinimumProvider {}
+PHP;
+
+        $this->assertTrue(InvoiceSuiteFileUtils::putContentToFile($classMapProviderFilename, $classMapProviderSourceCode));
+        $this->assertTrue(InvoiceSuiteFileUtils::putContentToFile($psr4ProviderFilename, $psr4ProviderSourceCode));
+
+        InvoiceSuiteClassFinder::clearCache();
+
+        $classLoader = new ClassLoader(InvoiceSuitePathUtils::combinePathWithPath($sourceDirectory, 'vendor'));
+        $classLoader->addClassMap([$classMapProviderClassName => $classMapProviderFilename]);
+        $classLoader->addPsr4('InvoiceSuiteClassFinderPsr4Test\\', $psr4SourceDirectory);
+        $classLoader->register(true);
+
+        try {
+            $this->assertArrayHasKey($classMapProviderClassName, $classLoader->getClassMap());
+            $this->assertArrayNotHasKey($psr4ProviderClassName, $classLoader->getClassMap());
+
+            $classNames = InvoiceSuiteClassFinder::factory()
+                ->init()
+                ->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class);
+
+            $this->assertContains($classMapProviderClassName, $classNames);
+            $this->assertContains($psr4ProviderClassName, $classNames);
+        } finally {
+            $classLoader->unregister();
+            InvoiceSuiteClassFinder::clearCache();
+            InvoiceSuiteClassFinder::factory()->init();
+            InvoiceSuitePathUtils::recursiveRemoveDirectory($sourceDirectory);
+        }
     }
 
     public function testInvoiceSuiteFileUtils(): void
