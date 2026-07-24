@@ -24,8 +24,9 @@ class InvoiceSuiteArrayUtils
      *
      * @phpstan-assert-if-true array<array-key, mixed> $value
      */
-    public static function is(mixed $value): bool
-    {
+    public static function is(
+        mixed $value
+    ): bool {
         return is_array($value);
     }
 
@@ -78,8 +79,10 @@ class InvoiceSuiteArrayUtils
      *
      * @phpstan-param-out array<int, string> $array
      */
-    public static function pushStringToIntIndexedArray(array &$array, ?string $value): void
-    {
+    public static function pushStringToIntIndexedArray(
+        array &$array,
+        ?string $value
+    ): void {
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($value)) {
             $array[] = (string) $value;
         }
@@ -95,8 +98,11 @@ class InvoiceSuiteArrayUtils
      *
      * @phpstan-param-out array<string, string> $array
      */
-    public static function pushStringToStringIndexedArray(array &$array, ?string $key, ?string $value): void
-    {
+    public static function pushStringToStringIndexedArray(
+        array &$array,
+        ?string $key,
+        ?string $value
+    ): void {
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$key, $value])) {
             $array[(string) $key] = (string) $value;
         }
@@ -111,8 +117,10 @@ class InvoiceSuiteArrayUtils
      *
      * @phpstan-param-out array<int, float> $array
      */
-    public static function pushFloatToIntIndexedArray(array &$array, ?float $value): void
-    {
+    public static function pushFloatToIntIndexedArray(
+        array &$array,
+        ?float $value
+    ): void {
         if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($value)) {
             $array[] = (float) $value;
         }
@@ -128,8 +136,11 @@ class InvoiceSuiteArrayUtils
      *
      * @phpstan-param-out array<string, float> $array
      */
-    public static function pushFloatToStringIndexedArray(array &$array, ?string $key, ?float $value): void
-    {
+    public static function pushFloatToStringIndexedArray(
+        array &$array,
+        ?string $key,
+        ?float $value
+    ): void {
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($key) && !InvoiceSuiteFloatUtils::floatIsNullOrEmpty($value)) {
             $array[(string) $key] = (float) $value;
         }
@@ -144,8 +155,10 @@ class InvoiceSuiteArrayUtils
      *
      * @phpstan-param-out array<int, bool> $array
      */
-    public static function pushBooleanToIntIndexedArray(array &$array, ?bool $value): void
-    {
+    public static function pushBooleanToIntIndexedArray(
+        array &$array,
+        ?bool $value
+    ): void {
         if (!is_null($value)) {
             $array[] = $value;
         }
@@ -161,8 +174,11 @@ class InvoiceSuiteArrayUtils
      *
      * @phpstan-param-out array<string, bool> $array
      */
-    public static function pushBooleanToStringIndexedArray(array &$array, ?string $key, ?bool $value): void
-    {
+    public static function pushBooleanToStringIndexedArray(
+        array &$array,
+        ?string $key,
+        ?bool $value
+    ): void {
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($key) && !is_null($value)) {
             $array[(string) $key] = $value;
         }
@@ -180,8 +196,10 @@ class InvoiceSuiteArrayUtils
      *
      * @return void
      */
-    public static function pushArrayToIntIndexedArray(array &$array, array $value): void
-    {
+    public static function pushArrayToIntIndexedArray(
+        array &$array,
+        array $value
+    ): void {
         // @phpstan-ignore paramOut.type
         if (!static::empty($value)) {
             // @phpstan-ignore paramOut.type
@@ -255,8 +273,9 @@ class InvoiceSuiteArrayUtils
      *
      * @phpstan-assert-if-true array{} $array
      */
-    public static function empty(mixed $array): bool
-    {
+    public static function empty(
+        mixed $array
+    ): bool {
         return static::is($array) && [] === $array;
     }
 
@@ -271,8 +290,11 @@ class InvoiceSuiteArrayUtils
      * @param  int                 $mode
      * @return array<TKey, TValue>
      */
-    public static function filter(array $array, ?callable $callback = null, int $mode = 0): array
-    {
+    public static function filter(
+        array $array,
+        ?callable $callback = null,
+        int $mode = 0
+    ): array {
         return array_filter($array, $callback, $mode);
     }
 
@@ -283,8 +305,10 @@ class InvoiceSuiteArrayUtils
      * @param  int|string              $key
      * @return bool
      */
-    public static function keyExists(array $array, int|string $key): bool
-    {
+    public static function keyExists(
+        array $array,
+        int|string $key
+    ): bool {
         return array_key_exists($key, $array);
     }
 
@@ -294,8 +318,9 @@ class InvoiceSuiteArrayUtils
      * @param  array<array-key, mixed> $array
      * @return null|int|string
      */
-    public static function firstKey(array $array): int|string|null
-    {
+    public static function firstKey(
+        array $array
+    ): int|string|null {
         return array_key_first($array);
     }
 
@@ -306,8 +331,10 @@ class InvoiceSuiteArrayUtils
      * @param  mixed                   ...$arguments
      * @return array<int, int|string>
      */
-    public static function keys(array $array, mixed ...$arguments): array
-    {
+    public static function keys(
+        array $array,
+        mixed ...$arguments
+    ): array {
         if (static::empty($arguments)) {
             return array_keys($array);
         }
@@ -323,8 +350,11 @@ class InvoiceSuiteArrayUtils
      * @param  array<array-key, mixed> ...$arrays
      * @return array<array-key, mixed>
      */
-    public static function map(?callable $callback, array $array, array ...$arrays): array
-    {
+    public static function map(
+        ?callable $callback,
+        array $array,
+        array ...$arrays
+    ): array {
         return array_map($callback, $array, ...$arrays);
     }
 
@@ -334,8 +364,9 @@ class InvoiceSuiteArrayUtils
      * @param  array<array-key, mixed> ...$arrays
      * @return array<array-key, mixed>
      */
-    public static function merge(array ...$arrays): array
-    {
+    public static function merge(
+        array ...$arrays
+    ): array {
         return array_merge(...$arrays);
     }
 
@@ -346,8 +377,10 @@ class InvoiceSuiteArrayUtils
      * @param  mixed                   $search
      * @return false|int|string
      */
-    public static function search(array $array, mixed $search): false|int|string
-    {
+    public static function search(
+        array $array,
+        mixed $search
+    ): false|int|string {
         return array_search($search, $array, true);
     }
 
@@ -359,8 +392,9 @@ class InvoiceSuiteArrayUtils
      * @param  array<array-key, TValue> $array
      * @return array<int, TValue>
      */
-    public static function values(array $array): array
-    {
+    public static function values(
+        array $array
+    ): array {
         return array_values($array);
     }
 
@@ -371,8 +405,10 @@ class InvoiceSuiteArrayUtils
      * @param  0|1                               $mode
      * @return int
      */
-    public static function count(array|Countable $value, int $mode = COUNT_NORMAL): int
-    {
+    public static function count(
+        array|Countable $value,
+        int $mode = COUNT_NORMAL
+    ): int {
         return count($value, $mode);
     }
 
@@ -384,8 +420,9 @@ class InvoiceSuiteArrayUtils
      * @param  array<array-key, TValue> $array
      * @return false|TValue
      */
-    public static function first(array &$array): mixed
-    {
+    public static function first(
+        array &$array
+    ): mixed {
         return reset($array);
     }
 
@@ -397,8 +434,9 @@ class InvoiceSuiteArrayUtils
      * @param  array<array-key, TValue> $array
      * @return false|TValue
      */
-    public static function last(array &$array): mixed
-    {
+    public static function last(
+        array &$array
+    ): mixed {
         return end($array);
     }
 
@@ -410,8 +448,9 @@ class InvoiceSuiteArrayUtils
      * @param  array<array-key, TValue> $array
      * @return false|TValue
      */
-    public static function next(array &$array): mixed
-    {
+    public static function next(
+        array &$array
+    ): mixed {
         return next($array);
     }
 
@@ -423,8 +462,9 @@ class InvoiceSuiteArrayUtils
      * @param  array<array-key, TValue> $array
      * @return false|TValue
      */
-    public static function previous(array &$array): mixed
-    {
+    public static function previous(
+        array &$array
+    ): mixed {
         return prev($array);
     }
 
@@ -435,8 +475,10 @@ class InvoiceSuiteArrayUtils
      * @param  callable                $callback
      * @return bool
      */
-    public static function sortWithCallback(array &$array, callable $callback): bool
-    {
+    public static function sortWithCallback(
+        array &$array,
+        callable $callback
+    ): bool {
         return usort($array, $callback);
     }
 
@@ -448,8 +490,11 @@ class InvoiceSuiteArrayUtils
      * @param  null|int|string         $indexKey
      * @return array<array-key, mixed>
      */
-    public static function col(array $array, int|string|null $columKey, int|string|null $indexKey = null): array
-    {
+    public static function col(
+        array $array,
+        int|string|null $columKey,
+        int|string|null $indexKey = null
+    ): array {
         return array_column($array, $columKey, $indexKey);
     }
 }

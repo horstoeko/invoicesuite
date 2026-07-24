@@ -165,7 +165,9 @@ final class HandlesSafeInvokingTest extends TestCase
         };
 
         $rootReceiver = new class($childReceiver) {
-            public function __construct(private readonly object $child) {}
+            public function __construct(
+                private readonly object $child
+            ) {}
 
             public function getChild(): object
             {
@@ -197,7 +199,9 @@ final class HandlesSafeInvokingTest extends TestCase
         };
 
         $rootReceiver = new class($childReceiver) {
-            public function __construct(private readonly object $child) {}
+            public function __construct(
+                private readonly object $child
+            ) {}
 
             public function getChild(): object
             {

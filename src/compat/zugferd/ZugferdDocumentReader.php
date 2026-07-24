@@ -4063,8 +4063,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @phpstan-param-out array<int, array{IssuerAssignedID: string, FormattedIssueDateTime: DateTimeInterface|null, issueDate: DateTimeInterface|null}> $refdocs
      */
-    public function getDocumentUltimateCustomerOrderReferencedDocuments(?array &$refdocs): static
-    {
+    public function getDocumentUltimateCustomerOrderReferencedDocuments(
+        ?array &$refdocs
+    ): static {
         $refdocs = [];
 
         if ($this->documentReader->firstDocumentUltimateCustomerOrderReference()) {

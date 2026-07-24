@@ -73,8 +73,9 @@ trait HandlesMessageBag
      *
      * @throws InvoiceSuiteInvalidArgumentException
      */
-    public function copyFromMessageBag(InvoiceSuiteMessageBag $fromMessageBag): static
-    {
+    public function copyFromMessageBag(
+        InvoiceSuiteMessageBag $fromMessageBag
+    ): static {
         $this->getMessageBag()->copyFromMessageBag($fromMessageBag);
 
         return $this;

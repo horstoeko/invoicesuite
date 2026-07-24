@@ -23,8 +23,9 @@ class InvoiceSuiteConsoleCommandTestCase extends TestCase
      * @throws CommandNotFoundException
      * @throws LogicException
      */
-    protected function createCommandTester(string $commandName): CommandTester
-    {
+    protected function createCommandTester(
+        string $commandName
+    ): CommandTester {
         $application = new InvoiceSuiteConsoleApplication();
         $application->setAutoExit(false);
 
@@ -37,8 +38,9 @@ class InvoiceSuiteConsoleCommandTestCase extends TestCase
      * @param  string $assetFilename
      * @return string
      */
-    protected function getTestAssetFilePath(string $assetFilename): string
-    {
+    protected function getTestAssetFilePath(
+        string $assetFilename
+    ): string {
         return InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__, 2), 'assets', $assetFilename);
     }
 
@@ -48,8 +50,9 @@ class InvoiceSuiteConsoleCommandTestCase extends TestCase
      * @param  string $filename
      * @return string
      */
-    protected function getTempFilePath(string $filename): string
-    {
+    protected function getTempFilePath(
+        string $filename
+    ): string {
         $absoluteFilename = InvoiceSuitePathUtils::combinePathWithFile(sys_get_temp_dir(), $filename);
 
         $this->registerFileForTestMethodTeardown($absoluteFilename);
@@ -65,8 +68,9 @@ class InvoiceSuiteConsoleCommandTestCase extends TestCase
      *
      * @throws JsonException
      */
-    protected function decodeJsonOutput(string $jsonOutput): array
-    {
+    protected function decodeJsonOutput(
+        string $jsonOutput
+    ): array {
         return json_decode(trim($jsonOutput), true, 512, JSON_THROW_ON_ERROR);
     }
 }

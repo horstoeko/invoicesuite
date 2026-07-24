@@ -62,8 +62,9 @@ class InvoiceSuiteInternalMethodGuard
      * @param  array<string,mixed> $backtraceFrame
      * @return string
      */
-    private static function getMethodName(array $backtraceFrame): string
-    {
+    private static function getMethodName(
+        array $backtraceFrame
+    ): string {
         $className = $backtraceFrame['class'] ?? null;
         $methodName = $backtraceFrame['function'] ?? null;
 

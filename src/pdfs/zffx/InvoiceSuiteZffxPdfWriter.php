@@ -190,8 +190,9 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
      * @param  array{author: string, keywords: string, title: string, subject: string, createdDate: string, modifiedDate: string} $metaDataInfos
      * @return void
      */
-    public function setPdfMetadataInfos(array &$metaDataInfos): void
-    {
+    public function setPdfMetadataInfos(
+        array &$metaDataInfos
+    ): void {
         if (true === $this->deterministicModeEnabled) {
             $metaDataInfos['createdDate'] = date('Y-m-d\TH:i:s', strtotime('2000-01-01 23:59:59'));
             $metaDataInfos['modifiedDate'] = date('Y-m-d\TH:i:s', strtotime('2000-01-01 23:59:59'));

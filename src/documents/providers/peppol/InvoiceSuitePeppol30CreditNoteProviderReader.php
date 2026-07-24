@@ -5585,8 +5585,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      *
      * @phpstan-param-out string $newName
      */
-    public function getDocumentBuyerTaxRepresentativeName(?string &$newName): static
-    {
+    public function getDocumentBuyerTaxRepresentativeName(
+        ?string &$newName
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newName = '';
@@ -5624,8 +5625,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      *
      * @phpstan-param-out string $newId
      */
-    public function getDocumentBuyerTaxRepresentativeId(?string &$newId): static
-    {
+    public function getDocumentBuyerTaxRepresentativeId(
+        ?string &$newId
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newId = '';
@@ -5665,8 +5667,10 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newGlobalId
      * @phpstan-param-out string $newGlobalIdType
      */
-    public function getDocumentBuyerTaxRepresentativeGlobalId(?string &$newGlobalId, ?string &$newGlobalIdType): static
-    {
+    public function getDocumentBuyerTaxRepresentativeGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newGlobalId = '';
@@ -5707,8 +5711,10 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newTaxRegistrationType
      * @phpstan-param-out string $newTaxRegistrationId
      */
-    public function getDocumentBuyerTaxRepresentativeTaxRegistration(?string &$newTaxRegistrationType, ?string &$newTaxRegistrationId): static
-    {
+    public function getDocumentBuyerTaxRepresentativeTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newTaxRegistrationType = '';
@@ -5759,8 +5765,15 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newCountryId
      * @phpstan-param-out string $newSubDivision
      */
-    public function getDocumentBuyerTaxRepresentativeAddress(?string &$newAddressLine1, ?string &$newAddressLine2, ?string &$newAddressLine3, ?string &$newPostcode, ?string &$newCity, ?string &$newCountryId, ?string &$newSubDivision): static
-    {
+    public function getDocumentBuyerTaxRepresentativeAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newAddressLine1 = '';
@@ -5808,8 +5821,11 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newId
      * @phpstan-param-out string $newName
      */
-    public function getDocumentBuyerTaxRepresentativeLegalOrganisation(?string &$newType, ?string &$newId, ?string &$newName): static
-    {
+    public function getDocumentBuyerTaxRepresentativeLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newType = '';
@@ -5857,8 +5873,13 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newFaxNumber
      * @phpstan-param-out string $newEmailAddress
      */
-    public function getDocumentBuyerTaxRepresentativeContact(?string &$newPersonName, ?string &$newDepartmentName, ?string &$newPhoneNumber, ?string &$newFaxNumber, ?string &$newEmailAddress): static
-    {
+    public function getDocumentBuyerTaxRepresentativeContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newPersonName = '';
@@ -5902,8 +5923,10 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newType
      * @phpstan-param-out string $newUri
      */
-    public function getDocumentBuyerTaxRepresentativeCommunication(?string &$newType, ?string &$newUri): static
-    {
+    public function getDocumentBuyerTaxRepresentativeCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newType = '';
@@ -5922,8 +5945,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      *
      * @phpstan-param-out string $newName
      */
-    public function getDocumentSalesAgentName(?string &$newName): static
-    {
+    public function getDocumentSalesAgentName(
+        ?string &$newName
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newName = '';
@@ -5961,8 +5985,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      *
      * @phpstan-param-out string $newId
      */
-    public function getDocumentSalesAgentId(?string &$newId): static
-    {
+    public function getDocumentSalesAgentId(
+        ?string &$newId
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newId = '';
@@ -6002,8 +6027,10 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newGlobalId
      * @phpstan-param-out string $newGlobalIdType
      */
-    public function getDocumentSalesAgentGlobalId(?string &$newGlobalId, ?string &$newGlobalIdType): static
-    {
+    public function getDocumentSalesAgentGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newGlobalId = '';
@@ -6044,8 +6071,10 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newTaxRegistrationType
      * @phpstan-param-out string $newTaxRegistrationId
      */
-    public function getDocumentSalesAgentTaxRegistration(?string &$newTaxRegistrationType, ?string &$newTaxRegistrationId): static
-    {
+    public function getDocumentSalesAgentTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newTaxRegistrationType = '';
@@ -6096,8 +6125,15 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newCountryId
      * @phpstan-param-out string $newSubDivision
      */
-    public function getDocumentSalesAgentAddress(?string &$newAddressLine1, ?string &$newAddressLine2, ?string &$newAddressLine3, ?string &$newPostcode, ?string &$newCity, ?string &$newCountryId, ?string &$newSubDivision): static
-    {
+    public function getDocumentSalesAgentAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newAddressLine1 = '';
@@ -6145,8 +6181,11 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newId
      * @phpstan-param-out string $newName
      */
-    public function getDocumentSalesAgentLegalOrganisation(?string &$newType, ?string &$newId, ?string &$newName): static
-    {
+    public function getDocumentSalesAgentLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newType = '';
@@ -6194,8 +6233,13 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newFaxNumber
      * @phpstan-param-out string $newEmailAddress
      */
-    public function getDocumentSalesAgentContact(?string &$newPersonName, ?string &$newDepartmentName, ?string &$newPhoneNumber, ?string &$newFaxNumber, ?string &$newEmailAddress): static
-    {
+    public function getDocumentSalesAgentContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newPersonName = '';
@@ -6239,8 +6283,10 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newType
      * @phpstan-param-out string $newUri
      */
-    public function getDocumentSalesAgentCommunication(?string &$newType, ?string &$newUri): static
-    {
+    public function getDocumentSalesAgentCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newType = '';
@@ -6259,8 +6305,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      *
      * @phpstan-param-out string $newName
      */
-    public function getDocumentBuyerAgentName(?string &$newName): static
-    {
+    public function getDocumentBuyerAgentName(
+        ?string &$newName
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newName = '';
@@ -6298,8 +6345,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      *
      * @phpstan-param-out string $newId
      */
-    public function getDocumentBuyerAgentId(?string &$newId): static
-    {
+    public function getDocumentBuyerAgentId(
+        ?string &$newId
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newId = '';
@@ -6339,8 +6387,10 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newGlobalId
      * @phpstan-param-out string $newGlobalIdType
      */
-    public function getDocumentBuyerAgentGlobalId(?string &$newGlobalId, ?string &$newGlobalIdType): static
-    {
+    public function getDocumentBuyerAgentGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newGlobalId = '';
@@ -6381,8 +6431,10 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newTaxRegistrationType
      * @phpstan-param-out string $newTaxRegistrationId
      */
-    public function getDocumentBuyerAgentTaxRegistration(?string &$newTaxRegistrationType, ?string &$newTaxRegistrationId): static
-    {
+    public function getDocumentBuyerAgentTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newTaxRegistrationType = '';
@@ -6433,8 +6485,15 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newCountryId
      * @phpstan-param-out string $newSubDivision
      */
-    public function getDocumentBuyerAgentAddress(?string &$newAddressLine1, ?string &$newAddressLine2, ?string &$newAddressLine3, ?string &$newPostcode, ?string &$newCity, ?string &$newCountryId, ?string &$newSubDivision): static
-    {
+    public function getDocumentBuyerAgentAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newAddressLine1 = '';
@@ -6482,8 +6541,11 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newId
      * @phpstan-param-out string $newName
      */
-    public function getDocumentBuyerAgentLegalOrganisation(?string &$newType, ?string &$newId, ?string &$newName): static
-    {
+    public function getDocumentBuyerAgentLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newType = '';
@@ -6531,8 +6593,13 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newFaxNumber
      * @phpstan-param-out string $newEmailAddress
      */
-    public function getDocumentBuyerAgentContact(?string &$newPersonName, ?string &$newDepartmentName, ?string &$newPhoneNumber, ?string &$newFaxNumber, ?string &$newEmailAddress): static
-    {
+    public function getDocumentBuyerAgentContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newPersonName = '';
@@ -6576,8 +6643,10 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newType
      * @phpstan-param-out string $newUri
      */
-    public function getDocumentBuyerAgentCommunication(?string &$newType, ?string &$newUri): static
-    {
+    public function getDocumentBuyerAgentCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $newType = '';

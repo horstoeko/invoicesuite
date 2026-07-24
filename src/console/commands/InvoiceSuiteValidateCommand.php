@@ -117,8 +117,9 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws RuntimeException
      */
-    protected function validateByXsd(string $filename): bool
-    {
+    protected function validateByXsd(
+        string $filename
+    ): bool {
         $documentValidator = InvoiceSuiteXsdDocumentValidator::createFromFile($filename);
         $inpOptionXsdFilename = $this->getStringOption('xsd-file');
 
@@ -146,8 +147,9 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
      * @throws TypeError
      * @throws ValueError
      */
-    protected function validateByKosit(string $filename): bool
-    {
+    protected function validateByKosit(
+        string $filename
+    ): bool {
         $documentValidator = InvoiceSuiteKositDocumentValidator::createFromFile($filename);
         $inpOptionKositBaseDirectory = $this->getStringOption('kosit-base-directory');
         $inpOptionKositRemoteHost = $this->getStringOption('kosit-remote-host');

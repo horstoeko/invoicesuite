@@ -143,8 +143,9 @@ class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countabl
      * @param  InvoiceSuiteMessageBag $fromMessageBag
      * @return static
      */
-    public function copyFromMessageBag(self $fromMessageBag): static
-    {
+    public function copyFromMessageBag(
+        self $fromMessageBag
+    ): static {
         foreach ($fromMessageBag as $fromMessageBagItem) {
             $this->add($fromMessageBagItem);
         }

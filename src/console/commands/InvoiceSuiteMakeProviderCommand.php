@@ -113,8 +113,12 @@ class InvoiceSuiteMakeProviderCommand extends InvoiceSuiteAbstractCommand
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function writeTemplate(string $templatePath, string $targetPath, array $replacements, bool $forceOverwrite): static
-    {
+    protected function writeTemplate(
+        string $templatePath,
+        string $targetPath,
+        array $replacements,
+        bool $forceOverwrite
+    ): static {
         $this->outputFile(
             $targetPath,
             InvoiceSuiteStringUtils::translateArray(

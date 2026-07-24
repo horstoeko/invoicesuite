@@ -92,8 +92,9 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
      * @throws ConsoleInvalidArgumentException
      * @throws RuntimeException
      */
-    protected function handlePdf(InvoiceSuitePdfDocumentReader $pdfReader): static
-    {
+    protected function handlePdf(
+        InvoiceSuitePdfDocumentReader $pdfReader
+    ): static {
         $jsonResult = [
             'id' => $pdfReader->getCurrentDocumentFormatProvider()->getUniqueId(),
             'description' => $pdfReader->getCurrentDocumentFormatProvider()->getDescription(),
@@ -138,8 +139,9 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
      * @throws ConsoleInvalidArgumentException
      * @throws RuntimeException
      */
-    protected function handleXml(InvoiceSuiteDocumentReader $xmlOrJsonReader): static
-    {
+    protected function handleXml(
+        InvoiceSuiteDocumentReader $xmlOrJsonReader
+    ): static {
         $jsonResult = [
             'id' => $xmlOrJsonReader->getCurrentDocumentFormatProvider()->getUniqueId(),
             'description' => $xmlOrJsonReader->getCurrentDocumentFormatProvider()->getDescription(),

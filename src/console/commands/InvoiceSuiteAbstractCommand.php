@@ -55,8 +55,10 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @param  OutputInterface $output
      * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
+    protected function execute(
+        InputInterface $input,
+        OutputInterface $output
+    ): int {
         $this->input = $input;
         $this->output = $output;
 
@@ -97,8 +99,10 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @param  int                       $options
      * @return static
      */
-    protected function outputLineLF(iterable|string $messages, int $options = 0): static
-    {
+    protected function outputLineLF(
+        iterable|string $messages,
+        int $options = 0
+    ): static {
         $this->output->writeln($messages, $options);
 
         return $this;
@@ -112,8 +116,11 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @param  int                       $options
      * @return static
      */
-    protected function outputLineLFWhen(bool $condition, iterable|string $messages, int $options = 0): static
-    {
+    protected function outputLineLFWhen(
+        bool $condition,
+        iterable|string $messages,
+        int $options = 0
+    ): static {
         if ($condition) {
             return $this->outputLineLF($messages, $options);
         }
@@ -129,8 +136,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      *
      * @throws RuntimeException
      */
-    protected function outputJson(mixed $value): static
-    {
+    protected function outputJson(
+        mixed $value
+    ): static {
         $jsonValue = json_encode($value, JSON_PRETTY_PRINT);
 
         if (false === $jsonValue) {
@@ -149,8 +157,10 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      *
      * @throws RuntimeException
      */
-    protected function outputJsonWhen(bool $condition, mixed $value): static
-    {
+    protected function outputJsonWhen(
+        bool $condition,
+        mixed $value
+    ): static {
         if ($condition) {
             return $this->outputJson($value);
         }
@@ -165,8 +175,10 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @param  array<int,array<int,mixed>> $rows
      * @return static
      */
-    protected function outputTable(array $headers = [], array $rows = []): static
-    {
+    protected function outputTable(
+        array $headers = [],
+        array $rows = []
+    ): static {
         $table = (new Table($this->output))->setStyle('box');
 
         if (!InvoiceSuiteArrayUtils::empty($headers)) {
@@ -190,8 +202,11 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @param  array<int,array<int,mixed>> $rows
      * @return static
      */
-    protected function outputTableWhen(bool $condition, array $headers = [], array $rows = []): static
-    {
+    protected function outputTableWhen(
+        bool $condition,
+        array $headers = [],
+        array $rows = []
+    ): static {
         if ($condition) {
             return $this->outputTable($headers, $rows);
         }
@@ -209,8 +224,11 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      *
      * @throws RuntimeException
      */
-    protected function outputFile(string $filename, mixed $content, bool $forceOverwrite = false): static
-    {
+    protected function outputFile(
+        string $filename,
+        mixed $content,
+        bool $forceOverwrite = false
+    ): static {
         $this->ensureTargetFileDirectoryExists($filename);
         $this->ensureTargetFileCanBeCreated($filename, $forceOverwrite);
 
@@ -232,8 +250,12 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      *
      * @throws RuntimeException
      */
-    protected function outputFileWhen(bool $condition, string $filename, mixed $content, bool $forceOverwrite = false): static
-    {
+    protected function outputFileWhen(
+        bool $condition,
+        string $filename,
+        mixed $content,
+        bool $forceOverwrite = false
+    ): static {
         if ($condition) {
             return $this->outputFile($filename, $content, $forceOverwrite);
         }
@@ -251,8 +273,10 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws ConsoleInvalidArgumentException
      * @throws RuntimeException
      */
-    protected function getStringArgument(string $name, string $default = ''): string
-    {
+    protected function getStringArgument(
+        string $name,
+        string $default = ''
+    ): string {
         $value = $this->input->getArgument($name);
 
         if (InvoiceSuiteStringUtils::is($value)) {
@@ -275,8 +299,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws ConsoleInvalidArgumentException
      * @throws RuntimeException
      */
-    protected function getRequiredStringArgument(string $name): string
-    {
+    protected function getRequiredStringArgument(
+        string $name
+    ): string {
         $value = $this->getStringArgument($name);
 
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($value)) {
@@ -296,8 +321,10 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws ConsoleInvalidArgumentException
      * @throws RuntimeException
      */
-    protected function getStringOption(string $name, string $default = ''): string
-    {
+    protected function getStringOption(
+        string $name,
+        string $default = ''
+    ): string {
         $value = $this->input->getOption($name);
 
         if (InvoiceSuiteStringUtils::is($value)) {
@@ -320,8 +347,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws ConsoleInvalidArgumentException
      * @throws RuntimeException
      */
-    protected function getRequiredStringOption(string $name): string
-    {
+    protected function getRequiredStringOption(
+        string $name
+    ): string {
         $value = $this->getStringOption($name);
 
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($value)) {
@@ -341,8 +369,10 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws ConsoleInvalidArgumentException
      * @throws RuntimeException
      */
-    protected function getBoolOption(string $name, bool $default = false): bool
-    {
+    protected function getBoolOption(
+        string $name,
+        bool $default = false
+    ): bool {
         return filter_var($this->input->getOption($name), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE) ?? $default;
     }
 
@@ -356,8 +386,10 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws ConsoleInvalidArgumentException
      * @throws RuntimeException
      */
-    protected function getIntOption(string $name, int $default = 0): int
-    {
+    protected function getIntOption(
+        string $name,
+        int $default = 0
+    ): int {
         return filter_var($this->input->getOption($name), FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE) ?? $default;
     }
 
@@ -370,8 +402,10 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      *
      * @throws ConsoleInvalidArgumentException
      */
-    protected function getStringArrayOption(string $name, array $default = []): array
-    {
+    protected function getStringArrayOption(
+        string $name,
+        array $default = []
+    ): array {
         return $this->input->getOption($name) ?? $default;
     }
 
@@ -384,8 +418,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws ConsoleInvalidArgumentException
      * @throws RuntimeException
      */
-    protected function getTargetDirectoryArgument(string $name): string
-    {
+    protected function getTargetDirectoryArgument(
+        string $name
+    ): string {
         return $this->ensureDirectoryExists($this->getStringArgument($name));
     }
 
@@ -398,8 +433,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws ConsoleInvalidArgumentException
      * @throws RuntimeException
      */
-    protected function getTargetDirectoryOption(string $name): string
-    {
+    protected function getTargetDirectoryOption(
+        string $name
+    ): string {
         return $this->ensureDirectoryExists($this->getStringOption($name));
     }
 
@@ -414,8 +450,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function getSourceFileArgument(string $name): string
-    {
+    protected function getSourceFileArgument(
+        string $name
+    ): string {
         return $this->ensureFileExists($this->getStringArgument($name));
     }
 
@@ -430,8 +467,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function getSourceFileOption(string $name): string
-    {
+    protected function getSourceFileOption(
+        string $name
+    ): string {
         return $this->ensureFileExists($this->getStringOption($name));
     }
 
@@ -446,8 +484,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function getSourceXmlFileArgument(string $name): string
-    {
+    protected function getSourceXmlFileArgument(
+        string $name
+    ): string {
         $filename = $this->getSourceFileArgument($name);
 
         $this->ensureIsXmlFile($filename);
@@ -466,8 +505,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function getSourceXmlFileOption(string $name): string
-    {
+    protected function getSourceXmlFileOption(
+        string $name
+    ): string {
         $filename = $this->getSourceFileOption($name);
 
         $this->ensureIsXmlFile($filename);
@@ -486,8 +526,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function getSourcePdfFileArgument(string $name): string
-    {
+    protected function getSourcePdfFileArgument(
+        string $name
+    ): string {
         $filename = $this->getSourceFileArgument($name);
 
         $this->ensureIsPdfFile($filename);
@@ -506,8 +547,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function getSourcePdfFileOption(string $name): string
-    {
+    protected function getSourcePdfFileOption(
+        string $name
+    ): string {
         $filename = $this->getSourceFileOption($name);
 
         $this->ensureIsPdfFile($filename);
@@ -526,8 +568,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function getSourceJsonFileArgument(string $name): string
-    {
+    protected function getSourceJsonFileArgument(
+        string $name
+    ): string {
         $filename = $this->getSourceFileArgument($name);
 
         $this->ensureIsJsonFile($filename);
@@ -546,8 +589,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function getSourceJsonFileOption(string $name): string
-    {
+    protected function getSourceJsonFileOption(
+        string $name
+    ): string {
         $filename = $this->getSourceFileOption($name);
 
         $this->ensureIsJsonFile($filename);
@@ -566,8 +610,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function getSourceXmlOrJsonFileArgument(string $name): string
-    {
+    protected function getSourceXmlOrJsonFileArgument(
+        string $name
+    ): string {
         $filename = $this->getSourceFileArgument($name);
 
         $this->ensureIsXmlOrJsonFile($filename);
@@ -586,8 +631,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function getSourceXmlOrJsonFileOption(string $name): string
-    {
+    protected function getSourceXmlOrJsonFileOption(
+        string $name
+    ): string {
         $filename = $this->getSourceFileOption($name);
 
         $this->ensureIsXmlOrJsonFile($filename);
@@ -607,8 +653,10 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function getTargetFileArgument(string $name, bool $forceOverwrite = false): string
-    {
+    protected function getTargetFileArgument(
+        string $name,
+        bool $forceOverwrite = false
+    ): string {
         $this->ensureTargetFileDirectoryExists($this->getStringArgument($name));
         $this->ensureTargetFileCanBeCreated($this->getStringArgument($name), $forceOverwrite);
 
@@ -627,8 +675,10 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function getTargetFileOption(string $name, bool $forceOverwrite = false): string
-    {
+    protected function getTargetFileOption(
+        string $name,
+        bool $forceOverwrite = false
+    ): string {
         $this->ensureTargetFileDirectoryExists($this->getStringOption($name));
         $this->ensureTargetFileCanBeCreated($this->getStringOption($name), $forceOverwrite);
 
@@ -643,8 +693,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      *
      * @throws RuntimeException
      */
-    protected function ensureDirectoryExists(string $directory): string
-    {
+    protected function ensureDirectoryExists(
+        string $directory
+    ): string {
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($directory)) {
             throw new RuntimeException('The directory name must not be empty.');
         }
@@ -665,8 +716,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotFoundException
      * @throws RuntimeException
      */
-    protected function ensureFileExists(string $filename): string
-    {
+    protected function ensureFileExists(
+        string $filename
+    ): string {
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($filename)) {
             throw new RuntimeException('The file name must not be empty.');
         }
@@ -687,8 +739,10 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      *
      * @throws RuntimeException
      */
-    protected function ensureTargetFileCanBeCreated(string $filename, bool $forceOverwrite = false): static
-    {
+    protected function ensureTargetFileCanBeCreated(
+        string $filename,
+        bool $forceOverwrite = false
+    ): static {
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($filename)) {
             throw new RuntimeException('The file name must not be empty.');
         }
@@ -708,8 +762,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      *
      * @throws RuntimeException
      */
-    protected function ensureTargetFileDirectoryExists(string $filename): static
-    {
+    protected function ensureTargetFileDirectoryExists(
+        string $filename
+    ): static {
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($filename)) {
             throw new RuntimeException('The file name must not be empty.');
         }
@@ -733,8 +788,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function detectMimeTypeByFilename(string $filename): string
-    {
+    protected function detectMimeTypeByFilename(
+        string $filename
+    ): string {
         $filename = $this->ensureFileExists($filename);
 
         $fileInfo = new finfo(FILEINFO_MIME_TYPE);
@@ -761,8 +817,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function isXmlFile(string $filename): bool
-    {
+    protected function isXmlFile(
+        string $filename
+    ): bool {
         return InvoiceSuiteArrayUtils::inArrayNoCase(['application/xml', 'text/xml'], $this->detectMimeTypeByFilename($filename));
     }
 
@@ -776,8 +833,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function isPdfFile(string $filename): bool
-    {
+    protected function isPdfFile(
+        string $filename
+    ): bool {
         return InvoiceSuiteArrayUtils::inArrayNoCase(['application/pdf'], $this->detectMimeTypeByFilename($filename));
     }
 
@@ -791,8 +849,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function isJsonFile(string $filename): bool
-    {
+    protected function isJsonFile(
+        string $filename
+    ): bool {
         return InvoiceSuiteArrayUtils::inArrayNoCase(['application/json'], $this->detectMimeTypeByFilename($filename));
     }
 
@@ -806,8 +865,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function isXmlOrJsonFile(string $filename): bool
-    {
+    protected function isXmlOrJsonFile(
+        string $filename
+    ): bool {
         return $this->isXmlFile($filename) || $this->isJsonFile($filename);
     }
 
@@ -821,8 +881,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function ensureIsXmlFile(string $filename): static
-    {
+    protected function ensureIsXmlFile(
+        string $filename
+    ): static {
         if (!$this->isXmlFile($filename)) {
             throw new RuntimeException(InvoiceSuiteStringUtils::sprintf('Input file "%s" is not a XML file.', $filename));
         }
@@ -840,8 +901,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function ensureIsPdfFile(string $filename): static
-    {
+    protected function ensureIsPdfFile(
+        string $filename
+    ): static {
         if (!$this->isPdfFile($filename)) {
             throw new RuntimeException(InvoiceSuiteStringUtils::sprintf('Input file "%s" is not a PDF file.', $filename));
         }
@@ -859,8 +921,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function ensureIsJsonFile(string $filename): static
-    {
+    protected function ensureIsJsonFile(
+        string $filename
+    ): static {
         if (!$this->isJsonFile($filename)) {
             throw new RuntimeException(InvoiceSuiteStringUtils::sprintf('Input file "%s" is not a JSON file.', $filename));
         }
@@ -878,8 +941,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function ensureIsXmlOrJsonFile(string $filename): static
-    {
+    protected function ensureIsXmlOrJsonFile(
+        string $filename
+    ): static {
         if (!$this->isXmlOrJsonFile($filename)) {
             throw new RuntimeException(InvoiceSuiteStringUtils::sprintf('Input file "%s" is not a XML or JSON file.', $filename));
         }

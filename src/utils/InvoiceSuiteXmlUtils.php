@@ -39,8 +39,9 @@ class InvoiceSuiteXmlUtils
      * @param  DOMDocument $domDocument
      * @return DOMXPath
      */
-    public static function createDomXPath(DOMDocument $domDocument): DOMXPath
-    {
+    public static function createDomXPath(
+        DOMDocument $domDocument
+    ): DOMXPath {
         return new DOMXPath($domDocument);
     }
 
@@ -51,8 +52,10 @@ class InvoiceSuiteXmlUtils
      * @param  int               $options
      * @return DOMDocument|false
      */
-    public static function loadXml(string $source, int $options = LIBXML_NONET | LIBXML_NOERROR | LIBXML_NOWARNING): DOMDocument|false
-    {
+    public static function loadXml(
+        string $source,
+        int $options = LIBXML_NONET | LIBXML_NOERROR | LIBXML_NOWARNING
+    ): DOMDocument|false {
         $domDocument = static::createDomDocument();
 
         if (false === $domDocument->loadXML($source, $options)) {
@@ -93,8 +96,10 @@ class InvoiceSuiteXmlUtils
      * @param  int               $options
      * @return DOMDocument|false
      */
-    public static function loadFile(string $filename, int $options = LIBXML_NONET | LIBXML_NOERROR | LIBXML_NOWARNING): DOMDocument|false
-    {
+    public static function loadFile(
+        string $filename,
+        int $options = LIBXML_NONET | LIBXML_NOERROR | LIBXML_NOWARNING
+    ): DOMDocument|false {
         $domDocument = static::createDomDocument();
 
         if (false === $domDocument->load($filename, $options)) {
@@ -111,8 +116,10 @@ class InvoiceSuiteXmlUtils
      * @param  int                    $options
      * @return false|SimpleXMLElement
      */
-    public static function loadSimpleXmlFile(string $filename, int $options = LIBXML_NONET | LIBXML_NOERROR | LIBXML_NOWARNING): false|SimpleXMLElement
-    {
+    public static function loadSimpleXmlFile(
+        string $filename,
+        int $options = LIBXML_NONET | LIBXML_NOERROR | LIBXML_NOWARNING
+    ): false|SimpleXMLElement {
         return simplexml_load_file($filename, SimpleXMLElement::class, $options);
     }
 

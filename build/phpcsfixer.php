@@ -73,6 +73,9 @@ return (new Config())
             'function_declaration' => [
                 'closure_function_spacing' => 'one'
             ],
+            'method_argument_space' => [
+                'on_multiline' => 'ensure_fully_multiline',
+            ],
             'control_structure_continuation_position' => true,
             'binary_operator_spaces' => [
                 'default' => 'single_space',

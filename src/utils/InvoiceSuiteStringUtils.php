@@ -37,8 +37,9 @@ class InvoiceSuiteStringUtils
      * @param  int    $codePoint
      * @return string
      */
-    public static function chr(int $codePoint): string
-    {
+    public static function chr(
+        int $codePoint
+    ): string {
         return chr($codePoint);
     }
 
@@ -50,8 +51,11 @@ class InvoiceSuiteStringUtils
      * @param  int<min, max>     $limit
      * @return array<int,string>
      */
-    public static function explode(string $separator, string $string, int $limit = PHP_INT_MAX): array
-    {
+    public static function explode(
+        string $separator,
+        string $string,
+        int $limit = PHP_INT_MAX
+    ): array {
         return explode($separator, $string, $limit);
     }
 
@@ -62,8 +66,10 @@ class InvoiceSuiteStringUtils
      * @param  array<array-key, scalar> $array
      * @return string
      */
-    public static function implode(string $separator, array $array): string
-    {
+    public static function implode(
+        string $separator,
+        array $array
+    ): string {
         return implode($separator, $array);
     }
 
@@ -75,8 +81,11 @@ class InvoiceSuiteStringUtils
      * @param  null|array<int,string>|string $fromEncoding
      * @return string
      */
-    public static function mbConvertEncoding(string $string, string $toEncoding, array|string|null $fromEncoding = null): string
-    {
+    public static function mbConvertEncoding(
+        string $string,
+        string $toEncoding,
+        array|string|null $fromEncoding = null
+    ): string {
         return mb_convert_encoding($string, $toEncoding, $fromEncoding);
     }
 
@@ -100,8 +109,13 @@ class InvoiceSuiteStringUtils
      * @param  null|string $encoding
      * @return string
      */
-    public static function mbTrimWidth(string $string, int $start, int $width, string $trimMarker = '', ?string $encoding = null): string
-    {
+    public static function mbTrimWidth(
+        string $string,
+        int $start,
+        int $width,
+        string $trimMarker = '',
+        ?string $encoding = null
+    ): string {
         return mb_strimwidth($string, $start, $width, $trimMarker, $encoding);
     }
 
@@ -112,8 +126,10 @@ class InvoiceSuiteStringUtils
      * @param  bool   $binary
      * @return string
      */
-    public static function md5(string $string, bool $binary = false): string
-    {
+    public static function md5(
+        string $string,
+        bool $binary = false
+    ): string {
         return md5($string, $binary);
     }
 
@@ -126,8 +142,12 @@ class InvoiceSuiteStringUtils
      * @param  null|string $thousandsSeparator
      * @return string
      */
-    public static function numberFormat(float $number, int $decimals = 0, ?string $decimalSeparator = '.', ?string $thousandsSeparator = ','): string
-    {
+    public static function numberFormat(
+        float $number,
+        int $decimals = 0,
+        ?string $decimalSeparator = '.',
+        ?string $thousandsSeparator = ','
+    ): string {
         return number_format($number, $decimals, $decimalSeparator, $thousandsSeparator);
     }
 
@@ -138,8 +158,10 @@ class InvoiceSuiteStringUtils
      * @param  mixed  ...$values
      * @return string
      */
-    public static function sprintf(string $format, mixed ...$values): string
-    {
+    public static function sprintf(
+        string $format,
+        mixed ...$values
+    ): string {
         return sprintf($format, ...$values);
     }
 
@@ -230,8 +252,9 @@ class InvoiceSuiteStringUtils
      * @param  string $str
      * @return string
      */
-    public static function lower(string $str): string
-    {
+    public static function lower(
+        string $str
+    ): string {
         return strtolower($str);
     }
 
@@ -241,8 +264,9 @@ class InvoiceSuiteStringUtils
      * @param  string $str
      * @return string
      */
-    public static function upper(string $str): string
-    {
+    public static function upper(
+        string $str
+    ): string {
         return strtoupper($str);
     }
 
@@ -252,8 +276,9 @@ class InvoiceSuiteStringUtils
      * @param  string $str
      * @return string
      */
-    public static function lcFirst(string $str): string
-    {
+    public static function lcFirst(
+        string $str
+    ): string {
         return lcfirst($str);
     }
 
@@ -263,8 +288,9 @@ class InvoiceSuiteStringUtils
      * @param  string $str
      * @return string
      */
-    public static function ucFirst(string $str): string
-    {
+    public static function ucFirst(
+        string $str
+    ): string {
         return ucfirst($str);
     }
 
@@ -275,8 +301,10 @@ class InvoiceSuiteStringUtils
      * @param  string $str2
      * @return bool
      */
-    public static function equals(string $str1, string $str2): bool
-    {
+    public static function equals(
+        string $str1,
+        string $str2
+    ): bool {
         return 0 === strcmp($str1, $str2);
     }
 
@@ -287,8 +315,10 @@ class InvoiceSuiteStringUtils
      * @param  string $str2
      * @return bool
      */
-    public static function equalsNoCase(string $str1, string $str2): bool
-    {
+    public static function equalsNoCase(
+        string $str1,
+        string $str2
+    ): bool {
         return 0 === strcasecmp($str1, $str2);
     }
 
@@ -299,8 +329,10 @@ class InvoiceSuiteStringUtils
      * @param  string $str2
      * @return int
      */
-    public static function compare(string $str1, string $str2): int
-    {
+    public static function compare(
+        string $str1,
+        string $str2
+    ): int {
         return strcmp($str1, $str2);
     }
 
@@ -311,8 +343,10 @@ class InvoiceSuiteStringUtils
      * @param  string $str2
      * @return int
      */
-    public static function compareNoCase(string $str1, string $str2): int
-    {
+    public static function compareNoCase(
+        string $str1,
+        string $str2
+    ): int {
         return strcasecmp($str1, $str2);
     }
 
@@ -322,8 +356,9 @@ class InvoiceSuiteStringUtils
      * @param  string $string
      * @return int
      */
-    public static function length(string $string): int
-    {
+    public static function length(
+        string $string
+    ): int {
         return strlen($string);
     }
 
@@ -335,8 +370,11 @@ class InvoiceSuiteStringUtils
      * @param  int       $offset
      * @return false|int
      */
-    public static function reversePosition(string $haystack, string $needle, int $offset = 0): false|int
-    {
+    public static function reversePosition(
+        string $haystack,
+        string $needle,
+        int $offset = 0
+    ): false|int {
         return strrpos($haystack, $needle, $offset);
     }
 
@@ -348,8 +386,11 @@ class InvoiceSuiteStringUtils
      * @param  null|int $length
      * @return string
      */
-    public static function substring(string $string, int $offset, ?int $length = null): string
-    {
+    public static function substring(
+        string $string,
+        int $offset,
+        ?int $length = null
+    ): string {
         return substr($string, $offset, $length);
     }
 
@@ -361,8 +402,10 @@ class InvoiceSuiteStringUtils
      * @param  string $needle
      * @return bool
      */
-    public static function contains(string $str, string $needle): bool
-    {
+    public static function contains(
+        string $str,
+        string $needle
+    ): bool {
         return str_contains($str, $needle);
     }
 
@@ -374,8 +417,10 @@ class InvoiceSuiteStringUtils
      * @param  string $needle
      * @return bool
      */
-    public static function containsNoCase(string $str, string $needle): bool
-    {
+    public static function containsNoCase(
+        string $str,
+        string $needle
+    ): bool {
         return static::contains(static::lower($str), static::lower($needle));
     }
 
@@ -390,8 +435,12 @@ class InvoiceSuiteStringUtils
      * @param  null|int        $count
      * @return TSubject
      */
-    public static function replace(array|string $search, array|string $replace, array|string $subject, &$count = null): array|string
-    {
+    public static function replace(
+        array|string $search,
+        array|string $replace,
+        array|string $subject,
+        &$count = null
+    ): array|string {
         return str_replace($search, $replace, $subject, $count);
     }
 
@@ -402,8 +451,10 @@ class InvoiceSuiteStringUtils
      * @param  null|string $needle
      * @return bool
      */
-    public static function endsWith(?string $haystack, ?string $needle): bool
-    {
+    public static function endsWith(
+        ?string $haystack,
+        ?string $needle
+    ): bool {
         return str_ends_with((string) $haystack, (string) $needle);
     }
 
@@ -414,8 +465,10 @@ class InvoiceSuiteStringUtils
      * @param  null|string $needle
      * @return bool
      */
-    public static function startsWith(?string $haystack, ?string $needle): bool
-    {
+    public static function startsWith(
+        ?string $haystack,
+        ?string $needle
+    ): bool {
         return str_starts_with((string) $haystack, (string) $needle);
     }
 
@@ -426,8 +479,10 @@ class InvoiceSuiteStringUtils
      * @param  string $characters
      * @return string
      */
-    public static function trim(string $string, string $characters = " \n\r\t\v\0"): string
-    {
+    public static function trim(
+        string $string,
+        string $characters = " \n\r\t\v\0"
+    ): string {
         return trim($string, $characters);
     }
 
@@ -438,8 +493,10 @@ class InvoiceSuiteStringUtils
      * @param  string $characters
      * @return string
      */
-    public static function trimEnd(string $string, string $characters = " \n\r\t\v\0"): string
-    {
+    public static function trimEnd(
+        string $string,
+        string $characters = " \n\r\t\v\0"
+    ): string {
         return rtrim($string, $characters);
     }
 
@@ -450,8 +507,10 @@ class InvoiceSuiteStringUtils
      * @param  string $characters
      * @return string
      */
-    public static function trimStart(string $string, string $characters = " \n\r\t\v\0"): string
-    {
+    public static function trimStart(
+        string $string,
+        string $characters = " \n\r\t\v\0"
+    ): string {
         return ltrim($string, $characters);
     }
 
@@ -463,8 +522,11 @@ class InvoiceSuiteStringUtils
      * @param  string $to
      * @return string
      */
-    public static function translate(string $string, string $from, string $to): string
-    {
+    public static function translate(
+        string $string,
+        string $from,
+        string $to
+    ): string {
         return strtr($string, $from, $to);
     }
 
@@ -475,8 +537,10 @@ class InvoiceSuiteStringUtils
      * @param  array<string,string> $replacements
      * @return string
      */
-    public static function translateArray(string $string, array $replacements): string
-    {
+    public static function translateArray(
+        string $string,
+        array $replacements
+    ): string {
         return strtr($string, $replacements);
     }
 }

@@ -269,8 +269,9 @@ final class InvoiceSuiteExportPdfAttachmentsCommandTest extends InvoiceSuiteCons
      * @param  array<mixed> $decodedJsonOutput
      * @return void
      */
-    private function assertJsonExportContainsExpectedAttachments(array $decodedJsonOutput): void
-    {
+    private function assertJsonExportContainsExpectedAttachments(
+        array $decodedJsonOutput
+    ): void {
         $this->assertCount(3, $decodedJsonOutput);
 
         $this->assertArrayHasKey(0, $decodedJsonOutput);
