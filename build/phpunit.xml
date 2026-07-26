@@ -152,6 +152,7 @@
             <file>../tests/testcases/compat/zugferd/ZugferdSettingsTest.php</file>
             <file>../tests/testcases/compat/zugferd/ZugferdProfileResolverTest.php</file>
             <file>../tests/testcases/compat/zugferd/ZugferdProfileConverterTest.php</file>
+            <file>../tests/testcases/compat/zugferd/ZugferdQuickDescriptorTest.php</file>
             <!-- Document Builder -->
             <file>../tests/testcases/compat/zugferd/ZugferdDocumentBuilderExtendedTest.php</file>
             <!-- Document Reader -->
