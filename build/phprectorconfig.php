@@ -72,7 +72,7 @@ return RectorConfig::configure()
         cacheDirectory: __DIR__ . '/rector',
     )
     ->withParallel(
-        timeoutSeconds: 600,
+        timeoutSeconds: 60000,
         maxNumberOfProcess: 2,
         jobSize: 10,
     )

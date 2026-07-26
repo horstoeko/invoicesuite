@@ -4,6 +4,12 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePartyDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProductDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePriceNetDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteQuantityDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
+use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use DateTimeInterface;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatReader;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
@@ -330,7 +336,7 @@ final class FatturaPaProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(22.0, $newTaxPercent, PHP_FLOAT_EPSILON);
         $this->assertSame('', $newExemptionReason);
         $this->assertSame('', $newExemptionReasonCode);
-        $this->assertNull($newTaxDueDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $newTaxDueDate);
         $this->assertSame('', $newTaxDueCode);
         $this->assertFalse(static::$document->nextDocumentTax());
     }
@@ -589,7 +595,7 @@ final class FatturaPaProviderReaderTest extends TestCase
 
         $sellerParty = $documentDTO->getSellerParty();
 
-        $this->assertNotNull($sellerParty);
+        $this->assertInstanceOf(InvoiceSuitePartyDTO::class, $sellerParty);
         $this->assertSame('Example Seller S.r.l.', $sellerParty->getNames()[0]);
         $this->assertSame('VA', $sellerParty->getTaxRegistrations()[0]->getIdType());
         $this->assertSame('12345678901', $sellerParty->getTaxRegistrations()[0]->getId());
@@ -614,7 +620,7 @@ final class FatturaPaProviderReaderTest extends TestCase
 
         $buyerParty = $documentDTO->getBuyerParty();
 
-        $this->assertNotNull($buyerParty);
+        $this->assertInstanceOf(InvoiceSuitePartyDTO::class, $buyerParty);
         $this->assertSame('Example Buyer S.p.A.', $buyerParty->getNames()[0]);
         $this->assertSame('VA', $buyerParty->getTaxRegistrations()[0]->getIdType());
         $this->assertSame('98765432109', $buyerParty->getTaxRegistrations()[0]->getId());
@@ -634,7 +640,7 @@ final class FatturaPaProviderReaderTest extends TestCase
 
         $sellerTaxRepresentativeParty = $documentDTO->getSellerTaxRepresentativeParty();
 
-        $this->assertNotNull($sellerTaxRepresentativeParty);
+        $this->assertInstanceOf(InvoiceSuitePartyDTO::class, $sellerTaxRepresentativeParty);
         $this->assertSame('Tax Representative S.r.l.', $sellerTaxRepresentativeParty->getNames()[0]);
         $this->assertSame('VA', $sellerTaxRepresentativeParty->getTaxRegistrations()[0]->getIdType());
         $this->assertSame('11111111111', $sellerTaxRepresentativeParty->getTaxRegistrations()[0]->getId());
@@ -702,23 +708,23 @@ final class FatturaPaProviderReaderTest extends TestCase
         $this->assertSame('1', $firstPosition->getLineId());
         $firstProduct = $firstPosition->getProduct();
 
-        $this->assertNotNull($firstProduct);
+        $this->assertInstanceOf(InvoiceSuiteProductDTO::class, $firstProduct);
         $this->assertSame('PRODUCT-1', $firstProduct->getId());
         $this->assertSame('Consulting service', $firstProduct->getName());
         $this->assertSame('Consulting service', $firstProduct->getDescription());
         $this->assertSame('INTERNAL', $firstProduct->getIndustryId());
         $firstNetPrice = $firstPosition->getNetPrice();
 
-        $this->assertNotNull($firstNetPrice);
+        $this->assertInstanceOf(InvoiceSuitePriceNetDTO::class, $firstNetPrice);
         $this->assertEqualsWithDelta(100.123456, $firstNetPrice->getAmount(), PHP_FLOAT_EPSILON);
         $firstPriceQuantity = $firstNetPrice->getPriceQuantity();
 
-        $this->assertNotNull($firstPriceQuantity);
+        $this->assertInstanceOf(InvoiceSuiteQuantityDTO::class, $firstPriceQuantity);
         $this->assertEqualsWithDelta(1.0, $firstPriceQuantity->getQuantity(), PHP_FLOAT_EPSILON);
         $this->assertSame('H87', $firstPriceQuantity->getQuantityUnit());
         $firstBilledQuantity = $firstPosition->getQuantityBilled();
 
-        $this->assertNotNull($firstBilledQuantity);
+        $this->assertInstanceOf(InvoiceSuiteQuantityDTO::class, $firstBilledQuantity);
         $this->assertEqualsWithDelta(1.0, $firstBilledQuantity->getQuantity(), PHP_FLOAT_EPSILON);
         $this->assertSame('H87', $firstBilledQuantity->getQuantityUnit());
         $this->assertCount(1, $firstPosition->getBillingPeriods());
@@ -734,7 +740,7 @@ final class FatturaPaProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(1.5, $firstPosition->getAllowanceCharges()[0]->getPercent(), PHP_FLOAT_EPSILON);
         $firstPositionSummation = $firstPosition->getSummation();
 
-        $this->assertNotNull($firstPositionSummation);
+        $this->assertInstanceOf(InvoiceSuitesummationLineDTO::class, $firstPositionSummation);
         $this->assertEqualsWithDelta(100.123456, $firstPositionSummation->getNetAmount(), PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(0.0, $firstPositionSummation->getChargeTotalAmount(), PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(1.123456, $firstPositionSummation->getDiscountTotalAmount(), PHP_FLOAT_EPSILON);
@@ -746,22 +752,22 @@ final class FatturaPaProviderReaderTest extends TestCase
         $this->assertSame('2', $secondPosition->getLineId());
         $secondProduct = $secondPosition->getProduct();
 
-        $this->assertNotNull($secondProduct);
+        $this->assertInstanceOf(InvoiceSuiteProductDTO::class, $secondProduct);
         $this->assertSame('PRODUCT-2', $secondProduct->getId());
         $this->assertSame('PRODUCT-2', $secondProduct->getName());
         $this->assertSame('INTERNO', $secondProduct->getIndustryId());
         $secondNetPrice = $secondPosition->getNetPrice();
 
-        $this->assertNotNull($secondNetPrice);
+        $this->assertInstanceOf(InvoiceSuitePriceNetDTO::class, $secondNetPrice);
         $this->assertEqualsWithDelta(100.0, $secondNetPrice->getAmount(), PHP_FLOAT_EPSILON);
         $secondPriceQuantity = $secondNetPrice->getPriceQuantity();
 
-        $this->assertNotNull($secondPriceQuantity);
+        $this->assertInstanceOf(InvoiceSuiteQuantityDTO::class, $secondPriceQuantity);
         $this->assertEqualsWithDelta(1.0, $secondPriceQuantity->getQuantity(), PHP_FLOAT_EPSILON);
         $this->assertSame('H87', $secondPriceQuantity->getQuantityUnit());
         $secondBilledQuantity = $secondPosition->getQuantityBilled();
 
-        $this->assertNotNull($secondBilledQuantity);
+        $this->assertInstanceOf(InvoiceSuiteQuantityDTO::class, $secondBilledQuantity);
         $this->assertEqualsWithDelta(1.0, $secondBilledQuantity->getQuantity(), PHP_FLOAT_EPSILON);
         $this->assertSame('H87', $secondBilledQuantity->getQuantityUnit());
         $this->assertCount(0, $secondPosition->getBillingPeriods());
@@ -771,7 +777,7 @@ final class FatturaPaProviderReaderTest extends TestCase
         $this->assertCount(0, $secondPosition->getAllowanceCharges());
         $secondPositionSummation = $secondPosition->getSummation();
 
-        $this->assertNotNull($secondPositionSummation);
+        $this->assertInstanceOf(InvoiceSuitesummationLineDTO::class, $secondPositionSummation);
         $this->assertEqualsWithDelta(100.0, $secondPositionSummation->getNetAmount(), PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(0.0, $secondPositionSummation->getChargeTotalAmount(), PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(0.0, $secondPositionSummation->getDiscountTotalAmount(), PHP_FLOAT_EPSILON);
@@ -1078,7 +1084,7 @@ final class FatturaPaProviderReaderTest extends TestCase
                 $documentCompleteDate
             )
         );
-        $this->assertNull($documentCompleteDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentCompleteDate);
 
         $this->assertSame(
             static::$document,
@@ -1112,8 +1118,8 @@ final class FatturaPaProviderReaderTest extends TestCase
                 $documentBillingPeriodDescription
             )
         );
-        $this->assertNull($documentBillingPeriodStartDate);
-        $this->assertNull($documentBillingPeriodEndDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentBillingPeriodStartDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentBillingPeriodEndDate);
         $this->assertSame('', $documentBillingPeriodDescription);
 
         $this->assertSame(
@@ -1134,7 +1140,7 @@ final class FatturaPaProviderReaderTest extends TestCase
             )
         );
         $this->assertSame('', $documentSellerOrderReferenceReferenceNumber);
-        $this->assertNull($documentSellerOrderReferenceReferenceDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentSellerOrderReferenceReferenceDate);
 
         $this->assertSame(
             static::$document,
@@ -1144,7 +1150,7 @@ final class FatturaPaProviderReaderTest extends TestCase
             )
         );
         $this->assertSame('', $documentQuotationReferenceReferenceNumber);
-        $this->assertNull($documentQuotationReferenceReferenceDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentQuotationReferenceReferenceDate);
 
         $this->assertSame(
             static::$document,
@@ -1158,11 +1164,11 @@ final class FatturaPaProviderReaderTest extends TestCase
             )
         );
         $this->assertSame('', $documentAdditionalReferenceReferenceNumber);
-        $this->assertNull($documentAdditionalReferenceReferenceDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentAdditionalReferenceReferenceDate);
         $this->assertSame('', $documentAdditionalReferenceTypeCode);
         $this->assertSame('', $documentAdditionalReferenceReferenceTypeCode);
         $this->assertSame('', $documentAdditionalReferenceDescription);
-        $this->assertNull($documentAdditionalReferenceInvoiceSuiteAttachment);
+        $this->assertNotInstanceOf(InvoiceSuiteAttachment::class, $documentAdditionalReferenceInvoiceSuiteAttachment);
 
         $this->assertSame(
             static::$document,
@@ -1182,7 +1188,7 @@ final class FatturaPaProviderReaderTest extends TestCase
             )
         );
         $this->assertSame('', $documentUltimateCustomerOrderReferenceReferenceNumber);
-        $this->assertNull($documentUltimateCustomerOrderReferenceReferenceDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentUltimateCustomerOrderReferenceReferenceDate);
 
         $this->assertSame(
             static::$document,
@@ -1192,7 +1198,7 @@ final class FatturaPaProviderReaderTest extends TestCase
             )
         );
         $this->assertSame('', $documentDespatchAdviceReferenceReferenceNumber);
-        $this->assertNull($documentDespatchAdviceReferenceReferenceDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentDespatchAdviceReferenceReferenceDate);
 
         $this->assertSame(
             static::$document,
@@ -1202,7 +1208,7 @@ final class FatturaPaProviderReaderTest extends TestCase
             )
         );
         $this->assertSame('', $documentReceivingAdviceReferenceReferenceNumber);
-        $this->assertNull($documentReceivingAdviceReferenceReferenceDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentReceivingAdviceReferenceReferenceDate);
 
         $this->assertSame(
             static::$document,
@@ -1212,7 +1218,7 @@ final class FatturaPaProviderReaderTest extends TestCase
             )
         );
         $this->assertSame('', $documentDeliveryNoteReferenceReferenceNumber);
-        $this->assertNull($documentDeliveryNoteReferenceReferenceDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentDeliveryNoteReferenceReferenceDate);
 
         $this->assertSame(
             static::$document,
@@ -1220,7 +1226,7 @@ final class FatturaPaProviderReaderTest extends TestCase
                 $documentSupplyChainEventDate
             )
         );
-        $this->assertNull($documentSupplyChainEventDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentSupplyChainEventDate);
 
         $this->assertSame(
             static::$document,
@@ -2457,14 +2463,14 @@ final class FatturaPaProviderReaderTest extends TestCase
             )
         );
         $this->assertFalse($documentAllowanceChargeChargeIndicator);
-        $this->assertSame(0.0, $documentAllowanceChargeAllowanceChargeAmount);
-        $this->assertSame(0.0, $documentAllowanceChargeAllowanceChargeBaseAmount);
+        $this->assertEqualsWithDelta(0.0, $documentAllowanceChargeAllowanceChargeAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $documentAllowanceChargeAllowanceChargeBaseAmount, PHP_FLOAT_EPSILON);
         $this->assertSame('', $documentAllowanceChargeTaxCategory);
         $this->assertSame('', $documentAllowanceChargeTaxType);
-        $this->assertSame(0.0, $documentAllowanceChargeTaxPercent);
+        $this->assertEqualsWithDelta(0.0, $documentAllowanceChargeTaxPercent, PHP_FLOAT_EPSILON);
         $this->assertSame('', $documentAllowanceChargeAllowanceChargeReason);
         $this->assertSame('', $documentAllowanceChargeAllowanceChargeReasonCode);
-        $this->assertSame(0.0, $documentAllowanceChargeAllowanceChargePercent);
+        $this->assertEqualsWithDelta(0.0, $documentAllowanceChargeAllowanceChargePercent, PHP_FLOAT_EPSILON);
 
         $this->assertSame(
             static::$document,
@@ -2476,11 +2482,11 @@ final class FatturaPaProviderReaderTest extends TestCase
                 $documentLogisticServiceChargeTaxPercent
             )
         );
-        $this->assertSame(0.0, $documentLogisticServiceChargeChargeAmount);
+        $this->assertEqualsWithDelta(0.0, $documentLogisticServiceChargeChargeAmount, PHP_FLOAT_EPSILON);
         $this->assertSame('', $documentLogisticServiceChargeDescription);
         $this->assertSame('', $documentLogisticServiceChargeTaxCategory);
         $this->assertSame('', $documentLogisticServiceChargeTaxType);
-        $this->assertSame(0.0, $documentLogisticServiceChargeTaxPercent);
+        $this->assertEqualsWithDelta(0.0, $documentLogisticServiceChargeTaxPercent, PHP_FLOAT_EPSILON);
 
         $this->assertSame(
             static::$document,
@@ -2507,7 +2513,7 @@ final class FatturaPaProviderReaderTest extends TestCase
         $this->assertSame('', $documentPositionProductCharacteristicProductCharacteristicDescription);
         $this->assertSame('', $documentPositionProductCharacteristicProductCharacteristicValue);
         $this->assertSame('', $documentPositionProductCharacteristicProductCharacteristicType);
-        $this->assertSame(0.0, $documentPositionProductCharacteristicProductCharacteristicMeasureValue);
+        $this->assertEqualsWithDelta(0.0, $documentPositionProductCharacteristicProductCharacteristicMeasureValue, PHP_FLOAT_EPSILON);
         $this->assertSame('', $documentPositionProductCharacteristicProductCharacteristicMeasureUnit);
 
         $this->assertSame(
@@ -2547,7 +2553,7 @@ final class FatturaPaProviderReaderTest extends TestCase
         $this->assertSame('', $documentPositionReferencedProductProductGlobalId);
         $this->assertSame('', $documentPositionReferencedProductProductGlobalIdType);
         $this->assertSame('', $documentPositionReferencedProductProductIndustryId);
-        $this->assertSame(0.0, $documentPositionReferencedProductProductUnitQuantity);
+        $this->assertEqualsWithDelta(0.0, $documentPositionReferencedProductProductUnitQuantity, PHP_FLOAT_EPSILON);
         $this->assertSame('', $documentPositionReferencedProductProductUnitQuantityUnit);
 
         $this->assertSame(
@@ -2560,7 +2566,7 @@ final class FatturaPaProviderReaderTest extends TestCase
         );
         $this->assertSame('', $documentPositionSellerOrderReferenceReferenceNumber);
         $this->assertSame('', $documentPositionSellerOrderReferenceReferenceLineNumber);
-        $this->assertNull($documentPositionSellerOrderReferenceReferenceDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentPositionSellerOrderReferenceReferenceDate);
 
         $this->assertSame(
             static::$document,
@@ -2572,7 +2578,7 @@ final class FatturaPaProviderReaderTest extends TestCase
         );
         $this->assertSame('', $documentPositionBuyerOrderReferenceReferenceNumber);
         $this->assertSame('', $documentPositionBuyerOrderReferenceReferenceLineNumber);
-        $this->assertNull($documentPositionBuyerOrderReferenceReferenceDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentPositionBuyerOrderReferenceReferenceDate);
 
         $this->assertSame(
             static::$document,
@@ -2584,7 +2590,7 @@ final class FatturaPaProviderReaderTest extends TestCase
         );
         $this->assertSame('', $documentPositionQuotationReferenceReferenceNumber);
         $this->assertSame('', $documentPositionQuotationReferenceReferenceLineNumber);
-        $this->assertNull($documentPositionQuotationReferenceReferenceDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentPositionQuotationReferenceReferenceDate);
 
         $this->assertSame(
             static::$document,
@@ -2596,7 +2602,7 @@ final class FatturaPaProviderReaderTest extends TestCase
         );
         $this->assertSame('', $documentPositionContractReferenceReferenceNumber);
         $this->assertSame('', $documentPositionContractReferenceReferenceLineNumber);
-        $this->assertNull($documentPositionContractReferenceReferenceDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentPositionContractReferenceReferenceDate);
 
         $this->assertSame(
             static::$document,
@@ -2612,11 +2618,11 @@ final class FatturaPaProviderReaderTest extends TestCase
         );
         $this->assertSame('', $documentPositionAdditionalReferenceReferenceNumber);
         $this->assertSame('', $documentPositionAdditionalReferenceReferenceLineNumber);
-        $this->assertNull($documentPositionAdditionalReferenceReferenceDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentPositionAdditionalReferenceReferenceDate);
         $this->assertSame('', $documentPositionAdditionalReferenceTypeCode);
         $this->assertSame('', $documentPositionAdditionalReferenceReferenceTypeCode);
         $this->assertSame('', $documentPositionAdditionalReferenceDescription);
-        $this->assertNull($documentPositionAdditionalReferenceInvoiceSuiteAttachment);
+        $this->assertNotInstanceOf(InvoiceSuiteAttachment::class, $documentPositionAdditionalReferenceInvoiceSuiteAttachment);
 
         $this->assertSame(
             static::$document,
@@ -2628,7 +2634,7 @@ final class FatturaPaProviderReaderTest extends TestCase
         );
         $this->assertSame('', $documentPositionUltimateCustomerOrderReferenceReferenceNumber);
         $this->assertSame('', $documentPositionUltimateCustomerOrderReferenceReferenceLineNumber);
-        $this->assertNull($documentPositionUltimateCustomerOrderReferenceReferenceDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentPositionUltimateCustomerOrderReferenceReferenceDate);
 
         $this->assertSame(
             static::$document,
@@ -2640,7 +2646,7 @@ final class FatturaPaProviderReaderTest extends TestCase
         );
         $this->assertSame('', $documentPositionDespatchAdviceReferenceReferenceNumber);
         $this->assertSame('', $documentPositionDespatchAdviceReferenceReferenceLineNumber);
-        $this->assertNull($documentPositionDespatchAdviceReferenceReferenceDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentPositionDespatchAdviceReferenceReferenceDate);
 
         $this->assertSame(
             static::$document,
@@ -2652,7 +2658,7 @@ final class FatturaPaProviderReaderTest extends TestCase
         );
         $this->assertSame('', $documentPositionReceivingAdviceReferenceReferenceNumber);
         $this->assertSame('', $documentPositionReceivingAdviceReferenceReferenceLineNumber);
-        $this->assertNull($documentPositionReceivingAdviceReferenceReferenceDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentPositionReceivingAdviceReferenceReferenceDate);
 
         $this->assertSame(
             static::$document,
@@ -2664,7 +2670,7 @@ final class FatturaPaProviderReaderTest extends TestCase
         );
         $this->assertSame('', $documentPositionDeliveryNoteReferenceReferenceNumber);
         $this->assertSame('', $documentPositionDeliveryNoteReferenceReferenceLineNumber);
-        $this->assertNull($documentPositionDeliveryNoteReferenceReferenceDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentPositionDeliveryNoteReferenceReferenceDate);
 
         $this->assertSame(
             static::$document,
@@ -2677,7 +2683,7 @@ final class FatturaPaProviderReaderTest extends TestCase
         );
         $this->assertSame('', $documentPositionInvoiceReferenceReferenceNumber);
         $this->assertSame('', $documentPositionInvoiceReferenceReferenceLineNumber);
-        $this->assertNull($documentPositionInvoiceReferenceReferenceDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentPositionInvoiceReferenceReferenceDate);
         $this->assertSame('', $documentPositionInvoiceReferenceTypeCode);
 
         $this->assertSame(
@@ -2700,8 +2706,8 @@ final class FatturaPaProviderReaderTest extends TestCase
                 $documentPositionGrossPriceGrossPriceBasisQuantityUnit
             )
         );
-        $this->assertSame(0.0, $documentPositionGrossPrice);
-        $this->assertSame(0.0, $documentPositionGrossPriceGrossPriceBasisQuantity);
+        $this->assertEqualsWithDelta(0.0, $documentPositionGrossPrice, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $documentPositionGrossPriceGrossPriceBasisQuantity, PHP_FLOAT_EPSILON);
         $this->assertSame('', $documentPositionGrossPriceGrossPriceBasisQuantityUnit);
 
         $this->assertSame(
@@ -2715,10 +2721,10 @@ final class FatturaPaProviderReaderTest extends TestCase
                 $documentPositionGrossPriceAllowanceChargeGrossPriceAllowanceChargeReasonCode
             )
         );
-        $this->assertSame(0.0, $documentPositionGrossPriceAllowanceChargeGrossPriceAllowanceChargeAmount);
+        $this->assertEqualsWithDelta(0.0, $documentPositionGrossPriceAllowanceChargeGrossPriceAllowanceChargeAmount, PHP_FLOAT_EPSILON);
         $this->assertFalse($documentPositionGrossPriceAllowanceChargeIsCharge);
-        $this->assertSame(0.0, $documentPositionGrossPriceAllowanceChargeGrossPriceAllowanceChargePercent);
-        $this->assertSame(0.0, $documentPositionGrossPriceAllowanceChargeGrossPriceAllowanceChargeBasisAmount);
+        $this->assertEqualsWithDelta(0.0, $documentPositionGrossPriceAllowanceChargeGrossPriceAllowanceChargePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $documentPositionGrossPriceAllowanceChargeGrossPriceAllowanceChargeBasisAmount, PHP_FLOAT_EPSILON);
         $this->assertSame('', $documentPositionGrossPriceAllowanceChargeGrossPriceAllowanceChargeReason);
         $this->assertSame('', $documentPositionGrossPriceAllowanceChargeGrossPriceAllowanceChargeReasonCode);
 
@@ -2916,7 +2922,7 @@ final class FatturaPaProviderReaderTest extends TestCase
                 $documentPositionSupplyChainEventDate
             )
         );
-        $this->assertNull($documentPositionSupplyChainEventDate);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $documentPositionSupplyChainEventDate);
 
         $this->assertSame(
             static::$document,

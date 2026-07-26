@@ -25,7 +25,7 @@ final class InvoiceSuiteVisualizerTest extends TestCase
     public function testCreateFromDocumentReaderKeepsReaderAndRenderer(): void
     {
         $documentReader = InvoiceSuiteDocumentReader::createFromFile(self::INVOICE_FIXTURE_FILENAME);
-        $renderer = $this->createMock(InvoiceSuiteVisualizerAbstractRenderer::class);
+        $renderer = $this->createStub(InvoiceSuiteVisualizerAbstractRenderer::class);
 
         $visualizer = InvoiceSuiteVisualizer::createFromDocumentReader($documentReader, $renderer);
 
