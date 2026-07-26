@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" bootstrap="../vendor/autoload.php" backupGlobals="false" backupStaticAttributes="false" colors="true" verbose="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnFailure="false">
     <testsuites>
-        <testsuite name="Utils">
+        <testsuite name="utils">
             <file>../tests/testcases/utils/UtilsTest.php</file>
             <file>../tests/testcases/utils/InvoiceSuiteMessageBagTest.php</file>
         </testsuite>
-        <testsuite name="Exceptions">
+        <testsuite name="exceptions">
             <file>../tests/testcases/exceptions/InvoiceSuiteBadMethodCallExceptionTest.php</file>
             <file>../tests/testcases/exceptions/InvoiceSuiteFileNotFoundExceptionTest.php</file>
             <file>../tests/testcases/exceptions/InvoiceSuiteFileNotReadableExceptionTest.php</file>
@@ -14,7 +14,7 @@
             <file>../tests/testcases/exceptions/InvoiceSuiteUnknownContentTest.php</file>
             <file>../tests/testcases/exceptions/InvoiceSuiteUnknownProviderParameterExceptionTest.php</file>
         </testsuite>
-        <testsuite name="Concerns">
+        <testsuite name="concerns">
             <file>../tests/testcases/concerns/HandlesDocumentFormatProvidersTest.php</file>
             <file>../tests/testcases/concerns/HandlesCurrentDocumentFormatProviderTest.php</file>
             <file>../tests/testcases/concerns/HandlesObjectFlagsTest.php</file>

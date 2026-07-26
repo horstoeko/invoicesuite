@@ -120,6 +120,118 @@
             "Composer\\Config::disableProcessTimeout",
             "./vendor/bin/phpunit --configuration ./build/phpunit.xml --no-coverage"
         ],
+        "testsreal:utils": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite utils"
+        ],
+        "testsreal:utils:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite utils --no-coverage"
+        ],
+        "testsreal:exceptions": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite exceptions"
+        ],
+        "testsreal:exceptions:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite exceptions --no-coverage"
+        ],
+        "testsreal:concerns": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite concerns"
+        ],
+        "testsreal:concerns:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite concerns --no-coverage"
+        ],
+        "testsreal:codelists": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite codelists"
+        ],
+        "testsreal:codelists:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite codelists --no-coverage"
+        ],
+        "testsreal:dto": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite dto"
+        ],
+        "testsreal:dto:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite dto --no-coverage"
+        ],
+        "testsreal:models": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite models"
+        ],
+        "testsreal:models:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite models --no-coverage"
+        ],
+        "testsreal:providers": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite providers"
+        ],
+        "testsreal:providers:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite providers --no-coverage"
+        ],
+        "testsreal:documentreadbuild": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite documentreadbuild"
+        ],
+        "testsreal:documentreadbuild:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite documentreadbuild --no-coverage"
+        ],
+        "testsreal:documentcase": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite documentcase"
+        ],
+        "testsreal:documentcase:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite documentcase --no-coverage"
+        ],
+        "testsreal:pdf": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite pdf"
+        ],
+        "testsreal:pdf:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite pdf --no-coverage"
+        ],
+        "testsreal:visualizer": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite visualizer"
+        ],
+        "testsreal:visualizer:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite visualizer --no-coverage"
+        ],
+        "testsreal:validator": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite validator"
+        ],
+        "testsreal:validator:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite validator --no-coverage"
+        ],
+        "testsreal:compat": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite compat"
+        ],
+        "testsreal:compat:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite compat --no-coverage"
+        ],
+        "testsreal:console": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite console"
+        ],
+        "testsreal:console:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite console --no-coverage"
+        ],
         "phpstan:run": "@phpstan12:run",
         "phpstan12:run": [
             "Composer\\Config::disableProcessTimeout",
