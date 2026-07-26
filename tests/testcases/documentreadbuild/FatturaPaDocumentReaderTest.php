@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentreadbuild;
 
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePartyDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProductDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePriceNetDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteQuantityDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
-use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use DateTimeInterface;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePartyDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePriceNetDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProductDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteQuantityDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\tests\TestCase;
+use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 
 final class FatturaPaDocumentReaderTest extends TestCase
