@@ -7310,7 +7310,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         }
 
         if (
-            InvoiceSuiteArrayUtils::arrayContains([ModalitaPagamento::MP19, ModalitaPagamento::MP20], $paymentMode ?? null)
+            InvoiceSuiteArrayUtils::arrayContains([ModalitaPagamento::MP19, ModalitaPagamento::MP20], $paymentMode)
             && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newBuyerIban)
         ) {
             $paymentDetail->setIBAN($newBuyerIban);
