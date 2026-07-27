@@ -50,7 +50,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      *
      * @var string
      */
-    private $validatorDownloadUrl = 'https://github.com/itplr-kosit/validator/releases/download/v1.6.0/validator-1.6.0.zip';
+    private $validatorDownloadUrl = 'https://github.com/itplr-kosit/validator/releases/download/v1.6.1/validator-1.6.1-standalone.jar';
 
     /**
      * Kosit Validator scenarios download url
@@ -78,7 +78,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      *
      * @var string
      */
-    private $validatorAppJarFilename = 'validationtool-1.5.0-standalone.jar';
+    private $validatorAppJarFilename = 'validator-1.6.1-standalone.jar';
 
     /**
      * The java application scenario filename
@@ -628,7 +628,11 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
             return true;
         }
 
-        if (!$this->runFileDownload($this->validatorDownloadUrl, $this->resolveAppZipFilename())) {
+        $validatorApplicationFilename = $this->validatorApplicationDownloadIsArchive()
+            ? $this->resolveAppZipFilename()
+            : $this->resolveAppJarFilename();
+
+        if (!$this->runFileDownload($this->validatorDownloadUrl, $validatorApplicationFilename)) {
             $this->addErrorMessageToMessageBag(InvoiceSuiteStringUtils::sprintf('Unable to download from %s containing the JAVA-Application', $this->validatorDownloadUrl));
 
             return false;
@@ -659,10 +663,12 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
         $validatorAppFile = $this->resolveAppZipFilename();
         $validatorScenarioFile = $this->resolveScenatioZipFilename();
 
-        if (!$this->unpackRequiredFile($validatorAppFile)) {
-            $this->addErrorMessageToMessageBag(InvoiceSuiteStringUtils::sprintf('Unable to unpack archive %s containing the JAVA-Application', $validatorAppFile));
+        if ($this->validatorApplicationDownloadIsArchive()) {
+            if (!$this->unpackRequiredFile($validatorAppFile)) {
+                $this->addErrorMessageToMessageBag(InvoiceSuiteStringUtils::sprintf('Unable to unpack archive %s containing the JAVA-Application', $validatorAppFile));
 
-            return false;
+                return false;
+            }
         }
 
         if (!$this->unpackRequiredFile($validatorScenarioFile)) {
@@ -672,6 +678,18 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
         }
 
         return true;
+    }
+
+    /**
+     * Returns whether the configured validator application is provided as a ZIP archive
+     *
+     * @return bool
+     */
+    private function validatorApplicationDownloadIsArchive(): bool
+    {
+        $validatorDownloadPath = parse_url($this->validatorDownloadUrl, PHP_URL_PATH);
+
+        return InvoiceSuiteStringUtils::is($validatorDownloadPath) && 'zip' === InvoiceSuiteStringUtils::lower(InvoiceSuiteFileUtils::getFileExtension($validatorDownloadPath));
     }
 
     /**
