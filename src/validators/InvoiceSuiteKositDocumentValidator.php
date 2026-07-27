@@ -50,14 +50,14 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      *
      * @var string
      */
-    private $validatorDownloadUrl = 'https://github.com/itplr-kosit/validator/releases/download/v1.5.0/validator-1.5.0-distribution.zip';
+    private $validatorDownloadUrl = 'https://github.com/itplr-kosit/validator/releases/download/v1.6.0/validator-1.6.0.zip';
 
     /**
      * Kosit Validator scenarios download url
      *
      * @var string
      */
-    private $validatorScenarioDownloadUrl = 'https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2025-03-21/validator-configuration-xrechnung_3.0.2_2025-03-21.zip';
+    private $validatorScenarioDownloadUrl = 'https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/v2026-01-31/xrechnung-3.0.2-validator-configuration-2026-01-31.zip';
 
     /**
      * The filename of the validation application zip archive
