@@ -50,7 +50,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      *
      * @var string
      */
-    private $validatorDownloadUrl = 'https://github.com/itplr-kosit/validator/releases/download/v1.6.1/validator-1.6.1-standalone.jar';
+    private $validatorDownloadUrl = 'https://github.com/itplr-kosit/validator/releases/download/v1.6.2/validator-1.6.2-standalone.jar';
 
     /**
      * Kosit Validator scenarios download url
