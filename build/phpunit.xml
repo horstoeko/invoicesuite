@@ -92,6 +92,8 @@
             <file>../tests/testcases/documentproviders/Peppol30CreditNoteProviderTest.php</file>
             <file>../tests/testcases/documentproviders/Peppol30SelfBillingInvoiceProviderTest.php</file>
             <file>../tests/testcases/documentproviders/Peppol30SelfBillingCreditNoteProviderTest.php</file>
+            <file>../tests/testcases/documentproviders/PintEuInvoiceProviderTest.php</file>
+            <file>../tests/testcases/documentproviders/PintEuCreditNoteProviderTest.php</file>
             <file>../tests/testcases/documentproviders/XRechnungUBLInvoiceProviderTest.php</file>
             <file>../tests/testcases/documentproviders/XRechnungUBLInvoiceProviderBuilderTest.php</file>
             <file>../tests/testcases/documentproviders/XRechnungUBLInvoiceProviderReaderTest.php</file>

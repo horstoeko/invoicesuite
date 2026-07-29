@@ -9,19 +9,18 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\documents\providers\peppolselfbilling;
+namespace horstoeko\invoicesuite\documents\providers\pinteu;
 
 use horstoeko\invoicesuite\documents\providers\peppol\InvoiceSuitePeppol30CreditNoteProvider;
-use z4kn4fein\SemVer\Version;
 
-class InvoiceSuitePeppol30SelfBillingCreditNoteProvider extends InvoiceSuitePeppol30CreditNoteProvider
+class InvoiceSuitePintEuCreditNoteProvider extends InvoiceSuitePeppol30CreditNoteProvider
 {
     /**
      * {@inheritDoc}
      */
     public function getUniqueId(): string
     {
-        return 'peppol30selfbillingcreditnote';
+        return 'pinteucreditnote';
     }
 
     /**
@@ -29,15 +28,7 @@ class InvoiceSuitePeppol30SelfBillingCreditNoteProvider extends InvoiceSuitePepp
      */
     public function getDescription(): string
     {
-        return 'Peppol BIS Self-Billing 3.0 - March 2026 Hotfix Release (Credit Note)';
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getVersion(): Version
-    {
-        return Version::create(1, 0, 0);
+        return 'Peppol PINT-EU Billing 1.0.1 (Credit Note)';
     }
 
     /**
@@ -46,10 +37,10 @@ class InvoiceSuitePeppol30SelfBillingCreditNoteProvider extends InvoiceSuitePepp
     public function getParameters(): array
     {
         return [
-            'CustomizationId' => 'urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:selfbilling:3.0',
-            'ProfileId' => 'urn:fdc:peppol.eu:2017:poacc:selfbilling:01:1.0',
+            'CustomizationId' => 'urn:peppol:pint:billing-1@eu-1',
+            'ProfileId' => 'urn:peppol:bis:billing',
             'AllowBillingReferenceDocumentType' => false,
-            'AllowedDocumentTypes' => ['261'],
+            'AllowedDocumentTypes' => ['81', '83', '381', '396', '532'],
         ];
     }
 
@@ -58,7 +49,7 @@ class InvoiceSuitePeppol30SelfBillingCreditNoteProvider extends InvoiceSuitePepp
      */
     public function getReaderClassName(): string
     {
-        return InvoiceSuitePeppol30SelfBillingCreditNoteProviderReader::class;
+        return InvoiceSuitePintEuCreditNoteProviderReader::class;
     }
 
     /**
@@ -66,6 +57,6 @@ class InvoiceSuitePeppol30SelfBillingCreditNoteProvider extends InvoiceSuitePepp
      */
     public function getBuilderClassName(): string
     {
-        return InvoiceSuitePeppol30SelfBillingCreditNoteProviderBuilder::class;
+        return InvoiceSuitePintEuCreditNoteProviderBuilder::class;
     }
 }

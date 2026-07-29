@@ -6,44 +6,44 @@ namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
 use horstoeko\invoicesuite\documents\providers\peppol\InvoiceSuitePeppol30CreditNoteSerializerHandler;
 use horstoeko\invoicesuite\documents\providers\peppol\models\main\CreditNote;
-use horstoeko\invoicesuite\documents\providers\peppolselfbilling\InvoiceSuitePeppol30SelfBillingCreditNoteProvider;
-use horstoeko\invoicesuite\documents\providers\peppolselfbilling\InvoiceSuitePeppol30SelfBillingCreditNoteProviderBuilder;
-use horstoeko\invoicesuite\documents\providers\peppolselfbilling\InvoiceSuitePeppol30SelfBillingCreditNoteProviderReader;
+use horstoeko\invoicesuite\documents\providers\pinteu\InvoiceSuitePintEuCreditNoteProvider;
+use horstoeko\invoicesuite\documents\providers\pinteu\InvoiceSuitePintEuCreditNoteProviderBuilder;
+use horstoeko\invoicesuite\documents\providers\pinteu\InvoiceSuitePintEuCreditNoteProviderReader;
 use horstoeko\invoicesuite\tests\TestCase;
 
-final class Peppol30SelfBillingCreditNoteProviderTest extends TestCase
+final class PintEuCreditNoteProviderTest extends TestCase
 {
     public function testGetUniqueId(): void
     {
-        $provider = new InvoiceSuitePeppol30SelfBillingCreditNoteProvider();
+        $provider = new InvoiceSuitePintEuCreditNoteProvider();
 
-        $this->assertSame('peppol30selfbillingcreditnote', $provider->getUniqueId());
+        $this->assertSame('pinteucreditnote', $provider->getUniqueId());
     }
 
     public function testGetDescription(): void
     {
-        $provider = new InvoiceSuitePeppol30SelfBillingCreditNoteProvider();
+        $provider = new InvoiceSuitePintEuCreditNoteProvider();
 
         $this->assertNotEmpty($provider->getDescription());
     }
 
     public function testGetParameters(): void
     {
-        $provider = new InvoiceSuitePeppol30SelfBillingCreditNoteProvider();
+        $provider = new InvoiceSuitePintEuCreditNoteProvider();
 
         $this->assertArrayHasKey('CustomizationId', $provider->getParameters());
         $this->assertArrayHasKey('ProfileId', $provider->getParameters());
         $this->assertArrayHasKey('AllowBillingReferenceDocumentType', $provider->getParameters());
         $this->assertArrayHasKey('AllowedDocumentTypes', $provider->getParameters());
-        $this->assertSame('urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:selfbilling:3.0', $provider->getParameters()['CustomizationId']);
-        $this->assertSame('urn:fdc:peppol.eu:2017:poacc:selfbilling:01:1.0', $provider->getParameters()['ProfileId']);
+        $this->assertSame('urn:peppol:pint:billing-1@eu-1', $provider->getParameters()['CustomizationId']);
+        $this->assertSame('urn:peppol:bis:billing', $provider->getParameters()['ProfileId']);
         $this->assertFalse($provider->getParameters()['AllowBillingReferenceDocumentType']);
-        $this->assertSame(['261'], $provider->getParameters()['AllowedDocumentTypes']);
+        $this->assertSame(['81', '83', '381', '396', '532'], $provider->getParameters()['AllowedDocumentTypes']);
     }
 
     public function testPdfParameters(): void
     {
-        $provider = new InvoiceSuitePeppol30SelfBillingCreditNoteProvider();
+        $provider = new InvoiceSuitePintEuCreditNoteProvider();
 
         $this->assertFalse($provider->getIsPdfSupportAvailable());
         $this->assertCount(0, $provider->getPdfAllowedAttachmentFilenames());
@@ -52,14 +52,14 @@ final class Peppol30SelfBillingCreditNoteProviderTest extends TestCase
 
     public function testGetSerializerMetadataDirectories(): void
     {
-        $provider = new InvoiceSuitePeppol30SelfBillingCreditNoteProvider();
+        $provider = new InvoiceSuitePintEuCreditNoteProvider();
 
         $this->assertEmpty($provider->getSerializerMetadataDirectories());
     }
 
     public function testGetSerializerHandlers(): void
     {
-        $provider = new InvoiceSuitePeppol30SelfBillingCreditNoteProvider();
+        $provider = new InvoiceSuitePintEuCreditNoteProvider();
 
         $this->assertCount(1, $provider->getSerializerHandlers());
         $this->assertContains(InvoiceSuitePeppol30CreditNoteSerializerHandler::class, $provider->getSerializerHandlers());
@@ -67,21 +67,21 @@ final class Peppol30SelfBillingCreditNoteProviderTest extends TestCase
 
     public function testGetSerializerListeners(): void
     {
-        $provider = new InvoiceSuitePeppol30SelfBillingCreditNoteProvider();
+        $provider = new InvoiceSuitePintEuCreditNoteProvider();
 
         $this->assertEmpty($provider->getSerializerListeners());
     }
 
     public function testGetSerializerSubscribers(): void
     {
-        $provider = new InvoiceSuitePeppol30SelfBillingCreditNoteProvider();
+        $provider = new InvoiceSuitePintEuCreditNoteProvider();
 
         $this->assertEmpty($provider->getSerializerSubscribers());
     }
 
     public function testGetSerializerGroups(): void
     {
-        $provider = new InvoiceSuitePeppol30SelfBillingCreditNoteProvider();
+        $provider = new InvoiceSuitePintEuCreditNoteProvider();
 
         $this->assertCount(1, $provider->getSerializerGroups());
         $this->assertContains('ubl', $provider->getSerializerGroups());
@@ -89,20 +89,21 @@ final class Peppol30SelfBillingCreditNoteProviderTest extends TestCase
 
     public function testIsSatisfiableBy(): void
     {
-        $provider = new InvoiceSuitePeppol30SelfBillingCreditNoteProvider();
+        $provider = new InvoiceSuitePintEuCreditNoteProvider();
 
         $xml = <<<'XML'
         <?xml version="1.0" encoding="UTF-8"?>
         <CreditNote xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
-            <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:selfbilling:3.0</cbc:CustomizationID>
-            <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:selfbilling:01:1.0</cbc:ProfileID>
-            <cbc:CreditNoteTypeCode>261</cbc:CreditNoteTypeCode>
+            <cbc:CustomizationID>urn:peppol:pint:billing-1@eu-1</cbc:CustomizationID>
+            <cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID>
+            <cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
         </CreditNote>
         XML;
 
         $this->assertTrue($provider->getIsSatisfiableBySerializedContent($xml));
-        $this->assertFalse($provider->getIsSatisfiableBySerializedContent(str_replace('>261<', '>381<', $xml)));
-        $this->assertFalse($provider->getIsSatisfiableBySerializedContent(str_replace('<cbc:CreditNoteTypeCode>261</cbc:CreditNoteTypeCode>', '', $xml)));
+        $this->assertTrue($provider->getIsSatisfiableBySerializedContent(str_replace('>381<', '>532<', $xml)));
+        $this->assertFalse($provider->getIsSatisfiableBySerializedContent(str_replace('>381<', '>261<', $xml)));
+        $this->assertFalse($provider->getIsSatisfiableBySerializedContent(str_replace('<cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>', '', $xml)));
 
         $xml = <<<'XML'
         Dummy
@@ -113,22 +114,22 @@ final class Peppol30SelfBillingCreditNoteProviderTest extends TestCase
 
     public function testGetRootClassName(): void
     {
-        $provider = new InvoiceSuitePeppol30SelfBillingCreditNoteProvider();
+        $provider = new InvoiceSuitePintEuCreditNoteProvider();
 
         $this->assertSame(CreditNote::class, $provider->getRootClassName());
     }
 
     public function testGetReaderClassName(): void
     {
-        $provider = new InvoiceSuitePeppol30SelfBillingCreditNoteProvider();
+        $provider = new InvoiceSuitePintEuCreditNoteProvider();
 
-        $this->assertSame(InvoiceSuitePeppol30SelfBillingCreditNoteProviderReader::class, $provider->getReaderClassName());
+        $this->assertSame(InvoiceSuitePintEuCreditNoteProviderReader::class, $provider->getReaderClassName());
     }
 
     public function testGetBuilderClassName(): void
     {
-        $provider = new InvoiceSuitePeppol30SelfBillingCreditNoteProvider();
+        $provider = new InvoiceSuitePintEuCreditNoteProvider();
 
-        $this->assertSame(InvoiceSuitePeppol30SelfBillingCreditNoteProviderBuilder::class, $provider->getBuilderClassName());
+        $this->assertSame(InvoiceSuitePintEuCreditNoteProviderBuilder::class, $provider->getBuilderClassName());
     }
 }

@@ -110,6 +110,20 @@ final class InvoiceSuiteBuiltInProviders
     public const PEPPOL_30_SELF_BILLING_CREDIT_NOTE = 'peppol30selfbillingcreditnote';
 
     /**
+     * Provider unique ID for Peppol PINT-EU invoice documents.
+     *
+     * @var string
+     */
+    public const PINT_EU_INVOICE = 'pinteuinvoice';
+
+    /**
+     * Provider unique ID for Peppol PINT-EU credit note documents.
+     *
+     * @var string
+     */
+    public const PINT_EU_CREDIT_NOTE = 'pinteucreditnote';
+
+    /**
      * Provider unique ID for FatturaPA documents.
      *
      * @var string
@@ -141,6 +155,8 @@ final class InvoiceSuiteBuiltInProviders
             self::PEPPOL_30_CREDIT_NOTE,
             self::PEPPOL_30_SELF_BILLING_INVOICE,
             self::PEPPOL_30_SELF_BILLING_CREDIT_NOTE,
+            self::PINT_EU_INVOICE,
+            self::PINT_EU_CREDIT_NOTE,
             self::FATTURA_PA,
         ];
     }

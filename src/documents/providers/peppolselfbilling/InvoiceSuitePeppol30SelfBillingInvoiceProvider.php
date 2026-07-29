@@ -52,4 +52,20 @@ class InvoiceSuitePeppol30SelfBillingInvoiceProvider extends InvoiceSuitePeppol3
             'AllowedDocumentTypes' => ['389', '527'],
         ];
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getReaderClassName(): string
+    {
+        return InvoiceSuitePeppol30SelfBillingInvoiceProviderReader::class;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBuilderClassName(): string
+    {
+        return InvoiceSuitePeppol30SelfBillingInvoiceProviderBuilder::class;
+    }
 }
