@@ -1,3 +1,17 @@
+## v0.0.18
+
+``Previous version v0.0.17``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :bug:  | [37cde905](https://github.com/horstoeko/invoicesuite/commit/37cde905) | 2026-07-29 05:00:10 CEST | HorstOeko | [FIX]  Double TaxTotalAmount | [#19](https://github.com/horstoeko/invoicesuite/issues/19)
+| :bug:  | [8704e007](https://github.com/horstoeko/invoicesuite/commit/8704e007) | 2026-07-28 05:21:19 CEST | HorstOeko | [FIX] Changed Validator download URL (Kosit-Validator) | 
+| :new:  | [59514691](https://github.com/horstoeko/invoicesuite/commit/59514691) | 2026-07-27 18:07:54 CEST | HorstOeko | [ENH] Updated URLs in InvoiceSuiteKositDocumentValidator, Decide Download Application ZIP or JAR | 
+| :new:  | [5ca5701e](https://github.com/horstoeko/invoicesuite/commit/5ca5701e) | 2026-07-27 17:37:42 CEST | HorstOeko | [ENH] Updated URLs in InvoiceSuiteKositDocumentValidator | 
+| :new:  | [59233439](https://github.com/horstoeko/invoicesuite/commit/59233439) | 2026-07-26 10:39:47 CEST | HorstOeko | [ENH] Added QuickDescriptor Test for ZUGFeRD (compat) | 
+
+:exclamation: _There are 6 internal commit(s)_
+
 ## v0.0.17
 
 ``Previous version v0.0.16``
