@@ -96,6 +96,20 @@ final class InvoiceSuiteBuiltInProviders
     public const PEPPOL_30_CREDIT_NOTE = 'peppol30creditnote';
 
     /**
+     * Provider unique ID for Peppol BIS Self-Billing 3.0 invoice documents.
+     *
+     * @var string
+     */
+    public const PEPPOL_30_SELF_BILLING_INVOICE = 'peppol30selfbillinginvoice';
+
+    /**
+     * Provider unique ID for Peppol BIS Self-Billing 3.0 credit note documents.
+     *
+     * @var string
+     */
+    public const PEPPOL_30_SELF_BILLING_CREDIT_NOTE = 'peppol30selfbillingcreditnote';
+
+    /**
      * Provider unique ID for FatturaPA documents.
      *
      * @var string
@@ -125,6 +139,8 @@ final class InvoiceSuiteBuiltInProviders
             self::XRECHNUNG_UBL_CREDIT_NOTE,
             self::PEPPOL_30_INVOICE,
             self::PEPPOL_30_CREDIT_NOTE,
+            self::PEPPOL_30_SELF_BILLING_INVOICE,
+            self::PEPPOL_30_SELF_BILLING_CREDIT_NOTE,
             self::FATTURA_PA,
         ];
     }

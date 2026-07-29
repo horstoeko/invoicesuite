@@ -785,6 +785,12 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDocumentType)');
         }
 
+        $allowedDocumentTypes = InvoiceSuiteArrayUtils::ensure($this->getCurrentDocumentFormatProviderParameterValue('AllowedDocumentTypes', []));
+
+        if (!InvoiceSuiteArrayUtils::empty($allowedDocumentTypes) && !InvoiceSuiteArrayUtils::arrayContains($allowedDocumentTypes, $newDocumentType)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'invalidDocumentType', '!InvoiceSuiteArrayUtils::arrayContains($allowedDocumentTypes, $newDocumentType)');
+        }
+
         $this->getUblRootObject()->getInvoiceTypeCodeWithCreate()->setValue($newDocumentType);
 
         $this->traceMethodExit(__METHOD__);

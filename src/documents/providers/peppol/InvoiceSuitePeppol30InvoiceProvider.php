@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol;
 
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\documents\providers\peppol\models\main\Invoice;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
@@ -147,7 +148,28 @@ class InvoiceSuitePeppol30InvoiceProvider extends InvoiceSuiteAbstractDocumentFo
                 return false;
             }
 
-            return 1 === $contentEntries->length;
+            if (1 !== $contentEntries->length) {
+                return false;
+            }
+
+            $allowedDocumentTypes = InvoiceSuiteArrayUtils::ensure(
+                $this->getFormatProviderParameterValue('AllowedDocumentTypes', [])
+            );
+
+            if (InvoiceSuiteArrayUtils::empty($allowedDocumentTypes)) {
+                return true;
+            }
+
+            $contentEntries = $contentDomXPath->query('//inv:Invoice/cbc:InvoiceTypeCode');
+
+            if (false === $contentEntries || 1 !== $contentEntries->length) {
+                return false;
+            }
+
+            return InvoiceSuiteArrayUtils::arrayContains(
+                $allowedDocumentTypes,
+                (string) $contentEntries->item(0)?->nodeValue
+            );
         } finally {
             libxml_clear_errors();
             libxml_use_internal_errors($prevUseInternalErrors);
