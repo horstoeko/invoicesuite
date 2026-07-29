@@ -155,8 +155,8 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
 
         // Document-Level Invoice Reference
 
-        $newDocumentDTO->firstInvoiceReference(
-            fn (InvoiceSuiteReferenceDocumentExtDTO $item) => $this->setDocumentInvoiceReference(
+        $newDocumentDTO->forEachInvoiceReference(
+            fn (InvoiceSuiteReferenceDocumentExtDTO $item) => $this->addDocumentInvoiceReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate(),
                 $item->getTypeCode()
@@ -1474,13 +1474,7 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
             return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceNumber)');
         }
 
-        $invoiceReference = $this
-            ->getUblRootObject()
-            ->addToBillingReferenceWithCreate()
-            ->getInvoiceDocumentReferenceWithCreate();
-
-        $invoiceReference->getIDWithCreate()->setValue($newReferenceNumber);
-        $invoiceReference->setIssueDate($newReferenceDate);
+        $this->addDocumentInvoiceReference($newReferenceNumber, $newReferenceDate, $newTypeCode);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -1506,11 +1500,19 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
             return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceNumber)');
         }
 
-        $this->setDocumentInvoiceReference(
-            $newReferenceNumber,
-            $newReferenceDate,
-            $newTypeCode
-        );
+        $invoiceReference = $this
+            ->getUblRootObject()
+            ->addToBillingReferenceWithCreate()
+            ->getInvoiceDocumentReferenceWithCreate();
+
+        $invoiceReference->getIDWithCreate()->setValue($newReferenceNumber);
+        $invoiceReference->setIssueDate($newReferenceDate);
+
+        if (true === $this->getCurrentDocumentFormatProviderParameterValueBool('AllowBillingReferenceDocumentType', false)) {
+            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTypeCode)) {
+                $invoiceReference->getDocumentTypeCodeWithCreate()->setValue($newTypeCode);
+            }
+        }
 
         $this->traceMethodExit(__METHOD__);
 

@@ -3847,7 +3847,7 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
 
         $newReferenceNumber = $documentInvoiceReference->getInvoiceDocumentReference()?->getID()?->getValue() ?? '';
         $newReferenceDate = $documentInvoiceReference->getInvoiceDocumentReference()?->getIssueDate();
-        $newTypeCode = '';
+        $newTypeCode = $documentInvoiceReference->getInvoiceDocumentReference()?->getDocumentTypeCode()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 
