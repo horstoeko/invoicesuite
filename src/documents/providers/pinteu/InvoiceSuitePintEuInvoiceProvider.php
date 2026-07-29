@@ -73,6 +73,16 @@ class InvoiceSuitePintEuInvoiceProvider extends InvoiceSuitePeppol30InvoiceProvi
     /**
      * {@inheritDoc}
      */
+    public function getSerializerHandlers(): array
+    {
+        return [
+            InvoiceSuitePintEuInvoiceSerializerHandler::class,
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getReaderClassName(): string
     {
         return InvoiceSuitePintEuInvoiceProviderReader::class;

@@ -56,6 +56,16 @@ class InvoiceSuitePeppol30SelfBillingCreditNoteProvider extends InvoiceSuitePepp
     /**
      * {@inheritDoc}
      */
+    public function getSerializerHandlers(): array
+    {
+        return [
+            InvoiceSuitePeppol30SelfBillingCreditNoteSerializerHandler::class,
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getReaderClassName(): string
     {
         return InvoiceSuitePeppol30SelfBillingCreditNoteProviderReader::class;

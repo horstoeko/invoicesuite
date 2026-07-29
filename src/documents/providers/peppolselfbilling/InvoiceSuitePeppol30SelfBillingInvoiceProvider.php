@@ -56,6 +56,16 @@ class InvoiceSuitePeppol30SelfBillingInvoiceProvider extends InvoiceSuitePeppol3
     /**
      * {@inheritDoc}
      */
+    public function getSerializerHandlers(): array
+    {
+        return [
+            InvoiceSuitePeppol30SelfBillingInvoiceSerializerHandler::class,
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getReaderClassName(): string
     {
         return InvoiceSuitePeppol30SelfBillingInvoiceProviderReader::class;

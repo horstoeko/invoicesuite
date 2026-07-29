@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
-use horstoeko\invoicesuite\documents\providers\peppol\InvoiceSuitePeppol30InvoiceSerializerHandler;
 use horstoeko\invoicesuite\documents\providers\peppol\models\main\Invoice;
 use horstoeko\invoicesuite\documents\providers\peppolselfbilling\InvoiceSuitePeppol30SelfBillingInvoiceProvider;
 use horstoeko\invoicesuite\documents\providers\peppolselfbilling\InvoiceSuitePeppol30SelfBillingInvoiceProviderBuilder;
 use horstoeko\invoicesuite\documents\providers\peppolselfbilling\InvoiceSuitePeppol30SelfBillingInvoiceProviderReader;
+use horstoeko\invoicesuite\documents\providers\peppolselfbilling\InvoiceSuitePeppol30SelfBillingInvoiceSerializerHandler;
 use horstoeko\invoicesuite\tests\TestCase;
 
 final class Peppol30SelfBillingInvoiceProviderTest extends TestCase
@@ -62,7 +62,7 @@ final class Peppol30SelfBillingInvoiceProviderTest extends TestCase
         $provider = new InvoiceSuitePeppol30SelfBillingInvoiceProvider();
 
         $this->assertCount(1, $provider->getSerializerHandlers());
-        $this->assertContains(InvoiceSuitePeppol30InvoiceSerializerHandler::class, $provider->getSerializerHandlers());
+        $this->assertContains(InvoiceSuitePeppol30SelfBillingInvoiceSerializerHandler::class, $provider->getSerializerHandlers());
     }
 
     public function testGetSerializerListeners(): void

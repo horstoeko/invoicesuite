@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
-use horstoeko\invoicesuite\documents\providers\peppol\InvoiceSuitePeppol30CreditNoteSerializerHandler;
 use horstoeko\invoicesuite\documents\providers\peppol\models\main\CreditNote;
 use horstoeko\invoicesuite\documents\providers\pinteu\InvoiceSuitePintEuCreditNoteProvider;
 use horstoeko\invoicesuite\documents\providers\pinteu\InvoiceSuitePintEuCreditNoteProviderBuilder;
 use horstoeko\invoicesuite\documents\providers\pinteu\InvoiceSuitePintEuCreditNoteProviderReader;
+use horstoeko\invoicesuite\documents\providers\pinteu\InvoiceSuitePintEuCreditNoteSerializerHandler;
 use horstoeko\invoicesuite\tests\TestCase;
 
 final class PintEuCreditNoteProviderTest extends TestCase
@@ -62,7 +62,7 @@ final class PintEuCreditNoteProviderTest extends TestCase
         $provider = new InvoiceSuitePintEuCreditNoteProvider();
 
         $this->assertCount(1, $provider->getSerializerHandlers());
-        $this->assertContains(InvoiceSuitePeppol30CreditNoteSerializerHandler::class, $provider->getSerializerHandlers());
+        $this->assertContains(InvoiceSuitePintEuCreditNoteSerializerHandler::class, $provider->getSerializerHandlers());
     }
 
     public function testGetSerializerListeners(): void

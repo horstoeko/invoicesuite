@@ -47,6 +47,16 @@ class InvoiceSuitePintEuCreditNoteProvider extends InvoiceSuitePeppol30CreditNot
     /**
      * {@inheritDoc}
      */
+    public function getSerializerHandlers(): array
+    {
+        return [
+            InvoiceSuitePintEuCreditNoteSerializerHandler::class,
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getReaderClassName(): string
     {
         return InvoiceSuitePintEuCreditNoteProviderReader::class;
