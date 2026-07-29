@@ -4199,7 +4199,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
             $allowanceTotalAmount,
             $taxBasisTotalAmount ?? 0.0,
             $taxTotalAmount ?? 0.0,
-            0.0, // TODO Foreign VAT amout
+            null, // TODO Foreign VAT amout
             $grandTotalAmount,
             $duePayableAmount,
             $totalPrepaidAmount,
