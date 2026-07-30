@@ -33,11 +33,11 @@ final class Peppol30SelfBillingCreditNoteProviderTest extends TestCase
 
         $this->assertArrayHasKey('CustomizationId', $provider->getParameters());
         $this->assertArrayHasKey('ProfileId', $provider->getParameters());
-        $this->assertArrayHasKey('AllowBillingReferenceDocumentType', $provider->getParameters());
+        $this->assertArrayHasKey('AllowInvoiceDocumentReferenceDocumentType', $provider->getParameters());
         $this->assertArrayHasKey('AllowedDocumentTypes', $provider->getParameters());
         $this->assertSame('urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:selfbilling:3.0', $provider->getParameters()['CustomizationId']);
         $this->assertSame('urn:fdc:peppol.eu:2017:poacc:selfbilling:01:1.0', $provider->getParameters()['ProfileId']);
-        $this->assertFalse($provider->getParameters()['AllowBillingReferenceDocumentType']);
+        $this->assertFalse($provider->getParameters()['AllowInvoiceDocumentReferenceDocumentType']);
         $this->assertSame(['261'], $provider->getParameters()['AllowedDocumentTypes']);
     }
 

@@ -48,7 +48,7 @@ class InvoiceSuitePeppol30SelfBillingCreditNoteProvider extends InvoiceSuitePepp
         return [
             'CustomizationId' => 'urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:selfbilling:3.0',
             'ProfileId' => 'urn:fdc:peppol.eu:2017:poacc:selfbilling:01:1.0',
-            'AllowBillingReferenceDocumentType' => false,
+            'AllowInvoiceDocumentReferenceDocumentType' => false,
             'AllowedDocumentTypes' => ['261'],
         ];
     }

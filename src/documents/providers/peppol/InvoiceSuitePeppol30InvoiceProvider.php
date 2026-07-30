@@ -62,7 +62,7 @@ class InvoiceSuitePeppol30InvoiceProvider extends InvoiceSuiteAbstractDocumentFo
         return [
             'CustomizationId' => 'urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0',
             'ProfileId' => 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0',
-            'AllowBillingReferenceDocumentType' => true,
+            'AllowInvoiceDocumentReferenceDocumentType' => true,
         ];
     }
 

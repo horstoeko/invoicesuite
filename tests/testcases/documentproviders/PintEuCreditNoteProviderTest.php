@@ -33,11 +33,11 @@ final class PintEuCreditNoteProviderTest extends TestCase
 
         $this->assertArrayHasKey('CustomizationId', $provider->getParameters());
         $this->assertArrayHasKey('ProfileId', $provider->getParameters());
-        $this->assertArrayHasKey('AllowBillingReferenceDocumentType', $provider->getParameters());
+        $this->assertArrayHasKey('AllowInvoiceDocumentReferenceDocumentType', $provider->getParameters());
         $this->assertArrayHasKey('AllowedDocumentTypes', $provider->getParameters());
         $this->assertSame('urn:peppol:pint:billing-1@eu-1', $provider->getParameters()['CustomizationId']);
         $this->assertSame('urn:peppol:bis:billing', $provider->getParameters()['ProfileId']);
-        $this->assertFalse($provider->getParameters()['AllowBillingReferenceDocumentType']);
+        $this->assertFalse($provider->getParameters()['AllowInvoiceDocumentReferenceDocumentType']);
         $this->assertSame(['81', '83', '381', '396', '532'], $provider->getParameters()['AllowedDocumentTypes']);
     }
 

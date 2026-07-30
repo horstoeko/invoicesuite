@@ -1518,7 +1518,7 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         $invoiceReference->getIDWithCreate()->setValue($newReferenceNumber);
         $invoiceReference->setIssueDate($newReferenceDate);
 
-        if (true === $this->getCurrentDocumentFormatProviderParameterValueBool('AllowBillingReferenceDocumentType', false)) {
+        if (true === $this->getCurrentDocumentFormatProviderParameterValueBool('AllowInvoiceDocumentReferenceDocumentType', false)) {
             if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTypeCode)) {
                 $invoiceReference->getDocumentTypeCodeWithCreate()->setValue($newTypeCode);
             }
