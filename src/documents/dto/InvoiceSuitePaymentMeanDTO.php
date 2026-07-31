@@ -61,13 +61,6 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
     protected ?string $buyerIban = null;
 
     /**
-     * The name of the account to be debited
-     *
-     * @var null|string
-     */
-    protected ?string $buyerAccountName = null;
-
-    /**
      * The payment account identifier
      *
      * @var null|string
@@ -110,6 +103,13 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
     protected ?string $mandate = null;
 
     /**
+     * The name of the account to be debited
+     *
+     * @var null|string
+     */
+    protected ?string $buyerAccountName = null;
+
+    /**
      * Constructor
      *
      * @param null|string $typeCode            The expected or used means of payment expressed as a code
@@ -144,13 +144,13 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
         $this->setFinancialCardId($financialCardId);
         $this->setFinancialCardHolder($financialCardHolder);
         $this->setBuyerIban($buyerIban);
-        $this->setBuyerAccountName($buyerAccountName);
         $this->setPayeeIban($payeeIban);
         $this->setPayeeAccountName($payeeAccountName);
         $this->setPayeeProprietaryId($payeeProprietaryId);
         $this->setPayeeBic($payeeBic);
         $this->setPaymentReference($paymentReference);
         $this->setMandate($mandate);
+        $this->setBuyerAccountName($buyerAccountName);
     }
 
     /**
@@ -279,30 +279,6 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
         ?string $buyerIban
     ): static {
         $this->buyerIban = InvoiceSuiteStringUtils::asNullWhenEmpty($buyerIban);
-
-        return $this;
-    }
-
-    /**
-     * Returns the name of the account to be debited
-     *
-     * @return null|string
-     */
-    public function getBuyerAccountName(): ?string
-    {
-        return $this->buyerAccountName;
-    }
-
-    /**
-     * Sets the name of the account to be debited
-     *
-     * @param  null|string $buyerAccountName The name of the account to be debited
-     * @return static
-     */
-    public function setBuyerAccountName(
-        ?string $buyerAccountName
-    ): static {
-        $this->buyerAccountName = InvoiceSuiteStringUtils::asNullWhenEmpty($buyerAccountName);
 
         return $this;
     }
@@ -452,6 +428,30 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
     }
 
     /**
+     * Returns the name of the account to be debited
+     *
+     * @return null|string
+     */
+    public function getBuyerAccountName(): ?string
+    {
+        return $this->buyerAccountName;
+    }
+
+    /**
+     * Sets the name of the account to be debited
+     *
+     * @param  null|string $buyerAccountName The name of the account to be debited
+     * @return static
+     */
+    public function setBuyerAccountName(
+        ?string $buyerAccountName
+    ): static {
+        $this->buyerAccountName = InvoiceSuiteStringUtils::asNullWhenEmpty($buyerAccountName);
+
+        return $this;
+    }
+
+    /**
      * Create a payment mean for SEPA credit transfer, German: Überweisung
      *
      * @param  null|string $payeeIban          Payment account identifier
@@ -522,7 +522,7 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
             buyerIban: $buyerIban,
             mandate: $mandate,
-            buyerAccountName: $buyerAccountName,
+            buyerAccountName: $buyerAccountName
         );
     }
 
@@ -543,7 +543,7 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
             buyerIban: $buyerIban,
             mandate: $mandate,
-            buyerAccountName: $buyerAccountName,
+            buyerAccountName: $buyerAccountName
         );
     }
 
