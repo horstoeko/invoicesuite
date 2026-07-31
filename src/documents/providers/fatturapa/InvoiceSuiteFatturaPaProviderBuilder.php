@@ -996,7 +996,8 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
                 $item->getPayeeProprietaryId(),
                 $item->getPayeeBic(),
                 $item->getPaymentReference(),
-                $item->getMandate()
+                $item->getMandate(),
+                $item->getBuyerAccountName()
             )
         );
 
@@ -7214,6 +7215,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
      * @param  null|string $newPayeeBic            Identifier of the payment service provider
      * @param  null|string $newPaymentReference    Text value used to link the payment to the invoice issued by the seller
      * @param  null|string $newMandate             Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName    Name of the account to be debited
      * @return static
      */
     public function setDocumentPaymentMean(
@@ -7227,7 +7229,8 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null,
-        ?string $newMandate = null
+        ?string $newMandate = null,
+        ?string $newBuyerAccountName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -7247,7 +7250,8 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             $newPayeeProprietaryId,
             $newPayeeBic,
             $newPaymentReference,
-            $newMandate
+            $newMandate,
+            $newBuyerAccountName
         );
 
         $this->traceMethodExit(__METHOD__);
@@ -7269,6 +7273,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
      * @param  null|string $newPayeeBic            Identifier of the payment service provider
      * @param  null|string $newPaymentReference    Text value used to link the payment to the invoice issued by the seller
      * @param  null|string $newMandate             Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName    Name of the account to be debited
      * @return static
      */
     public function addDocumentPaymentMean(
@@ -7282,7 +7287,8 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null,
-        ?string $newMandate = null
+        ?string $newMandate = null,
+        ?string $newBuyerAccountName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -7482,13 +7488,15 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     /**
      * Set Payment mean (as SEPA direct debit, German: Lastschrift)
      *
-     * @param  null|string $newBuyerIban Identifier of the account to be debited
-     * @param  null|string $newMandate   Identification of the mandate reference
+     * @param  null|string $newBuyerIban        Identifier of the account to be debited
+     * @param  null|string $newMandate          Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName Name of the account to be debited
      * @return static
      */
     public function setDocumentPaymentMeanAsDirectDebitSepa(
         ?string $newBuyerIban = null,
-        ?string $newMandate = null
+        ?string $newMandate = null,
+        ?string $newBuyerAccountName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -7503,7 +7511,8 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             null,
             null,
             null,
-            $newMandate
+            $newMandate,
+            $newBuyerAccountName
         );
 
         $this->traceMethodExit(__METHOD__);
@@ -7514,13 +7523,15 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     /**
      * Add Payment mean (as SEPA direct debit, German: Lastschrift)
      *
-     * @param  null|string $newBuyerIban Identifier of the account to be debited
-     * @param  null|string $newMandate   Identification of the mandate reference
+     * @param  null|string $newBuyerIban        Identifier of the account to be debited
+     * @param  null|string $newMandate          Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName Name of the account to be debited
      * @return static
      */
     public function addDocumentPaymentMeanAsDirectDebitSepa(
         ?string $newBuyerIban = null,
-        ?string $newMandate = null
+        ?string $newMandate = null,
+        ?string $newBuyerAccountName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -7535,7 +7546,8 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             null,
             null,
             null,
-            $newMandate
+            $newMandate,
+            $newBuyerAccountName
         );
 
         $this->traceMethodExit(__METHOD__);
@@ -7546,13 +7558,15 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     /**
      * Set Payment mean (as non-SEPA direct debit, German: Lastschrift)
      *
-     * @param  null|string $newBuyerIban Identifier of the account to be debited
-     * @param  null|string $newMandate   Identification of the mandate reference
+     * @param  null|string $newBuyerIban        Identifier of the account to be debited
+     * @param  null|string $newMandate          Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName Name of the account to be debited
      * @return static
      */
     public function setDocumentPaymentMeanAsDirectDebitNoSepa(
         ?string $newBuyerIban = null,
-        ?string $newMandate = null
+        ?string $newMandate = null,
+        ?string $newBuyerAccountName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -7567,7 +7581,8 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             null,
             null,
             null,
-            $newMandate
+            $newMandate,
+            $newBuyerAccountName
         );
 
         $this->traceMethodExit(__METHOD__);
@@ -7578,13 +7593,15 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     /**
      * Add Payment mean (as non SEPA direct debit, German: Lastschrift)
      *
-     * @param  null|string $newBuyerIban Identifier of the account to be debited
-     * @param  null|string $newMandate   Identification of the mandate reference
+     * @param  null|string $newBuyerIban        Identifier of the account to be debited
+     * @param  null|string $newMandate          Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName Name of the account to be debited
      * @return static
      */
     public function addDocumentPaymentMeanAsDirectDebitNoSepa(
         ?string $newBuyerIban = null,
-        ?string $newMandate = null
+        ?string $newMandate = null,
+        ?string $newBuyerAccountName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -7599,7 +7616,8 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             null,
             null,
             null,
-            $newMandate
+            $newMandate,
+            $newBuyerAccountName
         );
 
         $this->traceMethodExit(__METHOD__);

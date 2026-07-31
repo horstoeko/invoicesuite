@@ -2032,7 +2032,8 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
                 $newDocumentPaymentMeanPayeeProprietaryId,
                 $newDocumentPaymentMeanPayeeBic,
                 $newDocumentPaymentMeanPaymentReference,
-                $newDocumentPaymentMeanMandate
+                $newDocumentPaymentMeanMandate,
+                $newDocumentPaymentMeanBuyerAccountName
             );
 
             $newDocumentDTO->addPaymentMean(
@@ -2047,7 +2048,8 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
                     $newDocumentPaymentMeanPayeeProprietaryId,
                     $newDocumentPaymentMeanPayeeBic,
                     $newDocumentPaymentMeanPaymentReference,
-                    $newDocumentPaymentMeanMandate
+                    $newDocumentPaymentMeanMandate,
+                    buyerAccountName: $newDocumentPaymentMeanBuyerAccountName
                 )
             );
         }
@@ -9523,6 +9525,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
      * @param  null|string $newPayeeBic            Identifier of the payment service provider
      * @param  null|string $newPaymentReference    Text value used to link the payment to the invoice issued by the seller
      * @param  null|string $newMandate             Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName    Name of the account to be debited
      * @return static
      *
      * @phpstan-param-out string $newTypeCode
@@ -9536,6 +9539,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
      * @phpstan-param-out string $newPayeeBic
      * @phpstan-param-out string $newPaymentReference
      * @phpstan-param-out string $newMandate
+     * @phpstan-param-out string $newBuyerAccountName
      */
     public function getDocumentPaymentMean(
         ?string &$newTypeCode,
@@ -9548,7 +9552,8 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         ?string &$newPayeeProprietaryId,
         ?string &$newPayeeBic,
         ?string &$newPaymentReference,
-        ?string &$newMandate
+        ?string &$newMandate,
+        ?string &$newBuyerAccountName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -9577,6 +9582,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             $newPayeeBic = '';
             $newPaymentReference = '';
             $newMandate = '';
+            $newBuyerAccountName = '';
 
             $this->traceMethodExit(__METHOD__);
 
@@ -9599,6 +9605,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         $newPayeeBic = $paymentDetailData->getBIC() ?? '';
         $newPaymentReference = $paymentDetailData->getCodicePagamento() ?? '';
         $newMandate = '';
+        $newBuyerAccountName = '';
 
         $this->traceMethodExit(__METHOD__);
 

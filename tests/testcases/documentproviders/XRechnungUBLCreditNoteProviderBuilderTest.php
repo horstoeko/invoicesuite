@@ -5445,7 +5445,8 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         static::$document->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
             newBuyerIban: 'iban',
-            newMandate: 'mandate'
+            newMandate: 'mandate',
+            newBuyerAccountName: 'buyeraccountname'
         );
 
         $this->disableRenderXmlContent();
@@ -5453,6 +5454,7 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         $this->assertXPathValueWithIndex('/ns:CreditNote/cac:PaymentMeans/cbc:PaymentMeansCode', 0, InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value);
         $this->assertXPathValueWithIndex('/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cbc:ID', 0, 'mandate');
         $this->assertXPathValueWithIndex('/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID', 0, 'iban');
+        $this->assertXPathValueWithIndex('/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:Name', 0, 'buyeraccountname');
         $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:PaymentMeans/cbc:PaymentMeansCode', 1);
 
         static::$document->setDocumentPaymentMean(

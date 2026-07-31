@@ -379,7 +379,7 @@ final class FatturaPaProviderBuilderTest extends TestCase
         static::$document->setDocumentPaymentMeanAsCreditTransferSepa('IT60X0000000000000000000001', 'SEPA Seller', 'Ignored proprietary ID', 'SEPAITMM', 'SEPA-REF');
         static::$document->addDocumentPaymentMeanAsCreditTransferSepa('IT60X0000000000000000000002', 'Second SEPA Seller', 'Ignored proprietary ID', 'SEPAITM2', 'SEPA-REF-2');
         static::$document->addDocumentPaymentMeanAsCreditTransferNoSepa('IT60X0000000000000000000003', 'Non-SEPA Seller', 'Ignored proprietary ID', 'NOSEPAIT', 'NO-SEPA-REF');
-        static::$document->addDocumentPaymentMeanAsDirectDebitSepa('IT60X0000000000000000000004', 'Ignored mandate');
+        static::$document->addDocumentPaymentMeanAsDirectDebitSepa('IT60X0000000000000000000004', 'Ignored mandate', 'Ignored buyer account name');
         static::$document->addDocumentPaymentMeanAsDirectDebitNoSepa('IT60X0000000000000000000005', 'Ignored mandate');
         static::$document->addDocumentPaymentMeanAsPaymentCard('Ignored card ID', 'Card Holder');
 
@@ -402,7 +402,7 @@ final class FatturaPaProviderBuilderTest extends TestCase
         $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento', 0, 'MP05');
         $this->assertXPathNotExistsWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento', 1);
 
-        static::$document->setDocumentPaymentMeanAsDirectDebitSepa('IT60X0000000000000000000007', 'Ignored mandate');
+        static::$document->setDocumentPaymentMeanAsDirectDebitSepa('IT60X0000000000000000000007', 'Ignored mandate', 'Ignored buyer account name');
 
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento', 'MP19');
 

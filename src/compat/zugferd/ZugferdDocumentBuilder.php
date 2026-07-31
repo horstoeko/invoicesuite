@@ -3659,6 +3659,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
      * @param  null|string $payeeAccountName __BT-85, From BASIC WL__ The name of the payment account held with a payment service provider to which the payment should be made
      * @param  null|string $payeePropId      __BT-84-0, From BASIC WL__ National account number (not for SEPA)
      * @param  null|string $payeeBic         __BT-86, From EN 16931__ An identifier for the payment service provider with which the payment account is held
+     * @param  null|string $buyerAccountName The name of the account to be debited
      * @return static
      */
     public function addDocumentPaymentMean(
@@ -3671,7 +3672,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
         ?string $payeeIban = null,
         ?string $payeeAccountName = null,
         ?string $payeePropId = null,
-        ?string $payeeBic = null
+        ?string $payeeBic = null,
+        ?string $buyerAccountName = null
     ): static {
         $this->documentBuilder->addDocumentPaymentMean(
             $typeCode,
@@ -3682,7 +3684,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
             $payeeIban,
             $payeeAccountName,
             $payeePropId,
-            $payeeBic
+            $payeeBic,
+            null,
+            null,
+            $buyerAccountName
         );
 
         return $this;
@@ -3751,15 +3756,18 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
      *
      * @param  string      $buyerIban           __BT-91, From BASIC WL__ The account to be debited by the direct debit
      * @param  null|string $creditorReferenceID __BT-90, From BASIC WL__ Unique bank identifier of the payee or the seller assigned by the bank of the payee or the seller
+     * @param  null|string $buyerAccountName    __BT-216, From EXTENDED__ The name of the account to be debited
      * @return static
      */
     public function addDocumentPaymentMeanToDirectDebit(
         string $buyerIban,
-        ?string $creditorReferenceID = null
+        ?string $creditorReferenceID = null,
+        ?string $buyerAccountName = null
     ): static {
         $this->documentBuilder->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
-            newBuyerIban: $buyerIban
+            newBuyerIban: $buyerIban,
+            newBuyerAccountName: $buyerAccountName
         );
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($creditorReferenceID)) {
@@ -3776,15 +3784,18 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
      *
      * @param  string      $buyerIban           __BT-91, From BASIC WL__ The account to be debited by the direct debit
      * @param  null|string $creditorReferenceID __BT-90, From BASIC WL__ Unique bank identifier of the payee or the seller assigned by the bank of the payee or the seller
+     * @param  null|string $buyerAccountName    __BT-216, From EXTENDED__ The name of the account to be debited
      * @return static
      */
     public function addDocumentPaymentMeanToDirectDebitNonSepa(
         string $buyerIban,
-        ?string $creditorReferenceID = null
+        ?string $creditorReferenceID = null,
+        ?string $buyerAccountName = null
     ): static {
         $this->documentBuilder->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
-            newBuyerIban: $buyerIban
+            newBuyerIban: $buyerIban,
+            newBuyerAccountName: $buyerAccountName
         );
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($creditorReferenceID)) {

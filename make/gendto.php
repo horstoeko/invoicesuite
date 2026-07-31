@@ -941,6 +941,12 @@ $definitions = [
                 'isarray' => false,
                 'isobject' => false,
             ],
+            'buyerAccountName' => [
+                'type' => 'string',
+                'caption' => 'The name of the account to be debited',
+                'isarray' => false,
+                'isobject' => false,
+            ],
         ],
         'staticmethods' => [
             'createAsCreditTransferSepa' => [
@@ -1056,6 +1062,7 @@ $definitions = [
                     '',
                     '@param string|null $buyerIban Identifier of the account to be debited',
                     '@param string|null $mandate Identification of the mandate reference',
+                    '@param string|null $buyerAccountName Name of the account to be debited',
                     '@return self',
                 ],
                 'params' => [
@@ -1069,12 +1076,18 @@ $definitions = [
                         'nullable' => true,
                         'default' => null,
                     ],
+                    'buyerAccountName' => [
+                        'type' => 'string',
+                        'nullable' => true,
+                        'default' => null,
+                    ],
                 ],
                 'body' => [
                     'return new self(',
                     '    typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,',
                     '    buyerIban: $buyerIban,',
                     '    mandate: $mandate,',
+                    '    buyerAccountName: $buyerAccountName',
                     ');',
                 ],
                 'use' => [
@@ -1088,6 +1101,7 @@ $definitions = [
                     '',
                     '@param string|null $buyerIban Identifier of the account to be debited',
                     '@param string|null $mandate Identification of the mandate reference',
+                    '@param string|null $buyerAccountName Name of the account to be debited',
                     '@return self',
                 ],
                 'params' => [
@@ -1101,12 +1115,18 @@ $definitions = [
                         'nullable' => true,
                         'default' => null,
                     ],
+                    'buyerAccountName' => [
+                        'type' => 'string',
+                        'nullable' => true,
+                        'default' => null,
+                    ],
                 ],
                 'body' => [
                     'return new self(',
                     '    typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,',
                     '    buyerIban: $buyerIban,',
                     '    mandate: $mandate,',
+                    '    buyerAccountName: $buyerAccountName',
                     ');',
                 ],
                 'use' => [

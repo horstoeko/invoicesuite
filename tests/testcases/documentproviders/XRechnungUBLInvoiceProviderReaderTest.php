@@ -2187,7 +2187,8 @@ final class XRechnungUBLInvoiceProviderReaderTest extends TestCase
             $newPayeeProprietaryId,
             $newPayeeBic,
             $newPaymentReference,
-            $newMandate
+            $newMandate,
+            $newBuyerAccountName
         );
 
         $this->assertSame('typecode', $newTypeCode);
@@ -2195,6 +2196,7 @@ final class XRechnungUBLInvoiceProviderReaderTest extends TestCase
         $this->assertSame('financialCardId', $newFinancialCardId);
         $this->assertSame('financialCardHolder', $newFinancialCardHolder);
         $this->assertSame('buyeriban', $newBuyerIban);
+        $this->assertSame('buyeraccountname', $newBuyerAccountName);
         $this->assertSame('payeeiban', $newPayeeIban);
         $this->assertSame('payeeaccountname', $newPayeeAccountName);
         $this->assertSame('', $newPayeeProprietaryId);

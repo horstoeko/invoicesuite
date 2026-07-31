@@ -2047,7 +2047,8 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
                 $newDocumentPaymentMeanPayeeProprietaryId,
                 $newDocumentPaymentMeanPayeeBic,
                 $newDocumentPaymentMeanPaymentReference,
-                $newDocumentPaymentMeanMandate
+                $newDocumentPaymentMeanMandate,
+                $newDocumentPaymentMeanBuyerAccountName
             );
 
             $newDocumentDTO->addPaymentMean(
@@ -2062,7 +2063,8 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
                     $newDocumentPaymentMeanPayeeProprietaryId,
                     $newDocumentPaymentMeanPayeeBic,
                     $newDocumentPaymentMeanPaymentReference,
-                    $newDocumentPaymentMeanMandate
+                    $newDocumentPaymentMeanMandate,
+                    buyerAccountName: $newDocumentPaymentMeanBuyerAccountName
                 )
             );
         }
@@ -13376,6 +13378,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
      * @param  null|string $newPayeeBic            __BT-86, From EN 16931__ Identifier of the payment service provider
      * @param  null|string $newPaymentReference    __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
      * @param  null|string $newMandate             __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName    __BT-216, From EXTENDED__ Name of the account to be debited
      * @return static
      *
      * @phpstan-param-out string $newTypeCode
@@ -13389,6 +13392,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
      * @phpstan-param-out string $newPayeeBic
      * @phpstan-param-out string $newPaymentReference
      * @phpstan-param-out string $newMandate
+     * @phpstan-param-out string $newBuyerAccountName
      */
     public function getDocumentPaymentMean(
         ?string &$newTypeCode,
@@ -13401,7 +13405,8 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         ?string &$newPayeeProprietaryId,
         ?string &$newPayeeBic,
         ?string &$newPaymentReference,
-        ?string &$newMandate
+        ?string &$newMandate,
+        ?string &$newBuyerAccountName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -13416,6 +13421,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $newPayeeBic = '';
         $newPaymentReference = '';
         $newMandate = '';
+        $newBuyerAccountName = '';
 
         if ($this->supportsNotAtLeastBasicWlWithTrace(__METHOD__)) {
             return $this;
@@ -13436,6 +13442,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $newFinancialCardId = $this->supportsAtLeastEn16931() ? ($documentPaymentMean->getApplicableTradeSettlementFinancialCard()?->getID()?->getValue() ?? '') : '';
         $newFinancialCardHolder = $this->supportsAtLeastEn16931() ? ($documentPaymentMean->getApplicableTradeSettlementFinancialCard()?->getCardholderName()?->getValue() ?? '') : '';
         $newBuyerIban = $documentPaymentMean->getPayerPartyDebtorFinancialAccount()?->getIBANID()?->getValue() ?? '';
+        $newBuyerAccountName = $documentPaymentMean->getPayerPartyDebtorFinancialAccount()?->getAccountName()?->getValue() ?? '';
         $newPayeeIban = $documentPaymentMean->getPayeePartyCreditorFinancialAccount()?->getIBANID()?->getValue() ?? '';
         $newPayeeAccountName = $this->supportsAtLeastEn16931() ? ($documentPaymentMean->getPayeePartyCreditorFinancialAccount()?->getAccountName()?->getValue() ?? '') : '';
         $newPayeeProprietaryId = $documentPaymentMean->getPayeePartyCreditorFinancialAccount()?->getProprietaryID()?->getValue() ?? '';

@@ -103,6 +103,13 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
     protected ?string $mandate = null;
 
     /**
+     * The name of the account to be debited
+     *
+     * @var null|string
+     */
+    protected ?string $buyerAccountName = null;
+
+    /**
      * Constructor
      *
      * @param null|string $typeCode            The expected or used means of payment expressed as a code
@@ -116,6 +123,7 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
      * @param null|string $payeeBic            The identifier of the payment service provider
      * @param null|string $paymentReference    The Text value used to link the payment to the invoice issued by the seller
      * @param null|string $mandate             The identification of the mandate reference
+     * @param null|string $buyerAccountName    The name of the account to be debited
      */
     public function __construct(
         ?string $typeCode = null,
@@ -128,7 +136,8 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
         ?string $payeeProprietaryId = null,
         ?string $payeeBic = null,
         ?string $paymentReference = null,
-        ?string $mandate = null
+        ?string $mandate = null,
+        ?string $buyerAccountName = null
     ) {
         $this->setTypeCode($typeCode);
         $this->setName($name);
@@ -141,6 +150,7 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
         $this->setPayeeBic($payeeBic);
         $this->setPaymentReference($paymentReference);
         $this->setMandate($mandate);
+        $this->setBuyerAccountName($buyerAccountName);
     }
 
     /**
@@ -418,6 +428,30 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
     }
 
     /**
+     * Returns the name of the account to be debited
+     *
+     * @return null|string
+     */
+    public function getBuyerAccountName(): ?string
+    {
+        return $this->buyerAccountName;
+    }
+
+    /**
+     * Sets the name of the account to be debited
+     *
+     * @param  null|string $buyerAccountName The name of the account to be debited
+     * @return static
+     */
+    public function setBuyerAccountName(
+        ?string $buyerAccountName
+    ): static {
+        $this->buyerAccountName = InvoiceSuiteStringUtils::asNullWhenEmpty($buyerAccountName);
+
+        return $this;
+    }
+
+    /**
      * Create a payment mean for SEPA credit transfer, German: Überweisung
      *
      * @param  null|string $payeeIban          Payment account identifier
@@ -474,36 +508,42 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
     /**
      * Create a payment mean for SEPA direct debit, German: Lastschrift
      *
-     * @param  null|string $buyerIban Identifier of the account to be debited
-     * @param  null|string $mandate   Identification of the mandate reference
+     * @param  null|string $buyerIban        Identifier of the account to be debited
+     * @param  null|string $mandate          Identification of the mandate reference
+     * @param  null|string $buyerAccountName Name of the account to be debited
      * @return self
      */
     public static function createAsDirectDebitSepa(
         ?string $buyerIban = null,
-        ?string $mandate = null
+        ?string $mandate = null,
+        ?string $buyerAccountName = null
     ): self {
         return new self(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
             buyerIban: $buyerIban,
             mandate: $mandate,
+            buyerAccountName: $buyerAccountName
         );
     }
 
     /**
      * Create a payment mean for SEPA direct debit, German: Lastschrift
      *
-     * @param  null|string $buyerIban Identifier of the account to be debited
-     * @param  null|string $mandate   Identification of the mandate reference
+     * @param  null|string $buyerIban        Identifier of the account to be debited
+     * @param  null|string $mandate          Identification of the mandate reference
+     * @param  null|string $buyerAccountName Name of the account to be debited
      * @return self
      */
     public static function createAsDirectDebitNoSepa(
         ?string $buyerIban = null,
-        ?string $mandate = null
+        ?string $mandate = null,
+        ?string $buyerAccountName = null
     ): self {
         return new self(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
             buyerIban: $buyerIban,
             mandate: $mandate,
+            buyerAccountName: $buyerAccountName
         );
     }
 
