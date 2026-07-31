@@ -1031,6 +1031,7 @@
         </ram:ApplicableTradeSettlementFinancialCard>
         <ram:PayerPartyDebtorFinancialAccount>
           <ram:IBANID>buyeriban</ram:IBANID>
+          <ram:AccountName>buyeraccountname</ram:AccountName>
         </ram:PayerPartyDebtorFinancialAccount>
         <ram:PayeePartyCreditorFinancialAccount>
           <ram:IBANID>payeeiban</ram:IBANID>
@@ -1050,6 +1051,7 @@
         </ram:ApplicableTradeSettlementFinancialCard>
         <ram:PayerPartyDebtorFinancialAccount>
           <ram:IBANID>buyeriban2</ram:IBANID>
+          <ram:AccountName>buyeraccountname2</ram:AccountName>
         </ram:PayerPartyDebtorFinancialAccount>
         <ram:PayeePartyCreditorFinancialAccount>
           <ram:IBANID>payeeiban2</ram:IBANID>

@@ -252,7 +252,8 @@ final class FatturaPaProviderReaderTest extends TestCase
             $newPayeeProprietaryId,
             $newPayeeBic,
             $newPaymentReference,
-            $newMandate
+            $newMandate,
+            $newBuyerAccountName
         );
 
         $this->assertSame('MP05', $newTypeCode);
@@ -266,6 +267,7 @@ final class FatturaPaProviderReaderTest extends TestCase
         $this->assertSame('BCITITMM', $newPayeeBic);
         $this->assertSame('PAYMENT-REF-1', $newPaymentReference);
         $this->assertSame('', $newMandate);
+        $this->assertSame('', $newBuyerAccountName);
         $this->assertFalse(static::$document->nextDocumentPaymentMean());
     }
 

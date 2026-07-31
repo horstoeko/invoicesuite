@@ -250,6 +250,7 @@
       <cbc:ID>mandate</cbc:ID>
       <cac:PayerFinancialAccount>
         <cbc:ID>buyeriban</cbc:ID>
+        <cbc:Name>buyeraccountname</cbc:Name>
       </cac:PayerFinancialAccount>
     </cac:PaymentMandate>
   </cac:PaymentMeans>

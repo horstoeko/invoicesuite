@@ -2050,7 +2050,8 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
                 $newDocumentPaymentMeanPayeeProprietaryId,
                 $newDocumentPaymentMeanPayeeBic,
                 $newDocumentPaymentMeanPaymentReference,
-                $newDocumentPaymentMeanMandate
+                $newDocumentPaymentMeanMandate,
+                $newDocumentPaymentMeanBuyerAccountName
             );
 
             $newDocumentDTO->addPaymentMean(
@@ -2065,7 +2066,8 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
                     $newDocumentPaymentMeanPayeeProprietaryId,
                     $newDocumentPaymentMeanPayeeBic,
                     $newDocumentPaymentMeanPaymentReference,
-                    $newDocumentPaymentMeanMandate
+                    $newDocumentPaymentMeanMandate,
+                    buyerAccountName: $newDocumentPaymentMeanBuyerAccountName
                 )
             );
         }
@@ -9711,6 +9713,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
      * @param  null|string $newPayeeBic            Identifier of the payment service provider
      * @param  null|string $newPaymentReference    Text value used to link the payment to the invoice issued by the seller
      * @param  null|string $newMandate             Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName    Name of the account to be debited
      * @return static
      *
      * @phpstan-param-out string $newTypeCode
@@ -9724,6 +9727,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
      * @phpstan-param-out string $newPayeeBic
      * @phpstan-param-out string $newPaymentReference
      * @phpstan-param-out string $newMandate
+     * @phpstan-param-out string $newBuyerAccountName
      */
     public function getDocumentPaymentMean(
         ?string &$newTypeCode,
@@ -9736,7 +9740,8 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         ?string &$newPayeeProprietaryId,
         ?string &$newPayeeBic,
         ?string &$newPaymentReference,
-        ?string &$newMandate
+        ?string &$newMandate,
+        ?string &$newBuyerAccountName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -9755,6 +9760,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         $newFinancialCardId = $documentPaymentMean->getCardAccount()?->getPrimaryAccountNumberID()?->getValue() ?? '';
         $newFinancialCardHolder = $documentPaymentMean->getCardAccount()?->getHolderName()?->getValue() ?? '';
         $newBuyerIban = $documentPaymentMean->getPaymentMandate()?->getPayerFinancialAccount()?->getID()?->getValue() ?? '';
+        $newBuyerAccountName = $documentPaymentMean->getPaymentMandate()?->getPayerFinancialAccount()?->getName()?->getValue() ?? '';
         $newPayeeIban = $documentPaymentMean->getPayeeFinancialAccount()?->getID()?->getValue() ?? '';
         $newPayeeAccountName = $documentPaymentMean->getPayeeFinancialAccount()?->getName()?->getValue() ?? '';
         $newPayeeProprietaryId = '';

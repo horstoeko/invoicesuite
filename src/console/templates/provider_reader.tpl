@@ -5808,6 +5808,7 @@ class {{READER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newPayeeBic            Identifier of the payment service provider
      * @param  null|string $newPaymentReference    Text value used to link the payment to the invoice issued by the seller
      * @param  null|string $newMandate             Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName    Name of the account to be debited
      * @return static
      *
      * @phpstan-param-out string $newTypeCode
@@ -5821,6 +5822,7 @@ class {{READER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatReader
      * @phpstan-param-out string $newPayeeBic
      * @phpstan-param-out string $newPaymentReference
      * @phpstan-param-out string $newMandate
+     * @phpstan-param-out string $newBuyerAccountName
      */
     public function getDocumentPaymentMean(
         ?string &$newTypeCode,
@@ -5833,7 +5835,8 @@ class {{READER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatReader
         ?string &$newPayeeProprietaryId,
         ?string &$newPayeeBic,
         ?string &$newPaymentReference,
-        ?string &$newMandate
+        ?string &$newMandate,
+        ?string &$newBuyerAccountName = null
     ): static
     {
         $this->traceMethodEnter(__METHOD__);
@@ -5849,6 +5852,7 @@ class {{READER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatReader
         $newPayeeBic = '';
         $newPaymentReference = '';
         $newMandate = '';
+        $newBuyerAccountName = '';
         // TODO: Implement method.
 
         $this->traceMethodExit(__METHOD__);

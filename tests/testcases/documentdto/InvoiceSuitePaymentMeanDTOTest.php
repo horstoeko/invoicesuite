@@ -19,6 +19,7 @@ final class InvoiceSuitePaymentMeanDTOTest extends TestCase
         $this->assertNull($invoiceSuitePaymentMeanDTO->getFinancialCardId());
         $this->assertNull($invoiceSuitePaymentMeanDTO->getFinancialCardHolder());
         $this->assertNull($invoiceSuitePaymentMeanDTO->getBuyerIban());
+        $this->assertNull($invoiceSuitePaymentMeanDTO->getBuyerAccountName());
         $this->assertNull($invoiceSuitePaymentMeanDTO->getPayeeIban());
         $this->assertNull($invoiceSuitePaymentMeanDTO->getPayeeAccountName());
         $this->assertNull($invoiceSuitePaymentMeanDTO->getPayeeProprietaryId());
@@ -70,6 +71,15 @@ final class InvoiceSuitePaymentMeanDTOTest extends TestCase
         $invoiceSuitePaymentMeanDTO->setBuyerIban($buyerIbanValue);
 
         $this->assertSame($buyerIbanValue, $invoiceSuitePaymentMeanDTO->getBuyerIban());
+    }
+
+    public function testBuyerAccountNameGetterAndSetter(): void
+    {
+        $invoiceSuitePaymentMeanDTO = new InvoiceSuitePaymentMeanDTO();
+        $buyerAccountNameValue = 'Example Value';
+        $invoiceSuitePaymentMeanDTO->setBuyerAccountName($buyerAccountNameValue);
+
+        $this->assertSame($buyerAccountNameValue, $invoiceSuitePaymentMeanDTO->getBuyerAccountName());
     }
 
     public function testPayeeIbanGetterAndSetter(): void
@@ -190,12 +200,14 @@ final class InvoiceSuitePaymentMeanDTOTest extends TestCase
     {
         $dto = InvoiceSuitePaymentMeanDTO::createAsDirectDebitSepa(
             'DE44500105175407324931',
-            'MANDATE-2025-ABC'
+            'MANDATE-2025-ABC',
+            'Buyer Account'
         );
 
         $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value, $dto->getTypeCode());
         $this->assertSame('DE44500105175407324931', $dto->getBuyerIban());
         $this->assertSame('MANDATE-2025-ABC', $dto->getMandate());
+        $this->assertSame('Buyer Account', $dto->getBuyerAccountName());
     }
 
     public function testCreateAsDirectDebitSepaDefaults(): void
@@ -205,18 +217,21 @@ final class InvoiceSuitePaymentMeanDTOTest extends TestCase
         $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value, $dto->getTypeCode());
         $this->assertNull($dto->getBuyerIban());
         $this->assertNull($dto->getMandate());
+        $this->assertNull($dto->getBuyerAccountName());
     }
 
     public function testCreateAsDirectDebitNoSepaWithValues(): void
     {
         $dto = InvoiceSuitePaymentMeanDTO::createAsDirectDebitNoSepa(
             'GB29NWBK60161331926819',
-            'MANDATE-EN-007'
+            'MANDATE-EN-007',
+            'Buyer Account'
         );
 
         $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value, $dto->getTypeCode());
         $this->assertSame('GB29NWBK60161331926819', $dto->getBuyerIban());
         $this->assertSame('MANDATE-EN-007', $dto->getMandate());
+        $this->assertSame('Buyer Account', $dto->getBuyerAccountName());
     }
 
     public function testCreateAsDirectDebitNoSepaDefaults(): void
@@ -226,6 +241,7 @@ final class InvoiceSuitePaymentMeanDTOTest extends TestCase
         $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value, $dto->getTypeCode());
         $this->assertNull($dto->getBuyerIban());
         $this->assertNull($dto->getMandate());
+        $this->assertNull($dto->getBuyerAccountName());
     }
 
     public function testCreateAsPaymentCardPaymentWithValues(): void

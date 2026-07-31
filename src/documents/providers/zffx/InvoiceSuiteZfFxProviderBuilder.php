@@ -1012,7 +1012,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 $item->getPayeeProprietaryId(),
                 $item->getPayeeBic(),
                 $item->getPaymentReference(),
-                $item->getMandate()
+                $item->getMandate(),
+                $item->getBuyerAccountName()
             )
         );
 
@@ -12605,6 +12606,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
      * @param  null|string $newPayeeBic            __BT-86, From EN 16931__ Identifier of the payment service provider
      * @param  null|string $newPaymentReference    __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
      * @param  null|string $newMandate             __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName    __BT-216, From EXTENDED__ Name of the account to be debited
      * @return static
      */
     public function setDocumentPaymentMean(
@@ -12619,6 +12621,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null,
         ?string $newMandate = null,
+        ?string $newBuyerAccountName = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -12647,7 +12650,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             $newPayeeProprietaryId,
             $newPayeeBic,
             $newPaymentReference,
-            $newMandate
+            $newMandate,
+            $newBuyerAccountName
         );
 
         $this->traceMethodExit(__METHOD__);
@@ -12669,6 +12673,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
      * @param  null|string $newPayeeBic            __BT-86, From EN 16931__ Identifier of the payment service provider
      * @param  null|string $newPaymentReference    __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
      * @param  null|string $newMandate             __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName    __BT-216, From EXTENDED__ Name of the account to be debited
      * @return static
      */
     public function addDocumentPaymentMean(
@@ -12683,6 +12688,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null,
         ?string $newMandate = null,
+        ?string $newBuyerAccountName = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -12725,6 +12731,13 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 ->getPayerPartyDebtorFinancialAccountWithCreate()
                 ->getIBANIDWithCreate()
                 ->setValue($newBuyerIban);
+
+            if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newBuyerAccountName)) {
+                $paymentMean
+                    ->getPayerPartyDebtorFinancialAccountWithCreate()
+                    ->getAccountNameWithCreate()
+                    ->setValue($newBuyerAccountName);
+            }
         }
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPayeeIban)) {
@@ -12923,20 +12936,23 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     /**
      * Set Payment mean (as SEPA direct debit, German: Lastschrift)
      *
-     * @param  null|string $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
-     * @param  null|string $newMandate   __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string $newBuyerIban        __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @param  null|string $newMandate          __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName __BT-216, From EXTENDED__ Name of the account to be debited
      * @return static
      */
     public function setDocumentPaymentMeanAsDirectDebitSepa(
         ?string $newBuyerIban = null,
         ?string $newMandate = null,
+        ?string $newBuyerAccountName = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
             newBuyerIban: $newBuyerIban,
-            newMandate: $newMandate
+            newMandate: $newMandate,
+            newBuyerAccountName: $newBuyerAccountName
         );
 
         $this->traceMethodExit(__METHOD__);
@@ -12947,20 +12963,23 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     /**
      * Add Payment mean (as SEPA direct debit, German: Lastschrift)
      *
-     * @param  null|string $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
-     * @param  null|string $newMandate   __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string $newBuyerIban        __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @param  null|string $newMandate          __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName __BT-216, From EXTENDED__ Name of the account to be debited
      * @return static
      */
     public function addDocumentPaymentMeanAsDirectDebitSepa(
         ?string $newBuyerIban = null,
         ?string $newMandate = null,
+        ?string $newBuyerAccountName = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
             newBuyerIban: $newBuyerIban,
-            newMandate: $newMandate
+            newMandate: $newMandate,
+            newBuyerAccountName: $newBuyerAccountName
         );
 
         $this->traceMethodExit(__METHOD__);
@@ -12971,20 +12990,23 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     /**
      * Set Payment mean (as non-SEPA direct debit, German: Lastschrift)
      *
-     * @param  null|string $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
-     * @param  null|string $newMandate   __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string $newBuyerIban        __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @param  null|string $newMandate          __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName __BT-216, From EXTENDED__ Name of the account to be debited
      * @return static
      */
     public function setDocumentPaymentMeanAsDirectDebitNoSepa(
         ?string $newBuyerIban = null,
         ?string $newMandate = null,
+        ?string $newBuyerAccountName = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
             newBuyerIban: $newBuyerIban,
-            newMandate: $newMandate
+            newMandate: $newMandate,
+            newBuyerAccountName: $newBuyerAccountName
         );
 
         $this->traceMethodExit(__METHOD__);
@@ -12995,20 +13017,23 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     /**
      * Add Payment mean (as non SEPA direct debit, German: Lastschrift)
      *
-     * @param  null|string $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
-     * @param  null|string $newMandate   __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string $newBuyerIban        __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @param  null|string $newMandate          __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName __BT-216, From EXTENDED__ Name of the account to be debited
      * @return static
      */
     public function addDocumentPaymentMeanAsDirectDebitNoSepa(
         ?string $newBuyerIban = null,
         ?string $newMandate = null,
+        ?string $newBuyerAccountName = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
             newBuyerIban: $newBuyerIban,
-            newMandate: $newMandate
+            newMandate: $newMandate,
+            newBuyerAccountName: $newBuyerAccountName
         );
 
         $this->traceMethodExit(__METHOD__);

@@ -4242,6 +4242,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $payeeAccountName __BT-85, From BASIC WL__ The name of the payment account held with a payment service provider to which the payment should be made
      * @param  null|string $payeePropId      __BT-84-0, From BASIC WL__ National account number (not for SEPA)
      * @param  null|string $payeeBic         __BT-86, From EN 16931__ An identifier for the payment service provider with which the payment account is held
+     * @param  null|string $buyerAccountName __BT-216, From EXTENDED__ The name of the account to be debited
      * @return static
      *
      * @phpstan-param-out string $typeCode
@@ -4254,6 +4255,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @phpstan-param-out string $payeeAccountName
      * @phpstan-param-out string $payeePropId
      * @phpstan-param-out string $payeeBic
+     * @phpstan-param-out string $buyerAccountName
      */
     public function getDocumentPaymentMeans(
         ?string &$typeCode,
@@ -4265,7 +4267,8 @@ class ZugferdDocumentReader extends ZugferdDocument
         ?string &$payeeIban,
         ?string &$payeeAccountName,
         ?string &$payeePropId,
-        ?string &$payeeBic
+        ?string &$payeeBic,
+        ?string &$buyerAccountName = null
     ): static {
         $cardType = '';
 
@@ -4280,7 +4283,8 @@ class ZugferdDocumentReader extends ZugferdDocument
             $payeePropId,
             $payeeBic,
             $newPaymentReference,
-            $newMandate
+            $newMandate,
+            $buyerAccountName
         );
 
         return $this;

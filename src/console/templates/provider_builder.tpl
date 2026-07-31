@@ -4550,6 +4550,7 @@ class {{BUILDER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatBuilder
      * @param  null|string $newPayeeBic            Identifier of the payment service provider
      * @param  null|string $newPaymentReference    Text value used to link the payment to the invoice issued by the seller
      * @param  null|string $newMandate             Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName    Name of the account to be debited
      * @return static
      */
     public function setDocumentPaymentMean(
@@ -4563,7 +4564,8 @@ class {{BUILDER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatBuilder
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null,
-        ?string $newMandate = null
+        ?string $newMandate = null,
+        ?string $newBuyerAccountName = null
     ): static
     {
         $this->traceMethodEnter(__METHOD__);
@@ -4589,6 +4591,7 @@ class {{BUILDER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatBuilder
      * @param  null|string $newPayeeBic            Identifier of the payment service provider
      * @param  null|string $newPaymentReference    Text value used to link the payment to the invoice issued by the seller
      * @param  null|string $newMandate             Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName    Name of the account to be debited
      * @return static
      */
     public function addDocumentPaymentMean(
@@ -4602,7 +4605,8 @@ class {{BUILDER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatBuilder
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null,
-        ?string $newMandate = null
+        ?string $newMandate = null,
+        ?string $newBuyerAccountName = null
     ): static
     {
         $this->traceMethodEnter(__METHOD__);
@@ -4725,13 +4729,15 @@ class {{BUILDER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatBuilder
     /**
      * Set Payment mean (as SEPA direct debit, German: Lastschrift)
      *
-     * @param  null|string $newBuyerIban Identifier of the account to be debited
-     * @param  null|string $newMandate   Identification of the mandate reference
+     * @param  null|string $newBuyerIban        Identifier of the account to be debited
+     * @param  null|string $newMandate          Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName Name of the account to be debited
      * @return static
      */
     public function setDocumentPaymentMeanAsDirectDebitSepa(
         ?string $newBuyerIban = null,
-        ?string $newMandate = null
+        ?string $newMandate = null,
+        ?string $newBuyerAccountName = null
     ): static
     {
         $this->traceMethodEnter(__METHOD__);
@@ -4746,13 +4752,15 @@ class {{BUILDER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatBuilder
     /**
      * Add Payment mean (as SEPA direct debit, German: Lastschrift)
      *
-     * @param  null|string $newBuyerIban Identifier of the account to be debited
-     * @param  null|string $newMandate   Identification of the mandate reference
+     * @param  null|string $newBuyerIban        Identifier of the account to be debited
+     * @param  null|string $newMandate          Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName Name of the account to be debited
      * @return static
      */
     public function addDocumentPaymentMeanAsDirectDebitSepa(
         ?string $newBuyerIban = null,
-        ?string $newMandate = null
+        ?string $newMandate = null,
+        ?string $newBuyerAccountName = null
     ): static
     {
         $this->traceMethodEnter(__METHOD__);
@@ -4767,13 +4775,15 @@ class {{BUILDER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatBuilder
     /**
      * Set Payment mean (as non-SEPA direct debit, German: Lastschrift)
      *
-     * @param  null|string $newBuyerIban Identifier of the account to be debited
-     * @param  null|string $newMandate   Identification of the mandate reference
+     * @param  null|string $newBuyerIban        Identifier of the account to be debited
+     * @param  null|string $newMandate          Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName Name of the account to be debited
      * @return static
      */
     public function setDocumentPaymentMeanAsDirectDebitNoSepa(
         ?string $newBuyerIban = null,
-        ?string $newMandate = null
+        ?string $newMandate = null,
+        ?string $newBuyerAccountName = null
     ): static
     {
         $this->traceMethodEnter(__METHOD__);
@@ -4788,13 +4798,15 @@ class {{BUILDER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatBuilder
     /**
      * Add Payment mean (as non SEPA direct debit, German: Lastschrift)
      *
-     * @param  null|string $newBuyerIban Identifier of the account to be debited
-     * @param  null|string $newMandate   Identification of the mandate reference
+     * @param  null|string $newBuyerIban        Identifier of the account to be debited
+     * @param  null|string $newMandate          Identification of the mandate reference
+     * @param  null|string $newBuyerAccountName Name of the account to be debited
      * @return static
      */
     public function addDocumentPaymentMeanAsDirectDebitNoSepa(
         ?string $newBuyerIban = null,
-        ?string $newMandate = null
+        ?string $newMandate = null,
+        ?string $newBuyerAccountName = null
     ): static
     {
         $this->traceMethodEnter(__METHOD__);
