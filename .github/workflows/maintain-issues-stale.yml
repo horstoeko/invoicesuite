@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Close stale issues
-        uses: actions/stale@v10
+        uses: actions/stale@v11
         with:
           days-before-issue-stale: 7
           days-before-issue-close: 5
