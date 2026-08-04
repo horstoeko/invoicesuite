@@ -41,6 +41,20 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
     use HandlesDocumentFormatProviders;
 
     /**
+     * Minimum LibXML error code caused by schema validation
+     *
+     * @var int
+     */
+    private const LIBXML_SCHEMA_VALIDATION_ERROR_CODE_MIN = 1801;
+
+    /**
+     * Maximum LibXML error code caused by schema validation
+     *
+     * @var int
+     */
+    private const LIBXML_SCHEMA_VALIDATION_ERROR_CODE_MAX = 1899;
+
+    /**
      * The location of the mein XSD-scheme file
      *
      * @var string
@@ -188,7 +202,7 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
     private function checkContentTypeIsXML(): bool
     {
         if (InvoiceSuiteContentType::XML !== InvoiceSuiteContentTypeResolver::resolveContentType($this->getRawDocumentContent())) {
-            $this->addErrorMessageToMessageBag('Only XML content can be validated with this Validator');
+            $this->addInternalErrorMessageToMessageBag('Only XML content can be validated with this Validator');
 
             return false;
         }
@@ -221,7 +235,7 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
         );
 
         if (InvoiceSuiteArrayUtils::empty($formatProviders)) {
-            $this->addErrorMessageToMessageBag('No format provider for the specified content available');
+            $this->addInternalErrorMessageToMessageBag('No format provider for the specified content available');
 
             return false;
         }
@@ -257,17 +271,24 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
             }
 
             foreach (libxml_get_errors() as $xmlError) {
-                $this->addErrorMessageToMessageBag(
-                    InvoiceSuiteStringUtils::sprintf(
-                        '[line %d] %s : %s',
-                        $xmlError->line,
-                        $xmlError->code,
-                        $xmlError->message
-                    )
+                $validationMessage = InvoiceSuiteStringUtils::sprintf(
+                    '[line %d] %s : %s',
+                    $xmlError->line,
+                    $xmlError->code,
+                    $xmlError->message
                 );
+
+                if (
+                    $xmlError->code >= self::LIBXML_SCHEMA_VALIDATION_ERROR_CODE_MIN
+                    && $xmlError->code <= self::LIBXML_SCHEMA_VALIDATION_ERROR_CODE_MAX
+                ) {
+                    $this->addErrorMessageToMessageBag($validationMessage);
+                } else {
+                    $this->addInternalErrorMessageToMessageBag($validationMessage);
+                }
             }
         } catch (Throwable $throwable) {
-            $this->addErrorMessageToMessageBag($throwable->getMessage());
+            $this->addInternalErrorMessageToMessageBag($throwable->getMessage());
         } finally {
             libxml_clear_errors();
             libxml_use_internal_errors($prevUseInternalErrors);

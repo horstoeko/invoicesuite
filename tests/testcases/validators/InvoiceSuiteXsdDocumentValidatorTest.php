@@ -102,10 +102,21 @@ final class InvoiceSuiteXsdDocumentValidatorTest extends TestCase
         $this->assertSame($validator, $validator->validate());
         $this->assertTrue($validator->hasErrorMessagesInMessageBag());
         $this->assertSame(4, $validator->countErrorMessagesInMessageBag());
+        $this->assertFalse($validator->hasInternalErrorMessagesInMessageBag());
         $this->assertStringContainsString(
             "Element '{urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100}TypeCode'",
             $validator->getErrorMessagesInMessageBag()[0]->getMessageContent()
         );
+    }
+
+    public function testValidateTreatsInvalidXsdAsInternalError(): void
+    {
+        $validator = InvoiceSuiteXsdDocumentValidator::createFromFile($this->getSampleXmlPath());
+        $validator->setXsdFilename($this->getSampleXmlPath());
+
+        $this->assertSame($validator, $validator->validate());
+        $this->assertFalse($validator->hasErrorMessagesInMessageBag());
+        $this->assertTrue($validator->hasInternalErrorMessagesInMessageBag());
     }
 
     public function testValidateClearsMessageBag(): void

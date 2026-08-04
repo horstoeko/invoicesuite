@@ -507,7 +507,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     private function checkRequirementsGeneral(): bool
     {
         if (InvoiceSuiteContentType::XML !== InvoiceSuiteContentTypeResolver::resolveContentType($this->getRawDocumentContent())) {
-            $this->addErrorMessageToMessageBag('Only XML content can be validated with this Validator');
+            $this->addInternalErrorMessageToMessageBag('Only XML content can be validated with this Validator');
 
             return false;
         }
@@ -529,7 +529,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
         }
 
         if (!extension_loaded('zip')) {
-            $this->addErrorMessageToMessageBag('ZIP extension not installed');
+            $this->addInternalErrorMessageToMessageBag('ZIP extension not installed');
 
             return false;
         }
@@ -537,7 +537,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
         $executableFinder = new ExecutableFinder();
 
         if (is_null($executableFinder->find('java'))) {
-            $this->addErrorMessageToMessageBag('JAVA not installed on this machine');
+            $this->addInternalErrorMessageToMessageBag('JAVA not installed on this machine');
 
             return false;
         }
@@ -560,19 +560,19 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
         }
 
         if (!extension_loaded('curl')) {
-            $this->addErrorMessageToMessageBag('PHP-Curl not installed or activated');
+            $this->addInternalErrorMessageToMessageBag('PHP-Curl not installed or activated');
 
             return false;
         }
 
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->remoteModeHost)) {
-            $this->addErrorMessageToMessageBag("You must specify the hostname or it's IP where the Validator is running in daemon mode");
+            $this->addInternalErrorMessageToMessageBag("You must specify the hostname or it's IP where the Validator is running in daemon mode");
 
             return false;
         }
 
         if ($this->remoteModePort < 1 || $this->remoteModePort > 65535) {
-            $this->addErrorMessageToMessageBag('You must specify the port of the host where the Validator is running in daemon mode');
+            $this->addInternalErrorMessageToMessageBag('You must specify the port of the host where the Validator is running in daemon mode');
 
             return false;
         }
@@ -592,8 +592,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
             $response = curl_exec($httpConnection);
 
             if (false === $response) {
-                $this->addErrorMessageToMessageBag('Failed to connect to the host where the Validator is running in daemon mode');
-                $this->addErrorMessageToMessageBag(curl_error($httpConnection));
+                $this->addInternalErrorMessageToMessageBag('Failed to connect to the host where the Validator is running in daemon mode');
+                $this->addInternalErrorMessageToMessageBag(curl_error($httpConnection));
 
                 return false;
             }
@@ -601,13 +601,13 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
             $responseStatusCode = curl_getinfo($httpConnection, CURLINFO_HTTP_CODE);
 
             if (($responseStatusCode < 200) || ($responseStatusCode >= 400)) {
-                $this->addErrorMessageToMessageBag('Failed to connect to the host where the Validator is running in daemon mode');
-                $this->addErrorMessageToMessageBag(curl_error($httpConnection));
+                $this->addInternalErrorMessageToMessageBag('Failed to connect to the host where the Validator is running in daemon mode');
+                $this->addInternalErrorMessageToMessageBag(curl_error($httpConnection));
 
                 return false;
             }
         } catch (Throwable $throwable) {
-            $this->addErrorMessageToMessageBag($throwable->getMessage());
+            $this->addInternalErrorMessageToMessageBag($throwable->getMessage());
 
             return false;
         }
@@ -633,13 +633,13 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
             : $this->resolveAppJarFilename();
 
         if (!$this->runFileDownload($this->validatorDownloadUrl, $validatorApplicationFilename)) {
-            $this->addErrorMessageToMessageBag(InvoiceSuiteStringUtils::sprintf('Unable to download from %s containing the JAVA-Application', $this->validatorDownloadUrl));
+            $this->addInternalErrorMessageToMessageBag(InvoiceSuiteStringUtils::sprintf('Unable to download from %s containing the JAVA-Application', $this->validatorDownloadUrl));
 
             return false;
         }
 
         if (!$this->runFileDownload($this->validatorScenarioDownloadUrl, $this->resolveScenatioZipFilename())) {
-            $this->addErrorMessageToMessageBag(InvoiceSuiteStringUtils::sprintf('Unable to download from %s containing the validation scenarios', $this->validatorScenarioDownloadUrl));
+            $this->addInternalErrorMessageToMessageBag(InvoiceSuiteStringUtils::sprintf('Unable to download from %s containing the validation scenarios', $this->validatorScenarioDownloadUrl));
 
             return false;
         }
@@ -665,14 +665,14 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
 
         if ($this->validatorApplicationDownloadIsArchive()) {
             if (!$this->unpackRequiredFile($validatorAppFile)) {
-                $this->addErrorMessageToMessageBag(InvoiceSuiteStringUtils::sprintf('Unable to unpack archive %s containing the JAVA-Application', $validatorAppFile));
+                $this->addInternalErrorMessageToMessageBag(InvoiceSuiteStringUtils::sprintf('Unable to unpack archive %s containing the JAVA-Application', $validatorAppFile));
 
                 return false;
             }
         }
 
         if (!$this->unpackRequiredFile($validatorScenarioFile)) {
-            $this->addErrorMessageToMessageBag(InvoiceSuiteStringUtils::sprintf('Unable to unpack archive %s containing the validation scenarios', $validatorScenarioFile));
+            $this->addInternalErrorMessageToMessageBag(InvoiceSuiteStringUtils::sprintf('Unable to unpack archive %s containing the validation scenarios', $validatorScenarioFile));
 
             return false;
         }
@@ -710,7 +710,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
         $zipArchive = new ZipArchive();
 
         if (true !== $zipArchive->open($filename)) {
-            $this->addErrorMessageToMessageBag(InvoiceSuiteStringUtils::sprintf('Failed to open ZIP archive %s', $filename));
+            $this->addInternalErrorMessageToMessageBag(InvoiceSuiteStringUtils::sprintf('Failed to open ZIP archive %s', $filename));
 
             return false;
         }
@@ -732,7 +732,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
 
         if (!$zipArchive->extractTo($this->resolveBaseDirectory())) {
             $zipArchive->close();
-            $this->addErrorMessageToMessageBag(InvoiceSuiteStringUtils::sprintf('Failed to extract ZIP archive %s', $filename));
+            $this->addInternalErrorMessageToMessageBag(InvoiceSuiteStringUtils::sprintf('Failed to extract ZIP archive %s', $filename));
 
             return false;
         }
@@ -778,7 +778,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
         $this->resetFileToValidateFilename();
 
         if (false === InvoiceSuiteFileUtils::putContentToFile($this->resolveFileToValidateFilename(), $this->getRawDocumentContent())) {
-            $this->addErrorMessageToMessageBag('Cannot create temporary file which contains the XML to validate');
+            $this->addInternalErrorMessageToMessageBag('Cannot create temporary file which contains the XML to validate');
 
             return false;
         }
@@ -834,8 +834,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
             $response = curl_exec($httpConnection);
 
             if (false === $response) {
-                $this->addErrorMessageToMessageBag('Failed to connect to the host where the Validator is running in daemon mode');
-                $this->addErrorMessageToMessageBag(curl_error($httpConnection));
+                $this->addInternalErrorMessageToMessageBag('Failed to connect to the host where the Validator is running in daemon mode');
+                $this->addInternalErrorMessageToMessageBag(curl_error($httpConnection));
 
                 return false;
             }
@@ -850,7 +850,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
                 return false;
             }
         } catch (Throwable $throwable) {
-            $this->addErrorMessageToMessageBag($throwable->getMessage());
+            $this->addInternalErrorMessageToMessageBag($throwable->getMessage());
 
             return false;
         }
@@ -1043,11 +1043,11 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
 
             if (!$process->isSuccessful()) {
                 if (-1 === $process->getExitCode()) {
-                    $this->addErrorMessageToMessageBag('Parsing error. The commandline arguments specified are incorrect');
+                    $this->addInternalErrorMessageToMessageBag('Parsing error. The commandline arguments specified are incorrect');
                 }
 
                 if (-2 === $process->getExitCode()) {
-                    $this->addErrorMessageToMessageBag('Configuration error. There is an error loading the configuration and/or validation targets');
+                    $this->addInternalErrorMessageToMessageBag('Configuration error. There is an error loading the configuration and/or validation targets');
                 }
 
                 if ($process->getExitCode() > 0) {
@@ -1057,7 +1057,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
                 return false;
             }
         } catch (Throwable $throwable) {
-            $this->addErrorMessageToMessageBag($throwable->getMessage());
+            $this->addInternalErrorMessageToMessageBag($throwable->getMessage());
 
             return false;
         }
@@ -1087,13 +1087,13 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
         $downloadedContent = file_get_contents($url);
 
         if (false === $downloadedContent) {
-            $this->addErrorMessageToMessageBag(InvoiceSuiteStringUtils::sprintf('Failed to download contents from %s', $url));
+            $this->addInternalErrorMessageToMessageBag(InvoiceSuiteStringUtils::sprintf('Failed to download contents from %s', $url));
 
             return false;
         }
 
         if (false === InvoiceSuiteFileUtils::putContentToFile($toFilePath, $downloadedContent)) {
-            $this->addErrorMessageToMessageBag('Failed to save downloaded content');
+            $this->addInternalErrorMessageToMessageBag('Failed to save downloaded content');
 
             return false;
         }
