@@ -1,3 +1,22 @@
+## v0.0.19
+
+``Previous version v0.0.18``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [96317e47](https://github.com/horstoeko/invoicesuite/commit/96317e47) | 2026-08-05 05:20:54 CEST | HorstOeko | [ENH] Return Code of Validation-Console-Command return FAIL on internal errors too | 
+| :new:  | [ad2712ec](https://github.com/horstoeko/invoicesuite/commit/ad2712ec) | 2026-08-05 04:53:15 CEST | HorstOeko | [ENH] Removed constants from InvoiceSuiteXsdDocumentValidator | 
+| :new:  | [42b54ee6](https://github.com/horstoeko/invoicesuite/commit/42b54ee6) | 2026-08-04 17:30:10 CEST | HorstOeko | [ENH] Use Internal Errors in Validators | 
+| :new:  | [bd47f171](https://github.com/horstoeko/invoicesuite/commit/bd47f171) | 2026-07-31 05:50:53 CEST | HorstOeko | [ENH] Improved tests for BT-216 | 
+| :new:  | [4c7f0a48](https://github.com/horstoeko/invoicesuite/commit/4c7f0a48) | 2026-07-31 05:14:35 CEST | HorstOeko | [ENH] Added support for BT-216 | 
+| :new:  | [36d6fce5](https://github.com/horstoeko/invoicesuite/commit/36d6fce5) | 2026-07-30 04:57:38 CEST | HorstOeko | [ENH] Renamed Provider-Parameter "AllowBillingReferenceDocumentType" to "AllowInvoiceDocumentReferenceDocumentType" | 
+| :new:  | [69cf8b8f](https://github.com/horstoeko/invoicesuite/commit/69cf8b8f) | 2026-07-29 12:56:10 CEST | HorstOeko | [ENH] Added own SerializerHandles for PINT-EU and PEPPOL-Self-Billing providers | 
+| :new:  | [1e331ca4](https://github.com/horstoeko/invoicesuite/commit/1e331ca4) | 2026-07-29 12:22:37 CEST | HorstOeko | [ENH] Added prototype of "Peppol PINT-EU Billing 1.0.1", Added own read- and builder-classes for PEPPOL-Self-Billing and PINT-EU | 
+| :new:  | [f0b47f1b](https://github.com/horstoeko/invoicesuite/commit/f0b47f1b) | 2026-07-29 11:04:12 CEST | HorstOeko | [ENH] Added "Peppol BIS Billing 3.0" | 
+| :new:  | [d2ad38bc](https://github.com/horstoeko/invoicesuite/commit/d2ad38bc) | 2026-07-29 07:54:49 CEST | HorstOeko | [ENH] Remorked UBL-Support,, Added Parameter AllowBillingReferenceDocumentType | 
+
+:exclamation: _There are 3 internal commit(s)_
+
 ## v0.0.18
 
 ``Previous version v0.0.17``
