@@ -41,20 +41,6 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
     use HandlesDocumentFormatProviders;
 
     /**
-     * Minimum LibXML error code caused by schema validation
-     *
-     * @var int
-     */
-    private const LIBXML_SCHEMA_VALIDATION_ERROR_CODE_MIN = 1801;
-
-    /**
-     * Maximum LibXML error code caused by schema validation
-     *
-     * @var int
-     */
-    private const LIBXML_SCHEMA_VALIDATION_ERROR_CODE_MAX = 1899;
-
-    /**
      * The location of the mein XSD-scheme file
      *
      * @var string
@@ -278,10 +264,7 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
                     $xmlError->message
                 );
 
-                if (
-                    $xmlError->code >= self::LIBXML_SCHEMA_VALIDATION_ERROR_CODE_MIN
-                    && $xmlError->code <= self::LIBXML_SCHEMA_VALIDATION_ERROR_CODE_MAX
-                ) {
+                if ($xmlError->code >= 1801 && $xmlError->code <= 1899) {
                     $this->addErrorMessageToMessageBag($validationMessage);
                 } else {
                     $this->addInternalErrorMessageToMessageBag($validationMessage);
