@@ -187,15 +187,17 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
         string $validatorName,
         InvoiceSuiteAbstractDocumentValidator $documentValidator
     ): bool {
-        $validationWasSuccessful = !$documentValidator->hasErrorMessagesInMessageBag();
+        $validationWasSuccessful = !$documentValidator->hasErrorOrInternalErrorMessagesInMessageBag();
 
         if ($this->getBoolOption('output-json')) {
             $this->jsonValidationResults[InvoiceSuiteStringUtils::lower($validatorName)] = [
                 'status' => $validationWasSuccessful ? 'valid' : 'invalid',
                 'errors' => $documentValidator->countErrorMessagesInMessageBag(),
+                'internalerrors' => $documentValidator->countInternalErrorMessagesInMessageBag(),
                 'warnings' => $documentValidator->countWarningMessagesInMessageBag(),
                 'infos' => $documentValidator->countInfoMessagesInMessageBag(),
                 'errormessages' => $documentValidator->getErrorMessagesInMessageBag(),
+                'internalerrormessages' => $documentValidator->getInternalErrorMessagesInMessageBag(),
                 'warningmessages' => $documentValidator->getWarningMessagesInMessageBag(),
                 'infomessages' => $documentValidator->getInfoMessagesInMessageBag(),
             ];
@@ -203,6 +205,7 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
             $tableRows = [
                 [$validatorName, 'Status', $validationWasSuccessful ? 'valid' : 'invalid'],
                 [$validatorName, 'Errors', (string) $documentValidator->countErrorMessagesInMessageBag()],
+                [$validatorName, 'Internal Errors', (string) $documentValidator->countInternalErrorMessagesInMessageBag()],
                 [$validatorName, 'Warnings', (string) $documentValidator->countWarningMessagesInMessageBag()],
                 [$validatorName, 'Infos', (string) $documentValidator->countInfoMessagesInMessageBag()],
             ];

@@ -34,6 +34,7 @@ final class InvoiceSuiteValidateCommandTest extends InvoiceSuiteConsoleCommandTe
         $this->assertArrayHasKey('xsd', $decodedOutput);
         $this->assertArrayHasKey('status', $decodedOutput['xsd']);
         $this->assertArrayHasKey('errors', $decodedOutput['xsd']);
+        $this->assertArrayHasKey('internalerrors', $decodedOutput['xsd']);
         $this->assertArrayHasKey('warnings', $decodedOutput['xsd']);
         $this->assertArrayHasKey('infos', $decodedOutput['xsd']);
         $this->assertArrayHasKey('errormessages', $decodedOutput['xsd']);
@@ -41,12 +42,15 @@ final class InvoiceSuiteValidateCommandTest extends InvoiceSuiteConsoleCommandTe
         $this->assertArrayHasKey('infomessages', $decodedOutput['xsd']);
         $this->assertSame('valid', $decodedOutput['xsd']['status']);
         $this->assertSame(0, $decodedOutput['xsd']['errors']);
+        $this->assertSame(0, $decodedOutput['xsd']['internalerrors']);
         $this->assertSame(0, $decodedOutput['xsd']['warnings']);
         $this->assertSame(0, $decodedOutput['xsd']['infos']);
         $this->assertIsArray($decodedOutput['xsd']['errormessages']);
+        $this->assertIsArray($decodedOutput['xsd']['internalerrormessages']);
         $this->assertIsArray($decodedOutput['xsd']['warningmessages']);
         $this->assertIsArray($decodedOutput['xsd']['infomessages']);
         $this->assertCount(0, $decodedOutput['xsd']['errormessages']);
+        $this->assertCount(0, $decodedOutput['xsd']['internalerrormessages']);
         $this->assertCount(0, $decodedOutput['xsd']['warningmessages']);
         $this->assertCount(0, $decodedOutput['xsd']['infomessages']);
     }
@@ -147,13 +151,11 @@ final class InvoiceSuiteValidateCommandTest extends InvoiceSuiteConsoleCommandTe
 
         $commandOutput = $commandTester->getDisplay();
 
-        $this->assertStringContainsString('│ XSD', $commandOutput);
-        $this->assertStringContainsString('│ Status', $commandOutput);
-        $this->assertStringContainsString('│ Errors', $commandOutput);
-        $this->assertStringContainsString('│ Errors   │ 4', $commandOutput);
-        $this->assertStringContainsString('│ Warnings', $commandOutput);
-        $this->assertStringContainsString('│ Infos', $commandOutput);
-        $this->assertStringContainsString('│ invalid', $commandOutput);
+        $this->assertStringContainsString('│ Status          │ invalid', $commandOutput);
+        $this->assertStringContainsString('│ Errors          │ 4', $commandOutput);
+        $this->assertStringContainsString('│ Internal Errors │ 0', $commandOutput);
+        $this->assertStringContainsString('│ Warnings        │ 0', $commandOutput);
+        $this->assertStringContainsString('│ Infos           │ 0', $commandOutput);
     }
 
     /**
