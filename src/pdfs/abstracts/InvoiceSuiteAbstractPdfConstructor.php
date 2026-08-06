@@ -18,6 +18,8 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
+use horstoeko\invoicesuite\pdfs\enum\InvoiceSuitePdfAConformanceLevel;
+use horstoeko\invoicesuite\pdfs\enum\InvoiceSuitePdfAttachmentRelationship;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuitePackageVersion;
@@ -38,46 +40,6 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     use HandlesRawContents;
 
     /**
-     * Constant for Relationship types "Data"
-     */
-    public const AF_RELATIONSHIP_DATA = 'Data';
-
-    /**
-     * Constant for Relationship types "Alternative"
-     */
-    public const AF_RELATIONSHIP_ALTERNATIVE = 'Alternative';
-
-    /**
-     * Constant for Relationship types "Source"
-     */
-    public const AF_RELATIONSHIP_SOURCE = 'Source';
-
-    /**
-     * Constant for Relationship types "Supplement"
-     */
-    public const AF_RELATIONSHIP_SUPPLEMENT = 'Supplement';
-
-    /**
-     * Constant for Relationship types "Unspecified"
-     */
-    public const AF_RELATIONSHIP_UNSPECIFIED = 'Unspecified';
-
-    /**
-     * Constant for PDF/A Conformance Level "Accessible"
-     */
-    public const PDFA_CONFORMANCE_LEVEL_ACCESSIBLE = 'A';
-
-    /**
-     * Constant for PDF/A Conformance Level "Basic"
-     */
-    public const PDFA_CONFORMANCE_LEVEL_BASIC = 'B';
-
-    /**
-     * Constant for PDF/A Conformance Level "Unicode"
-     */
-    public const PDFA_CONFORMANCE_LEVEL_UNICODE = 'U';
-
-    /**
      * The additional creator tool
      *
      * @var string
@@ -87,21 +49,21 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * The relationship type of the attached invoice document
      *
-     * @var string
+     * @var InvoiceSuitePdfAttachmentRelationship
      */
-    private $documentRelationshipType = 'Alternative';
+    private $documentRelationshipType = InvoiceSuitePdfAttachmentRelationship::ALTERNATIVE;
 
     /**
      * PDF/A conformance level
      *
-     * @var string
+     * @var InvoiceSuitePdfAConformanceLevel
      */
-    private $pdfAConformanceLevel = 'B';
+    private $pdfAConformanceLevel = InvoiceSuitePdfAConformanceLevel::BASIC;
 
     /**
      * List which holds the additional attachments
      *
-     * @var array<int, array{content: string, filename: string, displayname: string, relationship: string, mimetype: string}>
+     * @var array<int, array{content: string, filename: string, displayname: string, relationship: InvoiceSuitePdfAttachmentRelationship, mimetype: string}>
      */
     private $additionalDocumentsToAttach = [];
 
@@ -237,9 +199,9 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Get the relationship type of the attached invoice document
      *
-     * @return string
+     * @return InvoiceSuitePdfAttachmentRelationship
      */
-    public function getDocumentRelationshipType(): string
+    public function getDocumentRelationshipType(): InvoiceSuitePdfAttachmentRelationship
     {
         return $this->documentRelationshipType;
     }
@@ -247,14 +209,18 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Set the relationship type of the attached invoice document
      *
-     * @param  string $newDocumentRelationshipType
+     * @param  InvoiceSuitePdfAttachmentRelationship $newDocumentRelationshipType
      * @return static
      */
     public function setDocumentRelationshipType(
-        string $newDocumentRelationshipType
+        InvoiceSuitePdfAttachmentRelationship $newDocumentRelationshipType
     ): static {
-        if (!InvoiceSuiteArrayUtils::arrayContains([static::AF_RELATIONSHIP_DATA, static::AF_RELATIONSHIP_ALTERNATIVE, static::AF_RELATIONSHIP_SOURCE], $newDocumentRelationshipType)) {
-            $newDocumentRelationshipType = static::AF_RELATIONSHIP_DATA;
+        if (!InvoiceSuiteArrayUtils::arrayContains([
+            InvoiceSuitePdfAttachmentRelationship::DATA,
+            InvoiceSuitePdfAttachmentRelationship::ALTERNATIVE,
+            InvoiceSuitePdfAttachmentRelationship::SOURCE,
+        ], $newDocumentRelationshipType)) {
+            $newDocumentRelationshipType = InvoiceSuitePdfAttachmentRelationship::DATA;
         }
 
         $this->documentRelationshipType = $newDocumentRelationshipType;
@@ -269,7 +235,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
      */
     public function setDocumentRelationshipTypeToData()
     {
-        return $this->setDocumentRelationshipType(static::AF_RELATIONSHIP_DATA);
+        return $this->setDocumentRelationshipType(InvoiceSuitePdfAttachmentRelationship::DATA);
     }
 
     /**
@@ -279,7 +245,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
      */
     public function setDocumentRelationshipTypeToAlternative()
     {
-        return $this->setDocumentRelationshipType(static::AF_RELATIONSHIP_ALTERNATIVE);
+        return $this->setDocumentRelationshipType(InvoiceSuitePdfAttachmentRelationship::ALTERNATIVE);
     }
 
     /**
@@ -289,35 +255,28 @@ abstract class InvoiceSuiteAbstractPdfConstructor
      */
     public function setDocumentRelationshipTypeToSource()
     {
-        return $this->setDocumentRelationshipType(static::AF_RELATIONSHIP_SOURCE);
+        return $this->setDocumentRelationshipType(InvoiceSuitePdfAttachmentRelationship::SOURCE);
     }
 
     /**
      * Returns the PDF/A Conformance Level. This will return "A", "B" or "U"
      *
-     * @return string
+     * @return InvoiceSuitePdfAConformanceLevel
      */
-    public function getPdfAConformanceLevel(): string
+    public function getPdfAConformanceLevel(): InvoiceSuitePdfAConformanceLevel
     {
         return $this->pdfAConformanceLevel;
     }
 
     /**
-     * Set the PDF/A Conformance Level. Valid values are "A", "B" and "U". See constants
-     * - PDFA_CONFORMANCE_LEVEL_ACCESSIBLE
-     * - PDFA_CONFORMANCE_LEVEL_BASIC
-     * - PDFA_CONFORMANCE_LEVEL_UNICODE
+     * Set the PDF/A Conformance Level
      *
-     * @param  string $newPdfAConformanceLevel
+     * @param  InvoiceSuitePdfAConformanceLevel $newPdfAConformanceLevel
      * @return static
      */
     public function setPdfAConformanceLevel(
-        string $newPdfAConformanceLevel
+        InvoiceSuitePdfAConformanceLevel $newPdfAConformanceLevel
     ): static {
-        if (!InvoiceSuiteArrayUtils::arrayContains([static::PDFA_CONFORMANCE_LEVEL_ACCESSIBLE, static::PDFA_CONFORMANCE_LEVEL_BASIC, static::PDFA_CONFORMANCE_LEVEL_UNICODE], $newPdfAConformanceLevel)) {
-            $newPdfAConformanceLevel = static::PDFA_CONFORMANCE_LEVEL_BASIC;
-        }
-
         $this->pdfAConformanceLevel = $newPdfAConformanceLevel;
 
         return $this;
@@ -330,7 +289,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
      */
     public function setPdfAConformanceLevelToAccessible(): static
     {
-        return $this->setPdfAConformanceLevel(static::PDFA_CONFORMANCE_LEVEL_ACCESSIBLE);
+        return $this->setPdfAConformanceLevel(InvoiceSuitePdfAConformanceLevel::ACCESSIBLE);
     }
 
     /**
@@ -340,7 +299,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
      */
     public function setPdfAConformanceLevelToBasic(): static
     {
-        return $this->setPdfAConformanceLevel(static::PDFA_CONFORMANCE_LEVEL_BASIC);
+        return $this->setPdfAConformanceLevel(InvoiceSuitePdfAConformanceLevel::BASIC);
     }
 
     /**
@@ -350,13 +309,13 @@ abstract class InvoiceSuiteAbstractPdfConstructor
      */
     public function setPdfAConformanceLevelToUnicode(): static
     {
-        return $this->setPdfAConformanceLevel(static::PDFA_CONFORMANCE_LEVEL_UNICODE);
+        return $this->setPdfAConformanceLevel(InvoiceSuitePdfAConformanceLevel::UNICODE);
     }
 
     /**
      * Get a list of additional documents to attach
      *
-     * @return array<int, array{content: string, filename: string, displayname: string, relationship: string, mimetype: string}>
+     * @return array<int, array{content: string, filename: string, displayname: string, relationship: InvoiceSuitePdfAttachmentRelationship, mimetype: string}>
      */
     public function getaddAdditionalDocuments(): array
     {
@@ -366,9 +325,9 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Add an additional document to attach by an existing file
      *
-     * @param  string $newFullFilename
-     * @param  string $newDisplayName
-     * @param  string $newRelationshipType
+     * @param  string                                     $newFullFilename
+     * @param  string                                     $newDisplayName
+     * @param  null|InvoiceSuitePdfAttachmentRelationship $newRelationshipType
      * @return static
      *
      * @throws InvoiceSuiteFileNotFoundException
@@ -379,7 +338,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     public function addAdditionalDocumentByRealFile(
         string $newFullFilename,
         string $newDisplayName = '',
-        string $newRelationshipType = ''
+        ?InvoiceSuitePdfAttachmentRelationship $newRelationshipType = null
     ): static {
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newFullFilename)) {
             throw new InvoiceSuiteInvalidArgumentException('You must specify a filename for the content to attach');
@@ -396,10 +355,10 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Add an additional document to attach by a content string
      *
-     * @param  string $newContent
-     * @param  string $newFilename
-     * @param  string $newDisplayName
-     * @param  string $newRelationshipType
+     * @param  string                                     $newContent
+     * @param  string                                     $newFilename
+     * @param  string                                     $newDisplayName
+     * @param  null|InvoiceSuitePdfAttachmentRelationship $newRelationshipType
      * @return static
      *
      * @throws InvoiceSuiteInvalidArgumentException
@@ -409,7 +368,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
         string $newContent,
         string $newFilename,
         string $newDisplayName = '',
-        string $newRelationshipType = ''
+        ?InvoiceSuitePdfAttachmentRelationship $newRelationshipType = null
     ): static {
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newContent)) {
             throw new InvoiceSuiteInvalidArgumentException('You must specify a content to attach');
@@ -425,13 +384,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
             throw new InvoiceSuiteUnknownContentException();
         }
 
-        if ('' === $newRelationshipType) {
-            $newRelationshipType = static::AF_RELATIONSHIP_SUPPLEMENT;
-        }
-
-        if (!InvoiceSuiteArrayUtils::arrayContains([static::AF_RELATIONSHIP_DATA, static::AF_RELATIONSHIP_ALTERNATIVE, static::AF_RELATIONSHIP_SOURCE, static::AF_RELATIONSHIP_SUPPLEMENT, static::AF_RELATIONSHIP_UNSPECIFIED], $newRelationshipType)) {
-            $newRelationshipType = static::AF_RELATIONSHIP_SUPPLEMENT;
-        }
+        $newRelationshipType ??= InvoiceSuitePdfAttachmentRelationship::SUPPLEMENT;
 
         if ('' === $newDisplayName) {
             $newDisplayName = InvoiceSuiteFileUtils::getFilenameWithExtension($newFilename);

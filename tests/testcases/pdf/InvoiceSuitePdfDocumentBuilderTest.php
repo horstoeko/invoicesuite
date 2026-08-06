@@ -12,6 +12,8 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentBuilder;
 use horstoeko\invoicesuite\pdfs\abstracts\InvoiceSuiteAbstractPdfConstructor;
+use horstoeko\invoicesuite\pdfs\enum\InvoiceSuitePdfAConformanceLevel;
+use horstoeko\invoicesuite\pdfs\enum\InvoiceSuitePdfAttachmentRelationship;
 use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfWriter;
 use horstoeko\invoicesuite\tests\TestCase;
@@ -110,8 +112,8 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         // Initial values
 
         $this->assertSame('', $pdfDOcumentBuilder->getAdditionalCreatorTool());
-        $this->assertSame('Alternative', $pdfDOcumentBuilder->getDocumentRelationshipType());
-        $this->assertSame('B', $pdfDOcumentBuilder->getPdfAConformanceLevel());
+        $this->assertSame(InvoiceSuitePdfAttachmentRelationship::ALTERNATIVE, $pdfDOcumentBuilder->getDocumentRelationshipType());
+        $this->assertSame(InvoiceSuitePdfAConformanceLevel::BASIC, $pdfDOcumentBuilder->getPdfAConformanceLevel());
         $this->assertEmpty($pdfDOcumentBuilder->getaddAdditionalDocument());
         $this->assertFalse($pdfDOcumentBuilder->getDeterministicMode());
         $this->assertSame('', $pdfDOcumentBuilder->getMetaInformationAuthorTemplate());
@@ -150,33 +152,31 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $pdfDOcumentBuilder->setAdditionalCreatorTool('Some Creator Tool');
         $this->assertSame('Some Creator Tool', $pdfDOcumentBuilder->getAdditionalCreatorTool());
 
-        $pdfDOcumentBuilder->setDocumentRelationshipType('Alternative');
-        $this->assertSame('Alternative', $pdfDOcumentBuilder->getDocumentRelationshipType());
-        $pdfDOcumentBuilder->setDocumentRelationshipType('Data');
-        $this->assertSame('Data', $pdfDOcumentBuilder->getDocumentRelationshipType());
-        $pdfDOcumentBuilder->setDocumentRelationshipType('Source');
-        $this->assertSame('Source', $pdfDOcumentBuilder->getDocumentRelationshipType());
-        $pdfDOcumentBuilder->setDocumentRelationshipType('unknown');
-        $this->assertSame('Data', $pdfDOcumentBuilder->getDocumentRelationshipType());
+        $pdfDOcumentBuilder->setDocumentRelationshipType(InvoiceSuitePdfAttachmentRelationship::ALTERNATIVE);
+        $this->assertSame(InvoiceSuitePdfAttachmentRelationship::ALTERNATIVE, $pdfDOcumentBuilder->getDocumentRelationshipType());
+        $pdfDOcumentBuilder->setDocumentRelationshipType(InvoiceSuitePdfAttachmentRelationship::DATA);
+        $this->assertSame(InvoiceSuitePdfAttachmentRelationship::DATA, $pdfDOcumentBuilder->getDocumentRelationshipType());
+        $pdfDOcumentBuilder->setDocumentRelationshipType(InvoiceSuitePdfAttachmentRelationship::SOURCE);
+        $this->assertSame(InvoiceSuitePdfAttachmentRelationship::SOURCE, $pdfDOcumentBuilder->getDocumentRelationshipType());
+        $pdfDOcumentBuilder->setDocumentRelationshipType(InvoiceSuitePdfAttachmentRelationship::SUPPLEMENT);
+        $this->assertSame(InvoiceSuitePdfAttachmentRelationship::DATA, $pdfDOcumentBuilder->getDocumentRelationshipType());
         $pdfDOcumentBuilder->setDocumentRelationshipTypeToSource();
-        $this->assertSame('Source', $pdfDOcumentBuilder->getDocumentRelationshipType());
+        $this->assertSame(InvoiceSuitePdfAttachmentRelationship::SOURCE, $pdfDOcumentBuilder->getDocumentRelationshipType());
         $pdfDOcumentBuilder->setDocumentRelationshipTypeToAlternative();
-        $this->assertSame('Alternative', $pdfDOcumentBuilder->getDocumentRelationshipType());
+        $this->assertSame(InvoiceSuitePdfAttachmentRelationship::ALTERNATIVE, $pdfDOcumentBuilder->getDocumentRelationshipType());
         $pdfDOcumentBuilder->setDocumentRelationshipTypeToData();
-        $this->assertSame('Data', $pdfDOcumentBuilder->getDocumentRelationshipType());
+        $this->assertSame(InvoiceSuitePdfAttachmentRelationship::DATA, $pdfDOcumentBuilder->getDocumentRelationshipType());
 
-        $pdfDOcumentBuilder->setPdfAConformanceLevel('A');
-        $this->assertSame('A', $pdfDOcumentBuilder->getPdfAConformanceLevel());
-        $pdfDOcumentBuilder->setPdfAConformanceLevel('U');
-        $this->assertSame('U', $pdfDOcumentBuilder->getPdfAConformanceLevel());
-        $pdfDOcumentBuilder->setPdfAConformanceLevel('X');
-        $this->assertSame('B', $pdfDOcumentBuilder->getPdfAConformanceLevel());
+        $pdfDOcumentBuilder->setPdfAConformanceLevel(InvoiceSuitePdfAConformanceLevel::ACCESSIBLE);
+        $this->assertSame(InvoiceSuitePdfAConformanceLevel::ACCESSIBLE, $pdfDOcumentBuilder->getPdfAConformanceLevel());
+        $pdfDOcumentBuilder->setPdfAConformanceLevel(InvoiceSuitePdfAConformanceLevel::UNICODE);
+        $this->assertSame(InvoiceSuitePdfAConformanceLevel::UNICODE, $pdfDOcumentBuilder->getPdfAConformanceLevel());
         $pdfDOcumentBuilder->setPdfAConformanceLevelToAccessible();
-        $this->assertSame('A', $pdfDOcumentBuilder->getPdfAConformanceLevel());
+        $this->assertSame(InvoiceSuitePdfAConformanceLevel::ACCESSIBLE, $pdfDOcumentBuilder->getPdfAConformanceLevel());
         $pdfDOcumentBuilder->setPdfAConformanceLevelToUnicode();
-        $this->assertSame('U', $pdfDOcumentBuilder->getPdfAConformanceLevel());
+        $this->assertSame(InvoiceSuitePdfAConformanceLevel::UNICODE, $pdfDOcumentBuilder->getPdfAConformanceLevel());
         $pdfDOcumentBuilder->setPdfAConformanceLevelToBasic();
-        $this->assertSame('B', $pdfDOcumentBuilder->getPdfAConformanceLevel());
+        $this->assertSame(InvoiceSuitePdfAConformanceLevel::BASIC, $pdfDOcumentBuilder->getPdfAConformanceLevel());
 
         $pdfDOcumentBuilder->setDeterministicMode(true);
         $this->assertTrue($pdfDOcumentBuilder->getDeterministicMode());
@@ -221,7 +221,7 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $this->assertNotEquals('', $pdfDOcumentBuilder->getaddAdditionalDocument()[0]['content']);
         $this->assertSame('02_picture.jpg', $pdfDOcumentBuilder->getaddAdditionalDocument()[0]['filename']);
         $this->assertSame('02_picture.jpg', $pdfDOcumentBuilder->getaddAdditionalDocument()[0]['displayname']);
-        $this->assertSame('Supplement', $pdfDOcumentBuilder->getaddAdditionalDocument()[0]['relationship']);
+        $this->assertSame(InvoiceSuitePdfAttachmentRelationship::SUPPLEMENT, $pdfDOcumentBuilder->getaddAdditionalDocument()[0]['relationship']);
         $this->assertSame('image/jpeg', $pdfDOcumentBuilder->getaddAdditionalDocument()[0]['mimetype']);
         $this->assertArrayHasKey('content', $pdfDOcumentBuilder->getaddAdditionalDocument()[1]);
         $this->assertArrayHasKey('filename', $pdfDOcumentBuilder->getaddAdditionalDocument()[1]);
@@ -231,7 +231,7 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $this->assertNotEquals('', $pdfDOcumentBuilder->getaddAdditionalDocument()[1]['content']);
         $this->assertSame('pdf.pdf', $pdfDOcumentBuilder->getaddAdditionalDocument()[1]['filename']);
         $this->assertSame('Attached PDF', $pdfDOcumentBuilder->getaddAdditionalDocument()[1]['displayname']);
-        $this->assertSame('Supplement', $pdfDOcumentBuilder->getaddAdditionalDocument()[1]['relationship']);
+        $this->assertSame(InvoiceSuitePdfAttachmentRelationship::SUPPLEMENT, $pdfDOcumentBuilder->getaddAdditionalDocument()[1]['relationship']);
         $this->assertSame('application/pdf', $pdfDOcumentBuilder->getaddAdditionalDocument()[1]['mimetype']);
 
         // PdfConstrucor Getter/Setter
@@ -246,9 +246,9 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $pdfDOcumentBuilder->setAdditionalCreatorTool('My Creator Tool');
         $this->assertSame('My Creator Tool', $propPdfConstructorValue->getAdditionalCreatorTool());
 
-        $this->assertSame('Data', $propPdfConstructorValue->getDocumentRelationshipType());
-        $pdfDOcumentBuilder->setDocumentRelationshipType('Source');
-        $this->assertSame('Source', $propPdfConstructorValue->getDocumentRelationshipType());
+        $this->assertSame(InvoiceSuitePdfAttachmentRelationship::DATA, $propPdfConstructorValue->getDocumentRelationshipType());
+        $pdfDOcumentBuilder->setDocumentRelationshipType(InvoiceSuitePdfAttachmentRelationship::SOURCE);
+        $this->assertSame(InvoiceSuitePdfAttachmentRelationship::SOURCE, $propPdfConstructorValue->getDocumentRelationshipType());
 
         $this->assertFalse($propPdfConstructorValue->getDeterministicMode());
         $pdfDOcumentBuilder->setDeterministicMode(true);
@@ -299,7 +299,7 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $this->assertNotEquals('', $propPdfConstructorValue->getaddAdditionalDocuments()[0]['content']);
         $this->assertSame('02_picture.jpg', $propPdfConstructorValue->getaddAdditionalDocuments()[0]['filename']);
         $this->assertSame('02_picture.jpg', $propPdfConstructorValue->getaddAdditionalDocuments()[0]['displayname']);
-        $this->assertSame('Supplement', $propPdfConstructorValue->getaddAdditionalDocuments()[0]['relationship']);
+        $this->assertSame(InvoiceSuitePdfAttachmentRelationship::SUPPLEMENT, $propPdfConstructorValue->getaddAdditionalDocuments()[0]['relationship']);
         $this->assertSame('image/jpeg', $propPdfConstructorValue->getaddAdditionalDocuments()[0]['mimetype']);
         $this->assertArrayHasKey('content', $propPdfConstructorValue->getaddAdditionalDocuments()[1]);
         $this->assertArrayHasKey('filename', $propPdfConstructorValue->getaddAdditionalDocuments()[1]);
@@ -309,7 +309,7 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $this->assertNotEquals('', $propPdfConstructorValue->getaddAdditionalDocuments()[1]['content']);
         $this->assertSame('pdf.pdf', $propPdfConstructorValue->getaddAdditionalDocuments()[1]['filename']);
         $this->assertSame('Attached PDF', $propPdfConstructorValue->getaddAdditionalDocuments()[1]['displayname']);
-        $this->assertSame('Supplement', $propPdfConstructorValue->getaddAdditionalDocuments()[1]['relationship']);
+        $this->assertSame(InvoiceSuitePdfAttachmentRelationship::SUPPLEMENT, $propPdfConstructorValue->getaddAdditionalDocuments()[1]['relationship']);
         $this->assertSame('application/pdf', $propPdfConstructorValue->getaddAdditionalDocuments()[1]['mimetype']);
 
         $pdfDOcumentBuilder->setMetaInformationAuthorTemplate('%3$s');

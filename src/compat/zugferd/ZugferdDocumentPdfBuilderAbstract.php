@@ -17,6 +17,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundExceptio
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentBuilder;
+use horstoeko\invoicesuite\pdfs\enum\InvoiceSuitePdfAttachmentRelationship;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
@@ -159,7 +160,9 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     public function setAttachmentRelationshipType(
         string $relationshipType
     ): static {
-        $this->pdfDocumentBuilder->setDocumentRelationshipType($relationshipType);
+        $this->pdfDocumentBuilder->setDocumentRelationshipType(
+            InvoiceSuitePdfAttachmentRelationship::tryFrom($relationshipType) ?? InvoiceSuitePdfAttachmentRelationship::DATA
+        );
 
         return $this;
     }
@@ -171,7 +174,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      */
     public function getAttachmentRelationshipType(): string
     {
-        return $this->pdfDocumentBuilder->getDocumentRelationshipType();
+        return $this->pdfDocumentBuilder->getDocumentRelationshipType()->value;
     }
 
     /**
@@ -231,7 +234,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         $this->pdfDocumentBuilder->addAdditionalDocumentByRealFile(
             $fullFilename,
             $displayName,
-            $relationshipType
+            InvoiceSuitePdfAttachmentRelationship::tryFrom($relationshipType) ?? InvoiceSuitePdfAttachmentRelationship::SUPPLEMENT
         );
 
         return $this;
@@ -259,7 +262,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
             $content,
             $filename,
             $displayName,
-            $relationshipType
+            InvoiceSuitePdfAttachmentRelationship::tryFrom($relationshipType) ?? InvoiceSuitePdfAttachmentRelationship::SUPPLEMENT
         );
 
         return $this;

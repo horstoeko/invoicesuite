@@ -8,7 +8,6 @@ use DateTime;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
-use horstoeko\invoicesuite\pdfs\abstracts\InvoiceSuiteAbstractPdfConstructor;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\tests\traits\HandlesCompatXmlTests;
 use horstoeko\zugferd\ZugferdDocumentBuilder;
@@ -235,7 +234,7 @@ final class ZugferdDocumentPdfBuilderTest extends TestCase
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->setAttachmentRelationshipType('unknown');
 
-        $this->assertSame(InvoiceSuiteAbstractPdfConstructor::AF_RELATIONSHIP_DATA, $pdfBuilder->getAttachmentRelationshipType());
+        $this->assertSame(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_DATA, $pdfBuilder->getAttachmentRelationshipType());
     }
 
     public function testSetAttachmentRelationshipTypeToData(): void

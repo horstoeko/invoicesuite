@@ -21,6 +21,8 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundExceptio
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\pdfs\abstracts\InvoiceSuiteAbstractPdfConstructor;
+use horstoeko\invoicesuite\pdfs\enum\InvoiceSuitePdfAConformanceLevel;
+use horstoeko\invoicesuite\pdfs\enum\InvoiceSuitePdfAttachmentRelationship;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
@@ -238,9 +240,9 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * Get the relationship type of the attached invoice document
      *
-     * @return string
+     * @return InvoiceSuitePdfAttachmentRelationship
      */
-    public function getDocumentRelationshipType(): string
+    public function getDocumentRelationshipType(): InvoiceSuitePdfAttachmentRelationship
     {
         return $this->getCurrentPdfConstructor()->getDocumentRelationshipType();
     }
@@ -248,11 +250,11 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * Set the relationship type of the attached invoice document
      *
-     * @param  string $newDocumentRelationshipType
+     * @param  InvoiceSuitePdfAttachmentRelationship $newDocumentRelationshipType
      * @return static
      */
     public function setDocumentRelationshipType(
-        string $newDocumentRelationshipType
+        InvoiceSuitePdfAttachmentRelationship $newDocumentRelationshipType
     ): static {
         $this->getCurrentPdfConstructor()->setDocumentRelationshipType($newDocumentRelationshipType);
 
@@ -298,21 +300,21 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * Returns the PDF/A Conformance Level. This will return "A", "B" or "U"
      *
-     * @return string
+     * @return InvoiceSuitePdfAConformanceLevel
      */
-    public function getPdfAConformanceLevel(): string
+    public function getPdfAConformanceLevel(): InvoiceSuitePdfAConformanceLevel
     {
         return $this->getCurrentPdfConstructor()->getPdfAConformanceLevel();
     }
 
     /**
-     * Set the PDF/A Conformance Level. Valid values are "A", "B" and "U".
+     * Set the PDF/A Conformance Level
      *
-     * @param  string $newPdfAConformanceLevel
+     * @param  InvoiceSuitePdfAConformanceLevel $newPdfAConformanceLevel
      * @return static
      */
     public function setPdfAConformanceLevel(
-        string $newPdfAConformanceLevel
+        InvoiceSuitePdfAConformanceLevel $newPdfAConformanceLevel
     ): static {
         $this->getCurrentPdfConstructor()->setPdfAConformanceLevel($newPdfAConformanceLevel);
 
@@ -358,7 +360,7 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * Get a list of additional documents to attach
      *
-     * @return array<int, array{content: string, filename: string, displayname: string, relationship: string, mimetype: string}>
+     * @return array<int, array{content: string, filename: string, displayname: string, relationship: InvoiceSuitePdfAttachmentRelationship, mimetype: string}>
      */
     public function getaddAdditionalDocument(): array
     {
@@ -368,9 +370,9 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * Add an additional document to attach by an existing file
      *
-     * @param  string $newFullFilename
-     * @param  string $newDisplayName
-     * @param  string $newRelationshipType
+     * @param  string                                     $newFullFilename
+     * @param  string                                     $newDisplayName
+     * @param  null|InvoiceSuitePdfAttachmentRelationship $newRelationshipType
      * @return static
      *
      * @throws InvoiceSuiteFileNotFoundException
@@ -381,7 +383,7 @@ class InvoiceSuitePdfDocumentBuilder
     public function addAdditionalDocumentByRealFile(
         string $newFullFilename,
         string $newDisplayName = '',
-        string $newRelationshipType = ''
+        ?InvoiceSuitePdfAttachmentRelationship $newRelationshipType = null
     ): static {
         $this->getCurrentPdfConstructor()->addAdditionalDocumentByRealFile($newFullFilename, $newDisplayName, $newRelationshipType);
 
@@ -391,10 +393,10 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * Add an additional document to attach by a content string
      *
-     * @param  string $newContent
-     * @param  string $newFilename
-     * @param  string $newDisplayName
-     * @param  string $newRelationshipType
+     * @param  string                                     $newContent
+     * @param  string                                     $newFilename
+     * @param  string                                     $newDisplayName
+     * @param  null|InvoiceSuitePdfAttachmentRelationship $newRelationshipType
      * @return static
      *
      * @throws InvoiceSuiteInvalidArgumentException
@@ -404,7 +406,7 @@ class InvoiceSuitePdfDocumentBuilder
         string $newContent,
         string $newFilename,
         string $newDisplayName = '',
-        string $newRelationshipType = ''
+        ?InvoiceSuitePdfAttachmentRelationship $newRelationshipType = null
     ): static {
         $this->getCurrentPdfConstructor()->addAdditionalDocumentByContent($newContent, $newFilename, $newDisplayName, $newRelationshipType);
 
