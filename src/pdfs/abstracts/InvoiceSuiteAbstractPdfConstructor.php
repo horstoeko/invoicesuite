@@ -317,7 +317,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
      *
      * @return array<int, array{content: string, filename: string, displayname: string, relationship: InvoiceSuitePdfAttachmentRelationship, mimetype: string}>
      */
-    public function getaddAdditionalDocuments(): array
+    public function getAdditionalDocuments(): array
     {
         return $this->additionalDocumentsToAttach;
     }

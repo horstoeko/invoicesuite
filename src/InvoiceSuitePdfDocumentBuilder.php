@@ -362,9 +362,9 @@ class InvoiceSuitePdfDocumentBuilder
      *
      * @return array<int, array{content: string, filename: string, displayname: string, relationship: InvoiceSuitePdfAttachmentRelationship, mimetype: string}>
      */
-    public function getaddAdditionalDocument(): array
+    public function getAdditionalDocuments(): array
     {
-        return $this->getCurrentPdfConstructor()->getaddAdditionalDocuments();
+        return $this->getCurrentPdfConstructor()->getAdditionalDocuments();
     }
 
     /**

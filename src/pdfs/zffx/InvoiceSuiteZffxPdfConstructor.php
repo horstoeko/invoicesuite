@@ -87,7 +87,7 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
 
         // Attach additional documents
 
-        foreach ($this->getaddAdditionalDocuments() as $additionalDocumentToAttach) {
+        foreach ($this->getAdditionalDocuments() as $additionalDocumentToAttach) {
             $this->pdfWriter->attach(
                 PdfStreamReader::createByString($additionalDocumentToAttach['content']),
                 $additionalDocumentToAttach['filename'],

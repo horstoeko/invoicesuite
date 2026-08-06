@@ -43,4 +43,4 @@ $pdfBuilder
     ->generatePdfDocumentAndSaveToFile($targetPdfFilename);
 
 echo sprintf("Created PDF invoice with attachments: %s\n", $targetPdfFilename);
-echo sprintf("Additional attachments: %d\n", count($pdfBuilder->getaddAdditionalDocument()));
+echo sprintf("Additional attachments: %d\n", count($pdfBuilder->getAdditionalDocuments()));
