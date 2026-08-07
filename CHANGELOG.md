@@ -1,3 +1,15 @@
+## v0.0.20
+
+``Previous version v0.0.19``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [9f1f4891](https://github.com/horstoeko/invoicesuite/commit/9f1f4891) | 2026-08-07 04:50:10 CEST | HorstOeko | [ENH] Added "hide-messages" option to "InvoiceSuiteValidateCommand" -> Hides message output (table-mode only) | 
+| :new:  | [f12b18d4](https://github.com/horstoeko/invoicesuite/commit/f12b18d4) | 2026-08-06 05:47:09 CEST | HorstOeko | [ENH] Renamed method "getaddAdditionalDocuments" to "getAdditionalDocuments" | 
+| :new:  | [6c5834c5](https://github.com/horstoeko/invoicesuite/commit/6c5834c5) | 2026-08-06 05:25:06 CEST | HorstOeko | [ENH] Using enums for PDFConstructor Relationshiptype and PDF/A conformance level | 
+
+:exclamation: _There is one internal commit_
+
 ## v0.0.19
 
 ``Previous version v0.0.18``
