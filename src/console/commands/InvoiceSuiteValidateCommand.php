@@ -58,6 +58,7 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
         $this->setDescription('Validate an XML invoice document by XSD and/or KoSIT validator');
         $this->addArgument('input-file', InputArgument::REQUIRED, 'The XML file to validate');
         $this->addOption('output-json', null, InputOption::VALUE_NONE, 'Output results as JSON');
+        $this->addOption('hide-messages', null, InputOption::VALUE_NONE, 'Do not output messages (table-output only)');
         $this->addOption('validator', null, InputOption::VALUE_REQUIRED, 'Validator to use (all, xsd, kosit)', 'all');
         $this->addOption('xsd-file', null, InputOption::VALUE_REQUIRED, 'Use a custom XSD file');
         $this->addOption('kosit-base-directory', null, InputOption::VALUE_REQUIRED, 'Base directory for KoSIT validator downloads and temporary files');
@@ -212,8 +213,10 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
 
             $this->outputTable(['Validator', 'Info', 'Value'], $tableRows);
 
-            foreach ($documentValidator->getMessageBag() as $messageBagItem) {
-                $this->outputLineLF(InvoiceSuiteStringUtils::sprintf('<info>%s</info>: %s', $messageBagItem->getMessageSeverityValue(), $messageBagItem->getMessageContent()));
+            if (!$this->getBoolOption('hide-messages')) {
+                foreach ($documentValidator->getMessageBag() as $messageBagItem) {
+                    $this->outputLineLF(InvoiceSuiteStringUtils::sprintf('<info>%s</info>: %s', $messageBagItem->getMessageSeverityValue(), $messageBagItem->getMessageContent()));
+                }
             }
         }
 
