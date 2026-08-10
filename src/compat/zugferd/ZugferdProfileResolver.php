@@ -13,7 +13,6 @@ namespace horstoeko\zugferd;
 
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownProfileException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use JMS\Serializer\Exception\RuntimeException as JMSSerializerRuntimeException;
 
@@ -105,13 +104,13 @@ class ZugferdProfileResolver
      * @param  int                        $profileId
      * @return array{0:int, 1:ProfileDef}
      *
-     * @throws InvoiceSuiteUnknownProfileException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public static function resolveById(
         int $profileId
     ): array {
         if (!isset(ZugferdProfiles::PROFILEDEF[$profileId])) {
-            throw new InvoiceSuiteUnknownProfileException($profileId);
+            throw new InvoiceSuiteFormatProviderNotFoundException((string) $profileId);
         }
 
         return [$profileId, ZugferdProfiles::PROFILEDEF[$profileId]];
@@ -123,7 +122,7 @@ class ZugferdProfileResolver
      * @param  int        $profileId
      * @return ProfileDef
      *
-     * @throws InvoiceSuiteUnknownProfileException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public static function resolveProfileDefById(
         int $profileId

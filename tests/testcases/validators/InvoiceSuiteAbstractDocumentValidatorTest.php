@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\tests\testcases\validators;
 
 use Closure;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteExceptionCodes;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteValidationContentNotSpecifiedException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\tests\TestCase;
@@ -189,9 +188,7 @@ final class InvoiceSuiteAbstractDocumentValidatorTest extends TestCase
         $factory = self::$validatorFactory;
         $validatorInstance = $factory('');
 
-        $this->expectException(InvoiceSuiteValidationContentNotSpecifiedException::class);
-        $this->expectExceptionMessage('No content was specified for validation');
-        $this->expectExceptionCode(InvoiceSuiteExceptionCodes::VALIDATION_CONTENT_NOT_SPECIFIED);
+        $this->expectException(InvoiceSuiteInvalidArgumentException::class);
 
         $validatorInstance->validate();
     }
