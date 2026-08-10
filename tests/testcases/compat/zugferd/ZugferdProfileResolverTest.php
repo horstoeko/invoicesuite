@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\tests\testcases\compat\zugferd;
 use Exception;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteExceptionCodes;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownProfileException;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\zugferd\ZugferdProfileResolver;
 use horstoeko\zugferd\ZugferdProfiles;
@@ -266,8 +267,9 @@ final class ZugferdProfileResolverTest extends TestCase
 
     public function testResolveProfileDefByIdUnknown()
     {
-        $this->expectException(InvoiceSuiteFormatProviderNotFoundException::class);
-        $this->expectExceptionMessage('The format provider with unique id -1 was not found');
+        $this->expectException(InvoiceSuiteUnknownProfileException::class);
+        $this->expectExceptionMessage('The profile with id -1 is unknown');
+        $this->expectExceptionCode(InvoiceSuiteExceptionCodes::UNKNOWN_PROFILE);
 
         ZugferdProfileResolver::resolveProfileDefById(-1);
     }

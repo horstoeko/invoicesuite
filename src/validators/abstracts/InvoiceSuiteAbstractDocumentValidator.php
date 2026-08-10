@@ -20,6 +20,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteValidationContentNotSpecifiedException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
@@ -132,12 +133,12 @@ abstract class InvoiceSuiteAbstractDocumentValidator
      *
      * @return static
      *
-     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteValidationContentNotSpecifiedException
      */
     public function validate(): static
     {
         if (!$this->hasRawDocumentContent()) {
-            throw new InvoiceSuiteInvalidArgumentException('You did not present any content to validate');
+            throw new InvoiceSuiteValidationContentNotSpecifiedException();
         }
 
         return $this->doValidate();
