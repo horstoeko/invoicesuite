@@ -36,4 +36,12 @@ class InvoiceSuiteExceptionCodes
     public const UNKNOWN_PROVIDER_PARAMETER = -1006;
 
     public const INTERNAL_METHOD_CALL = -1007;
+
+    public const TEMPLATE_NOT_SPECIFIED = -1008;
+
+    public const TEMPLATE_NOT_FOUND = -1009;
+
+    public const VALIDATION_CONTENT_NOT_SPECIFIED = -1010;
+
+    public const UNKNOWN_PROFILE = -1011;
 }

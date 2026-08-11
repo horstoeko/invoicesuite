@@ -13,6 +13,7 @@ namespace horstoeko\zugferd;
 
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteValidationContentNotSpecifiedException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteMessageBagItem;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
@@ -96,7 +97,7 @@ class ZugferdXsdValidator
      *
      * @return ZugferdXsdValidator
      *
-     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteValidationContentNotSpecifiedException
      */
     public function validate(): self
     {

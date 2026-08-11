@@ -15,6 +15,8 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteTemplateNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteTemplateNotSpecifiedException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
@@ -428,6 +430,8 @@ class InvoiceSuiteVisualizer
      * @return string
      *
      * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteTemplateNotFoundException
+     * @throws InvoiceSuiteTemplateNotSpecifiedException
      */
     public function renderMarkup(): string
     {
@@ -445,6 +449,8 @@ class InvoiceSuiteVisualizer
      * @return static
      *
      * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteTemplateNotFoundException
+     * @throws InvoiceSuiteTemplateNotSpecifiedException
      */
     public function renderMarkupFile(
         string $toFilename
@@ -460,6 +466,8 @@ class InvoiceSuiteVisualizer
      * @return string
      *
      * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteTemplateNotFoundException
+     * @throws InvoiceSuiteTemplateNotSpecifiedException
      */
     public function renderPdf(): string
     {
@@ -473,6 +481,8 @@ class InvoiceSuiteVisualizer
      * @return static
      *
      * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteTemplateNotFoundException
+     * @throws InvoiceSuiteTemplateNotSpecifiedException
      */
     public function renderPdfFile(
         string $toFilename
@@ -521,12 +531,12 @@ class InvoiceSuiteVisualizer
      *
      * @return static
      *
-     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteTemplateNotSpecifiedException
      */
     protected function testTemplateIsSet(): static
     {
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->template)) {
-            throw new InvoiceSuiteInvalidArgumentException('No template specified');
+            throw new InvoiceSuiteTemplateNotSpecifiedException();
         }
 
         return $this;
@@ -538,12 +548,12 @@ class InvoiceSuiteVisualizer
      *
      * @return static
      *
-     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteTemplateNotFoundException
      */
     protected function testTemplateExists(): static
     {
         if (!$this->renderer->templateExists($this->template)) {
-            throw new InvoiceSuiteInvalidArgumentException('Specified template does not exist');
+            throw new InvoiceSuiteTemplateNotFoundException($this->template);
         }
 
         return $this;

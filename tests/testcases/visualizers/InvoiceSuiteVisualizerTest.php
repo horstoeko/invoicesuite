@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\visualizers;
 
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteExceptionCodes;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteTemplateNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteTemplateNotSpecifiedException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\tests\TestCase;
@@ -282,7 +285,8 @@ TMPL;
     {
         $visualizer = $this->createVisualizer();
 
-        $this->expectException(InvoiceSuiteInvalidArgumentException::class);
+        $this->expectException(InvoiceSuiteTemplateNotSpecifiedException::class);
+        $this->expectExceptionCode(InvoiceSuiteExceptionCodes::TEMPLATE_NOT_SPECIFIED);
         $this->expectExceptionMessage('No template specified');
 
         $visualizer->renderMarkup();
@@ -295,8 +299,9 @@ TMPL;
             ->setTemplate($missingTemplateFilename);
 
         $this->assertFileDoesNotExist($missingTemplateFilename);
-        $this->expectException(InvoiceSuiteInvalidArgumentException::class);
-        $this->expectExceptionMessage('Specified template does not exist');
+        $this->expectException(InvoiceSuiteTemplateNotFoundException::class);
+        $this->expectExceptionCode(InvoiceSuiteExceptionCodes::TEMPLATE_NOT_FOUND);
+        $this->expectExceptionMessage('The template ' . $missingTemplateFilename . ' was not found');
 
         $visualizer->renderMarkup();
     }

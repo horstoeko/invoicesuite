@@ -15,6 +15,8 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteTemplateNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteTemplateNotSpecifiedException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentBuilder;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
@@ -70,6 +72,8 @@ class InvoiceSuiteVisualizeCommand extends InvoiceSuiteAbstractCommand
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteTemplateNotFoundException
+     * @throws InvoiceSuiteTemplateNotSpecifiedException
      * @throws InvoiceSuiteUnknownContentException
      * @throws JMSSerializerRuntimeException
      * @throws RuntimeException

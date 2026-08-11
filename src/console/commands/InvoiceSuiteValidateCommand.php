@@ -15,6 +15,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteValidationContentNotSpecifiedException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\validators\abstracts\InvoiceSuiteAbstractDocumentValidator;
@@ -77,6 +78,7 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteValidationContentNotSpecifiedException
      * @throws RuntimeException
      * @throws TypeError
      * @throws ValueError
@@ -116,6 +118,7 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteValidationContentNotSpecifiedException
      * @throws RuntimeException
      */
     protected function validateByXsd(
@@ -144,6 +147,7 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteValidationContentNotSpecifiedException
      * @throws RuntimeException
      * @throws TypeError
      * @throws ValueError
