@@ -19,7 +19,6 @@ use RuntimeException;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Exception\InvalidArgumentException as ConsoleInvalidArgumentException;
 use Symfony\Component\Console\Input\InputOption;
-use z4kn4fein\SemVer\SemverException;
 
 /**
  * Class representing a console command that lists all available document format providers
@@ -54,7 +53,6 @@ class InvoiceSuiteListProvidersCommand extends InvoiceSuiteAbstractCommand
      *
      * @throws ConsoleInvalidArgumentException
      * @throws RuntimeException
-     * @throws SemverException
      */
     protected function handle(): int
     {

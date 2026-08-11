@@ -57,12 +57,10 @@ use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoDocumen
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoScontoMaggiorazione;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\FatturaElettronica;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Indirizzo;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
-use ValueError;
 
 class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFormatReader
 {
@@ -75,9 +73,6 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
      * @return static
      *
      * @phpstan-param-out InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     * @throws ValueError
      */
     public function convertToDTO(
         ?InvoiceSuiteDocumentHeaderDTO &$newDocumentDTO

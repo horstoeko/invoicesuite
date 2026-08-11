@@ -51,8 +51,6 @@ class InvoiceSuitePeppol30InvoiceSerializerHandler implements SubscribingHandler
      * Get subscribing methods
      *
      * @return array<int, array{direction: int, format: string, type: string, method: string}>
-     *
-     * @throws TypeError
      */
     public static function getSubscribingMethods()
     {

@@ -20,6 +20,7 @@ parameters:
             tooWideThrowType: true
         uncheckedExceptionClasses: []
         uncheckedExceptionRegexes: []
+    checkTooWideThrowTypesInProtectedAndPublicMethods: true
     parallel:
         jobSize: 20
         maximumNumberOfProcesses: 32
