@@ -1,3 +1,16 @@
+## v0.0.21
+
+``Previous version v0.0.20``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [0cd413a1](https://github.com/horstoeko/invoicesuite/commit/0cd413a1) | 2026-08-12 05:09:03 CEST | HorstOeko | [ENH] Improved ZF/FX-Tests | 
+| :new:  | [0bc17fd5](https://github.com/horstoeko/invoicesuite/commit/0bc17fd5) | 2026-08-11 16:20:26 CEST | HorstOeko | [ENH] Added more granular exceptions | 
+| :new_moon:  | [48568049](https://github.com/horstoeko/invoicesuite/commit/48568049) | 2026-08-10 17:03:03 CEST | HorstOeko | Revert "[ENH] Added more granular exceptions" | 
+| :new:  | [abf4bffe](https://github.com/horstoeko/invoicesuite/commit/abf4bffe) | 2026-08-10 16:46:58 CEST | HorstOeko | [ENH] Added more granular exceptions | 
+
+:exclamation: _There are 2 internal commit(s)_
+
 ## v0.0.20
 
 ``Previous version v0.0.19``
