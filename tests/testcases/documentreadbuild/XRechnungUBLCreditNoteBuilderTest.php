@@ -8021,6 +8021,7 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
             ->addSupplyChainEvent((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'))
             ->addSupplyChainEvent((new DateTime())->createFromFormat('d.m.Y', '02.01.1970'))
             ->addBuyerReference(new InvoiceSuiteIdDTO('LEITWEGID'))
+            ->addBuyerReference(new InvoiceSuiteIdDTO('IGNORED-LEITWEGID'))
             ->setSellerParty(
                 (new InvoiceSuitePartyDTO())
                     ->addName('Lieferant GmbH')
@@ -8034,6 +8035,7 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                     ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
                     ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Lieferant AG'))
                     ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@lieferant.de'))
+                    ->addContact(new InvoiceSuiteContactDTO('Erika Mustermann', 'Vertrieb', '0815-4721', '0815-4722', 'erika.mustermann@lieferant.de'))
                     ->addCommunication(new InvoiceSuiteCommunicationDTO('info@lieferant.de', 'EM'))
             )
             ->setBuyerParty(
@@ -8353,6 +8355,12 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                     ->setPrepaidAmount(9.0)
                     ->setRoungingAmount(10.0)
             )
+            ->addSummation(
+                (new InvoiceSuiteSummationDTO())
+                    ->setNetAmount(101.0)
+                    ->setGrossAmount(107.0)
+                    ->setDueAmount(108.0)
+            )
             ->addPosition((new InvoiceSuiteDocumentPositionDTO())
                 ->setLineId('1.1')
                 ->setParentLineId('1')
@@ -8499,7 +8507,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                     ->setChargeTotalAmount(1.0)
                     ->setDiscountTotalAmount(2.0)
                     ->setTaxTotalAmount(3.0)
-                    ->setGrossAmount(4.0)));
+                    ->setGrossAmount(4.0)))
+            ->addPosition((new InvoiceSuiteDocumentPositionDTO())->setLineId('2.1'));
 
         static::$document->createFromDTO($documentDTO);
 
@@ -8510,13 +8519,20 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
         $this->assertXPathValue('/ns:CreditNote/cbc:IssueDate', '1970-01-01');
         $this->assertXPathValue('/ns:CreditNote/cbc:DocumentCurrencyCode', InvoiceSuiteCodelistCurrencyCodes::EURO->value);
         $this->assertXPathValue('/ns:CreditNote/cbc:TaxCurrencyCode', InvoiceSuiteCodelistCurrencyCodes::POUND_STERLING->value);
+        $this->assertXPathValue('/ns:CreditNote/cbc:TaxPointDate', '1970-01-02');
+        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cbc:ID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cbc:CreditNoteTypeCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cbc:IssueDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cbc:DocumentCurrencyCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cbc:TaxCurrencyCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cbc:TaxPointDate', 1);
 
         $this->assertXPathValueWithIndex('/ns:CreditNote/cbc:Note', 0, 'Some content');
         $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cbc:Note', 1);
 
         $this->assertXPathValueWithIndex('/ns:CreditNote/cac:InvoicePeriod/cbc:StartDate', 0, '1970-01-01');
         $this->assertXPathValueWithIndex('/ns:CreditNote/cac:InvoicePeriod/cbc:EndDate', 0, '1970-01-31');
-        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:InvoicePeriod/cbc:Description', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:InvoicePeriod/cbc:Description', 0);
         $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:InvoicePeriod/cbc:StartDate', 1);
         $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:InvoicePeriod/cbc:EndDate', 1);
         $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:InvoicePeriod/cbc:Description', 1);
@@ -8930,7 +8946,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
         // Position General
 
         $this->assertXPathValueWithIndex('/ns:CreditNote/cac:CreditNoteLine/cbc:ID', 0, '1.1');
-        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:CreditNoteLine/cbc:ID', 1);
+        $this->assertXPathValueWithIndex('/ns:CreditNote/cac:CreditNoteLine/cbc:ID', 1, '2.1');
+        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:CreditNoteLine/cbc:ID', 2);
 
         // Position Note
 
@@ -9088,5 +9105,14 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
 
         $this->assertXPathValueWithIndex('/ns:CreditNote/cac:CreditNoteLine/cbc:LineExtensionAmount', 0, '100.00');
         $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:CreditNoteLine/cbc:LineExtensionAmount', 1);
+        $this->assertXPathValueWithIndex('/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:AddressLine/cbc:Line', 0, 'Line 3');
+        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:AddressLine/cbc:Line', 1);
+        $this->assertXPathValueWithIndex('/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:AddressLine/cbc:Line', 0, 'Line 3');
+        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:AddressLine/cbc:Line', 1);
+        $this->assertXPathValueWithIndex('/ns:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:AddressLine/cbc:Line', 0, 'Line 3');
+        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:AddressLine/cbc:Line', 1);
+        $this->assertXPathValueWithIndex('/ns:CreditNote/cac:TaxRepresentativeParty/cac:PostalAddress/cac:AddressLine/cbc:Line', 0, 'Line 3');
+        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:TaxRepresentativeParty/cac:PostalAddress/cac:AddressLine/cbc:Line', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReason', 2);
     }
 }
