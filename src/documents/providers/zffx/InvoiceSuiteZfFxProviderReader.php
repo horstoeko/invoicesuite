@@ -17826,7 +17826,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $newAllowanceChargeBaseAmount = $this->supportsAtLeastEn16931() ? ($positionAllowanceCharge->getBasisAmount()?->getValue() ?? 0.0) : 0.0;
         $newAllowanceChargeReason = $positionAllowanceCharge->getReason()?->getValue() ?? '';
         $newAllowanceChargeReasonCode = $positionAllowanceCharge->getReasonCode()?->getValue() ?? '';
-        $newAllowanceChargePercent = $this->supportsAtLeastEn16931() ? ($positionAllowanceCharge->getCalculationPercent()->getValue() ?? 0.0) : 0.0;
+        $newAllowanceChargePercent = $this->supportsAtLeastEn16931() ? ($positionAllowanceCharge->getCalculationPercent()?->getValue() ?? 0.0) : 0.0;
 
         $this->traceMethodExit(__METHOD__);
 
