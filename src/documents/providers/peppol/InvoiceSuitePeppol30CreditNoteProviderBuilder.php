@@ -1515,7 +1515,7 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         $invoiceReference->getIDWithCreate()->setValue($newReferenceNumber);
         $invoiceReference->setIssueDate($newReferenceDate);
 
-        if (true === $this->getCurrentDocumentFormatProviderParameterValueBool('AllowInvoiceDocumentReferenceDocumentType', false)) {
+        if ($this->getCurrentDocumentFormatProviderParameterValueBool('AllowInvoiceDocumentReferenceDocumentType', false)) {
             if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTypeCode)) {
                 $invoiceReference->getDocumentTypeCodeWithCreate()->setValue($newTypeCode);
             }

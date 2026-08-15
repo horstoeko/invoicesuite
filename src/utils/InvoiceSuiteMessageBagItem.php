@@ -51,7 +51,7 @@ final class InvoiceSuiteMessageBagItem implements JsonSerializable
      *
      * @var array<array-key, mixed>
      */
-    private array $messageAdditionalData = [];
+    private array $messageAdditionalData;
 
     /**
      * Constructor.

@@ -175,7 +175,7 @@ final class DatiBeniServizi
     public function getLatestDettaglioLineeWithCreate(): DettaglioLinee
     {
         if (is_null($dettaglioLinee = $this->getLatestDettaglioLinee())) {
-            $dettaglioLinee = $this->addToDettaglioLineeWithCreate();
+            return $this->addToDettaglioLineeWithCreate();
         }
 
         return $dettaglioLinee;

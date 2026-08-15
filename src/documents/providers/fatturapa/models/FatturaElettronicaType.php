@@ -313,7 +313,7 @@ class FatturaElettronicaType
     public function getLatestFatturaElettronicaBodyWithCreate(): FatturaElettronicaBody
     {
         if (is_null($fatturaElettronicaBody = $this->getLatestFatturaElettronicaBody())) {
-            $fatturaElettronicaBody = $this->addToFatturaElettronicaBodyWithCreate();
+            return $this->addToFatturaElettronicaBodyWithCreate();
         }
 
         return $fatturaElettronicaBody;

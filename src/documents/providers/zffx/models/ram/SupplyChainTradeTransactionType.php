@@ -292,7 +292,7 @@ class SupplyChainTradeTransactionType
     public function getLatestIncludedSupplyChainTradeLineItemWithCreate(): SupplyChainTradeLineItemType
     {
         if (is_null($supplyChainTradeLineItem = $this->getLatestIncludedSupplyChainTradeLineItem())) {
-            $supplyChainTradeLineItem = $this->addToIncludedSupplyChainTradeLineItemWithCreate();
+            return $this->addToIncludedSupplyChainTradeLineItemWithCreate();
         }
 
         return $supplyChainTradeLineItem;

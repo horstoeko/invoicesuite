@@ -4546,7 +4546,7 @@ class InvoiceType
     public function getLatestDocumentLineWithCreate(): ?InvoiceLine
     {
         if (is_null($invoiceLine = $this->getLatestDocumentLine())) {
-            $invoiceLine = $this->addToInvoiceLineWithCreate();
+            return $this->addToInvoiceLineWithCreate();
         }
 
         return $invoiceLine;

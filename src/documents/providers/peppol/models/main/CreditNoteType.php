@@ -4316,7 +4316,7 @@ class CreditNoteType
     public function getLatestDocumentLineWithCreate(): ?CreditNoteLine
     {
         if (is_null($creditNoteLine = $this->getLatestDocumentLine())) {
-            $creditNoteLine = $this->addToCreditNoteLineWithCreate();
+            return $this->addToCreditNoteLineWithCreate();
         }
 
         return $creditNoteLine;
