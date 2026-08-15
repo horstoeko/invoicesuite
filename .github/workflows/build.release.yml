@@ -112,7 +112,7 @@ jobs:
 
       - name: Run remote Schematron tests
         run: |
-          kositValidationReportFilename="$RUNNER_TEMP/kosit-validation-report.xml"
+          expectedResultAnchor='<rep:assessment><rep:accept>'
 
           for invoiceXmlFilename in \
             tests/assets/00_case_comfort_simple.xml \
@@ -124,164 +124,125 @@ jobs:
             tests/assets/00_case_xrechnung_ublcreditnote_simple.xml \
             tests/assets/00_case_xrechnung_ublcreditnote_simple_dto.xml
           do
-            if ! kositHttpStatusCode=$(curl \
+            if ! kositValidationResult=$(curl \
               --silent \
               --show-error \
               --header 'Content-Type: application/xml' \
               --data-binary "@$invoiceXmlFilename" \
               --max-time 120 \
-              --output "$kositValidationReportFilename" \
-              --write-out '%{http_code}' \
+              --write-out $'\n%{http_code}' \
               "http://$KOSIT_REMOTE_HOST:$KOSIT_REMOTE_PORT/${invoiceXmlFilename##*/}")
             then
               echo "KoSIT validation request failed for $invoiceXmlFilename." >&2
               exit 1
             fi
 
-            if [ "$kositHttpStatusCode" != '200' ]
+            if [ "${kositValidationResult##*$'\n'}" != '200' ] ||
+              [[ "${kositValidationResult%$'\n'*}" != *"$expectedResultAnchor"* ]]
             then
-              echo "KoSIT validation failed for $invoiceXmlFilename (HTTP $kositHttpStatusCode)." >&2
+              echo "KoSIT returned an unexpected result for $invoiceXmlFilename." >&2
               exit 1
             fi
-
-            if ! grep --fixed-strings --quiet '<rep:assessment><rep:accept>' "$kositValidationReportFilename"
-            then
-              echo "KoSIT returned no acceptance result for $invoiceXmlFilename." >&2
-              exit 1
-            fi
-
-            echo "KoSIT validation passed for $invoiceXmlFilename."
           done
+
+          echo 'Remote Schematron tests passed.'
 
       - name: Run negative remote Schematron tests
         run: |
-          kositRejectionReportFilename="$RUNNER_TEMP/kosit-rejection-report.xml"
+          expectedResultAnchor='<rep:assessment><rep:reject>'
+          unexpectedResultAnchor='<rep:assessment><rep:accept>'
 
           for invalidInvoiceXmlFilename in tests/assets/*technical*.xml
           do
-            if ! kositHttpStatusCode=$(curl \
+            if ! kositValidationResult=$(curl \
               --silent \
               --show-error \
               --header 'Content-Type: application/xml' \
               --data-binary "@$invalidInvoiceXmlFilename" \
               --max-time 120 \
-              --output "$kositRejectionReportFilename" \
-              --write-out '%{http_code}' \
+              --write-out $'\n%{http_code}' \
               "http://$KOSIT_REMOTE_HOST:$KOSIT_REMOTE_PORT/${invalidInvoiceXmlFilename##*/}")
             then
               echo "KoSIT validation request failed for $invalidInvoiceXmlFilename." >&2
               exit 1
             fi
 
-            if [ "$kositHttpStatusCode" != '406' ]
+            if [ "${kositValidationResult##*$'\n'}" != '406' ] ||
+              [[ "${kositValidationResult%$'\n'*}" != *"$expectedResultAnchor"* ]] ||
+              [[ "${kositValidationResult%$'\n'*}" == *"$unexpectedResultAnchor"* ]]
             then
-              echo "KoSIT did not reject $invalidInvoiceXmlFilename as expected (HTTP $kositHttpStatusCode)." >&2
+              echo "KoSIT returned an unexpected result for $invalidInvoiceXmlFilename." >&2
               exit 1
             fi
-
-            if ! grep --fixed-strings --quiet '<rep:assessment><rep:reject>' "$kositRejectionReportFilename"
-            then
-              echo "KoSIT returned no rejection result for $invalidInvoiceXmlFilename." >&2
-              exit 1
-            fi
-
-            if grep --fixed-strings --quiet '<rep:assessment><rep:accept>' "$kositRejectionReportFilename"
-            then
-              echo "KoSIT unexpectedly accepted $invalidInvoiceXmlFilename." >&2
-              exit 1
-            fi
-
-            echo "KoSIT validation rejected $invalidInvoiceXmlFilename as expected."
           done
+
+          echo 'Negative remote Schematron tests passed.'
 
       - name: Run remote veraPDF tests
         run: |
-          veraPdfValidationReportFilename="$RUNNER_TEMP/verapdf-validation-report.xml"
+          expectedResultAnchor='<validationReports compliant="1" nonCompliant="0" failedJobs="0">1</validationReports>'
 
           for pdfFilename in \
             tests/assets/00_case_comfort_simple.pdf \
             tests/assets/00_case_extended_simple.pdf
           do
-            if ! veraPdfHttpStatusCode=$(curl \
+            if ! veraPdfValidationResult=$(curl \
               --silent \
               --show-error \
               --header 'Accept: application/xml' \
               --form "file=@$pdfFilename;type=application/pdf" \
               --max-time 120 \
-              --output "$veraPdfValidationReportFilename" \
-              --write-out '%{http_code}' \
+              --write-out $'\n%{http_code}' \
               "http://$VERAPDF_REMOTE_HOST:$VERAPDF_REMOTE_PORT/api/validate/3b")
             then
               echo "veraPDF validation request failed for $pdfFilename." >&2
               exit 1
             fi
 
-            if [ "$veraPdfHttpStatusCode" != '200' ]
+            if [ "${veraPdfValidationResult##*$'\n'}" != '200' ] ||
+              [[ "${veraPdfValidationResult%$'\n'*}" != *"$expectedResultAnchor"* ]]
             then
-              echo "veraPDF validation failed for $pdfFilename (HTTP $veraPdfHttpStatusCode)." >&2
+              echo "veraPDF returned an unexpected result for $pdfFilename." >&2
               exit 1
             fi
-
-            if ! grep --fixed-strings --quiet '<validationReports compliant="1" nonCompliant="0" failedJobs="0">1</validationReports>' "$veraPdfValidationReportFilename"
-            then
-              echo "veraPDF returned no compliant validation result for $pdfFilename." >&2
-              exit 1
-            fi
-
-            echo "veraPDF validation passed for $pdfFilename."
           done
+
+          echo 'Remote veraPDF tests passed.'
 
       - name: Run negative remote veraPDF tests
         run: |
-          veraPdfRejectionReportFilename="$RUNNER_TEMP/verapdf-rejection-report.xml"
+          unexpectedResultAnchor='<validationReports compliant="1" nonCompliant="0" failedJobs="0">1</validationReports>'
 
-          for invalidPdfFilename in \
-            tests/assets/pdf_plain.pdf \
-            tests/assets/pdf_broken.pdf
+          for validationCase in \
+            'tests/assets/pdf_plain.pdf|<validationReports compliant="0" nonCompliant="1" failedJobs="0">1</validationReports>' \
+            'tests/assets/pdf_broken.pdf|<validationReports compliant="0" nonCompliant="0" failedJobs="1">1</validationReports>'
           do
-            case "$invalidPdfFilename" in
-              tests/assets/pdf_plain.pdf)
-                expectedVeraPdfNegativeResult='<validationReports compliant="0" nonCompliant="1" failedJobs="0">1</validationReports>'
-                ;;
-              tests/assets/pdf_broken.pdf)
-                expectedVeraPdfNegativeResult='<validationReports compliant="0" nonCompliant="0" failedJobs="1">1</validationReports>'
-                ;;
-            esac
+            invalidPdfFilename="${validationCase%%|*}"
+            expectedResultAnchor="${validationCase#*|}"
 
-            if ! veraPdfHttpStatusCode=$(curl \
+            if ! veraPdfValidationResult=$(curl \
               --silent \
               --show-error \
               --header 'Accept: application/xml' \
               --form "file=@$invalidPdfFilename;type=application/pdf" \
               --max-time 120 \
-              --output "$veraPdfRejectionReportFilename" \
-              --write-out '%{http_code}' \
+              --write-out $'\n%{http_code}' \
               "http://$VERAPDF_REMOTE_HOST:$VERAPDF_REMOTE_PORT/api/validate/3b")
             then
               echo "veraPDF validation request failed for $invalidPdfFilename." >&2
               exit 1
             fi
 
-            if [ "$veraPdfHttpStatusCode" != '200' ]
+            if [ "${veraPdfValidationResult##*$'\n'}" != '200' ] ||
+              [[ "${veraPdfValidationResult%$'\n'*}" != *"$expectedResultAnchor"* ]] ||
+              [[ "${veraPdfValidationResult%$'\n'*}" == *"$unexpectedResultAnchor"* ]]
             then
-              echo "veraPDF returned an unexpected status for $invalidPdfFilename (HTTP $veraPdfHttpStatusCode)." >&2
+              echo "veraPDF returned an unexpected result for $invalidPdfFilename." >&2
               exit 1
             fi
-
-            if ! grep --fixed-strings --quiet "$expectedVeraPdfNegativeResult" "$veraPdfRejectionReportFilename"
-            then
-              echo "veraPDF returned an unexpected negative result for $invalidPdfFilename." >&2
-              exit 1
-            fi
-
-            if grep --fixed-strings --quiet '<validationReports compliant="1" nonCompliant="0" failedJobs="0">1</validationReports>' "$veraPdfRejectionReportFilename"
-            then
-              echo "veraPDF unexpectedly accepted $invalidPdfFilename." >&2
-              exit 1
-            fi
-
-            echo "veraPDF returned the expected negative result for $invalidPdfFilename."
           done
+
+          echo 'Negative remote veraPDF tests passed.'
 
       - name: Generate API documentation
         run: |
