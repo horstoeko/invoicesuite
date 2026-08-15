@@ -19,9 +19,7 @@ updates:
         patterns:
           - '*' # Group all validation service updates into a single larger pull request.
     schedule:
-      interval: daily
-      time: '04:00'
-      timezone: Europe/Berlin
+      interval: weekly
 
   - package-ecosystem: composer
     directory: /
