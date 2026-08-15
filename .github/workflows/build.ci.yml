@@ -135,6 +135,8 @@ jobs:
 
       - name: Run remote Schematron tests
         run: |
+          kositValidationReportFilename="$RUNNER_TEMP/kosit-validation-report.xml"
+
           for invoiceXmlFilename in \
             tests/assets/00_case_comfort_simple.xml \
             tests/assets/00_case_comfort_simple_dto.xml \
@@ -145,39 +147,70 @@ jobs:
             tests/assets/00_case_xrechnung_ublcreditnote_simple.xml \
             tests/assets/00_case_xrechnung_ublcreditnote_simple_dto.xml
           do
-            curl \
-              --fail-with-body \
+            if ! kositHttpStatusCode=$(curl \
               --silent \
               --show-error \
               --header 'Content-Type: application/xml' \
               --data-binary "@$invoiceXmlFilename" \
               --max-time 120 \
-              "http://$KOSIT_REMOTE_HOST:$KOSIT_REMOTE_PORT/${invoiceXmlFilename##*/}"
+              --output "$kositValidationReportFilename" \
+              --write-out '%{http_code}' \
+              "http://$KOSIT_REMOTE_HOST:$KOSIT_REMOTE_PORT/${invoiceXmlFilename##*/}")
+            then
+              echo "KoSIT validation request failed for $invoiceXmlFilename." >&2
+              exit 1
+            fi
+
+            if [ "$kositHttpStatusCode" != '200' ]
+            then
+              echo "KoSIT validation failed for $invoiceXmlFilename (HTTP $kositHttpStatusCode)." >&2
+              exit 1
+            fi
+
+            if ! grep --fixed-strings --quiet '<rep:assessment><rep:accept>' "$kositValidationReportFilename"
+            then
+              echo "KoSIT returned no acceptance result for $invoiceXmlFilename." >&2
+              exit 1
+            fi
+
+            echo "KoSIT validation passed for $invoiceXmlFilename."
           done
 
       - name: Run remote veraPDF tests
         run: |
+          veraPdfValidationReportFilename="$RUNNER_TEMP/verapdf-validation-report.xml"
+
           for pdfFilename in \
             tests/assets/00_case_comfort_simple.pdf \
             tests/assets/00_case_extended_simple.pdf
           do
-            echo "Running PDF validation for $pdfFilename"
-
-            veraPdfResult=$(curl \
-              --fail-with-body \
+            if ! veraPdfHttpStatusCode=$(curl \
               --silent \
               --show-error \
               --header 'Accept: application/xml' \
               --form "file=@$pdfFilename;type=application/pdf" \
+              --max-time 120 \
+              --output "$veraPdfValidationReportFilename" \
+              --write-out '%{http_code}' \
               "http://$VERAPDF_REMOTE_HOST:$VERAPDF_REMOTE_PORT/api/validate/3b")
-
-            printf '%s\n' "$veraPdfResult"
-
-            if ! grep --fixed-strings --quiet 'isCompliant="true"' <<< "$veraPdfResult"
             then
-              echo "Error: PDF validation not passed for $pdfFilename" >&2
+              echo "veraPDF validation request failed for $pdfFilename." >&2
               exit 1
             fi
+
+            if [ "$veraPdfHttpStatusCode" != '200' ]
+            then
+              echo "veraPDF validation failed for $pdfFilename (HTTP $veraPdfHttpStatusCode)." >&2
+              exit 1
+            fi
+
+            if ! grep --fixed-strings --quiet '<validationReports compliant="1" nonCompliant="0" failedJobs="0">1</validationReports>' "$veraPdfValidationReportFilename"
+            then
+              echo "veraPDF returned no compliant validation result for $pdfFilename." >&2
+              exit 1
+            fi
+
+            echo "veraPDF validation passed for $pdfFilename."
           done
 
       - name: Publish unit test results
