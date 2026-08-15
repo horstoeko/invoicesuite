@@ -176,6 +176,47 @@ jobs:
             echo "KoSIT validation passed for $invoiceXmlFilename."
           done
 
+      - name: Run negative remote Schematron tests
+        run: |
+          kositRejectionReportFilename="$RUNNER_TEMP/kosit-rejection-report.xml"
+
+          for invalidInvoiceXmlFilename in tests/assets/*technical*.xml
+          do
+            if ! kositHttpStatusCode=$(curl \
+              --silent \
+              --show-error \
+              --header 'Content-Type: application/xml' \
+              --data-binary "@$invalidInvoiceXmlFilename" \
+              --max-time 120 \
+              --output "$kositRejectionReportFilename" \
+              --write-out '%{http_code}' \
+              "http://$KOSIT_REMOTE_HOST:$KOSIT_REMOTE_PORT/${invalidInvoiceXmlFilename##*/}")
+            then
+              echo "KoSIT validation request failed for $invalidInvoiceXmlFilename." >&2
+              exit 1
+            fi
+
+            if [ "$kositHttpStatusCode" != '406' ]
+            then
+              echo "KoSIT did not reject $invalidInvoiceXmlFilename as expected (HTTP $kositHttpStatusCode)." >&2
+              exit 1
+            fi
+
+            if ! grep --fixed-strings --quiet '<rep:assessment><rep:reject>' "$kositRejectionReportFilename"
+            then
+              echo "KoSIT returned no rejection result for $invalidInvoiceXmlFilename." >&2
+              exit 1
+            fi
+
+            if grep --fixed-strings --quiet '<rep:assessment><rep:accept>' "$kositRejectionReportFilename"
+            then
+              echo "KoSIT unexpectedly accepted $invalidInvoiceXmlFilename." >&2
+              exit 1
+            fi
+
+            echo "KoSIT validation rejected $invalidInvoiceXmlFilename as expected."
+          done
+
       - name: Run remote veraPDF tests
         run: |
           veraPdfValidationReportFilename="$RUNNER_TEMP/verapdf-validation-report.xml"
