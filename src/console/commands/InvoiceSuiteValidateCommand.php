@@ -19,6 +19,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteValidationContentNotSpecifiedE
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\validators\abstracts\InvoiceSuiteAbstractDocumentValidator;
+use horstoeko\invoicesuite\validators\InvoiceSuiteDocuflairDocumentValidator;
 use horstoeko\invoicesuite\validators\InvoiceSuiteKositDocumentValidator;
 use horstoeko\invoicesuite\validators\InvoiceSuiteXsdDocumentValidator;
 use RuntimeException;
@@ -66,6 +67,8 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
         $this->addOption('kosit-keep-files', null, InputOption::VALUE_NONE, 'Keep KoSIT validator downloads and temporary files');
         $this->addOption('kosit-remote-host', null, InputOption::VALUE_REQUIRED, 'Remote KoSIT validator host');
         $this->addOption('kosit-remote-port', null, InputOption::VALUE_REQUIRED, 'Remote KoSIT validator port');
+        $this->addOption('docuflair-base-url', null, InputOption::VALUE_REQUIRED, 'Docuflair API base url');
+        $this->addOption('docuflair-api-key', null, InputOption::VALUE_REQUIRED, 'Docuflair personal API key');
     }
 
     /**
@@ -88,7 +91,7 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
         $inpArgFilename = $this->getSourceXmlOrJsonFileArgument('input-file');
         $inpOptionValidator = $this->getStringOption('validator', 'all');
 
-        if (!InvoiceSuiteArrayUtils::inArrayNoCase(['all', 'xsd', 'kosit'], $inpOptionValidator)) {
+        if (!InvoiceSuiteArrayUtils::inArrayNoCase(['all', 'xsd', 'kosit', 'docuflair'], $inpOptionValidator)) {
             throw new InvoiceSuiteInvalidArgumentException(InvoiceSuiteStringUtils::sprintf('Invalid option value for validator "%s"', $inpOptionValidator));
         }
 
@@ -100,6 +103,10 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
 
         if (InvoiceSuiteArrayUtils::inArrayNoCase(['all', 'kosit'], $inpOptionValidator)) {
             $validationHasErrors = !$this->validateByKosit($inpArgFilename) || $validationHasErrors;
+        }
+
+        if (InvoiceSuiteArrayUtils::inArrayNoCase(['all', 'docuflair'], $inpOptionValidator)) {
+            $validationHasErrors = !$this->validateByDocuflair($inpArgFilename) || $validationHasErrors;
         }
 
         $this->outputJsonWhen($this->getBoolOption('output-json'), $this->jsonValidationResults);
@@ -175,6 +182,42 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
         $documentValidator->validate();
 
         return $this->outputValidationResult('KoSIT', $documentValidator);
+    }
+
+    /**
+     * Validate the given XML document by Docuflair validator.
+     *
+     * @param  string $filename
+     * @return bool
+     *
+     * @throws InvalidArgumentException
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteValidationContentNotSpecifiedException
+     * @throws RuntimeException
+     * @throws TypeError
+     * @throws ValueError
+     */
+    protected function validateByDocuflair(
+        string $filename
+    ): bool {
+        $documentValidator = InvoiceSuiteDocuflairDocumentValidator::createFromFile($filename);
+        $inpOptionDocuflairBaseUrl = $this->getStringOption('docuflair-base-url');
+        $inpOptionDocuflairApiKey = $this->getStringOption('docuflair-api-key');
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($inpOptionDocuflairBaseUrl)) {
+            $documentValidator->setBaseUrl($inpOptionDocuflairBaseUrl);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($inpOptionDocuflairApiKey)) {
+            $documentValidator->setApiKey($inpOptionDocuflairApiKey);
+        }
+
+        $documentValidator->validate();
+
+        return $this->outputValidationResult('Docuflair', $documentValidator);
     }
 
     /**
