@@ -242,6 +242,58 @@ jobs:
             echo "veraPDF validation passed for $pdfFilename."
           done
 
+      - name: Run negative remote veraPDF tests
+        run: |
+          veraPdfRejectionReportFilename="$RUNNER_TEMP/verapdf-rejection-report.xml"
+
+          for invalidPdfFilename in \
+            tests/assets/pdf_plain.pdf \
+            tests/assets/pdf_broken.pdf
+          do
+            case "$invalidPdfFilename" in
+              tests/assets/pdf_plain.pdf)
+                expectedVeraPdfNegativeResult='<validationReports compliant="0" nonCompliant="1" failedJobs="0">1</validationReports>'
+                ;;
+              tests/assets/pdf_broken.pdf)
+                expectedVeraPdfNegativeResult='<validationReports compliant="0" nonCompliant="0" failedJobs="1">1</validationReports>'
+                ;;
+            esac
+
+            if ! veraPdfHttpStatusCode=$(curl \
+              --silent \
+              --show-error \
+              --header 'Accept: application/xml' \
+              --form "file=@$invalidPdfFilename;type=application/pdf" \
+              --max-time 120 \
+              --output "$veraPdfRejectionReportFilename" \
+              --write-out '%{http_code}' \
+              "http://$VERAPDF_REMOTE_HOST:$VERAPDF_REMOTE_PORT/api/validate/3b")
+            then
+              echo "veraPDF validation request failed for $invalidPdfFilename." >&2
+              exit 1
+            fi
+
+            if [ "$veraPdfHttpStatusCode" != '200' ]
+            then
+              echo "veraPDF returned an unexpected status for $invalidPdfFilename (HTTP $veraPdfHttpStatusCode)." >&2
+              exit 1
+            fi
+
+            if ! grep --fixed-strings --quiet "$expectedVeraPdfNegativeResult" "$veraPdfRejectionReportFilename"
+            then
+              echo "veraPDF returned an unexpected negative result for $invalidPdfFilename." >&2
+              exit 1
+            fi
+
+            if grep --fixed-strings --quiet '<validationReports compliant="1" nonCompliant="0" failedJobs="0">1</validationReports>' "$veraPdfRejectionReportFilename"
+            then
+              echo "veraPDF unexpectedly accepted $invalidPdfFilename." >&2
+              exit 1
+            fi
+
+            echo "veraPDF returned the expected negative result for $invalidPdfFilename."
+          done
+
       - name: Generate API documentation
         run: |
           wget "$PHPDOCUMENTORURL" -O "$PHPDOCUMENTORFILENAME"
