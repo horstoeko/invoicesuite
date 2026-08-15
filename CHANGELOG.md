@@ -1,3 +1,15 @@
+## v0.0.22
+
+``Previous version v0.0.21``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [0552ce0f](https://github.com/horstoeko/invoicesuite/commit/0552ce0f) | 2026-08-15 11:03:16 CEST | HorstOeko | [ENH] Added compat-Layer "ZugferdDocuflairValidator" | 
+| :new:  | [2536df56](https://github.com/horstoeko/invoicesuite/commit/2536df56) | 2026-08-15 10:12:25 CEST | HorstOeko | [ENH] Added prototype of Docuflair Validator | 
+| :bug:  | [a0b36277](https://github.com/horstoeko/invoicesuite/commit/a0b36277) | 2026-08-13 04:59:16 CEST | HorstOeko | [FIX] Fixed Percentage in getDocumentPositionAllowanceCharge (ZF/FX Reader) | 
+
+:exclamation: _There are 2 internal commit(s)_
+
 ## v0.0.21
 
 ``Previous version v0.0.20``
