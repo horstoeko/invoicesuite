@@ -214,9 +214,9 @@ final class ZugferdQuickDescriptorTest extends TestCase
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument[1]/ram:ReferenceTypeCode', '130');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument[1]/ram:FormattedIssueDateTime');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument[1]/ram:URIID');
-        $this->assertXPathValueStartsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument[1]/ram:AttachmentBinaryObject', 0, 'JVBERi0xLjUKJcOkw7zDtsOfC');
-        $this->assertXPathValueStartsWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument[1]/ram:AttachmentBinaryObject', 0, 'JVBERi0xLjUKJcOkw7zDtsOfC', 'mimeCode', 'application/pdf');
-        $this->assertXPathValueStartsWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument[1]/ram:AttachmentBinaryObject', 0, 'JVBERi0xLjUKJcOkw7zDtsOfC', 'filename', 'pdf_plain.pdf');
+        $this->assertXPathValueStartsWith('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument[1]/ram:AttachmentBinaryObject', 'JVBERi0xLjUKJcOkw7zDtsOfC');
+        $this->assertXPathValueStartsWithAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument[1]/ram:AttachmentBinaryObject', 'JVBERi0xLjUKJcOkw7zDtsOfC', 'mimeCode', 'application/pdf');
+        $this->assertXPathValueStartsWithAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument[1]/ram:AttachmentBinaryObject', 'JVBERi0xLjUKJcOkw7zDtsOfC', 'filename', 'pdf_plain.pdf');
     }
 
     public function testDoSetDeliveryNoteReferenceDocument(): void

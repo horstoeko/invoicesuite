@@ -113,41 +113,20 @@ trait HandlesXmlTests
     }
 
     /**
-     * Assert a xpath with $expected value in a multiple element resultset
+     * Assert a xpath with a value starting with $expected
      *
      * @param  string $xpath
-     * @param  int    $index
      * @param  string $expected
      * @return void
      */
-    protected function assertXPathValueWithIndex(
+    protected function assertXPathValueStartsWith(
         string $xpath,
-        int $index,
         string $expected
     ): void {
         $xml = $this->getXml();
         $xmlvalue = $xml->xpath($xpath);
-        $this->assertArrayHasKey($index, $xmlvalue);
-        $this->assertEquals($expected, (string) $xmlvalue[$index]);
-    }
-
-    /**
-     * Assert a xpath with $expected value in a multiple element resultset
-     *
-     * @param  string $xpath
-     * @param  int    $index
-     * @param  string $expected
-     * @return void
-     */
-    protected function assertXPathValueStartsWithIndex(
-        string $xpath,
-        int $index,
-        string $expected
-    ): void {
-        $xml = $this->getXml();
-        $xmlvalue = $xml->xpath($xpath);
-        $this->assertArrayHasKey($index, $xmlvalue);
-        $this->assertEquals($expected, substr((string) $xmlvalue[$index], 0, strlen($expected)));
+        $this->assertArrayHasKey(0, $xmlvalue);
+        $this->assertEquals($expected, substr((string) $xmlvalue[0], 0, strlen($expected)));
     }
 
     /**
@@ -175,53 +154,27 @@ trait HandlesXmlTests
     }
 
     /**
-     * Assert a xpath with $expected value in a multiple resule and an expected attribute value
-     *
-     * @param  string $xpath
-     * @param  string $expected
-     * @param  string $expectedAttribute
-     * @param  string $expectedAttributeValue
-     * @return void
-     */
-    protected function assertXPathValueWithIndexAndAttribute(
-        string $xpath,
-        int $index,
-        string $expected,
-        string $expectedAttribute,
-        string $expectedAttributeValue
-    ): void {
-        $xml = $this->getXml();
-        $xmlvalue = $xml->xpath($xpath);
-        $this->assertArrayHasKey($index, $xmlvalue);
-        $this->assertEquals($expected, (string) $xmlvalue[$index]);
-        $this->assertNotNull($xmlvalue[$index]->attributes()[$expectedAttribute]);
-        $this->assertNotNull($xmlvalue[$index]->attributes()[$expectedAttribute][0]);
-        $this->assertEquals($expectedAttributeValue, (string) $xmlvalue[$index]->attributes()[$expectedAttribute][0]);
-    }
-
-    /**
-     * Assert a xpath with $expected value in a multiple resule and an non-expected attribute value
+     * Assert a xpath with $expected value and without an unexpected attribute
      *
      * @param  string $xpath
      * @param  string $expected
      * @param  string $notExpectedAttribute
      * @return void
      */
-    protected function assertXPathValueWithIndexAndNotWithAttribute(
+    protected function assertXPathValueWithoutAttribute(
         string $xpath,
-        int $index,
         string $expected,
         string $notExpectedAttribute
     ): void {
         $xml = $this->getXml();
         $xmlvalue = $xml->xpath($xpath);
-        $this->assertArrayHasKey($index, $xmlvalue);
-        $this->assertEquals($expected, (string) $xmlvalue[$index]);
-        $this->assertNull($xmlvalue[$index]->attributes()[$notExpectedAttribute]);
+        $this->assertArrayHasKey(0, $xmlvalue);
+        $this->assertEquals($expected, (string) $xmlvalue[0]);
+        $this->assertNull($xmlvalue[0]->attributes()[$notExpectedAttribute]);
     }
 
     /**
-     * Assert a xpath with $expected value in a multiple resule and an expected attribute value
+     * Assert a xpath with a value starting with $expected and an expected attribute value
      *
      * @param  string $xpath
      * @param  string $expected
@@ -229,20 +182,19 @@ trait HandlesXmlTests
      * @param  string $expectedAttributeValue
      * @return void
      */
-    protected function assertXPathValueStartsWithIndexAndAttribute(
+    protected function assertXPathValueStartsWithAndAttribute(
         string $xpath,
-        int $index,
         string $expected,
         string $expectedAttribute,
         string $expectedAttributeValue
     ): void {
         $xml = $this->getXml();
         $xmlvalue = $xml->xpath($xpath);
-        $this->assertArrayHasKey($index, $xmlvalue);
-        $this->assertEquals($expected, substr((string) $xmlvalue[$index], 0, strlen($expected)));
-        $this->assertNotNull($xmlvalue[$index]->attributes()[$expectedAttribute]);
-        $this->assertNotNull($xmlvalue[$index]->attributes()[$expectedAttribute][0]);
-        $this->assertEquals($expectedAttributeValue, (string) $xmlvalue[$index]->attributes()[$expectedAttribute][0]);
+        $this->assertArrayHasKey(0, $xmlvalue);
+        $this->assertEquals($expected, substr((string) $xmlvalue[0], 0, strlen($expected)));
+        $this->assertNotNull($xmlvalue[0]->attributes()[$expectedAttribute]);
+        $this->assertNotNull($xmlvalue[0]->attributes()[$expectedAttribute][0]);
+        $this->assertEquals($expectedAttributeValue, (string) $xmlvalue[0]->attributes()[$expectedAttribute][0]);
     }
 
     /**
@@ -260,22 +212,6 @@ trait HandlesXmlTests
     }
 
     /**
-     * Test that an xml element exists at index
-     *
-     * @param  string $xpath
-     * @param  int    $index
-     * @return void
-     */
-    protected function assertXPathExistsWithIndex(
-        string $xpath,
-        int $index
-    ) {
-        $xml = $this->getXml();
-        $xmlvalue = $xml->xpath($xpath);
-        $this->assertArrayHasKey($index, $xmlvalue);
-    }
-
-    /**
      * Test that an xml element does not exist
      *
      * @param  string $xpath
@@ -287,22 +223,6 @@ trait HandlesXmlTests
         $xml = $this->getXml();
         $xmlvalue = $xml->xpath($xpath);
         $this->assertEmpty($xmlvalue);
-    }
-
-    /**
-     * Test that an xml element does not exist at index
-     *
-     * @param  string $xpath
-     * @param  int    $index
-     * @return void
-     */
-    protected function assertXPathNotExistsWithIndex(
-        string $xpath,
-        int $index
-    ) {
-        $xml = $this->getXml();
-        $xmlvalue = $xml->xpath($xpath);
-        $this->assertArrayNotHasKey($index, $xmlvalue);
     }
 
     /**

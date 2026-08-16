@@ -78,8 +78,8 @@ final class FatturaPaDocumentBuilderTest extends TestCase
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/TipoDocumento', 'TD01');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/Data', '2026-07-18');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/Divisa', 'EUR');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/Causale', 0, 'First invoice note');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/Causale', 1, 'Second invoice note');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/Causale', 'First invoice note');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/Causale)[2]', 'Second invoice note');
     }
 
     public function testSetAddDocumentReferences(): void
@@ -92,10 +92,10 @@ final class FatturaPaDocumentBuilderTest extends TestCase
             ->addDocumentInvoiceReference('INVOICE-REF-2', new DateTimeImmutable('2026-05-02'));
 
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiOrdineAcquisto/IdDocumento', 'ORDER-1');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiContratto/IdDocumento', 0, 'CONTRACT-1');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiContratto/IdDocumento', 1, 'CONTRACT-2');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiFattureCollegate/IdDocumento', 0, 'INVOICE-REF-1');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiFattureCollegate/IdDocumento', 1, 'INVOICE-REF-2');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiContratto/IdDocumento', 'CONTRACT-1');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiContratto/IdDocumento)[2]', 'CONTRACT-2');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiFattureCollegate/IdDocumento', 'INVOICE-REF-1');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiFattureCollegate/IdDocumento)[2]', 'INVOICE-REF-2');
     }
 
     public function testSetDocumentParties(): void
@@ -189,29 +189,29 @@ final class FatturaPaDocumentBuilderTest extends TestCase
             ->setDocumentPositionTax('S', 'VAT', null, 22.0)
             ->setDocumentPositionSummation(100.0);
 
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/NumeroLinea', 0, '1');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/CodiceArticolo/CodiceTipo', 0, 'INTERNAL');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/CodiceArticolo/CodiceValore', 0, 'PRODUCT-1');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/Descrizione', 0, 'Consulting service');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/PrezzoUnitario', 0, '100.123456');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/Quantita', 0, '1.00');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/UnitaMisura', 0, 'H87');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/DataInizioPeriodo', 0, '2026-07-01');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/DataFinePeriodo', 0, '2026-07-15');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/AliquotaIVA', 0, '22.00');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/ScontoMaggiorazione/Tipo', 0, 'SC');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/ScontoMaggiorazione/Percentuale', 0, '1.50');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/ScontoMaggiorazione/Importo', 0, '1.123456');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/PrezzoTotale', 0, '100.123456');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/NumeroLinea', 1, '2');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/CodiceArticolo/CodiceTipo', 1, 'INTERNO');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/CodiceArticolo/CodiceValore', 1, 'PRODUCT-2');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/Descrizione', 1, 'PRODUCT-2');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/PrezzoUnitario', 1, '100.00');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/Quantita', 1, '1.00');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/UnitaMisura', 1, 'H87');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/AliquotaIVA', 1, '22.00');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/PrezzoTotale', 1, '100.00');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/NumeroLinea', '1');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/CodiceArticolo/CodiceTipo', 'INTERNAL');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/CodiceArticolo/CodiceValore', 'PRODUCT-1');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/Descrizione', 'Consulting service');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/PrezzoUnitario', '100.123456');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/Quantita', '1.00');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/UnitaMisura', 'H87');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/DataInizioPeriodo', '2026-07-01');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/DataFinePeriodo', '2026-07-15');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/AliquotaIVA', '22.00');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/ScontoMaggiorazione/Tipo', 'SC');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/ScontoMaggiorazione/Percentuale', '1.50');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/ScontoMaggiorazione/Importo', '1.123456');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/PrezzoTotale', '100.123456');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/NumeroLinea)[2]', '2');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/CodiceArticolo/CodiceTipo)[2]', 'INTERNO');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/CodiceArticolo/CodiceValore)[2]', 'PRODUCT-2');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/Descrizione)[2]', 'PRODUCT-2');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/PrezzoUnitario)[2]', '100.00');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/Quantita)[2]', '1.00');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/UnitaMisura)[2]', 'H87');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/AliquotaIVA)[2]', '22.00');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/PrezzoTotale)[2]', '100.00');
     }
 
     public function testGetContentAsXml(): void
@@ -293,8 +293,8 @@ final class FatturaPaDocumentBuilderTest extends TestCase
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/TipoDocumento', 'TD01');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/Data', '2026-07-18');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/Divisa', 'EUR');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/Causale', 0, 'First DTO invoice note');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/Causale', 1, 'Second DTO invoice note');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/Causale', 'First DTO invoice note');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/Causale)[2]', 'Second DTO invoice note');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiOrdineAcquisto/IdDocumento', 'DTO-ORDER-1');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiOrdineAcquisto/Data', '2026-07-01');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiContratto/IdDocumento', 'DTO-CONTRACT-1');
@@ -389,7 +389,7 @@ final class FatturaPaDocumentBuilderTest extends TestCase
 
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiOrdineAcquisto/IdDocumento', 'ORDER-2');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiOrdineAcquisto/Data', '2026-07-02');
-        $this->assertXPathNotExistsWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiOrdineAcquisto', 1);
+        $this->assertXPathNotExists('(/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiOrdineAcquisto)[2]');
     }
 
     public function testAddDocumentSellerMethodsUpdateTheSupportedSingleXmlBlocks(): void
@@ -458,24 +458,24 @@ final class FatturaPaDocumentBuilderTest extends TestCase
         static::$document->addDocumentPaymentMeanAsDirectDebitNoSepa('IT60X0000000000000000000005', 'Ignored mandate');
         static::$document->addDocumentPaymentMeanAsPaymentCard('Ignored card ID', 'Card Holder');
 
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento', 0, 'MP05');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/IBAN', 0, 'IT60X0000000000000000000001');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/Beneficiario', 0, 'SEPA Seller');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/BIC', 0, 'SEPAITMM');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/CodicePagamento', 0, 'SEPA-REF');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento', 1, 'MP05');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento', 2, 'MP05');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento', 3, 'MP19');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/IBAN', 3, 'IT60X0000000000000000000004');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento', 4, 'MP20');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/IBAN', 4, 'IT60X0000000000000000000005');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento', 5, 'MP08');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento', 'MP05');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/IBAN', 'IT60X0000000000000000000001');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/Beneficiario', 'SEPA Seller');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/BIC', 'SEPAITMM');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/CodicePagamento', 'SEPA-REF');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento)[2]', 'MP05');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento)[3]', 'MP05');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento)[4]', 'MP19');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/IBAN)[4]', 'IT60X0000000000000000000004');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento)[5]', 'MP20');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/IBAN)[5]', 'IT60X0000000000000000000005');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento)[6]', 'MP08');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento[6]/DettaglioPagamento/Beneficiario', 'Card Holder');
 
         static::$document->setDocumentPaymentMeanAsCreditTransferNoSepa('IT60X0000000000000000000006', 'Reset Seller', 'Ignored proprietary ID', 'RESETITM', 'RESET-REF');
 
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento', 0, 'MP05');
-        $this->assertXPathNotExistsWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento', 1);
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento', 'MP05');
+        $this->assertXPathNotExists('(/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento)[2]');
 
         static::$document->setDocumentPaymentMeanAsDirectDebitSepa('IT60X0000000000000000000007', 'Ignored mandate');
 
@@ -499,20 +499,20 @@ final class FatturaPaDocumentBuilderTest extends TestCase
         static::$document->addDocumentPaymentDiscountTermsInLastPaymentTerm(100.0, null, 2.5, new DateTimeImmutable('2026-08-20'), 10.0, 'DAY');
         static::$document->addDocumentPaymentPenaltyTermsInLastPaymentTerm(100.0, null, 5.0, new DateTimeImmutable('2026-09-02'), 5.0, 'DAY');
 
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/CondizioniPagamento', 0, 'TP02');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/CondizioniPagamento', 1, 'TP01');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento', 0, 'MP01');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ImportoPagamento', 0, '0.00');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/CodicePagamento', 0, 'REFERENCE-1');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/DataScadenzaPagamento', 0, '2026-09-01');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ScontoPagamentoAnticipato', 0, '2.50');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/DataLimitePagamentoAnticipato', 0, '2026-08-20');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/PenalitaPagamentiRitardati', 0, '5.00');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/DataDecorrenzaPenale', 0, '2026-09-02');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento', 1, 'MP01');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ImportoPagamento', 1, '0.00');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/CodicePagamento', 1, 'REFERENCE-2');
-        $this->assertXPathNotExistsWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/DataScadenzaPagamento', 1);
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/CondizioniPagamento', 'TP02');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/CondizioniPagamento)[2]', 'TP01');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento', 'MP01');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ImportoPagamento', '0.00');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/CodicePagamento', 'REFERENCE-1');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/DataScadenzaPagamento', '2026-09-01');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ScontoPagamentoAnticipato', '2.50');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/DataLimitePagamentoAnticipato', '2026-08-20');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/PenalitaPagamentiRitardati', '5.00');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/DataDecorrenzaPenale', '2026-09-02');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ModalitaPagamento)[2]', 'MP01');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ImportoPagamento)[2]', '0.00');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/CodicePagamento)[2]', 'REFERENCE-2');
+        $this->assertXPathNotExists('(/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/DataScadenzaPagamento)[2]');
     }
 
     public function testAddDocumentTaxAppendsEverySupportedTaxXmlPath(): void
@@ -520,14 +520,14 @@ final class FatturaPaDocumentBuilderTest extends TestCase
         static::$document->setDocumentTax('S', 'I', 100.0, 22.0, 22.0);
         static::$document->addDocumentTax('E', 'D', 50.0, 0.0, 0.0, 'Article 10 exemption', 'N4');
 
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo/AliquotaIVA', 0, '22.00');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo/ImponibileImporto', 0, '100.00');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo/Imposta', 0, '22.00');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo/EsigibilitaIVA', 0, 'I');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo/AliquotaIVA', 1, '0.00');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo/ImponibileImporto', 1, '50.00');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo/Imposta', 1, '0.00');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo/EsigibilitaIVA', 1, 'D');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo/AliquotaIVA', '22.00');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo/ImponibileImporto', '100.00');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo/Imposta', '22.00');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo/EsigibilitaIVA', 'I');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo/AliquotaIVA)[2]', '0.00');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo/ImponibileImporto)[2]', '50.00');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo/Imposta)[2]', '0.00');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo/EsigibilitaIVA)[2]', 'D');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo[2]/Natura', 'N4');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo[2]/RiferimentoNormativo', 'Article 10 exemption');
     }
@@ -558,12 +558,12 @@ final class FatturaPaDocumentBuilderTest extends TestCase
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/DataFinePeriodo', '2026-07-16');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/AliquotaIVA', '0.00');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/Natura', 'N4');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/ScontoMaggiorazione/Tipo', 0, 'SC');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/ScontoMaggiorazione/Percentuale', 0, '1.50');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/ScontoMaggiorazione/Importo', 0, '1.25');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/ScontoMaggiorazione/Tipo', 1, 'MG');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/ScontoMaggiorazione/Percentuale', 1, '2.50');
-        $this->assertXPathValueWithIndex('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/ScontoMaggiorazione/Importo', 1, '2.50');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/ScontoMaggiorazione/Tipo', 'SC');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/ScontoMaggiorazione/Percentuale', '1.50');
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/ScontoMaggiorazione/Importo', '1.25');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/ScontoMaggiorazione/Tipo)[2]', 'MG');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/ScontoMaggiorazione/Percentuale)[2]', '2.50');
+        $this->assertXPathValue('(/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/ScontoMaggiorazione/Importo)[2]', '2.50');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DettaglioLinee/PrezzoTotale', '300.00');
     }
 

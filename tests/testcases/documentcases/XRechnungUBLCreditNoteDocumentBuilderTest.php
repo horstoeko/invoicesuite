@@ -170,233 +170,233 @@ final class XRechnungUBLCreditNoteDocumentBuilderTest extends TestCase
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cbc:CustomizationID', 0, 'urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cbc:CustomizationID', 1);
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cbc:ProfileID', 0, 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cbc:ProfileID', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cbc:CustomizationID', 'urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cbc:CustomizationID)[2]');
+        $this->assertXPathValue('/ubl:CreditNote/cbc:ProfileID', 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cbc:ProfileID)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cbc:ID', 0, 'Snippet1');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cbc:ID', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cbc:ID', 'Snippet1');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cbc:ID)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cbc:IssueDate', 0, '2017-11-13');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cbc:IssueDate', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cbc:IssueDate', '2017-11-13');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cbc:IssueDate)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cbc:CreditNoteTypeCode', 0, '381');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cbc:CreditNoteTypeCode', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cbc:CreditNoteTypeCode', '381');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cbc:CreditNoteTypeCode)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cbc:Note', 0, 'Please note we have a new phone number: 22 22 22 22');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cbc:Note', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cbc:Note', 'Please note we have a new phone number: 22 22 22 22');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cbc:Note)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cbc:DocumentCurrencyCode', 0, 'EUR');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cbc:DocumentCurrencyCode', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cbc:DocumentCurrencyCode', 'EUR');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cbc:DocumentCurrencyCode)[2]');
 
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cbc:TaxCurrencyCode', 0);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cbc:TaxCurrencyCode', 1);
+        $this->assertXPathNotExists('/ubl:CreditNote/cbc:TaxCurrencyCode');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cbc:TaxCurrencyCode)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cbc:BuyerReference', 0, '0150abc');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cbc:BuyerReference', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cbc:BuyerReference', '0150abc');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cbc:BuyerReference)[2]');
 
         // Position (General)
 
-        $this->assertXPathExistsWithIndex('//ubl:CreditNote/cac:CreditNoteLine', 0);
-        $this->assertXPathExistsWithIndex('//ubl:CreditNote/cac:CreditNoteLine', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:CreditNoteLine', 2);
+        $this->assertXPathExists('/ubl:CreditNote/cac:CreditNoteLine');
+        $this->assertXPathExists('(/ubl:CreditNote/cac:CreditNoteLine)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:CreditNoteLine)[3]');
 
         // Position 1
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:CreditNoteLine/cbc:ID', 0, '1');
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:CreditNoteLine/cbc:CreditedQuantity', 0, '7.00', 'unitCode', 'DAY');
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:CreditNoteLine/cbc:LineExtensionAmount', 0, '2800.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:CreditNoteLine/cbc:AccountingCost', 0, 'Konteringsstreng');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:CreditNoteLine/cac:OrderLineReference/cbc:LineID', 0, '123');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:CreditNoteLine/cac:Item/cbc:Description', 0, 'Description of item');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:CreditNoteLine/cac:Item/cbc:Name', 0, 'item name');
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:StandardItemIdentification/cbc:ID', 0, '21382183120983', 'schemeID', '0088');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode', 0, 'NO');
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode', 0, '09348023', 'listID', 'SRV');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 0, 'S');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent', 0, '25.00');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID', 0, 'VAT');
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:CreditNoteLine/cac:Price/cbc:PriceAmount', 0, '400.00', 'currencyID', 'EUR');
+        $this->assertXPathValue('/ubl:CreditNote/cac:CreditNoteLine/cbc:ID', '1');
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:CreditNoteLine/cbc:CreditedQuantity', '7.00', 'unitCode', 'DAY');
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:CreditNoteLine/cbc:LineExtensionAmount', '2800.00', 'currencyID', 'EUR');
+        $this->assertXPathValue('/ubl:CreditNote/cac:CreditNoteLine/cbc:AccountingCost', 'Konteringsstreng');
+        $this->assertXPathValue('/ubl:CreditNote/cac:CreditNoteLine/cac:OrderLineReference/cbc:LineID', '123');
+        $this->assertXPathValue('/ubl:CreditNote/cac:CreditNoteLine/cac:Item/cbc:Description', 'Description of item');
+        $this->assertXPathValue('/ubl:CreditNote/cac:CreditNoteLine/cac:Item/cbc:Name', 'item name');
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:StandardItemIdentification/cbc:ID', '21382183120983', 'schemeID', '0088');
+        $this->assertXPathValue('/ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode', 'NO');
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode', '09348023', 'listID', 'SRV');
+        $this->assertXPathValue('/ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 'S');
+        $this->assertXPathValue('/ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent', '25.00');
+        $this->assertXPathValue('/ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID', 'VAT');
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:CreditNoteLine/cac:Price/cbc:PriceAmount', '400.00', 'currencyID', 'EUR');
 
         // Position 2
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:CreditNoteLine/cbc:ID', 1, '2');
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:CreditNoteLine/cbc:CreditedQuantity', 1, '-3.00', 'unitCode', 'DAY');
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:CreditNoteLine/cbc:LineExtensionAmount', 1, '-1500.00', 'currencyID', 'EUR');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:CreditNoteLine/cbc:AccountingCost', 1);
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:CreditNoteLine/cac:OrderLineReference/cbc:LineID', 1, '123');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:CreditNoteLine/cac:Item/cbc:Description', 1, 'Description 2');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:CreditNoteLine/cac:Item/cbc:Name', 1, 'item name 2');
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:StandardItemIdentification/cbc:ID', 1, '21382183120983', 'schemeID', '0088');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode', 1, 'NO');
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode', 1, '09348023', 'listID', 'SRV');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 1, 'S');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent', 1, '25.00');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID', 1, 'VAT');
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:CreditNoteLine/cac:Price/cbc:PriceAmount', 1, '500.00', 'currencyID', 'EUR');
+        $this->assertXPathValue('(/ubl:CreditNote/cac:CreditNoteLine/cbc:ID)[2]', '2');
+        $this->assertXPathValueWithAttribute('(/ubl:CreditNote/cac:CreditNoteLine/cbc:CreditedQuantity)[2]', '-3.00', 'unitCode', 'DAY');
+        $this->assertXPathValueWithAttribute('(/ubl:CreditNote/cac:CreditNoteLine/cbc:LineExtensionAmount)[2]', '-1500.00', 'currencyID', 'EUR');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:CreditNoteLine/cbc:AccountingCost)[2]');
+        $this->assertXPathValue('(/ubl:CreditNote/cac:CreditNoteLine/cac:OrderLineReference/cbc:LineID)[2]', '123');
+        $this->assertXPathValue('(/ubl:CreditNote/cac:CreditNoteLine/cac:Item/cbc:Description)[2]', 'Description 2');
+        $this->assertXPathValue('(/ubl:CreditNote/cac:CreditNoteLine/cac:Item/cbc:Name)[2]', 'item name 2');
+        $this->assertXPathValueWithAttribute('(/ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:StandardItemIdentification/cbc:ID)[2]', '21382183120983', 'schemeID', '0088');
+        $this->assertXPathValue('(/ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode)[2]', 'NO');
+        $this->assertXPathValueWithAttribute('(/ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode)[2]', '09348023', 'listID', 'SRV');
+        $this->assertXPathValue('(/ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID)[2]', 'S');
+        $this->assertXPathValue('(/ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent)[2]', '25.00');
+        $this->assertXPathValue('(/ubl:CreditNote/cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID)[2]', 'VAT');
+        $this->assertXPathValueWithAttribute('(/ubl:CreditNote/cac:CreditNoteLine/cac:Price/cbc:PriceAmount)[2]', '500.00', 'currencyID', 'EUR');
 
         // Header
 
         // Vendor
 
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID', 0, '9482348239847239874', 'schemeID', '0088');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID', 1);
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID', '9482348239847239874', 'schemeID', '0088');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', 0, '99887766');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', '99887766');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyName/cbc:Name', 0, 'SupplierTradingName Ltd.');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyName/cbc:Name', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyName/cbc:Name', 'SupplierTradingName Ltd.');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyName/cbc:Name)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:StreetName', 0, 'Main street 1');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:StreetName', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:StreetName', 'Main street 1');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:StreetName)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName', 0, 'Postbox 123');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName', 'Postbox 123');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:CityName', 0, 'London');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:CityName', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:CityName', 'London');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:CityName)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:PostalZone', 0, 'GB 123 EW');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:PostalZone', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:PostalZone', 'GB 123 EW');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:PostalZone)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode', 0, 'GB');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode', 'GB');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID', 0, 'GB1232434');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme/cbc:ID', 0, 'VAT');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme/cbc:ID', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID', 'GB1232434');
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme/cbc:ID', 'VAT');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme/cbc:ID)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName', 0, 'SupplierOfficialName Ltd');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID', 0, 'GB983294');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName', 'SupplierOfficialName Ltd');
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID', 'GB983294');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Name', 0, 'Person Responsible');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Telephone', 0, '08154711');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:ElectronicMail', 0, 'user@company.all');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Name', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Telephone', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:ElectronicMail', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Name', 'Person Responsible');
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Telephone', '08154711');
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:ElectronicMail', 'user@company.all');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Name)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Telephone)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:ElectronicMail)[2]');
 
         // Customer
 
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID', 0, 'FR23342', 'schemeID', '0002');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID', 1);
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID', 'FR23342', 'schemeID', '0002');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID)[2]');
 
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID', 0, 'FR23342', 'schemeID', '0002');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID', 1);
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID', 'FR23342', 'schemeID', '0002');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyName/cbc:Name', 0, 'BuyerTradingName AS');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyName/cbc:Name', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyName/cbc:Name', 'BuyerTradingName AS');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyName/cbc:Name)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:StreetName', 0, 'Hovedgatan 32');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:StreetName', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:StreetName', 'Hovedgatan 32');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:StreetName)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName', 0, 'Po box 878');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName', 'Po box 878');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CityName', 0, 'Stockholm');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CityName', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CityName', 'Stockholm');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CityName)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:PostalZone', 0, '456 34');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:PostalZone', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:PostalZone', '456 34');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:PostalZone)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode', 0, 'SE');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode', 'SE');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID', 0, 'SE4598375937');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme/cbc:ID', 0, 'VAT');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme/cbc:ID', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID', 'SE4598375937');
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme/cbc:ID', 'VAT');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme/cbc:ID)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName', 0, 'Buyer Official Name');
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID', 0, '39937423947', 'schemeID', '0183');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName', 'Buyer Official Name');
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID', '39937423947', 'schemeID', '0183');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID)[2]');
 
         // Delivery
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:Delivery/cbc:ActualDeliveryDate', 0, '2017-11-01');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:Delivery/cbc:ActualDeliveryDate', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:Delivery/cbc:ActualDeliveryDate', '2017-11-01');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:Delivery/cbc:ActualDeliveryDate)[2]');
 
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cbc:ID', 0, '9483759475923478', 'schemeID', '0088');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName', 0, 'Delivery street 2');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName', 0, 'Building 56');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName', 0, 'Stockholm');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone', 0, '21234');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode', 0, 'SE');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cbc:ID', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode', 1);
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cbc:ID', '9483759475923478', 'schemeID', '0088');
+        $this->assertXPathValue('/ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName', 'Delivery street 2');
+        $this->assertXPathValue('/ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName', 'Building 56');
+        $this->assertXPathValue('/ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName', 'Stockholm');
+        $this->assertXPathValue('/ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone', '21234');
+        $this->assertXPathValue('/ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode', 'SE');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cbc:ID)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 0, 'Delivery party Name');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 'Delivery party Name');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name)[2]');
 
         // Payment
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:PaymentMeans/cbc:PaymentMeansCode', 0, '30');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:PaymentMeans/cbc:PaymentID', 0, 'Snippet1');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:ID', 0, 'IBAN32423940');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:Name', 0, 'AccountName');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:PaymentMeans/cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID', 0, 'BIC324098');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:PaymentMeans/cbc:PaymentMeansCode', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:PaymentMeans/cbc:PaymentID', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:ID', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:Name', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:PaymentMeans/cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:PaymentMeans/cbc:PaymentMeansCode', '30');
+        $this->assertXPathValue('/ubl:CreditNote/cac:PaymentMeans/cbc:PaymentID', 'Snippet1');
+        $this->assertXPathValue('/ubl:CreditNote/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:ID', 'IBAN32423940');
+        $this->assertXPathValue('/ubl:CreditNote/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:Name', 'AccountName');
+        $this->assertXPathValue('/ubl:CreditNote/cac:PaymentMeans/cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID', 'BIC324098');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:PaymentMeans/cbc:PaymentMeansCode)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:PaymentMeans/cbc:PaymentID)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:ID)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:Name)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:PaymentMeans/cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID)[2]');
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:PaymentTerms/cbc:Note', 0, 'Payment within 10 days, 2% discount');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:PaymentTerms/cbc:Note', 1);
+        $this->assertXPathValue('/ubl:CreditNote/cac:PaymentTerms/cbc:Note', 'Payment within 10 days, 2% discount');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:PaymentTerms/cbc:Note)[2]');
 
         // Allowances/Charges
 
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AllowanceCharge/cbc:ChargeIndicator', 0, 'true');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AllowanceCharge/cbc:AllowanceChargeReason', 0, 'Insurance');
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:AllowanceCharge/cbc:Amount', 0, '25.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AllowanceCharge/cac:TaxCategory/cbc:ID', 0, 'S');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AllowanceCharge/cac:TaxCategory/cbc:Percent', 0, '25.00');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme/cbc:ID', 0, 'VAT');
+        $this->assertXPathValue('/ubl:CreditNote/cac:AllowanceCharge/cbc:ChargeIndicator', 'true');
+        $this->assertXPathValue('/ubl:CreditNote/cac:AllowanceCharge/cbc:AllowanceChargeReason', 'Insurance');
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:AllowanceCharge/cbc:Amount', '25.00', 'currencyID', 'EUR');
+        $this->assertXPathValue('/ubl:CreditNote/cac:AllowanceCharge/cac:TaxCategory/cbc:ID', 'S');
+        $this->assertXPathValue('/ubl:CreditNote/cac:AllowanceCharge/cac:TaxCategory/cbc:Percent', '25.00');
+        $this->assertXPathValue('/ubl:CreditNote/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme/cbc:ID', 'VAT');
 
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AllowanceCharge/cbc:ChargeIndicator', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AllowanceCharge/cbc:AllowanceChargeReason', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AllowanceCharge/cbc:Amount', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AllowanceCharge/cac:TaxCategory/cbc:ID', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AllowanceCharge/cac:TaxCategory/cbc:Percent', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme/cbc:ID', 1);
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AllowanceCharge/cbc:ChargeIndicator)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AllowanceCharge/cbc:AllowanceChargeReason)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AllowanceCharge/cbc:Amount)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AllowanceCharge/cac:TaxCategory/cbc:ID)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AllowanceCharge/cac:TaxCategory/cbc:Percent)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme/cbc:ID)[2]');
 
         // Tax
 
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:TaxTotal/cbc:TaxAmount', 0, '331.25', 'currencyID', 'EUR');
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount', 0, '1325.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount', 0, '331.25', 'currencyID', 'EUR');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID', 0, 'S');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent', 0, '25.00');
-        $this->assertXPathValueWithIndex('//ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID', 0, 'VAT');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:TaxTotal/cbc:TaxAmount', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID', 1);
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:TaxTotal/cbc:TaxAmount', '331.25', 'currencyID', 'EUR');
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount', '1325.00', 'currencyID', 'EUR');
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount', '331.25', 'currencyID', 'EUR');
+        $this->assertXPathValue('/ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID', 'S');
+        $this->assertXPathValue('/ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent', '25.00');
+        $this->assertXPathValue('/ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID', 'VAT');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:TaxTotal/cbc:TaxAmount)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID)[2]');
 
         // Summation
 
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:LegalMonetaryTotal/cbc:LineExtensionAmount', 0, '1300.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount', 0, '1325.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount', 0, '1656.25', 'currencyID', 'EUR');
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount', 0, '25.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithIndexAndAttribute('//ubl:CreditNote/cac:LegalMonetaryTotal/cbc:PayableAmount', 0, '1656.25', 'currencyID', 'EUR');
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:LegalMonetaryTotal/cbc:LineExtensionAmount', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount', 1);
-        $this->assertXPathNotExistsWithIndex('//ubl:CreditNote/cac:LegalMonetaryTotal/cbc:PayableAmount', 1);
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:LegalMonetaryTotal/cbc:LineExtensionAmount', '1300.00', 'currencyID', 'EUR');
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount', '1325.00', 'currencyID', 'EUR');
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount', '1656.25', 'currencyID', 'EUR');
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount', '25.00', 'currencyID', 'EUR');
+        $this->assertXPathValueWithAttribute('/ubl:CreditNote/cac:LegalMonetaryTotal/cbc:PayableAmount', '1656.25', 'currencyID', 'EUR');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:LegalMonetaryTotal/cbc:LineExtensionAmount)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount)[2]');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:LegalMonetaryTotal/cbc:PayableAmount)[2]');
     }
 
     public function testContentType(): void
