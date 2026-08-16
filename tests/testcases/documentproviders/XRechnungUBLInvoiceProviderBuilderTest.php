@@ -874,8 +874,8 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathNotExists('/ns:Invoice/cac:AdditionalDocumentReference/cbc:IssueDate');
         $this->assertXPathNotExists('/ns:Invoice/cac:AdditionalDocumentReference/cbc:DocumentTypeCode');
         $this->assertXPathValue('/ns:Invoice/cac:AdditionalDocumentReference/cbc:DocumentDescription', 'description4');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AdditionalDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject', 'VGhpcyBpcyBhIHRlc3Q=', 'mimeCode', 'text/plain');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AdditionalDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject', 'VGhpcyBpcyBhIHRlc3Q=', 'filename', 'test.txt');
+        $this->assertXPathValue('/ns:Invoice/cac:AdditionalDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject[@mimeCode="text/plain"]', 'VGhpcyBpcyBhIHRlc3Q=');
+        $this->assertXPathValue('/ns:Invoice/cac:AdditionalDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject[@filename="test.txt"]', 'VGhpcyBpcyBhIHRlc3Q=');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AdditionalDocumentReference/cbc:ID)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AdditionalDocumentReference/cbc:IssueDate)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AdditionalDocumentReference/cbc:DocumentTypeCode)[2]');
@@ -1464,7 +1464,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', 'Seller Id 3');
-        $this->assertXPathValueWithAttribute('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2]', 'Seller Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2][@schemeID="0088"]', 'Seller Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[3]');
 
         static::$document->addDocumentSellerGlobalId(null);
@@ -1472,7 +1472,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', 'Seller Id 3');
-        $this->assertXPathValueWithAttribute('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2]', 'Seller Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2][@schemeID="0088"]', 'Seller Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[3]');
 
         static::$document->addDocumentSellerGlobalId('');
@@ -1480,7 +1480,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', 'Seller Id 3');
-        $this->assertXPathValueWithAttribute('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2]', 'Seller Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2][@schemeID="0088"]', 'Seller Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[3]');
 
         static::$document->addDocumentSellerGlobalId('Seller Global Id 2');
@@ -1488,7 +1488,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', 'Seller Id 3');
-        $this->assertXPathValueWithAttribute('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2]', 'Seller Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2][@schemeID="0088"]', 'Seller Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[3]');
 
         static::$document->addDocumentSellerGlobalId(null, '0088');
@@ -1496,7 +1496,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', 'Seller Id 3');
-        $this->assertXPathValueWithAttribute('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2]', 'Seller Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2][@schemeID="0088"]', 'Seller Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[3]');
 
         static::$document->addDocumentSellerGlobalId('Seller Global Id 2', '0088');
@@ -1504,15 +1504,15 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', 'Seller Id 3');
-        $this->assertXPathValueWithAttribute('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2]', 'Seller Global Id 1', 'schemeID', '0088');
-        $this->assertXPathValueWithAttribute('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[3]', 'Seller Global Id 2', 'schemeID', '0088');
+        $this->assertXPathValue('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2][@schemeID="0088"]', 'Seller Global Id 1');
+        $this->assertXPathValue('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[3][@schemeID="0088"]', 'Seller Global Id 2');
 
         static::$document->setDocumentSellerGlobalId('Seller Global Id 3', '0088');
 
         $this->disableRenderXmlContent();
 
         $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', 'Seller Id 3');
-        $this->assertXPathValueWithAttribute('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2]', 'Seller Global Id 3', 'schemeID', '0088');
+        $this->assertXPathValue('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2][@schemeID="0088"]', 'Seller Global Id 3');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[3]');
     }
 
@@ -2051,42 +2051,42 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID', 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID[@schemeID="EM"]', 'user@somewhere.all');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID)[2]');
 
         static::$document->addDocumentSellerCommunication();
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID', 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID[@schemeID="EM"]', 'user@somewhere.all');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID)[2]');
 
         static::$document->addDocumentSellerCommunication('', '');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID', 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID[@schemeID="EM"]', 'user@somewhere.all');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID)[2]');
 
         static::$document->addDocumentSellerCommunication('EM', '');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID', 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID[@schemeID="EM"]', 'user@somewhere.all');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID)[2]');
 
         static::$document->addDocumentSellerCommunication('', 'user2@somewhere.all');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID', 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID[@schemeID="EM"]', 'user@somewhere.all');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID)[2]');
 
         static::$document->addDocumentSellerCommunication('EM', 'user2@somewhere.all');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID', 'user2@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID[@schemeID="EM"]', 'user2@somewhere.all');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID)[2]');
     }
 
@@ -2257,49 +2257,49 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID', 'Buyer Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID="0088"]', 'Buyer Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID)[2]');
 
         static::$document->addDocumentBuyerGlobalId(null);
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID', 'Buyer Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID="0088"]', 'Buyer Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID)[2]');
 
         static::$document->addDocumentBuyerGlobalId('');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID', 'Buyer Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID="0088"]', 'Buyer Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID)[2]');
 
         static::$document->addDocumentBuyerGlobalId('Buyer Global Id 2');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID', 'Buyer Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID="0088"]', 'Buyer Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID)[2]');
 
         static::$document->addDocumentBuyerGlobalId(null, '0088');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID', 'Buyer Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID="0088"]', 'Buyer Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID)[2]');
 
         static::$document->addDocumentBuyerGlobalId('Buyer Global Id 2', '0088');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID', 'Buyer Global Id 2', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID="0088"]', 'Buyer Global Id 2');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID)[2]');
 
         static::$document->setDocumentBuyerGlobalId('Buyer Global Id 3', '0088');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID', 'Buyer Global Id 3', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID="0088"]', 'Buyer Global Id 3');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID)[2]');
     }
 
@@ -2838,42 +2838,42 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID', 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID[@schemeID="EM"]', 'user@somewhere.all');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID)[2]');
 
         static::$document->addDocumentBuyerCommunication();
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID', 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID[@schemeID="EM"]', 'user@somewhere.all');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID)[2]');
 
         static::$document->addDocumentBuyerCommunication('', '');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID', 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID[@schemeID="EM"]', 'user@somewhere.all');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID)[2]');
 
         static::$document->addDocumentBuyerCommunication('EM', '');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID', 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID[@schemeID="EM"]', 'user@somewhere.all');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID)[2]');
 
         static::$document->addDocumentBuyerCommunication('', 'user2@somewhere.all');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID', 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID[@schemeID="EM"]', 'user@somewhere.all');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID)[2]');
 
         static::$document->addDocumentBuyerCommunication('EM', 'user2@somewhere.all');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID', 'user2@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID[@schemeID="EM"]', 'user2@somewhere.all');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID)[2]');
     }
 
@@ -4089,49 +4089,49 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 'Ship To Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID[@schemeID="0088"]', 'Ship To Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID)[2]');
 
         static::$document->addDocumentShipToGlobalId(null);
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 'Ship To Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID[@schemeID="0088"]', 'Ship To Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID)[2]');
 
         static::$document->addDocumentShipToGlobalId('');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 'Ship To Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID[@schemeID="0088"]', 'Ship To Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID)[2]');
 
         static::$document->addDocumentShipToGlobalId('Ship To Global Id 2');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 'Ship To Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID[@schemeID="0088"]', 'Ship To Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID)[2]');
 
         static::$document->addDocumentShipToGlobalId(null, '0088');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 'Ship To Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID[@schemeID="0088"]', 'Ship To Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID)[2]');
 
         static::$document->addDocumentShipToGlobalId('Ship To Global Id 2', '0088');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 'Ship To Global Id 2', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID[@schemeID="0088"]', 'Ship To Global Id 2');
         $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID)[2]');
 
         static::$document->setDocumentShipToGlobalId('Ship To Global Id 3', '0088');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 'Ship To Global Id 3', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID[@schemeID="0088"]', 'Ship To Global Id 3');
         $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID)[2]');
     }
 
@@ -4693,48 +4693,48 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID', 'Payee Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID[@schemeID="0088"]', 'Payee Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID)[2]');
 
         static::$document->addDocumentPayeeGlobalId(null);
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID', 'Payee Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID[@schemeID="0088"]', 'Payee Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID)[2]');
 
         static::$document->addDocumentPayeeGlobalId('');
 
         $this->disableRenderXmlContent();
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID', 'Payee Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID[@schemeID="0088"]', 'Payee Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID)[2]');
 
         static::$document->addDocumentPayeeGlobalId('Payee Global Id 2');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID', 'Payee Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID[@schemeID="0088"]', 'Payee Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID)[2]');
 
         static::$document->addDocumentPayeeGlobalId(null, '0088');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID', 'Payee Global Id 1', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID[@schemeID="0088"]', 'Payee Global Id 1');
         $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID)[2]');
 
         static::$document->addDocumentPayeeGlobalId('Payee Global Id 2', '0088');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID', 'Payee Global Id 2', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID[@schemeID="0088"]', 'Payee Global Id 2');
         $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID)[2]');
 
         static::$document->setDocumentPayeeGlobalId('Payee Global Id 3', '0088');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID', 'Payee Global Id 3', 'schemeID', '0088');
+        $this->assertXPathValue('/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID[@schemeID="0088"]', 'Payee Global Id 3');
         $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID)[2]');
     }
 
@@ -5399,7 +5399,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value, 'name', 'information');
+        $this->assertXPathValue('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode[@name="information"]', InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value);
         $this->assertXPathNotExists('(/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode)[2]');
 
         static::$document->setDocumentPaymentMean();
@@ -5632,7 +5632,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathNotExists("(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID='SEPA'])[2]");
 
         $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', 'Seller Id 3');
-        $this->assertXPathValueWithAttribute('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2]', 'Seller Global Id 3', 'schemeID', '0088');
+        $this->assertXPathValue('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2][@schemeID="0088"]', 'Seller Global Id 3');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[3]');
 
         static::$document->setDocumentPaymentCreditorReferenceID('crefref1');
@@ -6182,16 +6182,16 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:TaxTotal/cbc:TaxAmount', '5.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount', '1.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount', '4.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount', '7.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount', '3.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount', '2.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PrepaidAmount', '9.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount', '10.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount', '8.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithAttribute('(/ns:Invoice/cac:TaxTotal/cbc:TaxAmount)[2]', '6.00', 'currencyID', 'GBP');
+        $this->assertXPathValue('/ns:Invoice/cac:TaxTotal/cbc:TaxAmount[@currencyID="EUR"]', '5.00');
+        $this->assertXPathValue('/ns:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount[@currencyID="EUR"]', '1.00');
+        $this->assertXPathValue('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount[@currencyID="EUR"]', '4.00');
+        $this->assertXPathValue('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount[@currencyID="EUR"]', '7.00');
+        $this->assertXPathValue('/ns:Invoice/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount[@currencyID="EUR"]', '3.00');
+        $this->assertXPathValue('/ns:Invoice/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount[@currencyID="EUR"]', '2.00');
+        $this->assertXPathValue('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PrepaidAmount[@currencyID="EUR"]', '9.00');
+        $this->assertXPathValue('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount[@currencyID="EUR"]', '10.00');
+        $this->assertXPathValue('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount[@currencyID="EUR"]', '8.00');
+        $this->assertXPathValue('(/ns:Invoice/cac:TaxTotal/cbc:TaxAmount)[2][@currencyID="GBP"]', '6.00');
         $this->assertXPathNotExists('(/ns:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount)[2]');
@@ -6207,15 +6207,15 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithoutAttribute('/ns:Invoice/cac:TaxTotal/cbc:TaxAmount', '5.00', 'currencyID');
-        $this->assertXPathValueWithoutAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount', '1.00', 'currencyID');
-        $this->assertXPathValueWithoutAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount', '4.00', 'currencyID');
-        $this->assertXPathValueWithoutAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount', '7.00', 'currencyID');
-        $this->assertXPathValueWithoutAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount', '3.00', 'currencyID');
-        $this->assertXPathValueWithoutAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount', '2.00', 'currencyID');
-        $this->assertXPathValueWithoutAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PrepaidAmount', '9.00', 'currencyID');
-        $this->assertXPathValueWithoutAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount', '10.00', 'currencyID');
-        $this->assertXPathValueWithoutAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount', '8.00', 'currencyID');
+        $this->assertXPathValue('/ns:Invoice/cac:TaxTotal/cbc:TaxAmount[not(@currencyID)]', '5.00');
+        $this->assertXPathValue('/ns:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount[not(@currencyID)]', '1.00');
+        $this->assertXPathValue('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount[not(@currencyID)]', '4.00');
+        $this->assertXPathValue('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount[not(@currencyID)]', '7.00');
+        $this->assertXPathValue('/ns:Invoice/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount[not(@currencyID)]', '3.00');
+        $this->assertXPathValue('/ns:Invoice/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount[not(@currencyID)]', '2.00');
+        $this->assertXPathValue('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PrepaidAmount[not(@currencyID)]', '9.00');
+        $this->assertXPathValue('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount[not(@currencyID)]', '10.00');
+        $this->assertXPathValue('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount[not(@currencyID)]', '8.00');
         $this->assertXPathNotExists('(/ns:Invoice/cac:TaxTotal/cbc:TaxAmount)[2]'); // No Tax Currency present
         $this->assertXPathNotExists('(/ns:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount)[2]');
@@ -6367,7 +6367,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Name', 'productname');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:BuyersItemIdentification/cbc:ID', 'productbuyerid');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:SellersItemIdentification/cbc:ID', 'productsellerid');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID', 'productglobalid', 'schemeID', 'productglobalidtype');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID[@schemeID="productglobalidtype"]', 'productglobalid');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode', 'productcountry');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Description)[2]');
@@ -6639,7 +6639,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Name', 'productname2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:BuyersItemIdentification/cbc:ID', 'productbuyerid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:SellersItemIdentification/cbc:ID', 'productsellerid2');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID', 'productglobalid2', 'schemeID', 'productglobalidtype2');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID[@schemeID="productglobalidtype2"]', 'productglobalid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode', 'productcountry2');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Description)[2]');
@@ -6668,7 +6668,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Name', 'productname2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:BuyersItemIdentification/cbc:ID', 'productbuyerid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:SellersItemIdentification/cbc:ID', 'productsellerid2');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID', 'productglobalid2', 'schemeID', 'productglobalidtype2');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID[@schemeID="productglobalidtype2"]', 'productglobalid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode', 'productcountry2');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Description)[2]');
@@ -6703,7 +6703,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Name', 'productname2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:BuyersItemIdentification/cbc:ID', 'productbuyerid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:SellersItemIdentification/cbc:ID', 'productsellerid2');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID', 'productglobalid2', 'schemeID', 'productglobalidtype2');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID[@schemeID="productglobalidtype2"]', 'productglobalid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode', 'productcountry2');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Description)[2]');
@@ -6732,7 +6732,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Name', 'productname2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:BuyersItemIdentification/cbc:ID', 'productbuyerid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:SellersItemIdentification/cbc:ID', 'productsellerid2');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID', 'productglobalid2', 'schemeID', 'productglobalidtype2');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID[@schemeID="productglobalidtype2"]', 'productglobalid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode', 'productcountry2');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Description)[2]');
@@ -6767,7 +6767,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Name', 'productname2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:BuyersItemIdentification/cbc:ID', 'productbuyerid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:SellersItemIdentification/cbc:ID', 'productsellerid2');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID', 'productglobalid2', 'schemeID', 'productglobalidtype2');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID[@schemeID="productglobalidtype2"]', 'productglobalid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode', 'productcountry2');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Description)[2]');
@@ -6814,7 +6814,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Name', 'productname3');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:BuyersItemIdentification/cbc:ID', 'productbuyerid3');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:SellersItemIdentification/cbc:ID', 'productsellerid3');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID', 'productglobalid3', 'schemeID', 'productglobalidtype3');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID[@schemeID="productglobalidtype3"]', 'productglobalid3');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode', 'productcountry3');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Description)[2]');
@@ -7045,7 +7045,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Name', 'productname2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:BuyersItemIdentification/cbc:ID', 'productbuyerid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:SellersItemIdentification/cbc:ID', 'productsellerid2');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID', 'productglobalid2', 'schemeID', 'productglobalidtype2');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID[@schemeID="productglobalidtype2"]', 'productglobalid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode', 'productcountry2');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Description)[2]');
@@ -7070,7 +7070,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Name', 'productname2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:BuyersItemIdentification/cbc:ID', 'productbuyerid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:SellersItemIdentification/cbc:ID', 'productsellerid2');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID', 'productglobalid2', 'schemeID', 'productglobalidtype2');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID[@schemeID="productglobalidtype2"]', 'productglobalid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode', 'productcountry2');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Description)[2]');
@@ -7100,7 +7100,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Name', 'productname2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:BuyersItemIdentification/cbc:ID', 'productbuyerid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:SellersItemIdentification/cbc:ID', 'productsellerid2');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID', 'productglobalid2', 'schemeID', 'productglobalidtype2');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID[@schemeID="productglobalidtype2"]', 'productglobalid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode', 'productcountry2');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Description)[2]');
@@ -7110,8 +7110,8 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode)[2]');
         $this->assertXPathExists('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode', 'classcode', 'listID', 'listid');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode', 'classcode', 'listVersionID', 'listversionid');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID="listid"]', 'classcode');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listVersionID="listversionid"]', 'classcode');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode)[2]');
 
@@ -7126,7 +7126,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Name', 'productname2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:BuyersItemIdentification/cbc:ID', 'productbuyerid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:SellersItemIdentification/cbc:ID', 'productsellerid2');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID', 'productglobalid2', 'schemeID', 'productglobalidtype2');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID[@schemeID="productglobalidtype2"]', 'productglobalid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode', 'productcountry2');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Description)[2]');
@@ -7136,8 +7136,8 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode)[2]');
         $this->assertXPathExists('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode', 'classcode', 'listID', 'listid');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode', 'classcode', 'listVersionID', 'listversionid');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID="listid"]', 'classcode');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listVersionID="listversionid"]', 'classcode');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode)[2]');
 
@@ -7157,7 +7157,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Name', 'productname2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:BuyersItemIdentification/cbc:ID', 'productbuyerid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:SellersItemIdentification/cbc:ID', 'productsellerid2');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID', 'productglobalid2', 'schemeID', 'productglobalidtype2');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID[@schemeID="productglobalidtype2"]', 'productglobalid2');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode', 'productcountry2');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Description)[2]');
@@ -7167,11 +7167,11 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode)[2]');
         $this->assertXPathExists('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode', 'classcode', 'listID', 'listid');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode', 'classcode', 'listVersionID', 'listversionid');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID="listid"]', 'classcode');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listVersionID="listversionid"]', 'classcode');
         $this->assertXPathExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification)[2]');
-        $this->assertXPathValueWithAttribute('(/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode)[2]', 'classcode2', 'listID', 'listid2');
-        $this->assertXPathValueWithAttribute('(/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode)[2]', 'classcode2', 'listVersionID', 'listversionid2');
+        $this->assertXPathValue('(/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode)[2][@listID="listid2"]', 'classcode2');
+        $this->assertXPathValue('(/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode)[2][@listVersionID="listversionid2"]', 'classcode2');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification)[3]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode)[3]');
 
@@ -7200,7 +7200,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Name', 'productname3');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:BuyersItemIdentification/cbc:ID', 'productbuyerid3');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:SellersItemIdentification/cbc:ID', 'productsellerid3');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID', 'productglobalid3', 'schemeID', 'productglobalidtype3');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID[@schemeID="productglobalidtype3"]', 'productglobalid3');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode', 'productcountry3');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Item/cbc:Description)[2]');
@@ -7460,7 +7460,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
 
         $this->assertXPathExists('/ns:Invoice/cac:InvoiceLine/cac:Price');
         $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', '1.00');
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity', '2.00', 'unitCode', 'C62');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity[@unitCode="C62"]', '2.00');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Price)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount)[2]');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity)[2]');
@@ -7521,21 +7521,21 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', '1.00', 'unitCode', 'C62');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity[@unitCode="C62"]', '1.00');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity)[2]');
 
         static::$document->setDocumentPositionQuantities(1.0, 'C62', 2.0, 'MTR', 3.0, 'KTR', 4.0, 'XPP');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', '1.00', 'unitCode', 'C62');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity[@unitCode="C62"]', '1.00');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity)[2]');
 
         static::$document->setDocumentPositionQuantities(4.0, 'XPP');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithAttribute('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', '4.00', 'unitCode', 'XPP');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity[@unitCode="XPP"]', '4.00');
         $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity)[2]');
 
         static::$document->setDocumentPositionQuantities();

@@ -220,42 +220,42 @@ final class XRechnungUBLInvoiceDocumentBuilderDTOTest extends TestCase
         // Position 1
 
         $this->assertXPathValue('/ubl:Invoice/cac:InvoiceLine/cbc:ID', '1');
-        $this->assertXPathValueWithAttribute('/ubl:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', '20.0000', 'unitCode', 'H87');
-        $this->assertXPathValueWithAttribute('/ubl:Invoice/cac:InvoiceLine/cbc:LineExtensionAmount', '198.00', 'currencyID', 'EUR');
+        $this->assertXPathValue('/ubl:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity[@unitCode="H87"]', '20.0000');
+        $this->assertXPathValue('/ubl:Invoice/cac:InvoiceLine/cbc:LineExtensionAmount[@currencyID="EUR"]', '198.00');
         $this->assertXPathValue('/ubl:Invoice/cac:InvoiceLine/cac:Item/cbc:Name', 'Trennblätter A4');
         $this->assertXPathValue('/ubl:Invoice/cac:InvoiceLine/cac:Item/cac:SellersItemIdentification/cbc:ID', 'TB100A4');
-        $this->assertXPathValueWithAttribute('/ubl:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID', '4012345001235', 'schemeID', '0160');
+        $this->assertXPathValue('/ubl:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID[@schemeID="0160"]', '4012345001235');
         $this->assertXPathValue('/ubl:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 'S');
         $this->assertXPathValue('/ubl:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent', '19.00');
         $this->assertXPathValue('/ubl:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID', 'VAT');
-        $this->assertXPathValueWithAttribute('/ubl:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', '9.9000', 'currencyID', 'EUR');
+        $this->assertXPathValue('/ubl:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount[@currencyID="EUR"]', '9.9000');
 
         // Position 2
 
         $this->assertXPathValue('(/ubl:Invoice/cac:InvoiceLine/cbc:ID)[2]', '2');
-        $this->assertXPathValueWithAttribute('(/ubl:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity)[2]', '50.0000', 'unitCode', 'H87');
-        $this->assertXPathValueWithAttribute('(/ubl:Invoice/cac:InvoiceLine/cbc:LineExtensionAmount)[2]', '275.00', 'currencyID', 'EUR');
+        $this->assertXPathValue('(/ubl:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity)[2][@unitCode="H87"]', '50.0000');
+        $this->assertXPathValue('(/ubl:Invoice/cac:InvoiceLine/cbc:LineExtensionAmount)[2][@currencyID="EUR"]', '275.00');
         $this->assertXPathValue('(/ubl:Invoice/cac:InvoiceLine/cac:Item/cbc:Name)[2]', 'Joghurt Banane');
         $this->assertXPathValue('(/ubl:Invoice/cac:InvoiceLine/cac:Item/cac:SellersItemIdentification/cbc:ID)[2]', 'ARNR2');
-        $this->assertXPathValueWithAttribute('(/ubl:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID)[2]', '4000050986428', 'schemeID', '0160');
+        $this->assertXPathValue('(/ubl:Invoice/cac:InvoiceLine/cac:Item/cac:StandardItemIdentification/cbc:ID)[2][@schemeID="0160"]', '4000050986428');
         $this->assertXPathValue('(/ubl:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID)[2]', 'S');
         $this->assertXPathValue('(/ubl:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent)[2]', '7.00');
         $this->assertXPathValue('(/ubl:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID)[2]', 'VAT');
-        $this->assertXPathValueWithAttribute('(/ubl:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount)[2]', '5.5000', 'currencyID', 'EUR');
+        $this->assertXPathValue('(/ubl:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount)[2][@currencyID="EUR"]', '5.5000');
 
         // Header
 
         // Vendor
 
-        $this->assertXPathValueWithAttribute('/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID', 'user@lieferant.de', 'schemeID', 'EM');
+        $this->assertXPathValue('/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID[@schemeID="EM"]', 'user@lieferant.de');
         $this->assertXPathNotExists('(/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID)[2]');
 
         $this->assertXPathNotExists('/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyName/cbc:Name');
         $this->assertXPathNotExists('(/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyName/cbc:Name)[2]');
 
         $this->assertXPathValue('/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', '549910');
-        $this->assertXPathValueWithAttribute('(/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2]', '4000001123452', 'schemeID', '0088');
-        $this->assertXPathValueWithAttribute('(/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[3]', '94467863782647362', 'schemeID', 'SEPA');
+        $this->assertXPathValue('(/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[2][@schemeID="0088"]', '4000001123452');
+        $this->assertXPathValue('(/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[3][@schemeID="SEPA"]', '94467863782647362');
         $this->assertXPathNotExists('(/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[4]');
 
         $this->assertXPathValue('/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:StreetName', 'Lieferantenstraße 20');
@@ -300,7 +300,7 @@ final class XRechnungUBLInvoiceDocumentBuilderDTOTest extends TestCase
 
         // Customer
 
-        $this->assertXPathValueWithAttribute('/ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID', 'user@kunde.de', 'schemeID', 'EM');
+        $this->assertXPathValue('/ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID[@schemeID="EM"]', 'user@kunde.de');
         $this->assertXPathNotExists('(/ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID)[2]');
 
         $this->assertXPathNotExists('/ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyName/cbc:Name');
@@ -371,16 +371,16 @@ final class XRechnungUBLInvoiceDocumentBuilderDTOTest extends TestCase
         $this->assertXPathExists('/ubl:Invoice/cac:TaxTotal');
         $this->assertXPathNotExists('(/ubl:Invoice/cac:TaxTotal)[2]');
 
-        $this->assertXPathValueWithAttribute('/ubl:Invoice/cac:TaxTotal/cbc:TaxAmount', '56.87', 'currencyID', 'EUR');
+        $this->assertXPathValue('/ubl:Invoice/cac:TaxTotal/cbc:TaxAmount[@currencyID="EUR"]', '56.87');
 
-        $this->assertXPathValueWithAttribute('/ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount', '275.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithAttribute('/ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount', '19.25', 'currencyID', 'EUR');
+        $this->assertXPathValue('/ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount[@currencyID="EUR"]', '275.00');
+        $this->assertXPathValue('/ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount[@currencyID="EUR"]', '19.25');
         $this->assertXPathValue('/ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID', 'S');
         $this->assertXPathValue('/ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent', '7.00');
         $this->assertXPathValue('/ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID', 'VAT');
 
-        $this->assertXPathValueWithAttribute('(/ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount)[2]', '198.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithAttribute('(/ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount)[2]', '37.62', 'currencyID', 'EUR');
+        $this->assertXPathValue('(/ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount)[2][@currencyID="EUR"]', '198.00');
+        $this->assertXPathValue('(/ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount)[2][@currencyID="EUR"]', '37.62');
         $this->assertXPathValue('(/ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID)[2]', 'S');
         $this->assertXPathValue('(/ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent)[2]', '19.00');
         $this->assertXPathValue('(/ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID)[2]', 'VAT');
@@ -393,13 +393,13 @@ final class XRechnungUBLInvoiceDocumentBuilderDTOTest extends TestCase
 
         // Summation
 
-        $this->assertXPathValueWithAttribute('/ubl:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount', '473.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithAttribute('/ubl:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount', '473.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithAttribute('/ubl:Invoice/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount', '529.87', 'currencyID', 'EUR');
-        $this->assertXPathValueWithAttribute('/ubl:Invoice/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount', '0.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithAttribute('/ubl:Invoice/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount', '0.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithAttribute('/ubl:Invoice/cac:LegalMonetaryTotal/cbc:PrepaidAmount', '0.00', 'currencyID', 'EUR');
-        $this->assertXPathValueWithAttribute('/ubl:Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount', '529.87', 'currencyID', 'EUR');
+        $this->assertXPathValue('/ubl:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount[@currencyID="EUR"]', '473.00');
+        $this->assertXPathValue('/ubl:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount[@currencyID="EUR"]', '473.00');
+        $this->assertXPathValue('/ubl:Invoice/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount[@currencyID="EUR"]', '529.87');
+        $this->assertXPathValue('/ubl:Invoice/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount[@currencyID="EUR"]', '0.00');
+        $this->assertXPathValue('/ubl:Invoice/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount[@currencyID="EUR"]', '0.00');
+        $this->assertXPathValue('/ubl:Invoice/cac:LegalMonetaryTotal/cbc:PrepaidAmount[@currencyID="EUR"]', '0.00');
+        $this->assertXPathValue('/ubl:Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount[@currencyID="EUR"]', '529.87');
 
         $this->assertXPathNotExists('(/ubl:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount)[2]');
         $this->assertXPathNotExists('(/ubl:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount)[2]');
