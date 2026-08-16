@@ -2659,6 +2659,6 @@ enum InvoiceSuiteCodelistAllowanceChargeCodes: string
      */
     final public static function getCreatedAt(): string
     {
-        return '2025-08-30T00:35:49+02:00';
+        return '2026-08-16T14:41:53+02:00';
     }
 }

@@ -268,6 +268,7 @@ function createCodeClassFromKositJson(array $fileToDownload): void
     // Create PHP File
 
     $phpFile = new PhpFile();
+    $phpFile->setStrictTypes(true);
     $phpFile->addComment(sprintf("This file is a part of horstoeko/%s.\n\nFor the full copyright and license information, please view the LICENSE\nfile that was distributed with this source code.", $libName));
 
     // Create PHP Class
@@ -438,6 +439,8 @@ function createCodeClassFromKositJson(array $fileToDownload): void
     // Save generated class to file
 
     outputLine(sprintf("Saving class to directory\n  %s", $classFilename));
+
+    $phpPrinter->declareOnOpenTag = true;
 
     file_put_contents($classFilename, $phpPrinter->printFile($phpFile));
 }

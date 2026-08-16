@@ -289,6 +289,11 @@
             "Composer\\Config::disableProcessTimeout",
             "@php ./make/gendto.php",
             "@phpcsfixer:run"
+        ],
+        "gencodelists:run": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php ./make/gencodelists.php",
+            "@phpcsfixer:run"
         ]
     }
 }
