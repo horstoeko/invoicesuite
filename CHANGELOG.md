@@ -1,3 +1,17 @@
+## v0.0.23
+
+``Previous version v0.0.22``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :bug:  | [0fa3711d](https://github.com/horstoeko/invoicesuite/commit/0fa3711d) | 2026-08-17 14:15:47 CEST | HorstOeko | [FIX] Legacy Support is missing Delivery () | [#22](https://github.com/horstoeko/invoicesuite/issues/22)
+| :new:  | [1038b559](https://github.com/horstoeko/invoicesuite/commit/1038b559) | 2026-08-17 07:26:28 CEST | HorstOeko | [ENH] Renamed example | 
+| :new:  | [6731a045](https://github.com/horstoeko/invoicesuite/commit/6731a045) | 2026-08-16 17:33:10 CEST | HorstOeko | [ENH] Simplified tests (and infrastructure) (Part 2) | 
+| :new:  | [49912fbe](https://github.com/horstoeko/invoicesuite/commit/49912fbe) | 2026-08-16 16:58:10 CEST | HorstOeko | [ENH] Simplified tests (and infrastructure) | 
+| :new:  | [2a076dfc](https://github.com/horstoeko/invoicesuite/commit/2a076dfc) | 2026-08-16 14:43:20 CEST | HorstOeko | [ENH] Updated codelists | 
+
+:exclamation: _There are 9 internal commit(s)_
+
 ## v0.0.22
 
 ``Previous version v0.0.21``
