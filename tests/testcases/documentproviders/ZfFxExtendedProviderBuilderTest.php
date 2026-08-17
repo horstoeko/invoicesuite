@@ -36,6 +36,10 @@ final class ZfFxExtendedProviderBuilderTest extends TestCase
         static::$document->initDocumentRootObject();
 
         $this->assertInstanceOf(CrossIndustryInvoice::class, static::$document->getDocumentRootObject());
+
+        $this->assertXPathExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement');
+        $this->assertXPathExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery');
+        $this->assertXPathExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement');
     }
 
     public function testDocumentProfile(): void
