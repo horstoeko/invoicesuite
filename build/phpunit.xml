@@ -185,6 +185,10 @@
             <file>../tests/testcases/console/InvoiceSuiteCacheClearCommandTest.php</file>
             <file>../tests/testcases/console/InvoiceSuiteCacheRebuildCommandTest.php</file>
         </testsuite>
+        <testsuite name="issues">
+            <file>../tests/testcases/issues/PaymentTermsWithEmptyDescriptionTest.php</file>
+            <file>../tests/testcases/issues/PaymentTermsWithEmptyDescriptionCompatTest.php</file>
+        </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
         <include>

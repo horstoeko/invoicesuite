@@ -13255,7 +13255,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDescription, $newMandate])
+            && InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDueDate)
+        ) {
             return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
         }
 
@@ -13289,7 +13292,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDescription, $newMandate])
+            && InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDueDate)
+        ) {
             return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
         }
 
@@ -13307,7 +13313,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getApplicableHeaderTradeSettlementWithCreate()
             ->addToSpecifiedTradePaymentTermsWithCreate();
 
-        $paymentTerm->getDescriptionWithCreate()->setValue($newDescription);
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            $paymentTerm->getDescriptionWithCreate()->setValue($newDescription);
+        }
 
         if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDueDate)) {
             $paymentTerm
