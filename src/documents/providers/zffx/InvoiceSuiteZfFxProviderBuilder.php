@@ -63,6 +63,21 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             $this->getCurrentDocumentFormatProviderParameterValue('BusinessProcess', '')
         );
 
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate();
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate();
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate();
+
         return $this;
     }
 
