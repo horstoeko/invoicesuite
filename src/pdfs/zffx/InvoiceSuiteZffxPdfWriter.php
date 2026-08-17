@@ -304,6 +304,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
         }
 
         $fc = gzcompress($fc);
+
         $this->_put('/Length ' . InvoiceSuiteStringUtils::length($fc));
         $this->_put(InvoiceSuiteStringUtils::sprintf('/Params <</ModDate (D:%s)>>', $md));
         $this->_put('>>');
@@ -321,11 +322,14 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
         $this->_newobj();
         $this->filesIndex = $this->n;
         $this->_put('<<');
+
         $s = '';
         $files = $this->files;
+
         InvoiceSuiteArrayUtils::sortWithCallback($files, static function ($a, $b) { // Sorting files in name order as PDF specs (if not, issue with Acrobat Reader when trying to download attachments)
             return InvoiceSuiteStringUtils::compare($a['name'], $b['name']);
         });
+
         foreach ($files as $info) {
             $s .= InvoiceSuiteStringUtils::sprintf('%s %s 0 R ', $this->_textstring($info['name']), $info['file_index']);
         }
@@ -345,8 +349,10 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
         $s = '<?xpacket begin="" id="W5M0MpCehiHzreSzNTczkc9d"?>' . "\n";
         $s .= '<x:xmpmeta xmlns:x="adobe:ns:meta/">' . "\n";
         $s .= '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">' . "\n";
+
         $this->_newobj();
         $this->descriptionIndex = $this->n;
+
         foreach ($this->metaDataDescriptions as $desc) {
             $s .= $desc . "\n";
         }
@@ -354,6 +360,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
         $s .= '</rdf:RDF>' . "\n";
         $s .= '</x:xmpmeta>' . "\n";
         $s .= '<?xpacket end="w"?>';
+
         $this->_put('<<');
         $this->_put('/Length ' . InvoiceSuiteStringUtils::length($s));
         $this->_put('/Type /Metadata');
@@ -404,6 +411,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
         $this->_put('/Info (sRGB V4 ICC)');
         $this->_put('>>');
         $this->_put('endobj');
+
         $this->outputIntentIndex = $this->n;
 
         $icc = file_get_contents(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, 'assets'), 'sRGB2014.icc'));
