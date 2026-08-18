@@ -9,6 +9,7 @@
 
 [![Build Status](https://github.com/horstoeko/invoicesuite/actions/workflows/build.ci.yml/badge.svg)](https://github.com/horstoeko/invoicesuite/actions/workflows/build.ci.yml)
 [![Release Status](https://github.com/horstoeko/invoicesuite/actions/workflows/build.release.yml/badge.svg)](https://github.com/horstoeko/invoicesuite/actions/workflows/build.release.yml)
+[![Nightly Build Status](https://github.com/horstoeko/invoicesuite/actions/workflows/build.nightly.yml/badge.svg)](https://github.com/horstoeko/invoicesuite/actions/workflows/build.nightly.yml)
 
 <!-- omit in toc -->
 ## Table of Contents
