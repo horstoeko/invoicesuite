@@ -19,6 +19,10 @@ env:
   COMPOSER_NO_INTERACTION: "1"
   COMPOSER_PROCESS_TIMEOUT: "0"
   XDEBUG_MODE: off
+  KOSIT_REMOTE_HOST: 127.0.0.1
+  KOSIT_REMOTE_PORT: "8081"
+  VERAPDF_REMOTE_HOST: 127.0.0.1
+  VERAPDF_REMOTE_PORT: "8080"
 
 jobs:
   build:
@@ -33,6 +37,9 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
           ref: ${{ github.event.repository.default_branch }}
+
+      - name: Start validation services
+        run: docker compose --file .github/services/compose.yml up --detach --quiet-pull --wait --wait-timeout 120
 
       - name: Determine nightly build metadata
         id: nightly-build
@@ -86,6 +93,140 @@ jobs:
 
       - name: Run PHPUnit tests
         run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml --no-coverage
+
+      - name: Run remote Schematron tests
+        run: |
+          expectedResultAnchor='<rep:assessment><rep:accept>'
+
+          for invoiceXmlFilename in \
+            tests/assets/00_case_comfort_simple.xml \
+            tests/assets/00_case_comfort_simple_dto.xml \
+            tests/assets/00_case_xrechnung_cii_simple.xml \
+            tests/assets/00_case_xrechnung_cii_simple_dto.xml \
+            tests/assets/00_case_xrechnung_ublinvoice_simple.xml \
+            tests/assets/00_case_xrechnung_ublinvoice_simple_dto.xml \
+            tests/assets/00_case_xrechnung_ublcreditnote_simple.xml \
+            tests/assets/00_case_xrechnung_ublcreditnote_simple_dto.xml
+          do
+            if ! kositValidationResult=$(curl \
+              --silent \
+              --show-error \
+              --header 'Content-Type: application/xml' \
+              --data-binary "@$invoiceXmlFilename" \
+              --max-time 120 \
+              --write-out $'\n%{http_code}' \
+              "http://$KOSIT_REMOTE_HOST:$KOSIT_REMOTE_PORT/${invoiceXmlFilename##*/}")
+            then
+              echo "KoSIT validation request failed for $invoiceXmlFilename." >&2
+              exit 1
+            fi
+
+            if [ "${kositValidationResult##*$'\n'}" != '200' ] ||
+              [[ "${kositValidationResult%$'\n'*}" != *"$expectedResultAnchor"* ]]
+            then
+              echo "KoSIT returned an unexpected result for $invoiceXmlFilename." >&2
+              exit 1
+            fi
+          done
+
+          echo 'Remote Schematron tests passed.'
+
+      - name: Run negative remote Schematron tests
+        run: |
+          expectedResultAnchor='<rep:assessment><rep:reject>'
+          unexpectedResultAnchor='<rep:assessment><rep:accept>'
+
+          for invalidInvoiceXmlFilename in tests/assets/*technical*.xml
+          do
+            if ! kositValidationResult=$(curl \
+              --silent \
+              --show-error \
+              --header 'Content-Type: application/xml' \
+              --data-binary "@$invalidInvoiceXmlFilename" \
+              --max-time 120 \
+              --write-out $'\n%{http_code}' \
+              "http://$KOSIT_REMOTE_HOST:$KOSIT_REMOTE_PORT/${invalidInvoiceXmlFilename##*/}")
+            then
+              echo "KoSIT validation request failed for $invalidInvoiceXmlFilename." >&2
+              exit 1
+            fi
+
+            if [ "${kositValidationResult##*$'\n'}" != '406' ] ||
+              [[ "${kositValidationResult%$'\n'*}" != *"$expectedResultAnchor"* ]] ||
+              [[ "${kositValidationResult%$'\n'*}" == *"$unexpectedResultAnchor"* ]]
+            then
+              echo "KoSIT returned an unexpected result for $invalidInvoiceXmlFilename." >&2
+              exit 1
+            fi
+          done
+
+          echo 'Negative remote Schematron tests passed.'
+
+      - name: Run remote veraPDF tests
+        run: |
+          expectedResultAnchor='<validationReports compliant="1" nonCompliant="0" failedJobs="0">1</validationReports>'
+
+          for pdfFilename in \
+            tests/assets/00_case_comfort_simple.pdf \
+            tests/assets/00_case_extended_simple.pdf
+          do
+            if ! veraPdfValidationResult=$(curl \
+              --silent \
+              --show-error \
+              --header 'Accept: application/xml' \
+              --form "file=@$pdfFilename;type=application/pdf" \
+              --max-time 120 \
+              --write-out $'\n%{http_code}' \
+              "http://$VERAPDF_REMOTE_HOST:$VERAPDF_REMOTE_PORT/api/validate/3b")
+            then
+              echo "veraPDF validation request failed for $pdfFilename." >&2
+              exit 1
+            fi
+
+            if [ "${veraPdfValidationResult##*$'\n'}" != '200' ] ||
+              [[ "${veraPdfValidationResult%$'\n'*}" != *"$expectedResultAnchor"* ]]
+            then
+              echo "veraPDF returned an unexpected result for $pdfFilename." >&2
+              exit 1
+            fi
+          done
+
+          echo 'Remote veraPDF tests passed.'
+
+      - name: Run negative remote veraPDF tests
+        run: |
+          unexpectedResultAnchor='<validationReports compliant="1" nonCompliant="0" failedJobs="0">1</validationReports>'
+
+          for validationCase in \
+            'tests/assets/pdf_plain.pdf|<validationReports compliant="0" nonCompliant="1" failedJobs="0">1</validationReports>' \
+            'tests/assets/pdf_broken.pdf|<validationReports compliant="0" nonCompliant="0" failedJobs="1">1</validationReports>'
+          do
+            invalidPdfFilename="${validationCase%%|*}"
+            expectedResultAnchor="${validationCase#*|}"
+
+            if ! veraPdfValidationResult=$(curl \
+              --silent \
+              --show-error \
+              --header 'Accept: application/xml' \
+              --form "file=@$invalidPdfFilename;type=application/pdf" \
+              --max-time 120 \
+              --write-out $'\n%{http_code}' \
+              "http://$VERAPDF_REMOTE_HOST:$VERAPDF_REMOTE_PORT/api/validate/3b")
+            then
+              echo "veraPDF validation request failed for $invalidPdfFilename." >&2
+              exit 1
+            fi
+
+            if [ "${veraPdfValidationResult##*$'\n'}" != '200' ] ||
+              [[ "${veraPdfValidationResult%$'\n'*}" != *"$expectedResultAnchor"* ]] ||
+              [[ "${veraPdfValidationResult%$'\n'*}" == *"$unexpectedResultAnchor"* ]]
+            then
+              echo "veraPDF returned an unexpected result for $invalidPdfFilename." >&2
+              exit 1
+            fi
+          done
+
+          echo 'Negative remote veraPDF tests passed.'
 
       - name: Create nightly package
         env:
