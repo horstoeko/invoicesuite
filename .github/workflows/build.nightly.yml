@@ -1,0 +1,136 @@
+name: Nightly Build
+
+on:
+  schedule:
+    - cron: '17 3 * * *'
+      timezone: Europe/Berlin
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  COMPOSER_NO_AUDIT: "1"
+  COMPOSER_NO_INTERACTION: "1"
+  COMPOSER_PROCESS_TIMEOUT: "0"
+  XDEBUG_MODE: off
+
+jobs:
+  build:
+    permissions:
+      contents: read
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Determine nightly build metadata
+        id: nightly-build
+        run: |
+          nightlyBuildDate=$(TZ=Europe/Berlin date +%Y-%m-%d)
+          nightlyCommitSha=$(git rev-parse HEAD)
+          nightlyShortCommitSha=${nightlyCommitSha:0:12}
+          nightlyArtifactName="invoicesuite-nightly-$nightlyBuildDate-$nightlyShortCommitSha"
+          nightlyPackageFilename="$nightlyArtifactName.zip"
+          nightlyChecksumFilename="$nightlyPackageFilename.sha256"
+
+          echo "artifact_name=$nightlyArtifactName" >> "$GITHUB_OUTPUT"
+          echo "build_date=$nightlyBuildDate" >> "$GITHUB_OUTPUT"
+          echo "commit_sha=$nightlyCommitSha" >> "$GITHUB_OUTPUT"
+          echo "short_commit_sha=$nightlyShortCommitSha" >> "$GITHUB_OUTPUT"
+          echo "package_filename=$nightlyPackageFilename" >> "$GITHUB_OUTPUT"
+          echo "checksum_filename=$nightlyChecksumFilename" >> "$GITHUB_OUTPUT"
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          extensions: dom, curl, fileinfo, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json
+          tools: composer:v2
+          coverage: none
+          ini-values: memory_limit=-1
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@v4
+        with:
+          dependency-versions: locked
+          composer-options: --prefer-dist
+          require-lock-file: false
+        env:
+          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.GITHUB_TOKEN }}"}}'
+
+      - name: Prepare build directories
+        run: |
+          mkdir -p build/dist
+          mkdir -p build/phpstan
+
+      - name: Run parallel lint
+        run: vendor/bin/parallel-lint src tests
+
+      - name: Run PHP-CS-Fixer
+        run: vendor/bin/php-cs-fixer fix --config=build/phpcsfixer.php --dry-run --no-interaction
+
+      - name: Run PHPStan
+        run: php -d sys_temp_dir=$(pwd)/build/phpstan vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G --error-format=github
+
+      - name: Run PHPUnit tests
+        run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml --no-coverage
+
+      - name: Create nightly package
+        env:
+          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.GITHUB_TOKEN }}"}}'
+          NIGHTLY_BUILD_DATE: ${{ steps.nightly-build.outputs.build_date }}
+          NIGHTLY_CHECKSUM_FILENAME: ${{ steps.nightly-build.outputs.checksum_filename }}
+          NIGHTLY_COMMIT_SHA: ${{ steps.nightly-build.outputs.commit_sha }}
+          NIGHTLY_PACKAGE_FILENAME: ${{ steps.nightly-build.outputs.package_filename }}
+        run: |
+          nightlyPackageDirectory=build/nightly/invoicesuite
+
+          mkdir -p "$nightlyPackageDirectory"
+          git archive HEAD | tar -x -C "$nightlyPackageDirectory"
+
+          {
+            echo 'InvoiceSuite nightly build'
+            echo "Build date: $NIGHTLY_BUILD_DATE"
+            echo "Commit: $NIGHTLY_COMMIT_SHA"
+            echo 'Warning: This is an unstable development snapshot.'
+          } > "$nightlyPackageDirectory/NIGHTLY-BUILD.txt"
+
+          composer install \
+            --working-dir="$nightlyPackageDirectory" \
+            --no-dev \
+            --prefer-dist \
+            --optimize-autoloader \
+            --no-progress
+
+          (
+            cd build/nightly
+            zip -q -r "../dist/$NIGHTLY_PACKAGE_FILENAME" invoicesuite
+          )
+
+          (
+            cd build/dist
+            sha256sum "$NIGHTLY_PACKAGE_FILENAME" > "$NIGHTLY_CHECKSUM_FILENAME"
+          )
+
+      - name: Upload nightly build artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ steps.nightly-build.outputs.artifact_name }}
+          path: |
+            build/dist/${{ steps.nightly-build.outputs.package_filename }}
+            build/dist/${{ steps.nightly-build.outputs.checksum_filename }}
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 0
