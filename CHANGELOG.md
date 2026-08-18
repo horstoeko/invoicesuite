@@ -1,3 +1,15 @@
+## v0.0.25
+
+``Previous version v0.0.23``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [d5246175](https://github.com/horstoeko/invoicesuite/commit/d5246175) | 2026-08-17 16:33:08 CEST | HorstOeko | [ENH] Allow empty payment terms descriptions for ZF/FX | 
+| :new:  | [8a0874f6](https://github.com/horstoeko/invoicesuite/commit/8a0874f6) | 2026-08-17 16:17:46 CEST | HorstOeko | [ENH] Allow empty payment terms descriptions for ZF/FX | 
+| :new:  | [9930e267](https://github.com/horstoeko/invoicesuite/commit/9930e267) | 2026-08-17 14:37:39 CEST | HorstOeko | [ENH] Improved Test ZugferdDocumentBuilderExtendedTest | 
+
+:exclamation: _There is one internal commit_
+
 ## v0.0.23
 
 ``Previous version v0.0.22``
