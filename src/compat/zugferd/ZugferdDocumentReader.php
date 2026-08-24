@@ -371,20 +371,14 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $effectiveSpecifiedPeriod __BT-X-6-000, From EXTENDED__ The contractual due date of the invoice
      * @return static
      *
-     * @phpstan-param-out string $documentNo
-     * @phpstan-param-out string $documentTypeCode
-     *
+     * @param-out string                 $documentNo
+     * @param-out string                 $documentTypeCode
      * @param-out null|DateTimeInterface $documentDate
-     *
-     * @phpstan-param-out null|DateTimeInterface $documentDate
-     * @phpstan-param-out string $invoiceCurrency
-     * @phpstan-param-out string $taxCurrency
-     * @phpstan-param-out string $documentName
-     * @phpstan-param-out string $documentLanguage
-     *
+     * @param-out string                 $invoiceCurrency
+     * @param-out string                 $taxCurrency
+     * @param-out string                 $documentName
+     * @param-out string                 $documentLanguage
      * @param-out null|DateTimeInterface $effectiveSpecifiedPeriod
-     *
-     * @phpstan-param-out null|DateTimeInterface $effectiveSpecifiedPeriod
      */
     public function getDocumentInformation(
         ?string &$documentNo,
@@ -415,8 +409,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $paymentReference    __BT-83, From BASIC WL__ Intended use for payment
      * @return static
      *
-     * @phpstan-param-out string $creditorReferenceID
-     * @phpstan-param-out string $paymentReference
+     * @param-out string $creditorReferenceID
+     * @param-out string $paymentReference
      */
     public function getDocumentGeneralPaymentInformation(
         ?string &$creditorReferenceID,
@@ -442,7 +436,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $buyerReference __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
      * @return static
      *
-     * @phpstan-param-out string $buyerReference
+     * @param-out string $buyerReference
      */
     public function getDocumentBuyerReference(
         ?string &$buyerReference
@@ -460,7 +454,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $routingId __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
      * @return static
      *
-     * @phpstan-param-out string $routingId
+     * @param-out string $routingId
      */
     public function getDocumentRoutingId(
         ?string &$routingId
@@ -474,7 +468,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|bool $copyIndicator __BT-X-3-00, BT-X-3, From EXTENDED__ Returns true if this document is a copy from the original document
      * @return static
      *
-     * @phpstan-param-out bool $copyIndicator
+     * @param-out bool $copyIndicator
      */
     public function getIsDocumentCopy(
         ?bool &$copyIndicator
@@ -490,7 +484,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|bool $testDocumentIndicator Returns true if this document is only for test purposes
      * @return static
      *
-     * @phpstan-param-out bool $testDocumentIndicator
+     * @param-out bool $testDocumentIndicator
      */
     public function getIsTestDocument(
         ?bool &$testDocumentIndicator
@@ -506,7 +500,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int, array{contentcode: string, subjectcode: string, content: string}> $notes __BT-22, From BASIC WL__, __BT-X-5, From EXTENDED__, __BT-21, From BASIC WL__ Returns an array with all document notes. Each array element contains an assiociative array containing the following keys: _contentcode_, _subjectcode_ and _content_
      * @return static
      *
-     * @phpstan-param-out array<int, array{contentcode: string, subjectcode: string, content: string}> $notes
+     * @param-out array<int, array{contentcode: string, subjectcode: string, content: string}> $notes
      */
     public function getDocumentNotes(
         ?array &$notes
@@ -535,9 +529,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string            $description __BT-33, From EN 16931__ Further legal information that is relevant for the seller
      * @return static
      *
-     * @phpstan-param-out string $name
-     * @phpstan-param-out array<int,string> $id
-     * @phpstan-param-out string $description
+     * @param-out string            $name
+     * @param-out array<int,string> $id
+     * @param-out string            $description
      */
     public function getDocumentSeller(
         ?string &$name,
@@ -566,7 +560,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $globalID __BT-29/BT-29-0/BT-29-1, From BASIC WL__ Array of the sellers global ids indexed by the identification scheme
      * @return static
      *
-     * @phpstan-param-out array<string,string> $globalID
+     * @param-out array<string,string> $globalID
      */
     public function getDocumentSellerGlobalId(
         ?array &$globalID
@@ -589,7 +583,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $taxReg __BT-31/BT-32, From MINIMUM__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return static
      *
-     * @phpstan-param-out array<string,string> $taxReg
+     * @param-out array<string,string> $taxReg
      */
     public function getDocumentSellerTaxRegistration(
         ?array &$taxReg
@@ -618,13 +612,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int,string> $subDivision __BT-39, From BASIC WL__ The sellers state
      * @return static
      *
-     * @phpstan-param-out string $lineOne
-     * @phpstan-param-out string $lineTwo
-     * @phpstan-param-out string $lineThree
-     * @phpstan-param-out string $postCode
-     * @phpstan-param-out string $city
-     * @phpstan-param-out string $country
-     * @phpstan-param-out array<int,string> $subDivision
+     * @param-out string            $lineOne
+     * @param-out string            $lineTwo
+     * @param-out string            $lineThree
+     * @param-out string            $postCode
+     * @param-out string            $city
+     * @param-out string            $country
+     * @param-out array<int,string> $subDivision
      */
     public function getDocumentSellerAddress(
         ?string &$lineOne,
@@ -668,9 +662,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $legalOrgName __BT-28, From BASIC WL__ A name by which the seller is known, if different from the seller's name (also known as the company name). Note: This may be used if different from the seller's name.
      * @return static
      *
-     * @phpstan-param-out string $legalOrgId
-     * @phpstan-param-out string $legalOrgType
-     * @phpstan-param-out string $legalOrgName
+     * @param-out string $legalOrgId
+     * @param-out string $legalOrgType
+     * @param-out string $legalOrgName
      */
     public function getDocumentSellerLegalOrganisation(
         ?string &$legalOrgId,
@@ -724,11 +718,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $contactEmailAddress   __BT-43, From EN 16931__ An e-mail address of the contact point
      * @return static
      *
-     * @phpstan-param-out string $contactPersonName
-     * @phpstan-param-out string $contactDepartmentName
-     * @phpstan-param-out string $contactPhoneNo
-     * @phpstan-param-out string $contactFaxNo
-     * @phpstan-param-out string $contactEmailAddress
+     * @param-out string $contactPersonName
+     * @param-out string $contactDepartmentName
+     * @param-out string $contactPhoneNo
+     * @param-out string $contactFaxNo
+     * @param-out string $contactEmailAddress
      */
     public function getDocumentSellerContact(
         ?string &$contactPersonName,
@@ -755,8 +749,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $uri       __BT-34, From BASIC WL__ Specifies the electronic address of the seller to which the response to the invoice can be sent at application level
      * @return static
      *
-     * @phpstan-param-out string $uriScheme
-     * @phpstan-param-out string $uri
+     * @param-out string $uriScheme
+     * @param-out string $uri
      */
     public function getDocumentSellerCommunication(
         ?string &$uriScheme,
@@ -783,9 +777,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string            $description __BT-X-334, From EXTENDED__ Further legal information about the buyer
      * @return static
      *
-     * @phpstan-param-out string $name
-     * @phpstan-param-out array<int,string> $id
-     * @phpstan-param-out string $description
+     * @param-out string            $name
+     * @param-out array<int,string> $id
+     * @param-out string            $description
      */
     public function getDocumentBuyer(
         ?string &$name,
@@ -814,7 +808,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $globalID __BT-46-0, BT-46-1, From BASIC WL__ Array of the buyers global ids indexed by the identification scheme
      * @return static
      *
-     * @phpstan-param-out array<string,string> $globalID
+     * @param-out array<string,string> $globalID
      */
     public function getDocumentBuyerGlobalId(
         ?array &$globalID
@@ -837,7 +831,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $taxReg _BT-48, From BASIC WL/EN 16931__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return static
      *
-     * @phpstan-param-out array<string,string> $taxReg
+     * @param-out array<string,string> $taxReg
      */
     public function getDocumentBuyerTaxRegistration(
         ?array &$taxReg
@@ -866,13 +860,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int,string> $subDivision __BT-54, From BASIC WL__ The buyers state
      * @return static
      *
-     * @phpstan-param-out string $lineOne
-     * @phpstan-param-out string $lineTwo
-     * @phpstan-param-out string $lineThree
-     * @phpstan-param-out string $postCode
-     * @phpstan-param-out string $city
-     * @phpstan-param-out string $country
-     * @phpstan-param-out array<int,string> $subDivision
+     * @param-out string            $lineOne
+     * @param-out string            $lineTwo
+     * @param-out string            $lineThree
+     * @param-out string            $postCode
+     * @param-out string            $city
+     * @param-out string            $country
+     * @param-out array<int,string> $subDivision
      */
     public function getDocumentBuyerAddress(
         ?string &$lineOne,
@@ -916,9 +910,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $legalOrgName __BT-45, From EN 16931__ A name by which the buyer is known, if different from the buyers name (also known as the company name)
      * @return static
      *
-     * @phpstan-param-out string $legalOrgId
-     * @phpstan-param-out string $legalOrgType
-     * @phpstan-param-out string $legalOrgName
+     * @param-out string $legalOrgId
+     * @param-out string $legalOrgType
+     * @param-out string $legalOrgName
      */
     public function getDocumentBuyerLegalOrganisation(
         ?string &$legalOrgId,
@@ -972,11 +966,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $contactEmailAddress   __BT-58, From EN 16931__ An e-mail address of the contact point
      * @return static
      *
-     * @phpstan-param-out string $contactPersonName
-     * @phpstan-param-out string $contactDepartmentName
-     * @phpstan-param-out string $contactPhoneNo
-     * @phpstan-param-out string $contactFaxNo
-     * @phpstan-param-out string $contactEmailAddress
+     * @param-out string $contactPersonName
+     * @param-out string $contactDepartmentName
+     * @param-out string $contactPhoneNo
+     * @param-out string $contactFaxNo
+     * @param-out string $contactEmailAddress
      */
     public function getDocumentBuyerContact(
         ?string &$contactPersonName,
@@ -1003,8 +997,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $uri       __BT-49, From BASIC WL__ Specifies the buyer's electronic address to which the invoice is sent
      * @return static
      *
-     * @phpstan-param-out string $uriScheme
-     * @phpstan-param-out string $uri
+     * @param-out string $uriScheme
+     * @param-out string $uri
      */
     public function getDocumentBuyerCommunication(
         ?string &$uriScheme,
@@ -1031,9 +1025,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string            $description __BT-, From __ Further legal information that is relevant for the sellers tax agent
      * @return static
      *
-     * @phpstan-param-out string $name
-     * @phpstan-param-out array<int,string> $id
-     * @phpstan-param-out string $description
+     * @param-out string            $name
+     * @param-out array<int,string> $id
+     * @param-out string            $description
      */
     public function getDocumentSellerTaxRepresentative(
         ?string &$name,
@@ -1062,7 +1056,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $globalID __BT-X-117/BT-X-117-1, From EXTENDED__ Returns an array of the seller's tax agent identifiers indexed by the identification scheme
      * @return static
      *
-     * @phpstan-param-out array<string,string> $globalID
+     * @param-out array<string,string> $globalID
      */
     public function getDocumentSellerTaxRepresentativeGlobalId(
         ?array &$globalID
@@ -1085,7 +1079,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $taxReg __BT-63/BT-63-0, From BASIC WL__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return static
      *
-     * @phpstan-param-out array<string,string> $taxReg
+     * @param-out array<string,string> $taxReg
      */
     public function getDocumentSellerTaxRepresentativeTaxRegistration(
         ?array &$taxReg
@@ -1114,13 +1108,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int,string> $subDivision __BT-68, From BASIC WL__ The sellers tax agent state
      * @return static
      *
-     * @phpstan-param-out string $lineOne
-     * @phpstan-param-out string $lineTwo
-     * @phpstan-param-out string $lineThree
-     * @phpstan-param-out string $postCode
-     * @phpstan-param-out string $city
-     * @phpstan-param-out string $country
-     * @phpstan-param-out array<int,string> $subDivision
+     * @param-out string            $lineOne
+     * @param-out string            $lineTwo
+     * @param-out string            $lineThree
+     * @param-out string            $postCode
+     * @param-out string            $city
+     * @param-out string            $country
+     * @param-out array<int,string> $subDivision
      */
     public function getDocumentSellerTaxRepresentativeAddress(
         ?string &$lineOne,
@@ -1164,9 +1158,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $legalOrgName __BT-, From __ A name by which the sellers tax agent is known, if different from the  sellers tax agent name (also known as the company name)
      * @return static
      *
-     * @phpstan-param-out string $legalOrgId
-     * @phpstan-param-out string $legalOrgType
-     * @phpstan-param-out string $legalOrgName
+     * @param-out string $legalOrgId
+     * @param-out string $legalOrgType
+     * @param-out string $legalOrgName
      */
     public function getDocumentSellerTaxRepresentativeLegalOrganisation(
         ?string &$legalOrgId,
@@ -1220,11 +1214,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $contactEmailAddress   __BT-X-124, From EXTENDED__ An e-mail address of the contact point
      * @return static
      *
-     * @phpstan-param-out string $contactPersonName
-     * @phpstan-param-out string $contactDepartmentName
-     * @phpstan-param-out string $contactPhoneNo
-     * @phpstan-param-out string $contactFaxNo
-     * @phpstan-param-out string $contactEmailAddress
+     * @param-out string $contactPersonName
+     * @param-out string $contactDepartmentName
+     * @param-out string $contactPhoneNo
+     * @param-out string $contactFaxNo
+     * @param-out string $contactEmailAddress
      */
     public function getDocumentSellerTaxRepresentativeContact(
         ?string &$contactPersonName,
@@ -1252,9 +1246,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string            $description __BT-, From __ Further legal information that is relevant for the buyer's tax representative
      * @return static
      *
-     * @phpstan-param-out string $name
-     * @phpstan-param-out array<int,string> $id
-     * @phpstan-param-out string $description
+     * @param-out string            $name
+     * @param-out array<int,string> $id
+     * @param-out string            $description
      */
     public function getDocumentBuyerTaxRepresentative(
         ?string &$name,
@@ -1283,7 +1277,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $globalID __BT-X-365/BT-X-365-0, From EXTENDED__ Returns an array of the buyer's tax representative identifiers indexed by the identification scheme
      * @return static
      *
-     * @phpstan-param-out array<string,string> $globalID
+     * @param-out array<string,string> $globalID
      */
     public function getDocumentBuyerTaxRepresentativeGlobalId(
         ?array &$globalID
@@ -1306,7 +1300,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $taxReg __BT-X-367/BT-X-367-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return static
      *
-     * @phpstan-param-out array<string,string> $taxReg
+     * @param-out array<string,string> $taxReg
      */
     public function getDocumentBuyerTaxRepresentativeTaxRegistration(
         ?array &$taxReg
@@ -1335,13 +1329,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int,string> $subDivision __BT-X-388, From EXTENDED__ The buyer's tax representative state
      * @return static
      *
-     * @phpstan-param-out string $lineOne
-     * @phpstan-param-out string $lineTwo
-     * @phpstan-param-out string $lineThree
-     * @phpstan-param-out string $postCode
-     * @phpstan-param-out string $city
-     * @phpstan-param-out string $country
-     * @phpstan-param-out array<int,string> $subDivision
+     * @param-out string            $lineOne
+     * @param-out string            $lineTwo
+     * @param-out string            $lineThree
+     * @param-out string            $postCode
+     * @param-out string            $city
+     * @param-out string            $country
+     * @param-out array<int,string> $subDivision
      */
     public function getDocumentBuyerTaxRepresentativeAddress(
         ?string &$lineOne,
@@ -1385,9 +1379,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $legalOrgName __BT-X-363, From EXTENDED__ A name by which the buyer's tax representative is known, if different from the buyer's tax representative name (also known as the company name)
      * @return static
      *
-     * @phpstan-param-out string $legalOrgId
-     * @phpstan-param-out string $legalOrgType
-     * @phpstan-param-out string $legalOrgName
+     * @param-out string $legalOrgId
+     * @param-out string $legalOrgType
+     * @param-out string $legalOrgName
      */
     public function getDocumentBuyerTaxRepresentativeLegalOrganisation(
         ?string &$legalOrgId,
@@ -1441,11 +1435,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $contactEmailAddress   __BT-X-374, From EXTENDED__ An e-mail address of the contact point
      * @return static
      *
-     * @phpstan-param-out string $contactPersonName
-     * @phpstan-param-out string $contactDepartmentName
-     * @phpstan-param-out string $contactPhoneNo
-     * @phpstan-param-out string $contactFaxNo
-     * @phpstan-param-out string $contactEmailAddress
+     * @param-out string $contactPersonName
+     * @param-out string $contactDepartmentName
+     * @param-out string $contactPhoneNo
+     * @param-out string $contactFaxNo
+     * @param-out string $contactEmailAddress
      */
     public function getDocumentBuyerTaxRepresentativeContact(
         ?string &$contactPersonName,
@@ -1473,9 +1467,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string            $description __BT-X-334, From EXTENDED__ Further legal information that is relevant for the sales agent
      * @return static
      *
-     * @phpstan-param-out string $name
-     * @phpstan-param-out array<int,string> $id
-     * @phpstan-param-out string $description
+     * @param-out string            $name
+     * @param-out array<int,string> $id
+     * @param-out string            $description
      */
     public function getDocumentSalesAgent(
         ?string &$name,
@@ -1504,7 +1498,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $globalID __BT-X-338/BT-X-338-0, From EXTENDED__ Returns an array of the sales agent identifiers indexed by the identification scheme
      * @return static
      *
-     * @phpstan-param-out array<string,string> $globalID
+     * @param-out array<string,string> $globalID
      */
     public function getDocumentSalesAgentGlobalId(
         ?array &$globalID
@@ -1527,7 +1521,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $taxReg __BT-X-340/BT-X-340-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return static
      *
-     * @phpstan-param-out array<string,string> $taxReg
+     * @param-out array<string,string> $taxReg
      */
     public function getDocumentSalesAgentTaxRegistration(
         ?array &$taxReg
@@ -1556,13 +1550,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int,string> $subDivision __BT-X-354, From EXTENDED__ The sales agent state
      * @return static
      *
-     * @phpstan-param-out string $lineOne
-     * @phpstan-param-out string $lineTwo
-     * @phpstan-param-out string $lineThree
-     * @phpstan-param-out string $postCode
-     * @phpstan-param-out string $city
-     * @phpstan-param-out string $country
-     * @phpstan-param-out array<int,string> $subDivision
+     * @param-out string            $lineOne
+     * @param-out string            $lineTwo
+     * @param-out string            $lineThree
+     * @param-out string            $postCode
+     * @param-out string            $city
+     * @param-out string            $country
+     * @param-out array<int,string> $subDivision
      */
     public function getDocumentSalesAgentAddress(
         ?string &$lineOne,
@@ -1606,9 +1600,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $legalOrgName __BT-X-336, From EXTENDED__ A name by which the sales agent is known, if different from the sales agent name (also known as the company name)
      * @return static
      *
-     * @phpstan-param-out string $legalOrgId
-     * @phpstan-param-out string $legalOrgType
-     * @phpstan-param-out string $legalOrgName
+     * @param-out string $legalOrgId
+     * @param-out string $legalOrgType
+     * @param-out string $legalOrgName
      */
     public function getDocumentSalesAgentLegalOrganisation(
         ?string &$legalOrgId,
@@ -1662,11 +1656,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $contactEmailAddress   __BT-X-346, From EXTENDED__ An e-mail address of the contact point
      * @return static
      *
-     * @phpstan-param-out string $contactPersonName
-     * @phpstan-param-out string $contactDepartmentName
-     * @phpstan-param-out string $contactPhoneNo
-     * @phpstan-param-out string $contactFaxNo
-     * @phpstan-param-out string $contactEmailAddress
+     * @param-out string $contactPersonName
+     * @param-out string $contactDepartmentName
+     * @param-out string $contactPhoneNo
+     * @param-out string $contactFaxNo
+     * @param-out string $contactEmailAddress
      */
     public function getDocumentSalesAgentContact(
         ?string &$contactPersonName,
@@ -1694,9 +1688,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string            $description __BT-, From EXTENDED__ Further legal information that is relevant for the buyer agent
      * @return static
      *
-     * @phpstan-param-out string $name
-     * @phpstan-param-out array<int,string> $id
-     * @phpstan-param-out string $description
+     * @param-out string            $name
+     * @param-out array<int,string> $id
+     * @param-out string            $description
      */
     public function getDocumentBuyerAgent(
         ?string &$name,
@@ -1725,7 +1719,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $globalID __BT-X-409/BT-X-409-0, From EXTENDED__ Returns an array of the buyer agent identifiers indexed by the identification scheme
      * @return static
      *
-     * @phpstan-param-out array<string,string> $globalID
+     * @param-out array<string,string> $globalID
      */
     public function getDocumentBuyerAgentGlobalId(
         ?array &$globalID
@@ -1748,7 +1742,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $taxReg __BT-X-411/BT-X-411-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return static
      *
-     * @phpstan-param-out array<string,string> $taxReg
+     * @param-out array<string,string> $taxReg
      */
     public function getDocumentBuyerAgentTaxRegistration(
         ?array &$taxReg
@@ -1777,13 +1771,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int,string> $subDivision __BT-X-425, From EXTENDED__ The buyer agent state
      * @return static
      *
-     * @phpstan-param-out string $lineOne
-     * @phpstan-param-out string $lineTwo
-     * @phpstan-param-out string $lineThree
-     * @phpstan-param-out string $postCode
-     * @phpstan-param-out string $city
-     * @phpstan-param-out string $country
-     * @phpstan-param-out array<int,string> $subDivision
+     * @param-out string            $lineOne
+     * @param-out string            $lineTwo
+     * @param-out string            $lineThree
+     * @param-out string            $postCode
+     * @param-out string            $city
+     * @param-out string            $country
+     * @param-out array<int,string> $subDivision
      */
     public function getDocumentBuyerAgentAddress(
         ?string &$lineOne,
@@ -1827,9 +1821,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $legalOrgName __BT-X-407, From EXTENDED__ A name by which the buyer agent is known, if different from the buyer agent name (also known as the company name)
      * @return static
      *
-     * @phpstan-param-out string $legalOrgId
-     * @phpstan-param-out string $legalOrgType
-     * @phpstan-param-out string $legalOrgName
+     * @param-out string $legalOrgId
+     * @param-out string $legalOrgType
+     * @param-out string $legalOrgName
      */
     public function getDocumentBuyerAgentLegalOrganisation(
         ?string &$legalOrgId,
@@ -1883,11 +1877,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $contactEmailAddress   __BT-X-418, From EXTENDED__ An e-mail address of the contact point
      * @return static
      *
-     * @phpstan-param-out string $contactPersonName
-     * @phpstan-param-out string $contactDepartmentName
-     * @phpstan-param-out string $contactPhoneNo
-     * @phpstan-param-out string $contactFaxNo
-     * @phpstan-param-out string $contactEmailAddress
+     * @param-out string $contactPersonName
+     * @param-out string $contactDepartmentName
+     * @param-out string $contactPhoneNo
+     * @param-out string $contactFaxNo
+     * @param-out string $contactEmailAddress
      */
     public function getDocumentBuyerAgentContact(
         ?string &$contactPersonName,
@@ -1915,9 +1909,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string            $description __BT-, From __ Further legal information that is relevant for the product end user
      * @return static
      *
-     * @phpstan-param-out string $name
-     * @phpstan-param-out array<int,string> $id
-     * @phpstan-param-out string $description
+     * @param-out string            $name
+     * @param-out array<int,string> $id
+     * @param-out string            $description
      */
     public function getDocumentProductEndUser(
         ?string &$name,
@@ -1946,7 +1940,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $globalID __BT-X-127/BT-X-127-0, From EXTENDED__ Array of the product end users global ids indexed by the identification scheme
      * @return static
      *
-     * @phpstan-param-out array<string,string> $globalID
+     * @param-out array<string,string> $globalID
      */
     public function getDocumentProductEndUserGlobalId(
         ?array &$globalID
@@ -1969,7 +1963,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $taxReg __BT-, From __ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return static
      *
-     * @phpstan-param-out array<string,string> $taxReg
+     * @param-out array<string,string> $taxReg
      */
     public function getDocumentProductEndUserTaxRegistration(
         ?array &$taxReg
@@ -1998,13 +1992,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int,string> $subDivision __BT-X-402, From EXTENDED__ The product end users state
      * @return static
      *
-     * @phpstan-param-out string $lineOne
-     * @phpstan-param-out string $lineTwo
-     * @phpstan-param-out string $lineThree
-     * @phpstan-param-out string $postCode
-     * @phpstan-param-out string $city
-     * @phpstan-param-out string $country
-     * @phpstan-param-out array<int,string> $subDivision
+     * @param-out string            $lineOne
+     * @param-out string            $lineTwo
+     * @param-out string            $lineThree
+     * @param-out string            $postCode
+     * @param-out string            $city
+     * @param-out string            $country
+     * @param-out array<int,string> $subDivision
      */
     public function getDocumentProductEndUserAddress(
         ?string &$lineOne,
@@ -2048,9 +2042,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $legalOrgName __BT-X-130, From EXTENDED__ A name by which the product end user is known, if different from the product end users name (also known as the company name)
      * @return static
      *
-     * @phpstan-param-out string $legalOrgId
-     * @phpstan-param-out string $legalOrgType
-     * @phpstan-param-out string $legalOrgName
+     * @param-out string $legalOrgId
+     * @param-out string $legalOrgType
+     * @param-out string $legalOrgName
      */
     public function getDocumentProductEndUserLegalOrganisation(
         ?string &$legalOrgId,
@@ -2104,11 +2098,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $contactEmailAddress   __BT-X-135, From EXTENDED__ An e-mail address of the contact point
      * @return static
      *
-     * @phpstan-param-out string $contactPersonName
-     * @phpstan-param-out string $contactDepartmentName
-     * @phpstan-param-out string $contactPhoneNo
-     * @phpstan-param-out string $contactFaxNo
-     * @phpstan-param-out string $contactEmailAddress
+     * @param-out string $contactPersonName
+     * @param-out string $contactDepartmentName
+     * @param-out string $contactPhoneNo
+     * @param-out string $contactFaxNo
+     * @param-out string $contactEmailAddress
      */
     public function getDocumentProductEndUserContact(
         ?string &$contactPersonName,
@@ -2136,9 +2130,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string            $description __BT-, From __ Further legal information that is relevant for the party
      * @return static
      *
-     * @phpstan-param-out string $name
-     * @phpstan-param-out array<int,string> $id
-     * @phpstan-param-out string $description
+     * @param-out string            $name
+     * @param-out array<int,string> $id
+     * @param-out string            $description
      */
     public function getDocumentShipTo(
         ?string &$name,
@@ -2167,7 +2161,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $globalID __BT-71-0/BT-71-1, From BASIC WL__ Array of global ids indexed by the identification scheme
      * @return static
      *
-     * @phpstan-param-out array<string,string> $globalID
+     * @param-out array<string,string> $globalID
      */
     public function getDocumentShipToGlobalId(
         ?array &$globalID
@@ -2190,7 +2184,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $taxReg __BT-X-161/BT-X-161-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return static
      *
-     * @phpstan-param-out array<string,string> $taxReg
+     * @param-out array<string,string> $taxReg
      */
     public function getDocumentShipToTaxRegistration(
         ?array &$taxReg
@@ -2219,13 +2213,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int,string> $subDivision __BT-79, From BASIC WL__ The party's state
      * @return static
      *
-     * @phpstan-param-out string $lineOne
-     * @phpstan-param-out string $lineTwo
-     * @phpstan-param-out string $lineThree
-     * @phpstan-param-out string $postCode
-     * @phpstan-param-out string $city
-     * @phpstan-param-out string $country
-     * @phpstan-param-out array<int,string> $subDivision
+     * @param-out string            $lineOne
+     * @param-out string            $lineTwo
+     * @param-out string            $lineThree
+     * @param-out string            $postCode
+     * @param-out string            $city
+     * @param-out string            $country
+     * @param-out array<int,string> $subDivision
      */
     public function getDocumentShipToAddress(
         ?string &$lineOne,
@@ -2269,9 +2263,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $legalOrgName __BT-X-154, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return static
      *
-     * @phpstan-param-out string $legalOrgId
-     * @phpstan-param-out string $legalOrgType
-     * @phpstan-param-out string $legalOrgName
+     * @param-out string $legalOrgId
+     * @param-out string $legalOrgType
+     * @param-out string $legalOrgName
      */
     public function getDocumentShipToLegalOrganisation(
         ?string &$legalOrgId,
@@ -2325,11 +2319,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $contactEmailAddress   __BT-X-159, From EXTENDED__ An e-mail address of the contact point
      * @return static
      *
-     * @phpstan-param-out string $contactPersonName
-     * @phpstan-param-out string $contactDepartmentName
-     * @phpstan-param-out string $contactPhoneNo
-     * @phpstan-param-out string $contactFaxNo
-     * @phpstan-param-out string $contactEmailAddress
+     * @param-out string $contactPersonName
+     * @param-out string $contactDepartmentName
+     * @param-out string $contactPhoneNo
+     * @param-out string $contactFaxNo
+     * @param-out string $contactEmailAddress
      */
     public function getDocumentShipToContact(
         ?string &$contactPersonName,
@@ -2357,9 +2351,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string            $description __BT-, From __ Further legal information that is relevant for the different end recipient
      * @return static
      *
-     * @phpstan-param-out string $name
-     * @phpstan-param-out array<int,string> $id
-     * @phpstan-param-out string $description
+     * @param-out string            $name
+     * @param-out array<int,string> $id
+     * @param-out string            $description
      */
     public function getDocumentUltimateShipTo(
         ?string &$name,
@@ -2388,7 +2382,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $globalID __BT-X-163/BT-X-163-0, From EXTENDED__ Array of global ids indexed by the identification scheme
      * @return static
      *
-     * @phpstan-param-out array<string,string> $globalID
+     * @param-out array<string,string> $globalID
      */
     public function getDocumentUltimateShipToGlobalId(
         ?array &$globalID
@@ -2411,7 +2405,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $taxReg __BT-X-180/BT-X-180-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return static
      *
-     * @phpstan-param-out array<string,string> $taxReg
+     * @param-out array<string,string> $taxReg
      */
     public function getDocumentUltimateShipToTaxRegistration(
         ?array &$taxReg
@@ -2440,13 +2434,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int,string> $subDivision __BT-X-178, From EXTENDED__ The party's state
      * @return static
      *
-     * @phpstan-param-out string $lineOne
-     * @phpstan-param-out string $lineTwo
-     * @phpstan-param-out string $lineThree
-     * @phpstan-param-out string $postCode
-     * @phpstan-param-out string $city
-     * @phpstan-param-out string $country
-     * @phpstan-param-out array<int,string> $subDivision
+     * @param-out string            $lineOne
+     * @param-out string            $lineTwo
+     * @param-out string            $lineThree
+     * @param-out string            $postCode
+     * @param-out string            $city
+     * @param-out string            $country
+     * @param-out array<int,string> $subDivision
      */
     public function getDocumentUltimateShipToAddress(
         ?string &$lineOne,
@@ -2490,9 +2484,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $legalOrgName __BT-X-166, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return static
      *
-     * @phpstan-param-out string $legalOrgId
-     * @phpstan-param-out string $legalOrgType
-     * @phpstan-param-out string $legalOrgName
+     * @param-out string $legalOrgId
+     * @param-out string $legalOrgType
+     * @param-out string $legalOrgName
      */
     public function getDocumentUltimateShipToLegalOrganisation(
         ?string &$legalOrgId,
@@ -2546,11 +2540,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $contactEmailAddress   __BT-X-171, From EXTENDED__ An e-mail address of the contact point
      * @return static
      *
-     * @phpstan-param-out string $contactPersonName
-     * @phpstan-param-out string $contactDepartmentName
-     * @phpstan-param-out string $contactPhoneNo
-     * @phpstan-param-out string $contactFaxNo
-     * @phpstan-param-out string $contactEmailAddress
+     * @param-out string $contactPersonName
+     * @param-out string $contactDepartmentName
+     * @param-out string $contactPhoneNo
+     * @param-out string $contactFaxNo
+     * @param-out string $contactEmailAddress
      */
     public function getDocumentUltimateShipToContact(
         ?string &$contactPersonName,
@@ -2578,9 +2572,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string            $description __BT-, From __ Further legal information that is relevant for the party
      * @return static
      *
-     * @phpstan-param-out string $name
-     * @phpstan-param-out array<int,string> $id
-     * @phpstan-param-out string $description
+     * @param-out string            $name
+     * @param-out array<int,string> $id
+     * @param-out string            $description
      */
     public function getDocumentShipFrom(
         ?string &$name,
@@ -2609,7 +2603,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $globalID __BT-X-182/BT-X-182-0, From EXTENDED__ Array of global ids indexed by the identification scheme
      * @return static
      *
-     * @phpstan-param-out array<string,string> $globalID
+     * @param-out array<string,string> $globalID
      */
     public function getDocumentShipFromGlobalId(
         ?array &$globalID
@@ -2632,7 +2626,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $taxReg __BT-, From __ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return static
      *
-     * @phpstan-param-out array<string,string> $taxReg
+     * @param-out array<string,string> $taxReg
      */
     public function getDocumentShipFromTaxRegistration(
         ?array &$taxReg
@@ -2661,13 +2655,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int,string> $subDivision __BT-X-197, From EXTENDED__ The party's state
      * @return static
      *
-     * @phpstan-param-out string $lineOne
-     * @phpstan-param-out string $lineTwo
-     * @phpstan-param-out string $lineThree
-     * @phpstan-param-out string $postCode
-     * @phpstan-param-out string $city
-     * @phpstan-param-out string $country
-     * @phpstan-param-out array<int,string> $subDivision
+     * @param-out string            $lineOne
+     * @param-out string            $lineTwo
+     * @param-out string            $lineThree
+     * @param-out string            $postCode
+     * @param-out string            $city
+     * @param-out string            $country
+     * @param-out array<int,string> $subDivision
      */
     public function getDocumentShipFromAddress(
         ?string &$lineOne,
@@ -2711,9 +2705,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $legalOrgName __BT-X-185, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return static
      *
-     * @phpstan-param-out string $legalOrgId
-     * @phpstan-param-out string $legalOrgType
-     * @phpstan-param-out string $legalOrgName
+     * @param-out string $legalOrgId
+     * @param-out string $legalOrgType
+     * @param-out string $legalOrgName
      */
     public function getDocumentShipFromLegalOrganisation(
         ?string &$legalOrgId,
@@ -2767,11 +2761,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $contactEmailAddress   __BT-X-190, From EXTENDED__ An e-mail address of the contact point
      * @return static
      *
-     * @phpstan-param-out string $contactPersonName
-     * @phpstan-param-out string $contactDepartmentName
-     * @phpstan-param-out string $contactPhoneNo
-     * @phpstan-param-out string $contactFaxNo
-     * @phpstan-param-out string $contactEmailAddress
+     * @param-out string $contactPersonName
+     * @param-out string $contactDepartmentName
+     * @param-out string $contactPhoneNo
+     * @param-out string $contactFaxNo
+     * @param-out string $contactEmailAddress
      */
     public function getDocumentShipFromContact(
         ?string &$contactPersonName,
@@ -2799,9 +2793,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string            $description __BT-, From __ Further legal information that is relevant for the party
      * @return static
      *
-     * @phpstan-param-out string $name
-     * @phpstan-param-out array<int,string> $id
-     * @phpstan-param-out string $description
+     * @param-out string            $name
+     * @param-out array<int,string> $id
+     * @param-out string            $description
      */
     public function getDocumentInvoicer(
         ?string &$name,
@@ -2830,7 +2824,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $globalID __BT-X-206/BT-X-206-0, From EXTENDED__ Array of global ids indexed by the identification scheme
      * @return static
      *
-     * @phpstan-param-out array<string,string> $globalID
+     * @param-out array<string,string> $globalID
      */
     public function getDocumentInvoicerGlobalId(
         ?array &$globalID
@@ -2853,7 +2847,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $taxReg __BT-, From __ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return static
      *
-     * @phpstan-param-out array<string,string> $taxReg
+     * @param-out array<string,string> $taxReg
      */
     public function getDocumentInvoicerTaxRegistration(
         ?array &$taxReg
@@ -2882,13 +2876,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int,string> $subDivision __BT-X-221, From EXTENDED__ The party's state
      * @return static
      *
-     * @phpstan-param-out string $lineOne
-     * @phpstan-param-out string $lineTwo
-     * @phpstan-param-out string $lineThree
-     * @phpstan-param-out string $postCode
-     * @phpstan-param-out string $city
-     * @phpstan-param-out string $country
-     * @phpstan-param-out array<int,string> $subDivision
+     * @param-out string            $lineOne
+     * @param-out string            $lineTwo
+     * @param-out string            $lineThree
+     * @param-out string            $postCode
+     * @param-out string            $city
+     * @param-out string            $country
+     * @param-out array<int,string> $subDivision
      */
     public function getDocumentInvoicerAddress(
         ?string &$lineOne,
@@ -2932,9 +2926,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $legalOrgName __BT-X-209, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return static
      *
-     * @phpstan-param-out string $legalOrgId
-     * @phpstan-param-out string $legalOrgType
-     * @phpstan-param-out string $legalOrgName
+     * @param-out string $legalOrgId
+     * @param-out string $legalOrgType
+     * @param-out string $legalOrgName
      */
     public function getDocumentInvoicerLegalOrganisation(
         ?string &$legalOrgId,
@@ -2988,11 +2982,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $contactEmailAddress   __BT-X-214, From EXTENDED__ An e-mail address of the contact point
      * @return static
      *
-     * @phpstan-param-out string $contactPersonName
-     * @phpstan-param-out string $contactDepartmentName
-     * @phpstan-param-out string $contactPhoneNo
-     * @phpstan-param-out string $contactFaxNo
-     * @phpstan-param-out string $contactEmailAddress
+     * @param-out string $contactPersonName
+     * @param-out string $contactDepartmentName
+     * @param-out string $contactPhoneNo
+     * @param-out string $contactFaxNo
+     * @param-out string $contactEmailAddress
      */
     public function getDocumentInvoicerContact(
         ?string &$contactPersonName,
@@ -3020,9 +3014,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string            $description __BT-, From __ Further legal information that is relevant for the party
      * @return static
      *
-     * @phpstan-param-out string $name
-     * @phpstan-param-out array<int,string> $id
-     * @phpstan-param-out string $description
+     * @param-out string            $name
+     * @param-out array<int,string> $id
+     * @param-out string            $description
      */
     public function getDocumentInvoicee(
         ?string &$name,
@@ -3051,7 +3045,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $globalID __BT-X-225/BT-X-225-0, From EXTENDED__ Array of global ids indexed by the identification scheme
      * @return static
      *
-     * @phpstan-param-out array<string,string> $globalID
+     * @param-out array<string,string> $globalID
      */
     public function getDocumentInvoiceeGlobalId(
         ?array &$globalID
@@ -3074,7 +3068,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $taxReg __BT-X-242/BT-X-242-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return static
      *
-     * @phpstan-param-out array<string,string> $taxReg
+     * @param-out array<string,string> $taxReg
      */
     public function getDocumentInvoiceeTaxRegistration(
         ?array &$taxReg
@@ -3103,13 +3097,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int,string> $subDivision __BT-X-240, From EXTENDED__ The party's state
      * @return static
      *
-     * @phpstan-param-out string $lineOne
-     * @phpstan-param-out string $lineTwo
-     * @phpstan-param-out string $lineThree
-     * @phpstan-param-out string $postCode
-     * @phpstan-param-out string $city
-     * @phpstan-param-out string $country
-     * @phpstan-param-out array<int,string> $subDivision
+     * @param-out string            $lineOne
+     * @param-out string            $lineTwo
+     * @param-out string            $lineThree
+     * @param-out string            $postCode
+     * @param-out string            $city
+     * @param-out string            $country
+     * @param-out array<int,string> $subDivision
      */
     public function getDocumentInvoiceeAddress(
         ?string &$lineOne,
@@ -3153,9 +3147,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $legalOrgName __BT-X-228, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return static
      *
-     * @phpstan-param-out string $legalOrgId
-     * @phpstan-param-out string $legalOrgType
-     * @phpstan-param-out string $legalOrgName
+     * @param-out string $legalOrgId
+     * @param-out string $legalOrgType
+     * @param-out string $legalOrgName
      */
     public function getDocumentInvoiceeLegalOrganisation(
         ?string &$legalOrgId,
@@ -3209,11 +3203,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $contactEmailAddress   __BT-X-233, From EXTENDED__ An e-mail address of the contact point
      * @return static
      *
-     * @phpstan-param-out string $contactPersonName
-     * @phpstan-param-out string $contactDepartmentName
-     * @phpstan-param-out string $contactPhoneNo
-     * @phpstan-param-out string $contactFaxNo
-     * @phpstan-param-out string $contactEmailAddress
+     * @param-out string $contactPersonName
+     * @param-out string $contactDepartmentName
+     * @param-out string $contactPhoneNo
+     * @param-out string $contactFaxNo
+     * @param-out string $contactEmailAddress
      */
     public function getDocumentInvoiceeContact(
         ?string &$contactPersonName,
@@ -3242,9 +3236,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string            $description __BT-, From __ Further legal information that is relevant for the party
      * @return static
      *
-     * @phpstan-param-out string $name
-     * @phpstan-param-out array<int,string> $id
-     * @phpstan-param-out string $description
+     * @param-out string            $name
+     * @param-out array<int,string> $id
+     * @param-out string            $description
      */
     public function getDocumentPayee(
         ?string &$name,
@@ -3273,7 +3267,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $globalID __BT-60-0/BT-60-1, From BASIC WL__ Array of global ids indexed by the identification scheme
      * @return static
      *
-     * @phpstan-param-out array<string,string> $globalID
+     * @param-out array<string,string> $globalID
      */
     public function getDocumentPayeeGlobalId(
         ?array &$globalID
@@ -3296,7 +3290,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $taxReg __BT-X-257/BT-X-257-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return static
      *
-     * @phpstan-param-out array<string,string> $taxReg
+     * @param-out array<string,string> $taxReg
      */
     public function getDocumentPayeeTaxRegistration(
         ?array &$taxReg
@@ -3325,13 +3319,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int,string> $subDivision __BT-X-255, From EXTENDED__ The party's state
      * @return static
      *
-     * @phpstan-param-out string $lineOne
-     * @phpstan-param-out string $lineTwo
-     * @phpstan-param-out string $lineThree
-     * @phpstan-param-out string $postCode
-     * @phpstan-param-out string $city
-     * @phpstan-param-out string $country
-     * @phpstan-param-out array<int,string> $subDivision
+     * @param-out string            $lineOne
+     * @param-out string            $lineTwo
+     * @param-out string            $lineThree
+     * @param-out string            $postCode
+     * @param-out string            $city
+     * @param-out string            $country
+     * @param-out array<int,string> $subDivision
      */
     public function getDocumentPayeeAddress(
         ?string &$lineOne,
@@ -3375,9 +3369,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $legalOrgName __BT-X-243, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return static
      *
-     * @phpstan-param-out string $legalOrgId
-     * @phpstan-param-out string $legalOrgType
-     * @phpstan-param-out string $legalOrgName
+     * @param-out string $legalOrgId
+     * @param-out string $legalOrgType
+     * @param-out string $legalOrgName
      */
     public function getDocumentPayeeLegalOrganisation(
         ?string &$legalOrgId,
@@ -3431,11 +3425,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $contactEmailAddress   __BT-X-248, From EXTENDED__ An e-mail address of the contact point
      * @return static
      *
-     * @phpstan-param-out string $contactPersonName
-     * @phpstan-param-out string $contactDepartmentName
-     * @phpstan-param-out string $contactPhoneNo
-     * @phpstan-param-out string $contactFaxNo
-     * @phpstan-param-out string $contactEmailAddress
+     * @param-out string $contactPersonName
+     * @param-out string $contactDepartmentName
+     * @param-out string $contactPhoneNo
+     * @param-out string $contactFaxNo
+     * @param-out string $contactEmailAddress
      */
     public function getDocumentPayeeContact(
         ?string &$contactPersonName,
@@ -3464,9 +3458,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string            $description __BT-, From __ Further legal information that is relevant for the party
      * @return static
      *
-     * @phpstan-param-out string $name
-     * @phpstan-param-out array<int,string> $id
-     * @phpstan-param-out string $description
+     * @param-out string            $name
+     * @param-out array<int,string> $id
+     * @param-out string            $description
      */
     public function getDocumentPayer(
         ?string &$name,
@@ -3495,7 +3489,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $globalID __BT-X-479-0/BT-X-479, From EXTENDED__ Array of global ids indexed by the identification scheme
      * @return static
      *
-     * @phpstan-param-out array<string,string> $globalID
+     * @param-out array<string,string> $globalID
      */
     public function getDocumentPayerGlobalId(
         ?array &$globalID
@@ -3518,7 +3512,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<string,string> $taxReg __BT-, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return static
      *
-     * @phpstan-param-out array<string,string> $taxReg
+     * @param-out array<string,string> $taxReg
      */
     public function getDocumentPayerTaxRegistration(
         ?array &$taxReg
@@ -3547,13 +3541,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int,string> $subDivision __BT-X-503, From EXTENDED__ The party's state
      * @return static
      *
-     * @phpstan-param-out string $lineOne
-     * @phpstan-param-out string $lineTwo
-     * @phpstan-param-out string $lineThree
-     * @phpstan-param-out string $postCode
-     * @phpstan-param-out string $city
-     * @phpstan-param-out string $country
-     * @phpstan-param-out array<int,string> $subDivision
+     * @param-out string            $lineOne
+     * @param-out string            $lineTwo
+     * @param-out string            $lineThree
+     * @param-out string            $postCode
+     * @param-out string            $city
+     * @param-out string            $country
+     * @param-out array<int,string> $subDivision
      */
     public function getDocumentPayerAddress(
         ?string &$lineOne,
@@ -3597,9 +3591,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $legalOrgName __BT-X-477, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return static
      *
-     * @phpstan-param-out string $legalOrgId
-     * @phpstan-param-out string $legalOrgType
-     * @phpstan-param-out string $legalOrgName
+     * @param-out string $legalOrgId
+     * @param-out string $legalOrgType
+     * @param-out string $legalOrgName
      */
     public function getDocumentPayerLegalOrganisation(
         ?string &$legalOrgId,
@@ -3653,11 +3647,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $contactEmailAddress   __BT-X-489, From EXTENDED__ An e-mail address of the contact point
      * @return static
      *
-     * @phpstan-param-out string $contactPersonName
-     * @phpstan-param-out string $contactDepartmentName
-     * @phpstan-param-out string $contactPhoneNo
-     * @phpstan-param-out string $contactFaxNo
-     * @phpstan-param-out string $contactEmailAddress
+     * @param-out string $contactPersonName
+     * @param-out string $contactDepartmentName
+     * @param-out string $contactPhoneNo
+     * @param-out string $contactFaxNo
+     * @param-out string $contactEmailAddress
      */
     public function getDocumentPayerContact(
         ?string &$contactPersonName,
@@ -3683,7 +3677,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $code __BT-X-145, From EXTENDED__ The code indicating the type of delivery for these commercial delivery terms. To be selected from the entries in the list UNTDID 4053 + INCOTERMS
      * @return static
      *
-     * @phpstan-param-out string $code
+     * @param-out string $code
      */
     public function getDocumentDeliveryTerms(
         ?string &$code
@@ -3700,8 +3694,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $issueDate        __BT-X-146, From EXTENDED__ Order confirmation date
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out null|DateTimeInterface $issueDate
+     * @param-out string                 $issuerAssignedId
+     * @param-out null|DateTimeInterface $issueDate
      */
     public function getDocumentSellerOrderReferencedDocument(
         ?string &$issuerAssignedId,
@@ -3727,8 +3721,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $issueDate        __BT-X-147, From EXTENDED__ Date of order
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out null|DateTimeInterface $issueDate
+     * @param-out string                 $issuerAssignedId
+     * @param-out null|DateTimeInterface $issueDate
      */
     public function getDocumentBuyerOrderReferencedDocument(
         ?string &$issuerAssignedId,
@@ -3754,8 +3748,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $issueDate        __BT-X-404, From EXTENDED__ Date of offer
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out null|DateTimeInterface $issueDate
+     * @param-out string                 $issuerAssignedId
+     * @param-out null|DateTimeInterface $issueDate
      */
     public function getDocumentQuotationReferencedDocument(
         ?string &$issuerAssignedId,
@@ -3781,8 +3775,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $issueDate        __BT-X-26, From EXTENDED__ Contract date
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out null|DateTimeInterface $issueDate
+     * @param-out string                 $issuerAssignedId
+     * @param-out null|DateTimeInterface $issueDate
      */
     public function getDocumentContractReferencedDocument(
         ?string &$issuerAssignedId,
@@ -3850,13 +3844,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string            $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out string $typeCode
-     * @phpstan-param-out string $uriId
-     * @phpstan-param-out array<int,string> $name
-     * @phpstan-param-out string $refTypeCode
-     * @phpstan-param-out null|DateTimeInterface $issueDate
-     * @phpstan-param-out string $binaryDataFilename
+     * @param-out string                 $issuerAssignedId
+     * @param-out string                 $typeCode
+     * @param-out string                 $uriId
+     * @param-out array<int,string>      $name
+     * @param-out string                 $refTypeCode
+     * @param-out null|DateTimeInterface $issueDate
+     * @param-out string                 $binaryDataFilename
      */
     public function getDocumentAdditionalReferencedDocument(
         ?string &$issuerAssignedId,
@@ -3895,7 +3889,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int, array{IssuerAssignedID: string, URIID: string, LineID: string, TypeCode: string, ReferenceTypeCode: string, FormattedIssueDateTime: null|DateTimeInterface}> $refDocs Array contains all additional referenced documents, but without extracting attached binary objects. If you want to access attached binary objects you have to use ZugferdDocumentReader::getDocumentAdditionalReferencedDocument
      * @return static
      *
-     * @phpstan-param-out array<int, array{IssuerAssignedID: string, URIID: string, LineID: string, TypeCode: string, ReferenceTypeCode: string, FormattedIssueDateTime: DateTimeInterface|null}> $refDocs
+     * @param-out array<int, array{IssuerAssignedID: string, URIID: string, LineID: string, TypeCode: string, ReferenceTypeCode: string, FormattedIssueDateTime: null|DateTimeInterface}> $refDocs
      */
     public function getDocumentAdditionalReferencedDocuments(
         ?array &$refDocs
@@ -3961,9 +3955,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $issueDate        __BT-26, From BASIC WL__ Date of the previous invoice
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out string $typeCode
-     * @phpstan-param-out null|DateTimeInterface $issueDate
+     * @param-out string                 $issuerAssignedId
+     * @param-out string                 $typeCode
+     * @param-out null|DateTimeInterface $issueDate
      */
     public function getDocumentInvoiceReferencedDocument(
         ?string &$issuerAssignedId,
@@ -3985,7 +3979,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int, array{IssuerAssignedID: string, TypeCode: string, FormattedIssueDateTime: null|DateTimeInterface}> $invoiceRefDocs Array contains all invoice referenced documents
      * @return static
      *
-     * @phpstan-param-out array<int, array{IssuerAssignedID: string, TypeCode: string, FormattedIssueDateTime: DateTimeInterface|null}> $invoiceRefDocs
+     * @param-out array<int, array{IssuerAssignedID: string, TypeCode: string, FormattedIssueDateTime: null|DateTimeInterface}> $invoiceRefDocs
      */
     public function getDocumentInvoiceReferencedDocuments(
         ?array &$invoiceRefDocs
@@ -4040,8 +4034,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $issueDate        __BT-X-151, From EXTENDED__ Date of the order issued by the end customer
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out null|DateTimeInterface $issueDate
+     * @param-out string                 $issuerAssignedId
+     * @param-out null|DateTimeInterface $issueDate
      */
     public function getDocumentUltimateCustomerOrderReferencedDocument(
         ?string &$issuerAssignedId,
@@ -4061,7 +4055,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int, array{IssuerAssignedID: string, FormattedIssueDateTime: null|DateTimeInterface, issueDate: null|DateTimeInterface}> $refdocs $refdocs Returns an array of referenced documents, each containing keys: _issuerAssignedId_ and _issueDate_
      * @return static
      *
-     * @phpstan-param-out array<int, array{IssuerAssignedID: string, FormattedIssueDateTime: DateTimeInterface|null, issueDate: DateTimeInterface|null}> $refdocs
+     * @param-out array<int, array{IssuerAssignedID: string, FormattedIssueDateTime: null|DateTimeInterface, issueDate: null|DateTimeInterface}> $refdocs
      */
     public function getDocumentUltimateCustomerOrderReferencedDocuments(
         ?array &$refdocs
@@ -4093,8 +4087,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $name __BT-11-0, From EN 16931__  The name of the project to which the invoice relates
      * @return static
      *
-     * @phpstan-param-out string $id
-     * @phpstan-param-out string $name
+     * @param-out string $id
+     * @param-out string $name
      */
     public function getDocumentProcuringProject(
         ?string &$id,
@@ -4116,7 +4110,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $date __BT-72, From BASIC WL__ Actual delivery time
      * @return static
      *
-     * @phpstan-param-out DateTimeInterface|null $date
+     * @param-out null|DateTimeInterface $date
      */
     public function getDocumentSupplyChainEvent(
         ?DateTimeInterface &$date
@@ -4133,8 +4127,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $issueDate        __BT-X-200, From EXTENDED__ Shipping notification date
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out null|DateTimeInterface $issueDate
+     * @param-out string                 $issuerAssignedId
+     * @param-out null|DateTimeInterface $issueDate
      */
     public function getDocumentDespatchAdviceReferencedDocument(
         ?string &$issuerAssignedId,
@@ -4160,8 +4154,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $issueDate        __BT-X-201, From EXTENDED__ Goods receipt date
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out null|DateTimeInterface $issueDate
+     * @param-out string                 $issuerAssignedId
+     * @param-out null|DateTimeInterface $issueDate
      */
     public function getDocumentReceivingAdviceReferencedDocument(
         ?string &$issuerAssignedId,
@@ -4187,8 +4181,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $issueDate        __BT-X-203, From EXTENDED__ Delivery slip date
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out null|DateTimeInterface $issueDate
+     * @param-out string                 $issuerAssignedId
+     * @param-out null|DateTimeInterface $issueDate
      */
     public function getDocumentDeliveryNoteReferencedDocument(
         ?string &$issuerAssignedId,
@@ -4245,17 +4239,17 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $buyerAccountName __BT-216, From EXTENDED__ The name of the account to be debited
      * @return static
      *
-     * @phpstan-param-out string $typeCode
-     * @phpstan-param-out string $information
-     * @phpstan-param-out string $cardType
-     * @phpstan-param-out string $cardId
-     * @phpstan-param-out string $cardHolderName
-     * @phpstan-param-out string $buyerIban
-     * @phpstan-param-out string $payeeIban
-     * @phpstan-param-out string $payeeAccountName
-     * @phpstan-param-out string $payeePropId
-     * @phpstan-param-out string $payeeBic
-     * @phpstan-param-out string $buyerAccountName
+     * @param-out string $typeCode
+     * @param-out string $information
+     * @param-out string $cardType
+     * @param-out string $cardId
+     * @param-out string $cardHolderName
+     * @param-out string $buyerIban
+     * @param-out string $payeeIban
+     * @param-out string $payeeAccountName
+     * @param-out string $payeePropId
+     * @param-out string $payeeBic
+     * @param-out string $buyerAccountName
      */
     public function getDocumentPaymentMeans(
         ?string &$typeCode,
@@ -4328,17 +4322,17 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string            $dueDateTypeCode            __BT-8, From BASIC WL__ The code for the date on which the VAT becomes relevant for settlement for the seller and for the buyer
      * @return static
      *
-     * @phpstan-param-out string $categoryCode
-     * @phpstan-param-out string $typeCode
-     * @phpstan-param-out float $basisAmount
-     * @phpstan-param-out float $calculatedAmount
-     * @phpstan-param-out float $rateApplicablePercent
-     * @phpstan-param-out string $exemptionReason
-     * @phpstan-param-out string $exemptionReasonCode
-     * @phpstan-param-out float $lineTotalBasisAmount
-     * @phpstan-param-out float $allowanceChargeBasisAmount
-     * @phpstan-param-out DateTimeInterface|null $taxPointDate
-     * @phpstan-param-out string $dueDateTypeCode
+     * @param-out string                 $categoryCode
+     * @param-out string                 $typeCode
+     * @param-out float                  $basisAmount
+     * @param-out float                  $calculatedAmount
+     * @param-out float                  $rateApplicablePercent
+     * @param-out string                 $exemptionReason
+     * @param-out string                 $exemptionReasonCode
+     * @param-out float                  $lineTotalBasisAmount
+     * @param-out float                  $allowanceChargeBasisAmount
+     * @param-out null|DateTimeInterface $taxPointDate
+     * @param-out string                 $dueDateTypeCode
      */
     public function getDocumentTax(
         ?string &$categoryCode,
@@ -4378,8 +4372,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $endDate   __BT-74, From BASIC WL__ End of the billing period
      * @return static
      *
-     * @phpstan-param-out DateTimeInterface|null $startDate
-     * @phpstan-param-out DateTimeInterface|null $endDate
+     * @param-out null|DateTimeInterface $startDate
+     * @param-out null|DateTimeInterface $endDate
      */
     public function getDocumentBillingPeriod(
         ?DateTimeInterface &$startDate,
@@ -4406,7 +4400,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int,array<string,mixed>> $allowanceCharge
      * @return static
      *
-     * @phpstan-param-out array<int,array<string,mixed>> $allowanceCharge
+     * @param-out array<int,array<string,mixed>> $allowanceCharge
      */
     public function getDocumentAllowanceCharges(
         ?array &$allowanceCharge
@@ -4494,18 +4488,18 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $reason                __BT-97/BT-104, From BASIC WL__ The reason given in text form for the surcharge or discount at document level
      * @return static
      *
-     * @phpstan-param-out float $actualAmount
-     * @phpstan-param-out bool $isCharge
-     * @phpstan-param-out string $taxCategoryCode
-     * @phpstan-param-out string $taxTypeCode
-     * @phpstan-param-out float $rateApplicablePercent
-     * @phpstan-param-out float $sequence
-     * @phpstan-param-out float $calculationPercent
-     * @phpstan-param-out float $basisAmount
-     * @phpstan-param-out float $basisQuantity
-     * @phpstan-param-out string $basisQuantityUnitCode
-     * @phpstan-param-out string $reasonCode
-     * @phpstan-param-out string $reason
+     * @param-out float  $actualAmount
+     * @param-out bool   $isCharge
+     * @param-out string $taxCategoryCode
+     * @param-out string $taxTypeCode
+     * @param-out float  $rateApplicablePercent
+     * @param-out float  $sequence
+     * @param-out float  $calculationPercent
+     * @param-out float  $basisAmount
+     * @param-out float  $basisQuantity
+     * @param-out string $basisQuantityUnitCode
+     * @param-out string $reasonCode
+     * @param-out string $reason
      */
     public function getDocumentAllowanceCharge(
         ?float &$actualAmount,
@@ -4572,11 +4566,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int,float>  $rateApplicablePercents __BT-X-274, From EXTENDED__ The sales tax rate, expressed as the percentage applicable to the sales tax category in question. Note: The code of the sales tax category and the category-specific sales tax rate must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
      * @return static
      *
-     * @phpstan-param-out string $description
-     * @phpstan-param-out float $appliedAmount
-     * @phpstan-param-out array<int,string> $taxTypeCodes
-     * @phpstan-param-out array<int,string> $taxCategoryCodes
-     * @phpstan-param-out array<int,float> $rateApplicablePercents
+     * @param-out string            $description
+     * @param-out float             $appliedAmount
+     * @param-out array<int,string> $taxTypeCodes
+     * @param-out array<int,string> $taxCategoryCodes
+     * @param-out array<int,float>  $rateApplicablePercents
      */
     public function getDocumentLogisticsServiceCharge(
         ?string &$description,
@@ -4610,7 +4604,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|array<int, array{description: string, duedate: null|DateTimeInterface, directdebitmandateid: string, partialpaymentamount: float}> $paymentTerms
      * @return static
      *
-     * @phpstan-param-out array<int, array{description: string, duedate: DateTimeInterface|null, directdebitmandateid: string, partialpaymentamount: float}> $paymentTerms
+     * @param-out array<int, array{description: string, duedate: null|DateTimeInterface, directdebitmandateid: string, partialpaymentamount: float}> $paymentTerms
      */
     public function getDocumentPaymentTerms(
         ?array &$paymentTerms
@@ -4667,9 +4661,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string            $directDebitMandateID __BT-89, From BASIC WL__ Unique identifier assigned by the payee to reference the direct debit authorization
      * @return static
      *
-     * @phpstan-param-out string $description
-     * @phpstan-param-out DateTimeInterface|null $dueDate
-     * @phpstan-param-out string $directDebitMandateID
+     * @param-out string                 $description
+     * @param-out null|DateTimeInterface $dueDate
+     * @param-out string                 $directDebitMandateID
      */
     public function getDocumentPaymentTerm(
         ?string &$description,
@@ -4696,12 +4690,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|float             $actualDiscountAmount       __BT-X-287, From EXTENDED__ Amount of the payment discount
      * @return static
      *
-     * @phpstan-param-out float $calculationPercent
-     * @phpstan-param-out null|DateTimeInterface $basisDateTime
-     * @phpstan-param-out float $basisPeriodMeasureValue
-     * @phpstan-param-out string $basisPeriodMeasureUnitCode
-     * @phpstan-param-out float $basisAmount
-     * @phpstan-param-out float $actualDiscountAmount
+     * @param-out float                  $calculationPercent
+     * @param-out null|DateTimeInterface $basisDateTime
+     * @param-out float                  $basisPeriodMeasureValue
+     * @param-out string                 $basisPeriodMeasureUnitCode
+     * @param-out float                  $basisAmount
+     * @param-out float                  $actualDiscountAmount
      */
     public function getDiscountTermsFromPaymentTerm(
         ?float &$calculationPercent,
@@ -4743,12 +4737,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|float             $actualPenaltyAmount        __BT-X-281, From EXTENDED__ Amount of the payment surcharge
      * @return static
      *
-     * @phpstan-param-out float $calculationPercent
-     * @phpstan-param-out null|DateTimeInterface $basisDateTime
-     * @phpstan-param-out float $basisPeriodMeasureValue
-     * @phpstan-param-out string $basisPeriodMeasureUnitCode
-     * @phpstan-param-out float $basisAmount
-     * @phpstan-param-out float $actualPenaltyAmount
+     * @param-out float                  $calculationPercent
+     * @param-out null|DateTimeInterface $basisDateTime
+     * @param-out float                  $basisPeriodMeasureValue
+     * @param-out string                 $basisPeriodMeasureUnitCode
+     * @param-out float                  $basisAmount
+     * @param-out float                  $actualPenaltyAmount
      */
     public function getPenaltyTermsFromPaymentTerm(
         ?float &$calculationPercent,
@@ -4808,8 +4802,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string &$typeCode __BT-X-290, From EXTENDED__ Type of the posting reference
      * @return static
      *
-     * @phpstan-param-out string $id
-     * @phpstan-param-out string $typeCode
+     * @param-out string $id
+     * @param-out string $typeCode
      */
     public function getDocumentReceivableSpecifiedTradeAccountingAccount(
         ?string &$id,
@@ -4837,15 +4831,15 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|float $totalPrepaidAmount   __BT-113, From BASIC WL__ Prepayment amount
      * @return static
      *
-     * @phpstan-param-out float $grandTotalAmount
-     * @phpstan-param-out float $duePayableAmount
-     * @phpstan-param-out float $lineTotalAmount
-     * @phpstan-param-out float $chargeTotalAmount
-     * @phpstan-param-out float $allowanceTotalAmount
-     * @phpstan-param-out float $taxBasisTotalAmount
-     * @phpstan-param-out float $taxTotalAmount
-     * @phpstan-param-out float $roundingAmount
-     * @phpstan-param-out float $totalPrepaidAmount
+     * @param-out float $grandTotalAmount
+     * @param-out float $duePayableAmount
+     * @param-out float $lineTotalAmount
+     * @param-out float $chargeTotalAmount
+     * @param-out float $allowanceTotalAmount
+     * @param-out float $taxBasisTotalAmount
+     * @param-out float $taxTotalAmount
+     * @param-out float $roundingAmount
+     * @param-out float $totalPrepaidAmount
      */
     public function getDocumentSummation(
         ?float &$grandTotalAmount,
@@ -4904,9 +4898,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $lineStatusReasonCode __BT-X-8, From EXTENDED__ Adds the type to specify whether the invoice line is:
      * @return static
      *
-     * @phpstan-param-out string $lineId
-     * @phpstan-param-out string $lineStatusCode
-     * @phpstan-param-out string $lineStatusReasonCode
+     * @param-out string $lineId
+     * @param-out string $lineStatusCode
+     * @param-out string $lineStatusReasonCode
      */
     public function getDocumentPositionGenerals(
         ?string &$lineId,
@@ -4953,9 +4947,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $subjectCode __BT-X-10, From EXTENDED__ Code for qualifying the free text for the invoice item (Codelist UNTDID 4451)
      * @return static
      *
-     * @phpstan-param-out string $content
-     * @phpstan-param-out string $contentCode
-     * @phpstan-param-out string $subjectCode
+     * @param-out string $content
+     * @param-out string $contentCode
+     * @param-out string $subjectCode
      */
     public function getDocumentPositionNote(
         ?string &$content,
@@ -4982,12 +4976,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $globalID         __BT-157, From BASIC__ Identification of an article according to the registered scheme (Global identifier of the product, GTIN, ...)
      * @return static
      *
-     * @phpstan-param-out string $name
-     * @phpstan-param-out string $description
-     * @phpstan-param-out string $sellerAssignedID
-     * @phpstan-param-out string $buyerAssignedID
-     * @phpstan-param-out string $globalIDType
-     * @phpstan-param-out string $globalID
+     * @param-out string $name
+     * @param-out string $description
+     * @param-out string $sellerAssignedID
+     * @param-out string $buyerAssignedID
+     * @param-out string $globalIDType
+     * @param-out string $globalID
      */
     public function getDocumentPositionProductDetails(
         ?string &$name,
@@ -5032,17 +5026,17 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $modelName          __BT-X-536. From EXTENDED__ Model designation of the product
      * @return static
      *
-     * @phpstan-param-out string $name
-     * @phpstan-param-out string $description
-     * @phpstan-param-out string $sellerAssignedID
-     * @phpstan-param-out string $buyerAssignedID
-     * @phpstan-param-out string $globalIDType
-     * @phpstan-param-out string $globalID
-     * @phpstan-param-out string $industryAssignedID
-     * @phpstan-param-out string $modelID
-     * @phpstan-param-out string $batchID
-     * @phpstan-param-out string $brandName
-     * @phpstan-param-out string $modelName
+     * @param-out string $name
+     * @param-out string $description
+     * @param-out string $sellerAssignedID
+     * @param-out string $buyerAssignedID
+     * @param-out string $globalIDType
+     * @param-out string $globalID
+     * @param-out string $industryAssignedID
+     * @param-out string $modelID
+     * @param-out string $batchID
+     * @param-out string $brandName
+     * @param-out string $modelName
      */
     public function getDocumentPositionProductDetailsExt(
         ?string &$name,
@@ -5108,11 +5102,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $valueMeasureUnitCode __BT-X-12-0, From EXTENDED__ Unit of measurement code
      * @return static
      *
-     * @phpstan-param-out string $description
-     * @phpstan-param-out string $value
-     * @phpstan-param-out string $typeCode
-     * @phpstan-param-out float $valueMeasure
-     * @phpstan-param-out string $valueMeasureUnitCode
+     * @param-out string $description
+     * @param-out string $value
+     * @param-out string $typeCode
+     * @param-out float  $valueMeasure
+     * @param-out string $valueMeasureUnitCode
      */
     public function getDocumentPositionProductCharacteristic(
         ?string &$description,
@@ -5163,10 +5157,10 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $listVersionID __BT-158-2, From EN 16931__ The version of the identification scheme
      * @return static
      *
-     * @phpstan-param-out string $classCode
-     * @phpstan-param-out string $className
-     * @phpstan-param-out string $listID
-     * @phpstan-param-out string $listVersionID
+     * @param-out string $classCode
+     * @param-out string $className
+     * @param-out string $listID
+     * @param-out string $listVersionID
      */
     public function getDocumentPositionProductClassification(
         ?string &$classCode,
@@ -5219,14 +5213,14 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string               $industryAssignedID __BT-X-309, From EXTENDED__ ID of the referenced product contained assigned by the industry
      * @return static
      *
-     * @phpstan-param-out string $name
-     * @phpstan-param-out string $description
-     * @phpstan-param-out string $sellerAssignedID
-     * @phpstan-param-out string $buyerAssignedID
-     * @phpstan-param-out array<string,string> $globalID
-     * @phpstan-param-out float $unitQuantity
-     * @phpstan-param-out string $unitCode
-     * @phpstan-param-out string $industryAssignedID
+     * @param-out string               $name
+     * @param-out string               $description
+     * @param-out string               $sellerAssignedID
+     * @param-out string               $buyerAssignedID
+     * @param-out array<string,string> $globalID
+     * @param-out float                $unitQuantity
+     * @param-out string               $unitCode
+     * @param-out string               $industryAssignedID
      */
     public function getDocumentPositionReferencedProduct(
         ?string &$name,
@@ -5268,7 +5262,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $country __BT-159, From EN 16931__ The code indicating the country the goods came from. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”.
      * @return static
      *
-     * @phpstan-param-out string $country
+     * @param-out string $country
      */
     public function getDocumentPositionProductOriginTradeCountry(
         ?string &$country
@@ -5300,9 +5294,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $issueDate        __BT-X-539, From EXTENDED__ Date of sales order
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out string $lineId
-     * @phpstan-param-out DateTimeInterface|null $issueDate
+     * @param-out string                 $issuerAssignedId
+     * @param-out string                 $lineId
+     * @param-out null|DateTimeInterface $issueDate
      */
     public function getDocumentPositionSellerOrderReferencedDocument(
         ?string &$issuerAssignedId,
@@ -5332,9 +5326,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $issueDate        __BT-X-22, From EXTENDED__ Date of order
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out string $lineId
-     * @phpstan-param-out DateTimeInterface|null $issueDate
+     * @param-out string                 $issuerAssignedId
+     * @param-out string                 $lineId
+     * @param-out null|DateTimeInterface $issueDate
      */
     public function getDocumentPositionBuyerOrderReferencedDocument(
         ?string &$issuerAssignedId,
@@ -5364,9 +5358,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $issueDate        __BT-X-312, From EXTENDED__ Date of offder
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out string $lineId
-     * @phpstan-param-out DateTimeInterface|null $issueDate
+     * @param-out string                 $issuerAssignedId
+     * @param-out string                 $lineId
+     * @param-out null|DateTimeInterface $issueDate
      */
     public function getDocumentPositionQuotationReferencedDocument(
         ?string &$issuerAssignedId,
@@ -5396,9 +5390,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $issueDate        __BT-X-26, From EXTENDED__ Contract date
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out string $lineId
-     * @phpstan-param-out DateTimeInterface|null $issueDate
+     * @param-out string                 $issuerAssignedId
+     * @param-out string                 $lineId
+     * @param-out null|DateTimeInterface $issueDate
      */
     public function getDocumentPositionContractReferencedDocument(
         ?string &$issuerAssignedId,
@@ -5455,14 +5449,14 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string            $binaryDataFilename __BT-X-31, From EXTENDED__ Contains a file name of an attachment document embedded as a binary object
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out string $typeCode
-     * @phpstan-param-out string $uriId
-     * @phpstan-param-out string $lineId
-     * @phpstan-param-out array<int,string> $name
-     * @phpstan-param-out string $refTypeCode
-     * @phpstan-param-out null|DateTimeInterface $issueDate
-     * @phpstan-param-out string $binaryDataFilename
+     * @param-out string                 $issuerAssignedId
+     * @param-out string                 $typeCode
+     * @param-out string                 $uriId
+     * @param-out string                 $lineId
+     * @param-out array<int,string>      $name
+     * @param-out string                 $refTypeCode
+     * @param-out null|DateTimeInterface $issueDate
+     * @param-out string                 $binaryDataFilename
      */
     public function getDocumentPositionAdditionalReferencedDocument(
         ?string &$issuerAssignedId,
@@ -5527,9 +5521,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $issueDate        __BT-X-45, From EXTENDED__ Document date of end customer order
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out string $lineId
-     * @phpstan-param-out null|DateTimeInterface $issueDate
+     * @param-out string                 $issuerAssignedId
+     * @param-out string                 $lineId
+     * @param-out null|DateTimeInterface $issueDate
      */
     public function getDocumentPositionUltimateCustomerOrderReferencedDocument(
         ?string &$issuerAssignedId,
@@ -5553,9 +5547,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $basisQuantityUnitCode __BT-150-1, From BASIC__ The unit code of the number of item units for which the price applies (price base quantity)
      * @return static
      *
-     * @phpstan-param-out float $amount
-     * @phpstan-param-out float $basisQuantity
-     * @phpstan-param-out string $basisQuantityUnitCode
+     * @param-out float  $amount
+     * @param-out float  $basisQuantity
+     * @param-out string $basisQuantityUnitCode
      */
     public function getDocumentPositionGrossPrice(
         ?float &$amount,
@@ -5610,18 +5604,18 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $reasonCode            __BT-X-313, From EXTENDED__ Reason code for surcharge/discount
      * @return static
      *
-     * @phpstan-param-out float $actualAmount
-     * @phpstan-param-out bool $isCharge
-     * @phpstan-param-out float $calculationPercent
-     * @phpstan-param-out float $basisAmount
-     * @phpstan-param-out string $reason
-     * @phpstan-param-out string $taxTypeCode
-     * @phpstan-param-out string $taxCategoryCode
-     * @phpstan-param-out float $rateApplicablePercent
-     * @phpstan-param-out float $sequence
-     * @phpstan-param-out float $basisQuantity
-     * @phpstan-param-out string $basisQuantityUnitCode
-     * @phpstan-param-out string $reasonCode
+     * @param-out float  $actualAmount
+     * @param-out bool   $isCharge
+     * @param-out float  $calculationPercent
+     * @param-out float  $basisAmount
+     * @param-out string $reason
+     * @param-out string $taxTypeCode
+     * @param-out string $taxCategoryCode
+     * @param-out float  $rateApplicablePercent
+     * @param-out float  $sequence
+     * @param-out float  $basisQuantity
+     * @param-out string $basisQuantityUnitCode
+     * @param-out string $reasonCode
      */
     public function getDocumentPositionGrossPriceAllowanceCharge(
         ?float &$actualAmount,
@@ -5664,9 +5658,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $basisQuantityUnitCode __BT-150, From BASIC__ Code of the unit of measurement of the base quantity at the item price
      * @return static
      *
-     * @phpstan-param-out float $amount
-     * @phpstan-param-out float $basisQuantity
-     * @phpstan-param-out string $basisQuantityUnitCode
+     * @param-out float  $amount
+     * @param-out float  $basisQuantity
+     * @param-out string $basisQuantityUnitCode
      */
     public function getDocumentPositionNetPrice(
         ?float &$amount,
@@ -5693,12 +5687,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $exemptionReasonCode   __BT-, From __ Reason given in code form for the exemption of the amount from VAT. Note: Code list issued and maintained by the Connecting Europe Facility.
      * @return static
      *
-     * @phpstan-param-out string $categoryCode
-     * @phpstan-param-out string $typeCode
-     * @phpstan-param-out float $rateApplicablePercent
-     * @phpstan-param-out float $calculatedAmount
-     * @phpstan-param-out string $exemptionReason
-     * @phpstan-param-out string $exemptionReasonCode
+     * @param-out string $categoryCode
+     * @param-out string $typeCode
+     * @param-out float  $rateApplicablePercent
+     * @param-out float  $calculatedAmount
+     * @param-out string $exemptionReason
+     * @param-out string $exemptionReasonCode
      */
     public function getDocumentPositionNetPriceTax(
         ?string &$categoryCode,
@@ -5731,12 +5725,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $packageQuantityUnitCode    __BT-X-47-0, From EXTENDED__ Unit of measure code for number of packages
      * @return static
      *
-     * @phpstan-param-out float $billedQuantity
-     * @phpstan-param-out string $billedQuantityUnitCode
-     * @phpstan-param-out float $chargeFreeQuantity
-     * @phpstan-param-out string $chargeFreeQuantityUnitCpde
-     * @phpstan-param-out float $packageQuantity
-     * @phpstan-param-out string $packageQuantityUnitCode
+     * @param-out float  $billedQuantity
+     * @param-out string $billedQuantityUnitCode
+     * @param-out float  $chargeFreeQuantity
+     * @param-out string $chargeFreeQuantityUnitCpde
+     * @param-out float  $packageQuantity
+     * @param-out string $packageQuantityUnitCode
      */
     public function getDocumentPositionQuantity(
         ?float &$billedQuantity,
@@ -5766,7 +5760,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $date __BT-X-85, From EXTENDED__ Actual delivery date
      * @return static
      *
-     * @phpstan-param-out null|DateTimeInterface $date
+     * @param-out null|DateTimeInterface $date
      */
     public function getDocumentPositionSupplyChainEvent(
         ?DateTimeInterface &$date
@@ -5786,9 +5780,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $issueDate        __BT-X-88, From EXTENDED__ Date of Shipping notification number
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out string $lineId
-     * @phpstan-param-out DateTimeInterface|null $issueDate
+     * @param-out string                 $issuerAssignedId
+     * @param-out string                 $lineId
+     * @param-out null|DateTimeInterface $issueDate
      */
     public function getDocumentPositionDespatchAdviceReferencedDocument(
         ?string &$issuerAssignedId,
@@ -5818,9 +5812,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $issueDate        __BT-X-91, From EXTENDED__ Date of Goods receipt
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out string $lineId
-     * @phpstan-param-out DateTimeInterface|null $issueDate
+     * @param-out string                 $issuerAssignedId
+     * @param-out string                 $lineId
+     * @param-out null|DateTimeInterface $issueDate
      */
     public function getDocumentPositionReceivingAdviceReferencedDocument(
         ?string &$issuerAssignedId,
@@ -5850,9 +5844,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $issueDate        __BT-X-94, From EXTENDED__ Date of Delivery note
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out string $lineId
-     * @phpstan-param-out DateTimeInterface|null $issueDate
+     * @param-out string                 $issuerAssignedId
+     * @param-out string                 $lineId
+     * @param-out null|DateTimeInterface $issueDate
      */
     public function getDocumentPositionDeliveryNoteReferencedDocument(
         ?string &$issuerAssignedId,
@@ -5907,12 +5901,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $exemptionReasonCode   __BT-, From __ Reason given in code form for the exemption of the amount from VAT. Note: Code list issued and maintained by the Connecting Europe Facility. (Obsolete)
      * @return static
      *
-     * @phpstan-param-out string $categoryCode
-     * @phpstan-param-out string $typeCode
-     * @phpstan-param-out float $rateApplicablePercent
-     * @phpstan-param-out float $calculatedAmount
-     * @phpstan-param-out string $exemptionReason
-     * @phpstan-param-out string $exemptionReasonCode
+     * @param-out string $categoryCode
+     * @param-out string $typeCode
+     * @param-out float  $rateApplicablePercent
+     * @param-out float  $calculatedAmount
+     * @param-out string $exemptionReason
+     * @param-out string $exemptionReasonCode
      */
     public function getDocumentPositionTax(
         ?string &$categoryCode,
@@ -5941,8 +5935,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $endDate   __BT-135, From BASIC__ End of the billing period
      * @return static
      *
-     * @phpstan-param-out DateTimeInterface|null $startDate
-     * @phpstan-param-out DateTimeInterface|null $endDate
+     * @param-out null|DateTimeInterface $startDate
+     * @param-out null|DateTimeInterface $endDate
      */
     public function getDocumentPositionBillingPeriod(
         ?DateTimeInterface &$startDate,
@@ -6001,18 +5995,18 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $reasonCode            __BT-140/BT-145, From BASIC__ The reason given as a code for the invoice line discount
      * @return static
      *
-     * @phpstan-param-out float $actualAmount
-     * @phpstan-param-out bool $isCharge
-     * @phpstan-param-out float $calculationPercent
-     * @phpstan-param-out float $basisAmount
-     * @phpstan-param-out string $reason
-     * @phpstan-param-out string $taxTypeCode
-     * @phpstan-param-out string $taxCategoryCode
-     * @phpstan-param-out float $rateApplicablePercent
-     * @phpstan-param-out float $sequence
-     * @phpstan-param-out float $basisQuantity
-     * @phpstan-param-out string $basisQuantityUnitCode
-     * @phpstan-param-out string $reasonCode
+     * @param-out float  $actualAmount
+     * @param-out bool   $isCharge
+     * @param-out float  $calculationPercent
+     * @param-out float  $basisAmount
+     * @param-out string $reason
+     * @param-out string $taxTypeCode
+     * @param-out string $taxCategoryCode
+     * @param-out float  $rateApplicablePercent
+     * @param-out float  $sequence
+     * @param-out float  $basisQuantity
+     * @param-out string $basisQuantityUnitCode
+     * @param-out string $reasonCode
      */
     public function getDocumentPositionAllowanceCharge(
         ?float &$actualAmount,
@@ -6059,12 +6053,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $reason             __BT-139/BT-144, From BASIC__ The reason given in text form for the invoice item discount/surcharge
      * @return static
      *
-     * @phpstan-param-out float $actualAmount
-     * @phpstan-param-out bool $isCharge
-     * @phpstan-param-out float $calculationPercent
-     * @phpstan-param-out float $basisAmount
-     * @phpstan-param-out string $reasonCode
-     * @phpstan-param-out string $reason
+     * @param-out float  $actualAmount
+     * @param-out bool   $isCharge
+     * @param-out float  $calculationPercent
+     * @param-out float  $basisAmount
+     * @param-out string $reasonCode
+     * @param-out string $reason
      */
     public function getDocumentPositionAllowanceCharge2(
         ?float &$actualAmount,
@@ -6093,8 +6087,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|float $totalAllowanceChargeAmount __BT-, From __ Total amount of item surcharges and discounts
      * @return static
      *
-     * @phpstan-param-out float $lineTotalAmount
-     * @phpstan-param-out float $totalAllowanceChargeAmount
+     * @param-out float $lineTotalAmount
+     * @param-out float $totalAllowanceChargeAmount
      */
     public function getDocumentPositionLineSummation(
         ?float &$lineTotalAmount,
@@ -6119,7 +6113,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|float $lineTotalAmount __BT-131, From BASIC__ The total amount of the invoice item
      * @return static
      *
-     * @phpstan-param-out float $lineTotalAmount
+     * @param-out float $lineTotalAmount
      */
     public function getDocumentPositionLineSummationSimple(
         ?float &$lineTotalAmount
@@ -6146,12 +6140,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|float $totalAllowanceChargeAmount __BT-X-98, From EXTENDED__ Total amount of item surcharges and discounts
      * @return static
      *
-     * @phpstan-param-out float $lineTotalAmount
-     * @phpstan-param-out float $chargeTotalAmount
-     * @phpstan-param-out float $allowanceTotalAmount
-     * @phpstan-param-out float $taxTotalAmount
-     * @phpstan-param-out float $grandTotalAmount
-     * @phpstan-param-out float $totalAllowanceChargeAmount
+     * @param-out float $lineTotalAmount
+     * @param-out float $chargeTotalAmount
+     * @param-out float $allowanceTotalAmount
+     * @param-out float $taxTotalAmount
+     * @param-out float $grandTotalAmount
+     * @param-out float $totalAllowanceChargeAmount
      */
     public function getDocumentPositionLineSummationExt(
         ?float &$lineTotalAmount,
@@ -6183,10 +6177,10 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|DateTimeInterface $issueDate        __BT-X-333, From EXTENDED__ Date of the previous invoice
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out string $lineid
-     * @phpstan-param-out string $typeCode
-     * @phpstan-param-out DateTimeInterface|null $issueDate
+     * @param-out string                 $issuerAssignedId
+     * @param-out string                 $lineid
+     * @param-out string                 $typeCode
+     * @param-out null|DateTimeInterface $issueDate
      */
     public function getDocumentPositionInvoiceReferencedDocument(
         ?string &$issuerAssignedId,
@@ -6241,9 +6235,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $refTypeCode      __BT-128-1, From EN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
      * @return static
      *
-     * @phpstan-param-out string $issuerAssignedId
-     * @phpstan-param-out string $typeCode
-     * @phpstan-param-out string $refTypeCode
+     * @param-out string $issuerAssignedId
+     * @param-out string $typeCode
+     * @param-out string $refTypeCode
      */
     public function getDocumentPositionAdditionalReferencedObjDocument(
         ?string &$issuerAssignedId,
@@ -6266,8 +6260,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string &$typeCode __BT-X-99, From EXTENDED__ Type of the posting reference
      * @return static
      *
-     * @phpstan-param-out string $id
-     * @phpstan-param-out string $typeCode
+     * @param-out string $id
+     * @param-out string $typeCode
      */
     public function getDocumentPositionReceivableSpecifiedTradeAccountingAccount(
         ?string &$id,
@@ -6288,8 +6282,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  null|string $binaryDataFilename
      * @return static
      *
-     * @phpstan-param-out string $uriId
-     * @phpstan-param-out string $binaryDataFilename
+     * @param-out string $uriId
+     * @param-out string $binaryDataFilename
      */
     private function internalHandleInvoiceSuiteAttachment(
         ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment,

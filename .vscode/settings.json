@@ -1,0 +1,8 @@
+{
+  "files.trimTrailingWhitespace": true,
+  "intelephense.files.exclude": [],
+  "intelephense.files.maxSize": 10000000000,
+  "intelephense.diagnostics.enable": true,
+  "intelephense.rename.namespaceMode": "all",
+  "phpNamespaceResolver.highlightNotUsed": true
+}

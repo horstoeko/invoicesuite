@@ -77,7 +77,7 @@ class InvoiceSuiteArrayUtils
      * @param  null|string        $value
      * @return void
      *
-     * @phpstan-param-out array<int, string> $array
+     * @param-out array<int, string> $array
      */
     public static function pushStringToIntIndexedArray(
         array &$array,
@@ -96,7 +96,7 @@ class InvoiceSuiteArrayUtils
      * @param  null|string           $value
      * @return void
      *
-     * @phpstan-param-out array<string, string> $array
+     * @param-out array<string, string> $array
      */
     public static function pushStringToStringIndexedArray(
         array &$array,
@@ -115,7 +115,7 @@ class InvoiceSuiteArrayUtils
      * @param  null|float        $value
      * @return void
      *
-     * @phpstan-param-out array<int, float> $array
+     * @param-out array<int, float> $array
      */
     public static function pushFloatToIntIndexedArray(
         array &$array,
@@ -134,7 +134,7 @@ class InvoiceSuiteArrayUtils
      * @param  null|float           $value
      * @return void
      *
-     * @phpstan-param-out array<string, float> $array
+     * @param-out array<string, float> $array
      */
     public static function pushFloatToStringIndexedArray(
         array &$array,
@@ -153,7 +153,7 @@ class InvoiceSuiteArrayUtils
      * @param  null|bool        $value
      * @return void
      *
-     * @phpstan-param-out array<int, bool> $array
+     * @param-out array<int, bool> $array
      */
     public static function pushBooleanToIntIndexedArray(
         array &$array,
@@ -172,7 +172,7 @@ class InvoiceSuiteArrayUtils
      * @param  null|bool           $value
      * @return void
      *
-     * @phpstan-param-out array<string, bool> $array
+     * @param-out array<string, bool> $array
      */
     public static function pushBooleanToStringIndexedArray(
         array &$array,
@@ -192,7 +192,7 @@ class InvoiceSuiteArrayUtils
      * @param array<int, T> $array
      * @param T             $value
      *
-     * @phpstan-param-out array<int, T> $array
+     * @param-out array<int, T> $array
      *
      * @return void
      */

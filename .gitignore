@@ -65,7 +65,8 @@ _backup*
 /nbproject/
 
 !/setup/.htaccess
-.vscode
+!/.vscode/settings.json
+/.vscode/launch.json
 .idea
 
 /vendor/

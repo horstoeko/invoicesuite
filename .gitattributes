@@ -1,6 +1,7 @@
 * text=auto
 *.php eol=lf
 *.sh eol=lf
+/.vscode export-ignore
 /.github export-ignore
 /assets export-ignore
 /build export-ignore

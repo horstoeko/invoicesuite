@@ -94,6 +94,7 @@ return (new Config())
                     'todo',
                     '@phpstan-param',
                     '@phpstan-param-out',
+                    'param-out',
                 ],
             ],
             'phpdoc_order' => [
