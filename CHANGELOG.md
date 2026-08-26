@@ -1,3 +1,15 @@
+## v0.0.26
+
+``Previous version v0.0.24``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [50508c08](https://github.com/horstoeko/invoicesuite/commit/50508c08) | 2026-08-26 05:43:02 CEST | HorstOeko | [ENH] Added example for DocuFlair Validator | 
+| :new:  | [491fda23](https://github.com/horstoeko/invoicesuite/commit/491fda23) | 2026-08-18 05:10:40 CEST | HorstOeko | [ENH] Added more Tests for ZF/FX-Payment Terms | 
+| :new:  | [0e727cce](https://github.com/horstoeko/invoicesuite/commit/0e727cce) | 2026-08-18 04:52:36 CEST | HorstOeko | [ENH] Added more Tests for ZF/FX-Payment Terms | 
+
+:exclamation: _There are 8 internal commit(s)_
+
 ## v0.0.25
 
 ``Previous version v0.0.23``
