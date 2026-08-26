@@ -28,12 +28,13 @@ $validator
     ->validate();
 
 $formatProvider = $validator->getCurrentDocumentFormatProvider();
-$validationWasSuccessful = !$validator->hasErrorMessagesInMessageBag();
+$validationWasSuccessful = !$validator->hasErrorMessagesInMessageBag() && !$validator->hasInternalErrorMessagesInMessageBag();
 
 echo sprintf("Validated invoice XML: %s\n", $invoiceXmlFilename);
 echo sprintf("KoSIT remote URL: %s\n", $validator->getRemoteModeUrl());
 echo sprintf("Format provider: %s\n", $formatProvider?->getUniqueId() ?? 'unknown');
 echo sprintf("Status: %s\n", $validationWasSuccessful ? 'valid' : 'invalid');
+echo sprintf("Internal Errors: %d\n", $validator->countInternalErrorMessagesInMessageBag());
 echo sprintf("Errors: %d\n", $validator->countErrorMessagesInMessageBag());
 echo sprintf("Warnings: %d\n", $validator->countWarningMessagesInMessageBag());
 echo sprintf("Infos: %d\n", $validator->countInfoMessagesInMessageBag());
