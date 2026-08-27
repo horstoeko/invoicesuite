@@ -11,6 +11,8 @@ updates:
           - '*' # Group all Actions updates into a single larger pull request.
     schedule:
       interval: weekly
+    commit-message:
+      prefix: "[INFR] "
 
   - package-ecosystem: docker-compose
     directory: /.github/services
@@ -20,6 +22,8 @@ updates:
           - '*' # Group all validation service updates into a single larger pull request.
     schedule:
       interval: weekly
+    commit-message:
+      prefix: "[INFR] "
 
   - package-ecosystem: composer
     directory: /
@@ -29,3 +33,5 @@ updates:
           - '*' # Group all Composer updates into a single larger pull request.
     schedule:
       interval: weekly
+    commit-message:
+      prefix: "[INFR] "
