@@ -86,6 +86,7 @@ jobs:
           mkdir -p build/dist
           mkdir -p build/logs
           mkdir -p build/phpdoc
+          mkdir -p build/phpcsfixer-cache
           mkdir -p build/phpstan-cache
           mkdir -p build/phpunit-cache
 
@@ -98,7 +99,7 @@ jobs:
         uses: actions/cache/restore@v6
         with:
           path: |
-            build/.php-cs-fixer.cache
+            build/phpcsfixer-cache
             build/phpstan-cache
             build/phpunit-cache
           key: ${{ runner.os }}-quality-php-${{ matrix.phpversion }}-${{ github.run_id }}
@@ -122,7 +123,7 @@ jobs:
         uses: actions/cache/save@v6
         with:
           path: |
-            build/.php-cs-fixer.cache
+            build/phpcsfixer-cache
             build/phpstan-cache
             build/phpunit-cache
           key: ${{ steps.quality-cache-restore.outputs.cache-primary-key }}

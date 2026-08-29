@@ -80,6 +80,7 @@ _backup*
 /build/logs/
 /build/phpdox/
 /build/phpdoc/
+/build/phpcsfixer-cache
 /build/phpstan-cache
 /build/phpunit-cache
 /*.phar
