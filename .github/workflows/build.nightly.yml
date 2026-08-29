@@ -79,6 +79,7 @@ jobs:
           mkdir -p build/phpcsfixer-cache
           mkdir -p build/phpstan-cache
           mkdir -p build/phpunit-cache
+          mkdir -p build/rector-cache
 
       - name: Run parallel lint
         run: vendor/bin/parallel-lint src tests
