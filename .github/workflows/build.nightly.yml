@@ -34,12 +34,8 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v7
         with:
-          fetch-depth: 0
           persist-credentials: false
           ref: ${{ github.event.repository.default_branch }}
-
-      - name: Start validation services
-        run: docker compose --file .github/services/compose.yml up --detach --quiet-pull --wait --wait-timeout 120
 
       - name: Determine nightly build metadata
         id: nightly-build
@@ -85,6 +81,15 @@ jobs:
       - name: Run parallel lint
         run: vendor/bin/parallel-lint src tests
 
+      - name: Cache quality tools
+        continue-on-error: true
+        uses: actions/cache@v6
+        with:
+          path: |
+            build/.php-cs-fixer.cache
+            build/phpstan
+          key: ${{ runner.os }}-quality-php-8.5-${{ hashFiles('build/phpcsfixer.php', 'build/phpstan.neon', 'composer.lock') }}
+
       - name: Run PHP-CS-Fixer
         run: vendor/bin/php-cs-fixer fix --config=build/phpcsfixer.php --dry-run --no-interaction
 
@@ -93,6 +98,9 @@ jobs:
 
       - name: Run PHPUnit tests
         run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml --no-coverage
+
+      - name: Start validation services
+        run: docker compose --file .github/services/compose.yml up --detach --quiet-pull --wait --wait-timeout 120
 
       - name: Run remote Schematron tests
         run: |
