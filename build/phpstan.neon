@@ -3,7 +3,7 @@ includes:
     - ../vendor/phpstan/phpstan-strict-rules/rules.neon
     - ../vendor/phpstan/phpstan-deprecation-rules/rules.neon
 parameters:
-    tmpDir: ./phpstan
+    tmpDir: ./phpstan-cache
     paths:
         - ../src
     excludePaths:

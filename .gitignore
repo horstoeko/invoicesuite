@@ -80,7 +80,7 @@ _backup*
 /build/logs/
 /build/phpdox/
 /build/phpdoc/
-/build/phpstan
+/build/phpstan-cache
 /build/phpunit-cache
 /*.phar
 /composer.lock
@@ -137,7 +137,7 @@ parsephpstanlog.php
 phpstan.json
 phpstan.txt
 
-/build/rector
+/build/rector-cache
 /build/rector-throws/rector
 /src/cache/
 

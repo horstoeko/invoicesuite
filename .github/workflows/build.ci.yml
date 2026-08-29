@@ -86,7 +86,7 @@ jobs:
           mkdir -p build/dist
           mkdir -p build/logs
           mkdir -p build/phpdoc
-          mkdir -p build/phpstan
+          mkdir -p build/phpstan-cache
           mkdir -p build/phpunit-cache
 
       - name: Run parallel lint
@@ -99,7 +99,7 @@ jobs:
         with:
           path: |
             build/.php-cs-fixer.cache
-            build/phpstan
+            build/phpstan-cache
             build/phpunit-cache
           key: ${{ runner.os }}-quality-php-${{ matrix.phpversion }}-${{ github.run_id }}
           restore-keys: |
@@ -109,7 +109,7 @@ jobs:
         run: vendor/bin/php-cs-fixer fix --config=build/phpcsfixer.php --dry-run --no-interaction
 
       - name: Run PHPStan
-        run: php -d sys_temp_dir=$(pwd)/build/phpstan vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G --error-format=github
+        run: php -d sys_temp_dir=$(pwd)/build/phpstan-cache vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G --error-format=github
 
       - name: Run PHPUnit tests
         env:
@@ -123,7 +123,7 @@ jobs:
         with:
           path: |
             build/.php-cs-fixer.cache
-            build/phpstan
+            build/phpstan-cache
             build/phpunit-cache
           key: ${{ steps.quality-cache-restore.outputs.cache-primary-key }}
       - name: Start validation services

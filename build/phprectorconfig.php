@@ -32,7 +32,7 @@ return RectorConfig::configure()
         __DIR__ . '/../build',
         __DIR__ . '/../vendor',
         __DIR__ . '/../.git',
-        __DIR__ . '/rector',
+        __DIR__ . '/rector-cache',
         __DIR__ . '/../src/pdfs/zffx/InvoiceSuiteZffxPdfWriter.php',
         __DIR__ . '/../src/cache',
 
@@ -69,7 +69,7 @@ return RectorConfig::configure()
     )
     ->withCache(
         cacheClass: FileCacheStorage::class,
-        cacheDirectory: __DIR__ . '/rector',
+        cacheDirectory: __DIR__ . '/rector-cache',
     )
     ->withParallel(
         timeoutSeconds: 60000,
