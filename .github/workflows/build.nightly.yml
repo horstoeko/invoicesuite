@@ -77,6 +77,7 @@ jobs:
         run: |
           mkdir -p build/dist
           mkdir -p build/phpstan
+          mkdir -p build/phpunit-cache
 
       - name: Run parallel lint
         run: vendor/bin/parallel-lint src tests
@@ -89,6 +90,7 @@ jobs:
           path: |
             build/.php-cs-fixer.cache
             build/phpstan
+            build/phpunit-cache
           key: ${{ runner.os }}-quality-php-8.5-${{ github.run_id }}
           restore-keys: |
             ${{ runner.os }}-quality-php-8.5-
@@ -99,6 +101,9 @@ jobs:
       - name: Run PHPStan
         run: php -d sys_temp_dir=$(pwd)/build/phpstan vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G --error-format=github
 
+      - name: Run PHPUnit tests
+        run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml --no-coverage
+
       - name: Save quality tools cache
         if: ${{ !cancelled() && steps.quality-cache-restore.outputs.cache-hit != 'true' }}
         continue-on-error: true
@@ -107,11 +112,8 @@ jobs:
           path: |
             build/.php-cs-fixer.cache
             build/phpstan
+            build/phpunit-cache
           key: ${{ steps.quality-cache-restore.outputs.cache-primary-key }}
-
-      - name: Run PHPUnit tests
-        run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml --no-coverage
-
       - name: Start validation services
         run: docker compose --file .github/services/compose.yml up --detach --quiet-pull --wait --wait-timeout 120
 

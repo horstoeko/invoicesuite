@@ -81,6 +81,7 @@ _backup*
 /build/phpdox/
 /build/phpdoc/
 /build/phpstan
+/build/phpunit-cache
 /*.phar
 /composer.lock
 
