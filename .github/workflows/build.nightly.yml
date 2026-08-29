@@ -115,6 +115,7 @@ jobs:
             build/phpstan-cache
             build/phpunit-cache
           key: ${{ steps.quality-cache-restore.outputs.cache-primary-key }}
+
       - name: Start validation services
         run: docker compose --file .github/services/compose.yml up --detach --quiet-pull --wait --wait-timeout 120
 
