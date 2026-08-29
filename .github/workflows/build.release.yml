@@ -20,8 +20,6 @@ env:
   XDEBUG_MODE: off
   KOSIT_REMOTE_HOST: 127.0.0.1
   KOSIT_REMOTE_PORT: "8081"
-  PHPDOCUMENTORURL: https://phpdoc.org/phpDocumentor.phar
-  PHPDOCUMENTORFILENAME: phpDocumentor.phar
   VERAPDF_REMOTE_HOST: 127.0.0.1
   VERAPDF_REMOTE_PORT: "8080"
 
@@ -64,9 +62,7 @@ jobs:
           mkdir -p build/coverage
           mkdir -p build/coverage-html
           mkdir -p build/dist
-          mkdir -p build/doc
           mkdir -p build/logs
-          mkdir -p build/phpdoc
           mkdir -p build/phpstan
 
       - name: Run parallel lint
@@ -229,19 +225,9 @@ jobs:
 
           echo 'Negative remote veraPDF tests passed.'
 
-      - name: Generate API documentation
-        run: |
-          wget "$PHPDOCUMENTORURL" -O "$PHPDOCUMENTORFILENAME"
-          chmod +x "$PHPDOCUMENTORFILENAME"
-          cd build
-          php "../$PHPDOCUMENTORFILENAME"
-          cd ..
-          rm -f "$PHPDOCUMENTORFILENAME"
-
       - name: Package release artifacts
         run: |
-          zip -r build/dist/doc.zip build/doc
-          zip -r build/dist/builddoc.zip build/builddoc build/coverage build/coverage-html build/logs build/phpdoc
+          zip -r build/dist/builddoc.zip build/builddoc build/coverage build/coverage-html build/logs
 
       - name: Publish unit test results
         continue-on-error: true
