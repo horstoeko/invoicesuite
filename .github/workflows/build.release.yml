@@ -298,29 +298,8 @@ jobs:
       - name: Create GitHub release
         uses: ncipollo/release-action@v1.21.0
         with:
-          artifacts: build/dist/doc.zip,build/dist/builddoc.zip
+          artifacts: build/dist/*
           artifactErrorsFailBuild: true
           immutableCreate: true
           bodyFile: build/releasenotes.txt
 
-      - name: Upload SBOM release artifacts
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          sbom_artifacts=()
-
-          if [ -f build/dist/sbom.json ]; then
-            sbom_artifacts+=(build/dist/sbom.json)
-          fi
-
-          if [ -f build/dist/sbom.xml ]; then
-            sbom_artifacts+=(build/dist/sbom.xml)
-          fi
-
-          if [ ${#sbom_artifacts[@]} -eq 0 ]; then
-            echo 'No SBOM artifacts found. Skipping SBOM upload.'
-            exit 0
-          fi
-
-          gh release upload "$GITHUB_REF_NAME" "${sbom_artifacts[@]}" --clobber
