@@ -30,30 +30,19 @@ jobs:
     permissions:
       contents: write
       checks: write
-      pull-requests: write
-      issues: read
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      fail-fast: false
-      matrix:
-        operating-system: [ubuntu-24.04]
-        phpversion: ['8.5']
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout sources
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
-          fetch-tags: true
           persist-credentials: false
-
-      - name: Start validation services
-        run: docker compose --file .github/services/compose.yml up --detach --quiet-pull --wait --wait-timeout 120
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.phpversion }}
+          php-version: '8.5'
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
           tools: composer:v2
           coverage: xdebug
@@ -83,23 +72,16 @@ jobs:
       - name: Run parallel lint
         run: vendor/bin/parallel-lint src tests
 
-      - name: Cache PHP-CS-Fixer
+      - name: Cache quality tools
         continue-on-error: true
         uses: actions/cache@v6
         with:
-          path: build/.php-cs-fixer.cache
-          key: ${{ runner.os }}-php-cs-fixer-php-${{ matrix.phpversion }}-${{ hashFiles('build/phpcsfixer.php', 'composer.lock') }}
-
-      - name: Cache PHPStan
-        continue-on-error: true
-        uses: actions/cache@v6
-        with:
-          path: build/phpstan
-          key: ${{ runner.os }}-phpstan-php-${{ matrix.phpversion }}-${{ hashFiles('build/phpstan.neon', 'composer.lock') }}
+          path: |
+            build/.php-cs-fixer.cache
+            build/phpstan
+          key: ${{ runner.os }}-quality-php-8.5-${{ hashFiles('build/phpcsfixer.php', 'build/phpstan.neon', 'composer.lock') }}
 
       - name: Run PHP-CS-Fixer
-        env:
-          XDEBUG_MODE: off
         run: vendor/bin/php-cs-fixer fix --config=build/phpcsfixer.php --dry-run --no-interaction
 
       - name: Run PHPStan
@@ -109,6 +91,9 @@ jobs:
         env:
           XDEBUG_MODE: coverage
         run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml
+
+      - name: Start validation services
+        run: docker compose --file .github/services/compose.yml up --detach --quiet-pull --wait --wait-timeout 120
 
       - name: Run remote Schematron tests
         run: |
@@ -276,7 +261,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: Build log artifacts for ${{ matrix.operating-system }} PHP ${{ matrix.phpversion }} (Release)
+          name: Build log artifacts for PHP 8.5 (Release)
           path: build/logs
           if-no-files-found: error
 
@@ -292,7 +277,10 @@ jobs:
           echo "Previous tag .... $prev_tag"
           echo "Current tag ..... $curr_tag"
 
-          git log --no-merges --pretty=format:'- %s (%an)' "$prev_tag..$curr_tag"             | grep -Ev '^\- \[INFR\]|\- \[CS\] |\- \[DOC\] '             | sed -E 's/^- (#.*)/- [ENH] \1/' > build/releasenotes.txt || true
+          git log --no-merges --pretty=format:'- %s (%an)' "$prev_tag..$curr_tag" \
+            | grep -Ev '^\- \[INFR\]|\- \[CS\] |\- \[DOC\] ' \
+            | sed -E 's/^- (#.*)/- [ENH] \1/' \
+            > build/releasenotes.txt || true
 
           touch build/releasenotes.txt
           ls -l build/
@@ -308,7 +296,7 @@ jobs:
           composer CycloneDX:make-sbom --omit=dev --output-format=XML --output-file=build/dist/sbom.xml
 
       - name: Create GitHub release
-        uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v1.21.0
         with:
           artifacts: build/dist/doc.zip,build/dist/builddoc.zip
           artifactErrorsFailBuild: true

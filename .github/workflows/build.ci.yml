@@ -57,12 +57,7 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v7
         with:
-          fetch-depth: 0
-          fetch-tags: true
           persist-credentials: false
-
-      - name: Start validation services
-        run: docker compose --file .github/services/compose.yml up --detach --quiet-pull --wait --wait-timeout 120
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
@@ -96,23 +91,16 @@ jobs:
       - name: Run parallel lint
         run: vendor/bin/parallel-lint src tests
 
-      - name: Cache PHP-CS-Fixer
+      - name: Cache quality tools
         continue-on-error: true
         uses: actions/cache@v6
         with:
-          path: build/.php-cs-fixer.cache
-          key: ${{ runner.os }}-php-cs-fixer-php-${{ matrix.phpversion }}-${{ hashFiles('build/phpcsfixer.php', 'composer.lock') }}
-
-      - name: Cache PHPStan
-        continue-on-error: true
-        uses: actions/cache@v6
-        with:
-          path: build/phpstan
-          key: ${{ runner.os }}-phpstan-php-${{ matrix.phpversion }}-${{ hashFiles('build/phpstan.neon', 'composer.lock') }}
+          path: |
+            build/.php-cs-fixer.cache
+            build/phpstan
+          key: ${{ runner.os }}-quality-php-${{ matrix.phpversion }}-${{ hashFiles('build/phpcsfixer.php', 'build/phpstan.neon', 'composer.lock') }}
 
       - name: Run PHP-CS-Fixer
-        env:
-          XDEBUG_MODE: off
         run: vendor/bin/php-cs-fixer fix --config=build/phpcsfixer.php --dry-run --no-interaction
 
       - name: Run PHPStan
@@ -122,6 +110,9 @@ jobs:
         env:
           XDEBUG_MODE: coverage
         run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml
+
+      - name: Start validation services
+        run: docker compose --file .github/services/compose.yml up --detach --quiet-pull --wait --wait-timeout 120
 
       - name: Run remote Schematron tests
         run: |
