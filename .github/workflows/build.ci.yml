@@ -279,24 +279,6 @@ jobs:
         if: always()
         run: php make/genbuildcoveragesummary.php --summary-file="$GITHUB_STEP_SUMMARY" --clover-file="build/logs/clover.xml" --crap4j-file="build/logs/crap4j.xml"
 
-      - name: Generate SBOM
-        continue-on-error: true
-        run: |
-          composer global config --no-plugins allow-plugins.cyclonedx/cyclonedx-php-composer true
-          composer global require --no-interaction --no-progress cyclonedx/cyclonedx-php-composer
-          composer CycloneDX:make-sbom --omit=dev --output-format=JSON --output-file=build/dist/sbom.json
-          composer CycloneDX:make-sbom --omit=dev --output-format=XML --output-file=build/dist/sbom.xml
-
-      - name: Publish SBOM artifacts
-        continue-on-error: true
-        uses: actions/upload-artifact@v7
-        with:
-          name: SBOM artifacts for ${{ matrix.operating-system }} PHP ${{ matrix.phpversion }}
-          path: |
-            build/dist/sbom.json
-            build/dist/sbom.xml
-          if-no-files-found: error
-
       - name: Publish build log artifacts
         continue-on-error: true
         if: always()
