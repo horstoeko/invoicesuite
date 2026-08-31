@@ -80,6 +80,7 @@ jobs:
             build/phpcsfixer-cache
             build/phpstan-cache
             build/phpunit-cache
+            build/rector-cache
           key: ${{ runner.os }}-quality-php-8.5-${{ github.run_id }}
           restore-keys: |
             ${{ runner.os }}-quality-php-8.5-
@@ -89,6 +90,9 @@ jobs:
 
       - name: Run PHPStan
         run: php -d sys_temp_dir=$(pwd)/build/phpstan-cache vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G --error-format=github
+
+      - name: Run Rector
+        run: vendor/bin/rector --config=build/phprectorconfig.php --dry-run
 
       - name: Run PHPUnit tests
         env:
@@ -104,6 +108,7 @@ jobs:
             build/phpcsfixer-cache
             build/phpstan-cache
             build/phpunit-cache
+            build/rector-cache
           key: ${{ steps.quality-cache-restore.outputs.cache-primary-key }}
 
       - name: Start validation services

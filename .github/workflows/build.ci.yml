@@ -72,7 +72,7 @@ jobs:
       - name: Install Composer dependencies
         uses: ramsey/composer-install@v4
         with:
-          dependency-versions: locked
+          dependency-versions: highest
           composer-options: --prefer-dist
           require-lock-file: false
         env:
@@ -103,6 +103,7 @@ jobs:
             build/phpcsfixer-cache
             build/phpstan-cache
             build/phpunit-cache
+            build/rector-cache
           key: ${{ runner.os }}-quality-php-${{ matrix.phpversion }}-${{ github.run_id }}
           restore-keys: |
             ${{ runner.os }}-quality-php-${{ matrix.phpversion }}-
@@ -112,6 +113,9 @@ jobs:
 
       - name: Run PHPStan
         run: php -d sys_temp_dir=$(pwd)/build/phpstan-cache vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G --error-format=github
+
+      - name: Run Rector
+        run: vendor/bin/rector --config=build/phprectorconfig.php --dry-run
 
       - name: Run PHPUnit tests
         env:
@@ -127,6 +131,7 @@ jobs:
             build/phpcsfixer-cache
             build/phpstan-cache
             build/phpunit-cache
+            build/rector-cache
           key: ${{ steps.quality-cache-restore.outputs.cache-primary-key }}
 
       - name: Start validation services
@@ -272,6 +277,7 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v2
         with:
           files: build/logs/junit.xml
+          check_name: Test Results (PHP ${{ matrix.phpversion }})
           comment_mode: ${{ github.event_name == 'pull_request' && 'failures' || 'always' }}
 
       - name: Publish coverage summary
@@ -303,7 +309,7 @@ jobs:
           echo "Matrix build result: $BUILD_RESULT"
 
           if [ "$BUILD_RESULT" != "success" ]; then
-            echo "At least one CI matrix job failed or was cancelled."
+            echo "At least one CI job failed or was cancelled."
             exit 1
           fi
 
