@@ -45,7 +45,7 @@ jobs:
       - name: Install Composer dependencies
         uses: ramsey/composer-install@v4
         with:
-          dependency-versions: locked
+          dependency-versions: highest
           composer-options: --prefer-dist
           require-lock-file: false
         env:
