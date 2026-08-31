@@ -13,21 +13,10 @@ defaults:
   run:
     shell: bash
 
-env:
-  COMPOSER_NO_AUDIT: "1"
-  COMPOSER_NO_INTERACTION: "1"
-  COMPOSER_PROCESS_TIMEOUT: "0"
-  XDEBUG_MODE: off
-  KOSIT_REMOTE_HOST: 127.0.0.1
-  KOSIT_REMOTE_PORT: "8081"
-  VERAPDF_REMOTE_HOST: 127.0.0.1
-  VERAPDF_REMOTE_PORT: "8080"
-
 jobs:
-  build:
+  release:
     permissions:
       contents: write
-      checks: write
     runs-on: ubuntu-24.04
 
     steps:
@@ -37,269 +26,39 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.5'
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
-          tools: composer:v2
-          coverage: xdebug
-          ini-values: memory_limit=-1
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Install Composer dependencies
-        uses: ramsey/composer-install@v4
-        with:
-          dependency-versions: locked
-          composer-options: --prefer-dist
-          require-lock-file: false
-        env:
-          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.GITHUB_TOKEN }}"}}'
-
-      - name: Prepare build directories
-        run: |
-          mkdir -p build/builddoc
-          mkdir -p build/coverage
-          mkdir -p build/coverage-html
-          mkdir -p build/dist
-          mkdir -p build/logs
-          mkdir -p build/phpcsfixer-cache
-          mkdir -p build/phpstan-cache
-          mkdir -p build/phpunit-cache
-          mkdir -p build/rector-cache
-
-      - name: Run parallel lint
-        run: vendor/bin/parallel-lint src tests
-
-      - name: Restore quality tools cache
-        id: quality-cache-restore
-        continue-on-error: true
-        uses: actions/cache/restore@v6
-        with:
-          path: |
-            build/phpcsfixer-cache
-            build/phpstan-cache
-            build/phpunit-cache
-            build/rector-cache
-          key: ${{ runner.os }}-quality-php-8.5-${{ github.run_id }}
-          restore-keys: |
-            ${{ runner.os }}-quality-php-8.5-
-
-      - name: Run PHP-CS-Fixer
-        run: vendor/bin/php-cs-fixer fix --config=build/phpcsfixer.php --dry-run --no-interaction
-
-      - name: Run PHPStan
-        run: php -d sys_temp_dir=$(pwd)/build/phpstan-cache vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G --error-format=github
-
-      - name: Run Rector
-        run: vendor/bin/rector --config=build/phprectorconfig.php --dry-run
-
-      - name: Run PHPUnit tests
-        env:
-          XDEBUG_MODE: coverage
-        run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml
-
-      - name: Save quality tools cache
-        if: ${{ !cancelled() && steps.quality-cache-restore.outputs.cache-hit != 'true' }}
-        continue-on-error: true
-        uses: actions/cache/save@v6
-        with:
-          path: |
-            build/phpcsfixer-cache
-            build/phpstan-cache
-            build/phpunit-cache
-            build/rector-cache
-          key: ${{ steps.quality-cache-restore.outputs.cache-primary-key }}
-
-      - name: Start validation services
-        run: docker compose --file .github/services/compose.yml up --detach --quiet-pull --wait --wait-timeout 120
-
-      - name: Run remote Schematron tests
-        run: |
-          expectedResultAnchor='<rep:assessment><rep:accept>'
-
-          for invoiceXmlFilename in \
-            tests/assets/00_case_comfort_simple.xml \
-            tests/assets/00_case_comfort_simple_dto.xml \
-            tests/assets/00_case_xrechnung_cii_simple.xml \
-            tests/assets/00_case_xrechnung_cii_simple_dto.xml \
-            tests/assets/00_case_xrechnung_ublinvoice_simple.xml \
-            tests/assets/00_case_xrechnung_ublinvoice_simple_dto.xml \
-            tests/assets/00_case_xrechnung_ublcreditnote_simple.xml \
-            tests/assets/00_case_xrechnung_ublcreditnote_simple_dto.xml
-          do
-            if ! kositValidationResult=$(curl \
-              --silent \
-              --show-error \
-              --header 'Content-Type: application/xml' \
-              --data-binary "@$invoiceXmlFilename" \
-              --max-time 120 \
-              --write-out $'\n%{http_code}' \
-              "http://$KOSIT_REMOTE_HOST:$KOSIT_REMOTE_PORT/${invoiceXmlFilename##*/}")
-            then
-              echo "KoSIT validation request failed for $invoiceXmlFilename." >&2
-              exit 1
-            fi
-
-            if [ "${kositValidationResult##*$'\n'}" != '200' ] ||
-              [[ "${kositValidationResult%$'\n'*}" != *"$expectedResultAnchor"* ]]
-            then
-              echo "KoSIT returned an unexpected result for $invoiceXmlFilename." >&2
-              exit 1
-            fi
-          done
-
-          echo 'Remote Schematron tests passed.'
-
-      - name: Run negative remote Schematron tests
-        run: |
-          expectedResultAnchor='<rep:assessment><rep:reject>'
-          unexpectedResultAnchor='<rep:assessment><rep:accept>'
-
-          for invalidInvoiceXmlFilename in tests/assets/*technical*.xml
-          do
-            if ! kositValidationResult=$(curl \
-              --silent \
-              --show-error \
-              --header 'Content-Type: application/xml' \
-              --data-binary "@$invalidInvoiceXmlFilename" \
-              --max-time 120 \
-              --write-out $'\n%{http_code}' \
-              "http://$KOSIT_REMOTE_HOST:$KOSIT_REMOTE_PORT/${invalidInvoiceXmlFilename##*/}")
-            then
-              echo "KoSIT validation request failed for $invalidInvoiceXmlFilename." >&2
-              exit 1
-            fi
-
-            if [ "${kositValidationResult##*$'\n'}" != '406' ] ||
-              [[ "${kositValidationResult%$'\n'*}" != *"$expectedResultAnchor"* ]] ||
-              [[ "${kositValidationResult%$'\n'*}" == *"$unexpectedResultAnchor"* ]]
-            then
-              echo "KoSIT returned an unexpected result for $invalidInvoiceXmlFilename." >&2
-              exit 1
-            fi
-          done
-
-          echo 'Negative remote Schematron tests passed.'
-
-      - name: Run remote veraPDF tests
-        run: |
-          expectedResultAnchor='<validationReports compliant="1" nonCompliant="0" failedJobs="0">1</validationReports>'
-
-          for pdfFilename in \
-            tests/assets/00_case_comfort_simple.pdf \
-            tests/assets/00_case_extended_simple.pdf
-          do
-            if ! veraPdfValidationResult=$(curl \
-              --silent \
-              --show-error \
-              --header 'Accept: application/xml' \
-              --form "file=@$pdfFilename;type=application/pdf" \
-              --max-time 120 \
-              --write-out $'\n%{http_code}' \
-              "http://$VERAPDF_REMOTE_HOST:$VERAPDF_REMOTE_PORT/api/validate/3b")
-            then
-              echo "veraPDF validation request failed for $pdfFilename." >&2
-              exit 1
-            fi
-
-            if [ "${veraPdfValidationResult##*$'\n'}" != '200' ] ||
-              [[ "${veraPdfValidationResult%$'\n'*}" != *"$expectedResultAnchor"* ]]
-            then
-              echo "veraPDF returned an unexpected result for $pdfFilename." >&2
-              exit 1
-            fi
-          done
-
-          echo 'Remote veraPDF tests passed.'
-
-      - name: Run negative remote veraPDF tests
-        run: |
-          unexpectedResultAnchor='<validationReports compliant="1" nonCompliant="0" failedJobs="0">1</validationReports>'
-
-          for validationCase in \
-            'tests/assets/pdf_plain.pdf|<validationReports compliant="0" nonCompliant="1" failedJobs="0">1</validationReports>' \
-            'tests/assets/pdf_broken.pdf|<validationReports compliant="0" nonCompliant="0" failedJobs="1">1</validationReports>'
-          do
-            invalidPdfFilename="${validationCase%%|*}"
-            expectedResultAnchor="${validationCase#*|}"
-
-            if ! veraPdfValidationResult=$(curl \
-              --silent \
-              --show-error \
-              --header 'Accept: application/xml' \
-              --form "file=@$invalidPdfFilename;type=application/pdf" \
-              --max-time 120 \
-              --write-out $'\n%{http_code}' \
-              "http://$VERAPDF_REMOTE_HOST:$VERAPDF_REMOTE_PORT/api/validate/3b")
-            then
-              echo "veraPDF validation request failed for $invalidPdfFilename." >&2
-              exit 1
-            fi
-
-            if [ "${veraPdfValidationResult##*$'\n'}" != '200' ] ||
-              [[ "${veraPdfValidationResult%$'\n'*}" != *"$expectedResultAnchor"* ]] ||
-              [[ "${veraPdfValidationResult%$'\n'*}" == *"$unexpectedResultAnchor"* ]]
-            then
-              echo "veraPDF returned an unexpected result for $invalidPdfFilename." >&2
-              exit 1
-            fi
-          done
-
-          echo 'Negative remote veraPDF tests passed.'
-
-      - name: Package release artifacts
-        run: |
-          zip -r build/dist/builddoc.zip build/builddoc build/coverage build/coverage-html build/logs
-
-      - name: Publish unit test results
-        continue-on-error: true
-        if: always()
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        with:
-          files: build/logs/junit.xml
-          comment_mode: ${{ github.event_name == 'pull_request' && 'failures' || 'always' }}
-
-      - name: Publish coverage summary
-        continue-on-error: true
-        if: always()
-        run: php make/genbuildcoveragesummary.php --summary-file="$GITHUB_STEP_SUMMARY" --clover-file="build/logs/clover.xml" --crap4j-file="build/logs/crap4j.xml"
-
-      - name: Publish build log artifacts
-        continue-on-error: true
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: Build log artifacts for PHP 8.5 (Release)
-          path: build/logs
-          if-no-files-found: error
-
       - name: Generate release notes
         run: |
-          curr_tag="$GITHUB_REF_NAME"
-          prev_tag=$(git tag -l --sort=-v:refname | grep -Fxv "$curr_tag" | sed -n '1p')
+          mkdir -p build
 
-          if [ -z "$prev_tag" ]; then
-            prev_tag=$(git rev-list --max-parents=0 HEAD)
+          currentTag="$GITHUB_REF_NAME"
+          currentCommit=$(git rev-list -n 1 "$currentTag")
+          previousTag=$(git describe --tags --match 'v*' --abbrev=0 "${currentCommit}^" 2>/dev/null || true)
+
+          echo "Previous tag .... ${previousTag:-<none>}"
+          echo "Current tag ..... $currentTag"
+
+          if [ -n "$previousTag" ]; then
+            releaseRange="$previousTag..$currentTag"
+          else
+            releaseRange="$currentTag"
           fi
 
-          echo "Previous tag .... $prev_tag"
-          echo "Current tag ..... $curr_tag"
-
-          git log --no-merges --pretty=format:'- %s (%an)' "$prev_tag..$curr_tag" \
-            | grep -Ev '^\- \[INFR\]|\- \[CS\] |\- \[DOC\] ' \
-            | sed -E 's/^- (#.*)/- [ENH] \1/' \
-            > build/releasenotes.txt || true
+          git log --no-merges --pretty=format:'- %s (%an)' "$releaseRange" \
+            | awk '
+                /^- \[(INFR|CS|DOC)\] / { next }
+                /^- #/ { sub(/^- /, "- [ENH] ") }
+                { print }
+              ' \
+            > build/releasenotes.txt
 
           touch build/releasenotes.txt
-          ls -l build/
-          ls -l build/releasenotes.txt
           cat build/releasenotes.txt
 
       - name: Create GitHub release
         uses: ncipollo/release-action@v1.21.0
         with:
-          artifacts: build/dist/*
-          artifactErrorsFailBuild: true
+          tag: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
           immutableCreate: true
+          skipIfReleaseExists: true
           bodyFile: build/releasenotes.txt
