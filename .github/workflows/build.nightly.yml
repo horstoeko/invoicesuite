@@ -58,7 +58,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.5'
-          extensions: dom, curl, fileinfo, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json
+          extensions: dom, curl, fileinfo, libxml, mbstring, simplexml, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json
           tools: composer:v2
           coverage: none
           ini-values: memory_limit=-1
@@ -67,7 +67,7 @@ jobs:
       - name: Install Composer dependencies
         uses: ramsey/composer-install@v4
         with:
-          dependency-versions: locked
+          dependency-versions: highest
           composer-options: --prefer-dist
           require-lock-file: false
         env:
@@ -81,7 +81,7 @@ jobs:
           mkdir -p build/phpunit-cache
           mkdir -p build/rector-cache
 
-      - name: Run parallel lint
+      - name: Run parallel lint (PHP 8.x)
         run: vendor/bin/parallel-lint src tests
 
       - name: Restore quality tools cache
