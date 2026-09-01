@@ -55,9 +55,7 @@ class InvoiceSuiteClassFinder
      */
     public static function factory(): static
     {
-        if (is_null(static::$invoiceSuiteClassFinder)) {
-            static::$invoiceSuiteClassFinder = new static();
-        }
+        static::$invoiceSuiteClassFinder ??= new static();
 
         return static::$invoiceSuiteClassFinder;
     }

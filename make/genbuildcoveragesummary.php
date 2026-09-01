@@ -269,15 +269,13 @@ foreach ($xpath->query('//file') as $fileNode) {
 
     $package = $resolvePackage($filePath);
 
-    if (!isset($packageRows[$package])) {
-        $packageRows[$package] = [
-            'package' => $package,
-            'files' => 0,
-            'statements' => 0,
-            'coveredStatements' => 0,
-            'uncoveredStatements' => 0,
-        ];
-    }
+    $packageRows[$package] ??= [
+        'package' => $package,
+        'files' => 0,
+        'statements' => 0,
+        'coveredStatements' => 0,
+        'uncoveredStatements' => 0,
+    ];
 
     ++$packageRows[$package]['files'];
     $packageRows[$package]['statements'] += $fileStatements;

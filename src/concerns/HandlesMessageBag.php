@@ -44,9 +44,7 @@ trait HandlesMessageBag
      */
     public function getMessageBag(): InvoiceSuiteMessageBag
     {
-        if (null === $this->messageBag) {
-            $this->messageBag = new InvoiceSuiteMessageBag();
-        }
+        $this->messageBag ??= new InvoiceSuiteMessageBag();
 
         return $this->messageBag;
     }

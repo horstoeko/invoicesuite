@@ -943,19 +943,17 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     ) {
         $vatGroup = InvoiceSuiteStringUtils::md5($taxCategoryCode . '_' . $taxTypeCode . '_' . InvoiceSuiteStringUtils::numberFormat($taxPercent, 10, '_', '__'));
 
-        if (!isset($this->vatBreakdown[$vatGroup])) {
-            $this->vatBreakdown[$vatGroup] = [
-                self::VT_TAXCATEGORY => $taxCategoryCode,
-                self::VT_TAXTYPE => $taxTypeCode,
-                self::VT_TAXPERCENT => $taxPercent,
-                self::VT_LINETOTALBASISAMOUNT => 0.0,
-                self::VT_ALLOWANCEAMOUNT => 0.0,
-                self::VT_CHARGEAMOUNT => 0.0,
-                self::VT_ALLOWANCECHARGEAMOUNT => 0.0,
-                self::VT_CALCULATEDAMOUNT => 0.0,
-                self::VT_LOGSERVICECHARGE => 0.0,
-            ];
-        }
+        $this->vatBreakdown[$vatGroup] ??= [
+            self::VT_TAXCATEGORY => $taxCategoryCode,
+            self::VT_TAXTYPE => $taxTypeCode,
+            self::VT_TAXPERCENT => $taxPercent,
+            self::VT_LINETOTALBASISAMOUNT => 0.0,
+            self::VT_ALLOWANCEAMOUNT => 0.0,
+            self::VT_CHARGEAMOUNT => 0.0,
+            self::VT_ALLOWANCECHARGEAMOUNT => 0.0,
+            self::VT_CALCULATEDAMOUNT => 0.0,
+            self::VT_LOGSERVICECHARGE => 0.0,
+        ];
 
         $this->vatBreakdown[$vatGroup][self::VT_LINETOTALBASISAMOUNT] += $lineTotalAmount;
         $this->vatBreakdown[$vatGroup][self::VT_ALLOWANCEAMOUNT] += $allowanceAmount;
