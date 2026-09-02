@@ -28,10 +28,6 @@ return RectorConfig::configure()
         __DIR__ . '/../tests',
     ])
     ->withSkip([
-        __DIR__ . '/../build',
-        __DIR__ . '/../vendor',
-        __DIR__ . '/../.git',
-        __DIR__ . '/rector-cache',
         __DIR__ . '/../src/pdfs/zffx/InvoiceSuiteZffxPdfWriter.php',
         __DIR__ . '/../src/cache',
 
@@ -44,7 +40,7 @@ return RectorConfig::configure()
         CallUserFuncArrayToVariadicRector::class,
         RemoveDuplicatedReturnSelfDocblockRector::class,
         RemoveUselessUnionReturnDocblockRector::class,
-        RemoveMixedDocblockOverruledByNativeTypeRector::class
+        RemoveMixedDocblockOverruledByNativeTypeRector::class,
     ])
     ->withPhpVersion(PhpVersion::PHP_82)
     ->withPhpSets(php82: true)
