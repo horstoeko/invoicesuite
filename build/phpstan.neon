@@ -12,7 +12,7 @@ parameters:
         - ../src/concerns/HandlesCallForwarding.php
     level: 6
     treatPhpDocTypesAsCertain: false
-    phpVersion: 80400
+    phpVersion: 80200
     exceptions:
         implicitThrows: false
         check:

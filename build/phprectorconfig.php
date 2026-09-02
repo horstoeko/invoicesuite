@@ -5,13 +5,9 @@ declare(strict_types=1);
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentBaseBuilder;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentBaseReader;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
-use Rector\Caching\ValueObject\Storage\FileCacheStorage;
 use Rector\CodeQuality\Rector\Class_\ConvertStaticToSelfRector;
-use Rector\CodeQuality\Rector\If_\SimplifyIfReturnBoolRector;
 use Rector\CodeQuality\Rector\New_\NewStaticToNewSelfRector;
 use Rector\CodingStyle\Rector\FuncCall\CallUserFuncArrayToVariadicRector;
-use Rector\CodingStyle\Rector\FuncCall\FunctionFirstClassCallableRector;
-use Rector\CodingStyle\Rector\String_\UseClassKeywordForClassNameResolutionRector;
 use Rector\Config\RectorConfig;
 use Rector\DeadCode\Rector\ClassMethod\RemoveDuplicatedReturnSelfDocblockRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveMixedDocblockOverruledByNativeTypeRector;
@@ -45,9 +41,6 @@ return RectorConfig::configure()
         ConvertStaticToSelfRector::class,
         NewStaticToNewSelfRector::class,
         ClassPropertyAssignToConstructorPromotionRector::class,
-        SimplifyIfReturnBoolRector::class,
-        UseClassKeywordForClassNameResolutionRector::class,
-        FunctionFirstClassCallableRector::class,
         CallUserFuncArrayToVariadicRector::class,
         RemoveDuplicatedReturnSelfDocblockRector::class,
         RemoveUselessUnionReturnDocblockRector::class,
@@ -59,10 +52,12 @@ return RectorConfig::configure()
         deadCode: true,
         codeQuality: true,
         codingStyle: true,
-        instanceOf: true,
         phpunitCodeQuality: true,
     )
-    ->withComposerBased(phpunit: true)
+    ->withComposerBased(
+        phpunit: true,
+        symfony: true,
+    )
     ->withRules([
         DeclareStrictTypesRector::class,
     ])
@@ -76,7 +71,6 @@ return RectorConfig::configure()
         InvoiceSuiteAbstractDocumentFormatProvider::class,
     ])
     ->withCache(
-        cacheClass: FileCacheStorage::class,
         cacheDirectory: __DIR__ . '/rector-cache',
     )
     ->withParallel(
@@ -85,4 +79,5 @@ return RectorConfig::configure()
         jobSize: 10,
     )
     ->withTypeCoverageLevel(24)
-    ->withTypeCoverageDocblockLevel(14);
+    ->withTypeCoverageDocblockLevel(14)
+    ->reportUnusedSkips();
