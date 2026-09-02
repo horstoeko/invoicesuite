@@ -381,7 +381,7 @@ final class UtilsTest extends TestCase
     {
         $variable = [1, 2, 3];
 
-        $filtered = InvoiceSuiteArrayUtils::filter($variable, static fn ($item) => 2 == $item);
+        $filtered = InvoiceSuiteArrayUtils::filter($variable, static fn ($item): bool => 2 == $item);
 
         $this->assertCount(1, $filtered);
         $this->assertArrayNotHasKey(0, $filtered);
@@ -433,7 +433,7 @@ final class UtilsTest extends TestCase
     {
         $variable = ['Jim', 'Jack', 'John'];
 
-        $mapped = InvoiceSuiteArrayUtils::map(static fn ($item) => sprintf('My name is %s', $item), $variable);
+        $mapped = InvoiceSuiteArrayUtils::map(static fn ($item): string => sprintf('My name is %s', $item), $variable);
 
         $this->assertSame(['My name is Jim', 'My name is Jack', 'My name is John'], $mapped);
     }
@@ -505,7 +505,7 @@ final class UtilsTest extends TestCase
     {
         $variable = ['John', 'Jack', 'Jim'];
 
-        InvoiceSuiteArrayUtils::sortWithCallback($variable, static fn ($a, $b) => strcmp((string) $a, (string) $b));
+        InvoiceSuiteArrayUtils::sortWithCallback($variable, static fn ($a, $b): int => strcmp((string) $a, (string) $b));
 
         $this->assertSame(['Jack', 'Jim', 'John'], $variable);
     }

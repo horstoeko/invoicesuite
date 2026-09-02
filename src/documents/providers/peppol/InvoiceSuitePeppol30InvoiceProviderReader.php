@@ -12702,7 +12702,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
                     InvoiceSuiteArrayUtils::ensure(
                         $this->getUblRootObject()->getAccountingSupplierParty()?->getParty()?->getPartyIdentification() ?? []
                     ),
-                    static fn (PartyIdentificationType $partyIdentification) => ($partyIdentification->getID()?->getSchemeID() ?? '') === ''
+                    static fn (PartyIdentificationType $partyIdentification): bool => ($partyIdentification->getID()?->getSchemeID() ?? '') === ''
                 )
             );
     }
@@ -12720,7 +12720,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
                     InvoiceSuiteArrayUtils::ensure(
                         $this->getUblRootObject()->getAccountingSupplierParty()?->getParty()?->getPartyIdentification() ?? []
                     ),
-                    static fn (PartyIdentificationType $partyIdentification) => ($partyIdentification->getID()?->getSchemeID() ?? '') !== ''
+                    static fn (PartyIdentificationType $partyIdentification): bool => ($partyIdentification->getID()?->getSchemeID() ?? '') !== ''
                 )
             );
     }
@@ -12738,7 +12738,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
                     InvoiceSuiteArrayUtils::ensure(
                         $this->getUblRootObject()->getAccountingCustomerParty()?->getParty()?->getPartyIdentification() ?? []
                     ),
-                    static fn (PartyIdentificationType $partyIdentification) => ($partyIdentification->getID()?->getSchemeID() ?? '') === ''
+                    static fn (PartyIdentificationType $partyIdentification): bool => ($partyIdentification->getID()?->getSchemeID() ?? '') === ''
                 )
             );
     }
@@ -12756,7 +12756,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
                     InvoiceSuiteArrayUtils::ensure(
                         $this->getUblRootObject()->getAccountingCustomerParty()?->getParty()?->getPartyIdentification() ?? []
                     ),
-                    static fn (PartyIdentificationType $partyIdentification) => ($partyIdentification->getID()?->getSchemeID() ?? '') !== ''
+                    static fn (PartyIdentificationType $partyIdentification): bool => ($partyIdentification->getID()?->getSchemeID() ?? '') !== ''
                 )
             );
     }
@@ -12774,7 +12774,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
                     InvoiceSuiteArrayUtils::ensure(
                         $this->getUblRootObject()->firstDelivery()?->getDeliveryLocation()?->getID() ?? []
                     ),
-                    static fn (ID $partyIdentification) => ($partyIdentification->getSchemeID() ?? '') === ''
+                    static fn (ID $partyIdentification): bool => ($partyIdentification->getSchemeID() ?? '') === ''
                 )
             );
     }
@@ -12792,7 +12792,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
                     InvoiceSuiteArrayUtils::ensure(
                         $this->getUblRootObject()->firstDelivery()?->getDeliveryLocation()?->getID() ?? []
                     ),
-                    static fn (ID $partyIdentification) => ($partyIdentification->getSchemeID() ?? '') !== ''
+                    static fn (ID $partyIdentification): bool => ($partyIdentification->getSchemeID() ?? '') !== ''
                 )
             );
     }
@@ -12810,7 +12810,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
                     InvoiceSuiteArrayUtils::ensure(
                         $this->getUblRootObject()->getPayeeParty()?->getPartyIdentification() ?? []
                     ),
-                    static fn (PartyIdentificationType $partyIdentification) => ($partyIdentification->getID()?->getSchemeID() ?? '') === ''
+                    static fn (PartyIdentificationType $partyIdentification): bool => ($partyIdentification->getID()?->getSchemeID() ?? '') === ''
                 )
             );
     }
@@ -12828,7 +12828,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
                     InvoiceSuiteArrayUtils::ensure(
                         $this->getUblRootObject()->getPayeeParty()?->getPartyIdentification() ?? []
                     ),
-                    static fn (PartyIdentificationType $partyIdentification) => ($partyIdentification->getID()?->getSchemeID() ?? '') !== ''
+                    static fn (PartyIdentificationType $partyIdentification): bool => ($partyIdentification->getID()?->getSchemeID() ?? '') !== ''
                 )
             );
     }
@@ -12847,7 +12847,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
             ?->getPartyIdentification();
 
         return InvoiceSuiteArrayUtils::values(
-            InvoiceSuiteArrayUtils::filter($partyIdentifications ?? [], static fn (PartyIdentification $id) => InvoiceSuiteStringUtils::equalsNoCase($id->getID()?->getSchemeID() ?? '', 'SEPA'))
+            InvoiceSuiteArrayUtils::filter($partyIdentifications ?? [], static fn (PartyIdentification $id): bool => InvoiceSuiteStringUtils::equalsNoCase($id->getID()?->getSchemeID() ?? '', 'SEPA'))
         );
     }
 }

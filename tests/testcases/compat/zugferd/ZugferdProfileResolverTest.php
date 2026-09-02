@@ -16,7 +16,7 @@ use Throwable;
 
 final class ZugferdProfileResolverTest extends TestCase
 {
-    public function testResolveEn16931()
+    public function testResolveEn16931(): void
     {
         $resolved = ZugferdProfileResolver::resolve($this->deliverEn16931Header());
 
@@ -48,14 +48,14 @@ final class ZugferdProfileResolverTest extends TestCase
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['schematronfilename'], $resolved[1]['schematronfilename']);
     }
 
-    public function testResolveProfileIdEn16931()
+    public function testResolveProfileIdEn16931(): void
     {
         $resolved = ZugferdProfileResolver::resolveProfileId($this->deliverEn16931Header());
 
         $this->assertSame(ZugferdProfiles::PROFILE_EN16931, $resolved);
     }
 
-    public function testResolveProfileDefEn16931()
+    public function testResolveProfileDefEn16931(): void
     {
         $resolved = ZugferdProfileResolver::resolveProfileDef($this->deliverEn16931Header());
 
@@ -82,7 +82,7 @@ final class ZugferdProfileResolverTest extends TestCase
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['schematronfilename'], $resolved['schematronfilename']);
     }
 
-    public function testResolveProfileDefOldZF20Basic()
+    public function testResolveProfileDefOldZF20Basic(): void
     {
         $resolved = ZugferdProfileResolver::resolveProfileDef($this->deliverOldZF20BasicProfile());
 
@@ -109,7 +109,7 @@ final class ZugferdProfileResolverTest extends TestCase
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASIC]['schematronfilename'], $resolved['schematronfilename']);
     }
 
-    public function testResolveProfileDefOldZF20BasicWl()
+    public function testResolveProfileDefOldZF20BasicWl(): void
     {
         $resolved = ZugferdProfileResolver::resolveProfileDef($this->deliverOldZF20BasicWlProfile());
 
@@ -136,7 +136,7 @@ final class ZugferdProfileResolverTest extends TestCase
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASICWL]['schematronfilename'], $resolved['schematronfilename']);
     }
 
-    public function testResolveProfileDefOldZF20Minimum()
+    public function testResolveProfileDefOldZF20Minimum(): void
     {
         $resolved = ZugferdProfileResolver::resolveProfileDef($this->deliverOldZF20MinimumProfile());
 
@@ -163,7 +163,7 @@ final class ZugferdProfileResolverTest extends TestCase
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_MINIMUM]['schematronfilename'], $resolved['schematronfilename']);
     }
 
-    public function testResolveProfileDefOldZF20Extended()
+    public function testResolveProfileDefOldZF20Extended(): void
     {
         $resolved = ZugferdProfileResolver::resolveProfileDef($this->deliverOldZF20ExtendedProfile());
 
@@ -190,7 +190,7 @@ final class ZugferdProfileResolverTest extends TestCase
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EXTENDED]['schematronfilename'], $resolved['schematronfilename']);
     }
 
-    public function testResolveUnknownProfile()
+    public function testResolveUnknownProfile(): void
     {
         $this->expectException(InvoiceSuiteFormatProviderNotFoundException::class);
         $this->expectExceptionMessage('The format provider with unique id unknown was not found');
@@ -198,7 +198,7 @@ final class ZugferdProfileResolverTest extends TestCase
         ZugferdProfileResolver::resolveProfileId($this->deliverUnknownProfile());
     }
 
-    public function testResolveInvalidXml()
+    public function testResolveInvalidXml(): void
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('The format provider with unique id unknown was not found');
@@ -206,7 +206,7 @@ final class ZugferdProfileResolverTest extends TestCase
         ZugferdProfileResolver::resolveProfileId($this->deliverInvalidXml());
     }
 
-    public function testResolveProfileByIdEn16931()
+    public function testResolveProfileByIdEn16931(): void
     {
         $resolved = ZugferdProfileResolver::resolveById(ZugferdProfiles::PROFILE_EN16931);
 
@@ -238,7 +238,7 @@ final class ZugferdProfileResolverTest extends TestCase
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['schematronfilename'], $resolved[1]['schematronfilename']);
     }
 
-    public function testResolveProfileDefByIdEn16931()
+    public function testResolveProfileDefByIdEn16931(): void
     {
         $resolved = ZugferdProfileResolver::resolveProfileDefById(ZugferdProfiles::PROFILE_EN16931);
 
@@ -265,7 +265,7 @@ final class ZugferdProfileResolverTest extends TestCase
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['schematronfilename'], $resolved['schematronfilename']);
     }
 
-    public function testResolveProfileDefByIdUnknown()
+    public function testResolveProfileDefByIdUnknown(): void
     {
         $this->expectException(InvoiceSuiteUnknownProfileException::class);
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::UNKNOWN_PROFILE);
@@ -274,7 +274,7 @@ final class ZugferdProfileResolverTest extends TestCase
         ZugferdProfileResolver::resolveProfileDefById(-1);
     }
 
-    public function testResolveNotXml()
+    public function testResolveNotXml(): void
     {
         // Test clear LibXml Errors, when error previously occourred (See issue #133)
 

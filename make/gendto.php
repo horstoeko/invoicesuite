@@ -187,7 +187,7 @@ function gendto(array $definitions): void
         $constructor->addComment('');
 
         if (isset($definition['extends'])) {
-            $baseDefinition = array_filter($definitions, static fn ($def) => 0 === strcasecmp(basename($definition['extends']), (string) $def['class']));
+            $baseDefinition = array_filter($definitions, static fn ($def): bool => 0 === strcasecmp(basename($definition['extends']), (string) $def['class']));
 
             $baseDefinition = reset($baseDefinition);
 

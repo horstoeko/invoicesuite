@@ -340,7 +340,7 @@ function markdownToHtml(string $md): string
                 $row = trim($row, '|');
                 $parts = array_map('trim', explode('|', $row));
 
-                return array_map(static fn ($c) => str_replace('\|', '|', $c), $parts);
+                return array_map(static fn ($c): string => str_replace('\|', '|', $c), $parts);
             };
 
             $hCells = $parseRow($header);

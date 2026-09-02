@@ -4121,7 +4121,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
 
         $paymentDiscountDays = InvoiceSuiteArrayUtils::filter(
             $paymentDiscountDays,
-            static fn ($k) => isset($paymentDiscountPercents[$k]),
+            static fn ($k): bool => isset($paymentDiscountPercents[$k]),
             ARRAY_FILTER_USE_KEY
         );
 

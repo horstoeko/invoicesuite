@@ -65,7 +65,7 @@ trait HandlesObjectFlags
 
         $this->objectFlags = InvoiceSuiteArrayUtils::filter(
             $this->objectFlags,
-            static fn ($currentFlag) => !InvoiceSuiteStringUtils::equalsNoCase((string) $currentFlag, $flag)
+            static fn ($currentFlag): bool => !InvoiceSuiteStringUtils::equalsNoCase((string) $currentFlag, $flag)
         );
 
         return $this;
@@ -83,7 +83,7 @@ trait HandlesObjectFlags
         return !InvoiceSuiteArrayUtils::empty(
             InvoiceSuiteArrayUtils::filter(
                 $this->objectFlags,
-                static fn ($currentFlag) => InvoiceSuiteStringUtils::equalsNoCase((string) $currentFlag, $flag)
+                static fn ($currentFlag): bool => InvoiceSuiteStringUtils::equalsNoCase((string) $currentFlag, $flag)
             )
         );
     }

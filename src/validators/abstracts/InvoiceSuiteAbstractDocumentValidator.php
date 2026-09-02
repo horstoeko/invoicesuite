@@ -215,7 +215,7 @@ abstract class InvoiceSuiteAbstractDocumentValidator
 
         $formatProviders = InvoiceSuiteArrayUtils::filter(
             $this->getRegisteredDocumentFormatProviders(),
-            fn ($formatProvider) => (
+            fn ($formatProvider): bool => (
                 $formatProvider->getIsSatisfiableBySerializedContent($fromDocumentContent)
                 && $this->checkFormatProviderRequirements($formatProvider)
             )

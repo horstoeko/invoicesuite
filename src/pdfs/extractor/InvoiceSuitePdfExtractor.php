@@ -201,7 +201,7 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
 
             $fileSpecs = InvoiceSuiteArrayUtils::filter(
                 $fileSpecs,
-                static fn ($fileSpec) => $fileSpec->has('F') && $fileSpec->has('EF')
+                static fn ($fileSpec): bool => $fileSpec->has('F') && $fileSpec->has('EF')
             );
 
             $fileSpecs = InvoiceSuiteArrayUtils::filter(
@@ -228,7 +228,7 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
 
         $fileSpecs = InvoiceSuiteArrayUtils::filter(
             $fileSpecs,
-            static fn ($fileSpec) => !is_null($fileSpec->getEmbeddedFile())
+            static fn ($fileSpec): bool => !is_null($fileSpec->getEmbeddedFile())
         );
 
         foreach ($fileSpecs as $fileSpec) {

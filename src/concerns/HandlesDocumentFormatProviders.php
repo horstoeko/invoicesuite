@@ -84,7 +84,7 @@ trait HandlesDocumentFormatProviders
     ) {
         $formatProvider = InvoiceSuiteArrayUtils::filter(
             $this->registeredDocumentFormatProviders,
-            static fn ($formatProvider) => InvoiceSuiteStringUtils::equalsNoCase($formatProvider->getUniqueId(), $formatProviderUniqueId)
+            static fn ($formatProvider): bool => InvoiceSuiteStringUtils::equalsNoCase($formatProvider->getUniqueId(), $formatProviderUniqueId)
         );
 
         if (InvoiceSuiteArrayUtils::empty($formatProvider)) {

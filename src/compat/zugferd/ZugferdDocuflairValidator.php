@@ -332,7 +332,7 @@ class ZugferdDocuflairValidator
         array $messages
     ): array {
         return InvoiceSuiteArrayUtils::map(
-            static fn (InvoiceSuiteMessageBagItem $messageBagItem) => $messageBagItem->getMessageContent(),
+            static fn (InvoiceSuiteMessageBagItem $messageBagItem): string => $messageBagItem->getMessageContent(),
             $messages
         );
     }

@@ -644,7 +644,7 @@ class InvoiceSuitePdfDocumentBuilder
 
         $formatProviders = InvoiceSuiteArrayUtils::filter(
             $this->getRegisteredDocumentFormatProviders(),
-            static fn ($formatProvider) => (
+            static fn ($formatProvider): bool => (
                 $formatProvider->getIsSatisfiableBySerializedContent($fromDocumentContent)
                 && $formatProvider->getIsPdfSupportAvailable()
             )

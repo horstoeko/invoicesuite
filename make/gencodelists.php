@@ -161,7 +161,7 @@ function outputLine(string $str): void
 /**
  * Function to download a codelist
  *
- * @param  array $fileToDownload
+ * @param  array<string, mixed> $fileToDownload
  * @return void
  */
 function downloadList(array $fileToDownload): void
@@ -209,6 +209,7 @@ function downloadLists(array $filesToDownload): void
 /**
  * Create a code class
  *
+ * @param  array<string, mixed> $fileToDownload
  * @return void
  */
 function createCodeClassFromKositJson(array $fileToDownload): void
@@ -295,7 +296,7 @@ function createCodeClassFromKositJson(array $fileToDownload): void
 
         usort(
             $downloadedContentObjectData,
-            static fn ($a, $b) => strcasecmp((string) $a[$dataSortIndex], (string) $b[$dataSortIndex])
+            static fn ($a, $b): int => strcasecmp((string) $a[$dataSortIndex], (string) $b[$dataSortIndex])
         );
 
         foreach ($downloadedContentObjectData as $line) {
@@ -336,7 +337,7 @@ function createCodeClassFromKositJson(array $fileToDownload): void
 
             usort(
                 $downloadedContentObjectData,
-                static fn ($a, $b) => strcasecmp((string) $a[$dataSortIndex], (string) $b[$dataSortIndex])
+                static fn ($a, $b): int => strcasecmp((string) $a[$dataSortIndex], (string) $b[$dataSortIndex])
             );
 
             foreach ($downloadedContentObjectData as $line) {
@@ -373,7 +374,7 @@ function createCodeClassFromKositJson(array $fileToDownload): void
 
             usort(
                 $downloadedContentObjectData,
-                static fn ($a, $b) => strcasecmp((string) $a[$dataSortIndex], (string) $b[$dataSortIndex])
+                static fn ($a, $b): int => strcasecmp((string) $a[$dataSortIndex], (string) $b[$dataSortIndex])
             );
 
             foreach ($downloadedContentObjectData as $line) {
@@ -448,6 +449,7 @@ function createCodeClassFromKositJson(array $fileToDownload): void
 /**
  * Create a code class
  *
+ * @param  array<string, mixed> $fileToDownload
  * @return void
  */
 function createCodeClassFromCsv(array $fileToDownload): void
@@ -542,7 +544,7 @@ function createCodeClassFromCsv(array $fileToDownload): void
 
         usort(
             $downloadedContentObjectData,
-            static fn ($a, $b) => strcasecmp((string) $a[$dataSortIndex], (string) $b[$dataSortIndex])
+            static fn ($a, $b): int => strcasecmp((string) $a[$dataSortIndex], (string) $b[$dataSortIndex])
         );
 
         foreach ($downloadedContentObjectData as $line) {
@@ -583,7 +585,7 @@ function createCodeClassFromCsv(array $fileToDownload): void
 
             usort(
                 $downloadedContentObjectData,
-                static fn ($a, $b) => strcasecmp((string) $a[$dataSortIndex], (string) $b[$dataSortIndex])
+                static fn ($a, $b): int => strcasecmp((string) $a[$dataSortIndex], (string) $b[$dataSortIndex])
             );
 
             foreach ($downloadedContentObjectData as $line) {
@@ -620,7 +622,7 @@ function createCodeClassFromCsv(array $fileToDownload): void
 
             usort(
                 $downloadedContentObjectData,
-                static fn ($a, $b) => strcasecmp((string) $a[$dataSortIndex], (string) $b[$dataSortIndex])
+                static fn ($a, $b): int => strcasecmp((string) $a[$dataSortIndex], (string) $b[$dataSortIndex])
             );
 
             foreach ($downloadedContentObjectData as $line) {

@@ -88,7 +88,7 @@ class InvoiceSuitePdfDocumentReader implements JsonSerializable
 
             $formatProviders = InvoiceSuiteArrayUtils::filter(
                 $this->getRegisteredDocumentFormatProviders(),
-                static fn ($formatProvider) => (
+                static fn ($formatProvider): bool => (
                     $formatProvider->getIsSatisfiableBySerializedContent($pdfExtractorAttachment->getAttachmentContent())
                     && $formatProvider->getIsPdfSupportAvailable()
                     && $formatProvider->getIsValidPdfAttachmentFilename($pdfExtractorAttachment->getAttachmentFilename())

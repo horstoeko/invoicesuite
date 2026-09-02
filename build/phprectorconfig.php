@@ -76,5 +76,5 @@ return RectorConfig::configure()
         maxNumberOfProcess: 2,
         jobSize: 10,
     )
-    ->withTypeCoverageLevel(0)
-    ->withTypeCoverageDocblockLevel(0);
+    ->withTypeCoverageLevel(9)
+    ->withTypeCoverageDocblockLevel(9);

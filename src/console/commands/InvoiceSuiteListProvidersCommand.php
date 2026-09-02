@@ -59,7 +59,7 @@ class InvoiceSuiteListProvidersCommand extends InvoiceSuiteAbstractCommand
         $this->resolveAvailableDocumentFormatProviders();
 
         $jsonRowsToOutput = InvoiceSuiteArrayUtils::map(
-            static fn (InvoiceSuiteAbstractDocumentFormatProvider $provider) => [
+            static fn (InvoiceSuiteAbstractDocumentFormatProvider $provider): array => [
                 'id' => InvoiceSuiteStringUtils::mbTrimWidth($provider->getUniqueId(), 0, 30, '...'),
                 'description' => InvoiceSuiteStringUtils::mbTrimWidth($provider->getDescription(), 0, 60, '...'),
                 'version' => (string) $provider->getVersion(),
@@ -71,7 +71,7 @@ class InvoiceSuiteListProvidersCommand extends InvoiceSuiteAbstractCommand
         );
 
         $tableRowsToOutput = InvoiceSuiteArrayUtils::map(
-            static fn (InvoiceSuiteAbstractDocumentFormatProvider $provider) => [
+            static fn (InvoiceSuiteAbstractDocumentFormatProvider $provider): array => [
                 InvoiceSuiteStringUtils::mbTrimWidth($provider->getUniqueId(), 0, 30, '...'),
                 InvoiceSuiteStringUtils::mbTrimWidth($provider->getDescription(), 0, 60, '...'),
                 (string) $provider->getVersion(),

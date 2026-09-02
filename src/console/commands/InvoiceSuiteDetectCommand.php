@@ -99,7 +99,7 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
             'documentAttachmentName' => $pdfReader->getInvoiceDocumentAttachment()->getAttachmentFilename(),
             'documentAttachmentMimeType' => $pdfReader->getInvoiceDocumentAttachment()->getAttachmentMimeType(),
             'noOfAdditionalAttachments' => InvoiceSuiteArrayUtils::count($pdfReader->getAdditionalDocumentAttachments()),
-            'additionalAttachments' => InvoiceSuiteArrayUtils::map(static fn ($attachment) => [
+            'additionalAttachments' => InvoiceSuiteArrayUtils::map(static fn ($attachment): array => [
                 'name' => $attachment->getAttachmentFilename(),
                 'mimeType' => $attachment->getAttachmentMimeType(),
             ], $pdfReader->getAdditionalDocumentAttachments()),
