@@ -93,7 +93,7 @@ trait HandlesSafeInvoking
         $instance,
         string $methods,
         $value
-    ) {
+    ): void {
         $methods = InvoiceSuiteStringUtils::explode('.', $methods);
 
         foreach ($methods as $index => $method) {

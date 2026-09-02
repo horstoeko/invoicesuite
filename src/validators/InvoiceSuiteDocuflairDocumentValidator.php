@@ -276,7 +276,7 @@ class InvoiceSuiteDocuflairDocumentValidator extends InvoiceSuiteAbstractDocumen
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws JsonException
      */
-    private function handleHttpSuccess(string $response)
+    private function handleHttpSuccess(string $response): void
     {
         /**
          * @var null|array{

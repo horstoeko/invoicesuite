@@ -8,7 +8,7 @@ if (!function_exists('str_starts_with')) {
 }
 
 if (!function_exists('str_contains')) {
-    function str_contains($haystack, $needle)
+    function str_contains($haystack, $needle): bool
     {
         return str_contains((string) $haystack, (string) $needle);
     }

@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentBaseBuilder;
+use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentBaseReader;
+use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use Rector\Caching\ValueObject\Storage\FileCacheStorage;
 use Rector\CodeQuality\Rector\Class_\ConvertStaticToSelfRector;
 use Rector\CodeQuality\Rector\If_\SimplifyIfReturnBoolRector;
@@ -67,6 +70,11 @@ return RectorConfig::configure()
         importShortClasses: true,
         removeUnusedImports: true,
     )
+    ->withTypeGuardedClasses([
+        InvoiceSuiteAbstractDocumentBaseBuilder::class,
+        InvoiceSuiteAbstractDocumentBaseReader::class,
+        InvoiceSuiteAbstractDocumentFormatProvider::class,
+    ])
     ->withCache(
         cacheClass: FileCacheStorage::class,
         cacheDirectory: __DIR__ . '/rector-cache',
@@ -76,5 +84,5 @@ return RectorConfig::configure()
         maxNumberOfProcess: 2,
         jobSize: 10,
     )
-    ->withTypeCoverageLevel(9)
-    ->withTypeCoverageDocblockLevel(9);
+    ->withTypeCoverageLevel(24)
+    ->withTypeCoverageDocblockLevel(14);

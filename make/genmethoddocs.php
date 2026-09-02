@@ -742,7 +742,7 @@ class BatchMarkDownGenerator
     public static function generate(
         array $classes,
         array $ignoreInheritance = []
-    ) {
+    ): void {
         foreach ($classes as $className => $toFilename) {
             $extractor = new ExtractClass($className, $ignoreInheritance);
             $generator = new MarkDownGenerator($extractor);
