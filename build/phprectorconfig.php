@@ -37,7 +37,9 @@ return RectorConfig::configure()
         ConvertStaticToSelfRector::class,
         NewStaticToNewSelfRector::class,
         ClassPropertyAssignToConstructorPromotionRector::class,
-        CallUserFuncArrayToVariadicRector::class,
+        CallUserFuncArrayToVariadicRector::class => [
+            __DIR__ . '/../src/visualizers/renderers/InvoiceSuiteVisualizerLaravelRenderer.php',
+        ],
         RemoveDuplicatedReturnSelfDocblockRector::class,
         RemoveUselessUnionReturnDocblockRector::class,
         RemoveMixedDocblockOverruledByNativeTypeRector::class,

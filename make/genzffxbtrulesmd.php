@@ -338,7 +338,7 @@ function markdownToHtml(string $md): string
             $parseRow = static function (string $row): array {
                 $row = trim($row);
                 $row = trim($row, '|');
-                $parts = array_map('trim', explode('|', $row));
+                $parts = array_map(trim(...), explode('|', $row));
 
                 return array_map(static fn ($c): string => str_replace('\|', '|', $c), $parts);
             };

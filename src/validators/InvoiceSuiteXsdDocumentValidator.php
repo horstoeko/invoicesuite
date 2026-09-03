@@ -167,11 +167,7 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
             return false;
         }
 
-        if (false === $this->checkXsdFilename()) {
-            return false;
-        }
-
-        return true;
+        return $this->checkXsdFilename();
     }
 
     /**

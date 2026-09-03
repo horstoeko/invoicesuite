@@ -67,7 +67,7 @@ final class InvoiceSuitePdfDocumentReaderTest extends TestCase
     public function testCreateFromContentWithDocumentFormatProviderRejectsExternalCall(): void
     {
         $this->expectException(InvoiceSuiteInternalMethodCallException::class);
-        $this->expectExceptionMessage('horstoeko\invoicesuite\InvoiceSuiteDocumentReader::createFromContentWithDocumentFormatProvider is marked as @internal and may only be called by internal classes.');
+        $this->expectExceptionMessage(InvoiceSuiteDocumentReader::class . '::createFromContentWithDocumentFormatProvider is marked as @internal and may only be called by internal classes.');
 
         InvoiceSuiteDocumentReader::createFromContentWithDocumentFormatProvider(
             InvoiceSuiteFileUtils::getContentFromFile($this->getSampleXmlPath()),
@@ -78,7 +78,7 @@ final class InvoiceSuitePdfDocumentReaderTest extends TestCase
     public function testCreateFromFileWithDocumentFormatProviderRejectsExternalCall(): void
     {
         $this->expectException(InvoiceSuiteInternalMethodCallException::class);
-        $this->expectExceptionMessage('horstoeko\invoicesuite\InvoiceSuiteDocumentReader::createFromFileWithDocumentFormatProvider is marked as @internal and may only be called by internal classes.');
+        $this->expectExceptionMessage(InvoiceSuiteDocumentReader::class . '::createFromFileWithDocumentFormatProvider is marked as @internal and may only be called by internal classes.');
 
         InvoiceSuiteDocumentReader::createFromFileWithDocumentFormatProvider(
             $this->getSampleXmlPath(),

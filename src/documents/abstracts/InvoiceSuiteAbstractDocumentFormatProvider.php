@@ -400,11 +400,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
             return false;
         }
 
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->getPdfDefaultAttachmentFilename())) {
-            return false;
-        }
-
-        return true;
+        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->getPdfDefaultAttachmentFilename());
     }
 
     /**
@@ -430,10 +426,6 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
             return false;
         }
 
-        if (!InvoiceSuiteFileUtils::isReadableFile($this->getValidationXsdFilename())) {
-            return false;
-        }
-
-        return true;
+        return InvoiceSuiteFileUtils::isReadableFile($this->getValidationXsdFilename());
     }
 }

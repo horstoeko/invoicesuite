@@ -11,13 +11,12 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\documents\providers\peppol;
 
-use DateInvalidTimeZoneException;
-use DateMalformedStringException;
 use DateTime;
 use DateTimeZone;
 use DOMElement;
 use DOMException;
 use DOMText;
+use Exception;
 use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use JMS\Serializer\GraphNavigator;
@@ -39,7 +38,7 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
      *
      * @param string $defaultTimezone
      *
-     * @throws DateInvalidTimeZoneException
+     * @throws Exception
      */
     public function __construct(
         string $defaultTimezone = 'UTC'
@@ -355,7 +354,7 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
      * @param  null|string                $data
      * @return null|DateTime
      *
-     * @throws DateMalformedStringException
+     * @throws Exception
      */
     public function deserializeJsonDate(
         JsonDeserializationVisitor $visitor,
@@ -387,7 +386,7 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
      * @param  null|string                $data
      * @return null|DateTime
      *
-     * @throws DateMalformedStringException
+     * @throws Exception
      */
     public function deserializeJsonDateTime(
         JsonDeserializationVisitor $visitor,
@@ -419,7 +418,7 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
      * @param  null|string                $data
      * @return null|DateTime
      *
-     * @throws DateMalformedStringException
+     * @throws Exception
      */
     public function deserializeJsonTime(
         JsonDeserializationVisitor $visitor,
