@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentForma
 use Rector\CodeQuality\Rector\Class_\ConvertStaticToSelfRector;
 use Rector\CodeQuality\Rector\New_\NewStaticToNewSelfRector;
 use Rector\CodingStyle\Rector\FuncCall\CallUserFuncArrayToVariadicRector;
+use Rector\CodingStyle\Rector\FuncCall\FunctionFirstClassCallableRector;
 use Rector\Config\RectorConfig;
 use Rector\DeadCode\Rector\ClassMethod\RemoveDuplicatedReturnSelfDocblockRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveMixedDocblockOverruledByNativeTypeRector;
@@ -38,6 +39,9 @@ return RectorConfig::configure()
         NewStaticToNewSelfRector::class,
         ClassPropertyAssignToConstructorPromotionRector::class,
         CallUserFuncArrayToVariadicRector::class => [
+            __DIR__ . '/../src/visualizers/renderers/InvoiceSuiteVisualizerLaravelRenderer.php',
+        ],
+        FunctionFirstClassCallableRector::class => [
             __DIR__ . '/../src/visualizers/renderers/InvoiceSuiteVisualizerLaravelRenderer.php',
         ],
         RemoveDuplicatedReturnSelfDocblockRector::class,
