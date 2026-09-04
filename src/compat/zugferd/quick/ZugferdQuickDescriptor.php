@@ -953,6 +953,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
             self::VT_ALLOWANCECHARGEAMOUNT => 0.0,
             self::VT_CALCULATEDAMOUNT => 0.0,
             self::VT_LOGSERVICECHARGE => 0.0,
+            self::VT_BASISAMOUNT => 0.0,
         ];
 
         $this->vatBreakdown[$vatGroup][self::VT_LINETOTALBASISAMOUNT] += $lineTotalAmount;
