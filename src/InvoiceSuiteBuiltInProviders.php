@@ -131,6 +131,20 @@ final class InvoiceSuiteBuiltInProviders
     public const PINT_EU_CREDIT_NOTE = 'pinteucreditnote';
 
     /**
+     * Provider unique ID for CTC-FR EXTENDED (AFNOR XP Z12-012) UBL invoice documents.
+     *
+     * @var string
+     */
+    public const CTC_FR_UBL_INVOICE = 'ctcfrublinvoice';
+
+    /**
+     * Provider unique ID for CTC-FR EXTENDED (AFNOR XP Z12-012) UBL credit note documents.
+     *
+     * @var string
+     */
+    public const CTC_FR_UBL_CREDIT_NOTE = 'ctcfrublcreditnote';
+
+    /**
      * Provider unique ID for FatturaPA documents.
      *
      * @var string
@@ -165,6 +179,8 @@ final class InvoiceSuiteBuiltInProviders
             self::PEPPOL_30_SELF_BILLING_CREDIT_NOTE,
             self::PINT_EU_INVOICE,
             self::PINT_EU_CREDIT_NOTE,
+            self::CTC_FR_UBL_INVOICE,
+            self::CTC_FR_UBL_CREDIT_NOTE,
             self::FATTURA_PA,
         ];
     }
