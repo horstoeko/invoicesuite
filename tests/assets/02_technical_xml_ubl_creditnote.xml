@@ -197,6 +197,7 @@
   </cac:Delivery>
   <cac:PaymentMeans>
     <cbc:PaymentMeansCode name="name">typecode</cbc:PaymentMeansCode>
+    <cbc:PaymentDueDate>1970-02-01</cbc:PaymentDueDate>
     <cac:CardAccount>
       <cbc:PrimaryAccountNumberID>financialCardId</cbc:PrimaryAccountNumberID>
       <cbc:NetworkID>mapped-from-cii</cbc:NetworkID>
