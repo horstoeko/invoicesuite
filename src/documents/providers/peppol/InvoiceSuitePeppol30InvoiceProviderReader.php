@@ -3580,7 +3580,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         $documentBuyerOrderReference = $documentBuyerOrderReferences[InvoiceSuitePointerUtils::getValue('documentbuyerorderreference')];
 
         $newReferenceNumber = $documentBuyerOrderReference->getID()?->getValue() ?? '';
-        $newReferenceDate = null;
+        $newReferenceDate = $documentBuyerOrderReference->getIssueDate();
 
         $this->traceMethodExit(__METHOD__);
 
