@@ -65,6 +65,10 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     /**
      * Init context parameter for profile definition
      *
+     * An empty $newProfileId omits the business process (BT-23) entirely instead of emitting
+     * an empty element. CIUS variants such as CTC-FR (AFNOR XP Z12-012) carry a per-invoice
+     * value there rather than a fixed profile URN, so they cannot supply a default.
+     *
      * @param  string $newCustomizationId
      * @param  string $newProfileId
      * @return static
@@ -76,7 +80,12 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         $this->traceMethodEnter(__METHOD__);
 
         $this->getUblRootObject()->getCustomizationIDWithCreate()->setValue($newCustomizationId);
-        $this->getUblRootObject()->getProfileIDWithCreate()->setValue($newProfileId);
+
+        $this->getUblRootObject()->unsetProfileID();
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newProfileId)) {
+            $this->getUblRootObject()->getProfileIDWithCreate()->setValue($newProfileId);
+        }
 
         $this->traceMethodExit(__METHOD__);
 
