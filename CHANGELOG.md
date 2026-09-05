@@ -1,3 +1,14 @@
+## v0.0.29
+
+``Previous version v0.0.28``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :bug:  | [f3427323](https://github.com/horstoeko/invoicesuite/commit/f3427323) | 2026-09-05 18:42:39 CEST | HorstOeko | [FIX] Read credit note payment due dates from UBL PaymentMeans () () | [#27](https://github.com/horstoeko/invoicesuite/issues/27), [#29](https://github.com/horstoeko/invoicesuite/issues/29)
+| :bug:  | [2f8684ec](https://github.com/horstoeko/invoicesuite/commit/2f8684ec) | 2026-09-05 17:53:07 CEST | HorstOeko | [FIX] UBL readers never read cac:OrderReference/cbc:IssueDate () () | [#26](https://github.com/horstoeko/invoicesuite/issues/26), [#28](https://github.com/horstoeko/invoicesuite/issues/28)
+
+:exclamation: _There are 2 internal commit(s)_
+
 ## v0.0.28
 
 ``Previous version v0.0.27``
