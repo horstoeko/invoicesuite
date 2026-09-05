@@ -2233,7 +2233,8 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
         static::$document->getDocumentPaymentTerm($newDescription, $newDueDate, $newMandate);
 
         $this->assertSame('Payment Term Description 1', $newDescription);
-        $this->assertNotInstanceOf(DateTimeInterface::class, $newDueDate);
+        $this->assertInstanceOf(DateTimeInterface::class, $newDueDate);
+        $this->assertSame('19700201', $newDueDate?->format('Ymd'));
         $this->assertSame('', $newMandate);
 
         // Second Payment Term
