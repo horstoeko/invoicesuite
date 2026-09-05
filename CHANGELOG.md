@@ -1,3 +1,16 @@
+## v0.0.28
+
+``Previous version v0.0.27``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [0626a77c](https://github.com/horstoeko/invoicesuite/commit/0626a77c) | 2026-09-05 11:49:34 CEST | HorstOeko | [ENH] Extract EXTENDED-CTC-FR support from InvoiceSuiteZfFxExtendedProvider into dedicated InvoiceSuiteZfFxExtendedCtcFrProvider | 
+| :new:  | [40b0338a](https://github.com/horstoeko/invoicesuite/commit/40b0338a) | 2026-09-04 21:11:25 CEST | Florent Pellet | [ENH] Add extended fr cii support () | [#24](https://github.com/horstoeko/invoicesuite/issues/24)
+| :bug:  | [52f9cf91](https://github.com/horstoeko/invoicesuite/commit/52f9cf91) | 2026-09-04 15:01:38 CEST | HorstOeko | [FIX] Fixed missing initial index VT_BASISAMOUNT in ZugferdQuickDescriptor | 
+| :new_moon:  | [e95710b1](https://github.com/horstoeko/invoicesuite/commit/e95710b1) | 2026-09-03 17:04:46 CEST | HorstOeko | Update funding sources in FUNDING.yml | 
+
+:exclamation: _There are 28 internal commit(s)_
+
 ## v0.0.27
 
 :exclamation: _There are 4 internal commit(s)_
