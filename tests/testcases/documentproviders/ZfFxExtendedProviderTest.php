@@ -40,9 +40,8 @@ final class ZfFxExtendedProviderTest extends TestCase
         $this->assertSame('urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended', $provider->getParameters()['ContextParameter']);
 
         $this->assertIsArray($provider->getParameters()['AlternativeContextParameters']);
-        $this->assertCount(2, $provider->getParameters()['AlternativeContextParameters']);
+        $this->assertCount(1, $provider->getParameters()['AlternativeContextParameters']);
         $this->assertContains('urn:cen.eu:en16931:2017#conformant#urn:zugferd.de:2p0:extended', $provider->getParameters()['AlternativeContextParameters']);
-        $this->assertContains('urn:cen.eu:en16931:2017#conformant#urn.cpro.gouv.fr:1p0:extended-ctc-fr', $provider->getParameters()['AlternativeContextParameters']);
 
         $this->assertIsString($provider->getParameters()['BusinessProcess']);
         $this->assertSame('urn:fdc:peppol.eu:2017:poacc:billing:01:1.0', $provider->getParameters()['BusinessProcess']);
@@ -174,7 +173,7 @@ final class ZfFxExtendedProviderTest extends TestCase
         </rsm:CrossIndustryInvoice>
         XML_WRAP;
 
-        $this->assertTrue($provider->getIsSatisfiableBySerializedContent($xml));
+        $this->assertFalse($provider->getIsSatisfiableBySerializedContent($xml));
 
         $xml = <<<'XML_WRAP'
         <?xml version="1.0" encoding="UTF-8"?>
@@ -187,7 +186,7 @@ final class ZfFxExtendedProviderTest extends TestCase
         </rsm:CrossIndustryInvoice>
         XML_WRAP;
 
-        $this->assertTrue($provider->getIsSatisfiableBySerializedContent($xml));
+        $this->assertFalse($provider->getIsSatisfiableBySerializedContent($xml));
 
         $xml = <<<'XML_WRAP'
         <?xml version="1.0" encoding="UTF-8"?>

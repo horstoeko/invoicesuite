@@ -66,7 +66,6 @@ class InvoiceSuiteZfFxExtendedProvider extends InvoiceSuiteAbstractDocumentForma
             'ContextParameter' => 'urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended',
             'AlternativeContextParameters' => [
                 'urn:cen.eu:en16931:2017#conformant#urn:zugferd.de:2p0:extended',
-                'urn:cen.eu:en16931:2017#conformant#urn.cpro.gouv.fr:1p0:extended-ctc-fr',
             ],
             'BusinessProcess' => 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0',
             'PdfXmpName' => 'EXTENDED',

@@ -61,6 +61,13 @@ final class InvoiceSuiteBuiltInProviders
     public const ZFFX_EXTENDED = 'zffxextended';
 
     /**
+     * Provider unique ID for Factur-X Extended CTC-FR profile.
+     *
+     * @var string
+     */
+    public const ZFFX_EXTENDED_CTC_FR = 'zffxextendedctcfr';
+
+    /**
      * Provider unique ID for XRechnung in CII syntax.
      *
      * @var string
@@ -148,6 +155,7 @@ final class InvoiceSuiteBuiltInProviders
             self::ZFFX_BASIC,
             self::ZFFX_COMFORT,
             self::ZFFX_EXTENDED,
+            self::ZFFX_EXTENDED_CTC_FR,
             self::XRECHNUNG_CII,
             self::XRECHNUNG_UBL_INVOICE,
             self::XRECHNUNG_UBL_CREDIT_NOTE,
