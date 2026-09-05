@@ -19,6 +19,7 @@
   <cac:OrderReference>
     <cbc:ID>BO-1</cbc:ID>
     <cbc:SalesOrderID>SO-1</cbc:SalesOrderID>
+    <cbc:IssueDate>1970-01-01</cbc:IssueDate>
   </cac:OrderReference>
   <cac:BillingReference>
     <cac:InvoiceDocumentReference>

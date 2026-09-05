@@ -188,7 +188,8 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
         static::$document->getDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('BO-1', $newReferenceNumber);
-        $this->assertNotInstanceOf(DateTimeInterface::class, $newReferenceDate);
+        $this->assertInstanceOf(DateTimeInterface::class, $newReferenceDate);
+        $this->assertSame('19700101', $newReferenceDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentBuyerOrderReference());
 
