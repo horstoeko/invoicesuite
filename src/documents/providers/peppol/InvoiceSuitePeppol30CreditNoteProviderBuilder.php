@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
+use horstoeko\invoicesuite\concerns\HandlesKeyValuePairs;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatBuilder;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAllowanceChargeDTO;
@@ -36,6 +37,7 @@ use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cac\PartyIdentification;
+use horstoeko\invoicesuite\documents\providers\peppol\models\cac\PaymentMeans;
 use horstoeko\invoicesuite\documents\providers\peppol\models\main\CreditNote;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
@@ -45,6 +47,8 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstractDocumentFormatBuilder
 {
+    use HandlesKeyValuePairs;
+
     /**
      * {@inheritDoc}
      */
@@ -7736,6 +7740,8 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
             $paymentMean->addOnceToPaymentIDWithCreate()->setValue($newPaymentReference);
         }
 
+        $this->updateDueDates();
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -8137,6 +8143,11 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     /**
      * Set payment term
      *
+     * BT-9 is written even when BT-20 is empty, mirroring the CII builders: the two terms are
+     * independent in EN 16931 (BT-9 is 0..1 on its own) and cac:PaymentTerms is only created
+     * when there actually is a note, since Peppol allows no other child there. For credit
+     * notes BT-9 lives in cac:PaymentMeans/cbc:PaymentDueDate, see updateDueDates().
+     *
      * @param  null|string            $newDescription Text description of the payment terms
      * @param  null|DateTimeInterface $newDueDate     Date by which payment is due
      * @param  null|string            $newMandate     Identification of the mandate reference
@@ -8153,15 +8164,27 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
             ->getUblRootObject()
             ->unsetPaymentTerms();
 
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+        if (
+            InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)
+            && InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDueDate)
+        ) {
+            $this->removeKeyValuePair('duedatefrompaymentterm');
+
             return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
         }
 
-        $this
-            ->getUblRootObject()
-            ->addOnceToPaymentTermsWithCreate()
-            ->addToNoteWithCreate()
-            ->setValue($newDescription);
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            $this
+                ->getUblRootObject()
+                ->addOnceToPaymentTermsWithCreate()
+                ->addToNoteWithCreate()
+                ->setValue($newDescription);
+        }
+
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDueDate)) {
+            $this->addKeyValuePair('duedatefrompaymentterm', $newDueDate, true);
+            $this->updateDueDates();
+        }
 
         $this->traceMethodExit(__METHOD__);
 
@@ -8183,7 +8206,10 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+        if (
+            InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)
+            && InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDueDate)
+        ) {
             return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
         }
 
@@ -11078,5 +11104,38 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         }
 
         return $newTaxRegistrationType;
+    }
+
+    /**
+     * Update the payment due date in the payment means
+     *
+     * EN 16931 binds BT-9 to cac:PaymentMeans/cbc:PaymentDueDate for UBL credit notes,
+     * because the CreditNote schema has no cbc:DueDate of its own. The date is remembered
+     * when the payment term is set and re-applied whenever a payment mean is added, so the
+     * order of the calls does not matter. No cac:PaymentMeans is created on purpose: Peppol
+     * requires cbc:PaymentMeansCode inside it, so synthesizing one would emit an invalid
+     * document.
+     *
+     * @return static
+     */
+    private function updateDueDates(): static
+    {
+        $documentPaymentDueDate = $this->getKeyValuePair('duedatefrompaymentterm', null);
+
+        if (!$documentPaymentDueDate instanceof DateTimeInterface) {
+            return $this;
+        }
+
+        $documentPaymentMeans = $this
+            ->getUblRootObject()
+            ->getPaymentMeans() ?? [];
+
+        $documentFirstPaymentMean = InvoiceSuiteArrayUtils::first($documentPaymentMeans);
+
+        if ($documentFirstPaymentMean instanceof PaymentMeans) {
+            $documentFirstPaymentMean->setPaymentDueDate($documentPaymentDueDate);
+        }
+
+        return $this;
     }
 }

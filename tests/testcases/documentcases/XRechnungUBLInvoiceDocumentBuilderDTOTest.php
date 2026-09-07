@@ -106,6 +106,7 @@ final class XRechnungUBLInvoiceDocumentBuilderDTOTest extends TestCase
                 ->setPercent(19.00))
             ->addPaymentTerm((new InvoiceSuitePaymentTermDTO())
                 ->setDescription('Zahlbar innerhalb 30 Tagen netto bis 15.12.2024, 3% Skonto innerhalb 10 Tagen bis 25.11.2024')
+                ->setDueDate(DateTime::createFromFormat('Ymd', '20241215'))
                 ->setMandate('z3237167126'))
             ->addPaymentMean((new InvoiceSuitePaymentMeanDTO())
                 ->setTypeCode('59')
@@ -358,6 +359,8 @@ final class XRechnungUBLInvoiceDocumentBuilderDTOTest extends TestCase
 
         $this->assertXPathValue('/ubl:Invoice/cac:PaymentTerms/cbc:Note', 'Zahlbar innerhalb 30 Tagen netto bis 15.12.2024, 3% Skonto innerhalb 10 Tagen bis 25.11.2024');
         $this->assertXPathNotExists('(/ubl:Invoice/cac:PaymentTerms/cbc:Note)[2]');
+        $this->assertXPathValue('/ubl:Invoice/cbc:DueDate', '2024-12-15');
+        $this->assertXPathNotExists('(/ubl:Invoice/cbc:DueDate)[2]');
 
         $this->assertXPathValue('/ubl:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', '59');
         $this->assertXPathValue('/ubl:Invoice/cac:PaymentMeans/cac:PaymentMandate/cbc:ID', 'z3237167126');

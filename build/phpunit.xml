@@ -194,6 +194,7 @@
             <file>../tests/testcases/issues/PaymentTermsWithEmptyDescriptionTest.php</file>
             <file>../tests/testcases/issues/PaymentTermsWithEmptyDescriptionCompatTest.php</file>
             <file>../tests/testcases/issues/BuyerOrderReferenceIssueDateTest.php</file>
+            <file>../tests/testcases/issues/CreditNotePaymentDueDateTest.php</file>
         </testsuite>
     </testsuites>
     <coverage cacheDirectory="phpunit-cache/code-coverage" processUncoveredFiles="true">

@@ -137,6 +137,7 @@ final class XRechnungUBLCreditNoteDocumentBuilderDTOTest extends TestCase
             ->addPaymentTerm(
                 (new InvoiceSuitePaymentTermDTO())
                     ->setDescription('Payment within 10 days, 2% discount')
+                    ->setDueDate(DateTime::createFromFormat('Ymd', '20171123'))
             )
             ->addAllowanceCharge(
                 (new InvoiceSuiteAllowanceChargeDTO())
@@ -456,6 +457,8 @@ final class XRechnungUBLCreditNoteDocumentBuilderDTOTest extends TestCase
 
         $this->assertXPathValue('/ubl:CreditNote/cac:PaymentTerms/cbc:Note', 'Payment within 10 days, 2% discount');
         $this->assertXPathNotExists('(/ubl:CreditNote/cac:PaymentTerms/cbc:Note)[2]');
+        $this->assertXPathValue('/ubl:CreditNote/cac:PaymentMeans/cbc:PaymentDueDate', '2017-11-23');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:PaymentMeans/cbc:PaymentDueDate)[2]');
 
         // Allowances/Charges
 

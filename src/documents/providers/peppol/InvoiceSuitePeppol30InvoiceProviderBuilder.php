@@ -8159,6 +8159,13 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     /**
      * Set payment term
      *
+     * BT-9 is written even when BT-20 is empty: the two terms are independent in EN 16931
+     * (BT-9 is 0..1 on its own, and BR-CO-25 asks for either of them) and cac:PaymentTerms is
+     * only created when there actually is a note, since Peppol allows no other child there.
+     * BT-89 stays tied to a non-empty BT-20 on purpose, because updateMandates() writes it
+     * without looking at cbc:PaymentMeansCode, which BR-DE-23-b and BR-DE-24-b forbid outside
+     * a direct debit.
+     *
      * @param  null|string            $newDescription Text description of the payment terms
      * @param  null|DateTimeInterface $newDueDate     Date by which payment is due
      * @param  null|string            $newMandate     Identification of the mandate reference
@@ -8175,15 +8182,20 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             ->getUblRootObject()
             ->unsetPaymentTerms();
 
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+        if (
+            InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)
+            && InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDueDate)
+        ) {
             return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
         }
 
-        $this
-            ->getUblRootObject()
-            ->addOnceToPaymentTermsWithCreate()
-            ->addToNoteWithCreate()
-            ->setValue($newDescription);
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            $this
+                ->getUblRootObject()
+                ->addOnceToPaymentTermsWithCreate()
+                ->addToNoteWithCreate()
+                ->setValue($newDescription);
+        }
 
         if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDueDate)) {
             $this->getUblRootObject()->setDueDate($newDueDate);
@@ -8214,7 +8226,10 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+        if (
+            InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)
+            && InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDueDate)
+        ) {
             return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
         }
 

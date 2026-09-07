@@ -9856,9 +9856,7 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
     public function firstDocumentPaymentTerm(): bool
     {
         return InvoiceSuitePointerUtils::hasFirst(
-            InvoiceSuiteArrayUtils::ensure(
-                $this->getUblRootObject()->getPaymentTerms() ?? []
-            ),
+            $this->resolveDocumentPaymentTerms(),
             'documentpaymentterm'
         );
     }
@@ -9871,9 +9869,7 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
     public function nextDocumentPaymentTerm(): bool
     {
         return InvoiceSuitePointerUtils::hasNext(
-            InvoiceSuiteArrayUtils::ensure(
-                $this->getUblRootObject()->getPaymentTerms() ?? []
-            ),
+            $this->resolveDocumentPaymentTerms(),
             'documentpaymentterm'
         );
     }
@@ -9897,10 +9893,7 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        /**
-         * @var array<PaymentTerms>
-         */
-        $documentPaymentTerms = InvoiceSuiteArrayUtils::ensure($this->getUblRootObject()->getPaymentTerms() ?? []);
+        $documentPaymentTerms = $this->resolveDocumentPaymentTerms();
 
         /**
          * @var PaymentTerms
@@ -9908,21 +9901,8 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         $documentPaymentTerm = $documentPaymentTerms[InvoiceSuitePointerUtils::getValue('documentpaymentterm')];
 
         $newDescription = $documentPaymentTerm->firstNote()?->getValue() ?? '';
-        $newDueDate = null;
+        $newDueDate = $this->resolveDocumentPaymentDueDate();
         $newMandate = '';
-
-        /**
-         * @var array<PaymentMeans>
-         */
-        $documentPaymentMeans = InvoiceSuiteArrayUtils::ensure($this->getUblRootObject()->getPaymentMeans() ?? []);
-
-        $documentPaymentMeansWithDueDate = InvoiceSuiteArrayUtils::filter(
-            $documentPaymentMeans,
-            static fn (PaymentMeans $paymentMean): bool => null !== $paymentMean->getPaymentDueDate()
-        );
-
-        $documentPaymentMean = InvoiceSuiteArrayUtils::first($documentPaymentMeansWithDueDate);
-        $newDueDate = $documentPaymentMean instanceof PaymentMeans ? $documentPaymentMean->getPaymentDueDate() : null;
 
         $this->traceMethodExit(__METHOD__);
 
@@ -12841,5 +12821,59 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         return InvoiceSuiteArrayUtils::values(
             InvoiceSuiteArrayUtils::filter($partyIdentifications ?? [], static fn (PartyIdentification $id): bool => InvoiceSuiteStringUtils::equalsNoCase($id->getID()?->getSchemeID() ?? '', 'SEPA'))
         );
+    }
+
+    /**
+     * Internal helper for resolving the payment terms
+     *
+     * BT-9 is bound to cac:PaymentMeans/cbc:PaymentDueDate for UBL credit notes and is valid
+     * on its own: BR-CO-25 asks for either BT-9 or BT-20, so a document may carry a due date
+     * with no cac:PaymentTerms at all. One empty payment term is exposed in that case, so the
+     * due date stays reachable through the regular payment term iteration.
+     *
+     * @return array<PaymentTerms>
+     */
+    private function resolveDocumentPaymentTerms(): array
+    {
+        /**
+         * @var array<PaymentTerms>
+         */
+        $documentPaymentTerms = InvoiceSuiteArrayUtils::ensure($this->getUblRootObject()->getPaymentTerms() ?? []);
+
+        if ([] !== $documentPaymentTerms) {
+            return $documentPaymentTerms;
+        }
+
+        if (!$this->resolveDocumentPaymentDueDate() instanceof DateTimeInterface) {
+            return [];
+        }
+
+        return [new PaymentTerms()];
+    }
+
+    /**
+     * Internal helper for resolving the payment due date
+     *
+     * The UBL CreditNote schema has no cbc:DueDate, so Peppol binds BT-9 to
+     * cac:PaymentMeans/cbc:PaymentDueDate. The first payment mean carrying one wins, which
+     * also matches UBL-SR-45 allowing the element at most once per document.
+     *
+     * @return null|DateTimeInterface
+     */
+    private function resolveDocumentPaymentDueDate(): ?DateTimeInterface
+    {
+        /**
+         * @var array<PaymentMeans>
+         */
+        $documentPaymentMeans = InvoiceSuiteArrayUtils::ensure($this->getUblRootObject()->getPaymentMeans() ?? []);
+
+        $documentPaymentMeansWithDueDate = InvoiceSuiteArrayUtils::filter(
+            $documentPaymentMeans,
+            static fn (PaymentMeans $paymentMean): bool => $paymentMean->getPaymentDueDate() instanceof DateTimeInterface
+        );
+
+        $documentPaymentMean = InvoiceSuiteArrayUtils::first($documentPaymentMeansWithDueDate);
+
+        return $documentPaymentMean instanceof PaymentMeans ? $documentPaymentMean->getPaymentDueDate() : null;
     }
 }

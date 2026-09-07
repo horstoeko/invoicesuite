@@ -5564,6 +5564,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
 
         $this->assertXPathValue('/ns:CreditNote/cac:PaymentTerms/cbc:Note', 'Term3');
         $this->assertXPathNotExists('/ns:CreditNote/cbc:DueDate');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[1]/cbc:PaymentDueDate', '1970-01-01');
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans[position() > 1]/cbc:PaymentDueDate');
         $this->assertXPathNotExists('(/ns:CreditNote/cac:PaymentTerms/cbc:Note)[2]');
         $this->assertXPathNotExists('(/ns:CreditNote/cbc:DueDate)[2]');
         $this->assertXPathNotExists('(/ns:CreditNote/cac:PaymentTerms/cbc:Note)[3]');

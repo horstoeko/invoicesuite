@@ -9877,9 +9877,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
     public function firstDocumentPaymentTerm(): bool
     {
         return InvoiceSuitePointerUtils::hasFirst(
-            InvoiceSuiteArrayUtils::ensure(
-                $this->getUblRootObject()->getPaymentTerms() ?? []
-            ),
+            $this->resolveDocumentPaymentTerms(),
             'documentpaymentterm'
         );
     }
@@ -9892,9 +9890,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
     public function nextDocumentPaymentTerm(): bool
     {
         return InvoiceSuitePointerUtils::hasNext(
-            InvoiceSuiteArrayUtils::ensure(
-                $this->getUblRootObject()->getPaymentTerms() ?? []
-            ),
+            $this->resolveDocumentPaymentTerms(),
             'documentpaymentterm'
         );
     }
@@ -9918,10 +9914,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        /**
-         * @var array<PaymentTerms>
-         */
-        $documentPaymentTerms = InvoiceSuiteArrayUtils::ensure($this->getUblRootObject()->getPaymentTerms() ?? []);
+        $documentPaymentTerms = $this->resolveDocumentPaymentTerms();
 
         /**
          * @var PaymentTerms
@@ -12849,5 +12842,33 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         return InvoiceSuiteArrayUtils::values(
             InvoiceSuiteArrayUtils::filter($partyIdentifications ?? [], static fn (PartyIdentification $id): bool => InvoiceSuiteStringUtils::equalsNoCase($id->getID()?->getSchemeID() ?? '', 'SEPA'))
         );
+    }
+
+    /**
+     * Internal helper for resolving the payment terms
+     *
+     * BT-9 is bound to cbc:DueDate for UBL invoices and is valid on its own: BR-CO-25 asks for
+     * either BT-9 or BT-20, so a document may carry a due date with no cac:PaymentTerms at all.
+     * One empty payment term is exposed in that case, so the due date stays reachable through
+     * the regular payment term iteration.
+     *
+     * @return array<PaymentTerms>
+     */
+    private function resolveDocumentPaymentTerms(): array
+    {
+        /**
+         * @var array<PaymentTerms>
+         */
+        $documentPaymentTerms = InvoiceSuiteArrayUtils::ensure($this->getUblRootObject()->getPaymentTerms() ?? []);
+
+        if ([] !== $documentPaymentTerms) {
+            return $documentPaymentTerms;
+        }
+
+        if (!$this->getUblRootObject()->getDueDate() instanceof DateTimeInterface) {
+            return [];
+        }
+
+        return [new PaymentTerms()];
     }
 }

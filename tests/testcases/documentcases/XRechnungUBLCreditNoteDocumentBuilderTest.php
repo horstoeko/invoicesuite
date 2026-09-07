@@ -91,7 +91,7 @@ final class XRechnungUBLCreditNoteDocumentBuilderTest extends TestCase
             newPaymentReference: 'Snippet1'
         );
 
-        static::$document->setDocumentPaymentTerm('Payment within 10 days, 2% discount');
+        static::$document->setDocumentPaymentTerm('Payment within 10 days, 2% discount', DateTime::createFromFormat('Ymd', '20171123'));
 
         static::$document->setDocumentAllowanceCharge(
             newChargeIndicator: true,
@@ -353,6 +353,8 @@ final class XRechnungUBLCreditNoteDocumentBuilderTest extends TestCase
 
         $this->assertXPathValue('/ubl:CreditNote/cac:PaymentTerms/cbc:Note', 'Payment within 10 days, 2% discount');
         $this->assertXPathNotExists('(/ubl:CreditNote/cac:PaymentTerms/cbc:Note)[2]');
+        $this->assertXPathValue('/ubl:CreditNote/cac:PaymentMeans/cbc:PaymentDueDate', '2017-11-23');
+        $this->assertXPathNotExists('(/ubl:CreditNote/cac:PaymentMeans/cbc:PaymentDueDate)[2]');
 
         // Allowances/Charges
 
