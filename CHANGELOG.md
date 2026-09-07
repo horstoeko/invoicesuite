@@ -1,3 +1,16 @@
+## v0.0.30
+
+``Previous version v0.0.29``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :bug:  | [94d851e9](https://github.com/horstoeko/invoicesuite/commit/94d851e9) | 2026-09-07 05:09:48 CEST | Florent Pellet | [FIX] Write credit note payment due dates () | [#32](https://github.com/horstoeko/invoicesuite/issues/32)
+| :new:  | [bea308e3](https://github.com/horstoeko/invoicesuite/commit/bea308e3) | 2026-09-06 14:47:16 CEST | HorstOeko | [ENH] A method has been developed to set the context parameters separately via a direct call | 
+| :new:  | [0c2d53f9](https://github.com/horstoeko/invoicesuite/commit/0c2d53f9) | 2026-09-06 13:27:07 CEST | Florent Pellet | [ENH] Write the buyer's order date for the CTC-FR UBL providers () | [#31](https://github.com/horstoeko/invoicesuite/issues/31)
+| :new:  | [ad4f212f](https://github.com/horstoeko/invoicesuite/commit/ad4f212f) | 2026-09-06 07:34:21 CEST | Florent Pellet | [ENH] Added CTC-FR EXTENDED (AFNOR XP Z12-012) UBL invoice and credit note providers () | [#30](https://github.com/horstoeko/invoicesuite/issues/30)
+
+:exclamation: _There is one internal commit_
+
 ## v0.0.29
 
 ``Previous version v0.0.28``
