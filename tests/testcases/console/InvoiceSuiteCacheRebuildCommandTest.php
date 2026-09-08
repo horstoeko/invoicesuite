@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\console;
 
-use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
-use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteClassFinder;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use Symfony\Component\Console\Command\Command;
@@ -40,33 +38,5 @@ final class InvoiceSuiteCacheRebuildCommandTest extends InvoiceSuiteConsoleComma
         $this->assertFileDoesNotExist($obsoleteCacheFilename);
         $this->assertStringContainsString('Cache rebuilt.', $commandTester->getDisplay());
         $this->assertStringContainsString('document format providers found.', $commandTester->getDisplay());
-    }
-
-    /**
-     * Test that the command restricts discovery to the given namespace.
-     *
-     * @return void
-     */
-    public function testCommandRebuildsCacheFilesWithNamespaceFilter(): void
-    {
-        $namespace = 'horstoeko\invoicesuite\documents\providers\peppol';
-        $cacheKey = InvoiceSuiteAbstractDocumentFormatProvider::class . '|' . $namespace;
-        $cacheFilename = InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__, 3), 'src', 'cache', md5((string) preg_replace('/[^a-zA-Z0-9]/', '', sprintf('invoicesuite-cf-%s', $cacheKey))) . '.cache');
-
-        $this->registerFileForTestMethodTeardown($cacheFilename);
-
-        InvoiceSuiteClassFinder::clearCache();
-
-        $commandTester = $this->createCommandTester('invoicesuite:cache:rebuild');
-
-        $exitCode = $commandTester->execute([
-            '--namespace' => [$namespace],
-        ]);
-
-        InvoiceSuiteSettings::setDiscoveryNamespaces([]);
-
-        $this->assertSame(Command::SUCCESS, $exitCode);
-        $this->assertFileExists($cacheFilename);
-        $this->assertStringContainsString('Cache rebuilt. 2 document format providers found.', $commandTester->getDisplay());
     }
 }
