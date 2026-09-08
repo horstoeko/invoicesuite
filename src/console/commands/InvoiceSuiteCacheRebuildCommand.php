@@ -16,6 +16,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteClassFinder;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
+use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Class representing a console command that rebuilds the InvoiceSuite cache.
@@ -38,20 +39,25 @@ class InvoiceSuiteCacheRebuildCommand extends InvoiceSuiteAbstractCommand
     {
         $this->setName('invoicesuite:cache:rebuild');
         $this->setDescription('Rebuild InvoiceSuite class finder cache files');
+        $this->addOption('namespace', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Restrict document format provider discovery to this namespace (repeatable)');
     }
 
     /**
      * Execute command.
      *
      * @return int
+     *
+     * @throws InvalidArgumentException
      */
     protected function handle(): int
     {
         InvoiceSuiteClassFinder::clearCache();
 
+        $discoveryNamespaces = $this->getStringArrayOption('namespace');
+
         $documentFormatProviderClasses = InvoiceSuiteClassFinder::factory()
             ->init()
-            ->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class);
+            ->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, false, $discoveryNamespaces);
 
         return $this->outputLineLF(InvoiceSuiteStringUtils::sprintf(
             '<info>Cache rebuilt. %d document format providers found.</info>',

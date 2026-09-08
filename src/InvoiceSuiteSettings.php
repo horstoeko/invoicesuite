@@ -81,6 +81,14 @@ class InvoiceSuiteSettings
     protected static $serializerCacheDirectory = '';
 
     /**
+     * Namespaces to restrict document format provider discovery to. Empty means
+     * no restriction (scan every class known to the composer classloader)
+     *
+     * @var array<int,string>
+     */
+    protected static $discoveryNamespaces = [];
+
+    /**
      * Get the number of decimals to use for amount values
      *
      * @return int
@@ -312,6 +320,30 @@ class InvoiceSuiteSettings
     public static function hasSerializerCacheDirectory(): bool
     {
         return false === InvoiceSuiteStringUtils::stringIsNullOrEmpty(static::$serializerCacheDirectory);
+    }
+
+    /**
+     * Set the namespaces to restrict document format provider discovery to. Pass an
+     * empty array to disable filtering and scan every class known to the composer classloader
+     *
+     * @param  array<int,string> $discoveryNamespaces
+     * @return void
+     */
+    public static function setDiscoveryNamespaces(
+        array $discoveryNamespaces
+    ): void {
+        static::$discoveryNamespaces = $discoveryNamespaces;
+    }
+
+    /**
+     * Get the namespaces which document format provider discovery is restricted to. Empty
+     * means no restriction (scan every class known to the composer classloader)
+     *
+     * @return array<int,string>
+     */
+    public static function getDiscoveryNamespaces(): array
+    {
+        return static::$discoveryNamespaces;
     }
 
     /**

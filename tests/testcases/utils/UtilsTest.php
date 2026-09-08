@@ -1266,8 +1266,38 @@ final class UtilsTest extends TestCase
         $this->assertFileExists($cacheFullFilename);
 
         $this->assertFileExists(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache'), 'fb2c9c3d46a7d2650a8813477106ebca.cache'));
+
+        // Discovery namespaces
+
+        $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, true, ['horstoeko\invoicesuite\documents\providers\peppol']);
+
+        // @phpstan-ignore method.alreadyNarrowedType
+        $this->assertIsArray($classNames);
+        $this->assertCount(2, $classNames);
+
+        $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, true, ['horstoeko\invoicesuite\tests\doesnotexist']);
+
+        // @phpstan-ignore method.alreadyNarrowedType
+        $this->assertIsArray($classNames);
+        $this->assertEmpty($classNames);
+
+        $peppolNamespace = 'horstoeko\invoicesuite\documents\providers\peppol';
+        $peppolCacheKey = InvoiceSuiteAbstractDocumentFormatProvider::class . '|' . $peppolNamespace;
+        $peppolCacheFilename = md5((string) preg_replace('/[^a-zA-Z0-9]/', '', sprintf('invoicesuite-cf-%s', $peppolCacheKey))) . '.cache';
+        $peppolCacheFullFilename = __DIR__ . '/../../../src/cache/' . $peppolCacheFilename;
+        @unlink($peppolCacheFullFilename);
+
+        $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, false, ['horstoeko\invoicesuite\documents\providers\peppol']);
+
+        // @phpstan-ignore method.alreadyNarrowedType
+        $this->assertIsArray($classNames);
+        $this->assertCount(2, $classNames);
+        $this->assertFileExists($peppolCacheFullFilename);
+        $this->assertFileExists($cacheFullFilename);
+
         InvoiceSuiteClassFinder::clearCache();
         $this->assertFileDoesNotExist(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache'), 'fb2c9c3d46a7d2650a8813477106ebca.cache'));
+        $this->assertFileDoesNotExist($peppolCacheFullFilename);
     }
 
     public function testInvoiceSuiteFileUtils(): void

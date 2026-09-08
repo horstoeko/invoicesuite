@@ -6,6 +6,7 @@ namespace horstoeko\invoicesuite\concerns;
 
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteClassFinder;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
@@ -115,14 +116,18 @@ trait HandlesDocumentFormatProviders
     }
 
     /**
-     * Initialize additionall format providers
+     * Initialize additional format providers
      *
      * @return static
      */
     public function resolveAvailableDocumentFormatProviders(): static
     {
         $classFinder = InvoiceSuiteClassFinder::factory();
-        $classesWhichAreFormatProviders = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class);
+        $classesWhichAreFormatProviders = $classFinder->getClassesWhenItsSubClassOf(
+            InvoiceSuiteAbstractDocumentFormatProvider::class,
+            false,
+            InvoiceSuiteSettings::getDiscoveryNamespaces()
+        );
 
         foreach ($classesWhichAreFormatProviders as $classWhichIsFormatProvider) {
             $this->registerDocumentFormatProvider(new $classWhichIsFormatProvider());
