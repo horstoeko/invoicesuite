@@ -7740,6 +7740,7 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
             $paymentMean->addOnceToPaymentIDWithCreate()->setValue($newPaymentReference);
         }
 
+        $this->updateMandates();
         $this->updateDueDates();
 
         $this->traceMethodExit(__METHOD__);
@@ -8184,6 +8185,11 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDueDate)) {
             $this->addKeyValuePair('duedatefrompaymentterm', $newDueDate, true);
             $this->updateDueDates();
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newMandate)) {
+            $this->addKeyValuePair('mandantefrompaymentterm', $newMandate);
+            $this->updateMandates();
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -11107,6 +11113,38 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     }
 
     /**
+     * Update Direct Debit Mandate
+     *
+     * @return static
+     */
+    private function updateMandates(): static
+    {
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->getKeyValuePair('mandantefrompaymentterm', ''))) {
+            return $this;
+        }
+
+        $paymentMeans = $this
+            ->getUblRootObject()
+            ->getPaymentMeans() ?? [];
+
+        $paymentMeans = InvoiceSuiteArrayUtils::filter(
+            $paymentMeans,
+            static fn (PaymentMeans $paymentMean): bool => InvoiceSuiteStringUtils::stringIsNullOrEmpty(
+                $paymentMean->getPaymentMandate()?->getID()?->getValue()
+            )
+        );
+
+        foreach ($paymentMeans as $paymentMean) {
+            $paymentMean
+                ->getPaymentMandateWithCreate()
+                ->getIDWithCreate()
+                ->setValue($this->getKeyValuePair('mandantefrompaymentterm', ''));
+        }
+
+        return $this;
+    }
+
+    /**
      * Update the payment due date in the payment means
      *
      * EN 16931 binds BT-9 to cac:PaymentMeans/cbc:PaymentDueDate for UBL credit notes,
@@ -11126,14 +11164,12 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
             return $this;
         }
 
-        $documentPaymentMeans = $this
+        $paymentMeans = $this
             ->getUblRootObject()
             ->getPaymentMeans() ?? [];
 
-        $documentFirstPaymentMean = InvoiceSuiteArrayUtils::first($documentPaymentMeans);
-
-        if ($documentFirstPaymentMean instanceof PaymentMeans) {
-            $documentFirstPaymentMean->setPaymentDueDate($documentPaymentDueDate);
+        foreach ($paymentMeans as $paymentMean) {
+            $paymentMean->setPaymentDueDate($documentPaymentDueDate);
         }
 
         return $this;
