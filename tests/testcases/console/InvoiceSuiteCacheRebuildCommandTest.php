@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\tests\testcases\console;
 
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
+use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteClassFinder;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use Symfony\Component\Console\Command\Command;
@@ -61,6 +62,8 @@ final class InvoiceSuiteCacheRebuildCommandTest extends InvoiceSuiteConsoleComma
         $exitCode = $commandTester->execute([
             '--namespace' => [$namespace],
         ]);
+
+        InvoiceSuiteSettings::setDiscoveryNamespaces([]);
 
         $this->assertSame(Command::SUCCESS, $exitCode);
         $this->assertFileExists($cacheFilename);

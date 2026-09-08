@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\utils;
 
 use Composer\Autoload\ClassLoader;
+use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use Throwable;
 
 /**
@@ -94,17 +95,15 @@ class InvoiceSuiteClassFinder
      * is not empty, only classes belonging to one of these namespaces are considered, which avoids
      * autoloading (and thus loading into memory) every other class known to the composer classloader
      *
-     * @param  string            $isSubClassOf
-     * @param  bool              $disableCache
-     * @param  array<int,string> $discoveryNamespaces
+     * @param  string        $isSubClassOf
+     * @param  bool          $disableCache
      * @return array<string>
      */
     public function getClassesWhenItsSubClassOf(
         string $isSubClassOf,
-        bool $disableCache = false,
-        array $discoveryNamespaces = []
+        bool $disableCache = false
     ): array {
-        $discoveryNamespaces = self::normalizeDiscoveryNamespaces($discoveryNamespaces);
+        $discoveryNamespaces = self::getDiscoveryNamespaces();
         $cacheKey = self::buildCacheKey($isSubClassOf, $discoveryNamespaces);
 
         if (!$disableCache && InvoiceSuiteArrayUtils::keyExists($this->subClassNames, $cacheKey)) {
@@ -196,18 +195,19 @@ class InvoiceSuiteClassFinder
     }
 
     /**
-     * Normalize a list of discovery namespaces so that equivalent but differently ordered/formatted
-     * lists resolve to the exact same cache key:
+     * Normalize and return the list of discovery namespaces so that equivalent but differently
+     * ordered/formatted lists resolve to the exact same cache key:
      *  - trim trailing separators
      *  - drop empties
      *  - deduplicate
      *  - sort
      *
-     * @param  array<int,string> $discoveryNamespaces
      * @return array<int,string>
      */
-    private static function normalizeDiscoveryNamespaces(array $discoveryNamespaces): array
+    private static function getDiscoveryNamespaces(): array
     {
+        $discoveryNamespaces = InvoiceSuiteSettings::getDiscoveryNamespaces();
+
         $normalized = InvoiceSuiteArrayUtils::map(
             static fn (string $discoveryNamespace): string => InvoiceSuiteStringUtils::trim($discoveryNamespace, '\\'),
             $discoveryNamespaces

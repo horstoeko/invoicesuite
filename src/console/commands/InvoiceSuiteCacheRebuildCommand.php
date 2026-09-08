@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\console\commands;
 
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
+use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteClassFinder;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
@@ -55,9 +56,13 @@ class InvoiceSuiteCacheRebuildCommand extends InvoiceSuiteAbstractCommand
 
         $discoveryNamespaces = $this->getStringArrayOption('namespace');
 
+        if (!InvoiceSuiteArrayUtils::empty($discoveryNamespaces)) {
+            InvoiceSuiteSettings::setDiscoveryNamespaces($discoveryNamespaces);
+        }
+
         $documentFormatProviderClasses = InvoiceSuiteClassFinder::factory()
             ->init()
-            ->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, false, $discoveryNamespaces);
+            ->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class);
 
         return $this->outputLineLF(InvoiceSuiteStringUtils::sprintf(
             '<info>Cache rebuilt. %d document format providers found.</info>',
