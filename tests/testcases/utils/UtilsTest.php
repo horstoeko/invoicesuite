@@ -10,6 +10,7 @@ use Exception;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
+use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
@@ -1266,8 +1267,42 @@ final class UtilsTest extends TestCase
         $this->assertFileExists($cacheFullFilename);
 
         $this->assertFileExists(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache'), 'fb2c9c3d46a7d2650a8813477106ebca.cache'));
+
+        // Discovery namespaces
+
+        InvoiceSuiteSettings::setDiscoveryNamespaces(['horstoeko\invoicesuite\documents\providers\peppol']);
+        $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, true);
+
+        // @phpstan-ignore method.alreadyNarrowedType
+        $this->assertIsArray($classNames);
+        $this->assertCount(2, $classNames);
+
+        InvoiceSuiteSettings::setDiscoveryNamespaces(['horstoeko\invoicesuite\tests\doesnotexist']);
+        $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, true);
+
+        // @phpstan-ignore method.alreadyNarrowedType
+        $this->assertIsArray($classNames);
+        $this->assertEmpty($classNames);
+
+        $peppolNamespace = 'horstoeko\invoicesuite\documents\providers\peppol';
+        $peppolCacheKey = InvoiceSuiteAbstractDocumentFormatProvider::class . '|' . $peppolNamespace;
+        $peppolCacheFilename = md5((string) preg_replace('/[^a-zA-Z0-9]/', '', sprintf('invoicesuite-cf-%s', $peppolCacheKey))) . '.cache';
+        $peppolCacheFullFilename = InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache'), $peppolCacheFilename);
+        @unlink($peppolCacheFullFilename);
+
+        InvoiceSuiteSettings::setDiscoveryNamespaces([$peppolNamespace]);
+        $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, false);
+
+        // @phpstan-ignore method.alreadyNarrowedType
+        $this->assertIsArray($classNames);
+        $this->assertCount(2, $classNames);
+        $this->assertFileExists($peppolCacheFullFilename);
+        $this->assertFileExists($cacheFullFilename);
+
         InvoiceSuiteClassFinder::clearCache();
+        InvoiceSuiteSettings::setDiscoveryNamespaces([]);
         $this->assertFileDoesNotExist(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache'), 'fb2c9c3d46a7d2650a8813477106ebca.cache'));
+        $this->assertFileDoesNotExist($peppolCacheFullFilename);
     }
 
     public function testInvoiceSuiteFileUtils(): void

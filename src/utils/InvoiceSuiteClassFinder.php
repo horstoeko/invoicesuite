@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\utils;
 
 use Composer\Autoload\ClassLoader;
+use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use Throwable;
 
 /**
@@ -90,7 +91,9 @@ class InvoiceSuiteClassFinder
     }
 
     /**
-     * Returns an array of all classes which are a subclass of $subClassOf
+     * Returns an array of all classes which are a subclass of $subClassOf. When $discoveryNamespaces
+     * is not empty, only classes belonging to one of these namespaces are considered, which avoids
+     * autoloading (and thus loading into memory) every other class known to the composer classloader
      *
      * @param  string        $isSubClassOf
      * @param  bool          $disableCache
@@ -100,11 +103,14 @@ class InvoiceSuiteClassFinder
         string $isSubClassOf,
         bool $disableCache = false
     ): array {
-        if (!$disableCache && InvoiceSuiteArrayUtils::keyExists($this->subClassNames, $isSubClassOf)) {
-            return $this->subClassNames[$isSubClassOf];
+        $discoveryNamespaces = self::getDiscoveryNamespaces();
+        $cacheKey = self::buildCacheKey($isSubClassOf, $discoveryNamespaces);
+
+        if (!$disableCache && InvoiceSuiteArrayUtils::keyExists($this->subClassNames, $cacheKey)) {
+            return $this->subClassNames[$cacheKey];
         }
 
-        $cacheFilename = InvoiceSuiteStringUtils::md5((string) preg_replace('/[^a-zA-Z0-9]/', '', InvoiceSuiteStringUtils::sprintf('invoicesuite-cf-%s', $isSubClassOf))) . '.cache';
+        $cacheFilename = InvoiceSuiteStringUtils::md5((string) preg_replace('/[^a-zA-Z0-9]/', '', InvoiceSuiteStringUtils::sprintf('invoicesuite-cf-%s', $cacheKey))) . '.cache';
         $cacheFilepath = InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', 'cache');
         $cacheFilenameFq = InvoiceSuitePathUtils::combinePathWithFile($cacheFilepath, $cacheFilename);
 
@@ -112,11 +118,26 @@ class InvoiceSuiteClassFinder
             $cached = @require $cacheFilenameFq;
 
             if (InvoiceSuiteArrayUtils::is($cached)) {
-                $this->subClassNames[$isSubClassOf] = $cached;
+                $this->subClassNames[$cacheKey] = $cached;
 
                 return $cached;
             }
         }
+
+        $classNamesToScan = InvoiceSuiteArrayUtils::empty($discoveryNamespaces)
+            ? $this->classNames
+            : InvoiceSuiteArrayUtils::filter(
+                $this->classNames,
+                static function (string $className) use ($discoveryNamespaces): bool {
+                    foreach ($discoveryNamespaces as $discoveryNamespace) {
+                        if (InvoiceSuiteStringUtils::startsWith($className, $discoveryNamespace . '\\')) {
+                            return true;
+                        }
+                    }
+
+                    return false;
+                }
+            );
 
         $classes = [];
 
@@ -124,7 +145,7 @@ class InvoiceSuiteClassFinder
         error_reporting(E_ALL & ~E_DEPRECATED);
 
         try {
-            foreach ($this->classNames as $className) {
+            foreach ($classNamesToScan as $className) {
                 try {
                     if (is_subclass_of($className, $isSubClassOf)) {
                         $classes[] = $className;
@@ -171,5 +192,53 @@ class InvoiceSuiteClassFinder
                 unlink($file);
             }
         }
+    }
+
+    /**
+     * Normalize and return the list of discovery namespaces so that equivalent but differently
+     * ordered/formatted lists resolve to the exact same cache key:
+     *  - trim trailing separators
+     *  - drop empties
+     *  - deduplicate
+     *  - sort
+     *
+     * @return array<int,string>
+     */
+    private static function getDiscoveryNamespaces(): array
+    {
+        $discoveryNamespaces = InvoiceSuiteSettings::getDiscoveryNamespaces();
+
+        $normalized = InvoiceSuiteArrayUtils::map(
+            static fn (string $discoveryNamespace): string => InvoiceSuiteStringUtils::trim($discoveryNamespace, '\\'),
+            $discoveryNamespaces
+        );
+
+        $normalized = InvoiceSuiteArrayUtils::filter(
+            $normalized,
+            static fn (string $discoveryNamespace): bool => '' !== $discoveryNamespace
+        );
+
+        $normalized = array_values(array_unique($normalized));
+
+        sort($normalized);
+
+        return $normalized;
+    }
+
+    /**
+     * Build a cache key to include $discoveryNamespaces if specified. Empty list should keep the same value.
+     * The list of namespaces should be normalized to ensure same key is generated.
+     *
+     * @param  string            $isSubClassOf
+     * @param  array<int,string> $discoveryNamespaces
+     * @return string
+     */
+    private static function buildCacheKey(string $isSubClassOf, array $discoveryNamespaces): string
+    {
+        if (InvoiceSuiteArrayUtils::empty($discoveryNamespaces)) {
+            return $isSubClassOf;
+        }
+
+        return $isSubClassOf . '|' . implode(',', $discoveryNamespaces);
     }
 }
