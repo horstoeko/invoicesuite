@@ -75,7 +75,9 @@ final class CreditNotePaymentDueDateTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[1]/cbc:PaymentDueDate', '1970-01-31');
-        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans[position() > 1]/cbc:PaymentDueDate');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[2]/cbc:PaymentDueDate', '1970-01-31');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[3]/cbc:PaymentDueDate', '1970-01-31');
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans[4]/cbc:PaymentDueDate');
     }
 
     public function testTheLastDueDateWins(): void
