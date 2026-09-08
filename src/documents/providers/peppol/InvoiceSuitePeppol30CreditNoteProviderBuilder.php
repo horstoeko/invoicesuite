@@ -8165,12 +8165,13 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
             ->getUblRootObject()
             ->unsetPaymentTerms();
 
+        $this->removeKeyValuePair('duedatefrompaymentterm');
+        $this->removeKeyValuePair('mandantefrompaymentterm');
+
         if (
             InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)
             && InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDueDate)
         ) {
-            $this->removeKeyValuePair('duedatefrompaymentterm');
-
             return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
         }
 
@@ -8183,7 +8184,7 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         }
 
         if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDueDate)) {
-            $this->addKeyValuePair('duedatefrompaymentterm', $newDueDate, true);
+            $this->addKeyValuePair('duedatefrompaymentterm', $newDueDate);
             $this->updateDueDates();
         }
 

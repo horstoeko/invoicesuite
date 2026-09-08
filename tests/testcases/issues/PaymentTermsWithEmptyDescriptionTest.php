@@ -210,4 +210,26 @@ final class PaymentTermsWithEmptyDescriptionTest extends TestCase
         $this->assertInstanceOf(DateTimeInterface::class, $newDueDate);
         $this->assertSame('19700131', $newDueDate->format('Ymd'));
     }
+
+    /**
+     * Ensure a replaced payment term does not retain the previous mandate
+     *
+     * @return void
+     */
+    public function testMandateIsForgottenWhenThePaymentTermIsReplacedWithoutAMandate(): void
+    {
+        static::$document = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('xrechnungublinvoice');
+        static::$document->setDocumentPaymentTerm('Term', null, 'OLD-MANDATE');
+        static::$document->setDocumentPaymentTerm('Term without mandate');
+        static::$document->addDocumentPaymentMeanAsDirectDebitSepa('DE02120300000000202051');
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:PaymentMeans/cac:PaymentMandate/cbc:ID');
+
+        static::$document = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('xrechnungublcreditnote');
+        static::$document->setDocumentPaymentTerm('Term', null, 'OLD-MANDATE');
+        static::$document->setDocumentPaymentTerm('Term without mandate');
+        static::$document->addDocumentPaymentMeanAsDirectDebitSepa('DE02120300000000202051');
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cbc:ID');
+    }
 }

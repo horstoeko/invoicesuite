@@ -8182,6 +8182,8 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             ->getUblRootObject()
             ->unsetPaymentTerms();
 
+        $this->removeKeyValuePair('mandantefrompaymentterm');
+
         if (
             InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)
             && InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDueDate)

@@ -167,6 +167,23 @@ final class CreditNotePaymentDueDateTest extends TestCase
         $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans/cbc:PaymentDueDate');
     }
 
+    /**
+     * Ensure a replaced payment term does not retain the previous due date
+     *
+     * @return void
+     */
+    public function testDueDateIsForgottenWhenThePaymentTermIsReplacedWithoutADueDate(): void
+    {
+        static::$document = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('xrechnungublcreditnote');
+        static::$document->setDocumentPaymentTerm('Term', $this->paymentDueDate());
+        static::$document->setDocumentPaymentTerm('Term without due date');
+        static::$document->addDocumentPaymentMean(newTypeCode: '30', newPayeeIban: 'DE02120300000000202051');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans/cbc:PaymentDueDate');
+    }
+
     public function testAddDocumentPaymentTermWithoutDescriptionReplacesTheTerm(): void
     {
         static::$document = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('xrechnungublcreditnote');
