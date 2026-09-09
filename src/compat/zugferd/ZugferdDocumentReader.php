@@ -979,7 +979,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         ?string &$contactFaxNo,
         ?string &$contactEmailAddress
     ): static {
-        $this->documentReader->getDocumentSellerContact(
+        $this->documentReader->getDocumentBuyerContact(
             $contactPersonName,
             $contactDepartmentName,
             $contactPhoneNo,
