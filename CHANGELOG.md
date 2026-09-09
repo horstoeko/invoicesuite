@@ -1,3 +1,16 @@
+## v0.0.31
+
+``Previous version v0.0.30``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :bug:  | [6aef0fcb](https://github.com/horstoeko/invoicesuite/commit/6aef0fcb) | 2026-09-09 05:23:37 CEST | HorstOeko | [FIX] Fix BT-56/57/58 in ZugferdDocumentReader () | [#35](https://github.com/horstoeko/invoicesuite/issues/35)
+| :new:  | [75be82fa](https://github.com/horstoeko/invoicesuite/commit/75be82fa) | 2026-09-08 17:18:27 CEST | HorstOeko | [ENH] KeyValuePair-Handling for UBL-Reader/-Builder fixed | 
+| :new:  | [e6c23702](https://github.com/horstoeko/invoicesuite/commit/e6c23702) | 2026-09-08 17:04:01 CEST | Eugen Mirovschi | [ENH] Added optional namespace filtering for provider discovery () | [#34](https://github.com/horstoeko/invoicesuite/issues/34)
+| :bug:  | [dafac3d1](https://github.com/horstoeko/invoicesuite/commit/dafac3d1) | 2026-09-08 16:27:41 CEST | HorstOeko | [FIX] UBL Due Date for every payment term | 
+
+:exclamation: _There is one internal commit_
+
 ## v0.0.30
 
 ``Previous version v0.0.29``
