@@ -19,6 +19,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteTemplateNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteTemplateNotSpecifiedException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentBuilder;
+use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\visualizers\InvoiceSuiteVisualizer;
@@ -60,6 +61,8 @@ class InvoiceSuiteVisualizeCommand extends InvoiceSuiteAbstractCommand
         $this->addOption('pdf-orientation', null, InputOption::VALUE_REQUIRED, 'Set the PDF orientation (P, L)', 'P');
         $this->addOption('force', 'f', InputOption::VALUE_NONE, 'Overwrite the target file if it already exists');
         $this->addOption('embed', null, InputOption::VALUE_NONE, 'Embed invoice document to the target PDF file');
+        $this->addOption('discovery-namespace', 'N', InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'A namespace to restrict document format provider discovery to (repeatable)');
+        $this->addOption('cache-directory', 'c', InputOption::VALUE_OPTIONAL, 'The cache directory for the internal serializer');
     }
 
     /**
@@ -80,6 +83,14 @@ class InvoiceSuiteVisualizeCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handle(): int
     {
+        if ($this->hasOptionValue('discovery-namespace')) {
+            InvoiceSuiteSettings::setDiscoveryNamespaces($this->getStringArrayOption('discovery-namespace'));
+        }
+
+        if ($this->hasOptionValue('cache-directory')) {
+            InvoiceSuiteSettings::setSerializerCacheDirectory($this->getStringOption('cache-directory'));
+        }
+
         $inpArgInputFilename = $this->getSourceXmlOrJsonFileArgument('input-file');
         $inpArgOutputFilename = $this->getTargetFileArgument('output-file', $this->getBoolOption('force'));
         $inpOptionFormat = $this->getStringOption('format', 'pdf');

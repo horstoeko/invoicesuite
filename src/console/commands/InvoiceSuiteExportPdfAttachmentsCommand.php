@@ -17,6 +17,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundExceptio
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInternalMethodCallException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentReader;
+use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractorAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
@@ -62,6 +63,8 @@ class InvoiceSuiteExportPdfAttachmentsCommand extends InvoiceSuiteAbstractComman
         $this->addArgument('target-directory', InputArgument::REQUIRED, 'The target directory for extracted attachment files or the generated JSON export file');
         $this->addOption('output-json', null, InputOption::VALUE_REQUIRED, 'Output extracted attachments as JSON (0 = Nothing, 1 = File, 2 = Screen, 3 = File and Screen; default: 0)', self::OUTPUT_JSON_NONE);
         $this->addOption('force', 'f', InputOption::VALUE_NONE, 'Overwrite target files if they already exist');
+        $this->addOption('discovery-namespace', 'N', InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'A namespace to restrict document format provider discovery to (repeatable)');
+        $this->addOption('cache-directory', 'c', InputOption::VALUE_OPTIONAL, 'The cache directory for the internal serializer');
     }
 
     /**
@@ -80,6 +83,14 @@ class InvoiceSuiteExportPdfAttachmentsCommand extends InvoiceSuiteAbstractComman
      */
     protected function handle(): int
     {
+        if ($this->hasOptionValue('discovery-namespace')) {
+            InvoiceSuiteSettings::setDiscoveryNamespaces($this->getStringArrayOption('discovery-namespace'));
+        }
+
+        if ($this->hasOptionValue('cache-directory')) {
+            InvoiceSuiteSettings::setSerializerCacheDirectory($this->getStringOption('cache-directory'));
+        }
+
         $inpArgPdfFilename = $this->getSourcePdfFileArgument('input-file');
         $inpArgTargetDirectory = $this->getTargetDirectoryArgument('target-directory');
         $inpOptionJsonOutputMode = $this->getStringOption('output-json', self::OUTPUT_JSON_NONE);

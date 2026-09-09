@@ -4,7 +4,12 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\console;
 
+use FilesystemIterator;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
+use horstoeko\invoicesuite\InvoiceSuiteSettings;
+use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 use Symfony\Component\Console\Command\Command;
 
 final class InvoiceSuiteDetectCommandTest extends InvoiceSuiteConsoleCommandTestCase
@@ -220,5 +225,46 @@ final class InvoiceSuiteDetectCommandTest extends InvoiceSuiteConsoleCommandTest
         $this->assertStringContainsString('unknown', $commandOutput);
         $this->assertStringContainsString('Error', $commandOutput);
         $this->assertStringContainsString('Yes', $commandOutput);
+    }
+
+    /**
+     * Test that the command writes serializer cache files to the given cache directory.
+     *
+     * @return void
+     */
+    public function testCommandUsesGivenCacheDirectory(): void
+    {
+        $cacheDirectory = InvoiceSuitePathUtils::combinePathWithFile(sys_get_temp_dir(), 'invoicesuite-test-cache-' . uniqid());
+
+        mkdir($cacheDirectory, 0777, true);
+
+        $commandTester = $this->createCommandTester('invoicesuite:detect');
+
+        $exitCode = $commandTester->execute([
+            'input-file' => $this->getTestAssetFilePath('00_case_comfort_simple.xml'),
+            '--output-json' => true,
+            '--cache-directory' => $cacheDirectory,
+        ]);
+
+        InvoiceSuiteSettings::setSerializerCacheDirectory('');
+
+        $cacheFiles = [];
+        $directoryIterator = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($cacheDirectory, FilesystemIterator::SKIP_DOTS),
+            RecursiveIteratorIterator::CHILD_FIRST
+        );
+
+        foreach ($directoryIterator as $item) {
+            if ($item->isFile()) {
+                $cacheFiles[] = $item->getPathname();
+            }
+
+            $item->isDir() ? rmdir($item->getPathname()) : unlink($item->getPathname());
+        }
+
+        rmdir($cacheDirectory);
+
+        $this->assertSame(Command::SUCCESS, $exitCode);
+        $this->assertNotEmpty($cacheFiles);
     }
 }

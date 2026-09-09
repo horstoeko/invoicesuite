@@ -312,6 +312,20 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     }
 
     /**
+     * Check if an option was actually given a value on the command line,
+     *
+     * @param  string $name
+     * @return bool
+     *
+     * @throws ConsoleInvalidArgumentException
+     */
+    protected function hasOptionValue(
+        string $name
+    ): bool {
+        return null !== $this->input->getOption($name);
+    }
+
+    /**
      * Get a string option.
      *
      * @param  string $name

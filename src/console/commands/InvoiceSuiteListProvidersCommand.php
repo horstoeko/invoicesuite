@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\console\commands;
 
 use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
+use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use RuntimeException;
@@ -44,6 +45,7 @@ class InvoiceSuiteListProvidersCommand extends InvoiceSuiteAbstractCommand
         $this->setName('invoicesuite:providers:list');
         $this->setDescription('List all available document format providers');
         $this->addOption('output-json', null, InputOption::VALUE_NONE, 'Output results as JSON');
+        $this->addOption('discovery-namespace', 'N', InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'A namespace to restrict document format provider discovery to (repeatable)');
     }
 
     /**
@@ -56,6 +58,10 @@ class InvoiceSuiteListProvidersCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handle(): int
     {
+        if ($this->hasOptionValue('discovery-namespace')) {
+            InvoiceSuiteSettings::setDiscoveryNamespaces($this->getStringArrayOption('discovery-namespace'));
+        }
+
         $this->resolveAvailableDocumentFormatProviders();
 
         $jsonRowsToOutput = InvoiceSuiteArrayUtils::map(
