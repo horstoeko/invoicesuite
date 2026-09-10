@@ -2650,24 +2650,7 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        $this
-            ->getUblRootObject()
-            ->getAccountingCustomerParty()
-            ?->getParty()
-            ?->firstPartyLegalEntity()
-            ?->unsetCompanyLegalForm();
-
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
-        }
-
-        $this
-            ->getUblRootObject()
-            ->getAccountingCustomerPartyWithCreate()
-            ->getPartyWithCreate()
-            ->addOnceToPartyLegalEntityWithCreate()
-            ->getCompanyLegalFormWithCreate()
-            ->setValue($newDescription);
+        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3295,22 +3278,7 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        $this
-            ->getUblRootObject()
-            ->getTaxRepresentativeParty()
-            ?->firstPartyLegalEntity()
-            ?->unsetCompanyLegalForm();
-
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
-        }
-
-        $this
-            ->getUblRootObject()
-            ->getTaxRepresentativePartyWithCreate()
-            ->addOnceToPartyLegalEntityWithCreate()
-            ->getCompanyLegalFormWithCreate()
-            ->setValue($newDescription);
+        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5340,24 +5308,7 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        $this
-            ->getUblRootObject()
-            ->firstDelivery()
-            ?->getDeliveryParty()
-            ?->firstPartyLegalEntity()
-            ?->unsetCompanyLegalForm();
-
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
-        }
-
-        $this
-            ->getUblRootObject()
-            ->addOnceToDeliveryWithCreate()
-            ->getDeliveryPartyWithCreate()
-            ->addOnceToPartyLegalEntityWithCreate()
-            ->getCompanyLegalFormWithCreate()
-            ->setValue($newDescription);
+        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7409,22 +7360,7 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        $this
-            ->getUblRootObject()
-            ->getPayeeParty()
-            ?->firstPartyLegalEntity()
-            ?->unsetCompanyLegalForm();
-
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
-        }
-
-        $this
-            ->getUblRootObject()
-            ->getPayeePartyWithCreate()
-            ->addOnceToPartyLegalEntityWithCreate()
-            ->getCompanyLegalFormWithCreate()
-            ->setValue($newDescription);
+        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 

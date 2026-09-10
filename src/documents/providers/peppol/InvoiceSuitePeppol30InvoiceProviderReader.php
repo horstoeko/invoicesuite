@@ -4809,13 +4809,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        $newDescription = $this
-            ->getUblRootObject()
-            ->getAccountingCustomerParty()
-            ?->getParty()
-            ?->firstPartyLegalEntity()
-            ?->getCompanyLegalForm()
-            ?->getValue() ?? '';
+        $newDescription = '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5333,12 +5327,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        $newDescription = $this
-            ->getUblRootObject()
-            ->getTaxRepresentativeParty()
-            ?->firstPartyLegalEntity()
-            ?->getCompanyLegalForm()
-            ?->getValue() ?? '';
+        $newDescription = '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7278,13 +7267,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        $newDescription = $this
-            ->getUblRootObject()
-            ->firstDelivery()
-            ?->getDeliveryParty()
-            ?->firstPartyLegalEntity()
-            ?->getCompanyLegalForm()
-            ?->getValue() ?? '';
+        $newDescription = '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -9241,12 +9224,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        $newDescription = $this
-            ->getUblRootObject()
-            ->getPayeeParty()
-            ?->firstPartyLegalEntity()
-            ?->getCompanyLegalForm()
-            ?->getValue() ?? '';
+        $newDescription = '';
 
         $this->traceMethodExit(__METHOD__);
 
