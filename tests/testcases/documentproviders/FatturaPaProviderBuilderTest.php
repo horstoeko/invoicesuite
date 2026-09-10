@@ -1867,12 +1867,14 @@ final class FatturaPaProviderBuilderTest extends TestCase
     {
         $sellerParty = (new InvoiceSuitePartyDTO())
             ->addName('DTO Seller S.r.l.')
+            ->addDescription('DTO Seller S.r.l. Description')
             ->addTaxRegistration(new InvoiceSuiteIdDTO('12345678901', 'VA'))
             ->addTaxRegistration(new InvoiceSuiteIdDTO('SELLERFISCAL01', 'FC'))
             ->addAddress(new InvoiceSuiteAddressDTO('Via Roma 1', null, null, '00100', 'Roma', 'IT', 'RM'));
 
         $buyerParty = (new InvoiceSuitePartyDTO())
             ->addName('DTO Buyer S.p.A.')
+            ->addDescription('DTO Buyer S.p.A. Description')
             ->addTaxRegistration(new InvoiceSuiteIdDTO('98765432109', 'VA'))
             ->addAddress(new InvoiceSuiteAddressDTO('Via Milano 2', null, null, '20100', 'Milano', 'IT', 'MI'))
             ->addCommunication(new InvoiceSuiteCommunicationDTO('ABC1234', 'CODICE_DESTINATARIO'));
