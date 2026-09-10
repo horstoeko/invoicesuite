@@ -4279,6 +4279,8 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertSame('2025-04-000001', $newDocmentDTO?->getNumber());
         $this->assertSame(['Sales Agent GmbH'], $newDocmentDTO?->getSalesAgentParty()?->getNames());
+        $this->assertSame([''], $newDocmentDTO?->getSalesAgentParty()?->getDescriptions());
         $this->assertSame(['Buyer Agent GmbH'], $newDocmentDTO?->getBuyerAgentParty()?->getNames());
+        $this->assertSame([''], $newDocmentDTO?->getBuyerAgentParty()?->getDescriptions());
     }
 }
