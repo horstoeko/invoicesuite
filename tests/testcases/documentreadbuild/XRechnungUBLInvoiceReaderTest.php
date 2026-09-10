@@ -593,7 +593,7 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
 
         static::$document->getDocumentBuyerDescription($newDescription);
 
-        $this->assertSame('Kunde GmbH Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 
@@ -1980,7 +1980,7 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
 
         static::$document->getDocumentPayeeDescription($newDescription);
 
-        $this->assertSame('Payee AG Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 
@@ -3499,7 +3499,7 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
 
         $this->assertSame('2025-04-000001', $newDocmentDTO?->getNumber());
         $this->assertSame(['Lieferant GmbH Description'], $newDocmentDTO?->getSellerParty()?->getDescriptions());
-        $this->assertSame(['Kunde GmbH Description'], $newDocmentDTO?->getBuyerParty()?->getDescriptions());
+        $this->assertSame([''], $newDocmentDTO?->getBuyerParty()?->getDescriptions());
     }
 
     public function testCopyToBuilder(): void
