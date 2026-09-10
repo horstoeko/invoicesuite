@@ -650,6 +650,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Get the description of the seller/supplier party
+     *
+     * @param  null|string $newDescription Further legal information that is relevant for the seller
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    abstract public function getDocumentSellerDescription(
+        ?string &$newDescription
+    ): static;
+
+    /**
      * Go to the first ID of the seller/supplier party
      *
      * @return bool
@@ -886,6 +898,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
      */
     abstract public function getDocumentBuyerName(
         ?string &$newName
+    ): static;
+
+    /**
+     * Get the description of the buyer/customer party
+     *
+     * @param  null|string $newDescription Additional information about the buyer/customer party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    abstract public function getDocumentBuyerDescription(
+        ?string &$newDescription
     ): static;
 
     /**
@@ -1128,6 +1152,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Get the description of the seller's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the seller's tax representative party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    abstract public function getDocumentSellerTaxRepresentativeDescription(
+        ?string &$newDescription
+    ): static;
+
+    /**
      * Go to the first ID of the seller's tax representative party
      *
      * @return bool
@@ -1364,6 +1400,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
      */
     abstract public function getDocumentBuyerTaxRepresentativeName(
         ?string &$newName
+    ): static;
+
+    /**
+     * Get the description of the buyer's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the buyer's tax representative party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    abstract public function getDocumentBuyerTaxRepresentativeDescription(
+        ?string &$newDescription
     ): static;
 
     /**
@@ -1606,6 +1654,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Get the description of the sales agent party
+     *
+     * @param  null|string $newDescription Additional information about the sales agent party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    abstract public function getDocumentSalesAgentDescription(
+        ?string &$newDescription
+    ): static;
+
+    /**
      * Go to the first ID of the sales agent party
      *
      * @return bool
@@ -1842,6 +1902,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
      */
     abstract public function getDocumentBuyerAgentName(
         ?string &$newName
+    ): static;
+
+    /**
+     * Get the description of the buyer agent party
+     *
+     * @param  null|string $newDescription Additional information about the buyer agent party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    abstract public function getDocumentBuyerAgentDescription(
+        ?string &$newDescription
     ): static;
 
     /**
@@ -2084,6 +2156,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Get the description of the product end user party
+     *
+     * @param  null|string $newDescription Additional information about the product end user party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    abstract public function getDocumentProductEndUserDescription(
+        ?string &$newDescription
+    ): static;
+
+    /**
      * Go to the first ID of the product end-user party
      *
      * @return bool
@@ -2320,6 +2404,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
      */
     abstract public function getDocumentShipToName(
         ?string &$newName
+    ): static;
+
+    /**
+     * Get the description of the ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ship-to party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    abstract public function getDocumentShipToDescription(
+        ?string &$newDescription
     ): static;
 
     /**
@@ -2562,6 +2658,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Get the description of the ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ultimate ship-to party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    abstract public function getDocumentUltimateShipToDescription(
+        ?string &$newDescription
+    ): static;
+
+    /**
      * Go to the first ID of the ultimate Ship-To party
      *
      * @return bool
@@ -2798,6 +2906,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
      */
     abstract public function getDocumentShipFromName(
         ?string &$newName
+    ): static;
+
+    /**
+     * Get the description of the ship-from party
+     *
+     * @param  null|string $newDescription Additional information about the ship-from party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    abstract public function getDocumentShipFromDescription(
+        ?string &$newDescription
     ): static;
 
     /**
@@ -3040,6 +3160,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Get the description of the invoicer party
+     *
+     * @param  null|string $newDescription Additional information about the invoicer party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    abstract public function getDocumentInvoicerDescription(
+        ?string &$newDescription
+    ): static;
+
+    /**
      * Go to the first ID of the Invoicer party
      *
      * @return bool
@@ -3276,6 +3408,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
      */
     abstract public function getDocumentInvoiceeName(
         ?string &$newName
+    ): static;
+
+    /**
+     * Get the description of the invoicee party
+     *
+     * @param  null|string $newDescription Additional information about the invoicee party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    abstract public function getDocumentInvoiceeDescription(
+        ?string &$newDescription
     ): static;
 
     /**
@@ -3518,6 +3662,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Get the description of the payee party
+     *
+     * @param  null|string $newDescription Additional information about the payee party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    abstract public function getDocumentPayeeDescription(
+        ?string &$newDescription
+    ): static;
+
+    /**
      * Go to the first ID of the Payee party
      *
      * @return bool
@@ -3754,6 +3910,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
      */
     abstract public function getDocumentPayerName(
         ?string &$newName
+    ): static;
+
+    /**
+     * Get the description of the payer party
+     *
+     * @param  null|string $newDescription Additional information about the payer party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    abstract public function getDocumentPayerDescription(
+        ?string &$newDescription
     ): static;
 
     /**
@@ -5155,6 +5323,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Get the description of the position-level ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ship-to party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    abstract public function getDocumentPositionShipToDescription(
+        ?string &$newDescription
+    ): static;
+
+    /**
      * Go to the first ID of the Ship-To party from latest position
      *
      * @return bool
@@ -5391,6 +5571,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
      */
     abstract public function getDocumentPositionUltimateShipToName(
         ?string &$newName
+    ): static;
+
+    /**
+     * Get the description of the position-level ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ultimate ship-to party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    abstract public function getDocumentPositionUltimateShipToDescription(
+        ?string &$newDescription
     ): static;
 
     /**

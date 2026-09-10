@@ -436,6 +436,12 @@ final class XRechnungCIIInvoiceReaderTest extends TestCase
 
         $this->assertSame('Lieferant GmbH', $newName);
 
+        // Description
+
+        static::$document->getDocumentSellerDescription($newDescription);
+
+        $this->assertSame('Lieferant GmbH Description', $newDescription);
+
         // ID
 
         $this->assertTrue(static::$document->firstDocumentSellerId());
@@ -615,6 +621,12 @@ final class XRechnungCIIInvoiceReaderTest extends TestCase
 
         $this->assertSame('Kunde GmbH', $newName);
 
+        // Description
+
+        static::$document->getDocumentBuyerDescription($newDescription);
+
+        $this->assertSame('Kunde GmbH Description', $newDescription);
+
         // ID
 
         $this->assertTrue(static::$document->firstDocumentBuyerId());
@@ -773,6 +785,12 @@ final class XRechnungCIIInvoiceReaderTest extends TestCase
         static::$document->getDocumentSellerTaxRepresentativeName($newName);
 
         $this->assertSame('Tax GmbH', $newName);
+
+        // Description
+
+        static::$document->getDocumentSellerTaxRepresentativeDescription($newDescription);
+
+        $this->assertSame('Tax GmbH Description', $newDescription);
 
         // ID
 
@@ -1348,6 +1366,12 @@ final class XRechnungCIIInvoiceReaderTest extends TestCase
         static::$document->getDocumentShipToName($newName);
 
         $this->assertSame('Ship To GmbH', $newName);
+
+        // Description
+
+        static::$document->getDocumentShipToDescription($newDescription);
+
+        $this->assertSame('Ship To GmbH Description', $newDescription);
 
         // ID
 
@@ -3494,6 +3518,7 @@ final class XRechnungCIIInvoiceReaderTest extends TestCase
         $this->assertInstanceOf(InvoiceSuiteDocumentHeaderDTO::class, $newDocmentDTO);
 
         $this->assertSame('2025-04-000001', $newDocmentDTO?->getNumber());
+        $this->assertSame(['Lieferant GmbH Description'], $newDocmentDTO?->getSellerParty()?->getDescriptions());
     }
 
     public function testCopyToBuilder(): void

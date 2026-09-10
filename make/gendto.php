@@ -819,6 +819,13 @@ $definitions = [
                 'isobject' => false,
                 'autoplural' => true,
             ],
+            'description' => [
+                'type' => 'string',
+                'caption' => 'Party descriptions',
+                'isarray' => true,
+                'isobject' => false,
+                'autoplural' => true,
+            ],
             'id' => [
                 'type' => 'horstoeko\invoicesuite\documents\dto\InvoiceSuiteIdDTO',
                 'caption' => 'Party IDs',

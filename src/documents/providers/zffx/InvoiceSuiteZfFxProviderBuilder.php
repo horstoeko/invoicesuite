@@ -333,6 +333,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ?->firstName(
                 fn (string $item): static => $this->setDocumentSellerName($item)
             )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentSellerDescription($item)
+            )
             ?->forEachId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->addDocumentSellerId($item->getId())
             )
@@ -383,6 +386,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getBuyerParty()
             ?->firstName(
                 fn (string $item): static => $this->setDocumentBuyerName($item)
+            )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentBuyerDescription($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentBuyerId($item->getId())
@@ -435,6 +441,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ?->firstName(
                 fn (string $item): static => $this->setDocumentSellerTaxRepresentativeName($item)
             )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentSellerTaxRepresentativeDescription($item)
+            )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentSellerTaxRepresentativeId($item->getId())
             )
@@ -484,6 +493,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getBuyerTaxRepresentativeParty()
             ?->firstName(
                 fn (string $item): static => $this->setDocumentBuyerTaxRepresentativeName($item)
+            )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentBuyerTaxRepresentativeDescription($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentBuyerTaxRepresentativeId($item->getId())
@@ -535,6 +547,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ?->firstName(
                 fn (string $item): static => $this->setDocumentSalesAgentName($item)
             )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentSalesAgentDescription($item)
+            )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentSalesAgentId($item->getId())
             )
@@ -584,6 +599,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getBuyerAgentParty()
             ?->firstName(
                 fn (string $item): static => $this->setDocumentBuyerAgentName($item)
+            )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentBuyerAgentDescription($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentBuyerAgentId($item->getId())
@@ -635,6 +653,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ?->firstName(
                 fn (string $item): static => $this->setDocumentProductEndUserName($item)
             )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentProductEndUserDescription($item)
+            )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentProductEndUserId($item->getId())
             )
@@ -684,6 +705,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getShipToParty()
             ?->firstName(
                 fn (string $item): static => $this->setDocumentShipToName($item)
+            )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentShipToDescription($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentShipToId($item->getId())
@@ -735,6 +759,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ?->firstName(
                 fn (string $item): static => $this->setDocumentUltimateShipToName($item)
             )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentUltimateShipToDescription($item)
+            )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentUltimateShipToId($item->getId())
             )
@@ -784,6 +811,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getShipFromParty()
             ?->firstName(
                 fn (string $item): static => $this->setDocumentShipFromName($item)
+            )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentShipFromDescription($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentShipFromId($item->getId())
@@ -835,6 +865,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ?->firstName(
                 fn (string $item): static => $this->setDocumentInvoicerName($item)
             )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentInvoicerDescription($item)
+            )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentInvoicerId($item->getId())
             )
@@ -885,6 +918,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ?->firstName(
                 fn (string $item): static => $this->setDocumentInvoiceeName($item)
             )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentInvoiceeDescription($item)
+            )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentInvoiceeId($item->getId())
             )
@@ -934,6 +970,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getPayeeParty()
             ?->firstName(
                 fn (string $item): static => $this->setDocumentPayeeName(
+                    $item
+                )
+            )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentPayeeDescription(
                     $item
                 )
             )
@@ -994,6 +1035,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getPayerParty()
             ?->firstName(
                 fn (string $item): static => $this->setDocumentPayerName(
+                    $item
+                )
+            )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentPayerDescription(
                     $item
                 )
             )
@@ -1395,6 +1441,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                     ?->firstName(
                         fn (string $item): static => $this->setDocumentPositionShipToName($item)
                     )
+                    ?->firstDescription(
+                        fn (string $item): static => $this->setDocumentPositionShipToDescription($item)
+                    )
                     ?->firstId(
                         fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPositionShipToId($item->getId())
                     )
@@ -1443,6 +1492,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 $item->getUltimateShipToParty()
                     ?->firstName(
                         fn (string $item): static => $this->setDocumentPositionUltimateShipToName($item)
+                    )
+                    ?->firstDescription(
+                        fn (string $item): static => $this->setDocumentPositionUltimateShipToDescription($item)
                     )
                     ?->firstId(
                         fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPositionUltimateShipToId($item->getId())
@@ -3252,6 +3304,45 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
+     * Set a description of the seller/supplier party
+     *
+     * @param  null|string $newDescription __BT-33, From EN 16931__ Further legal information that is relevant for the seller
+     * @return static
+     */
+    public function setDocumentSellerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getSellerTradeParty()
+            ?->unsetDescription();
+
+        if ($this->supportsNotAtLeastEn16931WithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getSellerTradePartyWithCreate()
+            ->getDescriptionWithCreate()
+            ->setValue($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the seller/supplier party
      *
      * @param  null|string $newName __BT-27, From MINIMUM__ The full formal name under which the party is registered
@@ -3271,6 +3362,32 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         $this->setDocumentSellerName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the seller/supplier party
+     *
+     * @param  null|string $newDescription __BT-33, From EN 16931__ Further legal information that is relevant for the seller
+     * @return static
+     */
+    public function addDocumentSellerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastEn16931WithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentSellerDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3929,6 +4046,45 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
+     * Set a description of the buyer/customer party
+     *
+     * @param  null|string $newDescription Additional information about the buyer/customer party
+     * @return static
+     */
+    public function setDocumentBuyerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getBuyerTradeParty()
+            ?->unsetDescription();
+
+        if ($this->supportsNotAtLeastEn16931WithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getBuyerTradePartyWithCreate()
+            ->getDescriptionWithCreate()
+            ->setValue($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the buyer/customer party
      *
      * @param  null|string $newName __BT-44, From MINIMUM__ The full formal name under which the party is registered
@@ -3948,6 +4104,32 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         $this->setDocumentBuyerName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the buyer/customer party
+     *
+     * @param  null|string $newDescription Additional information about the buyer/customer party
+     * @return static
+     */
+    public function addDocumentBuyerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastEn16931WithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentBuyerDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4611,6 +4793,45 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
+     * Set a description of the seller's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the seller's tax representative party
+     * @return static
+     */
+    public function setDocumentSellerTaxRepresentativeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getSellerTaxRepresentativeTradeParty()
+            ?->unsetDescription();
+
+        if ($this->supportsNotAtLeastEn16931WithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getSellerTaxRepresentativeTradePartyWithCreate()
+            ->getDescriptionWithCreate()
+            ->setValue($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the seller's tax representative party
      *
      * @param  null|string $newName __BT-62, From BASIC WL__ The full formal name under which the party is registered
@@ -4630,6 +4851,32 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         $this->setDocumentSellerTaxRepresentativeName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the seller's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the seller's tax representative party
+     * @return static
+     */
+    public function addDocumentSellerTaxRepresentativeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastEn16931WithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentSellerTaxRepresentativeDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5284,6 +5531,45 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
+     * Set a description of the buyer's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the buyer's tax representative party
+     * @return static
+     */
+    public function setDocumentBuyerTaxRepresentativeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getBuyerTaxRepresentativeTradeParty()
+            ?->unsetDescription();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getBuyerTaxRepresentativeTradePartyWithCreate()
+            ->getDescriptionWithCreate()
+            ->setValue($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the buyer's tax representative party
      *
      * @param  null|string $newName __BT-X-362, From EXTENDED__ The full formal name under which the party is registered
@@ -5303,6 +5589,32 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         $this->setDocumentBuyerTaxRepresentativeName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the buyer's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the buyer's tax representative party
+     * @return static
+     */
+    public function addDocumentBuyerTaxRepresentativeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentBuyerTaxRepresentativeDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5957,6 +6269,45 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
+     * Set a description of the sales agent party
+     *
+     * @param  null|string $newDescription Additional information about the sales agent party
+     * @return static
+     */
+    public function setDocumentSalesAgentDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getSalesAgentTradeParty()
+            ?->unsetDescription();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getSalesAgentTradePartyWithCreate()
+            ->getDescriptionWithCreate()
+            ->setValue($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the sales agent party
      *
      * @param  null|string $newName __BT-X-335, From EXTENDED__ The full formal name under which the party is registered
@@ -5976,6 +6327,32 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         $this->setDocumentSalesAgentName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the sales agent party
+     *
+     * @param  null|string $newDescription Additional information about the sales agent party
+     * @return static
+     */
+    public function addDocumentSalesAgentDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentSalesAgentDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6630,6 +7007,45 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
+     * Set a description of the buyer agent party
+     *
+     * @param  null|string $newDescription Additional information about the buyer agent party
+     * @return static
+     */
+    public function setDocumentBuyerAgentDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getBuyerAgentTradeParty()
+            ?->unsetDescription();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getBuyerAgentTradePartyWithCreate()
+            ->getDescriptionWithCreate()
+            ->setValue($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the buyer agent party
      *
      * @param  null|string $newName __BT-X-406, From EXTENDED__ The full formal name under which the party is registered
@@ -6649,6 +7065,32 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         $this->setDocumentBuyerAgentName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the buyer agent party
+     *
+     * @param  null|string $newDescription Additional information about the buyer agent party
+     * @return static
+     */
+    public function addDocumentBuyerAgentDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentBuyerAgentDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7303,6 +7745,45 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
+     * Set a description of the product end user party
+     *
+     * @param  null|string $newDescription Additional information about the product end user party
+     * @return static
+     */
+    public function setDocumentProductEndUserDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getProductEndUserTradeParty()
+            ?->unsetDescription();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getProductEndUserTradePartyWithCreate()
+            ->getDescriptionWithCreate()
+            ->setValue($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the product end-user party
      *
      * @param  null|string $newName __BT-X-128, From EXTENDED__ The full formal name under which the party is registered
@@ -7322,6 +7803,32 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         $this->setDocumentProductEndUserName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the product end user party
+     *
+     * @param  null|string $newDescription Additional information about the product end user party
+     * @return static
+     */
+    public function addDocumentProductEndUserDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentProductEndUserDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7976,6 +8483,45 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
+     * Set a description of the ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ship-to party
+     * @return static
+     */
+    public function setDocumentShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeDelivery()
+            ?->getShipToTradeParty()
+            ?->unsetDescription();
+
+        if ($this->supportsNotAtLeastEn16931WithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getShipToTradePartyWithCreate()
+            ->getDescriptionWithCreate()
+            ->setValue($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the Ship-To party
      *
      * @param  null|string $newName __BT-70, From BASIC WL__ The full formal name under which the party is registered
@@ -7995,6 +8541,32 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         $this->setDocumentShipToName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ship-to party
+     * @return static
+     */
+    public function addDocumentShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastEn16931WithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentShipToDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -8649,6 +9221,45 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
+     * Set a description of the ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ultimate ship-to party
+     * @return static
+     */
+    public function setDocumentUltimateShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeDelivery()
+            ?->getUltimateShipToTradeParty()
+            ?->unsetDescription();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getUltimateShipToTradePartyWithCreate()
+            ->getDescriptionWithCreate()
+            ->setValue($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the ultimate Ship-To party
      *
      * @param  null|string $newName __BT-X-164, From EXTENDED__ The full formal name under which the party is registered
@@ -8668,6 +9279,32 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         $this->setDocumentUltimateShipToName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ultimate ship-to party
+     * @return static
+     */
+    public function addDocumentUltimateShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentUltimateShipToDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -9322,6 +9959,45 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
+     * Set a description of the ship-from party
+     *
+     * @param  null|string $newDescription Additional information about the ship-from party
+     * @return static
+     */
+    public function setDocumentShipFromDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeDelivery()
+            ?->getShipFromTradeParty()
+            ?->unsetDescription();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getShipFromTradePartyWithCreate()
+            ->getDescriptionWithCreate()
+            ->setValue($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the Ship-From party
      *
      * @param  null|string $newName __BT-X-183, From EXTENDED__ The full formal name under which the party is registered
@@ -9341,6 +10017,32 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         $this->setDocumentShipFromName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the ship-from party
+     *
+     * @param  null|string $newDescription Additional information about the ship-from party
+     * @return static
+     */
+    public function addDocumentShipFromDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentShipFromDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -9995,6 +10697,45 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
+     * Set a description of the invoicer party
+     *
+     * @param  null|string $newDescription Additional information about the invoicer party
+     * @return static
+     */
+    public function setDocumentInvoicerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getInvoicerTradeParty()
+            ?->unsetDescription();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getInvoicerTradePartyWithCreate()
+            ->getDescriptionWithCreate()
+            ->setValue($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the Invoicer party
      *
      * @param  null|string $newName __BT-X-207, From EXTENDED__ The full formal name under which the party is registered
@@ -10014,6 +10755,32 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         $this->setDocumentInvoicerName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the invoicer party
+     *
+     * @param  null|string $newDescription Additional information about the invoicer party
+     * @return static
+     */
+    public function addDocumentInvoicerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentInvoicerDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -10668,6 +11435,45 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
+     * Set a description of the invoicee party
+     *
+     * @param  null|string $newDescription Additional information about the invoicee party
+     * @return static
+     */
+    public function setDocumentInvoiceeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getInvoiceeTradeParty()
+            ?->unsetDescription();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getInvoiceeTradePartyWithCreate()
+            ->getDescriptionWithCreate()
+            ->setValue($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the Invoicee party
      *
      * @param  null|string $newName __BT-X-226, From EXTENDED__ The full formal name under which the party is registered
@@ -10687,6 +11493,32 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         $this->setDocumentInvoiceeName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the invoicee party
+     *
+     * @param  null|string $newDescription Additional information about the invoicee party
+     * @return static
+     */
+    public function addDocumentInvoiceeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentInvoiceeDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -11341,6 +12173,45 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
+     * Set a description of the payee party
+     *
+     * @param  null|string $newDescription Additional information about the payee party
+     * @return static
+     */
+    public function setDocumentPayeeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getPayeeTradeParty()
+            ?->unsetDescription();
+
+        if ($this->supportsNotAtLeastEn16931WithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayeeTradePartyWithCreate()
+            ->getDescriptionWithCreate()
+            ->setValue($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the Payee party
      *
      * @param  null|string $newName __BT-59, From BASIC WL__ The full formal name under which the party is registered
@@ -11360,6 +12231,32 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         $this->setDocumentPayeeName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the payee party
+     *
+     * @param  null|string $newDescription Additional information about the payee party
+     * @return static
+     */
+    public function addDocumentPayeeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastEn16931WithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentPayeeDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -12009,6 +12906,45 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
+     * Set a description of the payer party
+     *
+     * @param  null|string $newDescription Additional information about the payer party
+     * @return static
+     */
+    public function setDocumentPayerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getPayerTradeParty()
+            ?->unsetDescription();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayerTradePartyWithCreate()
+            ->getDescriptionWithCreate()
+            ->setValue($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the Payer party
      *
      * @param  null|string $newName __BT-X-476, From EXTENDED__ The full formal name under which the party is registered
@@ -12028,6 +12964,32 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         $this->setDocumentPayerName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the payer party
+     *
+     * @param  null|string $newDescription Additional information about the payer party
+     * @return static
+     */
+    public function addDocumentPayerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentPayerDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -16296,6 +17258,47 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
+     * Set a description of the position-level ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ship-to party
+     * @return static
+     */
+    public function setDocumentPositionShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getLatestIncludedSupplyChainTradeLineItem()
+            ?->getSpecifiedLineTradeDelivery()
+            ?->getShipToTradeParty()
+            ?->unsetDescription();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
+            ->getSpecifiedLineTradeDeliveryWithCreate()
+            ->getShipToTradePartyWithCreate()
+            ->getDescriptionWithCreate()
+            ->setValue($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the Ship-To party
      *
      * @param  null|string $newName __BT-X-50, From EXTENDED__ The full formal name under which the party is registered
@@ -16315,6 +17318,32 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         $this->setDocumentPositionShipToName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the position-level ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ship-to party
+     * @return static
+     */
+    public function addDocumentPositionShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentPositionShipToDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -16969,6 +17998,47 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
+     * Set a description of the position-level ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ultimate ship-to party
+     * @return static
+     */
+    public function setDocumentPositionUltimateShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getLatestIncludedSupplyChainTradeLineItem()
+            ?->getSpecifiedLineTradeDelivery()
+            ?->getUltimateShipToTradeParty()
+            ?->unsetDescription();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
+            ->getSpecifiedLineTradeDeliveryWithCreate()
+            ->getUltimateShipToTradePartyWithCreate()
+            ->getDescriptionWithCreate()
+            ->setValue($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the ultimate Ship-To party
      *
      * @param  null|string $newName __BT-X-69, From EXTENDED__ The full formal name under which the party is registered
@@ -16988,6 +18058,32 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         $this->setDocumentPositionUltimateShipToName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the position-level ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ultimate ship-to party
+     * @return static
+     */
+    public function addDocumentPositionUltimateShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentPositionUltimateShipToDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 

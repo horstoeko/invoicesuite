@@ -593,6 +593,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
     ): static {
         $this->unsetSeller();
         $this->documentBuilder->setDocumentSellerName($name);
+        $this->documentBuilder->setDocumentSellerDescription($description);
         $this->documentBuilder->setDocumentSellerId($id);
 
         return $this;

@@ -68,6 +68,7 @@ final class XRechnungUBLCreditNoteDocumentBuilderDTOTest extends TestCase
                     ->addId((new InvoiceSuiteIdDTO())
                         ->setId('99887766'))
                     ->addName('SupplierOfficialName Ltd')
+                    ->addDescription('SupplierOfficialName Ltd Description')
                     ->addLegalOrganisation((new InvoiceSuiteOrganisationDTO())
                         ->setName('SupplierTradingName Ltd.')
                         ->setId('GB983294'))
@@ -94,6 +95,7 @@ final class XRechnungUBLCreditNoteDocumentBuilderDTOTest extends TestCase
                         ->setIdType('0002')
                         ->setId('FR23342'))
                     ->addName('Buyer Official Name')
+                    ->addDescription('Buyer Official Name Description')
                     ->addLegalOrganisation((new InvoiceSuiteOrganisationDTO())
                         ->setName('BuyerTradingName AS')
                         ->setId('39937423947')
@@ -125,6 +127,7 @@ final class XRechnungUBLCreditNoteDocumentBuilderDTOTest extends TestCase
                         ->setPostcode('21234')
                         ->setCountry(InvoiceSuiteCodelistCountryCodes::SCHWEDEN->value))
                     ->addName('Delivery party Name')
+                    ->addDescription('Delivery party Name Description')
             )
             ->addPaymentMean(
                 (new InvoiceSuitePaymentMeanDTO())
@@ -374,6 +377,7 @@ final class XRechnungUBLCreditNoteDocumentBuilderDTOTest extends TestCase
         $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme/cbc:ID)[2]');
 
         $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName', 'SupplierOfficialName Ltd');
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm', 'SupplierOfficialName Ltd Description');
         $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID', 'GB983294');
         $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName)[2]');
         $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID)[2]');
@@ -417,6 +421,7 @@ final class XRechnungUBLCreditNoteDocumentBuilderDTOTest extends TestCase
         $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme/cbc:ID)[2]');
 
         $this->assertXPathValue('/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName', 'Buyer Official Name');
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm', 'Buyer Official Name Description');
         $this->assertXPathValue('/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID[@schemeID="0183"]', '39937423947');
         $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName)[2]');
         $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID)[2]');
@@ -440,6 +445,7 @@ final class XRechnungUBLCreditNoteDocumentBuilderDTOTest extends TestCase
         $this->assertXPathNotExists('(/ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode)[2]');
 
         $this->assertXPathValue('/ubl:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 'Delivery party Name');
+        $this->assertXPathValue('/ubl:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm', 'Delivery party Name Description');
         $this->assertXPathNotExists('(/ubl:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name)[2]');
 
         // Payment

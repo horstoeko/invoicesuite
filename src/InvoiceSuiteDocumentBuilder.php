@@ -1001,6 +1001,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set a description of the seller/supplier party
+     *
+     * @param  null|string $newDescription Further legal information that is relevant for the seller
+     * @return static
+     */
+    public function setDocumentSellerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentSellerDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the seller/supplier party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -1010,6 +1024,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newName = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentSellerName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the seller/supplier party
+     *
+     * @param  null|string $newDescription Further legal information that is relevant for the seller
+     * @return static
+     */
+    public function addDocumentSellerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentSellerDescription($newDescription);
 
         return $this;
     }
@@ -1285,6 +1313,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set a description of the buyer/customer party
+     *
+     * @param  null|string $newDescription Additional information about the buyer/customer party
+     * @return static
+     */
+    public function setDocumentBuyerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the buyer/customer party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -1294,6 +1336,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newName = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the buyer/customer party
+     *
+     * @param  null|string $newDescription Additional information about the buyer/customer party
+     * @return static
+     */
+    public function addDocumentBuyerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerDescription($newDescription);
 
         return $this;
     }
@@ -1569,6 +1625,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set a description of the seller's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the seller's tax representative party
+     * @return static
+     */
+    public function setDocumentSellerTaxRepresentativeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentSellerTaxRepresentativeDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the seller's tax representative party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -1578,6 +1648,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newName = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentSellerTaxRepresentativeName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the seller's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the seller's tax representative party
+     * @return static
+     */
+    public function addDocumentSellerTaxRepresentativeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentSellerTaxRepresentativeDescription($newDescription);
 
         return $this;
     }
@@ -1853,6 +1937,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set a description of the buyer's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the buyer's tax representative party
+     * @return static
+     */
+    public function setDocumentBuyerTaxRepresentativeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerTaxRepresentativeDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the buyer's tax representative party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -1862,6 +1960,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newName = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerTaxRepresentativeName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the buyer's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the buyer's tax representative party
+     * @return static
+     */
+    public function addDocumentBuyerTaxRepresentativeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerTaxRepresentativeDescription($newDescription);
 
         return $this;
     }
@@ -2137,6 +2249,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set a description of the sales agent party
+     *
+     * @param  null|string $newDescription Additional information about the sales agent party
+     * @return static
+     */
+    public function setDocumentSalesAgentDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentSalesAgentDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the sales agent party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -2146,6 +2272,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newName = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentSalesAgentName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the sales agent party
+     *
+     * @param  null|string $newDescription Additional information about the sales agent party
+     * @return static
+     */
+    public function addDocumentSalesAgentDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentSalesAgentDescription($newDescription);
 
         return $this;
     }
@@ -2421,6 +2561,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set a description of the buyer agent party
+     *
+     * @param  null|string $newDescription Additional information about the buyer agent party
+     * @return static
+     */
+    public function setDocumentBuyerAgentDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerAgentDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the buyer agent party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -2430,6 +2584,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newName = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerAgentName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the buyer agent party
+     *
+     * @param  null|string $newDescription Additional information about the buyer agent party
+     * @return static
+     */
+    public function addDocumentBuyerAgentDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerAgentDescription($newDescription);
 
         return $this;
     }
@@ -2705,6 +2873,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set a description of the product end user party
+     *
+     * @param  null|string $newDescription Additional information about the product end user party
+     * @return static
+     */
+    public function setDocumentProductEndUserDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentProductEndUserDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the product end-user party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -2714,6 +2896,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newName = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentProductEndUserName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the product end user party
+     *
+     * @param  null|string $newDescription Additional information about the product end user party
+     * @return static
+     */
+    public function addDocumentProductEndUserDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentProductEndUserDescription($newDescription);
 
         return $this;
     }
@@ -2989,6 +3185,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set a description of the ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ship-to party
+     * @return static
+     */
+    public function setDocumentShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipToDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the Ship-To party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -2998,6 +3208,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newName = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipToName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ship-to party
+     * @return static
+     */
+    public function addDocumentShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipToDescription($newDescription);
 
         return $this;
     }
@@ -3273,6 +3497,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set a description of the ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ultimate ship-to party
+     * @return static
+     */
+    public function setDocumentUltimateShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentUltimateShipToDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the ultimate Ship-To party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -3282,6 +3520,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newName = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentUltimateShipToName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ultimate ship-to party
+     * @return static
+     */
+    public function addDocumentUltimateShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentUltimateShipToDescription($newDescription);
 
         return $this;
     }
@@ -3557,6 +3809,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set a description of the ship-from party
+     *
+     * @param  null|string $newDescription Additional information about the ship-from party
+     * @return static
+     */
+    public function setDocumentShipFromDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipFromDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the Ship-From party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -3566,6 +3832,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newName = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipFromName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the ship-from party
+     *
+     * @param  null|string $newDescription Additional information about the ship-from party
+     * @return static
+     */
+    public function addDocumentShipFromDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipFromDescription($newDescription);
 
         return $this;
     }
@@ -3841,6 +4121,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set a description of the invoicer party
+     *
+     * @param  null|string $newDescription Additional information about the invoicer party
+     * @return static
+     */
+    public function setDocumentInvoicerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoicerDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the Invoicer party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -3850,6 +4144,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newName = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoicerName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the invoicer party
+     *
+     * @param  null|string $newDescription Additional information about the invoicer party
+     * @return static
+     */
+    public function addDocumentInvoicerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoicerDescription($newDescription);
 
         return $this;
     }
@@ -4125,6 +4433,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set a description of the invoicee party
+     *
+     * @param  null|string $newDescription Additional information about the invoicee party
+     * @return static
+     */
+    public function setDocumentInvoiceeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoiceeDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the Invoicee party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -4134,6 +4456,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newName = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoiceeName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the invoicee party
+     *
+     * @param  null|string $newDescription Additional information about the invoicee party
+     * @return static
+     */
+    public function addDocumentInvoiceeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoiceeDescription($newDescription);
 
         return $this;
     }
@@ -4409,6 +4745,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set a description of the payee party
+     *
+     * @param  null|string $newDescription Additional information about the payee party
+     * @return static
+     */
+    public function setDocumentPayeeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPayeeDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the Payee party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -4418,6 +4768,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newName = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPayeeName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the payee party
+     *
+     * @param  null|string $newDescription Additional information about the payee party
+     * @return static
+     */
+    public function addDocumentPayeeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPayeeDescription($newDescription);
 
         return $this;
     }
@@ -4693,6 +5057,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set a description of the payer party
+     *
+     * @param  null|string $newDescription Additional information about the payer party
+     * @return static
+     */
+    public function setDocumentPayerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPayerDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the Payer party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -4702,6 +5080,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newName = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPayerName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the payer party
+     *
+     * @param  null|string $newDescription Additional information about the payer party
+     * @return static
+     */
+    public function addDocumentPayerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPayerDescription($newDescription);
 
         return $this;
     }
@@ -6818,6 +7210,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set a description of the position-level ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ship-to party
+     * @return static
+     */
+    public function setDocumentPositionShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionShipToDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the Ship-To party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -6829,6 +7235,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionShipToName(
             $newName
         );
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the position-level ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ship-to party
+     * @return static
+     */
+    public function addDocumentPositionShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionShipToDescription($newDescription);
 
         return $this;
     }
@@ -7164,6 +7584,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set a description of the position-level ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ultimate ship-to party
+     * @return static
+     */
+    public function setDocumentPositionUltimateShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Add a name of the ultimate Ship-To party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -7175,6 +7609,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToName(
             $newName
         );
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the position-level ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ultimate ship-to party
+     * @return static
+     */
+    public function addDocumentPositionUltimateShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToDescription($newDescription);
 
         return $this;
     }

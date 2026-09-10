@@ -411,6 +411,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
 
         $this->assertSame('Lieferant GmbH', $newName);
 
+        // Description
+
+        static::$document->getDocumentSellerDescription($newDescription);
+
+        $this->assertSame('Lieferant GmbH Description', $newDescription);
+
         // ID
 
         $this->assertTrue(static::$document->firstDocumentSellerId());
@@ -582,6 +588,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
         static::$document->getDocumentBuyerName($newName);
 
         $this->assertSame('Kunde GmbH', $newName);
+
+        // Description
+
+        static::$document->getDocumentBuyerDescription($newDescription);
+
+        $this->assertSame('Kunde GmbH Description', $newDescription);
 
         // ID
 
@@ -1963,6 +1975,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
         static::$document->getDocumentPayeeName($newName);
 
         $this->assertSame('Payee GmbH', $newName);
+
+        // Description
+
+        static::$document->getDocumentPayeeDescription($newDescription);
+
+        $this->assertSame('Payee AG Description', $newDescription);
 
         // ID
 
@@ -3480,6 +3498,8 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
         $this->assertInstanceOf(InvoiceSuiteDocumentHeaderDTO::class, $newDocmentDTO);
 
         $this->assertSame('2025-04-000001', $newDocmentDTO?->getNumber());
+        $this->assertSame(['Lieferant GmbH Description'], $newDocmentDTO?->getSellerParty()?->getDescriptions());
+        $this->assertSame(['Kunde GmbH Description'], $newDocmentDTO?->getBuyerParty()?->getDescriptions());
     }
 
     public function testCopyToBuilder(): void

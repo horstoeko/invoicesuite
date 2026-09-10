@@ -564,6 +564,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set a description of the seller/supplier party
+     *
+     * @param  null|string $newDescription Further legal information that is relevant for the seller
+     * @return static
+     */
+    abstract public function setDocumentSellerDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
+     * Add a description of the seller/supplier party
+     *
+     * @param  null|string $newDescription Further legal information that is relevant for the seller
+     * @return static
+     */
+    abstract public function addDocumentSellerDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
      * Set the ID of the seller/supplier party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -781,6 +801,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentBuyerName(
         ?string $newName = null
+    ): static;
+
+    /**
+     * Set a description of the buyer/customer party
+     *
+     * @param  null|string $newDescription Additional information about the buyer/customer party
+     * @return static
+     */
+    abstract public function setDocumentBuyerDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
+     * Add a description of the buyer/customer party
+     *
+     * @param  null|string $newDescription Additional information about the buyer/customer party
+     * @return static
+     */
+    abstract public function addDocumentBuyerDescription(
+        ?string $newDescription = null
     ): static;
 
     /**
@@ -1004,6 +1044,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set a description of the seller's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the seller's tax representative party
+     * @return static
+     */
+    abstract public function setDocumentSellerTaxRepresentativeDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
+     * Add a description of the seller's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the seller's tax representative party
+     * @return static
+     */
+    abstract public function addDocumentSellerTaxRepresentativeDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
      * Set the ID of the seller's tax representative party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -1221,6 +1281,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentBuyerTaxRepresentativeName(
         ?string $newName = null
+    ): static;
+
+    /**
+     * Set a description of the buyer's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the buyer's tax representative party
+     * @return static
+     */
+    abstract public function setDocumentBuyerTaxRepresentativeDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
+     * Add a description of the buyer's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the buyer's tax representative party
+     * @return static
+     */
+    abstract public function addDocumentBuyerTaxRepresentativeDescription(
+        ?string $newDescription = null
     ): static;
 
     /**
@@ -1444,6 +1524,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set a description of the sales agent party
+     *
+     * @param  null|string $newDescription Additional information about the sales agent party
+     * @return static
+     */
+    abstract public function setDocumentSalesAgentDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
+     * Add a description of the sales agent party
+     *
+     * @param  null|string $newDescription Additional information about the sales agent party
+     * @return static
+     */
+    abstract public function addDocumentSalesAgentDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
      * Set the ID of the sales agent party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -1664,6 +1764,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set a description of the buyer agent party
+     *
+     * @param  null|string $newDescription Additional information about the buyer agent party
+     * @return static
+     */
+    abstract public function setDocumentBuyerAgentDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
+     * Add a description of the buyer agent party
+     *
+     * @param  null|string $newDescription Additional information about the buyer agent party
+     * @return static
+     */
+    abstract public function addDocumentBuyerAgentDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
      * Set the ID of the buyer agent party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -1874,6 +1994,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set a description of the product end user party
+     *
+     * @param  null|string $newDescription Additional information about the product end user party
+     * @return static
+     */
+    abstract public function setDocumentProductEndUserDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
      * Add a name of the product end-user party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -1881,6 +2011,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentProductEndUserName(
         ?string $newName = null
+    ): static;
+
+    /**
+     * Add a description of the product end user party
+     *
+     * @param  null|string $newDescription Additional information about the product end user party
+     * @return static
+     */
+    abstract public function addDocumentProductEndUserDescription(
+        ?string $newDescription = null
     ): static;
 
     /**
@@ -2094,6 +2234,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set a description of the ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ship-to party
+     * @return static
+     */
+    abstract public function setDocumentShipToDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
      * Add a name of the Ship-To party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -2101,6 +2251,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentShipToName(
         ?string $newName = null
+    ): static;
+
+    /**
+     * Add a description of the ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ship-to party
+     * @return static
+     */
+    abstract public function addDocumentShipToDescription(
+        ?string $newDescription = null
     ): static;
 
     /**
@@ -2314,6 +2474,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set a description of the ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ultimate ship-to party
+     * @return static
+     */
+    abstract public function setDocumentUltimateShipToDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
      * Add a name of the ultimate Ship-To party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -2321,6 +2491,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentUltimateShipToName(
         ?string $newName = null
+    ): static;
+
+    /**
+     * Add a description of the ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ultimate ship-to party
+     * @return static
+     */
+    abstract public function addDocumentUltimateShipToDescription(
+        ?string $newDescription = null
     ): static;
 
     /**
@@ -2534,6 +2714,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set a description of the ship-from party
+     *
+     * @param  null|string $newDescription Additional information about the ship-from party
+     * @return static
+     */
+    abstract public function setDocumentShipFromDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
      * Add a name of the Ship-From party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -2541,6 +2731,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentShipFromName(
         ?string $newName = null
+    ): static;
+
+    /**
+     * Add a description of the ship-from party
+     *
+     * @param  null|string $newDescription Additional information about the ship-from party
+     * @return static
+     */
+    abstract public function addDocumentShipFromDescription(
+        ?string $newDescription = null
     ): static;
 
     /**
@@ -2754,6 +2954,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set a description of the invoicer party
+     *
+     * @param  null|string $newDescription Additional information about the invoicer party
+     * @return static
+     */
+    abstract public function setDocumentInvoicerDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
      * Add a name of the Invoicer party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -2761,6 +2971,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentInvoicerName(
         ?string $newName = null
+    ): static;
+
+    /**
+     * Add a description of the invoicer party
+     *
+     * @param  null|string $newDescription Additional information about the invoicer party
+     * @return static
+     */
+    abstract public function addDocumentInvoicerDescription(
+        ?string $newDescription = null
     ): static;
 
     /**
@@ -2974,6 +3194,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set a description of the invoicee party
+     *
+     * @param  null|string $newDescription Additional information about the invoicee party
+     * @return static
+     */
+    abstract public function setDocumentInvoiceeDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
      * Add a name of the Invoicee party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -2981,6 +3211,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentInvoiceeName(
         ?string $newName = null
+    ): static;
+
+    /**
+     * Add a description of the invoicee party
+     *
+     * @param  null|string $newDescription Additional information about the invoicee party
+     * @return static
+     */
+    abstract public function addDocumentInvoiceeDescription(
+        ?string $newDescription = null
     ): static;
 
     /**
@@ -3194,6 +3434,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set a description of the payee party
+     *
+     * @param  null|string $newDescription Additional information about the payee party
+     * @return static
+     */
+    abstract public function setDocumentPayeeDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
      * Add a name of the Payee party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -3201,6 +3451,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentPayeeName(
         ?string $newName = null
+    ): static;
+
+    /**
+     * Add a description of the payee party
+     *
+     * @param  null|string $newDescription Additional information about the payee party
+     * @return static
+     */
+    abstract public function addDocumentPayeeDescription(
+        ?string $newDescription = null
     ): static;
 
     /**
@@ -3414,6 +3674,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set a description of the payer party
+     *
+     * @param  null|string $newDescription Additional information about the payer party
+     * @return static
+     */
+    abstract public function setDocumentPayerDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
      * Add a name of the Payer party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -3421,6 +3691,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentPayerName(
         ?string $newName = null
+    ): static;
+
+    /**
+     * Add a description of the payer party
+     *
+     * @param  null|string $newDescription Additional information about the payer party
+     * @return static
+     */
+    abstract public function addDocumentPayerDescription(
+        ?string $newDescription = null
     ): static;
 
     /**
@@ -4814,6 +5094,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set a description of the position-level ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ship-to party
+     * @return static
+     */
+    abstract public function setDocumentPositionShipToDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
      * Add a name of the Ship-To party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -4821,6 +5111,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentPositionShipToName(
         ?string $newName = null
+    ): static;
+
+    /**
+     * Add a description of the position-level ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ship-to party
+     * @return static
+     */
+    abstract public function addDocumentPositionShipToDescription(
+        ?string $newDescription = null
     ): static;
 
     /**
@@ -5034,6 +5334,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set a description of the position-level ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ultimate ship-to party
+     * @return static
+     */
+    abstract public function setDocumentPositionUltimateShipToDescription(
+        ?string $newDescription = null
+    ): static;
+
+    /**
      * Add a name of the ultimate Ship-To party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -5041,6 +5351,16 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentPositionUltimateShipToName(
         ?string $newName = null
+    ): static;
+
+    /**
+     * Add a description of the position-level ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ultimate ship-to party
+     * @return static
+     */
+    abstract public function addDocumentPositionUltimateShipToDescription(
+        ?string $newDescription = null
     ): static;
 
     /**

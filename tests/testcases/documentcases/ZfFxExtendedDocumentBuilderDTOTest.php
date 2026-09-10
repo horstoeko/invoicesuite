@@ -73,6 +73,7 @@ final class ZfFxExtendedDocumentBuilderDTOTest extends TestCase
                     ->setId('4333741000005')
                     ->setIdType('0088'))
                 ->addName('MUSTERLIEFERANT GMBH')
+                ->addDescription('MUSTERLIEFERANT GMBH DESCRIPTION')
                 ->addContact((new InvoiceSuiteContactDTO())
                     ->setPhoneNumber('+49 932 431 500')
                     ->setEmailAddress('max.mustermann@musterlieferant.de'))
@@ -91,6 +92,7 @@ final class ZfFxExtendedDocumentBuilderDTOTest extends TestCase
                     ->setId('4304171000002')
                     ->setIdType('0088'))
                 ->addName('MUSTER-KUNDE GMBH')
+                ->addDescription('MUSTER-KUNDE GMBH DESCRIPTION')
                 ->addAddress((new InvoiceSuiteAddressDTO())
                     ->setPostcode('40235')
                     ->setAddressLine1('KUNDENWEG 88')
@@ -106,6 +108,7 @@ final class ZfFxExtendedDocumentBuilderDTOTest extends TestCase
                     ->setId('4304171088093')
                     ->setIdType('0088'))
                 ->addName('MUSTER-MARKT')
+                ->addDescription('MUSTER-MARKT DESCRIPTION')
                 ->addContact((new InvoiceSuiteContactDTO())
                     ->setDepartmentName('8211'))
                 ->addAddress((new InvoiceSuiteAddressDTO())
@@ -123,6 +126,7 @@ final class ZfFxExtendedDocumentBuilderDTOTest extends TestCase
                     ->setId('4304171000002')
                     ->setIdType('0088'))
                 ->addName('MUSTER-KUNDE GMBH')
+                ->addDescription('MUSTER-KUNDE GMBH DESCRIPTION')
                 ->addAddress((new InvoiceSuiteAddressDTO())
                     ->setPostcode('40235')
                     ->setAddressLine1('KUNDENWEG 88')
@@ -627,6 +631,7 @@ final class ZfFxExtendedDocumentBuilderDTOTest extends TestCase
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:GlobalID[@schemeID="0088"]', '4333741000005');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:GlobalID)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Name', 'MUSTERLIEFERANT GMBH');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Description', 'MUSTERLIEFERANT GMBH DESCRIPTION');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Name)[2]');
         $this->assertXPathExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:DefinedTradeContact');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:DefinedTradeContact/ram:TelephoneUniversalCommunication/ram:CompleteNumber', '+49 932 431 500');
@@ -649,6 +654,7 @@ final class ZfFxExtendedDocumentBuilderDTOTest extends TestCase
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:GlobalID[@schemeID="0088"]', '4304171000002');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:GlobalID)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:Name', 'MUSTER-KUNDE GMBH');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:Description', 'MUSTER-KUNDE GMBH DESCRIPTION');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:Name)[2]');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:Name)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:PostalTradeAddress/ram:PostcodeCode', '40235');
@@ -674,6 +680,7 @@ final class ZfFxExtendedDocumentBuilderDTOTest extends TestCase
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:GlobalID[@schemeID="0088"]', '4304171088093');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:GlobalID)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:Name', 'MUSTER-MARKT');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:Description', 'MUSTER-MARKT DESCRIPTION');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:Name)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:DefinedTradeContact/ram:DepartmentName', '8211');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:DefinedTradeContact/ram:DepartmentName)[2]');
@@ -703,6 +710,7 @@ final class ZfFxExtendedDocumentBuilderDTOTest extends TestCase
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:GlobalID[@schemeID="0088"]', '4304171000002');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:GlobalID)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:Name', 'MUSTER-KUNDE GMBH');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:Description', 'MUSTER-KUNDE GMBH DESCRIPTION');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:Name)[2]');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:Name)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:PostalTradeAddress/ram:PostcodeCode', '40235');

@@ -100,6 +100,7 @@
       <cac:PartyLegalEntity>
         <cbc:RegistrationName>Lieferant GmbH</cbc:RegistrationName>
         <cbc:CompanyID>3874837489237</cbc:CompanyID>
+        <cbc:CompanyLegalForm>Lieferant GmbH Description</cbc:CompanyLegalForm>
       </cac:PartyLegalEntity>
       <cac:Contact>
         <cbc:Name>Horst Meier</cbc:Name>
@@ -136,6 +137,7 @@
       <cac:PartyLegalEntity>
         <cbc:RegistrationName>Kunde GmbH</cbc:RegistrationName>
         <cbc:CompanyID>3874837489237</cbc:CompanyID>
+        <cbc:CompanyLegalForm>Kunde GmbH Description</cbc:CompanyLegalForm>
       </cac:PartyLegalEntity>
       <cac:Contact>
         <cbc:Name>Horst Meier</cbc:Name>
@@ -153,6 +155,7 @@
     </cac:PartyName>
     <cac:PartyLegalEntity>
       <cbc:CompanyID>3874837489237</cbc:CompanyID>
+        <cbc:CompanyLegalForm>Party 3 Description</cbc:CompanyLegalForm>
     </cac:PartyLegalEntity>
   </cac:PayeeParty>
   <cac:TaxRepresentativeParty>
