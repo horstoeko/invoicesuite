@@ -5373,7 +5373,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the description of the buyer/customer party
      *
-     * @param  null|string $newDescription Additional information about the buyer/customer party
+     * @param  null|string $newDescription __BT-X-334, From EXTENDED__ Additional information about the buyer/customer party
      * @return static
      *
      * @param-out string $newDescription
@@ -5385,7 +5385,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
 
         $newDescription = '';
 
-        if ($this->supportsNotAtLeastEn16931WithTrace(__METHOD__)) {
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
             return $this;
         }
 
@@ -6041,12 +6041,6 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
 
         $newDescription = '';
 
-        if ($this->supportsNotAtLeastEn16931WithTrace(__METHOD__)) {
-            return $this;
-        }
-
-        $newDescription = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTaxRepresentativeTradeParty()?->getDescription()?->getValue() ?? '';
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6685,12 +6679,6 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
-
-        if ($this->supportsNotAtLeastEn16931WithTrace(__METHOD__)) {
-            return $this;
-        }
-
-        $newDescription = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTaxRepresentativeTradeParty()?->getDescription()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7331,12 +7319,6 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
 
         $newDescription = '';
 
-        if ($this->supportsNotAtLeastEn16931WithTrace(__METHOD__)) {
-            return $this;
-        }
-
-        $newDescription = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getDescription()?->getValue() ?? '';
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7975,12 +7957,6 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
-
-        if ($this->supportsNotAtLeastEn16931WithTrace(__METHOD__)) {
-            return $this;
-        }
-
-        $newDescription = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerAgentTradeParty()?->getDescription()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -8621,12 +8597,6 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
 
         $newDescription = '';
 
-        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
-            return $this;
-        }
-
-        $newDescription = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getProductEndUserTradeParty()?->getDescription()?->getValue() ?? '';
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -9265,12 +9235,6 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
-
-        if ($this->supportsNotAtLeastEn16931WithTrace(__METHOD__)) {
-            return $this;
-        }
-
-        $newDescription = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getShipToTradeParty()?->getDescription()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -9911,12 +9875,6 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
 
         $newDescription = '';
 
-        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
-            return $this;
-        }
-
-        $newDescription = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getDescription()?->getValue() ?? '';
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10555,12 +10513,6 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
-
-        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
-            return $this;
-        }
-
-        $newDescription = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getShipFromTradeParty()?->getDescription()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -11201,12 +11153,6 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
 
         $newDescription = '';
 
-        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
-            return $this;
-        }
-
-        $newDescription = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getInvoicerTradeParty()?->getDescription()?->getValue() ?? '';
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -11845,12 +11791,6 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
-
-        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
-            return $this;
-        }
-
-        $newDescription = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getInvoiceeTradeParty()?->getDescription()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -12491,12 +12431,6 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
 
         $newDescription = '';
 
-        if ($this->supportsNotAtLeastEn16931WithTrace(__METHOD__)) {
-            return $this;
-        }
-
-        $newDescription = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayeeTradeParty()?->getDescription()?->getValue() ?? '';
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -13135,12 +13069,6 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
-
-        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
-            return $this;
-        }
-
-        $newDescription = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getDescription()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -16716,14 +16644,6 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
 
         $newDescription = '';
 
-        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
-            return $this;
-        }
-
-        $documentPosition = $this->resolveCurrentDocumentPosition();
-
-        $newDescription = $documentPosition->getSpecifiedLineTradeDelivery()?->getShipToTradeParty()?->getDescription()?->getValue() ?? '';
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -17364,14 +17284,6 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
-
-        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
-            return $this;
-        }
-
-        $documentPosition = $this->resolveCurrentDocumentPosition();
-
-        $newDescription = $documentPosition->getSpecifiedLineTradeDelivery()?->getUltimateShipToTradeParty()?->getDescription()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 

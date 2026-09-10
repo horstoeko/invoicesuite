@@ -2509,22 +2509,6 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Set a description of the seller/supplier party
-     *
-     * @param  null|string $newDescription Further legal information that is relevant for the seller
-     * @return static
-     */
-    public function setDocumentSellerDescription(
-        ?string $newDescription = null
-    ): static {
-        $this->traceMethodEnter(__METHOD__);
-
-        $this->traceMethodExit(__METHOD__);
-
-        return $this;
-    }
-
-    /**
      * Add a name of the seller/supplier party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -2540,6 +2524,22 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         }
 
         $this->setDocumentSellerName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set a description of the seller/supplier party
+     *
+     * @param  null|string $newDescription Further legal information that is relevant for the seller
+     * @return static
+     */
+    public function setDocumentSellerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3011,22 +3011,6 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Set a description of the buyer/customer party
-     *
-     * @param  null|string $newDescription Additional information about the buyer/customer party
-     * @return static
-     */
-    public function setDocumentBuyerDescription(
-        ?string $newDescription = null
-    ): static {
-        $this->traceMethodEnter(__METHOD__);
-
-        $this->traceMethodExit(__METHOD__);
-
-        return $this;
-    }
-
-    /**
      * Add a name of the buyer/customer party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -3042,6 +3026,22 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         }
 
         $this->setDocumentBuyerName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set a description of the buyer/customer party
+     *
+     * @param  null|string $newDescription Additional information about the buyer/customer party
+     * @return static
+     */
+    public function setDocumentBuyerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3504,22 +3504,6 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Set a description of the seller's tax representative party
-     *
-     * @param  null|string $newDescription Additional information about the seller's tax representative party
-     * @return static
-     */
-    public function setDocumentSellerTaxRepresentativeDescription(
-        ?string $newDescription = null
-    ): static {
-        $this->traceMethodEnter(__METHOD__);
-
-        $this->traceMethodExit(__METHOD__);
-
-        return $this;
-    }
-
-    /**
      * Add a name of the seller's tax representative party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -3531,6 +3515,22 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         $this->traceMethodEnter(__METHOD__);
 
         $this->setDocumentSellerTaxRepresentativeName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set a description of the seller's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the seller's tax representative party
+     * @return static
+     */
+    public function setDocumentSellerTaxRepresentativeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3890,13 +3890,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Set a description of the buyer's tax representative party
+     * Add a name of the buyer's tax representative party
      *
-     * @param  null|string $newDescription Additional information about the buyer's tax representative party
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentBuyerTaxRepresentativeDescription(
-        ?string $newDescription = null
+    public function addDocumentBuyerTaxRepresentativeName(
+        ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -3906,13 +3906,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Add a name of the buyer's tax representative party
+     * Set a description of the buyer's tax representative party
      *
-     * @param  null|string $newName the full formal name under which the party is registered
+     * @param  null|string $newDescription Additional information about the buyer's tax representative party
      * @return static
      */
-    public function addDocumentBuyerTaxRepresentativeName(
-        ?string $newName = null
+    public function setDocumentBuyerTaxRepresentativeDescription(
+        ?string $newDescription = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -4238,13 +4238,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Set a description of the sales agent party
+     * Add a name of the sales agent party
      *
-     * @param  null|string $newDescription Additional information about the sales agent party
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentSalesAgentDescription(
-        ?string $newDescription = null
+    public function addDocumentSalesAgentName(
+        ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -4254,13 +4254,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Add a name of the sales agent party
+     * Set a description of the sales agent party
      *
-     * @param  null|string $newName the full formal name under which the party is registered
+     * @param  null|string $newDescription Additional information about the sales agent party
      * @return static
      */
-    public function addDocumentSalesAgentName(
-        ?string $newName = null
+    public function setDocumentSalesAgentDescription(
+        ?string $newDescription = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -4586,13 +4586,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Set a description of the buyer agent party
+     * Add a name of the buyer agent party
      *
-     * @param  null|string $newDescription Additional information about the buyer agent party
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentBuyerAgentDescription(
-        ?string $newDescription = null
+    public function addDocumentBuyerAgentName(
+        ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -4602,13 +4602,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Add a name of the buyer agent party
+     * Set a description of the buyer agent party
      *
-     * @param  null|string $newName the full formal name under which the party is registered
+     * @param  null|string $newDescription Additional information about the buyer agent party
      * @return static
      */
-    public function addDocumentBuyerAgentName(
-        ?string $newName = null
+    public function setDocumentBuyerAgentDescription(
+        ?string $newDescription = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -4934,13 +4934,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Set a description of the product end user party
+     * Add a name of the product end-user party
      *
-     * @param  null|string $newDescription Additional information about the product end user party
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentProductEndUserDescription(
-        ?string $newDescription = null
+    public function addDocumentProductEndUserName(
+        ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -4950,13 +4950,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Add a name of the product end-user party
+     * Set a description of the product end user party
      *
-     * @param  null|string $newName the full formal name under which the party is registered
+     * @param  null|string $newDescription Additional information about the product end user party
      * @return static
      */
-    public function addDocumentProductEndUserName(
-        ?string $newName = null
+    public function setDocumentProductEndUserDescription(
+        ?string $newDescription = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -5282,13 +5282,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Set a description of the ship-to party
+     * Add a name of the Ship-To party
      *
-     * @param  null|string $newDescription Additional information about the ship-to party
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentShipToDescription(
-        ?string $newDescription = null
+    public function addDocumentShipToName(
+        ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -5298,13 +5298,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Add a name of the Ship-To party
+     * Set a description of the ship-to party
      *
-     * @param  null|string $newName the full formal name under which the party is registered
+     * @param  null|string $newDescription Additional information about the ship-to party
      * @return static
      */
-    public function addDocumentShipToName(
-        ?string $newName = null
+    public function setDocumentShipToDescription(
+        ?string $newDescription = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -5630,13 +5630,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Set a description of the ultimate ship-to party
+     * Add a name of the ultimate Ship-To party
      *
-     * @param  null|string $newDescription Additional information about the ultimate ship-to party
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentUltimateShipToDescription(
-        ?string $newDescription = null
+    public function addDocumentUltimateShipToName(
+        ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -5646,13 +5646,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Add a name of the ultimate Ship-To party
+     * Set a description of the ultimate ship-to party
      *
-     * @param  null|string $newName the full formal name under which the party is registered
+     * @param  null|string $newDescription Additional information about the ultimate ship-to party
      * @return static
      */
-    public function addDocumentUltimateShipToName(
-        ?string $newName = null
+    public function setDocumentUltimateShipToDescription(
+        ?string $newDescription = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -5978,13 +5978,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Set a description of the ship-from party
+     * Add a name of the Ship-From party
      *
-     * @param  null|string $newDescription Additional information about the ship-from party
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentShipFromDescription(
-        ?string $newDescription = null
+    public function addDocumentShipFromName(
+        ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -5994,13 +5994,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Add a name of the Ship-From party
+     * Set a description of the ship-from party
      *
-     * @param  null|string $newName the full formal name under which the party is registered
+     * @param  null|string $newDescription Additional information about the ship-from party
      * @return static
      */
-    public function addDocumentShipFromName(
-        ?string $newName = null
+    public function setDocumentShipFromDescription(
+        ?string $newDescription = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -6326,13 +6326,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Set a description of the invoicer party
+     * Add a name of the Invoicer party
      *
-     * @param  null|string $newDescription Additional information about the invoicer party
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentInvoicerDescription(
-        ?string $newDescription = null
+    public function addDocumentInvoicerName(
+        ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -6342,13 +6342,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Add a name of the Invoicer party
+     * Set a description of the invoicer party
      *
-     * @param  null|string $newName the full formal name under which the party is registered
+     * @param  null|string $newDescription Additional information about the invoicer party
      * @return static
      */
-    public function addDocumentInvoicerName(
-        ?string $newName = null
+    public function setDocumentInvoicerDescription(
+        ?string $newDescription = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -6674,13 +6674,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Set a description of the invoicee party
+     * Add a name of the Invoicee party
      *
-     * @param  null|string $newDescription Additional information about the invoicee party
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentInvoiceeDescription(
-        ?string $newDescription = null
+    public function addDocumentInvoiceeName(
+        ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -6690,13 +6690,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Add a name of the Invoicee party
+     * Set a description of the invoicee party
      *
-     * @param  null|string $newName the full formal name under which the party is registered
+     * @param  null|string $newDescription Additional information about the invoicee party
      * @return static
      */
-    public function addDocumentInvoiceeName(
-        ?string $newName = null
+    public function setDocumentInvoiceeDescription(
+        ?string $newDescription = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -7022,13 +7022,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Set a description of the payee party
+     * Add a name of the Payee party
      *
-     * @param  null|string $newDescription Additional information about the payee party
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentPayeeDescription(
-        ?string $newDescription = null
+    public function addDocumentPayeeName(
+        ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -7038,13 +7038,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Add a name of the Payee party
+     * Set a description of the payee party
      *
-     * @param  null|string $newName the full formal name under which the party is registered
+     * @param  null|string $newDescription Additional information about the payee party
      * @return static
      */
-    public function addDocumentPayeeName(
-        ?string $newName = null
+    public function setDocumentPayeeDescription(
+        ?string $newDescription = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -7370,13 +7370,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Set a description of the payer party
+     * Add a name of the Payer party
      *
-     * @param  null|string $newDescription Additional information about the payer party
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentPayerDescription(
-        ?string $newDescription = null
+    public function addDocumentPayerName(
+        ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -7386,13 +7386,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Add a name of the Payer party
+     * Set a description of the payer party
      *
-     * @param  null|string $newName the full formal name under which the party is registered
+     * @param  null|string $newDescription Additional information about the payer party
      * @return static
      */
-    public function addDocumentPayerName(
-        ?string $newName = null
+    public function setDocumentPayerDescription(
+        ?string $newDescription = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -9769,13 +9769,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Set a description of the position-level ship-to party
+     * Add a name of the Ship-To party
      *
-     * @param  null|string $newDescription Additional information about the position-level ship-to party
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentPositionShipToDescription(
-        ?string $newDescription = null
+    public function addDocumentPositionShipToName(
+        ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -9785,13 +9785,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Add a name of the Ship-To party
+     * Set a description of the position-level ship-to party
      *
-     * @param  null|string $newName the full formal name under which the party is registered
+     * @param  null|string $newDescription Additional information about the position-level ship-to party
      * @return static
      */
-    public function addDocumentPositionShipToName(
-        ?string $newName = null
+    public function setDocumentPositionShipToDescription(
+        ?string $newDescription = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -10117,13 +10117,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Set a description of the position-level ultimate ship-to party
+     * Add a name of the ultimate Ship-To party
      *
-     * @param  null|string $newDescription Additional information about the position-level ultimate ship-to party
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentPositionUltimateShipToDescription(
-        ?string $newDescription = null
+    public function addDocumentPositionUltimateShipToName(
+        ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -10133,13 +10133,13 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
-     * Add a name of the ultimate Ship-To party
+     * Set a description of the position-level ultimate ship-to party
      *
-     * @param  null|string $newName the full formal name under which the party is registered
+     * @param  null|string $newDescription Additional information about the position-level ultimate ship-to party
      * @return static
      */
-    public function addDocumentPositionUltimateShipToName(
-        ?string $newName = null
+    public function setDocumentPositionUltimateShipToDescription(
+        ?string $newDescription = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
