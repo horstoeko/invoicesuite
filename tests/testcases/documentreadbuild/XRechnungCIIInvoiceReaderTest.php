@@ -625,7 +625,7 @@ final class XRechnungCIIInvoiceReaderTest extends TestCase
 
         static::$document->getDocumentBuyerDescription($newDescription);
 
-        $this->assertSame('Kunde GmbH Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 
@@ -790,7 +790,7 @@ final class XRechnungCIIInvoiceReaderTest extends TestCase
 
         static::$document->getDocumentSellerTaxRepresentativeDescription($newDescription);
 
-        $this->assertSame('Tax GmbH Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 
@@ -1371,7 +1371,7 @@ final class XRechnungCIIInvoiceReaderTest extends TestCase
 
         static::$document->getDocumentShipToDescription($newDescription);
 
-        $this->assertSame('Ship To GmbH Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 

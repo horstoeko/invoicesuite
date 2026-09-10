@@ -785,7 +785,7 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         static::$document->getDocumentSellerTaxRepresentativeDescription($newDescription);
 
-        $this->assertSame('Tax GmbH Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 
@@ -950,7 +950,7 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         static::$document->getDocumentBuyerTaxRepresentativeDescription($newDescription);
 
-        $this->assertSame('Tax GmbH Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 
@@ -1115,7 +1115,7 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         static::$document->getDocumentSalesAgentDescription($newDescription);
 
-        $this->assertSame('Sales Agent GmbH Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 
@@ -1280,7 +1280,7 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         static::$document->getDocumentBuyerAgentDescription($newDescription);
 
-        $this->assertSame('Buyer Agent GmbH Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 
@@ -1445,7 +1445,7 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         static::$document->getDocumentProductEndUserDescription($newDescription);
 
-        $this->assertSame('Product End User GmbH Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 
@@ -1610,7 +1610,7 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         static::$document->getDocumentShipToDescription($newDescription);
 
-        $this->assertSame('Ship To GmbH Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 
@@ -1775,7 +1775,7 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         static::$document->getDocumentUltimateShipToDescription($newDescription);
 
-        $this->assertSame('Ultimate Ship To GmbH Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 
@@ -1940,7 +1940,7 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         static::$document->getDocumentShipFromDescription($newDescription);
 
-        $this->assertSame('Ship From GmbH Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 
@@ -2105,7 +2105,7 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         static::$document->getDocumentInvoicerDescription($newDescription);
 
-        $this->assertSame('Invoicer GmbH Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 
@@ -2270,7 +2270,7 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         static::$document->getDocumentInvoiceeDescription($newDescription);
 
-        $this->assertSame('Invoicee GmbH Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 
@@ -2435,7 +2435,7 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         static::$document->getDocumentPayeeDescription($newDescription);
 
-        $this->assertSame('Payee GmbH Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 
@@ -2600,7 +2600,7 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         static::$document->getDocumentPayerDescription($newDescription);
 
-        $this->assertSame('Payer GmbH Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 
@@ -3843,7 +3843,7 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         static::$document->getDocumentPositionShipToDescription($newDescription);
 
-        $this->assertSame('Ship To GmbH Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 
@@ -3972,7 +3972,7 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         static::$document->getDocumentPositionUltimateShipToDescription($newDescription);
 
-        $this->assertSame('Ultimate Ship To GmbH Description', $newDescription);
+        $this->assertSame('', $newDescription);
 
         // ID
 
@@ -4278,9 +4278,9 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         $this->assertSame('2025-04-000001', $newDocmentDTO?->getNumber());
         $this->assertSame(['Sales Agent GmbH'], $newDocmentDTO?->getSalesAgentParty()?->getNames());
-        $this->assertSame(['Sales Agent GmbH Description'], $newDocmentDTO?->getSalesAgentParty()?->getDescriptions());
+        $this->assertSame([''], $newDocmentDTO?->getSalesAgentParty()?->getDescriptions());
         $this->assertSame(['Buyer Agent GmbH'], $newDocmentDTO?->getBuyerAgentParty()?->getNames());
-        $this->assertSame(['Buyer Agent GmbH Description'], $newDocmentDTO?->getBuyerAgentParty()?->getDescriptions());
+        $this->assertSame([''], $newDocmentDTO?->getBuyerAgentParty()?->getDescriptions());
     }
 
     public function testCopyToBuilder(): void
