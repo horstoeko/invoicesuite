@@ -15,13 +15,13 @@
 ## Table of Contents
 
 - [No AI](#no-ai)
-  - [License](#license)
-  - [Overview](#overview)
-  - [Dependencies](#dependencies)
-  - [Installation](#installation)
-  - [Documentation](#documentation)
+- [License](#license)
+- [Overview](#overview)
+- [Dependencies](#dependencies)
+- [Installation](#installation)
+- [Documentation](#documentation)
 
-# No AI
+## No AI
 
 ![No AI](assets/noai.png)
 
