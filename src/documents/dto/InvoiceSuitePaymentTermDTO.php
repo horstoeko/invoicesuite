@@ -161,7 +161,9 @@ class InvoiceSuitePaymentTermDTO implements JsonSerializable
     public function setDiscountTerms(
         array $discountTerms
     ): static {
-        $this->discountTerms = $discountTerms;
+        foreach ($discountTerms as $discountTermsItem) {
+            $this->addDiscountTerm($discountTermsItem);
+        }
 
         return $this;
     }
@@ -415,7 +417,9 @@ class InvoiceSuitePaymentTermDTO implements JsonSerializable
     public function setPenaltyTerms(
         array $penaltyTerms
     ): static {
-        $this->penaltyTerms = $penaltyTerms;
+        foreach ($penaltyTerms as $penaltyTermsItem) {
+            $this->addPenaltyTerm($penaltyTermsItem);
+        }
 
         return $this;
     }

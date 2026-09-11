@@ -39,6 +39,7 @@ final class XRechnungUBLCreditNoteDocumentBuilderTest extends TestCase
         static::$document->setDocumentSellerCommunication('0088', '9482348239847239874');
         static::$document->setDocumentSellerId('99887766');
         static::$document->setDocumentSellerName('SupplierOfficialName Ltd');
+        static::$document->setDocumentSellerDescription('SupplierOfficialName Ltd Description');
         static::$document->setDocumentSellerLegalOrganisation(newId: 'GB983294', newName: 'SupplierTradingName Ltd.');
         static::$document->setDocumentSellerAddress(
             newAddressLine1: 'Main street 1',
@@ -57,6 +58,7 @@ final class XRechnungUBLCreditNoteDocumentBuilderTest extends TestCase
         static::$document->setDocumentBuyerCommunication('0002', 'FR23342');
         static::$document->setDocumentBuyerGlobalId('FR23342', '0002');
         static::$document->setDocumentBuyerName('Buyer Official Name');
+        static::$document->setDocumentBuyerDescription('Buyer Official Name Description');
         static::$document->setDocumentBuyerLegalOrganisation('0183', '39937423947', 'BuyerTradingName AS');
         static::$document->setDocumentBuyerAddress(
             newAddressLine1: 'Hovedgatan 32',
@@ -83,6 +85,7 @@ final class XRechnungUBLCreditNoteDocumentBuilderTest extends TestCase
             newCountryId: InvoiceSuiteCodelistCountryCodes::SCHWEDEN->value
         );
         static::$document->setDocumentShipToName('Delivery party Name');
+        static::$document->setDocumentShipToDescription('Delivery party Name Description');
 
         static::$document->setDocumentPaymentMeanAsCreditTransferNoSepa(
             newPayeeIban: 'IBAN32423940',
@@ -270,6 +273,7 @@ final class XRechnungUBLCreditNoteDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme/cbc:ID)[2]');
 
         $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName', 'SupplierOfficialName Ltd');
+        $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm', 'SupplierOfficialName Ltd Description');
         $this->assertXPathValue('/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID', 'GB983294');
         $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName)[2]');
         $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID)[2]');
@@ -313,6 +317,7 @@ final class XRechnungUBLCreditNoteDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme/cbc:ID)[2]');
 
         $this->assertXPathValue('/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName', 'Buyer Official Name');
+        $this->assertXPathNotExists('/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
         $this->assertXPathValue('/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID[@schemeID="0183"]', '39937423947');
         $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName)[2]');
         $this->assertXPathNotExists('(/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID)[2]');
@@ -337,6 +342,7 @@ final class XRechnungUBLCreditNoteDocumentBuilderTest extends TestCase
 
         $this->assertXPathValue('/ubl:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 'Delivery party Name');
         $this->assertXPathNotExists('(/ubl:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name)[2]');
+        $this->assertXPathNotExists('/ubl:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
 
         // Payment
 
@@ -427,11 +433,11 @@ final class XRechnungUBLCreditNoteDocumentBuilderTest extends TestCase
         $this->assertFalse(static::$document->hasWarningMessagesInMessageBag());
         $this->assertFalse(static::$document->hasErrorMessagesInMessageBag());
 
-        $this->assertSame(120, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::INFO));
+        $this->assertSame(126, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::INFO));
         $this->assertSame(0, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::WARNING));
         $this->assertSame(0, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::ERROR));
 
-        $this->assertSame(120, static::$document->countInfoMessagesInMessageBag());
+        $this->assertSame(126, static::$document->countInfoMessagesInMessageBag());
         $this->assertSame(0, static::$document->countWarningMessagesInMessageBag());
         $this->assertSame(0, static::$document->countErrorMessagesInMessageBag());
 

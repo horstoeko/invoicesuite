@@ -367,6 +367,11 @@ function gendto(array $definitions): void
             if (true !== $propertyIsArray && true !== $propertyIsObject && 'string' === $propertyType) {
                 $namespace->addUse('horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils');
                 $setter->setBody(sprintf("\$this->%1\$s = InvoiceSuiteStringUtils::asNullWhenEmpty(\$%1\$s);\n\nreturn \$this;", $propertyClassPropertyName));
+            } elseif (true === $propertyIsArray) {
+                $setter->addBody(sprintf('foreach ($%1$s as $%1$sItem) {', $propertyClassPropertyName));
+                $setter->addBody(sprintf('    $this->add%s($%sItem);', ucfirst((string) $propertyAdderName), $propertyClassPropertyName));
+                $setter->addBody('}');
+                $setter->addBody("\nreturn \$this;");
             } else {
                 $setter->setBody(sprintf("\$this->%1\$s = \$%1\$s;\n\nreturn \$this;", $propertyClassPropertyName));
             }
@@ -392,7 +397,12 @@ function gendto(array $definitions): void
                 $adder->addParameter($propertyName)->setType($propertyType)->setNullable($propertyIsNullable);
 
                 if (true === $propertyIsNullable) {
-                    $adder->addBody(sprintf('if (is_null($%1$s)) {', $propertyName));
+                    if ('string' === $propertyType) {
+                        $namespace->addUse('horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils');
+                        $adder->addBody(sprintf('if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($%1$s)) {', $propertyName));
+                    } else {
+                        $adder->addBody(sprintf('if (is_null($%1$s)) {', $propertyName));
+                    }
                     $adder->addBody('    return $this;');
                     $adder->addBody('}');
                     $adder->addBody('');
@@ -815,6 +825,13 @@ $definitions = [
             'name' => [
                 'type' => 'string',
                 'caption' => 'Party names',
+                'isarray' => true,
+                'isobject' => false,
+                'autoplural' => true,
+            ],
+            'description' => [
+                'type' => 'string',
+                'caption' => 'Party descriptions',
                 'isarray' => true,
                 'isobject' => false,
                 'autoplural' => true,

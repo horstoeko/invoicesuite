@@ -77,7 +77,9 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO implements JsonSeri
     public function setAllowanceCharges(
         array $allowanceCharges
     ): static {
-        $this->allowanceCharges = $allowanceCharges;
+        foreach ($allowanceCharges as $allowanceChargesItem) {
+            $this->addAllowanceCharge($allowanceChargesItem);
+        }
 
         return $this;
     }

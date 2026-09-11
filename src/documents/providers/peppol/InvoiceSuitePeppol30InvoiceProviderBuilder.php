@@ -280,6 +280,9 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             ?->firstName(
                 fn (string $item): static => $this->setDocumentSellerName($item)
             )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentSellerDescription($item)
+            )
             ?->firstAddress(
                 fn (InvoiceSuiteAddressDTO $item): static => $this->setDocumentSellerAddress(
                     $item->getAddressLine1(),
@@ -330,6 +333,9 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             ?->firstName(
                 fn (string $item): static => $this->setDocumentBuyerName($item)
             )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentBuyerDescription($item)
+            )
             ?->firstAddress(
                 fn (InvoiceSuiteAddressDTO $item): static => $this->setDocumentBuyerAddress(
                     $item->getAddressLine1(),
@@ -368,6 +374,9 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             ?->firstName(
                 fn (string $item): static => $this->setDocumentPayeeName($item)
             )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentPayeeDescription($item)
+            )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPayeeId($item->getId()),
                 fn (): InvoiceSuitePartyDTO => $newDocumentDTO->getPayeeParty()->firstGlobalId(fn ($item): static => $this->setDocumentPayeeGlobalId($item->getId(), $item->getIdType()))
@@ -386,6 +395,9 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             ->getSellerTaxRepresentativeParty()
             ?->firstName(
                 fn (string $item): static => $this->setDocumentSellerTaxRepresentativeName($item)
+            )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentSellerTaxRepresentativeDescription($item)
             )
             ?->firstAddress(
                 fn (InvoiceSuiteAddressDTO $item): static => $this->setDocumentSellerTaxRepresentativeAddress(
@@ -408,6 +420,9 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             ->getSalesAgentParty()
             ?->firstName(
                 fn (string $item): static => $this->setDocumentSalesAgentName($item)
+            )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentSalesAgentDescription($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentSalesAgentId($item->getId())
@@ -458,6 +473,9 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             ->getBuyerAgentParty()
             ?->firstName(
                 fn (string $item): static => $this->setDocumentBuyerAgentName($item)
+            )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentBuyerAgentDescription($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentBuyerAgentId($item->getId())
@@ -524,6 +542,9 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             )
             ?->firstName(
                 fn (string $item): static => $this->setDocumentShipToName($item)
+            )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentShipToDescription($item)
             )
             ?->firstAddress(
                 fn (InvoiceSuiteAddressDTO $item): static => $this->setDocumentShipToAddress(
@@ -1967,6 +1988,63 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     }
 
     /**
+     * Set a description of the seller/supplier party
+     *
+     * @param  null|string $newDescription Further legal information that is relevant for the seller
+     * @return static
+     */
+    public function setDocumentSellerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getUblRootObject()
+            ->getAccountingSupplierParty()
+            ?->getParty()
+            ?->firstPartyLegalEntity()
+            ?->unsetCompanyLegalForm();
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this
+            ->getUblRootObject()
+            ->getAccountingSupplierPartyWithCreate()
+            ->getPartyWithCreate()
+            ->addOnceToPartyLegalEntityWithCreate()
+            ->getCompanyLegalFormWithCreate()
+            ->setValue($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the seller/supplier party
+     *
+     * @param  null|string $newDescription Further legal information that is relevant for the seller
+     * @return static
+     */
+    public function addDocumentSellerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentSellerDescription($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the seller/supplier party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -2578,6 +2656,46 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     }
 
     /**
+     * Set a description of the buyer/customer party
+     *
+     * @param  null|string $newDescription Additional information about the buyer/customer party
+     * @return static
+     */
+    public function setDocumentBuyerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        // Nothing here...
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the buyer/customer party
+     *
+     * @param  null|string $newDescription Additional information about the buyer/customer party
+     * @return static
+     */
+    public function addDocumentBuyerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentBuyerDescription($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the buyer/customer party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -3166,6 +3284,46 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     }
 
     /**
+     * Set a description of the seller's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the seller's tax representative party
+     * @return static
+     */
+    public function setDocumentSellerTaxRepresentativeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        // Nothing here...
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the seller's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the seller's tax representative party
+     * @return static
+     */
+    public function addDocumentSellerTaxRepresentativeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentSellerTaxRepresentativeDescription($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the seller's tax representative party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -3592,6 +3750,44 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     }
 
     /**
+     * Set a description of the buyer's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the buyer's tax representative party
+     * @return static
+     */
+    public function setDocumentBuyerTaxRepresentativeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the buyer's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the buyer's tax representative party
+     * @return static
+     */
+    public function addDocumentBuyerTaxRepresentativeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentBuyerTaxRepresentativeDescription($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the buyer's tax representative party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -3933,6 +4129,44 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         $this->traceMethodEnter(__METHOD__);
 
         // Nothing here...
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set a description of the sales agent party
+     *
+     * @param  null|string $newDescription Additional information about the sales agent party
+     * @return static
+     */
+    public function setDocumentSalesAgentDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the sales agent party
+     *
+     * @param  null|string $newDescription Additional information about the sales agent party
+     * @return static
+     */
+    public function addDocumentSalesAgentDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentSalesAgentDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4288,6 +4522,44 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     }
 
     /**
+     * Set a description of the buyer agent party
+     *
+     * @param  null|string $newDescription Additional information about the buyer agent party
+     * @return static
+     */
+    public function setDocumentBuyerAgentDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the buyer agent party
+     *
+     * @param  null|string $newDescription Additional information about the buyer agent party
+     * @return static
+     */
+    public function addDocumentBuyerAgentDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentBuyerAgentDescription($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the buyer agent party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -4629,6 +4901,44 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         $this->traceMethodEnter(__METHOD__);
 
         // Nothing here...
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set a description of the product end user party
+     *
+     * @param  null|string $newDescription Additional information about the product end user party
+     * @return static
+     */
+    public function setDocumentProductEndUserDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the product end user party
+     *
+     * @param  null|string $newDescription Additional information about the product end user party
+     * @return static
+     */
+    public function addDocumentProductEndUserDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentProductEndUserDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4997,6 +5307,46 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         }
 
         $this->setDocumentShipToName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set a description of the ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ship-to party
+     * @return static
+     */
+    public function setDocumentShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        // Nothing here...
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ship-to party
+     * @return static
+     */
+    public function addDocumentShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentShipToDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5453,6 +5803,44 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     }
 
     /**
+     * Set a description of the ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ultimate ship-to party
+     * @return static
+     */
+    public function setDocumentUltimateShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ultimate ship-to party
+     * @return static
+     */
+    public function addDocumentUltimateShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentUltimateShipToDescription($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the ultimate Ship-To party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -5794,6 +6182,44 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         $this->traceMethodEnter(__METHOD__);
 
         // Nothing here...
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set a description of the ship-from party
+     *
+     * @param  null|string $newDescription Additional information about the ship-from party
+     * @return static
+     */
+    public function setDocumentShipFromDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the ship-from party
+     *
+     * @param  null|string $newDescription Additional information about the ship-from party
+     * @return static
+     */
+    public function addDocumentShipFromDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentShipFromDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6149,6 +6575,44 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     }
 
     /**
+     * Set a description of the invoicer party
+     *
+     * @param  null|string $newDescription Additional information about the invoicer party
+     * @return static
+     */
+    public function setDocumentInvoicerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the invoicer party
+     *
+     * @param  null|string $newDescription Additional information about the invoicer party
+     * @return static
+     */
+    public function addDocumentInvoicerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentInvoicerDescription($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Invoicer party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -6490,6 +6954,44 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         $this->traceMethodEnter(__METHOD__);
 
         // Nothing here...
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set a description of the invoicee party
+     *
+     * @param  null|string $newDescription Additional information about the invoicee party
+     * @return static
+     */
+    public function setDocumentInvoiceeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the invoicee party
+     *
+     * @param  null|string $newDescription Additional information about the invoicee party
+     * @return static
+     */
+    public function addDocumentInvoiceeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentInvoiceeDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6857,6 +7359,46 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         }
 
         $this->setDocumentPayeeName($newName);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set a description of the payee party
+     *
+     * @param  null|string $newDescription Additional information about the payee party
+     * @return static
+     */
+    public function setDocumentPayeeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        // Nothing here...
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the payee party
+     *
+     * @param  null|string $newDescription Additional information about the payee party
+     * @return static
+     */
+    public function addDocumentPayeeDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentPayeeDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7265,6 +7807,44 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         $this->traceMethodEnter(__METHOD__);
 
         // Nothing here...
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set a description of the payer party
+     *
+     * @param  null|string $newDescription Additional information about the payer party
+     * @return static
+     */
+    public function setDocumentPayerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the payer party
+     *
+     * @param  null|string $newDescription Additional information about the payer party
+     * @return static
+     */
+    public function addDocumentPayerDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentPayerDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -9994,6 +10574,44 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     }
 
     /**
+     * Set a description of the position-level ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ship-to party
+     * @return static
+     */
+    public function setDocumentPositionShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the position-level ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ship-to party
+     * @return static
+     */
+    public function addDocumentPositionShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentPositionShipToDescription($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Ship-To party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -10335,6 +10953,44 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         $this->traceMethodEnter(__METHOD__);
 
         // Nothing here
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set a description of the position-level ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ultimate ship-to party
+     * @return static
+     */
+    public function setDocumentPositionUltimateShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add a description of the position-level ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ultimate ship-to party
+     * @return static
+     */
+    public function addDocumentPositionUltimateShipToDescription(
+        ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)');
+        }
+
+        $this->setDocumentPositionUltimateShipToDescription($newDescription);
 
         $this->traceMethodExit(__METHOD__);
 

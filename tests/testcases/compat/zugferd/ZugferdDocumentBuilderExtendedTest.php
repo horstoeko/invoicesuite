@@ -140,11 +140,12 @@ final class ZugferdDocumentBuilderExtendedTest extends TestCase
 
     public function testSetDocumentSeller(): void
     {
-        self::$document->setDocumentSeller('Lieferant GmbH', '549910');
+        self::$document->setDocumentSeller('Lieferant GmbH', '549910', 'Lieferant GmbH Description');
 
         $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:ID', '549910');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Name', 'Lieferant GmbH');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Description', 'Lieferant GmbH Description');
     }
 
     public function testAddDocumentSellerId(): void

@@ -404,6 +404,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         $this->getDocumentSellerName($newDocumentSellerName);
         $newDocumentDTO->getSellerParty()->addName($newDocumentSellerName);
 
+        $this->getDocumentSellerDescription($newDocumentSellerDescription);
+        $newDocumentDTO->getSellerParty()->addDescription($newDocumentSellerDescription);
+
         while ($this->nextDocumentSellerId()) {
             $this->getDocumentSellerId(
                 $newDocumentSellerId
@@ -520,6 +523,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
 
         $this->getDocumentBuyerName($newDocumentBuyerName);
         $newDocumentDTO->getBuyerParty()->addName($newDocumentBuyerName);
+
+        $this->getDocumentBuyerDescription($newDocumentBuyerDescription);
+        $newDocumentDTO->getBuyerParty()->addDescription($newDocumentBuyerDescription);
 
         while ($this->nextDocumentBuyerId()) {
             $this->getDocumentBuyerId(
@@ -638,6 +644,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         $this->getDocumentSellerTaxRepresentativeName($newDocumentSellerTaxRepresentativeName);
         $newDocumentDTO->getSellerTaxRepresentativeParty()->addName($newDocumentSellerTaxRepresentativeName);
 
+        $this->getDocumentSellerTaxRepresentativeDescription($newDocumentSellerTaxRepresentativeDescription);
+        $newDocumentDTO->getSellerTaxRepresentativeParty()->addDescription($newDocumentSellerTaxRepresentativeDescription);
+
         while ($this->nextDocumentSellerTaxRepresentativeId()) {
             $this->getDocumentSellerTaxRepresentativeId(
                 $newDocumentSellerTaxRepresentativeId
@@ -754,6 +763,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
 
         $this->getDocumentBuyerTaxRepresentativeName($newDocumentBuyerTaxRepresentativeName);
         $newDocumentDTO->getBuyerTaxRepresentativeParty()->addName($newDocumentBuyerTaxRepresentativeName);
+
+        $this->getDocumentBuyerTaxRepresentativeDescription($newDocumentBuyerTaxRepresentativeDescription);
+        $newDocumentDTO->getBuyerTaxRepresentativeParty()->addDescription($newDocumentBuyerTaxRepresentativeDescription);
 
         while ($this->nextDocumentBuyerTaxRepresentativeId()) {
             $this->getDocumentBuyerTaxRepresentativeId(
@@ -872,6 +884,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         $this->getDocumentSalesAgentName($newDocumentSalesAgentName);
         $newDocumentDTO->getSalesAgentParty()->addName($newDocumentSalesAgentName);
 
+        $this->getDocumentSalesAgentDescription($newDocumentSalesAgentDescription);
+        $newDocumentDTO->getSalesAgentParty()->addDescription($newDocumentSalesAgentDescription);
+
         while ($this->nextDocumentSalesAgentId()) {
             $this->getDocumentSalesAgentId(
                 $newDocumentSalesAgentId
@@ -988,6 +1003,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
 
         $this->getDocumentBuyerAgentName($newDocumentBuyerAgentName);
         $newDocumentDTO->getBuyerAgentParty()->addName($newDocumentBuyerAgentName);
+
+        $this->getDocumentBuyerAgentDescription($newDocumentBuyerAgentDescription);
+        $newDocumentDTO->getBuyerAgentParty()->addDescription($newDocumentBuyerAgentDescription);
 
         while ($this->nextDocumentBuyerAgentId()) {
             $this->getDocumentBuyerAgentId(
@@ -1106,6 +1124,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         $this->getDocumentProductEndUserName($newDocumentProductEndUserName);
         $newDocumentDTO->getProductEndUserParty()->addName($newDocumentProductEndUserName);
 
+        $this->getDocumentProductEndUserDescription($newDocumentProductEndUserDescription);
+        $newDocumentDTO->getProductEndUserParty()->addDescription($newDocumentProductEndUserDescription);
+
         while ($this->nextDocumentProductEndUserId()) {
             $this->getDocumentProductEndUserId(
                 $newDocumentProductEndUserId
@@ -1222,6 +1243,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
 
         $this->getDocumentShipToName($newDocumentShipToName);
         $newDocumentDTO->getShipToParty()->addName($newDocumentShipToName);
+
+        $this->getDocumentShipToDescription($newDocumentShipToDescription);
+        $newDocumentDTO->getShipToParty()->addDescription($newDocumentShipToDescription);
 
         while ($this->nextDocumentShipToId()) {
             $this->getDocumentShipToId(
@@ -1340,6 +1364,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         $this->getDocumentUltimateShipToName($newDocumentUltimateShipToName);
         $newDocumentDTO->getUltimateShipToParty()->addName($newDocumentUltimateShipToName);
 
+        $this->getDocumentUltimateShipToDescription($newDocumentUltimateShipToDescription);
+        $newDocumentDTO->getUltimateShipToParty()->addDescription($newDocumentUltimateShipToDescription);
+
         while ($this->nextDocumentUltimateShipToId()) {
             $this->getDocumentUltimateShipToId(
                 $newDocumentUltimateShipToId
@@ -1456,6 +1483,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
 
         $this->getDocumentShipFromName($newDocumentShipFromName);
         $newDocumentDTO->getShipFromParty()->addName($newDocumentShipFromName);
+
+        $this->getDocumentShipFromDescription($newDocumentShipFromDescription);
+        $newDocumentDTO->getShipFromParty()->addDescription($newDocumentShipFromDescription);
 
         while ($this->nextDocumentShipFromId()) {
             $this->getDocumentShipFromId(
@@ -1574,6 +1604,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         $this->getDocumentInvoicerName($newDocumentInvoicerName);
         $newDocumentDTO->getInvoicerParty()->addName($newDocumentInvoicerName);
 
+        $this->getDocumentInvoicerDescription($newDocumentInvoicerDescription);
+        $newDocumentDTO->getInvoicerParty()->addDescription($newDocumentInvoicerDescription);
+
         while ($this->nextDocumentInvoicerId()) {
             $this->getDocumentInvoicerId(
                 $newDocumentInvoicerId
@@ -1690,6 +1723,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
 
         $this->getDocumentInvoiceeName($newDocumentInvoiceeName);
         $newDocumentDTO->getInvoiceeParty()->addName($newDocumentInvoiceeName);
+
+        $this->getDocumentInvoiceeDescription($newDocumentInvoiceeDescription);
+        $newDocumentDTO->getInvoiceeParty()->addDescription($newDocumentInvoiceeDescription);
 
         while ($this->nextDocumentInvoiceeId()) {
             $this->getDocumentInvoiceeId(
@@ -1808,6 +1844,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         $this->getDocumentPayeeName($newDocumentPayeeName);
         $newDocumentDTO->getPayeeParty()->addName($newDocumentPayeeName);
 
+        $this->getDocumentPayeeDescription($newDocumentPayeeDescription);
+        $newDocumentDTO->getPayeeParty()->addDescription($newDocumentPayeeDescription);
+
         while ($this->nextDocumentPayeeId()) {
             $this->getDocumentPayeeId(
                 $newDocumentPayeeId
@@ -1924,6 +1963,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
 
         $this->getDocumentPayerName($newDocumentPayerName);
         $newDocumentDTO->getPayerParty()->addName($newDocumentPayerName);
+
+        $this->getDocumentPayerDescription($newDocumentPayerDescription);
+        $newDocumentDTO->getPayerParty()->addDescription($newDocumentPayerDescription);
 
         while ($this->nextDocumentPayerId()) {
             $this->getDocumentPayerId(
@@ -2702,6 +2744,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
 
             $newDocumentPositionDTO->getShipToParty()->addName($newDocumentPositionShipToName);
 
+            $this->getDocumentPositionShipToDescription($newDocumentPositionShipToDescription);
+            $newDocumentPositionDTO->getShipToParty()->addDescription($newDocumentPositionShipToDescription);
+
             while ($this->nextDocumentPositionShipToId()) {
                 $this->getDocumentPositionShipToId(
                     $newDocumentPositionShipToId
@@ -2819,6 +2864,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
             $this->getDocumentPositionUltimateShipToName($newDocumentPositionUltimateShipToName);
 
             $newDocumentPositionDTO->getUltimateShipToParty()->addName($newDocumentPositionUltimateShipToName);
+
+            $this->getDocumentPositionUltimateShipToDescription($newDocumentPositionUltimateShipToDescription);
+            $newDocumentPositionDTO->getUltimateShipToParty()->addDescription($newDocumentPositionUltimateShipToDescription);
 
             while ($this->nextDocumentPositionUltimateShipToId()) {
                 $this->getDocumentPositionUltimateShipToId(
@@ -4203,6 +4251,32 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
     }
 
     /**
+     * Get the description of the seller/supplier party
+     *
+     * @param  null|string $newDescription Further legal information that is relevant for the seller
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentSellerDescription(
+        ?string &$newDescription
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = $this
+            ->getUblRootObject()
+            ->getAccountingSupplierParty()
+            ?->getParty()
+            ?->firstPartyLegalEntity()
+            ?->getCompanyLegalForm()
+            ?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the seller/supplier party
      *
      * @return bool
@@ -4695,6 +4769,26 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
             ?->firstPartyLegalEntity()
             ?->getRegistrationName()
             ?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the buyer/customer party
+     *
+     * @param  null|string $newDescription Additional information about the buyer/customer party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentBuyerDescription(
+        ?string &$newDescription
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5200,6 +5294,26 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
     }
 
     /**
+     * Get the description of the seller's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the seller's tax representative party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentSellerTaxRepresentativeDescription(
+        ?string &$newDescription
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the seller's tax representative party
      *
      * @return bool
@@ -5600,6 +5714,26 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
     }
 
     /**
+     * Get the description of the buyer's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the buyer's tax representative party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentBuyerTaxRepresentativeDescription(
+        ?string &$newDescription
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the buyer's tax representative party
      *
      * @return bool
@@ -5953,6 +6087,26 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         $this->traceMethodEnter(__METHOD__);
 
         $newName = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the sales agent party
+     *
+     * @param  null|string $newDescription Additional information about the sales agent party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentSalesAgentDescription(
+        ?string &$newDescription
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6320,6 +6474,26 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
     }
 
     /**
+     * Get the description of the buyer agent party
+     *
+     * @param  null|string $newDescription Additional information about the buyer agent party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentBuyerAgentDescription(
+        ?string &$newDescription
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the buyer agent party
      *
      * @return bool
@@ -6680,6 +6854,26 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
     }
 
     /**
+     * Get the description of the product end user party
+     *
+     * @param  null|string $newDescription Additional information about the product end user party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentProductEndUserDescription(
+        ?string &$newDescription
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the product end-user party
      *
      * @return bool
@@ -7033,6 +7227,26 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         $this->traceMethodEnter(__METHOD__);
 
         $newName = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ship-to party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentShipToDescription(
+        ?string &$newDescription
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7452,6 +7666,26 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
     }
 
     /**
+     * Get the description of the ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ultimate ship-to party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentUltimateShipToDescription(
+        ?string &$newDescription
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the ultimate Ship-To party
      *
      * @return bool
@@ -7805,6 +8039,26 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         $this->traceMethodEnter(__METHOD__);
 
         $newName = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the ship-from party
+     *
+     * @param  null|string $newDescription Additional information about the ship-from party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentShipFromDescription(
+        ?string &$newDescription
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -8172,6 +8426,26 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
     }
 
     /**
+     * Get the description of the invoicer party
+     *
+     * @param  null|string $newDescription Additional information about the invoicer party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentInvoicerDescription(
+        ?string &$newDescription
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the Invoicer party
      *
      * @return bool
@@ -8525,6 +8799,26 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         $this->traceMethodEnter(__METHOD__);
 
         $newName = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the invoicee party
+     *
+     * @param  null|string $newDescription Additional information about the invoicee party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentInvoiceeDescription(
+        ?string &$newDescription
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -8890,6 +9184,26 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
             ?->firstPartyName()
             ?->getName()
             ?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the payee party
+     *
+     * @param  null|string $newDescription Additional information about the payee party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentPayeeDescription(
+        ?string &$newDescription
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -9302,6 +9616,26 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         $this->traceMethodEnter(__METHOD__);
 
         $newName = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the payer party
+     *
+     * @param  null|string $newDescription Additional information about the payer party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentPayerDescription(
+        ?string &$newDescription
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -11579,6 +11913,26 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
     }
 
     /**
+     * Get the description of the position-level ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ship-to party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentPositionShipToDescription(
+        ?string &$newDescription
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the Ship-To party
      *
      * @return bool
@@ -11932,6 +12286,26 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         $this->traceMethodEnter(__METHOD__);
 
         $newName = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the position-level ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ultimate ship-to party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentPositionUltimateShipToDescription(
+        ?string &$newDescription
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
 
         $this->traceMethodExit(__METHOD__);
 

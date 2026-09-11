@@ -122,7 +122,7 @@ final class ZugferdDocumentReaderExtendedTest extends TestCase
         $this->assertArrayHasKey(0, $sellerids);
         $this->assertArrayNotHasKey(1, $sellerids);
         $this->assertEquals('549910', $sellerids[0]);
-        $this->assertSame('', $sellerdescription);
+        $this->assertSame('MUSTERLIEFERANT GMBH DESCRIPTION', $sellerdescription);
     }
 
     public function testDocumentSellerGlobalId(): void

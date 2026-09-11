@@ -61,6 +61,7 @@ final class ZfFxComfortDocumentBuilderDTOTest extends TestCase
                     ->setId('4000001123452')
                     ->setIdType('0088'))
                 ->addName('Lieferant GmbH')
+                ->addDescription('Lieferant GmbH Description')
                 ->addAddress((new InvoiceSuiteAddressDTO())
                     ->setPostcode('80333')
                     ->setAddressLine1('Lieferantenstraße 20')
@@ -83,6 +84,7 @@ final class ZfFxComfortDocumentBuilderDTOTest extends TestCase
                 ->addId((new InvoiceSuiteIdDTO())
                     ->setId('GE2020211'))
                 ->addName('Kunden AG Mitte')
+                ->addDescription('Kunden AG Mitte Description')
                 ->addAddress((new InvoiceSuiteAddressDTO())
                     ->setPostcode('69876')
                     ->setAddressLine1('Kundenstraße 15')
@@ -250,6 +252,7 @@ final class ZfFxComfortDocumentBuilderDTOTest extends TestCase
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:GlobalID[@schemeID="0088"]', '4000001123452');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:GlobalID)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Name', 'Lieferant GmbH');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Description', 'Lieferant GmbH Description');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Name)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:PostalTradeAddress/ram:PostcodeCode', '80333');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:PostalTradeAddress/ram:PostcodeCode)[2]');
@@ -277,6 +280,7 @@ final class ZfFxComfortDocumentBuilderDTOTest extends TestCase
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:GlobalID');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:GlobalID)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:Name', 'Kunden AG Mitte');
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:Description');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:Name)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:PostalTradeAddress/ram:PostcodeCode', '69876');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:PostalTradeAddress/ram:PostcodeCode)[2]');
@@ -368,12 +372,12 @@ final class ZfFxComfortDocumentBuilderDTOTest extends TestCase
         $this->assertTrue(static::$document->hasWarningMessagesInMessageBag());
         $this->assertFalse(static::$document->hasErrorMessagesInMessageBag());
 
-        $this->assertSame(104, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::INFO));
-        $this->assertSame(7, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::WARNING));
+        $this->assertSame(108, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::INFO));
+        $this->assertSame(8, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::WARNING));
         $this->assertSame(0, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::ERROR));
 
-        $this->assertSame(104, static::$document->countInfoMessagesInMessageBag());
-        $this->assertSame(7, static::$document->countWarningMessagesInMessageBag());
+        $this->assertSame(108, static::$document->countInfoMessagesInMessageBag());
+        $this->assertSame(8, static::$document->countWarningMessagesInMessageBag());
         $this->assertSame(0, static::$document->countErrorMessagesInMessageBag());
 
         $this->assertArrayHasKey(0, static::$document->getInfoMessagesInMessageBag());
