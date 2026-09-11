@@ -11,16 +11,47 @@
 [![Release Status](https://github.com/horstoeko/invoicesuite/actions/workflows/build.release.yml/badge.svg)](https://github.com/horstoeko/invoicesuite/actions/workflows/build.release.yml)
 [![Nightly Build Status](https://github.com/horstoeko/invoicesuite/actions/workflows/build.nightly.yml/badge.svg)](https://github.com/horstoeko/invoicesuite/actions/workflows/build.nightly.yml)
 
-# No AI
-![InvoiceSuite Logo](assets/noai.png)
-
 <!-- omit in toc -->
 ## Table of Contents
 
-- [License](#license)
-- [Overview](#overview)
-- [Dependencies](#dependencies)
-- [Installation](#installation)
+- [No AI](#no-ai)
+  - [License](#license)
+  - [Overview](#overview)
+  - [Dependencies](#dependencies)
+  - [Installation](#installation)
+  - [Documentation](#documentation)
+
+# No AI
+
+![No AI](assets/noai.png)
+
+> **Human contributions only. AI-generated contributions are not wanted in this project.**
+
+InvoiceSuite deals with electronic invoicing and implements specifications, business rules, validation rules, and data structures that may have **legal, regulatory, accounting, and tax-related implications**.
+
+A change that looks technically correct can still be wrong from a business, specification, legal, or tax perspective. In this kind of project, plausible-looking code is not enough.
+
+For this reason, I want contributions from **experienced people who understand what they are doing and are able to assess the consequences of their changes themselves**.
+
+Contributors are expected to:
+
+* understand the code they submit;
+* understand the affected specification and business context;
+* verify requirements against the relevant standards and documentation;
+* consider existing behavior, compatibility, and edge cases;
+* write meaningful tests based on actual requirements;
+* review their own implementation critically;
+* be able to explain **why** their implementation is correct.
+
+Please do **not** submit AI-generated code, pull requests, issue analyses, reviews, or documentation as a substitute for your own knowledge and judgement.
+
+Especially in areas involving electronic invoices, validation, monetary values, taxes, document semantics, and regulatory requirements, incorrect assumptions may have consequences that go far beyond a normal software defect.
+
+This policy is not about following or rejecting a technological trend. It is about **accountability**.
+
+The person contributing a change should understand it, be able to defend the technical decision behind it, and be capable of recognizing when something is outside their own area of expertise.
+
+**Real experience. Real understanding. Real judgement. Accountable code.**
 
 ## License
 
