@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use JsonSerializable;
 
 /**
@@ -30,6 +31,13 @@ class InvoiceSuitePartyDTO implements JsonSerializable
      * @var array<string>
      */
     protected array $names = [];
+
+    /**
+     * Party descriptions
+     *
+     * @var array<string>
+     */
+    protected array $descriptions = [];
 
     /**
      * Party IDs
@@ -84,6 +92,7 @@ class InvoiceSuitePartyDTO implements JsonSerializable
      * Constructor
      *
      * @param array<string>                       $names              Party names
+     * @param array<string>                       $descriptions       Party descriptions
      * @param array<InvoiceSuiteIdDTO>            $ids                Party IDs
      * @param array<InvoiceSuiteIdDTO>            $globalIds          Party global IDs
      * @param array<InvoiceSuiteIdDTO>            $taxRegistrations   Party tax registrations
@@ -94,6 +103,7 @@ class InvoiceSuitePartyDTO implements JsonSerializable
      */
     public function __construct(
         array $names = [],
+        array $descriptions = [],
         array $ids = [],
         array $globalIds = [],
         array $taxRegistrations = [],
@@ -103,6 +113,7 @@ class InvoiceSuitePartyDTO implements JsonSerializable
         array $communications = []
     ) {
         $this->setNames($names);
+        $this->setDescriptions($descriptions);
         $this->setIds($ids);
         $this->setGlobalIds($globalIds);
         $this->setTaxRegistrations($taxRegistrations);
@@ -141,7 +152,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function setNames(
         array $names
     ): static {
-        $this->names = $names;
+        foreach ($names as $namesItem) {
+            $this->addName($namesItem);
+        }
 
         return $this;
     }
@@ -155,7 +168,7 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function addName(
         ?string $name
     ): static {
-        if (is_null($name)) {
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($name)) {
             return $this;
         }
 
@@ -377,6 +390,262 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     }
 
     /**
+     * Returns party descriptions
+     *
+     * @return array<string>
+     */
+    public function getDescriptions(): array
+    {
+        return $this->descriptions;
+    }
+
+    /**
+     * Sets party descriptions
+     *
+     * @param  array<string> $descriptions Party descriptions
+     * @return static
+     */
+    public function setDescriptions(
+        array $descriptions
+    ): static {
+        foreach ($descriptions as $descriptionsItem) {
+            $this->addDescription($descriptionsItem);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add single Party descriptions
+     *
+     * @param  string $description Party descriptions
+     * @return static
+     */
+    public function addDescription(
+        ?string $description
+    ): static {
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($description)) {
+            return $this;
+        }
+
+        $this->descriptions[] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get first Party descriptions
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function firstDescription(
+        callable $callback,
+        ?callable $callbackElse = null
+    ): static {
+        if (($description = InvoiceSuiteArrayUtils::first($this->descriptions)) !== false) {
+            $callback($description);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get next Party descriptions
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function nextDescription(
+        callable $callback,
+        ?callable $callbackElse = null
+    ): static {
+        if (($description = InvoiceSuiteArrayUtils::next($this->descriptions)) !== false) {
+            $callback($description);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get previous Party descriptions
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function previousDescription(
+        callable $callback,
+        ?callable $callbackElse = null
+    ): static {
+        if (($description = InvoiceSuiteArrayUtils::previous($this->descriptions)) !== false) {
+            $callback($description);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last Party descriptions
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function lastDescription(
+        callable $callback,
+        ?callable $callbackElse = null
+    ): static {
+        if (($description = InvoiceSuiteArrayUtils::last($this->descriptions)) !== false) {
+            $callback($description);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over Party descriptions and execute callback
+     *
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null
+    ): static {
+        $count = 0;
+
+        foreach ($this->descriptions as $description) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($description);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over Party descriptions and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstDescription(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstDescription($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->descriptions as $description) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($description);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Filter Party descriptions
+     *
+     * @param  callable      $callback Callback to execute filtering for each item
+     * @return array<string>
+     */
+    public function filterDescription(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->descriptions, $callback);
+    }
+
+    /**
+     * Get first Party descriptions from filtered result
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function filterFirstDescription(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null
+    ): static {
+        $filteredDescription = $this->filterDescription($filterCallback);
+
+        if (!InvoiceSuiteArrayUtils::empty($filteredDescription)) {
+            $description = InvoiceSuiteArrayUtils::first($filteredDescription);
+            $callback($description);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last Party descriptions from filtered result
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function filterLastDescription(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null
+    ): static {
+        $filteredDescription = $this->filterDescription($filterCallback);
+
+        if (!InvoiceSuiteArrayUtils::empty($filteredDescription)) {
+            $description = InvoiceSuiteArrayUtils::last($filteredDescription);
+            $callback($description);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns party IDs
      *
      * @return array<InvoiceSuiteIdDTO>
@@ -395,7 +664,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function setIds(
         array $ids
     ): static {
-        $this->ids = $ids;
+        foreach ($ids as $idsItem) {
+            $this->addId($idsItem);
+        }
 
         return $this;
     }
@@ -649,7 +920,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function setGlobalIds(
         array $globalIds
     ): static {
-        $this->globalIds = $globalIds;
+        foreach ($globalIds as $globalIdsItem) {
+            $this->addGlobalId($globalIdsItem);
+        }
 
         return $this;
     }
@@ -903,7 +1176,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function setTaxRegistrations(
         array $taxRegistrations
     ): static {
-        $this->taxRegistrations = $taxRegistrations;
+        foreach ($taxRegistrations as $taxRegistrationsItem) {
+            $this->addTaxRegistration($taxRegistrationsItem);
+        }
 
         return $this;
     }
@@ -1157,7 +1432,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function setAddresses(
         array $addresses
     ): static {
-        $this->addresses = $addresses;
+        foreach ($addresses as $addressesItem) {
+            $this->addAddress($addressesItem);
+        }
 
         return $this;
     }
@@ -1411,7 +1688,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function setLegalOrganisations(
         array $legalOrganisations
     ): static {
-        $this->legalOrganisations = $legalOrganisations;
+        foreach ($legalOrganisations as $legalOrganisationsItem) {
+            $this->addLegalOrganisation($legalOrganisationsItem);
+        }
 
         return $this;
     }
@@ -1665,7 +1944,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function setContacts(
         array $contacts
     ): static {
-        $this->contacts = $contacts;
+        foreach ($contacts as $contactsItem) {
+            $this->addContact($contactsItem);
+        }
 
         return $this;
     }
@@ -1919,7 +2200,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function setCommunications(
         array $communications
     ): static {
-        $this->communications = $communications;
+        foreach ($communications as $communicationsItem) {
+            $this->addCommunication($communicationsItem);
+        }
 
         return $this;
     }

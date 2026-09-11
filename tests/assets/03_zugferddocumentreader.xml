@@ -227,6 +227,7 @@
                 <ram:ID>549910</ram:ID>
                 <ram:GlobalID schemeID="0088">4333741000005</ram:GlobalID>
                 <ram:Name>MUSTERLIEFERANT GMBH</ram:Name>
+                <ram:Description>MUSTERLIEFERANT GMBH DESCRIPTION</ram:Description>
                 <ram:DefinedTradeContact>
                     <ram:TelephoneUniversalCommunication>
                         <ram:CompleteNumber>+49 932 431 500</ram:CompleteNumber>

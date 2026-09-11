@@ -61,6 +61,7 @@ final class XRechnungUBLInvoiceDocumentBuilderDTOTest extends TestCase
                     ->setId('4000001123452')
                     ->setIdType('0088'))
                 ->addName('Lieferant GmbH')
+                ->addDescription('Lieferant GmbH Description')
                 ->addAddress((new InvoiceSuiteAddressDTO())
                     ->setPostcode('80333')
                     ->setAddressLine1('Lieferantenstraße 20')
@@ -83,6 +84,7 @@ final class XRechnungUBLInvoiceDocumentBuilderDTOTest extends TestCase
                 ->addId((new InvoiceSuiteIdDTO())
                     ->setId('GE2020211'))
                 ->addName('Kunden AG Mitte')
+                ->addDescription('Kunden AG Mitte Description')
                 ->addAddress((new InvoiceSuiteAddressDTO())
                     ->setPostcode('69876')
                     ->setAddressLine1('Kundenstraße 15')
@@ -288,6 +290,7 @@ final class XRechnungUBLInvoiceDocumentBuilderDTOTest extends TestCase
         $this->assertXPathNotExists('(/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme/cbc:ID)[3]');
 
         $this->assertXPathValue('/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName', 'Lieferant GmbH');
+        $this->assertXPathValue('/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm', 'Lieferant GmbH Description');
         $this->assertXPathNotExists('(/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName)[2]');
 
         $this->assertXPathValue('/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Name', 'Hans Meyer');
@@ -339,6 +342,7 @@ final class XRechnungUBLInvoiceDocumentBuilderDTOTest extends TestCase
         $this->assertXPathNotExists('(/ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme/cbc:ID)[3]');
 
         $this->assertXPathValue('/ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName', 'Kunden AG Mitte');
+        $this->assertXPathNotExists('/ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
         $this->assertXPathNotExists('(/ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName)[2]');
 
         $this->assertXPathNotExists('/ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:Name');
@@ -439,11 +443,11 @@ final class XRechnungUBLInvoiceDocumentBuilderDTOTest extends TestCase
         $this->assertTrue(static::$document->hasWarningMessagesInMessageBag());
         $this->assertFalse(static::$document->hasErrorMessagesInMessageBag());
 
-        $this->assertSame(96, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::INFO));
+        $this->assertSame(100, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::INFO));
         $this->assertSame(1, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::WARNING));
         $this->assertSame(0, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::ERROR));
 
-        $this->assertSame(96, static::$document->countInfoMessagesInMessageBag());
+        $this->assertSame(100, static::$document->countInfoMessagesInMessageBag());
         $this->assertSame(1, static::$document->countWarningMessagesInMessageBag());
         $this->assertSame(0, static::$document->countErrorMessagesInMessageBag());
 

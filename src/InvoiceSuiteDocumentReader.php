@@ -1191,6 +1191,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     }
 
     /**
+     * Get the description of the seller/supplier party
+     *
+     * @param  null|string $newDescription Further legal information that is relevant for the seller
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentSellerDescription(
+        ?string &$newDescription
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the seller/supplier party
      *
      * @return bool
@@ -1513,6 +1529,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newName
     ): static {
         $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the buyer/customer party
+     *
+     * @param  null|string $newDescription Additional information about the buyer/customer party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentBuyerDescription(
+        ?string &$newDescription
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerDescription($newDescription);
 
         return $this;
     }
@@ -1845,6 +1877,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     }
 
     /**
+     * Get the description of the seller's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the seller's tax representative party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentSellerTaxRepresentativeDescription(
+        ?string &$newDescription
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerTaxRepresentativeDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the seller's tax representative party
      *
      * @return bool
@@ -2167,6 +2215,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newName
     ): static {
         $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerTaxRepresentativeName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the buyer's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the buyer's tax representative party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentBuyerTaxRepresentativeDescription(
+        ?string &$newDescription
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerTaxRepresentativeDescription($newDescription);
 
         return $this;
     }
@@ -2499,6 +2563,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     }
 
     /**
+     * Get the description of the sales agent party
+     *
+     * @param  null|string $newDescription Additional information about the sales agent party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentSalesAgentDescription(
+        ?string &$newDescription
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSalesAgentDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the sales agent party
      *
      * @return bool
@@ -2821,6 +2901,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newName
     ): static {
         $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerAgentName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the buyer agent party
+     *
+     * @param  null|string $newDescription Additional information about the buyer agent party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentBuyerAgentDescription(
+        ?string &$newDescription
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerAgentDescription($newDescription);
 
         return $this;
     }
@@ -3153,6 +3249,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     }
 
     /**
+     * Get the description of the product end user party
+     *
+     * @param  null|string $newDescription Additional information about the product end user party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentProductEndUserDescription(
+        ?string &$newDescription
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProductEndUserDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the product end-user party
      *
      * @return bool
@@ -3475,6 +3587,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newName
     ): static {
         $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ship-to party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentShipToDescription(
+        ?string &$newDescription
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToDescription($newDescription);
 
         return $this;
     }
@@ -3807,6 +3935,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     }
 
     /**
+     * Get the description of the ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ultimate ship-to party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentUltimateShipToDescription(
+        ?string &$newDescription
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateShipToDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the ultimate Ship-To party
      *
      * @return bool
@@ -4129,6 +4273,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newName
     ): static {
         $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the ship-from party
+     *
+     * @param  null|string $newDescription Additional information about the ship-from party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentShipFromDescription(
+        ?string &$newDescription
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromDescription($newDescription);
 
         return $this;
     }
@@ -4461,6 +4621,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     }
 
     /**
+     * Get the description of the invoicer party
+     *
+     * @param  null|string $newDescription Additional information about the invoicer party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentInvoicerDescription(
+        ?string &$newDescription
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoicerDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the Invoicer party
      *
      * @return bool
@@ -4783,6 +4959,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newName
     ): static {
         $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the invoicee party
+     *
+     * @param  null|string $newDescription Additional information about the invoicee party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentInvoiceeDescription(
+        ?string &$newDescription
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeDescription($newDescription);
 
         return $this;
     }
@@ -5115,6 +5307,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     }
 
     /**
+     * Get the description of the payee party
+     *
+     * @param  null|string $newDescription Additional information about the payee party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentPayeeDescription(
+        ?string &$newDescription
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayeeDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the Payee party
      *
      * @return bool
@@ -5437,6 +5645,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newName
     ): static {
         $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayerName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the payer party
+     *
+     * @param  null|string $newDescription Additional information about the payer party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentPayerDescription(
+        ?string &$newDescription
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayerDescription($newDescription);
 
         return $this;
     }
@@ -7404,6 +7628,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     }
 
     /**
+     * Get the description of the position-level ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ship-to party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentPositionShipToDescription(
+        ?string &$newDescription
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionShipToDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the Ship-To party
      *
      * @return bool
@@ -7736,6 +7976,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newName
     ): static {
         $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the position-level ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ultimate ship-to party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentPositionUltimateShipToDescription(
+        ?string &$newDescription
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToDescription($newDescription);
 
         return $this;
     }

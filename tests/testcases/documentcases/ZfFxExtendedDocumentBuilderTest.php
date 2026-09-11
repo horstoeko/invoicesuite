@@ -233,6 +233,7 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         static::$document->setDocumentSellerId('549910');
         static::$document->setDocumentSellerGlobalId('4333741000005', '0088');
         static::$document->setDocumentSellerName('MUSTERLIEFERANT GMBH');
+        static::$document->setDocumentSellerDescription('MUSTERLIEFERANT GMBH Description');
         static::$document->setDocumentSellerContact(
             newPhoneNumber: '+49 932 431 500',
             newEmailAddress: 'max.mustermann@musterlieferant.de'
@@ -248,6 +249,7 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         static::$document->setDocumentBuyerId('009420');
         static::$document->setDocumentBuyerGlobalId('4304171000002', '0088');
         static::$document->setDocumentBuyerName('MUSTER-KUNDE GMBH');
+        static::$document->setDocumentBuyerDescription('MUSTER-KUNDE GMBH Description');
         static::$document->setDocumentBuyerAddress(
             newAddressLine1: 'KUNDENWEG 88',
             newPostcode: '40235',
@@ -260,6 +262,7 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
 
         static::$document->setDocumentShipToGlobalId('4304171088093', '0088');
         static::$document->setDocumentShipToName('MUSTER-MARKT');
+        static::$document->setDocumentShipToDescription('MUSTER-MARKT Description');
         static::$document->setDocumentShipToContact(newDepartmentName: '8211');
         static::$document->setDocumentShipToAddress(
             newAddressLine1: 'HAUPTSTRASSE 44',
@@ -275,6 +278,7 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         static::$document->setDocumentInvoiceeId('009420');
         static::$document->setDocumentInvoiceeGlobalId('4304171000002', '0088');
         static::$document->setDocumentInvoiceeName('MUSTER-KUNDE GMBH');
+        static::$document->setDocumentInvoiceeDescription('MUSTER-KUNDE GMBH Description');
         static::$document->setDocumentInvoiceeAddress(
             newAddressLine1: 'KUNDENWEG 88',
             newPostcode: '40235',
@@ -587,6 +591,7 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:GlobalID)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Name', 'MUSTERLIEFERANT GMBH');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Name)[2]');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Description', 'MUSTERLIEFERANT GMBH Description');
         $this->assertXPathExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:DefinedTradeContact');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:DefinedTradeContact/ram:TelephoneUniversalCommunication/ram:CompleteNumber', '+49 932 431 500');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:DefinedTradeContact/ram:EmailURIUniversalCommunication/ram:URIID', 'max.mustermann@musterlieferant.de');
@@ -609,6 +614,7 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:GlobalID)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:Name', 'MUSTER-KUNDE GMBH');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:Name)[2]');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:Description', 'MUSTER-KUNDE GMBH Description');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:PostalTradeAddress/ram:PostcodeCode', '40235');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:PostalTradeAddress/ram:PostcodeCode)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:PostalTradeAddress/ram:LineOne', 'KUNDENWEG 88');
@@ -633,6 +639,7 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:GlobalID)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:Name', 'MUSTER-MARKT');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:Name)[2]');
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:Description');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:DefinedTradeContact/ram:DepartmentName', '8211');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:DefinedTradeContact/ram:DepartmentName)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:PostalTradeAddress/ram:PostcodeCode', '31157');
@@ -662,6 +669,7 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:GlobalID)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:Name', 'MUSTER-KUNDE GMBH');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:Name)[2]');
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:Description');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:PostalTradeAddress/ram:PostcodeCode', '40235');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:PostalTradeAddress/ram:PostcodeCode)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:PostalTradeAddress/ram:LineOne', 'KUNDENWEG 88');
@@ -777,11 +785,11 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         $this->assertFalse(static::$document->hasWarningMessagesInMessageBag());
         $this->assertFalse(static::$document->hasErrorMessagesInMessageBag());
 
-        $this->assertSame(250, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::INFO));
+        $this->assertSame(258, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::INFO));
         $this->assertSame(0, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::WARNING));
         $this->assertSame(0, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::ERROR));
 
-        $this->assertSame(250, static::$document->countInfoMessagesInMessageBag());
+        $this->assertSame(258, static::$document->countInfoMessagesInMessageBag());
         $this->assertSame(0, static::$document->countWarningMessagesInMessageBag());
         $this->assertSame(0, static::$document->countErrorMessagesInMessageBag());
 

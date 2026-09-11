@@ -1368,6 +1368,77 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName)[2]');
     }
 
+    public function testSetAddDocumentSellerDescription(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerDescription('Seller Description');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm', 'Seller Description');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentSellerDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm', 'Seller Description');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentSellerDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm', 'Seller Description');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentSellerDescription('Seller Description 2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm', 'Seller Description 2');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerDescription('Seller Description 3');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm', 'Seller Description 3');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+    }
+
     public function testSetAddDocumentSellerId(): void
     {
         $this->disableRenderXmlContent();
@@ -2162,6 +2233,77 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName)[2]');
     }
 
+    public function testSetAddDocumentBuyerDescription(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentBuyerDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentBuyerDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentBuyerDescription('Buyer Description');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentBuyerDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentBuyerDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentBuyerDescription('Buyer Description 2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentBuyerDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentBuyerDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentBuyerDescription('Buyer Description 3');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+    }
+
     public function testSetAddDocumentBuyerId(): void
     {
         $this->disableRenderXmlContent();
@@ -2949,6 +3091,77 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyName/cbc:Name)[2]');
     }
 
+    public function testSetAddDocumentSellerTaxRepresentativeDescription(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerTaxRepresentativeDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerTaxRepresentativeDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerTaxRepresentativeDescription('TaxRepresentative Description');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentSellerTaxRepresentativeDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentSellerTaxRepresentativeDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentSellerTaxRepresentativeDescription('TaxRepresentative Description 2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerTaxRepresentativeDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerTaxRepresentativeDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerTaxRepresentativeDescription('TaxRepresentative Description 3');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+    }
+
     public function testSetAddDocumentSellerTaxRepresentativeId(): void
     {
         $this->disableRenderXmlContent();
@@ -3675,6 +3888,14 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         });
     }
 
+    public function testSetAddDocumentBuyerTaxRepresentativeDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerTaxRepresentativeDescription('Buyer Tax Representative Description');
+            static::$document->addDocumentBuyerTaxRepresentativeDescription('Buyer Tax Representative Description 2');
+        });
+    }
+
     public function testSetAddDocumentBuyerTaxRepresentativeId(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
@@ -3736,6 +3957,14 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         $this->assertXmlWasNotChanged(static function (): void {
             static::$document->setDocumentSalesAgentName('SalesAgent Name');
             static::$document->addDocumentSalesAgentName('SalesAgent Name 2');
+        });
+    }
+
+    public function testSetAddDocumentSalesAgentDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentSalesAgentDescription('SalesAgent Description');
+            static::$document->addDocumentSalesAgentDescription('SalesAgent Description 2');
         });
     }
 
@@ -3803,6 +4032,14 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         });
     }
 
+    public function testSetAddDocumentBuyerAgentDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerAgentDescription('BuyerAgent Description');
+            static::$document->addDocumentBuyerAgentDescription('BuyerAgent Description 2');
+        });
+    }
+
     public function testSetAddDocumentBuyerAgentId(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
@@ -3864,6 +4101,14 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         $this->assertXmlWasNotChanged(static function (): void {
             static::$document->setDocumentProductEndUserName('Product End User Name');
             static::$document->addDocumentProductEndUserName('Product End User Name 2');
+        });
+    }
+
+    public function testSetAddDocumentProductEndUserDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentProductEndUserDescription('Product End User Description');
+            static::$document->addDocumentProductEndUserDescription('Product End User Description 2');
         });
     }
 
@@ -3992,6 +4237,77 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
 
         $this->assertXPathValue('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 'Ship To Name 3');
         $this->assertXPathNotExists('(/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name)[2]');
+    }
+
+    public function testSetAddDocumentShipToDescription(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentShipToDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentShipToDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentShipToDescription('Ship To Description');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentShipToDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentShipToDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentShipToDescription('Ship To Description 2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentShipToDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentShipToDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentShipToDescription('Ship To Description 3');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
     }
 
     public function testSetAddDocumentShipToId(): void
@@ -4279,6 +4595,14 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         });
     }
 
+    public function testSetAddDocumentUltimateShipToDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentUltimateShipToDescription('Ultimate Ship To Description');
+            static::$document->addDocumentUltimateShipToDescription('Ultimate Ship To Description');
+        });
+    }
+
     public function testSetAddDocumentUltimateShipToId(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
@@ -4340,6 +4664,14 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         $this->assertXmlWasNotChanged(static function (): void {
             static::$document->setDocumentShipFromName('Ship From Name');
             static::$document->addDocumentShipFromName('Ship From Name');
+        });
+    }
+
+    public function testSetAddDocumentShipFromDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentShipFromDescription('Ship From Description');
+            static::$document->addDocumentShipFromDescription('Ship From Description');
         });
     }
 
@@ -4407,6 +4739,14 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         });
     }
 
+    public function testSetAddDocumentInvoicerDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentInvoicerDescription('Invoicer Description');
+            static::$document->addDocumentInvoicerDescription('Invoicer Description 2');
+        });
+    }
+
     public function testSetAddDocumentInvoicerId(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
@@ -4468,6 +4808,14 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         $this->assertXmlWasNotChanged(static function (): void {
             static::$document->setDocumentInvoiceeName('Invoicee Name');
             static::$document->addDocumentInvoiceeName('Invoicee Name 2');
+        });
+    }
+
+    public function testSetAddDocumentInvoiceeDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentInvoiceeDescription('Invoicee Description');
+            static::$document->addDocumentInvoiceeDescription('Invoicee Description 2');
         });
     }
 
@@ -4596,6 +4944,77 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
 
         $this->assertXPathValue('/ns:CreditNote/cac:PayeeParty/cac:PartyName/cbc:Name', 'Payee Name 3');
         $this->assertXPathNotExists('(/ns:CreditNote/cac:PayeeParty/cac:PartyName/cbc:Name)[2]');
+    }
+
+    public function testSetAddDocumentPayeeDescription(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentPayeeDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentPayeeDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentPayeeDescription('Payee Description');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentPayeeDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentPayeeDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentPayeeDescription('Payee Description 2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentPayeeDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentPayeeDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentPayeeDescription('Payee Description 3');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
     }
 
     public function testSetAddDocumentPayeeId(): void
@@ -5320,6 +5739,14 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         $this->assertXmlWasNotChanged(static function (): void {
             static::$document->setDocumentPayerName('Payer Name');
             static::$document->addDocumentPayerName('Payer Name 2');
+        });
+    }
+
+    public function testSetAddDocumentPayerDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPayerDescription('Payer Description');
+            static::$document->addDocumentPayerDescription('Payer Description 2');
         });
     }
 
@@ -7559,6 +7986,14 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         });
     }
 
+    public function testSetAddDocumentPositionShipToDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPositionShipToDescription('Ship To Description');
+            static::$document->addDocumentPositionShipToDescription('Ship To Description 2');
+        });
+    }
+
     public function testSetAddDocumentPositionShipToId(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
@@ -7620,6 +8055,14 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         $this->assertXmlWasNotChanged(static function (): void {
             static::$document->setDocumentPositionUltimateShipToName('Ship To Name');
             static::$document->addDocumentPositionUltimateShipToName('Ship To Name 2');
+        });
+    }
+
+    public function testSetAddDocumentPositionUltimateShipToDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPositionUltimateShipToDescription('Ship To Description');
+            static::$document->addDocumentPositionUltimateShipToDescription('Ship To Description 2');
         });
     }
 

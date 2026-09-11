@@ -214,6 +214,7 @@
           <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
           <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
           <ram:Name>Ship To GmbH</ram:Name>
+          <ram:Description>Ship To GmbH Description</ram:Description>
           <ram:SpecifiedLegalOrganization>
             <ram:ID schemeID="8884">3874837489237</ram:ID>
             <ram:TradingBusinessName>Ship To AG</ram:TradingBusinessName>
@@ -252,6 +253,7 @@
           <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
           <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
           <ram:Name>Ultimate Ship To GmbH</ram:Name>
+          <ram:Description>Ultimate Ship To GmbH Description</ram:Description>
           <ram:SpecifiedLegalOrganization>
             <ram:ID schemeID="8884">3874837489237</ram:ID>
             <ram:TradingBusinessName>Ultimate Ship To AG</ram:TradingBusinessName>
@@ -400,6 +402,7 @@
         <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
         <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
         <ram:Name>Lieferant GmbH</ram:Name>
+        <ram:Description>Lieferant GmbH Description</ram:Description>
         <ram:SpecifiedLegalOrganization>
           <ram:ID schemeID="8884">3874837489237</ram:ID>
           <ram:TradingBusinessName>Lieferant AG</ram:TradingBusinessName>
@@ -444,6 +447,7 @@
         <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
         <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
         <ram:Name>Kunde GmbH</ram:Name>
+        <ram:Description>Kunde GmbH Description</ram:Description>
         <ram:SpecifiedLegalOrganization>
           <ram:ID schemeID="8884">3874837489237</ram:ID>
           <ram:TradingBusinessName>Kunde AG</ram:TradingBusinessName>
@@ -482,6 +486,7 @@
         <ram:GlobalID schemeID="0088">11111-SA</ram:GlobalID>
         <ram:GlobalID schemeID="0088">22222-SA</ram:GlobalID>
         <ram:Name>Sales Agent GmbH</ram:Name>
+        <ram:Description>Sales Agent GmbH Description</ram:Description>
         <ram:SpecifiedLegalOrganization>
           <ram:ID schemeID="8884">19283746555</ram:ID>
           <ram:TradingBusinessName>Sales Agent AG</ram:TradingBusinessName>
@@ -520,6 +525,7 @@
         <ram:GlobalID schemeID="0088">11111-TR</ram:GlobalID>
         <ram:GlobalID schemeID="0088">22222-TR</ram:GlobalID>
         <ram:Name>Tax GmbH</ram:Name>
+        <ram:Description>Tax GmbH Description</ram:Description>
         <ram:SpecifiedLegalOrganization>
           <ram:ID schemeID="8884">19283746555</ram:ID>
           <ram:TradingBusinessName>Tax AG</ram:TradingBusinessName>
@@ -558,6 +564,7 @@
         <ram:GlobalID schemeID="0088">11111-TR</ram:GlobalID>
         <ram:GlobalID schemeID="0088">22222-TR</ram:GlobalID>
         <ram:Name>Tax GmbH</ram:Name>
+        <ram:Description>Tax GmbH Description</ram:Description>
         <ram:SpecifiedLegalOrganization>
           <ram:ID schemeID="8884">19283746555</ram:ID>
           <ram:TradingBusinessName>Tax AG</ram:TradingBusinessName>
@@ -596,6 +603,7 @@
         <ram:GlobalID schemeID="0088">11111-PEU</ram:GlobalID>
         <ram:GlobalID schemeID="0088">22222-PEU</ram:GlobalID>
         <ram:Name>Product End User GmbH</ram:Name>
+        <ram:Description>Product End User GmbH Description</ram:Description>
         <ram:SpecifiedLegalOrganization>
           <ram:ID schemeID="8884">3874837489237</ram:ID>
           <ram:TradingBusinessName>Product End User AG</ram:TradingBusinessName>
@@ -676,6 +684,7 @@
         <ram:GlobalID schemeID="0088">11111-SA</ram:GlobalID>
         <ram:GlobalID schemeID="0088">22222-SA</ram:GlobalID>
         <ram:Name>Buyer Agent GmbH</ram:Name>
+        <ram:Description>Buyer Agent GmbH Description</ram:Description>
         <ram:SpecifiedLegalOrganization>
           <ram:ID schemeID="8884">19283746555</ram:ID>
           <ram:TradingBusinessName>Buyer Agent AG</ram:TradingBusinessName>
@@ -732,6 +741,7 @@
         <ram:GlobalID schemeID="0088">11111-SH</ram:GlobalID>
         <ram:GlobalID schemeID="0088">22222-SH</ram:GlobalID>
         <ram:Name>Ship To GmbH</ram:Name>
+        <ram:Description>Ship To GmbH Description</ram:Description>
         <ram:SpecifiedLegalOrganization>
           <ram:ID schemeID="8884">3874837489237</ram:ID>
           <ram:TradingBusinessName>Ship To AG</ram:TradingBusinessName>
@@ -770,6 +780,7 @@
         <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
         <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
         <ram:Name>Ultimate Ship To GmbH</ram:Name>
+        <ram:Description>Ultimate Ship To GmbH Description</ram:Description>
         <ram:SpecifiedLegalOrganization>
           <ram:ID schemeID="8884">3874837489237</ram:ID>
           <ram:TradingBusinessName>Ultimate Ship To AG</ram:TradingBusinessName>
@@ -808,6 +819,7 @@
         <ram:GlobalID schemeID="0088">11111-SF</ram:GlobalID>
         <ram:GlobalID schemeID="0088">22222-SF</ram:GlobalID>
         <ram:Name>Ship From GmbH</ram:Name>
+        <ram:Description>Ship From GmbH Description</ram:Description>
         <ram:SpecifiedLegalOrganization>
           <ram:ID schemeID="8884">3874837489237</ram:ID>
           <ram:TradingBusinessName>Ship From AG</ram:TradingBusinessName>
@@ -875,6 +887,7 @@
         <ram:GlobalID schemeID="0088">11111-INVR</ram:GlobalID>
         <ram:GlobalID schemeID="0088">22222-INVR</ram:GlobalID>
         <ram:Name>Invoicer GmbH</ram:Name>
+        <ram:Description>Invoicer GmbH Description</ram:Description>
         <ram:SpecifiedLegalOrganization>
           <ram:ID schemeID="8884">3874837489237</ram:ID>
           <ram:TradingBusinessName>Invoicer AG</ram:TradingBusinessName>
@@ -913,6 +926,7 @@
         <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
         <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
         <ram:Name>Invoicee GmbH</ram:Name>
+        <ram:Description>Invoicee GmbH Description</ram:Description>
         <ram:SpecifiedLegalOrganization>
           <ram:ID schemeID="8884">3874837489237</ram:ID>
           <ram:TradingBusinessName>Invoicee AG</ram:TradingBusinessName>
@@ -951,6 +965,7 @@
         <ram:GlobalID schemeID="0088">11111-PEE</ram:GlobalID>
         <ram:GlobalID schemeID="0088">22222-PEE</ram:GlobalID>
         <ram:Name>Payee GmbH</ram:Name>
+        <ram:Description>Payee GmbH Description</ram:Description>
         <ram:SpecifiedLegalOrganization>
           <ram:ID schemeID="8884">3874837489237</ram:ID>
           <ram:TradingBusinessName>Payee AG</ram:TradingBusinessName>
@@ -989,6 +1004,7 @@
         <ram:GlobalID schemeID="0088">4000001123452</ram:GlobalID>
         <ram:GlobalID schemeID="0088">4000001123469</ram:GlobalID>
         <ram:Name>Payer GmbH</ram:Name>
+        <ram:Description>Payer GmbH Description</ram:Description>
         <ram:SpecifiedLegalOrganization>
           <ram:ID schemeID="0060">123456789</ram:ID>
           <ram:TradingBusinessName>Payer AG</ram:TradingBusinessName>

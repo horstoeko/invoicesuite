@@ -19,6 +19,7 @@ final class InvoiceSuitePartyDTOTest extends TestCase
         $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
 
         $this->assertSame([], $invoiceSuitePartyDTO->getNames());
+        $this->assertSame([], $invoiceSuitePartyDTO->getDescriptions());
         $this->assertSame([], $invoiceSuitePartyDTO->getIds());
         $this->assertSame([], $invoiceSuitePartyDTO->getGlobalIds());
         $this->assertSame([], $invoiceSuitePartyDTO->getTaxRegistrations());
@@ -35,6 +36,15 @@ final class InvoiceSuitePartyDTOTest extends TestCase
         $invoiceSuitePartyDTO->setNames($nameValue);
 
         $this->assertSame($nameValue, $invoiceSuitePartyDTO->getNames());
+    }
+
+    public function testDescriptionGetterAndSetter(): void
+    {
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+        $descriptionValue = [];
+        $invoiceSuitePartyDTO->setDescriptions($descriptionValue);
+
+        $this->assertSame($descriptionValue, $invoiceSuitePartyDTO->getDescriptions());
     }
 
     public function testIdGetterAndSetter(): void
@@ -154,6 +164,65 @@ final class InvoiceSuitePartyDTOTest extends TestCase
         $invoiceSuitePartyDTO->previousName($cb, $cbElse);
         $invoiceSuitePartyDTO->lastName($cb, $cbElse);
         $invoiceSuitePartyDTO->forEachName($cb, $cbElse);
+
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionDescriptionIteratorsWithCallbacks(): void
+    {
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+        $invoiceSuitePartyDTO->addDescription('Description 1');
+        $invoiceSuitePartyDTO->addDescription('Description 2');
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
+        };
+
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
+        };
+
+        $invoiceSuitePartyDTO->firstDescription($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextDescription($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextDescription($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->firstDescription($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextDescription($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousDescription($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousDescription($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->lastDescription($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->forEachDescription($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachDescription($cb, $cbElse, 1);
+
+        $this->assertSame(9, $hitCount);
+        $this->assertSame(2, $elseCount);
+
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
+        };
+
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
+        };
+
+        $invoiceSuitePartyDTO->firstDescription($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextDescription($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextDescription($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousDescription($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousDescription($cb, $cbElse);
+        $invoiceSuitePartyDTO->lastDescription($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachDescription($cb, $cbElse);
 
         $this->assertSame(0, $hitCount);
         $this->assertSame(7, $elseCount);

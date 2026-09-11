@@ -1403,6 +1403,77 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName)[2]');
     }
 
+    public function testSetAddDocumentSellerDescription(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerDescription('Seller Description');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm', 'Seller Description');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentSellerDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm', 'Seller Description');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentSellerDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm', 'Seller Description');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentSellerDescription('Seller Description 2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm', 'Seller Description 2');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerDescription('Seller Description 3');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm', 'Seller Description 3');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+    }
+
     public function testSetAddDocumentSellerId(): void
     {
         $this->disableRenderXmlContent();
@@ -2197,6 +2268,77 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName)[2]');
     }
 
+    public function testSetAddDocumentBuyerDescription(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentBuyerDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentBuyerDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentBuyerDescription('Buyer Description');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentBuyerDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentBuyerDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentBuyerDescription('Buyer Description 2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentBuyerDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentBuyerDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentBuyerDescription('Buyer Description 3');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+    }
+
     public function testSetAddDocumentBuyerId(): void
     {
         $this->disableRenderXmlContent();
@@ -2984,6 +3126,77 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyName/cbc:Name)[2]');
     }
 
+    public function testSetAddDocumentSellerTaxRepresentativeDescription(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerTaxRepresentativeDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerTaxRepresentativeDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerTaxRepresentativeDescription('TaxRepresentative Description');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentSellerTaxRepresentativeDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentSellerTaxRepresentativeDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentSellerTaxRepresentativeDescription('TaxRepresentative Description 2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerTaxRepresentativeDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerTaxRepresentativeDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentSellerTaxRepresentativeDescription('TaxRepresentative Description 3');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+    }
+
     public function testSetAddDocumentSellerTaxRepresentativeId(): void
     {
         $this->disableRenderXmlContent();
@@ -3710,6 +3923,14 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         });
     }
 
+    public function testSetAddDocumentProductEndUserDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentProductEndUserDescription('Product End User Description');
+            static::$document->addDocumentProductEndUserDescription('Product End User Description 2');
+        });
+    }
+
     public function testSetAddDocumentProductEndUserId(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
@@ -3835,6 +4056,77 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
 
         $this->assertXPathValue('/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 'Ship To Name 3');
         $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name)[2]');
+    }
+
+    public function testSetAddDocumentShipToDescription(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentShipToDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentShipToDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentShipToDescription('Ship To Description');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentShipToDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentShipToDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentShipToDescription('Ship To Description 2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentShipToDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentShipToDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentShipToDescription('Ship To Description 3');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
     }
 
     public function testSetAddDocumentShipToId(): void
@@ -4122,6 +4414,14 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         });
     }
 
+    public function testSetAddDocumentUltimateShipToDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentUltimateShipToDescription('Ultimate Ship To Description');
+            static::$document->addDocumentUltimateShipToDescription('Ultimate Ship To Description');
+        });
+    }
+
     public function testSetAddDocumentUltimateShipToId(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
@@ -4183,6 +4483,14 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         $this->assertXmlWasNotChanged(static function (): void {
             static::$document->setDocumentShipFromName('Ship From Name');
             static::$document->addDocumentShipFromName('Ship From Name');
+        });
+    }
+
+    public function testSetAddDocumentShipFromDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentShipFromDescription('Ship From Description');
+            static::$document->addDocumentShipFromDescription('Ship From Description');
         });
     }
 
@@ -4250,6 +4558,14 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         });
     }
 
+    public function testSetAddDocumentInvoicerDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentInvoicerDescription('Invoicer Description');
+            static::$document->addDocumentInvoicerDescription('Invoicer Description 2');
+        });
+    }
+
     public function testSetAddDocumentInvoicerId(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
@@ -4311,6 +4627,14 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         $this->assertXmlWasNotChanged(static function (): void {
             static::$document->setDocumentInvoiceeName('Invoicee Name');
             static::$document->addDocumentInvoiceeName('Invoicee Name 2');
+        });
+    }
+
+    public function testSetAddDocumentInvoiceeDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentInvoiceeDescription('Invoicee Description');
+            static::$document->addDocumentInvoiceeDescription('Invoicee Description 2');
         });
     }
 
@@ -4439,6 +4763,77 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
 
         $this->assertXPathValue('/ns:Invoice/cac:PayeeParty/cac:PartyName/cbc:Name', 'Payee Name 3');
         $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyName/cbc:Name)[2]');
+    }
+
+    public function testSetAddDocumentPayeeDescription(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentPayeeDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentPayeeDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentPayeeDescription('Payee Description');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentPayeeDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentPayeeDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->addDocumentPayeeDescription('Payee Description 2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentPayeeDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentPayeeDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+
+        static::$document->setDocumentPayeeDescription('Payee Description 3');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
     }
 
     public function testSetAddDocumentPayeeId(): void
@@ -5163,6 +5558,14 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         $this->assertXmlWasNotChanged(static function (): void {
             static::$document->setDocumentPayerName('Payer Name');
             static::$document->addDocumentPayerName('Payer Name 2');
+        });
+    }
+
+    public function testSetAddDocumentPayerDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPayerDescription('Payer Description');
+            static::$document->addDocumentPayerDescription('Payer Description 2');
         });
     }
 
@@ -7389,6 +7792,14 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         });
     }
 
+    public function testSetAddDocumentPositionShipToDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPositionShipToDescription('Ship To Description');
+            static::$document->addDocumentPositionShipToDescription('Ship To Description 2');
+        });
+    }
+
     public function testSetAddDocumentPositionShipToId(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
@@ -7450,6 +7861,14 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         $this->assertXmlWasNotChanged(static function (): void {
             static::$document->setDocumentPositionUltimateShipToName('Ship To Name');
             static::$document->addDocumentPositionUltimateShipToName('Ship To Name 2');
+        });
+    }
+
+    public function testSetAddDocumentPositionUltimateShipToDescription(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPositionUltimateShipToDescription('Ship To Description');
+            static::$document->addDocumentPositionUltimateShipToDescription('Ship To Description 2');
         });
     }
 
@@ -8025,6 +8444,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
             ->setSellerParty(
                 (new InvoiceSuitePartyDTO())
                     ->addName('Lieferant GmbH')
+                    ->addDescription('Lieferant GmbH Description')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8041,6 +8461,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
             ->setBuyerParty(
                 (new InvoiceSuitePartyDTO())
                     ->addName('Kunde GmbH')
+                    ->addDescription('Kunde GmbH Description')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8056,6 +8477,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
             ->setSellerTaxRepresentativeParty(
                 (new InvoiceSuitePartyDTO())
                     ->addName('Tax GmbH')
+                    ->addDescription('Tax GmbH Description')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8071,6 +8493,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
             ->setBuyerTaxRepresentativeParty(
                 (new InvoiceSuitePartyDTO())
                     ->addName('Buyer Tax Representative GmbH')
+                    ->addDescription('Buyer Tax Representative GmbH Description')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8086,6 +8509,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
             ->setSalesAgentParty(
                 (new InvoiceSuitePartyDTO())
                     ->addName('Sales Agent GmbH')
+                    ->addDescription('Sales Agent GmbH Description')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8101,6 +8525,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
             ->setBuyerAgentParty(
                 (new InvoiceSuitePartyDTO())
                     ->addName('Buyer Agent GmbH')
+                    ->addDescription('Buyer Agent GmbH Description')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8116,6 +8541,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
             ->setProductEndUserParty(
                 (new InvoiceSuitePartyDTO())
                     ->addName('Product End User GmbH')
+                    ->addDescription('Product End User GmbH Description')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8131,6 +8557,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
             ->setShipToParty(
                 (new InvoiceSuitePartyDTO())
                     ->addName('Ship To GmbH')
+                    ->addDescription('Ship To GmbH Description')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8146,6 +8573,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
             ->setUltimateShipToParty(
                 (new InvoiceSuitePartyDTO())
                     ->addName('Ultimate Ship To GmbH')
+                    ->addDescription('Ultimate Ship To GmbH Description')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8161,6 +8589,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
             ->setShipFromParty(
                 (new InvoiceSuitePartyDTO())
                     ->addName('Ship From GmbH')
+                    ->addDescription('Ship From GmbH Description')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8176,6 +8605,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
             ->setInvoicerParty(
                 (new InvoiceSuitePartyDTO())
                     ->addName('Invoicer GmbH')
+                    ->addDescription('Invoicer GmbH Description')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8191,6 +8621,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
             ->setInvoiceeParty(
                 (new InvoiceSuitePartyDTO())
                     ->addName('Invoicee GmbH')
+                    ->addDescription('Invoicee GmbH Description')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8206,6 +8637,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
             ->setPayeeParty(
                 (new InvoiceSuitePartyDTO())
                     ->addName('Payee GmbH')
+                    ->addDescription('Payee GmbH Description')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8221,6 +8653,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
             ->setPayerParty(
                 (new InvoiceSuitePartyDTO())
                     ->addName('Payer GmbH')
+                    ->addDescription('Payer GmbH Description')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8429,6 +8862,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                 ->setShipToParty(
                     (new InvoiceSuitePartyDTO())
                         ->addName('Ship To GmbH')
+                        ->addDescription('Ship To GmbH Description')
                         ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                         ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                         ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8444,6 +8878,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                 ->setUltimateShipToParty(
                     (new InvoiceSuitePartyDTO())
                         ->addName('Ultimate Ship To GmbH')
+                        ->addDescription('Ultimate Ship To GmbH Description')
                         ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                         ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                         ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8600,6 +9035,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         // Seller Party
 
         $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName', 'Lieferant GmbH');
+        $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm', 'Lieferant GmbH Description');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName)[2]');
 
         $this->assertXPathValue('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', '0815-4711');
@@ -8649,6 +9085,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         // Buyer Party
 
         $this->assertXPathValue('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName', 'Kunde GmbH');
+        $this->assertXPathNotExists('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm');
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName)[2]');
 
         $this->assertXPathValue('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID', '0815-4711');
@@ -8692,6 +9129,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         // seller's tax representative party
 
         $this->assertXPathValue('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyName/cbc:Name', 'Tax GmbH');
+        $this->assertXPathNotExists('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
         $this->assertXPathNotExists('(/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyName/cbc:Name)[2]');
 
         $this->assertXPathNotExists('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyIdentification/cbc:ID');
@@ -8749,6 +9187,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         // Ship-To Party
 
         $this->assertXPathValue('/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 'Ship To GmbH');
+        $this->assertXPathNotExists('/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
         $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name)[2]');
 
         $this->assertXPathValue('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', '0815-4711');
@@ -8778,6 +9217,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         // Payee Party
 
         $this->assertXPathValue('/ns:Invoice/cac:PayeeParty/cac:PartyName/cbc:Name', 'Payee GmbH');
+        $this->assertXPathNotExists('/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
         $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyName/cbc:Name)[2]');
 
         $this->assertXPathValue('/ns:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID', '0815-4711');

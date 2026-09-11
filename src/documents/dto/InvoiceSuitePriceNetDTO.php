@@ -77,7 +77,9 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO implements JsonSerial
     public function setTaxes(
         array $taxes
     ): static {
-        $this->taxes = $taxes;
+        foreach ($taxes as $taxesItem) {
+            $this->addTax($taxesItem);
+        }
 
         return $this;
     }

@@ -543,6 +543,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         $description = '';
 
         $this->documentReader->getDocumentSellerName($name);
+        $this->documentReader->getDocumentSellerDescription($description);
 
         if ($this->documentReader->firstDocumentSellerId()) {
             do {
