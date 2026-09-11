@@ -615,7 +615,7 @@ final class FatturaPaDocumentReaderTest extends TestCase
 
         $this->assertInstanceOf(InvoiceSuitePartyDTO::class, $sellerParty);
         $this->assertSame('Example Seller S.r.l.', $sellerParty->getNames()[0]);
-        $this->assertSame('', $sellerParty->getDescriptions()[0]);
+        $this->assertArrayNotHasKey(0, $sellerParty->getDescriptions());
         $this->assertSame('VA', $sellerParty->getTaxRegistrations()[0]->getIdType());
         $this->assertSame('12345678901', $sellerParty->getTaxRegistrations()[0]->getId());
         $this->assertSame('FC', $sellerParty->getTaxRegistrations()[1]->getIdType());
@@ -641,7 +641,7 @@ final class FatturaPaDocumentReaderTest extends TestCase
 
         $this->assertInstanceOf(InvoiceSuitePartyDTO::class, $buyerParty);
         $this->assertSame('Example Buyer S.p.A.', $buyerParty->getNames()[0]);
-        $this->assertSame('', $buyerParty->getDescriptions()[0]);
+        $this->assertArrayNotHasKey(0, $buyerParty->getDescriptions());
         $this->assertSame('VA', $buyerParty->getTaxRegistrations()[0]->getIdType());
         $this->assertSame('98765432109', $buyerParty->getTaxRegistrations()[0]->getId());
         $this->assertSame('FC', $buyerParty->getTaxRegistrations()[1]->getIdType());
@@ -662,7 +662,7 @@ final class FatturaPaDocumentReaderTest extends TestCase
 
         $this->assertInstanceOf(InvoiceSuitePartyDTO::class, $sellerTaxRepresentativeParty);
         $this->assertSame('Tax Representative S.r.l.', $sellerTaxRepresentativeParty->getNames()[0]);
-        $this->assertSame('', $sellerTaxRepresentativeParty->getDescriptions()[0]);
+        $this->assertArrayNotHasKey(0, $sellerTaxRepresentativeParty->getDescriptions());
         $this->assertSame('VA', $sellerTaxRepresentativeParty->getTaxRegistrations()[0]->getIdType());
         $this->assertSame('11111111111', $sellerTaxRepresentativeParty->getTaxRegistrations()[0]->getId());
 

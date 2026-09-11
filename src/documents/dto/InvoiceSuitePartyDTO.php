@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use JsonSerializable;
 
 /**
@@ -151,7 +152,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function setNames(
         array $names
     ): static {
-        $this->names = $names;
+        foreach ($names as $namesItem) {
+            $this->addName($namesItem);
+        }
 
         return $this;
     }
@@ -165,7 +168,7 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function addName(
         ?string $name
     ): static {
-        if (is_null($name)) {
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($name)) {
             return $this;
         }
 
@@ -405,7 +408,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function setDescriptions(
         array $descriptions
     ): static {
-        $this->descriptions = $descriptions;
+        foreach ($descriptions as $descriptionsItem) {
+            $this->addDescription($descriptionsItem);
+        }
 
         return $this;
     }
@@ -419,7 +424,7 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function addDescription(
         ?string $description
     ): static {
-        if (is_null($description)) {
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($description)) {
             return $this;
         }
 
@@ -659,7 +664,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function setIds(
         array $ids
     ): static {
-        $this->ids = $ids;
+        foreach ($ids as $idsItem) {
+            $this->addId($idsItem);
+        }
 
         return $this;
     }
@@ -913,7 +920,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function setGlobalIds(
         array $globalIds
     ): static {
-        $this->globalIds = $globalIds;
+        foreach ($globalIds as $globalIdsItem) {
+            $this->addGlobalId($globalIdsItem);
+        }
 
         return $this;
     }
@@ -1167,7 +1176,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function setTaxRegistrations(
         array $taxRegistrations
     ): static {
-        $this->taxRegistrations = $taxRegistrations;
+        foreach ($taxRegistrations as $taxRegistrationsItem) {
+            $this->addTaxRegistration($taxRegistrationsItem);
+        }
 
         return $this;
     }
@@ -1421,7 +1432,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function setAddresses(
         array $addresses
     ): static {
-        $this->addresses = $addresses;
+        foreach ($addresses as $addressesItem) {
+            $this->addAddress($addressesItem);
+        }
 
         return $this;
     }
@@ -1675,7 +1688,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function setLegalOrganisations(
         array $legalOrganisations
     ): static {
-        $this->legalOrganisations = $legalOrganisations;
+        foreach ($legalOrganisations as $legalOrganisationsItem) {
+            $this->addLegalOrganisation($legalOrganisationsItem);
+        }
 
         return $this;
     }
@@ -1929,7 +1944,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function setContacts(
         array $contacts
     ): static {
-        $this->contacts = $contacts;
+        foreach ($contacts as $contactsItem) {
+            $this->addContact($contactsItem);
+        }
 
         return $this;
     }
@@ -2183,7 +2200,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function setCommunications(
         array $communications
     ): static {
-        $this->communications = $communications;
+        foreach ($communications as $communicationsItem) {
+            $this->addCommunication($communicationsItem);
+        }
 
         return $this;
     }

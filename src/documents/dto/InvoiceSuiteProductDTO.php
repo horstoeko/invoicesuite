@@ -500,7 +500,9 @@ class InvoiceSuiteProductDTO implements JsonSerializable
     public function setCharacteristics(
         array $characteristics
     ): static {
-        $this->characteristics = $characteristics;
+        foreach ($characteristics as $characteristicsItem) {
+            $this->addCharacteristic($characteristicsItem);
+        }
 
         return $this;
     }
@@ -754,7 +756,9 @@ class InvoiceSuiteProductDTO implements JsonSerializable
     public function setClassifications(
         array $classifications
     ): static {
-        $this->classifications = $classifications;
+        foreach ($classifications as $classificationsItem) {
+            $this->addClassification($classificationsItem);
+        }
 
         return $this;
     }
@@ -1008,7 +1012,9 @@ class InvoiceSuiteProductDTO implements JsonSerializable
     public function setReferenceProducts(
         array $referenceProducts
     ): static {
-        $this->referenceProducts = $referenceProducts;
+        foreach ($referenceProducts as $referenceProductsItem) {
+            $this->addReferenceProduct($referenceProductsItem);
+        }
 
         return $this;
     }

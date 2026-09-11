@@ -707,7 +707,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setSupplyChainEvents(
         array $supplyChainEvents
     ): static {
-        $this->supplyChainEvents = $supplyChainEvents;
+        foreach ($supplyChainEvents as $supplyChainEventsItem) {
+            $this->addSupplyChainEvent($supplyChainEventsItem);
+        }
 
         return $this;
     }
@@ -1057,7 +1059,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setNotes(
         array $notes
     ): static {
-        $this->notes = $notes;
+        foreach ($notes as $notesItem) {
+            $this->addNote($notesItem);
+        }
 
         return $this;
     }
@@ -1311,7 +1315,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setBillingPeriods(
         array $billingPeriods
     ): static {
-        $this->billingPeriods = $billingPeriods;
+        foreach ($billingPeriods as $billingPeriodsItem) {
+            $this->addBillingPeriod($billingPeriodsItem);
+        }
 
         return $this;
     }
@@ -1565,7 +1571,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setPostingReferences(
         array $postingReferences
     ): static {
-        $this->postingReferences = $postingReferences;
+        foreach ($postingReferences as $postingReferencesItem) {
+            $this->addPostingReference($postingReferencesItem);
+        }
 
         return $this;
     }
@@ -1819,7 +1827,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setSellerOrderReferences(
         array $sellerOrderReferences
     ): static {
-        $this->sellerOrderReferences = $sellerOrderReferences;
+        foreach ($sellerOrderReferences as $sellerOrderReferencesItem) {
+            $this->addSellerOrderReference($sellerOrderReferencesItem);
+        }
 
         return $this;
     }
@@ -2073,7 +2083,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setBuyerOrderReferences(
         array $buyerOrderReferences
     ): static {
-        $this->buyerOrderReferences = $buyerOrderReferences;
+        foreach ($buyerOrderReferences as $buyerOrderReferencesItem) {
+            $this->addBuyerOrderReference($buyerOrderReferencesItem);
+        }
 
         return $this;
     }
@@ -2327,7 +2339,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setQuotationReferences(
         array $quotationReferences
     ): static {
-        $this->quotationReferences = $quotationReferences;
+        foreach ($quotationReferences as $quotationReferencesItem) {
+            $this->addQuotationReference($quotationReferencesItem);
+        }
 
         return $this;
     }
@@ -2581,7 +2595,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setContractReferences(
         array $contractReferences
     ): static {
-        $this->contractReferences = $contractReferences;
+        foreach ($contractReferences as $contractReferencesItem) {
+            $this->addContractReference($contractReferencesItem);
+        }
 
         return $this;
     }
@@ -2835,7 +2851,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setAdditionalReferences(
         array $additionalReferences
     ): static {
-        $this->additionalReferences = $additionalReferences;
+        foreach ($additionalReferences as $additionalReferencesItem) {
+            $this->addAdditionalReference($additionalReferencesItem);
+        }
 
         return $this;
     }
@@ -3089,7 +3107,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setInvoiceReferences(
         array $invoiceReferences
     ): static {
-        $this->invoiceReferences = $invoiceReferences;
+        foreach ($invoiceReferences as $invoiceReferencesItem) {
+            $this->addInvoiceReference($invoiceReferencesItem);
+        }
 
         return $this;
     }
@@ -3343,7 +3363,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setProjectReferences(
         array $projectReferences
     ): static {
-        $this->projectReferences = $projectReferences;
+        foreach ($projectReferences as $projectReferencesItem) {
+            $this->addProjectReference($projectReferencesItem);
+        }
 
         return $this;
     }
@@ -3597,7 +3619,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setUltimateCustomerOrderReferences(
         array $ultimateCustomerOrderReferences
     ): static {
-        $this->ultimateCustomerOrderReferences = $ultimateCustomerOrderReferences;
+        foreach ($ultimateCustomerOrderReferences as $ultimateCustomerOrderReferencesItem) {
+            $this->addUltimateCustomerOrderReference($ultimateCustomerOrderReferencesItem);
+        }
 
         return $this;
     }
@@ -3851,7 +3875,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setDespatchAdviceReferences(
         array $despatchAdviceReferences
     ): static {
-        $this->despatchAdviceReferences = $despatchAdviceReferences;
+        foreach ($despatchAdviceReferences as $despatchAdviceReferencesItem) {
+            $this->addDespatchAdviceReference($despatchAdviceReferencesItem);
+        }
 
         return $this;
     }
@@ -4105,7 +4131,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setReceivingAdviceReferences(
         array $receivingAdviceReferences
     ): static {
-        $this->receivingAdviceReferences = $receivingAdviceReferences;
+        foreach ($receivingAdviceReferences as $receivingAdviceReferencesItem) {
+            $this->addReceivingAdviceReference($receivingAdviceReferencesItem);
+        }
 
         return $this;
     }
@@ -4359,7 +4387,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setDeliveryNoteReferences(
         array $deliveryNoteReferences
     ): static {
-        $this->deliveryNoteReferences = $deliveryNoteReferences;
+        foreach ($deliveryNoteReferences as $deliveryNoteReferencesItem) {
+            $this->addDeliveryNoteReference($deliveryNoteReferencesItem);
+        }
 
         return $this;
     }
@@ -4949,7 +4979,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setPaymentMeans(
         array $paymentMeans
     ): static {
-        $this->paymentMeans = $paymentMeans;
+        foreach ($paymentMeans as $paymentMeansItem) {
+            $this->addPaymentMean($paymentMeansItem);
+        }
 
         return $this;
     }
@@ -5203,7 +5235,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setPaymentTerms(
         array $paymentTerms
     ): static {
-        $this->paymentTerms = $paymentTerms;
+        foreach ($paymentTerms as $paymentTermsItem) {
+            $this->addPaymentTerm($paymentTermsItem);
+        }
 
         return $this;
     }
@@ -5457,7 +5491,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setCreditorReferences(
         array $creditorReferences
     ): static {
-        $this->creditorReferences = $creditorReferences;
+        foreach ($creditorReferences as $creditorReferencesItem) {
+            $this->addCreditorReference($creditorReferencesItem);
+        }
 
         return $this;
     }
@@ -5711,7 +5747,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setPaymentReferences(
         array $paymentReferences
     ): static {
-        $this->paymentReferences = $paymentReferences;
+        foreach ($paymentReferences as $paymentReferencesItem) {
+            $this->addPaymentReference($paymentReferencesItem);
+        }
 
         return $this;
     }
@@ -5965,7 +6003,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setBuyerReferences(
         array $buyerReferences
     ): static {
-        $this->buyerReferences = $buyerReferences;
+        foreach ($buyerReferences as $buyerReferencesItem) {
+            $this->addBuyerReference($buyerReferencesItem);
+        }
 
         return $this;
     }
@@ -6219,7 +6259,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setPositions(
         array $positions
     ): static {
-        $this->positions = $positions;
+        foreach ($positions as $positionsItem) {
+            $this->addPosition($positionsItem);
+        }
 
         return $this;
     }
@@ -6473,7 +6515,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setDeliveryTerms(
         array $deliveryTerms
     ): static {
-        $this->deliveryTerms = $deliveryTerms;
+        foreach ($deliveryTerms as $deliveryTermsItem) {
+            $this->addDeliveryTerm($deliveryTermsItem);
+        }
 
         return $this;
     }
@@ -6727,7 +6771,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setTaxes(
         array $taxes
     ): static {
-        $this->taxes = $taxes;
+        foreach ($taxes as $taxesItem) {
+            $this->addTax($taxesItem);
+        }
 
         return $this;
     }
@@ -6981,7 +7027,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setAllowanceCharges(
         array $allowanceCharges
     ): static {
-        $this->allowanceCharges = $allowanceCharges;
+        foreach ($allowanceCharges as $allowanceChargesItem) {
+            $this->addAllowanceCharge($allowanceChargesItem);
+        }
 
         return $this;
     }
@@ -7235,7 +7283,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setServiceCharges(
         array $serviceCharges
     ): static {
-        $this->serviceCharges = $serviceCharges;
+        foreach ($serviceCharges as $serviceChargesItem) {
+            $this->addServiceCharge($serviceChargesItem);
+        }
 
         return $this;
     }
@@ -7489,7 +7539,9 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     public function setSummations(
         array $summations
     ): static {
-        $this->summations = $summations;
+        foreach ($summations as $summationsItem) {
+            $this->addSummation($summationsItem);
+        }
 
         return $this;
     }
