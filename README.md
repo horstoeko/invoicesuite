@@ -11,6 +11,9 @@
 [![Release Status](https://github.com/horstoeko/invoicesuite/actions/workflows/build.release.yml/badge.svg)](https://github.com/horstoeko/invoicesuite/actions/workflows/build.release.yml)
 [![Nightly Build Status](https://github.com/horstoeko/invoicesuite/actions/workflows/build.nightly.yml/badge.svg)](https://github.com/horstoeko/invoicesuite/actions/workflows/build.nightly.yml)
 
+# No AI
+![InvoiceSuite Logo](assets/noai.png)
+
 <!-- omit in toc -->
 ## Table of Contents
 

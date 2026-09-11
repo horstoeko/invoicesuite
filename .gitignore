@@ -143,4 +143,5 @@ phpstan.txt
 /src/cache/
 
 !/assets/logo.png
+!/assets/noai.png
 !/bin
