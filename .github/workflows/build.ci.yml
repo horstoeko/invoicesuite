@@ -121,7 +121,7 @@ jobs:
       - name: Run PHPUnit tests
         env:
           XDEBUG_MODE: coverage
-        run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml
+        run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml --no-coverage
 
       - name: Save quality tools cache
         if: ${{ !cancelled() && steps.quality-cache-restore.outputs.cache-hit != 'true' }}
