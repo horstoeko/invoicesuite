@@ -18,6 +18,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteInternalMethodCallException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentReader;
+use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use PrinsFrank\PdfParser\Exception\PdfParserException;
@@ -50,6 +51,8 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
         $this->setDescription('Detect the format of the given file');
         $this->addArgument('input-file', InputArgument::REQUIRED, 'The file to detect the format of');
         $this->addOption('output-json', null, InputOption::VALUE_NONE, 'Output results as JSON');
+        $this->addOption('discovery-namespace', 'N', InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'A namespace to restrict document format provider discovery to (repeatable)');
+        $this->addOption('cache-directory', 'c', InputOption::VALUE_OPTIONAL, 'The cache directory for the internal serializer');
     }
 
     /**
@@ -68,6 +71,14 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handle(): int
     {
+        if ($this->hasOptionValue('discovery-namespace')) {
+            InvoiceSuiteSettings::setDiscoveryNamespaces($this->getStringArrayOption('discovery-namespace'));
+        }
+
+        if ($this->hasOptionValue('cache-directory')) {
+            InvoiceSuiteSettings::setSerializerCacheDirectory($this->getStringOption('cache-directory'));
+        }
+
         $inpArgFilename = $this->getSourceFileArgument('input-file');
 
         if ($this->isPdfFile($inpArgFilename)) {

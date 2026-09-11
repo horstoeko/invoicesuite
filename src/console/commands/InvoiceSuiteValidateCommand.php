@@ -16,6 +16,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteValidationContentNotSpecifiedException;
+use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\validators\abstracts\InvoiceSuiteAbstractDocumentValidator;
@@ -69,6 +70,7 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
         $this->addOption('kosit-remote-port', null, InputOption::VALUE_REQUIRED, 'Remote KoSIT validator port');
         $this->addOption('docuflair-base-url', null, InputOption::VALUE_REQUIRED, 'Docuflair API base url');
         $this->addOption('docuflair-api-key', null, InputOption::VALUE_REQUIRED, 'Docuflair personal API key');
+        $this->addOption('discovery-namespace', 'N', InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'A namespace to restrict document format provider discovery to (repeatable)');
     }
 
     /**
@@ -88,6 +90,10 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handle(): int
     {
+        if ($this->hasOptionValue('discovery-namespace')) {
+            InvoiceSuiteSettings::setDiscoveryNamespaces($this->getStringArrayOption('discovery-namespace'));
+        }
+
         $inpArgFilename = $this->getSourceXmlOrJsonFileArgument('input-file');
         $inpOptionValidator = $this->getStringOption('validator', 'all');
 

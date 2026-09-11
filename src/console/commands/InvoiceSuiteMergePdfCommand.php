@@ -15,6 +15,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentBuilder;
+use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use RuntimeException;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
@@ -46,6 +47,7 @@ class InvoiceSuiteMergePdfCommand extends InvoiceSuiteAbstractCommand
         $this->addArgument('pdf-file', InputArgument::REQUIRED, 'The PDF file to use as base document');
         $this->addArgument('output-file', InputArgument::REQUIRED, 'The target PDF file');
         $this->addOption('force', 'f', InputOption::VALUE_NONE, 'Overwrite the target PDF file if it already exists');
+        $this->addOption('discovery-namespace', 'N', InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'A namespace to restrict document format provider discovery to (repeatable)');
     }
 
     /**
@@ -61,6 +63,10 @@ class InvoiceSuiteMergePdfCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handle(): int
     {
+        if ($this->hasOptionValue('discovery-namespace')) {
+            InvoiceSuiteSettings::setDiscoveryNamespaces($this->getStringArrayOption('discovery-namespace'));
+        }
+
         $inpArgXmlOrJsonFilename = $this->getSourceXmlOrJsonFileArgument('document-file');
         $inpArgPdfFilename = $this->getSourcePdfFileArgument('pdf-file');
         $inpArgOutputFilename = $this->getTargetFileArgument('output-file', $this->getBoolOption('force'));
