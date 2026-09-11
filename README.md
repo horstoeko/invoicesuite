@@ -14,13 +14,13 @@
 <!-- omit in toc -->
 ## Table of Contents
 
-- [No AI](#no-ai)
 - [License](#license)
 - [Overview](#overview)
 - [Dependencies](#dependencies)
 - [Installation](#installation)
 - [Documentation](#documentation)
 
+<!-- omit in toc -->
 ## No AI
 
 ![No AI](assets/noai.png)
