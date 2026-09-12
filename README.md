@@ -27,31 +27,22 @@
 
 InvoiceSuite deals with electronic invoicing and implements specifications, business rules, validation rules, and data structures that may have **legal, regulatory, accounting, and tax-related implications**.
 
-A change that looks technically correct can still be wrong from a business, specification, legal, or tax perspective. In this kind of project, plausible-looking code is not enough.
-
-For this reason, contributions should come from people who **understand the changes they submit, can assess their consequences, and take responsibility for their correctness**.
+A change that looks technically correct can still be wrong from a business, specification, legal, or tax perspective. Plausible-looking code is therefore not enough.
 
 Contributors are expected to:
 
-* understand the code they submit;
-* understand the affected specification and business context;
+* understand the code they submit and its business context;
 * verify requirements against the relevant standards and documentation;
-* consider existing behavior, compatibility, and edge cases;
+* consider compatibility, edge cases, and existing behavior;
 * write meaningful tests based on actual requirements;
-* review their own implementation critically;
+* review their implementation critically;
 * be able to explain **why** their implementation is correct.
 
-AI-assisted development is not prohibited. AI tools may be useful for implementation, research, refactoring, testing, or documentation. However, their output must never be accepted as correct without independent verification.
+AI-assisted development is welcome as a tool, but its output must be reviewed with particular care. If AI-generated or AI-assisted code is included in a pull request, the contributor must fully understand it, verify its assumptions, check it against the relevant specifications and requirements, and ensure that the tests actually cover the intended behavior.
 
-If AI-generated or AI-assisted code is included in a pull request, the contributor is expected to perform an **especially thorough review of the generated result**. This includes understanding the generated code in detail, verifying its assumptions against the relevant specifications and requirements, checking edge cases and compatibility, and ensuring that the accompanying tests actually validate the required behavior.
+Responsibility always remains with the person submitting the change. This is especially important for electronic invoices, validation, monetary values, taxes, document semantics, and regulatory requirements, where incorrect assumptions can have consequences beyond an ordinary software defect.
 
-The use of AI does not transfer responsibility for a contribution to the tool. The person submitting the pull request remains fully responsible for the technical and functional correctness of the change and should be able to explain and defend every relevant part of the implementation.
-
-This is especially important in areas involving electronic invoices, validation, monetary values, taxes, document semantics, and regulatory requirements, where incorrect assumptions may have consequences that go far beyond a normal software defect.
-
-This policy is not about following or rejecting a technological trend. It is about **accountability and informed engineering decisions**.
-
-Whether code is written manually or with the assistance of AI, the person contributing the change should understand it, be able to defend the decisions behind it, and be capable of recognizing when something is outside their own area of expertise.
+This policy is not about accepting or rejecting AI. It is about **accountability, expertise, and informed engineering decisions**.
 
 **Use the tools you find helpful. Understand the result. Review it critically. Take responsibility for the code you submit.**
 
