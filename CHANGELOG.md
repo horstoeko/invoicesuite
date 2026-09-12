@@ -1,3 +1,18 @@
+## v0.0.32
+
+``Previous version v0.0.31``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [201099cd](https://github.com/horstoeko/invoicesuite/commit/201099cd) | 2026-09-12 09:15:20 CEST | HorstOeko | [ENH] Added PDF-Support for Console-Command "invoicesuite:validate" -> Use InvoiceSuiteDocumentReader | 
+| :new:  | [ea89104d](https://github.com/horstoeko/invoicesuite/commit/ea89104d) | 2026-09-12 09:08:37 CEST | HorstOeko | [ENH] Added PDF-Support for Console-Command "invoicesuite:validate" | 
+| :new:  | [ab2e8c6d](https://github.com/horstoeko/invoicesuite/commit/ab2e8c6d) | 2026-09-12 03:18:29 CEST | HorstOeko | [ENH] Reworked Initialization of Settings in Console Commands | 
+| :new:  | [df35f148](https://github.com/horstoeko/invoicesuite/commit/df35f148) | 2026-09-12 02:56:12 CEST | HorstOeko | [ENH] Reworked Initialization of Settings in Console Commands | 
+| :new:  | [3d936689](https://github.com/horstoeko/invoicesuite/commit/3d936689) | 2026-09-11 15:21:56 CEST | Eugen Mirovschi | [ENH] Add InvoiceSuiteSettings configurations to all commands as global options () | [#36](https://github.com/horstoeko/invoicesuite/issues/36)
+| :new:  | [6ae9fefd](https://github.com/horstoeko/invoicesuite/commit/6ae9fefd) | 2026-09-11 15:12:48 CEST | HorstOeko | [ENH] Added support for BT-33 () | [#37](https://github.com/horstoeko/invoicesuite/issues/37)
+
+:exclamation: _There are 10 internal commit(s)_
+
 ## v0.0.31
 
 ``Previous version v0.0.30``
