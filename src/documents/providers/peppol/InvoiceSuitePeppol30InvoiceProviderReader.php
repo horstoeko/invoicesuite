@@ -408,6 +408,9 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         $this->getDocumentSellerDescription($newDocumentSellerDescription);
         $newDocumentDTO->getSellerParty()->addDescription($newDocumentSellerDescription);
 
+        $this->getDocumentSellerRoleCode($newDocumentSellerRoleCode);
+        $newDocumentDTO->getSellerParty()->addRoleCode($newDocumentSellerRoleCode);
+
         while ($this->nextDocumentSellerId()) {
             $this->getDocumentSellerId(
                 $newDocumentSellerId
@@ -527,6 +530,9 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
 
         $this->getDocumentBuyerDescription($newDocumentBuyerDescription);
         $newDocumentDTO->getBuyerParty()->addDescription($newDocumentBuyerDescription);
+
+        $this->getDocumentBuyerRoleCode($newDocumentBuyerRoleCode);
+        $newDocumentDTO->getBuyerParty()->addRoleCode($newDocumentBuyerRoleCode);
 
         while ($this->nextDocumentBuyerId()) {
             $this->getDocumentBuyerId(
@@ -648,6 +654,9 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         $this->getDocumentSellerTaxRepresentativeDescription($newDocumentSellerTaxRepresentativeDescription);
         $newDocumentDTO->getSellerTaxRepresentativeParty()->addDescription($newDocumentSellerTaxRepresentativeDescription);
 
+        $this->getDocumentSellerTaxRepresentativeRoleCode($newDocumentSellerTaxRepresentativeRoleCode);
+        $newDocumentDTO->getSellerTaxRepresentativeParty()->addRoleCode($newDocumentSellerTaxRepresentativeRoleCode);
+
         while ($this->nextDocumentSellerTaxRepresentativeId()) {
             $this->getDocumentSellerTaxRepresentativeId(
                 $newDocumentSellerTaxRepresentativeId
@@ -767,6 +776,9 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
 
         $this->getDocumentBuyerTaxRepresentativeDescription($newDocumentBuyerTaxRepresentativeDescription);
         $newDocumentDTO->getBuyerTaxRepresentativeParty()->addDescription($newDocumentBuyerTaxRepresentativeDescription);
+
+        $this->getDocumentBuyerTaxRepresentativeRoleCode($newDocumentBuyerTaxRepresentativeRoleCode);
+        $newDocumentDTO->getBuyerTaxRepresentativeParty()->addRoleCode($newDocumentBuyerTaxRepresentativeRoleCode);
 
         while ($this->nextDocumentBuyerTaxRepresentativeId()) {
             $this->getDocumentBuyerTaxRepresentativeId(
@@ -888,6 +900,9 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         $this->getDocumentSalesAgentDescription($newDocumentSalesAgentDescription);
         $newDocumentDTO->getSalesAgentParty()->addDescription($newDocumentSalesAgentDescription);
 
+        $this->getDocumentSalesAgentRoleCode($newDocumentSalesAgentRoleCode);
+        $newDocumentDTO->getSalesAgentParty()->addRoleCode($newDocumentSalesAgentRoleCode);
+
         while ($this->nextDocumentSalesAgentId()) {
             $this->getDocumentSalesAgentId(
                 $newDocumentSalesAgentId
@@ -1007,6 +1022,9 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
 
         $this->getDocumentBuyerAgentDescription($newDocumentBuyerAgentDescription);
         $newDocumentDTO->getBuyerAgentParty()->addDescription($newDocumentBuyerAgentDescription);
+
+        $this->getDocumentBuyerAgentRoleCode($newDocumentBuyerAgentRoleCode);
+        $newDocumentDTO->getBuyerAgentParty()->addRoleCode($newDocumentBuyerAgentRoleCode);
 
         while ($this->nextDocumentBuyerAgentId()) {
             $this->getDocumentBuyerAgentId(
@@ -1128,6 +1146,9 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         $this->getDocumentProductEndUserDescription($newDocumentProductEndUserDescription);
         $newDocumentDTO->getProductEndUserParty()->addDescription($newDocumentProductEndUserDescription);
 
+        $this->getDocumentProductEndUserRoleCode($newDocumentProductEndUserRoleCode);
+        $newDocumentDTO->getProductEndUserParty()->addRoleCode($newDocumentProductEndUserRoleCode);
+
         while ($this->nextDocumentProductEndUserId()) {
             $this->getDocumentProductEndUserId(
                 $newDocumentProductEndUserId
@@ -1247,6 +1268,9 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
 
         $this->getDocumentShipToDescription($newDocumentShipToDescription);
         $newDocumentDTO->getShipToParty()->addDescription($newDocumentShipToDescription);
+
+        $this->getDocumentShipToRoleCode($newDocumentShipToRoleCode);
+        $newDocumentDTO->getShipToParty()->addRoleCode($newDocumentShipToRoleCode);
 
         while ($this->nextDocumentShipToId()) {
             $this->getDocumentShipToId(
@@ -1368,6 +1392,9 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         $this->getDocumentUltimateShipToDescription($newDocumentUltimateShipToDescription);
         $newDocumentDTO->getUltimateShipToParty()->addDescription($newDocumentUltimateShipToDescription);
 
+        $this->getDocumentUltimateShipToRoleCode($newDocumentUltimateShipToRoleCode);
+        $newDocumentDTO->getUltimateShipToParty()->addRoleCode($newDocumentUltimateShipToRoleCode);
+
         while ($this->nextDocumentUltimateShipToId()) {
             $this->getDocumentUltimateShipToId(
                 $newDocumentUltimateShipToId
@@ -1487,6 +1514,9 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
 
         $this->getDocumentShipFromDescription($newDocumentShipFromDescription);
         $newDocumentDTO->getShipFromParty()->addDescription($newDocumentShipFromDescription);
+
+        $this->getDocumentShipFromRoleCode($newDocumentShipFromRoleCode);
+        $newDocumentDTO->getShipFromParty()->addRoleCode($newDocumentShipFromRoleCode);
 
         while ($this->nextDocumentShipFromId()) {
             $this->getDocumentShipFromId(
@@ -1608,6 +1638,9 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         $this->getDocumentInvoicerDescription($newDocumentInvoicerDescription);
         $newDocumentDTO->getInvoicerParty()->addDescription($newDocumentInvoicerDescription);
 
+        $this->getDocumentInvoicerRoleCode($newDocumentInvoicerRoleCode);
+        $newDocumentDTO->getInvoicerParty()->addRoleCode($newDocumentInvoicerRoleCode);
+
         while ($this->nextDocumentInvoicerId()) {
             $this->getDocumentInvoicerId(
                 $newDocumentInvoicerId
@@ -1727,6 +1760,9 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
 
         $this->getDocumentInvoiceeDescription($newDocumentInvoiceeDescription);
         $newDocumentDTO->getInvoiceeParty()->addDescription($newDocumentInvoiceeDescription);
+
+        $this->getDocumentInvoiceeRoleCode($newDocumentInvoiceeRoleCode);
+        $newDocumentDTO->getInvoiceeParty()->addRoleCode($newDocumentInvoiceeRoleCode);
 
         while ($this->nextDocumentInvoiceeId()) {
             $this->getDocumentInvoiceeId(
@@ -1848,6 +1884,9 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         $this->getDocumentPayeeDescription($newDocumentPayeeDescription);
         $newDocumentDTO->getPayeeParty()->addDescription($newDocumentPayeeDescription);
 
+        $this->getDocumentPayeeRoleCode($newDocumentPayeeRoleCode);
+        $newDocumentDTO->getPayeeParty()->addRoleCode($newDocumentPayeeRoleCode);
+
         while ($this->nextDocumentPayeeId()) {
             $this->getDocumentPayeeId(
                 $newDocumentPayeeId
@@ -1967,6 +2006,9 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
 
         $this->getDocumentPayerDescription($newDocumentPayerDescription);
         $newDocumentDTO->getPayerParty()->addDescription($newDocumentPayerDescription);
+
+        $this->getDocumentPayerRoleCode($newDocumentPayerRoleCode);
+        $newDocumentDTO->getPayerParty()->addRoleCode($newDocumentPayerRoleCode);
 
         while ($this->nextDocumentPayerId()) {
             $this->getDocumentPayerId(
@@ -2748,6 +2790,9 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
             $this->getDocumentPositionShipToDescription($newDocumentPositionShipToDescription);
             $newDocumentPositionDTO->getShipToParty()->addDescription($newDocumentPositionShipToDescription);
 
+            $this->getDocumentPositionShipToRoleCode($newDocumentPositionShipToRoleCode);
+            $newDocumentPositionDTO->getShipToParty()->addRoleCode($newDocumentPositionShipToRoleCode);
+
             while ($this->nextDocumentPositionShipToId()) {
                 $this->getDocumentPositionShipToId(
                     $newDocumentPositionShipToId
@@ -2868,6 +2913,9 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
 
             $this->getDocumentPositionUltimateShipToDescription($newDocumentPositionUltimateShipToDescription);
             $newDocumentPositionDTO->getUltimateShipToParty()->addDescription($newDocumentPositionUltimateShipToDescription);
+
+            $this->getDocumentPositionUltimateShipToRoleCode($newDocumentPositionUltimateShipToRoleCode);
+            $newDocumentPositionDTO->getUltimateShipToParty()->addRoleCode($newDocumentPositionUltimateShipToRoleCode);
 
             while ($this->nextDocumentPositionUltimateShipToId()) {
                 $this->getDocumentPositionUltimateShipToId(
@@ -4298,6 +4346,26 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
     }
 
     /**
+     * Get the role code of the Seller trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentSellerRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the seller/supplier party
      *
      * @return bool
@@ -4810,6 +4878,26 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the Buyer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentBuyerRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5335,6 +5423,26 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
     }
 
     /**
+     * Get the role code of the SellerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentSellerTaxRepresentativeRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the seller's tax representative party
      *
      * @return bool
@@ -5755,6 +5863,26 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
     }
 
     /**
+     * Get the role code of the BuyerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentBuyerTaxRepresentativeRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the buyer's tax representative party
      *
      * @return bool
@@ -6128,6 +6256,26 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the SalesAgent trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentSalesAgentRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6515,6 +6663,26 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
     }
 
     /**
+     * Get the role code of the BuyerAgent trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentBuyerAgentRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the buyer agent party
      *
      * @return bool
@@ -6895,6 +7063,26 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
     }
 
     /**
+     * Get the role code of the ProductEndUser trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentProductEndUserRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the product end-user party
      *
      * @return bool
@@ -7268,6 +7456,26 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the ShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentShipToRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7707,6 +7915,26 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
     }
 
     /**
+     * Get the role code of the UltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentUltimateShipToRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the ultimate Ship-To party
      *
      * @return bool
@@ -8080,6 +8308,26 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the ShipFrom trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentShipFromRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -8467,6 +8715,26 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
     }
 
     /**
+     * Get the role code of the Invoicer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentInvoicerRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the Invoicer party
      *
      * @return bool
@@ -8840,6 +9108,26 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the Invoicee trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentInvoiceeRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -9225,6 +9513,26 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the Payee trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentPayeeRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -9657,6 +9965,26 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the Payer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentPayerRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -11954,6 +12282,26 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
     }
 
     /**
+     * Get the role code of the PositionShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentPositionShipToRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the Ship-To party
      *
      * @return bool
@@ -12327,6 +12675,26 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the PositionUltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentPositionUltimateShipToRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
 
         $this->traceMethodExit(__METHOD__);
 

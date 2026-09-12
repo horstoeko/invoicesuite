@@ -405,6 +405,9 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->getDocumentSellerDescription($newDocumentSellerDescription);
         $newDocumentDTO->getSellerParty()->addDescription($newDocumentSellerDescription);
 
+        $this->getDocumentSellerRoleCode($newDocumentSellerRoleCode);
+        $newDocumentDTO->getSellerParty()->addRoleCode($newDocumentSellerRoleCode);
+
         while ($this->nextDocumentSellerId()) {
             $this->getDocumentSellerId(
                 $newDocumentSellerId
@@ -524,6 +527,9 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
 
         $this->getDocumentBuyerDescription($newDocumentBuyerDescription);
         $newDocumentDTO->getBuyerParty()->addDescription($newDocumentBuyerDescription);
+
+        $this->getDocumentBuyerRoleCode($newDocumentBuyerRoleCode);
+        $newDocumentDTO->getBuyerParty()->addRoleCode($newDocumentBuyerRoleCode);
 
         while ($this->nextDocumentBuyerId()) {
             $this->getDocumentBuyerId(
@@ -645,6 +651,9 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->getDocumentSellerTaxRepresentativeDescription($newDocumentSellerTaxRepresentativeDescription);
         $newDocumentDTO->getSellerTaxRepresentativeParty()->addDescription($newDocumentSellerTaxRepresentativeDescription);
 
+        $this->getDocumentSellerTaxRepresentativeRoleCode($newDocumentSellerTaxRepresentativeRoleCode);
+        $newDocumentDTO->getSellerTaxRepresentativeParty()->addRoleCode($newDocumentSellerTaxRepresentativeRoleCode);
+
         while ($this->nextDocumentSellerTaxRepresentativeId()) {
             $this->getDocumentSellerTaxRepresentativeId(
                 $newDocumentSellerTaxRepresentativeId
@@ -764,6 +773,9 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
 
         $this->getDocumentBuyerTaxRepresentativeDescription($newDocumentBuyerTaxRepresentativeDescription);
         $newDocumentDTO->getBuyerTaxRepresentativeParty()->addDescription($newDocumentBuyerTaxRepresentativeDescription);
+
+        $this->getDocumentBuyerTaxRepresentativeRoleCode($newDocumentBuyerTaxRepresentativeRoleCode);
+        $newDocumentDTO->getBuyerTaxRepresentativeParty()->addRoleCode($newDocumentBuyerTaxRepresentativeRoleCode);
 
         while ($this->nextDocumentBuyerTaxRepresentativeId()) {
             $this->getDocumentBuyerTaxRepresentativeId(
@@ -885,6 +897,9 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->getDocumentSalesAgentDescription($newDocumentSalesAgentDescription);
         $newDocumentDTO->getSalesAgentParty()->addDescription($newDocumentSalesAgentDescription);
 
+        $this->getDocumentSalesAgentRoleCode($newDocumentSalesAgentRoleCode);
+        $newDocumentDTO->getSalesAgentParty()->addRoleCode($newDocumentSalesAgentRoleCode);
+
         while ($this->nextDocumentSalesAgentId()) {
             $this->getDocumentSalesAgentId(
                 $newDocumentSalesAgentId
@@ -1004,6 +1019,9 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
 
         $this->getDocumentBuyerAgentDescription($newDocumentBuyerAgentDescription);
         $newDocumentDTO->getBuyerAgentParty()->addDescription($newDocumentBuyerAgentDescription);
+
+        $this->getDocumentBuyerAgentRoleCode($newDocumentBuyerAgentRoleCode);
+        $newDocumentDTO->getBuyerAgentParty()->addRoleCode($newDocumentBuyerAgentRoleCode);
 
         while ($this->nextDocumentBuyerAgentId()) {
             $this->getDocumentBuyerAgentId(
@@ -1125,6 +1143,9 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->getDocumentProductEndUserDescription($newDocumentProductEndUserDescription);
         $newDocumentDTO->getProductEndUserParty()->addDescription($newDocumentProductEndUserDescription);
 
+        $this->getDocumentProductEndUserRoleCode($newDocumentProductEndUserRoleCode);
+        $newDocumentDTO->getProductEndUserParty()->addRoleCode($newDocumentProductEndUserRoleCode);
+
         while ($this->nextDocumentProductEndUserId()) {
             $this->getDocumentProductEndUserId(
                 $newDocumentProductEndUserId
@@ -1244,6 +1265,9 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
 
         $this->getDocumentShipToDescription($newDocumentShipToDescription);
         $newDocumentDTO->getShipToParty()->addDescription($newDocumentShipToDescription);
+
+        $this->getDocumentShipToRoleCode($newDocumentShipToRoleCode);
+        $newDocumentDTO->getShipToParty()->addRoleCode($newDocumentShipToRoleCode);
 
         while ($this->nextDocumentShipToId()) {
             $this->getDocumentShipToId(
@@ -1365,6 +1389,9 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->getDocumentUltimateShipToDescription($newDocumentUltimateShipToDescription);
         $newDocumentDTO->getUltimateShipToParty()->addDescription($newDocumentUltimateShipToDescription);
 
+        $this->getDocumentUltimateShipToRoleCode($newDocumentUltimateShipToRoleCode);
+        $newDocumentDTO->getUltimateShipToParty()->addRoleCode($newDocumentUltimateShipToRoleCode);
+
         while ($this->nextDocumentUltimateShipToId()) {
             $this->getDocumentUltimateShipToId(
                 $newDocumentUltimateShipToId
@@ -1484,6 +1511,9 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
 
         $this->getDocumentShipFromDescription($newDocumentShipFromDescription);
         $newDocumentDTO->getShipFromParty()->addDescription($newDocumentShipFromDescription);
+
+        $this->getDocumentShipFromRoleCode($newDocumentShipFromRoleCode);
+        $newDocumentDTO->getShipFromParty()->addRoleCode($newDocumentShipFromRoleCode);
 
         while ($this->nextDocumentShipFromId()) {
             $this->getDocumentShipFromId(
@@ -1605,6 +1635,9 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->getDocumentInvoicerDescription($newDocumentInvoicerDescription);
         $newDocumentDTO->getInvoicerParty()->addDescription($newDocumentInvoicerDescription);
 
+        $this->getDocumentInvoicerRoleCode($newDocumentInvoicerRoleCode);
+        $newDocumentDTO->getInvoicerParty()->addRoleCode($newDocumentInvoicerRoleCode);
+
         while ($this->nextDocumentInvoicerId()) {
             $this->getDocumentInvoicerId(
                 $newDocumentInvoicerId
@@ -1724,6 +1757,9 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
 
         $this->getDocumentInvoiceeDescription($newDocumentInvoiceeDescription);
         $newDocumentDTO->getInvoiceeParty()->addDescription($newDocumentInvoiceeDescription);
+
+        $this->getDocumentInvoiceeRoleCode($newDocumentInvoiceeRoleCode);
+        $newDocumentDTO->getInvoiceeParty()->addRoleCode($newDocumentInvoiceeRoleCode);
 
         while ($this->nextDocumentInvoiceeId()) {
             $this->getDocumentInvoiceeId(
@@ -1845,6 +1881,9 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->getDocumentPayeeDescription($newDocumentPayeeDescription);
         $newDocumentDTO->getPayeeParty()->addDescription($newDocumentPayeeDescription);
 
+        $this->getDocumentPayeeRoleCode($newDocumentPayeeRoleCode);
+        $newDocumentDTO->getPayeeParty()->addRoleCode($newDocumentPayeeRoleCode);
+
         while ($this->nextDocumentPayeeId()) {
             $this->getDocumentPayeeId(
                 $newDocumentPayeeId
@@ -1964,6 +2003,9 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
 
         $this->getDocumentPayerDescription($newDocumentPayerDescription);
         $newDocumentDTO->getPayerParty()->addDescription($newDocumentPayerDescription);
+
+        $this->getDocumentPayerRoleCode($newDocumentPayerRoleCode);
+        $newDocumentDTO->getPayerParty()->addRoleCode($newDocumentPayerRoleCode);
 
         while ($this->nextDocumentPayerId()) {
             $this->getDocumentPayerId(
@@ -2745,6 +2787,9 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
             $this->getDocumentPositionShipToDescription($newDocumentPositionShipToDescription);
             $newDocumentPositionDTO->getShipToParty()->addDescription($newDocumentPositionShipToDescription);
 
+            $this->getDocumentPositionShipToRoleCode($newDocumentPositionShipToRoleCode);
+            $newDocumentPositionDTO->getShipToParty()->addRoleCode($newDocumentPositionShipToRoleCode);
+
             while ($this->nextDocumentPositionShipToId()) {
                 $this->getDocumentPositionShipToId(
                     $newDocumentPositionShipToId
@@ -2865,6 +2910,9 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
 
             $this->getDocumentPositionUltimateShipToDescription($newDocumentPositionUltimateShipToDescription);
             $newDocumentPositionDTO->getUltimateShipToParty()->addDescription($newDocumentPositionUltimateShipToDescription);
+
+            $this->getDocumentPositionUltimateShipToRoleCode($newDocumentPositionUltimateShipToRoleCode);
+            $newDocumentPositionDTO->getUltimateShipToParty()->addRoleCode($newDocumentPositionUltimateShipToRoleCode);
 
             while ($this->nextDocumentPositionUltimateShipToId()) {
                 $this->getDocumentPositionUltimateShipToId(
@@ -4741,6 +4789,32 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     }
 
     /**
+     * Get the role code of the Seller trade party.
+     *
+     * @param  null|string $newRoleCode __BT-X-543, From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentSellerRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        $newRoleCode = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getRoleCode()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the seller/supplier party
      *
      * @return bool
@@ -5390,6 +5464,32 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         }
 
         $newDescription = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTradeParty()?->getDescription()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the Buyer trade party.
+     *
+     * @param  null|string $newRoleCode __BT-X-544, From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentBuyerRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        $newRoleCode = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTradeParty()?->getRoleCode()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6047,6 +6147,32 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     }
 
     /**
+     * Get the role code of the SellerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode __BT-X-547, From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentSellerTaxRepresentativeRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        $newRoleCode = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTaxRepresentativeTradeParty()?->getRoleCode()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the seller's tax representative party
      *
      * @return bool
@@ -6679,6 +6805,32 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the BuyerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode __BT-X-546, From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentBuyerTaxRepresentativeRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        $newRoleCode = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTaxRepresentativeTradeParty()?->getRoleCode()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7325,6 +7477,32 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     }
 
     /**
+     * Get the role code of the SalesAgent trade party.
+     *
+     * @param  null|string $newRoleCode __BT-X-545, From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentSalesAgentRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        $newRoleCode = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSalesAgentTradeParty()?->getRoleCode()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the sales agent party
      *
      * @return bool
@@ -7957,6 +8135,32 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the BuyerAgent trade party.
+     *
+     * @param  null|string $newRoleCode __BT-X-549, From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentBuyerAgentRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        $newRoleCode = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerAgentTradeParty()?->getRoleCode()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -8603,6 +8807,32 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     }
 
     /**
+     * Get the role code of the ProductEndUser trade party.
+     *
+     * @param  null|string $newRoleCode __BT-X-548, From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentProductEndUserRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        $newRoleCode = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getProductEndUserTradeParty()?->getRoleCode()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the product end-user party
      *
      * @return bool
@@ -9235,6 +9465,32 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the ShipTo trade party.
+     *
+     * @param  null|string $newRoleCode __BT-X-550, From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentShipToRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        $newRoleCode = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getShipToTradeParty()?->getRoleCode()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -9881,6 +10137,32 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     }
 
     /**
+     * Get the role code of the UltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode __BT-X-551, From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentUltimateShipToRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        $newRoleCode = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getRoleCode()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the ultimate Ship-To party
      *
      * @return bool
@@ -10513,6 +10795,32 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the ShipFrom trade party.
+     *
+     * @param  null|string $newRoleCode __BT-X-552, From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentShipFromRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        $newRoleCode = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getShipFromTradeParty()?->getRoleCode()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -11159,6 +11467,32 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     }
 
     /**
+     * Get the role code of the Invoicer trade party.
+     *
+     * @param  null|string $newRoleCode __BT-X-553, From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentInvoicerRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        $newRoleCode = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getInvoicerTradeParty()?->getRoleCode()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the Invoicer party
      *
      * @return bool
@@ -11791,6 +12125,32 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the Invoicee trade party.
+     *
+     * @param  null|string $newRoleCode __BT-X-554, From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentInvoiceeRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        $newRoleCode = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getInvoiceeTradeParty()?->getRoleCode()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -12437,6 +12797,32 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     }
 
     /**
+     * Get the role code of the Payee trade party.
+     *
+     * @param  null|string $newRoleCode __BT-X-468, From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentPayeeRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        $newRoleCode = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayeeTradeParty()?->getRoleCode()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the Payee party
      *
      * @return bool
@@ -13069,6 +13455,32 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the Payer trade party.
+     *
+     * @param  null|string $newRoleCode __BT-X-483, From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentPayerRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        $newRoleCode = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayerTradeParty()?->getRoleCode()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 
@@ -16650,6 +17062,32 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     }
 
     /**
+     * Get the role code of the PositionShipTo trade party.
+     *
+     * @param  null|string $newRoleCode __BT-X-541, From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentPositionShipToRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        $newRoleCode = $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeDelivery()?->getShipToTradeParty()?->getRoleCode()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the Ship-To party
      *
      * @return bool
@@ -17284,6 +17722,32 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $this->traceMethodEnter(__METHOD__);
 
         $newDescription = '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the PositionUltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode __BT-X-542, From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentPositionUltimateShipToRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        $newRoleCode = $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeDelivery()?->getUltimateShipToTradeParty()?->getRoleCode()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 

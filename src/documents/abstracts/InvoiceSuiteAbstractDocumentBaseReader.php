@@ -662,6 +662,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Get the role code of the Seller trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    abstract public function getDocumentSellerRoleCode(
+        ?string &$newRoleCode
+    ): static;
+
+    /**
      * Go to the first ID of the seller/supplier party
      *
      * @return bool
@@ -910,6 +922,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
      */
     abstract public function getDocumentBuyerDescription(
         ?string &$newDescription
+    ): static;
+
+    /**
+     * Get the role code of the Buyer trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    abstract public function getDocumentBuyerRoleCode(
+        ?string &$newRoleCode
     ): static;
 
     /**
@@ -1164,6 +1188,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Get the role code of the SellerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    abstract public function getDocumentSellerTaxRepresentativeRoleCode(
+        ?string &$newRoleCode
+    ): static;
+
+    /**
      * Go to the first ID of the seller's tax representative party
      *
      * @return bool
@@ -1412,6 +1448,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
      */
     abstract public function getDocumentBuyerTaxRepresentativeDescription(
         ?string &$newDescription
+    ): static;
+
+    /**
+     * Get the role code of the BuyerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    abstract public function getDocumentBuyerTaxRepresentativeRoleCode(
+        ?string &$newRoleCode
     ): static;
 
     /**
@@ -1666,6 +1714,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Get the role code of the SalesAgent trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    abstract public function getDocumentSalesAgentRoleCode(
+        ?string &$newRoleCode
+    ): static;
+
+    /**
      * Go to the first ID of the sales agent party
      *
      * @return bool
@@ -1914,6 +1974,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
      */
     abstract public function getDocumentBuyerAgentDescription(
         ?string &$newDescription
+    ): static;
+
+    /**
+     * Get the role code of the BuyerAgent trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    abstract public function getDocumentBuyerAgentRoleCode(
+        ?string &$newRoleCode
     ): static;
 
     /**
@@ -2168,6 +2240,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Get the role code of the ProductEndUser trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    abstract public function getDocumentProductEndUserRoleCode(
+        ?string &$newRoleCode
+    ): static;
+
+    /**
      * Go to the first ID of the product end-user party
      *
      * @return bool
@@ -2416,6 +2500,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
      */
     abstract public function getDocumentShipToDescription(
         ?string &$newDescription
+    ): static;
+
+    /**
+     * Get the role code of the ShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    abstract public function getDocumentShipToRoleCode(
+        ?string &$newRoleCode
     ): static;
 
     /**
@@ -2670,6 +2766,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Get the role code of the UltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    abstract public function getDocumentUltimateShipToRoleCode(
+        ?string &$newRoleCode
+    ): static;
+
+    /**
      * Go to the first ID of the ultimate Ship-To party
      *
      * @return bool
@@ -2918,6 +3026,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
      */
     abstract public function getDocumentShipFromDescription(
         ?string &$newDescription
+    ): static;
+
+    /**
+     * Get the role code of the ShipFrom trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    abstract public function getDocumentShipFromRoleCode(
+        ?string &$newRoleCode
     ): static;
 
     /**
@@ -3172,6 +3292,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Get the role code of the Invoicer trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    abstract public function getDocumentInvoicerRoleCode(
+        ?string &$newRoleCode
+    ): static;
+
+    /**
      * Go to the first ID of the Invoicer party
      *
      * @return bool
@@ -3420,6 +3552,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
      */
     abstract public function getDocumentInvoiceeDescription(
         ?string &$newDescription
+    ): static;
+
+    /**
+     * Get the role code of the Invoicee trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    abstract public function getDocumentInvoiceeRoleCode(
+        ?string &$newRoleCode
     ): static;
 
     /**
@@ -3674,6 +3818,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Get the role code of the Payee trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    abstract public function getDocumentPayeeRoleCode(
+        ?string &$newRoleCode
+    ): static;
+
+    /**
      * Go to the first ID of the Payee party
      *
      * @return bool
@@ -3922,6 +4078,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
      */
     abstract public function getDocumentPayerDescription(
         ?string &$newDescription
+    ): static;
+
+    /**
+     * Get the role code of the Payer trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    abstract public function getDocumentPayerRoleCode(
+        ?string &$newRoleCode
     ): static;
 
     /**
@@ -5335,6 +5503,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Get the role code of the PositionShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    abstract public function getDocumentPositionShipToRoleCode(
+        ?string &$newRoleCode
+    ): static;
+
+    /**
      * Go to the first ID of the Ship-To party from latest position
      *
      * @return bool
@@ -5583,6 +5763,18 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
      */
     abstract public function getDocumentPositionUltimateShipToDescription(
         ?string &$newDescription
+    ): static;
+
+    /**
+     * Get the role code of the PositionUltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    abstract public function getDocumentPositionUltimateShipToRoleCode(
+        ?string &$newRoleCode
     ): static;
 
     /**

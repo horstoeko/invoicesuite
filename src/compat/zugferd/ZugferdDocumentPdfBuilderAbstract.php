@@ -75,8 +75,6 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      */
     public function generateDocument(): static
     {
-        // Nothing here...
-
         return $this;
     }
 

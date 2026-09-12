@@ -836,6 +836,13 @@ $definitions = [
                 'isobject' => false,
                 'autoplural' => true,
             ],
+            'roleCode' => [
+                'type' => 'string',
+                'caption' => 'Party role codes (UNTDID 3035)',
+                'isarray' => true,
+                'isobject' => false,
+                'autoplural' => true,
+            ],
             'id' => [
                 'type' => 'horstoeko\invoicesuite\documents\dto\InvoiceSuiteIdDTO',
                 'caption' => 'Party IDs',

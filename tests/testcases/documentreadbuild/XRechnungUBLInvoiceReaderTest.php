@@ -417,6 +417,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
 
         $this->assertSame('Lieferant GmbH Description', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentSellerRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertTrue(static::$document->firstDocumentSellerId());
@@ -595,6 +601,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentBuyerRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertTrue(static::$document->firstDocumentBuyerId());
@@ -747,6 +759,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
         static::$document->getDocumentSellerTaxRepresentativeDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentSellerTaxRepresentativeRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -913,6 +931,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentBuyerTaxRepresentativeRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentBuyerTaxRepresentativeId());
@@ -1033,6 +1057,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
         static::$document->getDocumentSalesAgentDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentSalesAgentRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -1155,6 +1185,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentBuyerAgentRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentBuyerAgentId());
@@ -1276,6 +1312,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentProductEndUserRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentProductEndUserId());
@@ -1396,6 +1438,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
         static::$document->getDocumentShipToDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentShipToRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -1558,6 +1606,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentUltimateShipToRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentUltimateShipToId());
@@ -1678,6 +1732,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
         static::$document->getDocumentShipFromDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentShipFromRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -1800,6 +1860,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentInvoicerRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentInvoicerId());
@@ -1920,6 +1986,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
         static::$document->getDocumentInvoiceeDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentInvoiceeRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -2042,6 +2114,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentPayeeRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertTrue(static::$document->firstDocumentPayeeId());
@@ -2149,6 +2227,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
         static::$document->getDocumentPayerDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentPayerRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -3162,6 +3246,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentPositionShipToRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentPositionShipToId());
@@ -3290,6 +3380,12 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
         static::$document->getDocumentPositionUltimateShipToDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentPositionUltimateShipToRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -3577,7 +3673,9 @@ final class XRechnungUBLInvoiceReaderTest extends TestCase
 
         $this->assertSame('2025-04-000001', $newDocmentDTO?->getNumber());
         $this->assertSame(['Lieferant GmbH Description'], $newDocmentDTO?->getSellerParty()?->getDescriptions());
+        $this->assertSame([], $newDocmentDTO?->getSellerParty()->getRoleCodes());
         $this->assertSame([], $newDocmentDTO?->getBuyerParty()?->getDescriptions());
+        $this->assertSame([], $newDocmentDTO?->getBuyerParty()->getRoleCodes());
     }
 
     public function testCopyToBuilder(): void

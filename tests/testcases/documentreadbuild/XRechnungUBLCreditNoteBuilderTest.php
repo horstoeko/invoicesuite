@@ -1474,6 +1474,61 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
     }
 
+    public function testSetAddDocumentSellerRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentSellerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentSellerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentSellerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentSellerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentSellerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentSellerRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentSellerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentSellerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+    }
+
     public function testSetAddDocumentSellerId(): void
     {
         $this->disableRenderXmlContent();
@@ -2339,6 +2394,61 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
     }
 
+    public function testSetAddDocumentBuyerRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentBuyerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentBuyerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentBuyerRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+    }
+
     public function testSetAddDocumentBuyerId(): void
     {
         $this->disableRenderXmlContent();
@@ -3197,6 +3307,736 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ns:CreditNote/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
     }
 
+    public function testSetAddDocumentSellerTaxRepresentativeRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentSellerTaxRepresentativeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentSellerTaxRepresentativeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentSellerTaxRepresentativeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentSellerTaxRepresentativeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentSellerTaxRepresentativeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentSellerTaxRepresentativeRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentSellerTaxRepresentativeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentSellerTaxRepresentativeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+    }
+
+    public function testSetAddDocumentBuyerTaxRepresentativeName(): void
+    {
+        static::$document->setDocumentBuyerTaxRepresentativeName('Unsupported Buyer Tax Representative Name set');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:Name[. = "Unsupported Buyer Tax Representative Name set"]');
+
+        static::$document->addDocumentBuyerTaxRepresentativeName('Unsupported Buyer Tax Representative Name add');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:Name[. = "Unsupported Buyer Tax Representative Name add"]');
+    }
+
+    public function testSetAddDocumentBuyerTaxRepresentativeDescription(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "Buyer Tax Representative Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "Buyer Tax Representative Description 2"]');
+
+        static::$document->setDocumentBuyerTaxRepresentativeDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "Buyer Tax Representative Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "Buyer Tax Representative Description 2"]');
+
+        static::$document->setDocumentBuyerTaxRepresentativeDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "Buyer Tax Representative Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "Buyer Tax Representative Description 2"]');
+
+        static::$document->setDocumentBuyerTaxRepresentativeDescription('Buyer Tax Representative Description');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "Buyer Tax Representative Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "Buyer Tax Representative Description 2"]');
+
+        static::$document->addDocumentBuyerTaxRepresentativeDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "Buyer Tax Representative Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "Buyer Tax Representative Description 2"]');
+
+        static::$document->addDocumentBuyerTaxRepresentativeDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "Buyer Tax Representative Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "Buyer Tax Representative Description 2"]');
+
+        static::$document->addDocumentBuyerTaxRepresentativeDescription('Buyer Tax Representative Description 2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "Buyer Tax Representative Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "Buyer Tax Representative Description 2"]');
+    }
+
+    public function testSetAddDocumentBuyerTaxRepresentativeRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerTaxRepresentativeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerTaxRepresentativeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerTaxRepresentativeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentBuyerTaxRepresentativeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentBuyerTaxRepresentativeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentBuyerTaxRepresentativeRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerTaxRepresentativeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerTaxRepresentativeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+    }
+
+    public function testSetAddDocumentBuyerTaxRepresentativeId(): void
+    {
+        static::$document->setDocumentBuyerTaxRepresentativeId('Unsupported Buyer Tax Representative Id set');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:ID[. = "Unsupported Buyer Tax Representative Id set"]');
+
+        static::$document->addDocumentBuyerTaxRepresentativeId('Unsupported Buyer Tax Representative Id add');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:ID[. = "Unsupported Buyer Tax Representative Id add"]');
+    }
+
+    public function testSetAddDocumentBuyerTaxRepresentativeGlobalId(): void
+    {
+        static::$document->setDocumentBuyerTaxRepresentativeGlobalId('Unsupported Buyer Tax Representative GlobalId set', '0088');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:ID[. = "Unsupported Buyer Tax Representative GlobalId set"]');
+
+        static::$document->addDocumentBuyerTaxRepresentativeGlobalId('Unsupported Buyer Tax Representative GlobalId add', '0088');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:ID[. = "Unsupported Buyer Tax Representative GlobalId add"]');
+    }
+
+    public function testSetAddDocumentBuyerTaxRepresentativeTaxRegistration(): void
+    {
+        static::$document->setDocumentBuyerTaxRepresentativeTaxRegistration('VAT', 'Unsupported Buyer Tax Representative TaxRegistration set');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyID[. = "Unsupported Buyer Tax Representative TaxRegistration set"]');
+
+        static::$document->addDocumentBuyerTaxRepresentativeTaxRegistration('VAT', 'Unsupported Buyer Tax Representative TaxRegistration add');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyID[. = "Unsupported Buyer Tax Representative TaxRegistration add"]');
+    }
+
+    public function testSetAddDocumentBuyerTaxRepresentativeAddress(): void
+    {
+        static::$document->setDocumentBuyerTaxRepresentativeAddress('Unsupported Buyer Tax Representative Address set', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:StreetName[. = "Unsupported Buyer Tax Representative Address set"]');
+
+        static::$document->addDocumentBuyerTaxRepresentativeAddress('Unsupported Buyer Tax Representative Address add', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:StreetName[. = "Unsupported Buyer Tax Representative Address add"]');
+    }
+
+    public function testSetAddDocumentBuyerTaxRepresentativeLegalOrganisation(): void
+    {
+        static::$document->setDocumentBuyerTaxRepresentativeLegalOrganisation('8884', '123456789', 'Unsupported Buyer Tax Representative LegalOrganisation set');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RegistrationName[. = "Unsupported Buyer Tax Representative LegalOrganisation set"]');
+
+        static::$document->addDocumentBuyerTaxRepresentativeLegalOrganisation('8884', '123456789', 'Unsupported Buyer Tax Representative LegalOrganisation add');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RegistrationName[. = "Unsupported Buyer Tax Representative LegalOrganisation add"]');
+    }
+
+    public function testSetAddDocumentBuyerTaxRepresentativeContact(): void
+    {
+        static::$document->setDocumentBuyerTaxRepresentativeContact('Unsupported Buyer Tax Representative Contact set', 'Department', '+49-111-123456789', '+49-111-987654321', 'user@example.org');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:Name[. = "Unsupported Buyer Tax Representative Contact set"]');
+
+        static::$document->addDocumentBuyerTaxRepresentativeContact('Unsupported Buyer Tax Representative Contact add', 'Department', '+49-111-123456789', '+49-111-987654321', 'user@example.org');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:Name[. = "Unsupported Buyer Tax Representative Contact add"]');
+    }
+
+    public function testSetAddDocumentBuyerTaxRepresentativeCommunication(): void
+    {
+        static::$document->setDocumentBuyerTaxRepresentativeCommunication('EM', 'unsupported.BuyerTaxRepresentative.set@example.org');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:ElectronicMail[. = "unsupported.BuyerTaxRepresentative.set@example.org"]');
+
+        static::$document->addDocumentBuyerTaxRepresentativeCommunication('EM', 'unsupported.BuyerTaxRepresentative.add@example.org');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:ElectronicMail[. = "unsupported.BuyerTaxRepresentative.add@example.org"]');
+    }
+
+    public function testSetAddDocumentSalesAgentName(): void
+    {
+        static::$document->setDocumentSalesAgentName('Unsupported Sales Agent Name set');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:Name[. = "Unsupported Sales Agent Name set"]');
+
+        static::$document->addDocumentSalesAgentName('Unsupported Sales Agent Name add');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:Name[. = "Unsupported Sales Agent Name add"]');
+    }
+
+    public function testSetAddDocumentSalesAgentDescription(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "SalesAgent Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "SalesAgent Description 2"]');
+
+        static::$document->setDocumentSalesAgentDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "SalesAgent Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "SalesAgent Description 2"]');
+
+        static::$document->setDocumentSalesAgentDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "SalesAgent Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "SalesAgent Description 2"]');
+
+        static::$document->setDocumentSalesAgentDescription('SalesAgent Description');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "SalesAgent Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "SalesAgent Description 2"]');
+
+        static::$document->addDocumentSalesAgentDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "SalesAgent Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "SalesAgent Description 2"]');
+
+        static::$document->addDocumentSalesAgentDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "SalesAgent Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "SalesAgent Description 2"]');
+
+        static::$document->addDocumentSalesAgentDescription('SalesAgent Description 2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "SalesAgent Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "SalesAgent Description 2"]');
+    }
+
+    public function testSetAddDocumentSalesAgentRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentSalesAgentRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentSalesAgentRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentSalesAgentRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentSalesAgentRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentSalesAgentRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentSalesAgentRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentSalesAgentRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentSalesAgentRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+    }
+
+    public function testSetAddDocumentSalesAgentId(): void
+    {
+        static::$document->setDocumentSalesAgentId('Unsupported Sales Agent Id set');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:ID[. = "Unsupported Sales Agent Id set"]');
+
+        static::$document->addDocumentSalesAgentId('Unsupported Sales Agent Id add');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:ID[. = "Unsupported Sales Agent Id add"]');
+    }
+
+    public function testSetAddDocumentSalesAgentGlobalId(): void
+    {
+        static::$document->setDocumentSalesAgentGlobalId('Unsupported Sales Agent GlobalId set', '0088');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:ID[. = "Unsupported Sales Agent GlobalId set"]');
+
+        static::$document->addDocumentSalesAgentGlobalId('Unsupported Sales Agent GlobalId add', '0088');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:ID[. = "Unsupported Sales Agent GlobalId add"]');
+    }
+
+    public function testSetAddDocumentSalesAgentTaxRegistration(): void
+    {
+        static::$document->setDocumentSalesAgentTaxRegistration('VAT', 'Unsupported Sales Agent TaxRegistration set');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyID[. = "Unsupported Sales Agent TaxRegistration set"]');
+
+        static::$document->addDocumentSalesAgentTaxRegistration('VAT', 'Unsupported Sales Agent TaxRegistration add');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyID[. = "Unsupported Sales Agent TaxRegistration add"]');
+    }
+
+    public function testSetAddDocumentSalesAgentAddress(): void
+    {
+        static::$document->setDocumentSalesAgentAddress('Unsupported Sales Agent Address set', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:StreetName[. = "Unsupported Sales Agent Address set"]');
+
+        static::$document->addDocumentSalesAgentAddress('Unsupported Sales Agent Address add', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:StreetName[. = "Unsupported Sales Agent Address add"]');
+    }
+
+    public function testSetAddDocumentSalesAgentLegalOrganisation(): void
+    {
+        static::$document->setDocumentSalesAgentLegalOrganisation('8884', '123456789', 'Unsupported Sales Agent LegalOrganisation set');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RegistrationName[. = "Unsupported Sales Agent LegalOrganisation set"]');
+
+        static::$document->addDocumentSalesAgentLegalOrganisation('8884', '123456789', 'Unsupported Sales Agent LegalOrganisation add');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RegistrationName[. = "Unsupported Sales Agent LegalOrganisation add"]');
+    }
+
+    public function testSetAddDocumentSalesAgentContact(): void
+    {
+        static::$document->setDocumentSalesAgentContact('Unsupported Sales Agent Contact set', 'Department', '+49-111-123456789', '+49-111-987654321', 'user@example.org');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:Name[. = "Unsupported Sales Agent Contact set"]');
+
+        static::$document->addDocumentSalesAgentContact('Unsupported Sales Agent Contact add', 'Department', '+49-111-123456789', '+49-111-987654321', 'user@example.org');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:Name[. = "Unsupported Sales Agent Contact add"]');
+    }
+
+    public function testSetAddDocumentSalesAgentCommunication(): void
+    {
+        static::$document->setDocumentSalesAgentCommunication('EM', 'unsupported.SalesAgent.set@example.org');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:ElectronicMail[. = "unsupported.SalesAgent.set@example.org"]');
+
+        static::$document->addDocumentSalesAgentCommunication('EM', 'unsupported.SalesAgent.add@example.org');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:ElectronicMail[. = "unsupported.SalesAgent.add@example.org"]');
+    }
+
+    public function testSetAddDocumentBuyerAgentName(): void
+    {
+        static::$document->setDocumentBuyerAgentName('Unsupported Buyer Agent Name set');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:Name[. = "Unsupported Buyer Agent Name set"]');
+
+        static::$document->addDocumentBuyerAgentName('Unsupported Buyer Agent Name add');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:Name[. = "Unsupported Buyer Agent Name add"]');
+    }
+
+    public function testSetAddDocumentBuyerAgentDescription(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "BuyerAgent Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "BuyerAgent Description 2"]');
+
+        static::$document->setDocumentBuyerAgentDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "BuyerAgent Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "BuyerAgent Description 2"]');
+
+        static::$document->setDocumentBuyerAgentDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "BuyerAgent Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "BuyerAgent Description 2"]');
+
+        static::$document->setDocumentBuyerAgentDescription('BuyerAgent Description');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "BuyerAgent Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "BuyerAgent Description 2"]');
+
+        static::$document->addDocumentBuyerAgentDescription(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "BuyerAgent Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "BuyerAgent Description 2"]');
+
+        static::$document->addDocumentBuyerAgentDescription('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "BuyerAgent Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "BuyerAgent Description 2"]');
+
+        static::$document->addDocumentBuyerAgentDescription('BuyerAgent Description 2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "BuyerAgent Description"]');
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyLegalForm[. = "BuyerAgent Description 2"]');
+    }
+
+    public function testSetAddDocumentBuyerAgentRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerAgentRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerAgentRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerAgentRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentBuyerAgentRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentBuyerAgentRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentBuyerAgentRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerAgentRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerAgentRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+    }
+
+    public function testSetAddDocumentBuyerAgentId(): void
+    {
+        static::$document->setDocumentBuyerAgentId('Unsupported Buyer Agent Id set');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:ID[. = "Unsupported Buyer Agent Id set"]');
+
+        static::$document->addDocumentBuyerAgentId('Unsupported Buyer Agent Id add');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:ID[. = "Unsupported Buyer Agent Id add"]');
+    }
+
+    public function testSetAddDocumentBuyerAgentGlobalId(): void
+    {
+        static::$document->setDocumentBuyerAgentGlobalId('Unsupported Buyer Agent GlobalId set', '0088');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:ID[. = "Unsupported Buyer Agent GlobalId set"]');
+
+        static::$document->addDocumentBuyerAgentGlobalId('Unsupported Buyer Agent GlobalId add', '0088');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:ID[. = "Unsupported Buyer Agent GlobalId add"]');
+    }
+
+    public function testSetAddDocumentBuyerAgentTaxRegistration(): void
+    {
+        static::$document->setDocumentBuyerAgentTaxRegistration('VAT', 'Unsupported Buyer Agent TaxRegistration set');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyID[. = "Unsupported Buyer Agent TaxRegistration set"]');
+
+        static::$document->addDocumentBuyerAgentTaxRegistration('VAT', 'Unsupported Buyer Agent TaxRegistration add');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:CompanyID[. = "Unsupported Buyer Agent TaxRegistration add"]');
+    }
+
+    public function testSetAddDocumentBuyerAgentAddress(): void
+    {
+        static::$document->setDocumentBuyerAgentAddress('Unsupported Buyer Agent Address set', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:StreetName[. = "Unsupported Buyer Agent Address set"]');
+
+        static::$document->addDocumentBuyerAgentAddress('Unsupported Buyer Agent Address add', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:StreetName[. = "Unsupported Buyer Agent Address add"]');
+    }
+
+    public function testSetAddDocumentBuyerAgentLegalOrganisation(): void
+    {
+        static::$document->setDocumentBuyerAgentLegalOrganisation('8884', '123456789', 'Unsupported Buyer Agent LegalOrganisation set');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RegistrationName[. = "Unsupported Buyer Agent LegalOrganisation set"]');
+
+        static::$document->addDocumentBuyerAgentLegalOrganisation('8884', '123456789', 'Unsupported Buyer Agent LegalOrganisation add');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RegistrationName[. = "Unsupported Buyer Agent LegalOrganisation add"]');
+    }
+
+    public function testSetAddDocumentBuyerAgentContact(): void
+    {
+        static::$document->setDocumentBuyerAgentContact('Unsupported Buyer Agent Contact set', 'Department', '+49-111-123456789', '+49-111-987654321', 'user@example.org');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:Name[. = "Unsupported Buyer Agent Contact set"]');
+
+        static::$document->addDocumentBuyerAgentContact('Unsupported Buyer Agent Contact add', 'Department', '+49-111-123456789', '+49-111-987654321', 'user@example.org');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:Name[. = "Unsupported Buyer Agent Contact add"]');
+    }
+
+    public function testSetAddDocumentBuyerAgentCommunication(): void
+    {
+        static::$document->setDocumentBuyerAgentCommunication('EM', 'unsupported.BuyerAgent.set@example.org');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:ElectronicMail[. = "unsupported.BuyerAgent.set@example.org"]');
+
+        static::$document->addDocumentBuyerAgentCommunication('EM', 'unsupported.BuyerAgent.add@example.org');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:ElectronicMail[. = "unsupported.BuyerAgent.add@example.org"]');
+    }
+
     public function testSetAddDocumentSellerTaxRepresentativeId(): void
     {
         $this->disableRenderXmlContent();
@@ -3931,6 +4771,61 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
         });
     }
 
+    public function testSetAddDocumentProductEndUserRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentProductEndUserRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentProductEndUserRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentProductEndUserRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentProductEndUserRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentProductEndUserRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentProductEndUserRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentProductEndUserRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentProductEndUserRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+    }
+
     public function testSetAddDocumentProductEndUserId(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
@@ -4127,6 +5022,61 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
         $this->assertXPathNotExists('(/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+    }
+
+    public function testSetAddDocumentShipToRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentShipToRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
     }
 
     public function testSetAddDocumentShipToId(): void
@@ -4422,6 +5372,61 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
         });
     }
 
+    public function testSetAddDocumentUltimateShipToRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentUltimateShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentUltimateShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentUltimateShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentUltimateShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentUltimateShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentUltimateShipToRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentUltimateShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentUltimateShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+    }
+
     public function testSetAddDocumentUltimateShipToId(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
@@ -4492,6 +5497,61 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
             static::$document->setDocumentShipFromDescription('Ship From Description');
             static::$document->addDocumentShipFromDescription('Ship From Description');
         });
+    }
+
+    public function testSetAddDocumentShipFromRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentShipFromRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentShipFromRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentShipFromRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentShipFromRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentShipFromRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentShipFromRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentShipFromRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentShipFromRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
     }
 
     public function testSetAddDocumentShipFromId(): void
@@ -4566,6 +5626,61 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
         });
     }
 
+    public function testSetAddDocumentInvoicerRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentInvoicerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentInvoicerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentInvoicerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentInvoicerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentInvoicerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentInvoicerRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentInvoicerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentInvoicerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+    }
+
     public function testSetAddDocumentInvoicerId(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
@@ -4636,6 +5751,61 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
             static::$document->setDocumentInvoiceeDescription('Invoicee Description');
             static::$document->addDocumentInvoiceeDescription('Invoicee Description 2');
         });
+    }
+
+    public function testSetAddDocumentInvoiceeRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentInvoiceeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentInvoiceeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentInvoiceeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentInvoiceeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentInvoiceeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentInvoiceeRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentInvoiceeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentInvoiceeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
     }
 
     public function testSetAddDocumentInvoiceeId(): void
@@ -4834,6 +6004,61 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
         $this->assertXPathNotExists('(/ns:CreditNote/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+    }
+
+    public function testSetAddDocumentPayeeRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPayeeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPayeeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPayeeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentPayeeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentPayeeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentPayeeRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPayeeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPayeeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
     }
 
     public function testSetAddDocumentPayeeId(): void
@@ -5567,6 +6792,61 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
             static::$document->setDocumentPayerDescription('Payer Description');
             static::$document->addDocumentPayerDescription('Payer Description 2');
         });
+    }
+
+    public function testSetAddDocumentPayerRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPayerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPayerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPayerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentPayerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentPayerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentPayerRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPayerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPayerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
     }
 
     public function testSetAddDocumentPayerId(): void
@@ -7804,6 +9084,61 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
         });
     }
 
+    public function testSetAddDocumentPositionShipToRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPositionShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPositionShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPositionShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentPositionShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentPositionShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentPositionShipToRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPositionShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPositionShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+    }
+
     public function testSetAddDocumentPositionShipToId(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
@@ -7874,6 +9209,61 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
             static::$document->setDocumentPositionUltimateShipToDescription('Ship To Description');
             static::$document->addDocumentPositionUltimateShipToDescription('Ship To Description 2');
         });
+    }
+
+    public function testSetAddDocumentPositionUltimateShipToRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPositionUltimateShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPositionUltimateShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPositionUltimateShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentPositionUltimateShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentPositionUltimateShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->addDocumentPositionUltimateShipToRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPositionUltimateShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
+
+        static::$document->setDocumentPositionUltimateShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote//cbc:RoleCode');
     }
 
     public function testSetAddDocumentPositionUltimateShipToId(): void
@@ -8449,6 +9839,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Lieferant GmbH')
                     ->addDescription('Lieferant GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8466,6 +9858,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Kunde GmbH')
                     ->addDescription('Kunde GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8482,6 +9876,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Tax GmbH')
                     ->addDescription('Tax GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8498,6 +9894,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Buyer Tax Representative GmbH')
                     ->addDescription('Buyer Tax Representative GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8514,6 +9912,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Sales Agent GmbH')
                     ->addDescription('Sales Agent GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8530,6 +9930,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Buyer Agent GmbH')
                     ->addDescription('Buyer Agent GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8546,6 +9948,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Product End User GmbH')
                     ->addDescription('Product End User GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8562,6 +9966,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Ship To GmbH')
                     ->addDescription('Ship To GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8578,6 +9984,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Ultimate Ship To GmbH')
                     ->addDescription('Ultimate Ship To GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8594,6 +10002,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Ship From GmbH')
                     ->addDescription('Ship From GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8610,6 +10020,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Invoicer GmbH')
                     ->addDescription('Invoicer GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8626,6 +10038,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Invoicee GmbH')
                     ->addDescription('Invoicee GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8642,6 +10056,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Payee GmbH')
                     ->addDescription('Payee GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8658,6 +10074,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Payer GmbH')
                     ->addDescription('Payer GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8867,6 +10285,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                     (new InvoiceSuitePartyDTO())
                         ->addName('Ship To GmbH')
                         ->addDescription('Ship To GmbH Description')
+                        ->addRoleCode('DS')
+                        ->addRoleCode('DL')
                         ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                         ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                         ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8883,6 +10303,8 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                     (new InvoiceSuitePartyDTO())
                         ->addName('Ultimate Ship To GmbH')
                         ->addDescription('Ultimate Ship To GmbH Description')
+                        ->addRoleCode('DS')
+                        ->addRoleCode('DL')
                         ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                         ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                         ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))

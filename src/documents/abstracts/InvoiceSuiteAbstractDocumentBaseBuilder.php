@@ -584,6 +584,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set the role code of the Seller trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function setDocumentSellerRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
+     * Add the role code of the Seller trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function addDocumentSellerRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
      * Set the ID of the seller/supplier party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -821,6 +841,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentBuyerDescription(
         ?string $newDescription = null
+    ): static;
+
+    /**
+     * Set the role code of the Buyer trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function setDocumentBuyerRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
+     * Add the role code of the Buyer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function addDocumentBuyerRoleCode(
+        ?string $newRoleCode = null
     ): static;
 
     /**
@@ -1064,6 +1104,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set the role code of the SellerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function setDocumentSellerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
+     * Add the role code of the SellerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function addDocumentSellerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
      * Set the ID of the seller's tax representative party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -1301,6 +1361,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentBuyerTaxRepresentativeDescription(
         ?string $newDescription = null
+    ): static;
+
+    /**
+     * Set the role code of the BuyerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function setDocumentBuyerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
+     * Add the role code of the BuyerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function addDocumentBuyerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
     ): static;
 
     /**
@@ -1544,6 +1624,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set the role code of the SalesAgent trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function setDocumentSalesAgentRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
+     * Add the role code of the SalesAgent trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function addDocumentSalesAgentRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
      * Set the ID of the sales agent party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -1781,6 +1881,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentBuyerAgentDescription(
         ?string $newDescription = null
+    ): static;
+
+    /**
+     * Set the role code of the BuyerAgent trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function setDocumentBuyerAgentRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
+     * Add the role code of the BuyerAgent trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function addDocumentBuyerAgentRoleCode(
+        ?string $newRoleCode = null
     ): static;
 
     /**
@@ -2024,6 +2144,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set the role code of the ProductEndUser trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function setDocumentProductEndUserRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
+     * Add the role code of the ProductEndUser trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function addDocumentProductEndUserRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
      * Set the ID of the product end-user party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -2261,6 +2401,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentShipToDescription(
         ?string $newDescription = null
+    ): static;
+
+    /**
+     * Set the role code of the ShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function setDocumentShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
+     * Add the role code of the ShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function addDocumentShipToRoleCode(
+        ?string $newRoleCode = null
     ): static;
 
     /**
@@ -2504,6 +2664,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set the role code of the UltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function setDocumentUltimateShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
+     * Add the role code of the UltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function addDocumentUltimateShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
      * Set the ID of the ultimate Ship-To party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -2741,6 +2921,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentShipFromDescription(
         ?string $newDescription = null
+    ): static;
+
+    /**
+     * Set the role code of the ShipFrom trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function setDocumentShipFromRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
+     * Add the role code of the ShipFrom trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function addDocumentShipFromRoleCode(
+        ?string $newRoleCode = null
     ): static;
 
     /**
@@ -2984,6 +3184,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set the role code of the Invoicer trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function setDocumentInvoicerRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
+     * Add the role code of the Invoicer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function addDocumentInvoicerRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
      * Set the ID of the Invoicer party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -3221,6 +3441,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentInvoiceeDescription(
         ?string $newDescription = null
+    ): static;
+
+    /**
+     * Set the role code of the Invoicee trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function setDocumentInvoiceeRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
+     * Add the role code of the Invoicee trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function addDocumentInvoiceeRoleCode(
+        ?string $newRoleCode = null
     ): static;
 
     /**
@@ -3464,6 +3704,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set the role code of the Payee trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function setDocumentPayeeRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
+     * Add the role code of the Payee trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function addDocumentPayeeRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
      * Set the ID of the Payee party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -3701,6 +3961,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentPayerDescription(
         ?string $newDescription = null
+    ): static;
+
+    /**
+     * Set the role code of the Payer trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function setDocumentPayerRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
+     * Add the role code of the Payer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function addDocumentPayerRoleCode(
+        ?string $newRoleCode = null
     ): static;
 
     /**
@@ -5124,6 +5404,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set the role code of the PositionShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function setDocumentPositionShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
+     * Add the role code of the PositionShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function addDocumentPositionShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
      * Set the ID of the Ship-To party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -5361,6 +5661,26 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
      */
     abstract public function addDocumentPositionUltimateShipToDescription(
         ?string $newDescription = null
+    ): static;
+
+    /**
+     * Set the role code of the PositionUltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function setDocumentPositionUltimateShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static;
+
+    /**
+     * Add the role code of the PositionUltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    abstract public function addDocumentPositionUltimateShipToRoleCode(
+        ?string $newRoleCode = null
     ): static;
 
     /**
