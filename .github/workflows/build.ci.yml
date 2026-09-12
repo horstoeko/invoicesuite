@@ -34,7 +34,6 @@ env:
   COMPOSER_NO_AUDIT: "1"
   COMPOSER_NO_INTERACTION: "1"
   COMPOSER_PROCESS_TIMEOUT: "0"
-  XDEBUG_MODE: off
   KOSIT_REMOTE_HOST: 127.0.0.1
   KOSIT_REMOTE_PORT: "8081"
   VERAPDF_REMOTE_HOST: 127.0.0.1
@@ -65,7 +64,7 @@ jobs:
           php-version: ${{ matrix.phpversion }}
           extensions: amqp, apcu, ast, bcmath, bz2, calendar, ctype, curl, dba, dom, ds, enchant, exif, fileinfo, ftp, gd, gettext, gmp, iconv, igbinary, imagick, imap, intl, json, ldap, libxml, mbstring, memcache, memcached, mongodb, msgpack, mysqli, mysqlnd, odbc, openssl, pcntl, pcre, pdo, pdo_dblib, pdo_firebird, pdo_mysql, pdo_odbc, pdo_pgsql, pdo_sqlite, pdo_sqlsrv, pgsql, posix, readline, redis, shmop, simplexml, snmp, soap, sockets, sqlite3, sqlsrv, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, xml, xmlreader, xmlwriter, xsl, yaml, opcache, zip, zmq
           tools: composer:v2
-          coverage: xdebug
+          coverage: ${{ matrix.phpversion == '8.5' && 'pcov' || 'none' }}
           ini-values: memory_limit=-1
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -109,19 +108,17 @@ jobs:
             ${{ runner.os }}-quality-php-${{ matrix.phpversion }}-
 
       - name: Run PHP-CS-Fixer
-        env:
-          XDEBUG_MODE: off
         run: vendor/bin/php-cs-fixer fix --config=build/phpcsfixer.php --dry-run --no-interaction
 
       - name: Run PHPStan
-        env:
-          XDEBUG_MODE: off
         run: php -d sys_temp_dir=$(pwd)/build/phpstan-cache vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G --error-format=github
 
       - name: Run PHPUnit tests
-        env:
-          XDEBUG_MODE: coverage
-        run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml --no-coverage
+        run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml ${{ matrix.phpversion != '8.5' && '--no-coverage' || '' }}
+
+      - name: Verify Clover coverage report
+        if: ${{ matrix.phpversion == '8.5' }}
+        run: test -s build/logs/clover.xml
 
       - name: Save quality tools cache
         if: ${{ !cancelled() && steps.quality-cache-restore.outputs.cache-hit != 'true' }}
@@ -283,7 +280,7 @@ jobs:
 
       - name: Publish coverage summary
         continue-on-error: true
-        if: always()
+        if: ${{ always() && matrix.phpversion == '8.5' }}
         run: php make/genbuildcoveragesummary.php --summary-file="$GITHUB_STEP_SUMMARY" --clover-file="build/logs/clover.xml" --crap4j-file="build/logs/crap4j.xml"
 
       - name: Publish build log artifacts

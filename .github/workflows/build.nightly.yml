@@ -18,7 +18,6 @@ env:
   COMPOSER_NO_AUDIT: "1"
   COMPOSER_NO_INTERACTION: "1"
   COMPOSER_PROCESS_TIMEOUT: "0"
-  XDEBUG_MODE: off
   KOSIT_REMOTE_HOST: 127.0.0.1
   KOSIT_REMOTE_PORT: "8081"
   VERAPDF_REMOTE_HOST: 127.0.0.1
@@ -99,18 +98,12 @@ jobs:
             ${{ runner.os }}-quality-php-8.5-
 
       - name: Run PHP-CS-Fixer
-        env:
-          XDEBUG_MODE: off
         run: vendor/bin/php-cs-fixer fix --config=build/phpcsfixer.php --dry-run --no-interaction
 
       - name: Run PHPStan
-        env:
-          XDEBUG_MODE: off
         run: php -d sys_temp_dir=$(pwd)/build/phpstan-cache vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G --error-format=github
 
       - name: Run PHPUnit tests
-        env:
-          XDEBUG_MODE: off
         run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml --no-coverage
 
       - name: Save quality tools cache
