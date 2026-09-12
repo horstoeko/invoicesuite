@@ -14,14 +14,19 @@ namespace horstoeko\invoicesuite\console\commands;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteInternalMethodCallException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteValidationContentNotSpecifiedException;
+use horstoeko\invoicesuite\InvoiceSuitePdfDocumentReader;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\validators\abstracts\InvoiceSuiteAbstractDocumentValidator;
 use horstoeko\invoicesuite\validators\InvoiceSuiteDocuflairDocumentValidator;
 use horstoeko\invoicesuite\validators\InvoiceSuiteKositDocumentValidator;
 use horstoeko\invoicesuite\validators\InvoiceSuiteXsdDocumentValidator;
+use PrinsFrank\PdfParser\Exception\PdfParserException;
 use RuntimeException;
 use Symfony\Component\Console\Exception\InvalidArgumentException as ConsoleInvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
@@ -30,7 +35,7 @@ use TypeError;
 use ValueError;
 
 /**
- * Class representing a console command that validates XML invoice documents.
+ * Class representing a console command that validates XML invoice documents and embedded XML in PDF invoices.
  *
  * @category InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
@@ -56,8 +61,8 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
     protected function configure(): void
     {
         $this->setName('invoicesuite:validate');
-        $this->setDescription('Validate an XML invoice document by XSD and/or KoSIT validator');
-        $this->addArgument('input-file', InputArgument::REQUIRED, 'The XML file to validate');
+        $this->setDescription('Validate an XML invoice document or the embedded invoice XML in a PDF');
+        $this->addArgument('input-file', InputArgument::REQUIRED, 'The XML, JSON or PDF file to validate');
         $this->addOption('output-json', null, InputOption::VALUE_NONE, 'Output results as JSON');
         $this->addOption('hide-messages', null, InputOption::VALUE_NONE, 'Do not output messages (table-output only)');
         $this->addOption('validator', null, InputOption::VALUE_REQUIRED, 'Validator to use (all, xsd, kosit)', 'all');
@@ -80,33 +85,44 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteInternalMethodCallException
      * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteUnknownContentException
      * @throws InvoiceSuiteValidationContentNotSpecifiedException
+     * @throws PdfParserException
      * @throws RuntimeException
      * @throws TypeError
      * @throws ValueError
      */
     protected function handle(): int
     {
-        $inpArgFilename = $this->getSourceXmlOrJsonFileArgument('input-file');
+        $inpArgFilename = $this->getSourceFileArgument('input-file');
         $inpOptionValidator = $this->getStringOption('validator', 'all');
 
         if (!InvoiceSuiteArrayUtils::inArrayNoCase(['all', 'xsd', 'kosit', 'docuflair'], $inpOptionValidator)) {
             throw new InvoiceSuiteInvalidArgumentException(InvoiceSuiteStringUtils::sprintf('Invalid option value for validator "%s"', $inpOptionValidator));
         }
 
+        if ($this->isPdfFile($inpArgFilename)) {
+            $documentContent = InvoiceSuitePdfDocumentReader::createFromFile($inpArgFilename)->getDocumentReader()->getOriginalDocumentContent();
+        } elseif ($this->isXmlOrJsonFile($inpArgFilename)) {
+            $documentContent = InvoiceSuiteFileUtils::getContentFromFile($inpArgFilename);
+        } else {
+            throw new InvoiceSuiteInvalidArgumentException(InvoiceSuiteStringUtils::sprintf('The given File must be a XML-, JSON oder PDF-File'));
+        }
+
         $validationHasErrors = false;
 
         if (InvoiceSuiteArrayUtils::inArrayNoCase(['all', 'xsd'], $inpOptionValidator)) {
-            $validationHasErrors = !$this->validateByXsd($inpArgFilename);
+            $validationHasErrors = !$this->validateByXsd($documentContent);
         }
 
         if (InvoiceSuiteArrayUtils::inArrayNoCase(['all', 'kosit'], $inpOptionValidator)) {
-            $validationHasErrors = !$this->validateByKosit($inpArgFilename) || $validationHasErrors;
+            $validationHasErrors = !$this->validateByKosit($documentContent) || $validationHasErrors;
         }
 
         if (InvoiceSuiteArrayUtils::inArrayNoCase(['all', 'docuflair'], $inpOptionValidator)) {
-            $validationHasErrors = !$this->validateByDocuflair($inpArgFilename) || $validationHasErrors;
+            $validationHasErrors = !$this->validateByDocuflair($documentContent) || $validationHasErrors;
         }
 
         $this->outputJsonWhen($this->getBoolOption('output-json'), $this->jsonValidationResults);
@@ -115,9 +131,9 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
     }
 
     /**
-     * Validate the given XML document by XSD.
+     * Validate the given XML document content by XSD.
      *
-     * @param  string $filename
+     * @param  string $documentContent
      * @return bool
      *
      * @throws ConsoleInvalidArgumentException
@@ -129,9 +145,9 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
      * @throws RuntimeException
      */
     protected function validateByXsd(
-        string $filename
+        string $documentContent
     ): bool {
-        $documentValidator = InvoiceSuiteXsdDocumentValidator::createFromFile($filename);
+        $documentValidator = InvoiceSuiteXsdDocumentValidator::createFromContent($documentContent);
         $inpOptionXsdFilename = $this->getStringOption('xsd-file');
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($inpOptionXsdFilename)) {
@@ -144,9 +160,9 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
     }
 
     /**
-     * Validate the given XML document by KoSIT validator.
+     * Validate the given XML document content by KoSIT validator.
      *
-     * @param  string $filename
+     * @param  string $documentContent
      * @return bool
      *
      * @throws ConsoleInvalidArgumentException
@@ -160,9 +176,9 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
      * @throws ValueError
      */
     protected function validateByKosit(
-        string $filename
+        string $documentContent
     ): bool {
-        $documentValidator = InvoiceSuiteKositDocumentValidator::createFromFile($filename);
+        $documentValidator = InvoiceSuiteKositDocumentValidator::createFromContent($documentContent);
         $inpOptionKositBaseDirectory = $this->getStringOption('kosit-base-directory');
         $inpOptionKositRemoteHost = $this->getStringOption('kosit-remote-host');
         $inpOptionKositRemotePort = $this->getIntOption('kosit-remote-port');
@@ -185,9 +201,9 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
     }
 
     /**
-     * Validate the given XML document by Docuflair validator.
+     * Validate the given XML document content by Docuflair validator.
      *
-     * @param  string $filename
+     * @param  string $documentContent
      * @return bool
      *
      * @throws ConsoleInvalidArgumentException
@@ -201,9 +217,9 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
      * @throws ValueError
      */
     protected function validateByDocuflair(
-        string $filename
+        string $documentContent
     ): bool {
-        $documentValidator = InvoiceSuiteDocuflairDocumentValidator::createFromFile($filename);
+        $documentValidator = InvoiceSuiteDocuflairDocumentValidator::createFromContent($documentContent);
         $inpOptionDocuflairBaseUrl = $this->getStringOption('docuflair-base-url');
         $inpOptionDocuflairApiKey = $this->getStringOption('docuflair-api-key');
 

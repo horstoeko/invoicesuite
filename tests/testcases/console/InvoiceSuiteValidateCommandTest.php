@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\tests\testcases\console;
 
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
-use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 
 final class InvoiceSuiteValidateCommandTest extends InvoiceSuiteConsoleCommandTestCase
@@ -53,6 +53,50 @@ final class InvoiceSuiteValidateCommandTest extends InvoiceSuiteConsoleCommandTe
         $this->assertCount(0, $decodedOutput['xsd']['internalerrormessages']);
         $this->assertCount(0, $decodedOutput['xsd']['warningmessages']);
         $this->assertCount(0, $decodedOutput['xsd']['infomessages']);
+    }
+
+    /**
+     * Test that a hybrid PDF validates the embedded invoice XML with the same result as the XML file.
+     *
+     * @return void
+     */
+    public function testCommandValidatesEmbeddedXmlFromPdf(): void
+    {
+        $xmlCommandTester = $this->createCommandTester('invoicesuite:validate');
+        $pdfCommandTester = $this->createCommandTester('invoicesuite:validate');
+
+        $xmlExitCode = $xmlCommandTester->execute([
+            'input-file' => $this->getTestAssetFilePath('00_case_comfort_simple.xml'),
+            '--validator' => 'xsd',
+            '--output-json' => true,
+        ]);
+        $pdfExitCode = $pdfCommandTester->execute([
+            'input-file' => $this->getTestAssetFilePath('00_case_comfort_simple.pdf'),
+            '--validator' => 'xsd',
+            '--output-json' => true,
+        ]);
+
+        $this->assertSame(Command::SUCCESS, $xmlExitCode);
+        $this->assertSame(Command::SUCCESS, $pdfExitCode);
+        $this->assertSame($this->decodeJsonOutput($xmlCommandTester->getDisplay()), $this->decodeJsonOutput($pdfCommandTester->getDisplay()));
+    }
+
+    /**
+     * Test that a PDF without an embedded invoice cannot be validated as an invoice.
+     *
+     * @return void
+     */
+    public function testCommandRejectsPdfWithoutInvoiceAttachment(): void
+    {
+        $this->expectException(InvoiceSuiteFormatProviderNotFoundException::class);
+        $this->expectExceptionMessage('The format provider with unique id unknown was not found');
+
+        $commandTester = $this->createCommandTester('invoicesuite:validate');
+
+        $commandTester->execute([
+            'input-file' => $this->getTestAssetFilePath('pdf_plain.pdf'),
+            '--validator' => 'xsd',
+        ]);
     }
 
     /**
@@ -183,8 +227,8 @@ final class InvoiceSuiteValidateCommandTest extends InvoiceSuiteConsoleCommandTe
      */
     public function testCommandWithUnknownMimeType(): void
     {
-        $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessageMatches('/.*is not a XML or JSON file.*/');
+        $this->expectException(InvoiceSuiteInvalidArgumentException::class);
+        $this->expectExceptionMessageMatches('/.*XML-, JSON oder PDF-File.*/');
 
         $commandTester = $this->createCommandTester('invoicesuite:validate');
 
