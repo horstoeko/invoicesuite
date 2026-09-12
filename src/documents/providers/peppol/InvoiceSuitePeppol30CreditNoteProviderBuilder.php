@@ -283,6 +283,9 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentSellerDescription($item)
             )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentSellerRoleCode($item)
+            )
             ?->firstAddress(
                 fn (InvoiceSuiteAddressDTO $item): static => $this->setDocumentSellerAddress(
                     $item->getAddressLine1(),
@@ -336,6 +339,9 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentBuyerDescription($item)
             )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentBuyerRoleCode($item)
+            )
             ?->firstAddress(
                 fn (InvoiceSuiteAddressDTO $item): static => $this->setDocumentBuyerAddress(
                     $item->getAddressLine1(),
@@ -377,6 +383,9 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentPayeeDescription($item)
             )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentPayeeRoleCode($item)
+            )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPayeeId($item->getId()),
                 fn (): InvoiceSuitePartyDTO => $newDocumentDTO->getPayeeParty()->firstGlobalId(fn ($item): static => $this->setDocumentPayeeGlobalId($item->getId(), $item->getIdType()))
@@ -398,6 +407,9 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
             )
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentSellerTaxRepresentativeDescription($item)
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentSellerTaxRepresentativeRoleCode($item)
             )
             ?->firstAddress(
                 fn (InvoiceSuiteAddressDTO $item): static => $this->setDocumentSellerTaxRepresentativeAddress(
@@ -423,6 +435,9 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
             )
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentSalesAgentDescription($item)
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentSalesAgentRoleCode($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentSalesAgentId($item->getId())
@@ -476,6 +491,9 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
             )
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentBuyerAgentDescription($item)
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentBuyerAgentRoleCode($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentBuyerAgentId($item->getId())
@@ -545,6 +563,9 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
             )
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentShipToDescription($item)
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentShipToRoleCode($item)
             )
             ?->firstAddress(
                 fn (InvoiceSuiteAddressDTO $item): static => $this->setDocumentShipToAddress(
@@ -876,8 +897,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -893,8 +912,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newDocumentLanguage = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -935,8 +952,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?DateTimeInterface $newCompleteDate = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -1006,8 +1021,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -1023,8 +1036,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?bool $newDocumentIsTest = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -1345,8 +1356,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -1364,8 +1373,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?DateTimeInterface $newReferenceDate = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -1618,8 +1625,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -1637,8 +1642,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -1658,8 +1661,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -1677,8 +1678,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?DateTimeInterface $newReferenceDate = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -1810,8 +1809,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -1829,8 +1826,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?DateTimeInterface $newReferenceDate = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -1906,8 +1901,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newCode = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -2022,6 +2015,44 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         }
 
         $this->setDocumentSellerDescription($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the Seller trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentSellerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Seller trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentSellerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentSellerRoleCode($newRoleCode);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -2650,8 +2681,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -2673,6 +2702,44 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         }
 
         $this->setDocumentBuyerDescription($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the Buyer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentBuyerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Buyer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentBuyerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentBuyerRoleCode($newRoleCode);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3278,8 +3345,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -3308,6 +3373,44 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     }
 
     /**
+     * Set the role code of the SellerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentSellerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the SellerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentSellerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentSellerTaxRepresentativeRoleCode($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the seller's tax representative party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -3317,8 +3420,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3335,8 +3436,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3356,8 +3455,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -3375,8 +3472,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newGlobalIdType = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3576,8 +3671,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -3597,8 +3690,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3624,8 +3715,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -3650,8 +3739,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -3669,8 +3756,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newUri = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3690,8 +3775,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -3708,8 +3791,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -3725,8 +3806,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3772,6 +3851,44 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     }
 
     /**
+     * Set the role code of the BuyerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentBuyerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the BuyerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentBuyerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentBuyerTaxRepresentativeRoleCode($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the buyer's tax representative party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -3781,8 +3898,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3799,8 +3914,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3820,8 +3933,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -3839,8 +3950,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newGlobalIdType = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3860,8 +3969,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -3879,8 +3986,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newTaxRegistrationId = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3910,8 +4015,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -3940,8 +4043,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -3962,8 +4063,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -3983,8 +4082,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4010,8 +4107,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4036,8 +4131,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4055,8 +4148,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newUri = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4076,8 +4167,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4094,8 +4183,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4111,8 +4198,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4158,6 +4243,44 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     }
 
     /**
+     * Set the role code of the SalesAgent trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentSalesAgentRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the SalesAgent trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentSalesAgentRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentSalesAgentRoleCode($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the sales agent party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -4167,8 +4290,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4185,8 +4306,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4206,8 +4325,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4225,8 +4342,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newGlobalIdType = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4246,8 +4361,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4265,8 +4378,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newTaxRegistrationId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4296,8 +4407,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4326,8 +4435,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4348,8 +4455,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4369,8 +4474,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4396,8 +4499,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4422,8 +4523,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4441,8 +4540,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newUri = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4462,8 +4559,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4480,8 +4575,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4497,8 +4590,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4544,6 +4635,44 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     }
 
     /**
+     * Set the role code of the BuyerAgent trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentBuyerAgentRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the BuyerAgent trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentBuyerAgentRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentBuyerAgentRoleCode($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the buyer agent party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -4553,8 +4682,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4571,8 +4698,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4592,8 +4717,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4611,8 +4734,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newGlobalIdType = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4632,8 +4753,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4651,8 +4770,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newTaxRegistrationId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4682,8 +4799,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4712,8 +4827,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4734,8 +4847,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4755,8 +4866,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4782,8 +4891,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4808,8 +4915,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4827,8 +4932,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newUri = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4848,8 +4951,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4866,8 +4967,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4883,8 +4982,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4930,6 +5027,44 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     }
 
     /**
+     * Set the role code of the ProductEndUser trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentProductEndUserRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the ProductEndUser trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentProductEndUserRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentProductEndUserRoleCode($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the product end-user party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -4939,8 +5074,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4957,8 +5090,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -4978,8 +5109,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4997,8 +5126,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newGlobalIdType = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5018,8 +5145,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5037,8 +5162,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newTaxRegistrationId = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5068,8 +5191,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5098,8 +5219,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5120,8 +5239,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5141,8 +5258,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5168,8 +5283,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5194,8 +5307,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5214,8 +5325,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5233,8 +5342,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newUri = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5308,8 +5415,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5331,6 +5436,44 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         }
 
         $this->setDocumentShipToDescription($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the ShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the ShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentShipToRoleCode($newRoleCode);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5465,8 +5608,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5484,8 +5625,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newTaxRegistrationId = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5629,8 +5768,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5650,8 +5787,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5677,8 +5812,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5703,8 +5836,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5722,8 +5853,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newUri = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5743,8 +5872,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5761,8 +5888,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5778,8 +5903,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5825,6 +5948,44 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     }
 
     /**
+     * Set the role code of the UltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentUltimateShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the UltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentUltimateShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentUltimateShipToRoleCode($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the ultimate Ship-To party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -5834,8 +5995,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5852,8 +6011,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5873,8 +6030,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5892,8 +6047,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newGlobalIdType = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5913,8 +6066,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5932,8 +6083,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newTaxRegistrationId = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5963,8 +6112,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5993,8 +6140,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6015,8 +6160,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6036,8 +6179,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6063,8 +6204,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6089,8 +6228,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6108,8 +6245,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newUri = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6129,8 +6264,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6147,8 +6280,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6164,8 +6295,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6211,6 +6340,44 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     }
 
     /**
+     * Set the role code of the ShipFrom trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentShipFromRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the ShipFrom trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentShipFromRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentShipFromRoleCode($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Ship-From party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -6220,8 +6387,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6238,8 +6403,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6259,8 +6422,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6278,8 +6439,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newGlobalIdType = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6299,8 +6458,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6318,8 +6475,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newTaxRegistrationId = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6349,8 +6504,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6379,8 +6532,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6401,8 +6552,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6422,8 +6571,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6449,8 +6596,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6475,8 +6620,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6494,8 +6637,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newUri = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6515,8 +6656,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6533,8 +6672,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6550,8 +6687,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6597,6 +6732,44 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     }
 
     /**
+     * Set the role code of the Invoicer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentInvoicerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Invoicer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentInvoicerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentInvoicerRoleCode($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Invoicer party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -6606,8 +6779,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6624,8 +6795,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6645,8 +6814,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6664,8 +6831,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newGlobalIdType = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6685,8 +6850,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6704,8 +6867,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newTaxRegistrationId = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6735,8 +6896,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6765,8 +6924,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6787,8 +6944,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6808,8 +6963,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6835,8 +6988,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6861,8 +7012,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6880,8 +7029,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newUri = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6901,8 +7048,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6919,8 +7064,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6936,8 +7079,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6983,6 +7124,44 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     }
 
     /**
+     * Set the role code of the Invoicee trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentInvoiceeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Invoicee trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentInvoiceeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentInvoiceeRoleCode($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Invoicee party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -6992,8 +7171,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7010,8 +7187,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7031,8 +7206,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7050,8 +7223,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newGlobalIdType = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7071,8 +7242,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7090,8 +7259,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newTaxRegistrationId = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7121,8 +7288,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7151,8 +7316,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7173,8 +7336,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7194,8 +7355,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7221,8 +7380,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7247,8 +7404,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7267,8 +7422,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7286,8 +7439,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newUri = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7360,8 +7511,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7383,6 +7532,44 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         }
 
         $this->setDocumentPayeeDescription($newDescription);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the Payee trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentPayeeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Payee trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentPayeeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentPayeeRoleCode($newRoleCode);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7515,8 +7702,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7534,8 +7719,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newTaxRegistrationId = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7565,8 +7748,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7594,8 +7775,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newSubDivision = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7688,8 +7867,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7714,8 +7891,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7733,8 +7908,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newUri = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7754,8 +7927,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7772,8 +7943,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7789,8 +7958,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7836,6 +8003,44 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     }
 
     /**
+     * Set the role code of the Payer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentPayerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Payer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentPayerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentPayerRoleCode($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Payer party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -7845,8 +8050,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7863,8 +8066,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7884,8 +8085,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7903,8 +8102,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newGlobalIdType = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7924,8 +8121,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7943,8 +8138,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newTaxRegistrationId = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7974,8 +8167,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -8004,8 +8195,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -8026,8 +8215,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -8047,8 +8234,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -8074,8 +8259,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -8100,8 +8283,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -8120,8 +8301,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -8139,8 +8318,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newUri = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -8696,8 +8873,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -8713,8 +8888,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -8832,8 +9005,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -8859,8 +9030,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newBasePeriodUnit = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -8888,8 +9057,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -8915,8 +9082,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newBasePeriodUnit = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -9211,8 +9376,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -9237,8 +9400,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -9251,8 +9412,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
      */
     public function prepareDocumentSummation(): static
     {
-        // Nothing here...
-
         return $this;
     }
 
@@ -9722,8 +9881,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -9758,8 +9915,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -9780,8 +9935,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -9801,8 +9954,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?DateTimeInterface $newReferenceDate = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -9890,8 +10041,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -9911,8 +10060,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?DateTimeInterface $newReferenceDate = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -9934,8 +10081,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -9955,8 +10100,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?DateTimeInterface $newReferenceDate = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here...
 
         $this->traceMethodExit(__METHOD__);
 
@@ -9986,8 +10129,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10016,8 +10157,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10037,8 +10176,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?DateTimeInterface $newReferenceDate = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -10060,8 +10197,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10081,8 +10216,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?DateTimeInterface $newReferenceDate = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -10104,8 +10237,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10125,8 +10256,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?DateTimeInterface $newReferenceDate = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -10148,8 +10277,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10170,8 +10297,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10191,8 +10316,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?DateTimeInterface $newReferenceDate = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -10216,8 +10339,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10239,8 +10360,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newTypeCode = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -10332,8 +10451,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10360,8 +10477,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10387,8 +10502,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newGrossPriceAllowanceChargeReasonCode = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -10465,8 +10578,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10533,8 +10644,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10550,8 +10659,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -10597,6 +10704,44 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     }
 
     /**
+     * Set the role code of the PositionShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentPositionShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the PositionShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentPositionShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentPositionShipToRoleCode($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Ship-To party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -10606,8 +10751,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -10624,8 +10767,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -10645,8 +10786,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10664,8 +10803,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newGlobalIdType = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -10685,8 +10822,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10704,8 +10839,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newTaxRegistrationId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -10735,8 +10868,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10765,8 +10896,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10787,8 +10916,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10808,8 +10935,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -10835,8 +10960,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10861,8 +10984,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10880,8 +11001,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newUri = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -10901,8 +11020,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10919,8 +11036,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10936,8 +11051,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -10983,6 +11096,44 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     }
 
     /**
+     * Set the role code of the PositionUltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentPositionUltimateShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the PositionUltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentPositionUltimateShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentPositionUltimateShipToRoleCode($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the ultimate Ship-To party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -10992,8 +11143,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -11010,8 +11159,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -11031,8 +11178,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -11050,8 +11195,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newGlobalIdType = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -11071,8 +11214,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -11090,8 +11231,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newTaxRegistrationId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -11121,8 +11260,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -11151,8 +11288,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -11173,8 +11308,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -11194,8 +11327,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -11221,8 +11352,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -11247,8 +11376,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -11266,8 +11393,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?string $newUri = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 
@@ -11287,8 +11412,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -11304,8 +11427,6 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         ?DateTimeInterface $newDate = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
-
-        // Nothing here
 
         $this->traceMethodExit(__METHOD__);
 

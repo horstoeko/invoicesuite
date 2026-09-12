@@ -272,6 +272,9 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentSellerDescription($item)
             )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentSellerRoleCode($item)
+            )
             ?->forEachId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->addDocumentSellerId($item->getId())
             )
@@ -324,6 +327,9 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             )
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentBuyerDescription($item)
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentBuyerRoleCode($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentBuyerId($item->getId())
@@ -378,6 +384,9 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentSellerTaxRepresentativeDescription($item)
             )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentSellerTaxRepresentativeRoleCode($item)
+            )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentSellerTaxRepresentativeId($item->getId())
             )
@@ -430,6 +439,9 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             )
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentBuyerTaxRepresentativeDescription($item)
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentBuyerTaxRepresentativeRoleCode($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentBuyerTaxRepresentativeId($item->getId())
@@ -484,6 +496,9 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentSalesAgentDescription($item)
             )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentSalesAgentRoleCode($item)
+            )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentSalesAgentId($item->getId())
             )
@@ -536,6 +551,9 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             )
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentBuyerAgentDescription($item)
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentBuyerAgentRoleCode($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentBuyerAgentId($item->getId())
@@ -590,6 +608,9 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentProductEndUserDescription($item)
             )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentProductEndUserRoleCode($item)
+            )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentProductEndUserId($item->getId())
             )
@@ -642,6 +663,9 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             )
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentShipToDescription($item)
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentShipToRoleCode($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentShipToId($item->getId())
@@ -696,6 +720,9 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentUltimateShipToDescription($item)
             )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentUltimateShipToRoleCode($item)
+            )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentUltimateShipToId($item->getId())
             )
@@ -748,6 +775,9 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             )
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentShipFromDescription($item)
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentShipFromRoleCode($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentShipFromId($item->getId())
@@ -802,6 +832,9 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentInvoicerDescription($item)
             )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentInvoicerRoleCode($item)
+            )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentInvoicerId($item->getId())
             )
@@ -854,6 +887,9 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             )
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentInvoiceeDescription($item)
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentInvoiceeRoleCode($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentInvoiceeId($item->getId())
@@ -911,6 +947,9 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
                 fn (string $item): static => $this->setDocumentPayeeDescription(
                     $item
                 )
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentPayeeRoleCode($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPayeeId(
@@ -976,6 +1015,9 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
                 fn (string $item): static => $this->setDocumentPayerDescription(
                     $item
                 )
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentPayerRoleCode($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPayerId(
@@ -1374,6 +1416,9 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
                     ?->firstDescription(
                         fn (string $item): static => $this->setDocumentPositionShipToDescription($item)
                     )
+                    ?->firstRoleCode(
+                        fn (string $item): static => $this->setDocumentPositionShipToRoleCode($item)
+                    )
                     ?->firstId(
                         fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPositionShipToId($item->getId())
                     )
@@ -1425,6 +1470,9 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
                     )
                     ?->firstDescription(
                         fn (string $item): static => $this->setDocumentPositionUltimateShipToDescription($item)
+                    )
+                    ?->firstRoleCode(
+                        fn (string $item): static => $this->setDocumentPositionUltimateShipToRoleCode($item)
                     )
                     ?->firstId(
                         fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPositionUltimateShipToId($item->getId())
@@ -2563,6 +2611,38 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
+     * Set the role code of the Seller trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentSellerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Seller trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentSellerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the seller/supplier party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -3065,6 +3145,38 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
+     * Set the role code of the Buyer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentBuyerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Buyer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentBuyerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the buyer/customer party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -3554,6 +3666,38 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
+     * Set the role code of the SellerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentSellerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the SellerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentSellerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the seller's tax representative party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -3938,6 +4082,38 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
+     * Set the role code of the BuyerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentBuyerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the BuyerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentBuyerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the buyer's tax representative party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -4277,6 +4453,38 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
      */
     public function addDocumentSalesAgentDescription(
         ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the SalesAgent trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentSalesAgentRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the SalesAgent trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentSalesAgentRoleCode(
+        ?string $newRoleCode = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -4634,6 +4842,38 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
+     * Set the role code of the BuyerAgent trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentBuyerAgentRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the BuyerAgent trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentBuyerAgentRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the buyer agent party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -4973,6 +5213,38 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
      */
     public function addDocumentProductEndUserDescription(
         ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the ProductEndUser trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentProductEndUserRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the ProductEndUser trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentProductEndUserRoleCode(
+        ?string $newRoleCode = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -5330,6 +5602,38 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
+     * Set the role code of the ShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the ShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Ship-To party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -5669,6 +5973,38 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
      */
     public function addDocumentUltimateShipToDescription(
         ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the UltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentUltimateShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the UltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentUltimateShipToRoleCode(
+        ?string $newRoleCode = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -6026,6 +6362,38 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
+     * Set the role code of the ShipFrom trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentShipFromRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the ShipFrom trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentShipFromRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Ship-From party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -6365,6 +6733,38 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
      */
     public function addDocumentInvoicerDescription(
         ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the Invoicer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentInvoicerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Invoicer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentInvoicerRoleCode(
+        ?string $newRoleCode = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -6722,6 +7122,38 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
+     * Set the role code of the Invoicee trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentInvoiceeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Invoicee trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentInvoiceeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Invoicee party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -7070,6 +7502,38 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
+     * Set the role code of the Payee trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentPayeeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Payee trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentPayeeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Payee party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -7409,6 +7873,38 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
      */
     public function addDocumentPayerDescription(
         ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the Payer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentPayerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Payer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentPayerRoleCode(
+        ?string $newRoleCode = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
@@ -9817,6 +10313,38 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
+     * Set the role code of the PositionShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentPositionShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the PositionShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentPositionShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Ship-To party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -10156,6 +10684,38 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
      */
     public function addDocumentPositionUltimateShipToDescription(
         ?string $newDescription = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the PositionUltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentPositionUltimateShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the PositionUltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentPositionUltimateShipToRoleCode(
+        ?string $newRoleCode = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
 

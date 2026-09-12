@@ -1715,6 +1715,62 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Description)[2]');
     }
 
+    public function testSetDocumentSellerRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        static::$document->setDocumentSellerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentSellerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentSellerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:RoleCode', 'DS');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentSellerRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentSellerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:RoleCode');
+
+        static::$document->addDocumentSellerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentSellerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentSellerRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:RoleCode)[2]');
+    }
+
     public function testSetAddDocumentSellerId(): void
     {
         $this->disableRenderXmlContent();
@@ -2578,6 +2634,62 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
 
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:Description', 'Buyer Description 3');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:Description)[2]');
+    }
+
+    public function testSetDocumentBuyerRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        static::$document->setDocumentBuyerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentBuyerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentBuyerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:RoleCode', 'DS');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentBuyerRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentBuyerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:RoleCode');
+
+        static::$document->addDocumentBuyerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentBuyerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentBuyerRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:RoleCode)[2]');
     }
 
     public function testSetAddDocumentBuyerId(): void
@@ -3445,6 +3557,62 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:Description)[2]');
     }
 
+    public function testSetDocumentSellerTaxRepresentativeRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        static::$document->setDocumentSellerTaxRepresentativeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentSellerTaxRepresentativeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentSellerTaxRepresentativeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:RoleCode', 'DS');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentSellerTaxRepresentativeRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentSellerTaxRepresentativeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:RoleCode');
+
+        static::$document->addDocumentSellerTaxRepresentativeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentSellerTaxRepresentativeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentSellerTaxRepresentativeRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:RoleCode)[2]');
+    }
+
     public function testSetAddDocumentSellerTaxRepresentativeId(): void
     {
         $this->disableRenderXmlContent();
@@ -4308,6 +4476,62 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTaxRepresentativeTradeParty/ram:Description');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTaxRepresentativeTradeParty/ram:Description)[2]');
+    }
+
+    public function testSetDocumentBuyerTaxRepresentativeRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        static::$document->setDocumentBuyerTaxRepresentativeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTaxRepresentativeTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentBuyerTaxRepresentativeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTaxRepresentativeTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentBuyerTaxRepresentativeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTaxRepresentativeTradeParty/ram:RoleCode', 'DS');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTaxRepresentativeTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentBuyerTaxRepresentativeRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTaxRepresentativeTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTaxRepresentativeTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentBuyerTaxRepresentativeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTaxRepresentativeTradeParty/ram:RoleCode');
+
+        static::$document->addDocumentBuyerTaxRepresentativeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTaxRepresentativeTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentBuyerTaxRepresentativeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTaxRepresentativeTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentBuyerTaxRepresentativeRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTaxRepresentativeTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTaxRepresentativeTradeParty/ram:RoleCode)[2]');
     }
 
     public function testSetAddDocumentBuyerTaxRepresentativeId(): void
@@ -5175,6 +5399,62 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SalesAgentTradeParty/ram:Description)[2]');
     }
 
+    public function testSetDocumentSalesAgentRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        static::$document->setDocumentSalesAgentRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SalesAgentTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentSalesAgentRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SalesAgentTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentSalesAgentRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SalesAgentTradeParty/ram:RoleCode', 'DS');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SalesAgentTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentSalesAgentRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SalesAgentTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SalesAgentTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentSalesAgentRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SalesAgentTradeParty/ram:RoleCode');
+
+        static::$document->addDocumentSalesAgentRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SalesAgentTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentSalesAgentRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SalesAgentTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentSalesAgentRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SalesAgentTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SalesAgentTradeParty/ram:RoleCode)[2]');
+    }
+
     public function testSetAddDocumentSalesAgentId(): void
     {
         $this->disableRenderXmlContent();
@@ -6038,6 +6318,62 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerAgentTradeParty/ram:Description');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerAgentTradeParty/ram:Description)[2]');
+    }
+
+    public function testSetDocumentBuyerAgentRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        static::$document->setDocumentBuyerAgentRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerAgentTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentBuyerAgentRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerAgentTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentBuyerAgentRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerAgentTradeParty/ram:RoleCode', 'DS');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerAgentTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentBuyerAgentRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerAgentTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerAgentTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentBuyerAgentRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerAgentTradeParty/ram:RoleCode');
+
+        static::$document->addDocumentBuyerAgentRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerAgentTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentBuyerAgentRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerAgentTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentBuyerAgentRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerAgentTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerAgentTradeParty/ram:RoleCode)[2]');
     }
 
     public function testSetAddDocumentBuyerAgentId(): void
@@ -6905,6 +7241,62 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:Description)[2]');
     }
 
+    public function testSetDocumentProductEndUserRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        static::$document->setDocumentProductEndUserRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentProductEndUserRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentProductEndUserRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:RoleCode', 'DS');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentProductEndUserRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentProductEndUserRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:RoleCode');
+
+        static::$document->addDocumentProductEndUserRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentProductEndUserRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentProductEndUserRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:RoleCode)[2]');
+    }
+
     public function testSetAddDocumentProductEndUserId(): void
     {
         $this->disableRenderXmlContent();
@@ -7768,6 +8160,62 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:Description');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:Description)[2]');
+    }
+
+    public function testSetDocumentShipToRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        static::$document->setDocumentShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:RoleCode', 'DS');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentShipToRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:RoleCode');
+
+        static::$document->addDocumentShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentShipToRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:RoleCode)[2]');
     }
 
     public function testSetAddDocumentShipToId(): void
@@ -8635,6 +9083,62 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:Description)[2]');
     }
 
+    public function testSetDocumentUltimateShipToRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        static::$document->setDocumentUltimateShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentUltimateShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentUltimateShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode', 'DS');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentUltimateShipToRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentUltimateShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode');
+
+        static::$document->addDocumentUltimateShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentUltimateShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentUltimateShipToRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode)[2]');
+    }
+
     public function testSetAddDocumentUltimateShipToId(): void
     {
         $this->disableRenderXmlContent();
@@ -9498,6 +10002,62 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:Description');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:Description)[2]');
+    }
+
+    public function testSetDocumentShipFromRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        static::$document->setDocumentShipFromRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentShipFromRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentShipFromRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:RoleCode', 'DS');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentShipFromRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentShipFromRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:RoleCode');
+
+        static::$document->addDocumentShipFromRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentShipFromRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentShipFromRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:RoleCode)[2]');
     }
 
     public function testSetAddDocumentShipFromId(): void
@@ -10365,6 +10925,62 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:Description)[2]');
     }
 
+    public function testSetDocumentInvoicerRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        static::$document->setDocumentInvoicerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentInvoicerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentInvoicerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:RoleCode', 'DS');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentInvoicerRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentInvoicerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:RoleCode');
+
+        static::$document->addDocumentInvoicerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentInvoicerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentInvoicerRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:RoleCode)[2]');
+    }
+
     public function testSetAddDocumentInvoicerId(): void
     {
         $this->disableRenderXmlContent();
@@ -11228,6 +11844,62 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:Description');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:Description)[2]');
+    }
+
+    public function testSetDocumentInvoiceeRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        static::$document->setDocumentInvoiceeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentInvoiceeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentInvoiceeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:RoleCode', 'DS');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentInvoiceeRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentInvoiceeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:RoleCode');
+
+        static::$document->addDocumentInvoiceeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentInvoiceeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentInvoiceeRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:RoleCode)[2]');
     }
 
     public function testSetAddDocumentInvoiceeId(): void
@@ -12095,6 +12767,62 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:Description)[2]');
     }
 
+    public function testSetDocumentPayeeRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        static::$document->setDocumentPayeeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentPayeeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentPayeeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:RoleCode', 'DS');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentPayeeRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentPayeeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:RoleCode');
+
+        static::$document->addDocumentPayeeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentPayeeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentPayeeRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:RoleCode)[2]');
+    }
+
     public function testSetAddDocumentPayeeId(): void
     {
         $this->disableRenderXmlContent();
@@ -12958,6 +13686,62 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayerTradeParty/ram:Description');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayerTradeParty/ram:Description)[2]');
+    }
+
+    public function testSetDocumentPayerRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        static::$document->setDocumentPayerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayerTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentPayerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayerTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentPayerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayerTradeParty/ram:RoleCode', 'DS');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayerTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentPayerRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayerTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayerTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentPayerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayerTradeParty/ram:RoleCode');
+
+        static::$document->addDocumentPayerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayerTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentPayerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayerTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentPayerRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayerTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayerTradeParty/ram:RoleCode)[2]');
     }
 
     public function testSetAddDocumentPayerId(): void
@@ -19155,6 +19939,62 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:ShipToTradeParty/ram:Description)[2]');
     }
 
+    public function testSetDocumentPositionShipToRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        static::$document->setDocumentPositionShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:ShipToTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentPositionShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:ShipToTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentPositionShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:ShipToTradeParty/ram:RoleCode', 'DS');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:ShipToTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentPositionShipToRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:ShipToTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:ShipToTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentPositionShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:ShipToTradeParty/ram:RoleCode');
+
+        static::$document->addDocumentPositionShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:ShipToTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentPositionShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:ShipToTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentPositionShipToRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:ShipToTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:ShipToTradeParty/ram:RoleCode)[2]');
+    }
+
     public function testSetAddDocumentPositionShipToId(): void
     {
         $this->disableRenderXmlContent();
@@ -20018,6 +20858,62 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:UltimateShipToTradeParty/ram:Description');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:UltimateShipToTradeParty/ram:Description)[2]');
+    }
+
+    public function testSetDocumentPositionUltimateShipToRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        static::$document->setDocumentPositionUltimateShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentPositionUltimateShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode');
+
+        static::$document->setDocumentPositionUltimateShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode', 'DS');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentPositionUltimateShipToRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode)[2]');
+
+        static::$document->setDocumentPositionUltimateShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode');
+
+        static::$document->addDocumentPositionUltimateShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentPositionUltimateShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode', 'DS');
+
+        static::$document->addDocumentPositionUltimateShipToRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode', 'DL');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:UltimateShipToTradeParty/ram:RoleCode)[2]');
     }
 
     public function testSetAddDocumentPositionUltimateShipToId(): void
@@ -21287,6 +22183,8 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Lieferant GmbH')
                     ->addDescription('Lieferant GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -21304,6 +22202,8 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Kunde GmbH')
                     ->addDescription('Kunde GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -21320,6 +22220,8 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Tax GmbH')
                     ->addDescription('Tax GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -21336,6 +22238,8 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Tax GmbH')
                     ->addDescription('Tax GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -21352,6 +22256,8 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Sales Agent GmbH')
                     ->addDescription('Sales Agent GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -21368,6 +22274,8 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Buyer Agent GmbH')
                     ->addDescription('Buyer Agent GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -21384,6 +22292,8 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Product End User GmbH')
                     ->addDescription('Product End User GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -21400,6 +22310,8 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Ship To GmbH')
                     ->addDescription('Ship To GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -21416,6 +22328,8 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Ultimate Ship To GmbH')
                     ->addDescription('Ultimate Ship To GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -21432,6 +22346,8 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Ship From GmbH')
                     ->addDescription('Ship From GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -21448,6 +22364,8 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Invoicer GmbH')
                     ->addDescription('Invoicer GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -21464,6 +22382,8 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Invoicee GmbH')
                     ->addDescription('Invoicee GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -21480,6 +22400,8 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Payee GmbH')
                     ->addDescription('Payee GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -21496,6 +22418,8 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Payer GmbH')
                     ->addDescription('Payer GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -21706,6 +22630,8 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
                     (new InvoiceSuitePartyDTO())
                         ->addName('Ship To GmbH')
                         ->addDescription('Ship To GmbH Description')
+                        ->addRoleCode('DS')
+                        ->addRoleCode('DL')
                         ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                         ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                         ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -21722,6 +22648,8 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
                     (new InvoiceSuitePartyDTO())
                         ->addName('Ultimate Ship To GmbH')
                         ->addDescription('Ultimate Ship To GmbH Description')
+                        ->addRoleCode('DS')
+                        ->addRoleCode('DL')
                         ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                         ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                         ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -23286,5 +24214,11 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeSettlementLineMonetarySummation/ram:TaxTotalAmount)[2]');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ApplicableTradeDeliveryTerms/ram:DeliveryTypeCode', 'DELIVERY-1');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ApplicableTradeDeliveryTerms/ram:DeliveryTypeCode)[2]');
+
+        $this->disableRenderXmlContent();
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:RoleCode', 'DS');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:RoleCode)[2]');
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeDelivery/ram:ShipToTradeParty/ram:RoleCode', 'DS');
     }
 }

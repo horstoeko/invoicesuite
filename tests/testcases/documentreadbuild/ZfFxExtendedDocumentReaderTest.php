@@ -6,6 +6,7 @@ namespace horstoeko\invoicesuite\tests\testcases\documentreadbuild;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentPositionDTO;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\tests\TestCase;
@@ -437,6 +438,12 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         $this->assertSame('Lieferant GmbH Description', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentSellerRoleCode($newRoleCode);
+
+        $this->assertSame('DS', $newRoleCode);
+
         // ID
 
         $this->assertTrue(static::$document->firstDocumentSellerId());
@@ -622,6 +629,12 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         $this->assertSame('Kunde GmbH Description', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentBuyerRoleCode($newRoleCode);
+
+        $this->assertSame('DL', $newRoleCode);
+
         // ID
 
         $this->assertTrue(static::$document->firstDocumentBuyerId());
@@ -786,6 +799,12 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
         static::$document->getDocumentSellerTaxRepresentativeDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentSellerTaxRepresentativeRoleCode($newRoleCode);
+
+        $this->assertSame('MOP', $newRoleCode);
 
         // ID
 
@@ -952,6 +971,12 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentBuyerTaxRepresentativeRoleCode($newRoleCode);
+
+        $this->assertSame('AB', $newRoleCode);
+
         // ID
 
         $this->assertTrue(static::$document->firstDocumentBuyerTaxRepresentativeId());
@@ -1116,6 +1141,12 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
         static::$document->getDocumentSalesAgentDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentSalesAgentRoleCode($newRoleCode);
+
+        $this->assertSame('DS', $newRoleCode);
 
         // ID
 
@@ -1282,6 +1313,12 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentBuyerAgentRoleCode($newRoleCode);
+
+        $this->assertSame('DL', $newRoleCode);
+
         // ID
 
         $this->assertTrue(static::$document->firstDocumentBuyerAgentId());
@@ -1446,6 +1483,12 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
         static::$document->getDocumentProductEndUserDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentProductEndUserRoleCode($newRoleCode);
+
+        $this->assertSame('MOP', $newRoleCode);
 
         // ID
 
@@ -1612,6 +1655,12 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentShipToRoleCode($newRoleCode);
+
+        $this->assertSame('AB', $newRoleCode);
+
         // ID
 
         $this->assertTrue(static::$document->firstDocumentShipToId());
@@ -1776,6 +1825,12 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
         static::$document->getDocumentUltimateShipToDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentUltimateShipToRoleCode($newRoleCode);
+
+        $this->assertSame('DS', $newRoleCode);
 
         // ID
 
@@ -1942,6 +1997,12 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentShipFromRoleCode($newRoleCode);
+
+        $this->assertSame('DL', $newRoleCode);
+
         // ID
 
         $this->assertTrue(static::$document->firstDocumentShipFromId());
@@ -2106,6 +2167,12 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
         static::$document->getDocumentInvoicerDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentInvoicerRoleCode($newRoleCode);
+
+        $this->assertSame('MOP', $newRoleCode);
 
         // ID
 
@@ -2272,6 +2339,12 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentInvoiceeRoleCode($newRoleCode);
+
+        $this->assertSame('AB', $newRoleCode);
+
         // ID
 
         $this->assertTrue(static::$document->firstDocumentInvoiceeId());
@@ -2437,6 +2510,12 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentPayeeRoleCode($newRoleCode);
+
+        $this->assertSame('DS', $newRoleCode);
+
         // ID
 
         $this->assertTrue(static::$document->firstDocumentPayeeId());
@@ -2601,6 +2680,12 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
         static::$document->getDocumentPayerDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentPayerRoleCode($newRoleCode);
+
+        $this->assertSame('DL', $newRoleCode);
 
         // ID
 
@@ -3845,6 +3930,12 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentPositionShipToRoleCode($newRoleCode);
+
+        $this->assertSame('MOP', $newRoleCode);
+
         // ID
 
         $this->assertTrue(static::$document->firstDocumentPositionShipToId());
@@ -3973,6 +4064,12 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
         static::$document->getDocumentPositionUltimateShipToDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentPositionUltimateShipToRoleCode($newRoleCode);
+
+        $this->assertSame('AB', $newRoleCode);
 
         // ID
 
@@ -4281,6 +4378,28 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
         $this->assertSame([], $newDocmentDTO?->getSalesAgentParty()?->getDescriptions());
         $this->assertSame(['Buyer Agent GmbH'], $newDocmentDTO?->getBuyerAgentParty()?->getNames());
         $this->assertSame([], $newDocmentDTO?->getBuyerAgentParty()?->getDescriptions());
+
+        $this->assertSame(['DS'], $newDocmentDTO?->getSellerParty()?->getRoleCodes());
+        $this->assertSame(['DL'], $newDocmentDTO?->getBuyerParty()?->getRoleCodes());
+        $this->assertSame(['MOP'], $newDocmentDTO?->getSellerTaxRepresentativeParty()?->getRoleCodes());
+        $this->assertSame(['AB'], $newDocmentDTO?->getBuyerTaxRepresentativeParty()?->getRoleCodes());
+        $this->assertSame(['DS'], $newDocmentDTO?->getSalesAgentParty()?->getRoleCodes());
+        $this->assertSame(['DL'], $newDocmentDTO?->getBuyerAgentParty()?->getRoleCodes());
+        $this->assertSame(['MOP'], $newDocmentDTO?->getProductEndUserParty()?->getRoleCodes());
+        $this->assertSame(['AB'], $newDocmentDTO?->getShipToParty()?->getRoleCodes());
+        $this->assertSame(['DS'], $newDocmentDTO?->getUltimateShipToParty()?->getRoleCodes());
+        $this->assertSame(['DL'], $newDocmentDTO?->getShipFromParty()?->getRoleCodes());
+        $this->assertSame(['MOP'], $newDocmentDTO?->getInvoicerParty()?->getRoleCodes());
+        $this->assertSame(['AB'], $newDocmentDTO?->getInvoiceeParty()?->getRoleCodes());
+        $this->assertSame(['DS'], $newDocmentDTO?->getPayeeParty()?->getRoleCodes());
+        $this->assertSame(['DL'], $newDocmentDTO?->getPayerParty()?->getRoleCodes());
+        $newDocmentDTO?->firstPosition(function (InvoiceSuiteDocumentPositionDTO $position): void {
+            $this->assertSame(['MOP'], $position->getShipToParty()?->getRoleCodes());
+            $this->assertSame(['AB'], $position->getUltimateShipToParty()?->getRoleCodes());
+        });
+
+        $newDocmentDTO?->getSellerParty()?->addRoleCode('DL');
+        $this->assertSame(['DS', 'DL'], $newDocmentDTO?->getSellerParty()?->getRoleCodes());
     }
 
     public function testCopyToBuilder(): void
@@ -4289,5 +4408,23 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
 
         $this->assertInstanceOf(InvoiceSuiteDocumentBuilder::class, $builder);
         $this->assertSame('zffxextended', $builder->getCurrentDocumentFormatProvider()->getUniqueId());
+
+        $reader = InvoiceSuiteDocumentReader::createFromContent($builder->getContent());
+        $reader->getDocumentSellerRoleCode($sellerRoleCode);
+        $this->assertSame('DS', $sellerRoleCode);
+        $reader->getDocumentPayeeRoleCode($payeeRoleCode);
+        $this->assertSame('DS', $payeeRoleCode);
+        $this->assertTrue($reader->firstDocumentPosition());
+        $reader->getDocumentPositionShipToRoleCode($positionShipToRoleCode);
+        $this->assertSame('MOP', $positionShipToRoleCode);
+
+        static::$document->convertToDTO($roleCodeDTO);
+        $roleCodeDTO->getSellerParty()?->addRoleCode('DL');
+        $this->assertSame(['DS', 'DL'], $roleCodeDTO->getSellerParty()?->getRoleCodes());
+
+        $builderFromDTO = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended')->createFromDTO($roleCodeDTO);
+        $readerFromDTO = InvoiceSuiteDocumentReader::createFromContent($builderFromDTO->getContent());
+        $readerFromDTO->getDocumentSellerRoleCode($sellerRoleCodeFromDTO);
+        $this->assertSame('DS', $sellerRoleCodeFromDTO);
     }
 }

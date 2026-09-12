@@ -40,6 +40,13 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     protected array $descriptions = [];
 
     /**
+     * Party role codes (UNTDID 3035)
+     *
+     * @var array<string>
+     */
+    protected array $roleCodes = [];
+
+    /**
      * Party IDs
      *
      * @var array<InvoiceSuiteIdDTO>
@@ -93,6 +100,7 @@ class InvoiceSuitePartyDTO implements JsonSerializable
      *
      * @param array<string>                       $names              Party names
      * @param array<string>                       $descriptions       Party descriptions
+     * @param array<string>                       $roleCodes          Party role codes (UNTDID 3035)
      * @param array<InvoiceSuiteIdDTO>            $ids                Party IDs
      * @param array<InvoiceSuiteIdDTO>            $globalIds          Party global IDs
      * @param array<InvoiceSuiteIdDTO>            $taxRegistrations   Party tax registrations
@@ -104,6 +112,7 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     public function __construct(
         array $names = [],
         array $descriptions = [],
+        array $roleCodes = [],
         array $ids = [],
         array $globalIds = [],
         array $taxRegistrations = [],
@@ -114,6 +123,7 @@ class InvoiceSuitePartyDTO implements JsonSerializable
     ) {
         $this->setNames($names);
         $this->setDescriptions($descriptions);
+        $this->setRoleCodes($roleCodes);
         $this->setIds($ids);
         $this->setGlobalIds($globalIds);
         $this->setTaxRegistrations($taxRegistrations);
@@ -638,6 +648,262 @@ class InvoiceSuitePartyDTO implements JsonSerializable
         if (!InvoiceSuiteArrayUtils::empty($filteredDescription)) {
             $description = InvoiceSuiteArrayUtils::last($filteredDescription);
             $callback($description);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Returns party role codes (UNTDID 3035)
+     *
+     * @return array<string>
+     */
+    public function getRoleCodes(): array
+    {
+        return $this->roleCodes;
+    }
+
+    /**
+     * Sets party role codes (UNTDID 3035)
+     *
+     * @param  array<string> $roleCodes Party role codes (UNTDID 3035)
+     * @return static
+     */
+    public function setRoleCodes(
+        array $roleCodes
+    ): static {
+        foreach ($roleCodes as $roleCodesItem) {
+            $this->addRoleCode($roleCodesItem);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add single Party role codes (UNTDID 3035)
+     *
+     * @param  string $roleCode Party role codes (UNTDID 3035)
+     * @return static
+     */
+    public function addRoleCode(
+        ?string $roleCode
+    ): static {
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($roleCode)) {
+            return $this;
+        }
+
+        $this->roleCodes[] = $roleCode;
+
+        return $this;
+    }
+
+    /**
+     * Get first Party role codes (UNTDID 3035)
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function firstRoleCode(
+        callable $callback,
+        ?callable $callbackElse = null
+    ): static {
+        if (($roleCode = InvoiceSuiteArrayUtils::first($this->roleCodes)) !== false) {
+            $callback($roleCode);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get next Party role codes (UNTDID 3035)
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function nextRoleCode(
+        callable $callback,
+        ?callable $callbackElse = null
+    ): static {
+        if (($roleCode = InvoiceSuiteArrayUtils::next($this->roleCodes)) !== false) {
+            $callback($roleCode);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get previous Party role codes (UNTDID 3035)
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function previousRoleCode(
+        callable $callback,
+        ?callable $callbackElse = null
+    ): static {
+        if (($roleCode = InvoiceSuiteArrayUtils::previous($this->roleCodes)) !== false) {
+            $callback($roleCode);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last Party role codes (UNTDID 3035)
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function lastRoleCode(
+        callable $callback,
+        ?callable $callbackElse = null
+    ): static {
+        if (($roleCode = InvoiceSuiteArrayUtils::last($this->roleCodes)) !== false) {
+            $callback($roleCode);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over Party role codes (UNTDID 3035) and execute callback
+     *
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
+     * @return static
+     */
+    public function forEachRoleCode(
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null
+    ): static {
+        $count = 0;
+
+        foreach ($this->roleCodes as $roleCode) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($roleCode);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over Party role codes (UNTDID 3035) and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstRoleCode(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstRoleCode($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->roleCodes as $roleCode) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($roleCode);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Filter Party role codes (UNTDID 3035)
+     *
+     * @param  callable      $callback Callback to execute filtering for each item
+     * @return array<string>
+     */
+    public function filterRoleCode(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->roleCodes, $callback);
+    }
+
+    /**
+     * Get first Party role codes (UNTDID 3035) from filtered result
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function filterFirstRoleCode(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null
+    ): static {
+        $filteredRoleCode = $this->filterRoleCode($filterCallback);
+
+        if (!InvoiceSuiteArrayUtils::empty($filteredRoleCode)) {
+            $roleCode = InvoiceSuiteArrayUtils::first($filteredRoleCode);
+            $callback($roleCode);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last Party role codes (UNTDID 3035) from filtered result
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function filterLastRoleCode(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null
+    ): static {
+        $filteredRoleCode = $this->filterRoleCode($filterCallback);
+
+        if (!InvoiceSuiteArrayUtils::empty($filteredRoleCode)) {
+            $roleCode = InvoiceSuiteArrayUtils::last($filteredRoleCode);
+            $callback($roleCode);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
         }

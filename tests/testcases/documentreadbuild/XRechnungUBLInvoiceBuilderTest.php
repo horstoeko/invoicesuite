@@ -1474,6 +1474,61 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
     }
 
+    public function testSetAddDocumentSellerRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentSellerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentSellerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentSellerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentSellerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentSellerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentSellerRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentSellerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentSellerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+    }
+
     public function testSetAddDocumentSellerId(): void
     {
         $this->disableRenderXmlContent();
@@ -2339,6 +2394,61 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
     }
 
+    public function testSetAddDocumentBuyerRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentBuyerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentBuyerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentBuyerRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+    }
+
     public function testSetAddDocumentBuyerId(): void
     {
         $this->disableRenderXmlContent();
@@ -3197,6 +3307,226 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
     }
 
+    public function testSetAddDocumentSellerTaxRepresentativeRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentSellerTaxRepresentativeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentSellerTaxRepresentativeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentSellerTaxRepresentativeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentSellerTaxRepresentativeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentSellerTaxRepresentativeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentSellerTaxRepresentativeRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentSellerTaxRepresentativeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentSellerTaxRepresentativeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+    }
+
+    public function testSetAddDocumentBuyerTaxRepresentativeRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerTaxRepresentativeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerTaxRepresentativeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerTaxRepresentativeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentBuyerTaxRepresentativeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentBuyerTaxRepresentativeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentBuyerTaxRepresentativeRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerTaxRepresentativeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerTaxRepresentativeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+    }
+
+    public function testSetAddDocumentSalesAgentRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentSalesAgentRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentSalesAgentRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentSalesAgentRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentSalesAgentRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentSalesAgentRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentSalesAgentRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentSalesAgentRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentSalesAgentRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+    }
+
+    public function testSetAddDocumentBuyerAgentRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerAgentRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerAgentRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerAgentRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentBuyerAgentRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentBuyerAgentRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentBuyerAgentRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerAgentRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentBuyerAgentRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+    }
+
     public function testSetAddDocumentSellerTaxRepresentativeId(): void
     {
         $this->disableRenderXmlContent();
@@ -3931,6 +4261,61 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         });
     }
 
+    public function testSetAddDocumentProductEndUserRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentProductEndUserRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentProductEndUserRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentProductEndUserRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentProductEndUserRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentProductEndUserRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentProductEndUserRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentProductEndUserRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentProductEndUserRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+    }
+
     public function testSetAddDocumentProductEndUserId(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
@@ -4127,6 +4512,61 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
         $this->assertXPathNotExists('(/ns:Invoice/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+    }
+
+    public function testSetAddDocumentShipToRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentShipToRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
     }
 
     public function testSetAddDocumentShipToId(): void
@@ -4422,6 +4862,61 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         });
     }
 
+    public function testSetAddDocumentUltimateShipToRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentUltimateShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentUltimateShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentUltimateShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentUltimateShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentUltimateShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentUltimateShipToRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentUltimateShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentUltimateShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+    }
+
     public function testSetAddDocumentUltimateShipToId(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
@@ -4492,6 +4987,61 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
             static::$document->setDocumentShipFromDescription('Ship From Description');
             static::$document->addDocumentShipFromDescription('Ship From Description');
         });
+    }
+
+    public function testSetAddDocumentShipFromRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentShipFromRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentShipFromRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentShipFromRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentShipFromRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentShipFromRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentShipFromRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentShipFromRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentShipFromRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
     }
 
     public function testSetAddDocumentShipFromId(): void
@@ -4566,6 +5116,61 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         });
     }
 
+    public function testSetAddDocumentInvoicerRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentInvoicerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentInvoicerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentInvoicerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentInvoicerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentInvoicerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentInvoicerRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentInvoicerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentInvoicerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+    }
+
     public function testSetAddDocumentInvoicerId(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
@@ -4636,6 +5241,61 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
             static::$document->setDocumentInvoiceeDescription('Invoicee Description');
             static::$document->addDocumentInvoiceeDescription('Invoicee Description 2');
         });
+    }
+
+    public function testSetAddDocumentInvoiceeRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentInvoiceeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentInvoiceeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentInvoiceeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentInvoiceeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentInvoiceeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentInvoiceeRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentInvoiceeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentInvoiceeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
     }
 
     public function testSetAddDocumentInvoiceeId(): void
@@ -4834,6 +5494,61 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm');
         $this->assertXPathNotExists('(/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyLegalForm)[2]');
+    }
+
+    public function testSetAddDocumentPayeeRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPayeeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPayeeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPayeeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentPayeeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentPayeeRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentPayeeRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPayeeRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPayeeRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
     }
 
     public function testSetAddDocumentPayeeId(): void
@@ -5567,6 +6282,61 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
             static::$document->setDocumentPayerDescription('Payer Description');
             static::$document->addDocumentPayerDescription('Payer Description 2');
         });
+    }
+
+    public function testSetAddDocumentPayerRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPayerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPayerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPayerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentPayerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentPayerRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentPayerRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPayerRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPayerRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
     }
 
     public function testSetAddDocumentPayerId(): void
@@ -7800,6 +8570,61 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         });
     }
 
+    public function testSetAddDocumentPositionShipToRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPositionShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPositionShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPositionShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentPositionShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentPositionShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentPositionShipToRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPositionShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPositionShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+    }
+
     public function testSetAddDocumentPositionShipToId(): void
     {
         $this->assertXmlWasNotChanged(static function (): void {
@@ -7870,6 +8695,61 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
             static::$document->setDocumentPositionUltimateShipToDescription('Ship To Description');
             static::$document->addDocumentPositionUltimateShipToDescription('Ship To Description 2');
         });
+    }
+
+    public function testSetAddDocumentPositionUltimateShipToRoleCode(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPositionUltimateShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPositionUltimateShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPositionUltimateShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentPositionUltimateShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentPositionUltimateShipToRoleCode('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->addDocumentPositionUltimateShipToRoleCode('DL');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPositionUltimateShipToRoleCode(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
+
+        static::$document->setDocumentPositionUltimateShipToRoleCode('DS');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice//cbc:RoleCode');
     }
 
     public function testSetAddDocumentPositionUltimateShipToId(): void
@@ -8445,6 +9325,8 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Lieferant GmbH')
                     ->addDescription('Lieferant GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8462,6 +9344,8 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Kunde GmbH')
                     ->addDescription('Kunde GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8478,6 +9362,8 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Tax GmbH')
                     ->addDescription('Tax GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8494,6 +9380,8 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Buyer Tax Representative GmbH')
                     ->addDescription('Buyer Tax Representative GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8510,6 +9398,8 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Sales Agent GmbH')
                     ->addDescription('Sales Agent GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8526,6 +9416,8 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Buyer Agent GmbH')
                     ->addDescription('Buyer Agent GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8542,6 +9434,8 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Product End User GmbH')
                     ->addDescription('Product End User GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8558,6 +9452,8 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Ship To GmbH')
                     ->addDescription('Ship To GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8574,6 +9470,8 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Ultimate Ship To GmbH')
                     ->addDescription('Ultimate Ship To GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8590,6 +9488,8 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Ship From GmbH')
                     ->addDescription('Ship From GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8606,6 +9506,8 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Invoicer GmbH')
                     ->addDescription('Invoicer GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8622,6 +9524,8 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Invoicee GmbH')
                     ->addDescription('Invoicee GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8638,6 +9542,8 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Payee GmbH')
                     ->addDescription('Payee GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8654,6 +9560,8 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                 (new InvoiceSuitePartyDTO())
                     ->addName('Payer GmbH')
                     ->addDescription('Payer GmbH Description')
+                    ->addRoleCode('DS')
+                    ->addRoleCode('DL')
                     ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                     ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                     ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8863,6 +9771,8 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                     (new InvoiceSuitePartyDTO())
                         ->addName('Ship To GmbH')
                         ->addDescription('Ship To GmbH Description')
+                        ->addRoleCode('DS')
+                        ->addRoleCode('DL')
                         ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                         ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                         ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
@@ -8879,6 +9789,8 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                     (new InvoiceSuitePartyDTO())
                         ->addName('Ultimate Ship To GmbH')
                         ->addDescription('Ultimate Ship To GmbH Description')
+                        ->addRoleCode('DS')
+                        ->addRoleCode('DL')
                         ->addId(new InvoiceSuiteIdDTO('0815-4711'))
                         ->addId(new InvoiceSuiteIdDTO('0815-4712'))
                         ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))

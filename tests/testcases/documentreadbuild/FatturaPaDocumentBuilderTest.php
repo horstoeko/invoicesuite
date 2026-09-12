@@ -142,6 +142,137 @@ final class FatturaPaDocumentBuilderTest extends TestCase
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaHeader/DatiTrasmissione/FormatoTrasmissione', 'FPR12');
     }
 
+    public function testSetDocumentPartyRoleCodesDoNotChangeXml(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentSellerRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentSellerTaxRepresentativeRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerTaxRepresentativeRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentSalesAgentRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerAgentRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentProductEndUserRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentShipToRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentUltimateShipToRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentShipFromRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentInvoicerRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentInvoiceeRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPayeeRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPayerRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPositionShipToRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPositionUltimateShipToRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentSellerRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentBuyerRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentSellerTaxRepresentativeRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentBuyerTaxRepresentativeRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentSalesAgentRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentBuyerAgentRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentProductEndUserRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentShipToRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentUltimateShipToRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentShipFromRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentInvoicerRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentInvoiceeRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentPayeeRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentPayerRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentPositionShipToRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentPositionUltimateShipToRoleCode('DS');
+        });
+    }
+
     public function testSetDocumentPaymentAndTax(): void
     {
         static::$document
@@ -249,6 +380,8 @@ final class FatturaPaDocumentBuilderTest extends TestCase
         $sellerParty = (new InvoiceSuitePartyDTO())
             ->addName('DTO Seller S.r.l.')
             ->addDescription('DTO Seller S.r.l. Description')
+            ->addRoleCode('DS')
+            ->addRoleCode('DL')
             ->addTaxRegistration(new InvoiceSuiteIdDTO('12345678901', 'VA'))
             ->addTaxRegistration(new InvoiceSuiteIdDTO('SELLERFISCAL01', 'FC'))
             ->addAddress(new InvoiceSuiteAddressDTO('Via Roma 1', null, null, '00100', 'Roma', 'IT', 'RM'));
@@ -256,6 +389,8 @@ final class FatturaPaDocumentBuilderTest extends TestCase
         $buyerParty = (new InvoiceSuitePartyDTO())
             ->addName('DTO Buyer S.p.A.')
             ->addDescription('DTO Buyer S.p.A. Description')
+            ->addRoleCode('DS')
+            ->addRoleCode('DL')
             ->addTaxRegistration(new InvoiceSuiteIdDTO('98765432109', 'VA'))
             ->addAddress(new InvoiceSuiteAddressDTO('Via Milano 2', null, null, '20100', 'Milano', 'IT', 'MI'))
             ->addCommunication(new InvoiceSuiteCommunicationDTO('ABC1234', 'CODICE_DESTINATARIO'));

@@ -1207,6 +1207,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     }
 
     /**
+     * Get the role code of the Seller trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentSellerRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the seller/supplier party
      *
      * @return bool
@@ -1545,6 +1561,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newDescription
     ): static {
         $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the Buyer trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentBuyerRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerRoleCode($newRoleCode);
 
         return $this;
     }
@@ -1893,6 +1925,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     }
 
     /**
+     * Get the role code of the SellerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentSellerTaxRepresentativeRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerTaxRepresentativeRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the seller's tax representative party
      *
      * @return bool
@@ -2231,6 +2279,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newDescription
     ): static {
         $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerTaxRepresentativeDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the BuyerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentBuyerTaxRepresentativeRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerTaxRepresentativeRoleCode($newRoleCode);
 
         return $this;
     }
@@ -2579,6 +2643,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     }
 
     /**
+     * Get the role code of the SalesAgent trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentSalesAgentRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSalesAgentRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the sales agent party
      *
      * @return bool
@@ -2917,6 +2997,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newDescription
     ): static {
         $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerAgentDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the BuyerAgent trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentBuyerAgentRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerAgentRoleCode($newRoleCode);
 
         return $this;
     }
@@ -3265,6 +3361,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     }
 
     /**
+     * Get the role code of the ProductEndUser trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentProductEndUserRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProductEndUserRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the product end-user party
      *
      * @return bool
@@ -3603,6 +3715,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newDescription
     ): static {
         $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the ShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentShipToRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToRoleCode($newRoleCode);
 
         return $this;
     }
@@ -3951,6 +4079,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     }
 
     /**
+     * Get the role code of the UltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentUltimateShipToRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateShipToRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the ultimate Ship-To party
      *
      * @return bool
@@ -4289,6 +4433,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newDescription
     ): static {
         $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the ShipFrom trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentShipFromRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromRoleCode($newRoleCode);
 
         return $this;
     }
@@ -4637,6 +4797,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     }
 
     /**
+     * Get the role code of the Invoicer trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentInvoicerRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoicerRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the Invoicer party
      *
      * @return bool
@@ -4975,6 +5151,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newDescription
     ): static {
         $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the Invoicee trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentInvoiceeRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeRoleCode($newRoleCode);
 
         return $this;
     }
@@ -5323,6 +5515,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     }
 
     /**
+     * Get the role code of the Payee trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentPayeeRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayeeRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the Payee party
      *
      * @return bool
@@ -5661,6 +5869,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newDescription
     ): static {
         $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayerDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the Payer trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentPayerRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayerRoleCode($newRoleCode);
 
         return $this;
     }
@@ -7644,6 +7868,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     }
 
     /**
+     * Get the role code of the PositionShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentPositionShipToRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionShipToRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the Ship-To party
      *
      * @return bool
@@ -7992,6 +8232,22 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newDescription
     ): static {
         $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the PositionUltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentPositionUltimateShipToRoleCode(
+        ?string &$newRoleCode
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToRoleCode($newRoleCode);
 
         return $this;
     }

@@ -348,6 +348,12 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentSellerRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentSellerId());
@@ -533,6 +539,12 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentBuyerRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentBuyerId());
@@ -698,6 +710,12 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentSellerTaxRepresentativeRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentSellerTaxRepresentativeId());
@@ -818,6 +836,12 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
         static::$document->getDocumentBuyerTaxRepresentativeDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentBuyerTaxRepresentativeRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -940,6 +964,12 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentSalesAgentRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentSalesAgentId());
@@ -1060,6 +1090,12 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
         static::$document->getDocumentBuyerAgentDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentBuyerAgentRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -1182,6 +1218,12 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentProductEndUserRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentProductEndUserId());
@@ -1302,6 +1344,12 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
         static::$document->getDocumentShipToDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentShipToRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -1424,6 +1472,12 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentUltimateShipToRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentUltimateShipToId());
@@ -1544,6 +1598,12 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
         static::$document->getDocumentShipFromDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentShipFromRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -1666,6 +1726,12 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentInvoicerRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentInvoicerId());
@@ -1786,6 +1852,12 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
         static::$document->getDocumentInvoiceeDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentInvoiceeRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -1908,6 +1980,12 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentPayeeRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentPayeeId());
@@ -2028,6 +2106,12 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
         static::$document->getDocumentPayerDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentPayerRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -2835,6 +2919,12 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentPositionShipToRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentPositionShipToId());
@@ -2963,6 +3053,12 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
         static::$document->getDocumentPositionUltimateShipToDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentPositionUltimateShipToRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -3231,6 +3327,9 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
         $this->assertInstanceOf(InvoiceSuiteDocumentHeaderDTO::class, $newDocmentDTO);
 
         $this->assertSame('2025-04-000001', $newDocmentDTO?->getNumber());
+
+        $this->assertSame([], $newDocmentDTO?->getSellerParty()?->getRoleCodes());
+        $this->assertSame([], $newDocmentDTO?->getBuyerParty()?->getRoleCodes());
     }
 
     public function testCopyToBuilder(): void

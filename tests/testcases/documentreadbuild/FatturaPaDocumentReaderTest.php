@@ -154,6 +154,12 @@ final class FatturaPaDocumentReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentSellerRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         $this->assertTrue(static::$document->firstDocumentSellerTaxRegistration());
         static::$document->getDocumentSellerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
@@ -202,6 +208,12 @@ final class FatturaPaDocumentReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentBuyerRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         $this->assertTrue(static::$document->firstDocumentBuyerTaxRegistration());
         static::$document->getDocumentBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
@@ -246,6 +258,12 @@ final class FatturaPaDocumentReaderTest extends TestCase
         static::$document->getDocumentSellerTaxRepresentativeDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentSellerTaxRepresentativeRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
         $this->assertTrue(static::$document->firstDocumentSellerTaxRepresentativeTaxRegistration());
 
         static::$document->getDocumentSellerTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
@@ -616,6 +634,7 @@ final class FatturaPaDocumentReaderTest extends TestCase
         $this->assertInstanceOf(InvoiceSuitePartyDTO::class, $sellerParty);
         $this->assertSame('Example Seller S.r.l.', $sellerParty->getNames()[0]);
         $this->assertArrayNotHasKey(0, $sellerParty->getDescriptions());
+        $this->assertSame([], $sellerParty->getRoleCodes());
         $this->assertSame('VA', $sellerParty->getTaxRegistrations()[0]->getIdType());
         $this->assertSame('12345678901', $sellerParty->getTaxRegistrations()[0]->getId());
         $this->assertSame('FC', $sellerParty->getTaxRegistrations()[1]->getIdType());
@@ -642,6 +661,7 @@ final class FatturaPaDocumentReaderTest extends TestCase
         $this->assertInstanceOf(InvoiceSuitePartyDTO::class, $buyerParty);
         $this->assertSame('Example Buyer S.p.A.', $buyerParty->getNames()[0]);
         $this->assertArrayNotHasKey(0, $buyerParty->getDescriptions());
+        $this->assertSame([], $buyerParty->getRoleCodes());
         $this->assertSame('VA', $buyerParty->getTaxRegistrations()[0]->getIdType());
         $this->assertSame('98765432109', $buyerParty->getTaxRegistrations()[0]->getId());
         $this->assertSame('FC', $buyerParty->getTaxRegistrations()[1]->getIdType());
@@ -663,6 +683,7 @@ final class FatturaPaDocumentReaderTest extends TestCase
         $this->assertInstanceOf(InvoiceSuitePartyDTO::class, $sellerTaxRepresentativeParty);
         $this->assertSame('Tax Representative S.r.l.', $sellerTaxRepresentativeParty->getNames()[0]);
         $this->assertArrayNotHasKey(0, $sellerTaxRepresentativeParty->getDescriptions());
+        $this->assertSame([], $sellerTaxRepresentativeParty->getRoleCodes());
         $this->assertSame('VA', $sellerTaxRepresentativeParty->getTaxRegistrations()[0]->getIdType());
         $this->assertSame('11111111111', $sellerTaxRepresentativeParty->getTaxRegistrations()[0]->getId());
 
@@ -1449,6 +1470,12 @@ final class FatturaPaDocumentReaderTest extends TestCase
 
         $this->assertSame('', $documentBuyerTaxRepresentativeDescription);
 
+        // Role code
+
+        static::$document->getDocumentBuyerTaxRepresentativeRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         $this->assertSame(
             static::$document,
             static::$document->getDocumentBuyerTaxRepresentativeId(
@@ -1548,6 +1575,12 @@ final class FatturaPaDocumentReaderTest extends TestCase
         static::$document->getDocumentSalesAgentDescription($documentSalesAgentDescription);
 
         $this->assertSame('', $documentSalesAgentDescription);
+
+        // Role code
+
+        static::$document->getDocumentSalesAgentRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         $this->assertSame(
             static::$document,
@@ -1649,6 +1682,12 @@ final class FatturaPaDocumentReaderTest extends TestCase
 
         $this->assertSame('', $documentBuyerAgentDescription);
 
+        // Role code
+
+        static::$document->getDocumentBuyerAgentRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         $this->assertSame(
             static::$document,
             static::$document->getDocumentBuyerAgentId(
@@ -1748,6 +1787,12 @@ final class FatturaPaDocumentReaderTest extends TestCase
         static::$document->getDocumentProductEndUserDescription($documentProductEndUserDescription);
 
         $this->assertSame('', $documentProductEndUserDescription);
+
+        // Role code
+
+        static::$document->getDocumentProductEndUserRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         $this->assertSame(
             static::$document,
@@ -1849,6 +1894,12 @@ final class FatturaPaDocumentReaderTest extends TestCase
 
         $this->assertSame('', $documentShipToDescription);
 
+        // Role code
+
+        static::$document->getDocumentShipToRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         $this->assertSame(
             static::$document,
             static::$document->getDocumentShipToId(
@@ -1948,6 +1999,12 @@ final class FatturaPaDocumentReaderTest extends TestCase
         static::$document->getDocumentUltimateShipToDescription($documentUltimateShipToDescription);
 
         $this->assertSame('', $documentUltimateShipToDescription);
+
+        // Role code
+
+        static::$document->getDocumentUltimateShipToRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         $this->assertSame(
             static::$document,
@@ -2049,6 +2106,12 @@ final class FatturaPaDocumentReaderTest extends TestCase
 
         $this->assertSame('', $documentShipFromDescription);
 
+        // Role code
+
+        static::$document->getDocumentShipFromRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         $this->assertSame(
             static::$document,
             static::$document->getDocumentShipFromId(
@@ -2148,6 +2211,12 @@ final class FatturaPaDocumentReaderTest extends TestCase
         static::$document->getDocumentInvoicerDescription($documentInvoicerDescription);
 
         $this->assertSame('', $documentInvoicerDescription);
+
+        // Role code
+
+        static::$document->getDocumentInvoicerRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         $this->assertSame(
             static::$document,
@@ -2249,6 +2318,12 @@ final class FatturaPaDocumentReaderTest extends TestCase
 
         $this->assertSame('', $documentInvoiceeDescription);
 
+        // Role code
+
+        static::$document->getDocumentInvoiceeRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         $this->assertSame(
             static::$document,
             static::$document->getDocumentInvoiceeId(
@@ -2349,6 +2424,12 @@ final class FatturaPaDocumentReaderTest extends TestCase
 
         $this->assertSame('', $documentPayeeDescription);
 
+        // Role code
+
+        static::$document->getDocumentPayeeRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         $this->assertSame(
             static::$document,
             static::$document->getDocumentPayeeId(
@@ -2448,6 +2529,12 @@ final class FatturaPaDocumentReaderTest extends TestCase
         static::$document->getDocumentPayerDescription($documentPayerDescription);
 
         $this->assertSame('', $documentPayerDescription);
+
+        // Role code
+
+        static::$document->getDocumentPayerRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         $this->assertSame(
             static::$document,
@@ -2837,6 +2924,12 @@ final class FatturaPaDocumentReaderTest extends TestCase
 
         $this->assertSame('', $documentPositionShipToDescription);
 
+        // Role code
+
+        static::$document->getDocumentPositionShipToRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         $this->assertSame(
             static::$document,
             static::$document->getDocumentPositionShipToId(
@@ -2936,6 +3029,12 @@ final class FatturaPaDocumentReaderTest extends TestCase
         static::$document->getDocumentPositionUltimateShipToDescription($documentPositionUltimateShipToDescription);
 
         $this->assertSame('', $documentPositionUltimateShipToDescription);
+
+        // Role code
+
+        static::$document->getDocumentPositionUltimateShipToRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         $this->assertSame(
             static::$document,

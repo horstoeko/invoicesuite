@@ -336,6 +336,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentSellerDescription($item)
             )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentSellerRoleCode($item)
+            )
             ?->forEachId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->addDocumentSellerId($item->getId())
             )
@@ -389,6 +392,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             )
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentBuyerDescription($item)
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentBuyerRoleCode($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentBuyerId($item->getId())
@@ -444,6 +450,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentSellerTaxRepresentativeDescription($item)
             )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentSellerTaxRepresentativeRoleCode($item)
+            )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentSellerTaxRepresentativeId($item->getId())
             )
@@ -496,6 +505,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             )
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentBuyerTaxRepresentativeDescription($item)
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentBuyerTaxRepresentativeRoleCode($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentBuyerTaxRepresentativeId($item->getId())
@@ -550,6 +562,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentSalesAgentDescription($item)
             )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentSalesAgentRoleCode($item)
+            )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentSalesAgentId($item->getId())
             )
@@ -602,6 +617,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             )
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentBuyerAgentDescription($item)
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentBuyerAgentRoleCode($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentBuyerAgentId($item->getId())
@@ -656,6 +674,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentProductEndUserDescription($item)
             )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentProductEndUserRoleCode($item)
+            )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentProductEndUserId($item->getId())
             )
@@ -708,6 +729,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             )
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentShipToDescription($item)
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentShipToRoleCode($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentShipToId($item->getId())
@@ -762,6 +786,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentUltimateShipToDescription($item)
             )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentUltimateShipToRoleCode($item)
+            )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentUltimateShipToId($item->getId())
             )
@@ -814,6 +841,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             )
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentShipFromDescription($item)
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentShipFromRoleCode($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentShipFromId($item->getId())
@@ -868,6 +898,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentInvoicerDescription($item)
             )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentInvoicerRoleCode($item)
+            )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentInvoicerId($item->getId())
             )
@@ -920,6 +953,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             )
             ?->firstDescription(
                 fn (string $item): static => $this->setDocumentInvoiceeDescription($item)
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentInvoiceeRoleCode($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentInvoiceeId($item->getId())
@@ -977,6 +1013,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 fn (string $item): static => $this->setDocumentPayeeDescription(
                     $item
                 )
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentPayeeRoleCode($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPayeeId(
@@ -1042,6 +1081,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 fn (string $item): static => $this->setDocumentPayerDescription(
                     $item
                 )
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentPayerRoleCode($item)
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPayerId(
@@ -1444,6 +1486,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                     ?->firstDescription(
                         fn (string $item): static => $this->setDocumentPositionShipToDescription($item)
                     )
+                    ?->firstRoleCode(
+                        fn (string $item): static => $this->setDocumentPositionShipToRoleCode($item)
+                    )
                     ?->firstId(
                         fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPositionShipToId($item->getId())
                     )
@@ -1495,6 +1540,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                     )
                     ?->firstDescription(
                         fn (string $item): static => $this->setDocumentPositionUltimateShipToDescription($item)
+                    )
+                    ?->firstRoleCode(
+                        fn (string $item): static => $this->setDocumentPositionUltimateShipToRoleCode($item)
                     )
                     ?->firstId(
                         fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPositionUltimateShipToId($item->getId())
@@ -3395,6 +3443,71 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
+     * Set the role code of the Seller trade party.
+     *
+     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentSellerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getSellerTradeParty()
+            ?->unsetRoleCode();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getSellerTradePartyWithCreate()
+            ->getRoleCodeWithCreate()
+            ->setValue($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Seller trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentSellerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentSellerRoleCode($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the seller/supplier party
      *
      * @param  null|string $newId __BT-29, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
@@ -4137,6 +4250,71 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
+     * Set the role code of the Buyer trade party.
+     *
+     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentBuyerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getBuyerTradeParty()
+            ?->unsetRoleCode();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getBuyerTradePartyWithCreate()
+            ->getRoleCodeWithCreate()
+            ->setValue($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Buyer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentBuyerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentBuyerRoleCode($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the buyer/customer party
      *
      * @param  null|string $newId __BT-46, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
@@ -4829,8 +5007,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -4847,7 +5023,70 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the SellerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentSellerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getSellerTaxRepresentativeTradeParty()
+            ?->unsetRoleCode();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getSellerTaxRepresentativeTradePartyWithCreate()
+            ->getRoleCodeWithCreate()
+            ->setValue($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the SellerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentSellerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentSellerTaxRepresentativeRoleCode($newRoleCode);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5538,8 +5777,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5556,7 +5793,70 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the BuyerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentBuyerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getBuyerTaxRepresentativeTradeParty()
+            ?->unsetRoleCode();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getBuyerTaxRepresentativeTradePartyWithCreate()
+            ->getRoleCodeWithCreate()
+            ->setValue($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the BuyerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentBuyerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentBuyerTaxRepresentativeRoleCode($newRoleCode);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6247,8 +6547,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6265,7 +6563,70 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the SalesAgent trade party.
+     *
+     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentSalesAgentRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getSalesAgentTradeParty()
+            ?->unsetRoleCode();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getSalesAgentTradePartyWithCreate()
+            ->getRoleCodeWithCreate()
+            ->setValue($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the SalesAgent trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentSalesAgentRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentSalesAgentRoleCode($newRoleCode);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6956,8 +7317,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -6974,7 +7333,70 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the BuyerAgent trade party.
+     *
+     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentBuyerAgentRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getBuyerAgentTradeParty()
+            ?->unsetRoleCode();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getBuyerAgentTradePartyWithCreate()
+            ->getRoleCodeWithCreate()
+            ->setValue($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the BuyerAgent trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentBuyerAgentRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentBuyerAgentRoleCode($newRoleCode);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7665,8 +8087,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7683,7 +8103,70 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the ProductEndUser trade party.
+     *
+     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentProductEndUserRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeAgreement()
+            ?->getProductEndUserTradeParty()
+            ?->unsetRoleCode();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getProductEndUserTradePartyWithCreate()
+            ->getRoleCodeWithCreate()
+            ->setValue($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the ProductEndUser trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentProductEndUserRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentProductEndUserRoleCode($newRoleCode);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -8374,8 +8857,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -8392,7 +8873,70 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the ShipTo trade party.
+     *
+     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeDelivery()
+            ?->getShipToTradeParty()
+            ?->unsetRoleCode();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getShipToTradePartyWithCreate()
+            ->getRoleCodeWithCreate()
+            ->setValue($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the ShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentShipToRoleCode($newRoleCode);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -9083,8 +9627,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -9101,7 +9643,70 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the UltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentUltimateShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeDelivery()
+            ?->getUltimateShipToTradeParty()
+            ?->unsetRoleCode();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getUltimateShipToTradePartyWithCreate()
+            ->getRoleCodeWithCreate()
+            ->setValue($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the UltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentUltimateShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentUltimateShipToRoleCode($newRoleCode);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -9792,8 +10397,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -9810,7 +10413,70 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the ShipFrom trade party.
+     *
+     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentShipFromRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeDelivery()
+            ?->getShipFromTradeParty()
+            ?->unsetRoleCode();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getShipFromTradePartyWithCreate()
+            ->getRoleCodeWithCreate()
+            ->setValue($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the ShipFrom trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentShipFromRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentShipFromRoleCode($newRoleCode);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -10501,8 +11167,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10519,7 +11183,70 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the Invoicer trade party.
+     *
+     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentInvoicerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getInvoicerTradeParty()
+            ?->unsetRoleCode();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getInvoicerTradePartyWithCreate()
+            ->getRoleCodeWithCreate()
+            ->setValue($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Invoicer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentInvoicerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentInvoicerRoleCode($newRoleCode);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -11210,8 +11937,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -11228,7 +11953,70 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the Invoicee trade party.
+     *
+     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentInvoiceeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getInvoiceeTradeParty()
+            ?->unsetRoleCode();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getInvoiceeTradePartyWithCreate()
+            ->getRoleCodeWithCreate()
+            ->setValue($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Invoicee trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentInvoiceeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentInvoiceeRoleCode($newRoleCode);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -11919,8 +12707,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -11937,7 +12723,72 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the Payee trade party.
+     *
+     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentPayeeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getPayeeTradeParty()
+            ?->unsetRoleCode();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayeeTradePartyWithCreate()
+            ->getRoleCodeWithCreate()
+            ->setValue($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Payee trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentPayeeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentPayeeRoleCode($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
 
         return $this;
     }
@@ -12621,8 +13472,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -12639,7 +13488,70 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the Payer trade party.
+     *
+     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentPayerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getPayerTradeParty()
+            ?->unsetRoleCode();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayerTradePartyWithCreate()
+            ->getRoleCodeWithCreate()
+            ->setValue($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Payer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentPayerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentPayerRoleCode($newRoleCode);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -16944,8 +17856,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -16962,7 +17872,72 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the PositionShipTo trade party.
+     *
+     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentPositionShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getLatestIncludedSupplyChainTradeLineItem()
+            ?->getSpecifiedLineTradeDelivery()
+            ?->getShipToTradeParty()
+            ?->unsetRoleCode();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
+            ->getSpecifiedLineTradeDeliveryWithCreate()
+            ->getShipToTradePartyWithCreate()
+            ->getRoleCodeWithCreate()
+            ->setValue($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the PositionShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentPositionShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentPositionShipToRoleCode($newRoleCode);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -17653,8 +18628,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
-
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -17671,7 +18644,72 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Not supported
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the PositionUltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentPositionUltimateShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getLatestIncludedSupplyChainTradeLineItem()
+            ?->getSpecifiedLineTradeDelivery()
+            ?->getUltimateShipToTradeParty()
+            ?->unsetRoleCode();
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
+            ->getSpecifiedLineTradeDeliveryWithCreate()
+            ->getUltimateShipToTradePartyWithCreate()
+            ->getRoleCodeWithCreate()
+            ->setValue($newRoleCode);
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the PositionUltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentPositionUltimateShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newRoleCode)');
+        }
+
+        $this->setDocumentPositionUltimateShipToRoleCode($newRoleCode);
 
         $this->traceMethodExit(__METHOD__);
 

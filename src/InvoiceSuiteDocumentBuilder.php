@@ -1043,6 +1043,34 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set the role code of the Seller trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentSellerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentSellerRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Seller trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentSellerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentSellerRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the seller/supplier party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -1350,6 +1378,34 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newDescription = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the Buyer trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentBuyerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Buyer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentBuyerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerRoleCode($newRoleCode);
 
         return $this;
     }
@@ -1667,6 +1723,34 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set the role code of the SellerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentSellerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentSellerTaxRepresentativeRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the SellerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentSellerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentSellerTaxRepresentativeRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the seller's tax representative party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -1974,6 +2058,34 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newDescription = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerTaxRepresentativeDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the BuyerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentBuyerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerTaxRepresentativeRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the BuyerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentBuyerTaxRepresentativeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerTaxRepresentativeRoleCode($newRoleCode);
 
         return $this;
     }
@@ -2291,6 +2403,34 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set the role code of the SalesAgent trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentSalesAgentRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentSalesAgentRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the SalesAgent trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentSalesAgentRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentSalesAgentRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the sales agent party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -2598,6 +2738,34 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newDescription = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerAgentDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the BuyerAgent trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentBuyerAgentRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerAgentRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the BuyerAgent trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentBuyerAgentRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerAgentRoleCode($newRoleCode);
 
         return $this;
     }
@@ -2915,6 +3083,34 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set the role code of the ProductEndUser trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentProductEndUserRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentProductEndUserRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the ProductEndUser trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentProductEndUserRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentProductEndUserRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the product end-user party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -3222,6 +3418,34 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newDescription = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipToDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the ShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipToRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the ShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipToRoleCode($newRoleCode);
 
         return $this;
     }
@@ -3539,6 +3763,34 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set the role code of the UltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentUltimateShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentUltimateShipToRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the UltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentUltimateShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentUltimateShipToRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the ultimate Ship-To party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -3846,6 +4098,34 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newDescription = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipFromDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the ShipFrom trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentShipFromRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipFromRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the ShipFrom trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentShipFromRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipFromRoleCode($newRoleCode);
 
         return $this;
     }
@@ -4163,6 +4443,34 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set the role code of the Invoicer trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentInvoicerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoicerRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Invoicer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentInvoicerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoicerRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Invoicer party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -4470,6 +4778,34 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newDescription = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoiceeDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the Invoicee trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentInvoiceeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoiceeRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Invoicee trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentInvoiceeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoiceeRoleCode($newRoleCode);
 
         return $this;
     }
@@ -4787,6 +5123,34 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set the role code of the Payee trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentPayeeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPayeeRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Payee trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentPayeeRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPayeeRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Payee party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -5094,6 +5458,34 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newDescription = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPayerDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the Payer trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentPayerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPayerRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the Payer trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentPayerRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPayerRoleCode($newRoleCode);
 
         return $this;
     }
@@ -7254,6 +7646,34 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     }
 
     /**
+     * Set the role code of the PositionShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentPositionShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionShipToRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the PositionShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentPositionShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionShipToRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Ship-To party
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
@@ -7623,6 +8043,34 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newDescription = null
     ): static {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToDescription($newDescription);
+
+        return $this;
+    }
+
+    /**
+     * Set the role code of the PositionUltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     */
+    public function setDocumentPositionUltimateShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToRoleCode($newRoleCode);
+
+        return $this;
+    }
+
+    /**
+     * Add the role code of the PositionUltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode Party role code (UNTDID 3035)
+     * @return static
+     */
+    public function addDocumentPositionUltimateShipToRoleCode(
+        ?string $newRoleCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToRoleCode($newRoleCode);
 
         return $this;
     }
