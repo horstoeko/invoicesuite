@@ -535,14 +535,6 @@ final class FatturaPaDocumentBuilderTest extends TestCase
     {
         static::$document->setDocumentSellerName('First Seller S.r.l.');
         static::$document->addDocumentSellerName('Final Seller S.r.l.');
-
-        $this->assertXmlWasNotChanged(static function (): void {
-            static::$document->setDocumentSellerDescription('First Seller S.r.l.');
-        });
-
-        $this->assertXmlWasNotChanged(static function (): void {
-            static::$document->addDocumentSellerDescription('Final Seller S.r.l.');
-        });
         static::$document->setDocumentSellerAddress('Via Roma 1', 'Ignored line 2', 'Ignored line 3', '00100', 'Roma', 'IT', 'RM');
         static::$document->addDocumentSellerAddress('Via Torino 2', 'Ignored line 2', 'Ignored line 3', '10100', 'Torino', 'IT', 'TO');
         static::$document->setDocumentSellerContact('Ignored person', 'Ignored department', '01111111', '01222222', 'first@example.it');
@@ -558,20 +550,20 @@ final class FatturaPaDocumentBuilderTest extends TestCase
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaHeader/CedentePrestatore/Contatti/Fax', '01444444');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaHeader/CedentePrestatore/Contatti/Email', 'final@example.it');
         $this->assertXPathNotExists('/p:FatturaElettronica/FatturaElettronicaHeader/CedentePrestatore/Sede/Indirizzo2');
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentSellerDescription('First Seller S.r.l.');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentSellerDescription('Final Seller S.r.l.');
+        });
     }
 
     public function testAddDocumentBuyerMethodsUpdateTheSupportedSingleXmlBlocks(): void
     {
         static::$document->setDocumentBuyerName('First Buyer S.p.A.');
         static::$document->addDocumentBuyerName('Final Buyer S.p.A.');
-
-        $this->assertXmlWasNotChanged(static function (): void {
-            static::$document->setDocumentBuyerDescription('First Buyer S.p.A.');
-        });
-
-        $this->assertXmlWasNotChanged(static function (): void {
-            static::$document->addDocumentBuyerDescription('Final Buyer S.p.A.');
-        });
         static::$document->setDocumentBuyerAddress('Via Milano 1', 'Ignored line 2', 'Ignored line 3', '20100', 'Milano', 'IT', 'MI');
         static::$document->addDocumentBuyerAddress('Via Bologna 2', 'Ignored line 2', 'Ignored line 3', '40100', 'Bologna', 'IT', 'BO');
 
@@ -582,6 +574,14 @@ final class FatturaPaDocumentBuilderTest extends TestCase
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaHeader/CessionarioCommittente/Sede/Provincia', 'BO');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaHeader/CessionarioCommittente/Sede/Nazione', 'IT');
         $this->assertXPathNotExists('/p:FatturaElettronica/FatturaElettronicaHeader/CessionarioCommittente/Sede/Indirizzo2');
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerDescription('First Buyer S.p.A.');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentBuyerDescription('Final Buyer S.p.A.');
+        });
     }
 
     public function testDocumentSellerTaxRepresentativeMethodsWriteAllSupportedXmlPaths(): void
