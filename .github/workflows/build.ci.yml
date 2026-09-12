@@ -10,6 +10,7 @@ on:
       - "**.md"
       - ".github/**"
       - ".vscode/**"
+      - "assets/**"
       - "examples/**"
       - "make/**"
   pull_request:
