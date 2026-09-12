@@ -21,9 +21,7 @@
 - [Documentation](#documentation)
 
 <!-- omit in toc -->
-## No AI
-
-![No AI](assets/noai.png)
+## AI
 
 InvoiceSuite deals with electronic invoicing and implements specifications, business rules, validation rules, and data structures that may have **legal, regulatory, accounting, and tax-related implications**.
 
