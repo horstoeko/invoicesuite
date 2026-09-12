@@ -771,6 +771,14 @@ final class FatturaPaProviderBuilderTest extends TestCase
         });
 
         $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerTaxRepresentativeRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentBuyerTaxRepresentativeRoleCode('DL');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
             static::$document->setDocumentBuyerTaxRepresentativeId('Test value');
         });
 
@@ -840,6 +848,14 @@ final class FatturaPaProviderBuilderTest extends TestCase
 
         $this->assertXmlWasNotChanged(static function (): void {
             static::$document->addDocumentSalesAgentDescription('Test value');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentSalesAgentRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentSalesAgentRoleCode('DL');
         });
 
         $this->assertXmlWasNotChanged(static function (): void {
@@ -915,6 +931,14 @@ final class FatturaPaProviderBuilderTest extends TestCase
         });
 
         $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerAgentRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentBuyerAgentRoleCode('DL');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
             static::$document->setDocumentBuyerAgentId('Test value');
         });
 
@@ -984,6 +1008,14 @@ final class FatturaPaProviderBuilderTest extends TestCase
 
         $this->assertXmlWasNotChanged(static function (): void {
             static::$document->addDocumentProductEndUserDescription('Test value');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentProductEndUserRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentProductEndUserRoleCode('DL');
         });
 
         $this->assertXmlWasNotChanged(static function (): void {
@@ -1059,6 +1091,14 @@ final class FatturaPaProviderBuilderTest extends TestCase
         });
 
         $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentShipToRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentShipToRoleCode('DL');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
             static::$document->setDocumentShipToId('Test value');
         });
 
@@ -1128,6 +1168,14 @@ final class FatturaPaProviderBuilderTest extends TestCase
 
         $this->assertXmlWasNotChanged(static function (): void {
             static::$document->addDocumentUltimateShipToDescription('Test value');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentUltimateShipToRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentUltimateShipToRoleCode('DL');
         });
 
         $this->assertXmlWasNotChanged(static function (): void {
@@ -1203,6 +1251,14 @@ final class FatturaPaProviderBuilderTest extends TestCase
         });
 
         $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentShipFromRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentShipFromRoleCode('DL');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
             static::$document->setDocumentShipFromId('Test value');
         });
 
@@ -1272,6 +1328,14 @@ final class FatturaPaProviderBuilderTest extends TestCase
 
         $this->assertXmlWasNotChanged(static function (): void {
             static::$document->addDocumentInvoicerDescription('Test value');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentInvoicerRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentInvoicerRoleCode('DL');
         });
 
         $this->assertXmlWasNotChanged(static function (): void {
@@ -1347,6 +1411,14 @@ final class FatturaPaProviderBuilderTest extends TestCase
         });
 
         $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentInvoiceeRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentInvoiceeRoleCode('DL');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
             static::$document->setDocumentInvoiceeId('Test value');
         });
 
@@ -1419,6 +1491,14 @@ final class FatturaPaProviderBuilderTest extends TestCase
         });
 
         $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPayeeRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentPayeeRoleCode('DL');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
             static::$document->setDocumentPayeeId('Test value');
         });
 
@@ -1488,6 +1568,14 @@ final class FatturaPaProviderBuilderTest extends TestCase
 
         $this->assertXmlWasNotChanged(static function (): void {
             static::$document->addDocumentPayerDescription('Test value');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPayerRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentPayerRoleCode('DL');
         });
 
         $this->assertXmlWasNotChanged(static function (): void {
@@ -1723,6 +1811,14 @@ final class FatturaPaProviderBuilderTest extends TestCase
         });
 
         $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPositionShipToRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentPositionShipToRoleCode('DL');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
             static::$document->setDocumentPositionShipToId('Test value');
         });
 
@@ -1795,6 +1891,14 @@ final class FatturaPaProviderBuilderTest extends TestCase
         });
 
         $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentPositionUltimateShipToRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentPositionUltimateShipToRoleCode('DL');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
             static::$document->setDocumentPositionUltimateShipToId('Test value');
         });
 
@@ -1861,6 +1965,30 @@ final class FatturaPaProviderBuilderTest extends TestCase
         $this->assertXmlWasNotChanged(static function (): void {
             static::$document->addDocumentPositionPostingReference('Test value', 'Test value');
         });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentSellerRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentSellerRoleCode('DL');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentBuyerRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentBuyerRoleCode('DL');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentSellerTaxRepresentativeRoleCode('DS');
+        });
+
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->addDocumentSellerTaxRepresentativeRoleCode('DL');
+        });
     }
 
     public function testCreateFromDTOBuildsEverySupportedFatturaPaXmlPath(): void
@@ -1868,6 +1996,8 @@ final class FatturaPaProviderBuilderTest extends TestCase
         $sellerParty = (new InvoiceSuitePartyDTO())
             ->addName('DTO Seller S.r.l.')
             ->addDescription('DTO Seller S.r.l. Description')
+            ->addRoleCode('DS')
+            ->addRoleCode('DL')
             ->addTaxRegistration(new InvoiceSuiteIdDTO('12345678901', 'VA'))
             ->addTaxRegistration(new InvoiceSuiteIdDTO('SELLERFISCAL01', 'FC'))
             ->addAddress(new InvoiceSuiteAddressDTO('Via Roma 1', null, null, '00100', 'Roma', 'IT', 'RM'));
@@ -1875,6 +2005,8 @@ final class FatturaPaProviderBuilderTest extends TestCase
         $buyerParty = (new InvoiceSuitePartyDTO())
             ->addName('DTO Buyer S.p.A.')
             ->addDescription('DTO Buyer S.p.A. Description')
+            ->addRoleCode('DS')
+            ->addRoleCode('DL')
             ->addTaxRegistration(new InvoiceSuiteIdDTO('98765432109', 'VA'))
             ->addAddress(new InvoiceSuiteAddressDTO('Via Milano 2', null, null, '20100', 'Milano', 'IT', 'MI'))
             ->addCommunication(new InvoiceSuiteCommunicationDTO('ABC1234', 'CODICE_DESTINATARIO'));
@@ -1975,5 +2107,7 @@ final class FatturaPaProviderBuilderTest extends TestCase
         $validator = InvoiceSuiteXsdDocumentValidator::createFromContent(static::$document->getContent())->validate();
 
         $this->assertFalse($validator->hasMessagesInMessageBag());
+
+        $this->assertXPathNotExists('/p:FatturaElettronica//RoleCode');
     }
 }

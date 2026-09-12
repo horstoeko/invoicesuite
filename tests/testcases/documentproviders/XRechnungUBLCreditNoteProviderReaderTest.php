@@ -413,6 +413,12 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
 
         $this->assertSame('Lieferant GmbH Description', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentSellerRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertTrue(static::$document->firstDocumentSellerId());
@@ -591,6 +597,12 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentBuyerRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertTrue(static::$document->firstDocumentBuyerId());
@@ -743,6 +755,12 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
         static::$document->getDocumentSellerTaxRepresentativeDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentSellerTaxRepresentativeRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -909,6 +927,12 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentBuyerTaxRepresentativeRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentBuyerTaxRepresentativeId());
@@ -1029,6 +1053,12 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
         static::$document->getDocumentSalesAgentDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentSalesAgentRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -1151,6 +1181,12 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentBuyerAgentRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentBuyerAgentId());
@@ -1272,6 +1308,12 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentProductEndUserRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentProductEndUserId());
@@ -1392,6 +1434,12 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
         static::$document->getDocumentShipToDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentShipToRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -1554,6 +1602,12 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentUltimateShipToRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentUltimateShipToId());
@@ -1674,6 +1728,12 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
         static::$document->getDocumentShipFromDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentShipFromRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -1796,6 +1856,12 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentInvoicerRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentInvoicerId());
@@ -1916,6 +1982,12 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
         static::$document->getDocumentInvoiceeDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentInvoiceeRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -2038,6 +2110,12 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentPayeeRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertTrue(static::$document->firstDocumentPayeeId());
@@ -2145,6 +2223,12 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
         static::$document->getDocumentPayerDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentPayerRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
@@ -3161,6 +3245,12 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
 
         $this->assertSame('', $newDescription);
 
+        // Role code
+
+        static::$document->getDocumentPositionShipToRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
+
         // ID
 
         $this->assertFalse(static::$document->firstDocumentPositionShipToId());
@@ -3289,6 +3379,12 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
         static::$document->getDocumentPositionUltimateShipToDescription($newDescription);
 
         $this->assertSame('', $newDescription);
+
+        // Role code
+
+        static::$document->getDocumentPositionUltimateShipToRoleCode($newRoleCode);
+
+        $this->assertSame('', $newRoleCode);
 
         // ID
 
