@@ -149,21 +149,15 @@ jobs:
             tests/assets/00_case_xrechnung_ublcreditnote_simple.xml \
             tests/assets/00_case_xrechnung_ublcreditnote_simple_dto.xml
           do
-            curlExitCode=0
-
-            kositValidationResult=$(curl \
+            if ! kositValidationResult=$(curl \
               --silent \
               --show-error \
               --header 'Content-Type: application/xml' \
               --data-binary "@$invoiceXmlFilename" \
               --max-time 120 \
               --write-out $'\n%{http_code}' \
-              "http://$KOSIT_REMOTE_HOST:$KOSIT_REMOTE_PORT/${invoiceXmlFilename##*/}"
-            ) || curlExitCode=$?
-
-            printf '%s validation response for %s:\n%s\n' "KoSIT" "$invoiceXmlFilename" "$kositValidationResult"
-
-            if [ "$curlExitCode" -ne 0 ]; then
+              "http://$KOSIT_REMOTE_HOST:$KOSIT_REMOTE_PORT/${invoiceXmlFilename##*/}")
+            then
               echo "KoSIT validation request failed for $invoiceXmlFilename." >&2
               exit 1
             fi
@@ -185,21 +179,15 @@ jobs:
 
           for invalidInvoiceXmlFilename in tests/assets/*technical*.xml
           do
-            curlExitCode=0
-
-            kositValidationResult=$(curl \
+            if ! kositValidationResult=$(curl \
               --silent \
               --show-error \
               --header 'Content-Type: application/xml' \
               --data-binary "@$invalidInvoiceXmlFilename" \
               --max-time 120 \
               --write-out $'\n%{http_code}' \
-              "http://$KOSIT_REMOTE_HOST:$KOSIT_REMOTE_PORT/${invalidInvoiceXmlFilename##*/}"
-            ) || curlExitCode=$?
-
-            printf '%s validation response for %s:\n%s\n' "KoSIT" "$invalidInvoiceXmlFilename" "$kositValidationResult"
-
-            if [ "$curlExitCode" -ne 0 ]; then
+              "http://$KOSIT_REMOTE_HOST:$KOSIT_REMOTE_PORT/${invalidInvoiceXmlFilename##*/}")
+            then
               echo "KoSIT validation request failed for $invalidInvoiceXmlFilename." >&2
               exit 1
             fi
@@ -223,21 +211,15 @@ jobs:
             tests/assets/00_case_comfort_simple.pdf \
             tests/assets/00_case_extended_simple.pdf
           do
-            curlExitCode=0
-
-            veraPdfValidationResult=$(curl \
+            if ! veraPdfValidationResult=$(curl \
               --silent \
               --show-error \
               --header 'Accept: application/xml' \
               --form "file=@$pdfFilename;type=application/pdf" \
               --max-time 120 \
               --write-out $'\n%{http_code}' \
-              "http://$VERAPDF_REMOTE_HOST:$VERAPDF_REMOTE_PORT/api/validate/3b"
-            ) || curlExitCode=$?
-
-            printf '%s validation response for %s:\n%s\n' "veraPDF" "$pdfFilename" "$veraPdfValidationResult"
-
-            if [ "$curlExitCode" -ne 0 ]; then
+              "http://$VERAPDF_REMOTE_HOST:$VERAPDF_REMOTE_PORT/api/validate/3b")
+            then
               echo "veraPDF validation request failed for $pdfFilename." >&2
               exit 1
             fi
@@ -263,21 +245,15 @@ jobs:
             invalidPdfFilename="${validationCase%%|*}"
             expectedResultAnchor="${validationCase#*|}"
 
-            curlExitCode=0
-
-            veraPdfValidationResult=$(curl \
+            if ! veraPdfValidationResult=$(curl \
               --silent \
               --show-error \
               --header 'Accept: application/xml' \
               --form "file=@$invalidPdfFilename;type=application/pdf" \
               --max-time 120 \
               --write-out $'\n%{http_code}' \
-              "http://$VERAPDF_REMOTE_HOST:$VERAPDF_REMOTE_PORT/api/validate/3b"
-            ) || curlExitCode=$?
-
-            printf '%s validation response for %s:\n%s\n' "veraPDF" "$invalidPdfFilename" "$veraPdfValidationResult"
-
-            if [ "$curlExitCode" -ne 0 ]; then
+              "http://$VERAPDF_REMOTE_HOST:$VERAPDF_REMOTE_PORT/api/validate/3b")
+            then
               echo "veraPDF validation request failed for $invalidPdfFilename." >&2
               exit 1
             fi
