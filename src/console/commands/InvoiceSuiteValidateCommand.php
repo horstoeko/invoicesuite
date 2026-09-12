@@ -18,9 +18,9 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteInternalMethodCallException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteValidationContentNotSpecifiedException;
+use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentReader;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
-use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\validators\abstracts\InvoiceSuiteAbstractDocumentValidator;
 use horstoeko\invoicesuite\validators\InvoiceSuiteDocuflairDocumentValidator;
@@ -106,7 +106,7 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
         if ($this->isPdfFile($inpArgFilename)) {
             $documentContent = InvoiceSuitePdfDocumentReader::createFromFile($inpArgFilename)->getDocumentReader()->getOriginalDocumentContent();
         } elseif ($this->isXmlOrJsonFile($inpArgFilename)) {
-            $documentContent = InvoiceSuiteFileUtils::getContentFromFile($inpArgFilename);
+            $documentContent = InvoiceSuiteDocumentReader::createFromFile($inpArgFilename)->getOriginalDocumentContent();
         } else {
             throw new InvoiceSuiteInvalidArgumentException(InvoiceSuiteStringUtils::sprintf('The given File must be a XML-, JSON oder PDF-File'));
         }
