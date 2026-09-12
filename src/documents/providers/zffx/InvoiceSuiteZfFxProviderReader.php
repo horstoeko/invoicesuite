@@ -4791,7 +4791,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the role code of the Seller trade party.
      *
-     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @param  null|string $newRoleCode __BT-X-543, From EXTENDED__ Party role code (UNTDID 3035)
      * @return static
      *
      * @param-out string $newRoleCode
@@ -5473,7 +5473,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the role code of the Buyer trade party.
      *
-     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @param  null|string $newRoleCode __BT-X-544, From EXTENDED__ Party role code (UNTDID 3035)
      * @return static
      *
      * @param-out string $newRoleCode
@@ -6149,7 +6149,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the role code of the SellerTaxRepresentative trade party.
      *
-     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @param  null|string $newRoleCode __BT-X-547, From EXTENDED__ Party role code (UNTDID 3035)
      * @return static
      *
      * @param-out string $newRoleCode
@@ -6814,7 +6814,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the role code of the BuyerTaxRepresentative trade party.
      *
-     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @param  null|string $newRoleCode __BT-X-546, From EXTENDED__ Party role code (UNTDID 3035)
      * @return static
      *
      * @param-out string $newRoleCode
@@ -7479,7 +7479,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the role code of the SalesAgent trade party.
      *
-     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @param  null|string $newRoleCode __BT-X-545, From EXTENDED__ Party role code (UNTDID 3035)
      * @return static
      *
      * @param-out string $newRoleCode
@@ -8144,7 +8144,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the role code of the BuyerAgent trade party.
      *
-     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @param  null|string $newRoleCode __BT-X-549, From EXTENDED__ Party role code (UNTDID 3035)
      * @return static
      *
      * @param-out string $newRoleCode
@@ -8809,7 +8809,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the role code of the ProductEndUser trade party.
      *
-     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @param  null|string $newRoleCode __BT-X-548, From EXTENDED__ Party role code (UNTDID 3035)
      * @return static
      *
      * @param-out string $newRoleCode
@@ -9474,7 +9474,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the role code of the ShipTo trade party.
      *
-     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @param  null|string $newRoleCode __BT-X-550, From EXTENDED__ Party role code (UNTDID 3035)
      * @return static
      *
      * @param-out string $newRoleCode
@@ -10139,7 +10139,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the role code of the UltimateShipTo trade party.
      *
-     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @param  null|string $newRoleCode __BT-X-551, From EXTENDED__ Party role code (UNTDID 3035)
      * @return static
      *
      * @param-out string $newRoleCode
@@ -10804,7 +10804,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the role code of the ShipFrom trade party.
      *
-     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @param  null|string $newRoleCode __BT-X-552, From EXTENDED__ Party role code (UNTDID 3035)
      * @return static
      *
      * @param-out string $newRoleCode
@@ -11469,7 +11469,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the role code of the Invoicer trade party.
      *
-     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @param  null|string $newRoleCode __BT-X-553, From EXTENDED__ Party role code (UNTDID 3035)
      * @return static
      *
      * @param-out string $newRoleCode
@@ -12134,7 +12134,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the role code of the Invoicee trade party.
      *
-     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @param  null|string $newRoleCode __BT-X-554, From EXTENDED__ Party role code (UNTDID 3035)
      * @return static
      *
      * @param-out string $newRoleCode
@@ -12799,7 +12799,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the role code of the Payee trade party.
      *
-     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @param  null|string $newRoleCode __BT-X-468, From EXTENDED__ Party role code (UNTDID 3035)
      * @return static
      *
      * @param-out string $newRoleCode
@@ -13464,7 +13464,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the role code of the Payer trade party.
      *
-     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @param  null|string $newRoleCode __BT-X-483, From EXTENDED__ Party role code (UNTDID 3035)
      * @return static
      *
      * @param-out string $newRoleCode
@@ -17064,7 +17064,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the role code of the PositionShipTo trade party.
      *
-     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @param  null|string $newRoleCode __BT-X-541, From EXTENDED__ Party role code (UNTDID 3035)
      * @return static
      *
      * @param-out string $newRoleCode
@@ -17731,7 +17731,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the role code of the PositionUltimateShipTo trade party.
      *
-     * @param  null|string $newRoleCode __From EXTENDED__ Party role code (UNTDID 3035)
+     * @param  null|string $newRoleCode __BT-X-542, From EXTENDED__ Party role code (UNTDID 3035)
      * @return static
      *
      * @param-out string $newRoleCode
