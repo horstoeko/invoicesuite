@@ -13,11 +13,9 @@ namespace horstoeko\invoicesuite\console\commands;
 
 use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
-use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use RuntimeException;
-use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Exception\InvalidArgumentException as ConsoleInvalidArgumentException;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -38,7 +36,7 @@ class InvoiceSuiteListProvidersCommand extends InvoiceSuiteAbstractCommand
      *
      * @return void
      *
-     * @throws InvalidArgumentException
+     * @throws ConsoleInvalidArgumentException
      */
     protected function configure(): void
     {
@@ -58,10 +56,6 @@ class InvoiceSuiteListProvidersCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handle(): int
     {
-        if ($this->hasOptionValue('discovery-namespace')) {
-            InvoiceSuiteSettings::setDiscoveryNamespaces($this->getStringArrayOption('discovery-namespace'));
-        }
-
         $this->resolveAvailableDocumentFormatProviders();
 
         $jsonRowsToOutput = InvoiceSuiteArrayUtils::map(

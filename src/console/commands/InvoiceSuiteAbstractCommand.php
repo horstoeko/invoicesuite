@@ -14,6 +14,7 @@ namespace horstoeko\invoicesuite\console\commands;
 use finfo;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
+use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
@@ -54,6 +55,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @param  InputInterface  $input
      * @param  OutputInterface $output
      * @return int
+     *
+     * @throws ConsoleInvalidArgumentException
+     * @throws RuntimeException
      */
     protected function execute(
         InputInterface $input,
@@ -62,7 +66,7 @@ abstract class InvoiceSuiteAbstractCommand extends Command
         $this->input = $input;
         $this->output = $output;
 
-        return $this->handle();
+        return $this->initializeInvoiceSuiteSettings()->handle();
     }
 
     /**
@@ -960,6 +964,27 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     ): static {
         if (!$this->isXmlOrJsonFile($filename)) {
             throw new RuntimeException(InvoiceSuiteStringUtils::sprintf('Input file "%s" is not a XML or JSON file.', $filename));
+        }
+
+        return $this;
+    }
+
+    /**
+     * Initialize InvoiceSuite Settings from options/arguments
+     *
+     * @return static
+     *
+     * @throws ConsoleInvalidArgumentException
+     * @throws RuntimeException
+     */
+    protected function initializeInvoiceSuiteSettings(): static
+    {
+        if ($this->hasOptionValue('discovery-namespace')) {
+            InvoiceSuiteSettings::setDiscoveryNamespaces($this->getStringArrayOption('discovery-namespace'));
+        }
+
+        if ($this->hasOptionValue('cache-directory')) {
+            InvoiceSuiteSettings::setSerializerCacheDirectory($this->getStringOption('cache-directory'));
         }
 
         return $this;

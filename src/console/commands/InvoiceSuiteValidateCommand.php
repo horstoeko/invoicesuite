@@ -16,7 +16,6 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteValidationContentNotSpecifiedException;
-use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\validators\abstracts\InvoiceSuiteAbstractDocumentValidator;
@@ -24,7 +23,6 @@ use horstoeko\invoicesuite\validators\InvoiceSuiteDocuflairDocumentValidator;
 use horstoeko\invoicesuite\validators\InvoiceSuiteKositDocumentValidator;
 use horstoeko\invoicesuite\validators\InvoiceSuiteXsdDocumentValidator;
 use RuntimeException;
-use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Exception\InvalidArgumentException as ConsoleInvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
@@ -53,7 +51,7 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
      *
      * @return void
      *
-     * @throws InvalidArgumentException
+     * @throws ConsoleInvalidArgumentException
      */
     protected function configure(): void
     {
@@ -78,7 +76,7 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
      *
      * @return int
      *
-     * @throws InvalidArgumentException
+     * @throws ConsoleInvalidArgumentException
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
@@ -90,10 +88,6 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handle(): int
     {
-        if ($this->hasOptionValue('discovery-namespace')) {
-            InvoiceSuiteSettings::setDiscoveryNamespaces($this->getStringArrayOption('discovery-namespace'));
-        }
-
         $inpArgFilename = $this->getSourceXmlOrJsonFileArgument('input-file');
         $inpOptionValidator = $this->getStringOption('validator', 'all');
 
@@ -126,7 +120,7 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
      * @param  string $filename
      * @return bool
      *
-     * @throws InvalidArgumentException
+     * @throws ConsoleInvalidArgumentException
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
@@ -155,7 +149,7 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
      * @param  string $filename
      * @return bool
      *
-     * @throws InvalidArgumentException
+     * @throws ConsoleInvalidArgumentException
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
@@ -196,7 +190,7 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
      * @param  string $filename
      * @return bool
      *
-     * @throws InvalidArgumentException
+     * @throws ConsoleInvalidArgumentException
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException

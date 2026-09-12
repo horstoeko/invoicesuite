@@ -18,7 +18,6 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteInternalMethodCallException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentReader;
-use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use PrinsFrank\PdfParser\Exception\PdfParserException;
@@ -71,14 +70,6 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handle(): int
     {
-        if ($this->hasOptionValue('discovery-namespace')) {
-            InvoiceSuiteSettings::setDiscoveryNamespaces($this->getStringArrayOption('discovery-namespace'));
-        }
-
-        if ($this->hasOptionValue('cache-directory')) {
-            InvoiceSuiteSettings::setSerializerCacheDirectory($this->getStringOption('cache-directory'));
-        }
-
         $inpArgFilename = $this->getSourceFileArgument('input-file');
 
         if ($this->isPdfFile($inpArgFilename)) {

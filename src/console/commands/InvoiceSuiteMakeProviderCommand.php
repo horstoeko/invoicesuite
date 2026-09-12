@@ -17,7 +17,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use RuntimeException;
-use Symfony\Component\Console\Exception\InvalidArgumentException;
+use Symfony\Component\Console\Exception\InvalidArgumentException as ConsoleInvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -36,7 +36,7 @@ class InvoiceSuiteMakeProviderCommand extends InvoiceSuiteAbstractCommand
      *
      * @return void
      *
-     * @throws InvalidArgumentException
+     * @throws ConsoleInvalidArgumentException
      */
     protected function configure(): void
     {
@@ -55,7 +55,7 @@ class InvoiceSuiteMakeProviderCommand extends InvoiceSuiteAbstractCommand
      *
      * @return int
      *
-     * @throws InvalidArgumentException
+     * @throws ConsoleInvalidArgumentException
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException

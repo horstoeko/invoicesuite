@@ -17,7 +17,6 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundExceptio
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInternalMethodCallException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentReader;
-use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractorAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
@@ -25,7 +24,6 @@ use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use PrinsFrank\PdfParser\Exception\PdfParserException;
 use RuntimeException;
-use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Exception\InvalidArgumentException as ConsoleInvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
@@ -53,7 +51,7 @@ class InvoiceSuiteExportPdfAttachmentsCommand extends InvoiceSuiteAbstractComman
      *
      * @return void
      *
-     * @throws InvalidArgumentException
+     * @throws ConsoleInvalidArgumentException
      */
     protected function configure(): void
     {
@@ -83,14 +81,6 @@ class InvoiceSuiteExportPdfAttachmentsCommand extends InvoiceSuiteAbstractComman
      */
     protected function handle(): int
     {
-        if ($this->hasOptionValue('discovery-namespace')) {
-            InvoiceSuiteSettings::setDiscoveryNamespaces($this->getStringArrayOption('discovery-namespace'));
-        }
-
-        if ($this->hasOptionValue('cache-directory')) {
-            InvoiceSuiteSettings::setSerializerCacheDirectory($this->getStringOption('cache-directory'));
-        }
-
         $inpArgPdfFilename = $this->getSourcePdfFileArgument('input-file');
         $inpArgTargetDirectory = $this->getTargetDirectoryArgument('target-directory');
         $inpOptionJsonOutputMode = $this->getStringOption('output-json', self::OUTPUT_JSON_NONE);

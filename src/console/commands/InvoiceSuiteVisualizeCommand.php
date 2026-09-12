@@ -19,13 +19,12 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteTemplateNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteTemplateNotSpecifiedException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentBuilder;
-use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\visualizers\InvoiceSuiteVisualizer;
 use JMS\Serializer\Exception\RuntimeException as JMSSerializerRuntimeException;
 use RuntimeException;
-use Symfony\Component\Console\Exception\InvalidArgumentException;
+use Symfony\Component\Console\Exception\InvalidArgumentException as ConsoleInvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -44,7 +43,7 @@ class InvoiceSuiteVisualizeCommand extends InvoiceSuiteAbstractCommand
      *
      * @return void
      *
-     * @throws InvalidArgumentException
+     * @throws ConsoleInvalidArgumentException
      */
     protected function configure(): void
     {
@@ -70,7 +69,7 @@ class InvoiceSuiteVisualizeCommand extends InvoiceSuiteAbstractCommand
      *
      * @return int
      *
-     * @throws InvalidArgumentException
+     * @throws ConsoleInvalidArgumentException
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
@@ -83,14 +82,6 @@ class InvoiceSuiteVisualizeCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handle(): int
     {
-        if ($this->hasOptionValue('discovery-namespace')) {
-            InvoiceSuiteSettings::setDiscoveryNamespaces($this->getStringArrayOption('discovery-namespace'));
-        }
-
-        if ($this->hasOptionValue('cache-directory')) {
-            InvoiceSuiteSettings::setSerializerCacheDirectory($this->getStringOption('cache-directory'));
-        }
-
         $inpArgInputFilename = $this->getSourceXmlOrJsonFileArgument('input-file');
         $inpArgOutputFilename = $this->getTargetFileArgument('output-file', $this->getBoolOption('force'));
         $inpOptionFormat = $this->getStringOption('format', 'pdf');

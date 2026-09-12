@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\console\commands;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteClassFinder;
-use Symfony\Component\Console\Exception\InvalidArgumentException;
+use Symfony\Component\Console\Exception\InvalidArgumentException as ConsoleInvalidArgumentException;
 
 /**
  * Class representing a console command that clears the InvoiceSuite cache.
@@ -29,7 +29,7 @@ class InvoiceSuiteCacheClearCommand extends InvoiceSuiteAbstractCommand
      *
      * @return void
      *
-     * @throws InvalidArgumentException
+     * @throws ConsoleInvalidArgumentException
      */
     protected function configure(): void
     {
