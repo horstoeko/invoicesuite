@@ -320,13 +320,15 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      *
      * @param  string $name
      * @return bool
-     *
-     * @throws ConsoleInvalidArgumentException
      */
     protected function hasOptionValue(
         string $name
     ): bool {
-        return null !== $this->input->getOption($name);
+        try {
+            return null !== $this->input->getOption($name);
+        } catch (ConsoleInvalidArgumentException) {
+            return false;
+        }
     }
 
     /**
