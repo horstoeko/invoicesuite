@@ -1,3 +1,13 @@
+## v0.0.33
+
+``Previous version v0.0.32``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [90193c53](https://github.com/horstoeko/invoicesuite/commit/90193c53) | 2026-09-12 22:31:41 CEST | HorstOeko | [ENH] Added Support for Tradeparties RoleCode () | [#38](https://github.com/horstoeko/invoicesuite/issues/38)
+
+:exclamation: _There are 7 internal commit(s)_
+
 ## v0.0.32
 
 ``Previous version v0.0.31``
