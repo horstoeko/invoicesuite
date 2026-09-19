@@ -1185,6 +1185,50 @@ class {{READER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatReader
     }
 
     /**
+     * Get the description of the seller/supplier party
+     *
+     * @param  null|string $newDescription Further legal information that is relevant for the seller
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentSellerDescription(
+        ?string &$newDescription
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the Seller trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentSellerRoleCode(
+        ?string &$newRoleCode
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the seller/supplier party
      *
      * @return bool
@@ -1637,6 +1681,50 @@ class {{READER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatReader
         $this->traceMethodEnter(__METHOD__);
 
         $newName = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the buyer/customer party
+     *
+     * @param  null|string $newDescription Additional information about the buyer/customer party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentBuyerDescription(
+        ?string &$newDescription
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the Buyer trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentBuyerRoleCode(
+        ?string &$newRoleCode
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
         // TODO: Implement method.
 
         $this->traceMethodExit(__METHOD__);
@@ -2105,6 +2193,50 @@ class {{READER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatReader
     }
 
     /**
+     * Get the description of the seller's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the seller's tax representative party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentSellerTaxRepresentativeDescription(
+        ?string &$newDescription
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the SellerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentSellerTaxRepresentativeRoleCode(
+        ?string &$newRoleCode
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the seller's tax representative party
      *
      * @return bool
@@ -2543,6 +2675,1518 @@ class {{READER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatReader
     }
 
     /**
+     * Get the name of the buyer's tax representative party
+     *
+     * @param  null|string $newName the full formal name under which the party is registered
+     * @return static
+     *
+     * @param-out string $newName
+     */
+    public function getDocumentBuyerTaxRepresentativeName(
+        ?string &$newName
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newName = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the buyer's tax representative party
+     *
+     * @param  null|string $newDescription Additional information about the buyer's tax representative party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentBuyerTaxRepresentativeDescription(
+        ?string &$newDescription
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the BuyerTaxRepresentative trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentBuyerTaxRepresentativeRoleCode(
+        ?string &$newRoleCode
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first ID of the buyer's tax representative party
+     *
+     * @return bool
+     */
+    public function firstDocumentBuyerTaxRepresentativeId(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next ID of the buyer's tax representative party
+     *
+     * @return bool
+     */
+    public function nextDocumentBuyerTaxRepresentativeId(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the ID of the buyer's tax representative party
+     *
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
+     * @return static
+     *
+     * @param-out string $newId
+     */
+    public function getDocumentBuyerTaxRepresentativeId(
+        ?string &$newId
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newId = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first global ID of the buyer's tax representative party
+     *
+     * @return bool
+     */
+    public function firstDocumentBuyerTaxRepresentativeGlobalId(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next global ID of the buyer's tax representative party
+     *
+     * @return bool
+     */
+    public function nextDocumentBuyerTaxRepresentativeGlobalId(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the Global ID of the buyer's tax representative party
+     *
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
+     * @return static
+     *
+     * @param-out string $newGlobalId
+     * @param-out string $newGlobalIdType
+     */
+    public function getDocumentBuyerTaxRepresentativeGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newGlobalId = '';
+        $newGlobalIdType = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Tax Registration of the buyer's tax representative party
+     *
+     * @return bool
+     */
+    public function firstDocumentBuyerTaxRepresentativeTaxRegistration(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next Tax Registration of the buyer's tax representative party
+     *
+     * @return bool
+     */
+    public function nextDocumentBuyerTaxRepresentativeTaxRegistration(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the Tax Registration of the buyer's tax representative party
+     *
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
+     * @return static
+     *
+     * @param-out string $newTaxRegistrationType
+     * @param-out string $newTaxRegistrationId
+     */
+    public function getDocumentBuyerTaxRepresentativeTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newTaxRegistrationType = '';
+        $newTaxRegistrationId = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first address of the buyer's tax representative party
+     *
+     * @return bool
+     */
+    public function firstDocumentBuyerTaxRepresentativeAddress(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next address of the buyer's tax representative party
+     *
+     * @return bool
+     */
+    public function nextDocumentBuyerTaxRepresentativeAddress(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the address of the buyer's tax representative party
+     *
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
+     * @return static
+     *
+     * @param-out string $newAddressLine1
+     * @param-out string $newAddressLine2
+     * @param-out string $newAddressLine3
+     * @param-out string $newPostcode
+     * @param-out string $newCity
+     * @param-out string $newCountryId
+     * @param-out string $newSubDivision
+     */
+    public function getDocumentBuyerTaxRepresentativeAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newAddressLine1 = '';
+        $newAddressLine2 = '';
+        $newAddressLine3 = '';
+        $newPostcode = '';
+        $newCity = '';
+        $newCountryId = '';
+        $newSubDivision = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first the legal information of the buyer's tax representative party
+     *
+     * @return bool
+     */
+    public function firstDocumentBuyerTaxRepresentativeLegalOrganisation(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next the legal information of the buyer's tax representative party
+     *
+     * @return bool
+     */
+    public function nextDocumentBuyerTaxRepresentativeLegalOrganisation(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the legal information of the buyer's tax representative party
+     *
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
+     * @return static
+     *
+     * @param-out string $newType
+     * @param-out string $newId
+     * @param-out string $newName
+     */
+    public function getDocumentBuyerTaxRepresentativeLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newType = '';
+        $newId = '';
+        $newName = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first contact information of the buyer's tax representative party
+     *
+     * @return bool
+     */
+    public function firstDocumentBuyerTaxRepresentativeContact(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next contact information of the buyer's tax representative party
+     *
+     * @return bool
+     */
+    public function nextDocumentBuyerTaxRepresentativeContact(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the contact information of the buyer's tax representative party
+     *
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
+     * @return static
+     *
+     * @param-out string $newPersonName
+     * @param-out string $newDepartmentName
+     * @param-out string $newPhoneNumber
+     * @param-out string $newFaxNumber
+     * @param-out string $newEmailAddress
+     */
+    public function getDocumentBuyerTaxRepresentativeContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newPersonName = '';
+        $newDepartmentName = '';
+        $newPhoneNumber = '';
+        $newFaxNumber = '';
+        $newEmailAddress = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first communication information of the buyer's tax representative party
+     *
+     * @return bool
+     */
+    public function firstDocumentBuyerTaxRepresentativeCommunication(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next communication information of the buyer's tax representative party
+     *
+     * @return bool
+     */
+    public function nextDocumentBuyerTaxRepresentativeCommunication(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get communication information of the buyer's tax representative party
+     *
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
+     * @return static
+     *
+     * @param-out string $newType
+     * @param-out string $newUri
+     */
+    public function getDocumentBuyerTaxRepresentativeCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newType = '';
+        $newUri = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the name of the sales agent party
+     *
+     * @param  null|string $newName the full formal name under which the party is registered
+     * @return static
+     *
+     * @param-out string $newName
+     */
+    public function getDocumentSalesAgentName(
+        ?string &$newName
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newName = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the sales agent party
+     *
+     * @param  null|string $newDescription Additional information about the sales agent party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentSalesAgentDescription(
+        ?string &$newDescription
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the SalesAgent trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentSalesAgentRoleCode(
+        ?string &$newRoleCode
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first ID of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentId(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next ID of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentId(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the ID of the sales agent party
+     *
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
+     * @return static
+     *
+     * @param-out string $newId
+     */
+    public function getDocumentSalesAgentId(
+        ?string &$newId
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newId = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first global ID of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentGlobalId(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next global ID of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentGlobalId(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the Global ID of the sales agent party
+     *
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
+     * @return static
+     *
+     * @param-out string $newGlobalId
+     * @param-out string $newGlobalIdType
+     */
+    public function getDocumentSalesAgentGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newGlobalId = '';
+        $newGlobalIdType = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Tax Registration of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentTaxRegistration(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next Tax Registration of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentTaxRegistration(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the Tax Registration of the sales agent party
+     *
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
+     * @return static
+     *
+     * @param-out string $newTaxRegistrationType
+     * @param-out string $newTaxRegistrationId
+     */
+    public function getDocumentSalesAgentTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newTaxRegistrationType = '';
+        $newTaxRegistrationId = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first address of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentAddress(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next address of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentAddress(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the address of the sales agent party
+     *
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
+     * @return static
+     *
+     * @param-out string $newAddressLine1
+     * @param-out string $newAddressLine2
+     * @param-out string $newAddressLine3
+     * @param-out string $newPostcode
+     * @param-out string $newCity
+     * @param-out string $newCountryId
+     * @param-out string $newSubDivision
+     */
+    public function getDocumentSalesAgentAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newAddressLine1 = '';
+        $newAddressLine2 = '';
+        $newAddressLine3 = '';
+        $newPostcode = '';
+        $newCity = '';
+        $newCountryId = '';
+        $newSubDivision = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first the legal information of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentLegalOrganisation(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next the legal information of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentLegalOrganisation(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the legal information of the sales agent party
+     *
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
+     * @return static
+     *
+     * @param-out string $newType
+     * @param-out string $newId
+     * @param-out string $newName
+     */
+    public function getDocumentSalesAgentLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newType = '';
+        $newId = '';
+        $newName = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first contact information of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentContact(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next contact information of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentContact(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the contact information of the sales agent party
+     *
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
+     * @return static
+     *
+     * @param-out string $newPersonName
+     * @param-out string $newDepartmentName
+     * @param-out string $newPhoneNumber
+     * @param-out string $newFaxNumber
+     * @param-out string $newEmailAddress
+     */
+    public function getDocumentSalesAgentContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newPersonName = '';
+        $newDepartmentName = '';
+        $newPhoneNumber = '';
+        $newFaxNumber = '';
+        $newEmailAddress = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first communication information of the sales agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentSalesAgentCommunication(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next communication information of the sales agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentSalesAgentCommunication(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get communication information of the sales agent party
+     *
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
+     * @return static
+     *
+     * @param-out string $newType
+     * @param-out string $newUri
+     */
+    public function getDocumentSalesAgentCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newType = '';
+        $newUri = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the name of the buyer agent party
+     *
+     * @param  null|string $newName the full formal name under which the party is registered
+     * @return static
+     *
+     * @param-out string $newName
+     */
+    public function getDocumentBuyerAgentName(
+        ?string &$newName
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newName = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the buyer agent party
+     *
+     * @param  null|string $newDescription Additional information about the buyer agent party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentBuyerAgentDescription(
+        ?string &$newDescription
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the BuyerAgent trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentBuyerAgentRoleCode(
+        ?string &$newRoleCode
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first ID of the buyer agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentBuyerAgentId(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next ID of the buyer agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentBuyerAgentId(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the ID of the buyer agent party
+     *
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
+     * @return static
+     *
+     * @param-out string $newId
+     */
+    public function getDocumentBuyerAgentId(
+        ?string &$newId
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newId = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first global ID of the buyer agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentBuyerAgentGlobalId(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next global ID of the buyer agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentBuyerAgentGlobalId(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the Global ID of the buyer agent party
+     *
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
+     * @return static
+     *
+     * @param-out string $newGlobalId
+     * @param-out string $newGlobalIdType
+     */
+    public function getDocumentBuyerAgentGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newGlobalId = '';
+        $newGlobalIdType = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Tax Registration of the buyer agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentBuyerAgentTaxRegistration(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next Tax Registration of the buyer agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentBuyerAgentTaxRegistration(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the Tax Registration of the buyer agent party
+     *
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
+     * @return static
+     *
+     * @param-out string $newTaxRegistrationType
+     * @param-out string $newTaxRegistrationId
+     */
+    public function getDocumentBuyerAgentTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newTaxRegistrationType = '';
+        $newTaxRegistrationId = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first address of the buyer agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentBuyerAgentAddress(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next address of the buyer agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentBuyerAgentAddress(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the address of the buyer agent party
+     *
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
+     * @return static
+     *
+     * @param-out string $newAddressLine1
+     * @param-out string $newAddressLine2
+     * @param-out string $newAddressLine3
+     * @param-out string $newPostcode
+     * @param-out string $newCity
+     * @param-out string $newCountryId
+     * @param-out string $newSubDivision
+     */
+    public function getDocumentBuyerAgentAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newAddressLine1 = '';
+        $newAddressLine2 = '';
+        $newAddressLine3 = '';
+        $newPostcode = '';
+        $newCity = '';
+        $newCountryId = '';
+        $newSubDivision = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first the legal information of the buyer agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentBuyerAgentLegalOrganisation(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next the legal information of the buyer agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentBuyerAgentLegalOrganisation(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the legal information of the buyer agent party
+     *
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
+     * @return static
+     *
+     * @param-out string $newType
+     * @param-out string $newId
+     * @param-out string $newName
+     */
+    public function getDocumentBuyerAgentLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newType = '';
+        $newId = '';
+        $newName = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first contact information of the buyer agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentBuyerAgentContact(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next contact information of the buyer agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentBuyerAgentContact(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the contact information of the buyer agent party
+     *
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
+     * @return static
+     *
+     * @param-out string $newPersonName
+     * @param-out string $newDepartmentName
+     * @param-out string $newPhoneNumber
+     * @param-out string $newFaxNumber
+     * @param-out string $newEmailAddress
+     */
+    public function getDocumentBuyerAgentContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newPersonName = '';
+        $newDepartmentName = '';
+        $newPhoneNumber = '';
+        $newFaxNumber = '';
+        $newEmailAddress = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first communication information of the buyer agent party
+     *
+     * @return bool
+     */
+    public function firstDocumentBuyerAgentCommunication(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next communication information of the buyer agent party
+     *
+     * @return bool
+     */
+    public function nextDocumentBuyerAgentCommunication(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get communication information of the buyer agent party
+     *
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
+     * @return static
+     *
+     * @param-out string $newType
+     * @param-out string $newUri
+     */
+    public function getDocumentBuyerAgentCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newType = '';
+        $newUri = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Get the name of the product end-user party
      *
      * @param  null|string $newName the full formal name under which the party is registered
@@ -2557,6 +4201,50 @@ class {{READER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatReader
         $this->traceMethodEnter(__METHOD__);
 
         $newName = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the product end user party
+     *
+     * @param  null|string $newDescription Additional information about the product end user party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentProductEndUserDescription(
+        ?string &$newDescription
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the ProductEndUser trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentProductEndUserRoleCode(
+        ?string &$newRoleCode
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
         // TODO: Implement method.
 
         $this->traceMethodExit(__METHOD__);
@@ -3025,6 +4713,50 @@ class {{READER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatReader
     }
 
     /**
+     * Get the description of the ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ship-to party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentShipToDescription(
+        ?string &$newDescription
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the ShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentShipToRoleCode(
+        ?string &$newRoleCode
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the Ship-To party
      *
      * @return bool
@@ -3477,6 +5209,50 @@ class {{READER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatReader
         $this->traceMethodEnter(__METHOD__);
 
         $newName = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the ultimate ship-to party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentUltimateShipToDescription(
+        ?string &$newDescription
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the UltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentUltimateShipToRoleCode(
+        ?string &$newRoleCode
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
         // TODO: Implement method.
 
         $this->traceMethodExit(__METHOD__);
@@ -3945,6 +5721,50 @@ class {{READER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatReader
     }
 
     /**
+     * Get the description of the ship-from party
+     *
+     * @param  null|string $newDescription Additional information about the ship-from party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentShipFromDescription(
+        ?string &$newDescription
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the ShipFrom trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentShipFromRoleCode(
+        ?string &$newRoleCode
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the Ship-From party
      *
      * @return bool
@@ -4397,6 +6217,50 @@ class {{READER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatReader
         $this->traceMethodEnter(__METHOD__);
 
         $newName = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the invoicer party
+     *
+     * @param  null|string $newDescription Additional information about the invoicer party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentInvoicerDescription(
+        ?string &$newDescription
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the Invoicer trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentInvoicerRoleCode(
+        ?string &$newRoleCode
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
         // TODO: Implement method.
 
         $this->traceMethodExit(__METHOD__);
@@ -4865,6 +6729,50 @@ class {{READER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatReader
     }
 
     /**
+     * Get the description of the invoicee party
+     *
+     * @param  null|string $newDescription Additional information about the invoicee party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentInvoiceeDescription(
+        ?string &$newDescription
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the Invoicee trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentInvoiceeRoleCode(
+        ?string &$newRoleCode
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the Invoicee party
      *
      * @return bool
@@ -5325,6 +7233,50 @@ class {{READER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatReader
     }
 
     /**
+     * Get the description of the payee party
+     *
+     * @param  null|string $newDescription Additional information about the payee party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentPayeeDescription(
+        ?string &$newDescription
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the Payee trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentPayeeRoleCode(
+        ?string &$newRoleCode
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the Payee party
      *
      * @return bool
@@ -5747,6 +7699,510 @@ class {{READER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatReader
      * @param-out string $newUri
      */
     public function getDocumentPayeeCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newType = '';
+        $newUri = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the name of the Payer party
+     *
+     * @param  null|string $newName the full formal name under which the party is registered
+     * @return static
+     *
+     * @param-out string $newName
+     */
+    public function getDocumentPayerName(
+        ?string &$newName
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newName = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the payer party
+     *
+     * @param  null|string $newDescription Additional information about the payer party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentPayerDescription(
+        ?string &$newDescription
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the Payer trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentPayerRoleCode(
+        ?string &$newRoleCode
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first ID of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerId(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next ID of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerId(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the ID of the Payer party
+     *
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
+     * @return static
+     *
+     * @param-out string $newId
+     */
+    public function getDocumentPayerId(
+        ?string &$newId
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newId = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first global ID of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerGlobalId(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next global ID of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerGlobalId(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the Global ID of the Payer party
+     *
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
+     * @return static
+     *
+     * @param-out string $newGlobalId
+     * @param-out string $newGlobalIdType
+     */
+    public function getDocumentPayerGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newGlobalId = '';
+        $newGlobalIdType = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Tax Registration of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerTaxRegistration(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next Tax Registration of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerTaxRegistration(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the Tax Registration of the Payer party
+     *
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
+     * @return static
+     *
+     * @param-out string $newTaxRegistrationType
+     * @param-out string $newTaxRegistrationId
+     */
+    public function getDocumentPayerTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newTaxRegistrationType = '';
+        $newTaxRegistrationId = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first address of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerAddress(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next address of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerAddress(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the address of the Payer party
+     *
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
+     * @return static
+     *
+     * @param-out string $newAddressLine1
+     * @param-out string $newAddressLine2
+     * @param-out string $newAddressLine3
+     * @param-out string $newPostcode
+     * @param-out string $newCity
+     * @param-out string $newCountryId
+     * @param-out string $newSubDivision
+     */
+    public function getDocumentPayerAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newAddressLine1 = '';
+        $newAddressLine2 = '';
+        $newAddressLine3 = '';
+        $newPostcode = '';
+        $newCity = '';
+        $newCountryId = '';
+        $newSubDivision = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first the legal information of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerLegalOrganisation(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next the legal information of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerLegalOrganisation(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the legal information of the Payer party
+     *
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
+     * @return static
+     *
+     * @param-out string $newType
+     * @param-out string $newId
+     * @param-out string $newName
+     */
+    public function getDocumentPayerLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newType = '';
+        $newId = '';
+        $newName = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first contact information of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerContact(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next contact information of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerContact(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get the contact information of the Payer party
+     *
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
+     * @return static
+     *
+     * @param-out string $newPersonName
+     * @param-out string $newDepartmentName
+     * @param-out string $newPhoneNumber
+     * @param-out string $newFaxNumber
+     * @param-out string $newEmailAddress
+     */
+    public function getDocumentPayerContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newPersonName = '';
+        $newDepartmentName = '';
+        $newPhoneNumber = '';
+        $newFaxNumber = '';
+        $newEmailAddress = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first communication information of the Payer party
+     *
+     * @return bool
+     */
+    public function firstDocumentPayerCommunication(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Go to the next communication information of the Payer party
+     *
+     * @return bool
+     */
+    public function nextDocumentPayerCommunication(): bool
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return false;
+    }
+
+    /**
+     * Get communication information of the Payer party
+     *
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
+     * @return static
+     *
+     * @param-out string $newType
+     * @param-out string $newUri
+     */
+    public function getDocumentPayerCommunication(
         ?string &$newType,
         ?string &$newUri
     ): static
@@ -7883,6 +10339,50 @@ class {{READER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatReader
     }
 
     /**
+     * Get the description of the position-level ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ship-to party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentPositionShipToDescription(
+        ?string &$newDescription
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the PositionShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentPositionShipToRoleCode(
+        ?string &$newRoleCode
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * Go to the first ID of the Ship-To party from latest position
      *
      * @return bool
@@ -8335,6 +10835,50 @@ class {{READER_CLASS_NAME}} extends InvoiceSuiteAbstractDocumentFormatReader
         $this->traceMethodEnter(__METHOD__);
 
         $newName = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the description of the position-level ultimate ship-to party
+     *
+     * @param  null|string $newDescription Additional information about the position-level ultimate ship-to party
+     * @return static
+     *
+     * @param-out string $newDescription
+     */
+    public function getDocumentPositionUltimateShipToDescription(
+        ?string &$newDescription
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newDescription = '';
+        // TODO: Implement method.
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the role code of the PositionUltimateShipTo trade party.
+     *
+     * @param  null|string $newRoleCode The role code (UNTDID 3035)
+     * @return static
+     *
+     * @param-out string $newRoleCode
+     */
+    public function getDocumentPositionUltimateShipToRoleCode(
+        ?string &$newRoleCode
+    ): static
+    {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newRoleCode = '';
         // TODO: Implement method.
 
         $this->traceMethodExit(__METHOD__);
