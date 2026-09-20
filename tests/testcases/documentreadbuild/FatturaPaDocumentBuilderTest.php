@@ -452,6 +452,18 @@ final class FatturaPaDocumentBuilderTest extends TestCase
             ->addPaymentTerm($paymentTerm)
             ->addTax(new InvoiceSuiteTaxDTO('S', 'I', 200.246912, 44.05, 22.0))
             ->addSummation(new InvoiceSuiteSummationDTO(200.246912, 0.0, 0.0, 200.246912, 44.05, null, 244.30, 244.30))
+            ->addSpecifiedAdvancePayment(
+                (new InvoiceSuiteSpecifiedAdvancePaymentDTO(100.0, new DateTimeImmutable('1970-04-01')))
+                    ->addIncludedTradeTax(new InvoiceSuiteTaxDTO('S', 'VAT', null, 19.0, 19.0, 'Exemption reason 1', 'VATEX-EU-132'))
+                    ->addIncludedTradeTax(new InvoiceSuiteTaxDTO('AA', 'VAT', null, 7.0, 7.0))
+                    ->setInvoiceSpecifiedReferencedDocument(
+                        new InvoiceSuiteReferenceDocumentExtDTO('ADV-INV-1', new DateTimeImmutable('1970-03-15'), '380')
+                    )
+            )
+            ->addSpecifiedAdvancePayment(
+                (new InvoiceSuiteSpecifiedAdvancePaymentDTO(200.0))
+                    ->addIncludedTradeTax(new InvoiceSuiteTaxDTO(null, 'VAT', null, 38.0))
+            )
             ->addPosition($position);
 
         static::$document->createFromDTO($documentDTO);

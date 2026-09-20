@@ -22,7 +22,6 @@ use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProductDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteQuantityDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentExtDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSpecifiedAdvancePaymentDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
@@ -273,34 +272,6 @@ final class FatturaPaProviderBuilderTest extends TestCase
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/ImportoTotaleDocumento', '244.15');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/Arrotondamento', '0.00');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/ImportoPagamento', '244.15');
-    }
-
-    public function testSetAddDocumentSpecifiedAdvancePayment(): void
-    {
-        $this->assertXmlWasNotChanged(static function (): void {
-            static::$document->setDocumentSpecifiedAdvancePayment(null, null);
-            static::$document->addDocumentSpecifiedAdvancePayment(null, new DateTimeImmutable('1970-04-01'));
-            static::$document->setDocumentSpecifiedAdvancePayment(100.0, new DateTimeImmutable('1970-04-01'));
-            static::$document->setDocumentSpecifiedAdvancePaymentIncludedTradeTax();
-            static::$document->addDocumentSpecifiedAdvancePaymentIncludedTradeTax('S', null, 19.0, 19.0);
-            static::$document->setDocumentSpecifiedAdvancePaymentIncludedTradeTax(
-                'S',
-                'VAT',
-                19.0,
-                19.0,
-                'Exemption reason 1',
-                'VATEX-EU-132'
-            );
-            static::$document->addDocumentSpecifiedAdvancePaymentIncludedTradeTax('AA', 'VAT', 7.0, 7.0, '', '');
-            static::$document->setDocumentSpecifiedAdvancePaymentInvoiceReference();
-            static::$document->setDocumentSpecifiedAdvancePaymentInvoiceReference(
-                'ADV-INV-1',
-                new DateTimeImmutable('1970-03-15'),
-                '380'
-            );
-            static::$document->addDocumentSpecifiedAdvancePayment(200.0);
-            static::$document->addDocumentSpecifiedAdvancePaymentIncludedTradeTax(null, 'VAT', 38.0);
-        });
     }
 
     public function testAddDocumentPosition(): void

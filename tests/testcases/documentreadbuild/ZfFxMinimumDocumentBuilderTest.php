@@ -22514,6 +22514,18 @@ final class ZfFxMinimumDocumentBuilderTest extends TestCase
                     ->setGrossAmount(107.0)
                     ->setDueAmount(108.0)
             )
+            ->addSpecifiedAdvancePayment(
+                (new InvoiceSuiteSpecifiedAdvancePaymentDTO(100.0, new DateTimeImmutable('1970-04-01')))
+                    ->addIncludedTradeTax(new InvoiceSuiteTaxDTO('S', 'VAT', null, 19.0, 19.0, 'Exemption reason 1', 'VATEX-EU-132'))
+                    ->addIncludedTradeTax(new InvoiceSuiteTaxDTO('AA', 'VAT', null, 7.0, 7.0))
+                    ->setInvoiceSpecifiedReferencedDocument(
+                        new InvoiceSuiteReferenceDocumentExtDTO('ADV-INV-1', new DateTimeImmutable('1970-03-15'), '380')
+                    )
+            )
+            ->addSpecifiedAdvancePayment(
+                (new InvoiceSuiteSpecifiedAdvancePaymentDTO(200.0))
+                    ->addIncludedTradeTax(new InvoiceSuiteTaxDTO(null, 'VAT', null, 38.0))
+            )
             ->addPosition((new InvoiceSuiteDocumentPositionDTO())
                 ->setLineId('1.1')
                 ->setParentLineId('1')
@@ -23706,6 +23718,10 @@ final class ZfFxMinimumDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:GrandTotalAmount)[2]');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TotalPrepaidAmount)[2]');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:DuePayableAmount)[2]');
+
+        // Specified advance payment
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment');
 
         // Position General
 

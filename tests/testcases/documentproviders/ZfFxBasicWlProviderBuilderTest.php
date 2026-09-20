@@ -5,14 +5,9 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
 use DateTime;
-use DateTimeImmutable;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistCurrencyCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentExtDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSpecifiedAdvancePaymentDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxBasicWlProvider;
 use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxProviderBuilder;
 use horstoeko\invoicesuite\documents\providers\zffx\models\rsm\CrossIndustryInvoice;
