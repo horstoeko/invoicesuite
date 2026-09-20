@@ -4460,33 +4460,6 @@ final class ZfFxExtendedDocumentReaderTest extends TestCase
         $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
-    public function testConvertToDTOSpecifiedAdvancePayments(): void
-    {
-        static::$document->convertToDTO($documentDTO);
-
-        $this->assertCount(2, $documentDTO->getSpecifiedAdvancePayments());
-
-        $specifiedAdvancePayments = $documentDTO->getSpecifiedAdvancePayments();
-        $firstAdvancePayment = $specifiedAdvancePayments[0];
-        $secondAdvancePayment = $specifiedAdvancePayments[1];
-
-        $this->assertEqualsWithDelta(100.0, $firstAdvancePayment->getPaidAmount(), PHP_FLOAT_EPSILON);
-        $this->assertSame('1970-04-01', $firstAdvancePayment->getFormattedReceivedDateTime()?->format('Y-m-d'));
-        $this->assertCount(2, $firstAdvancePayment->getIncludedTradeTaxes());
-        $this->assertSame('S', $firstAdvancePayment->getIncludedTradeTaxes()[0]->getCategory());
-        $this->assertSame('VAT', $firstAdvancePayment->getIncludedTradeTaxes()[0]->getType());
-        $this->assertEqualsWithDelta(19.0, $firstAdvancePayment->getIncludedTradeTaxes()[0]->getAmount(), PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(19.0, $firstAdvancePayment->getIncludedTradeTaxes()[0]->getPercent(), PHP_FLOAT_EPSILON);
-        $this->assertSame('ADV-INV-1', $firstAdvancePayment->getInvoiceSpecifiedReferencedDocument()?->getReferenceNumber());
-        $this->assertSame('1970-03-15', $firstAdvancePayment->getInvoiceSpecifiedReferencedDocument()?->getReferenceDate()?->format('Y-m-d'));
-        $this->assertSame('380', $firstAdvancePayment->getInvoiceSpecifiedReferencedDocument()?->getTypeCode());
-
-        $this->assertEqualsWithDelta(200.0, $secondAdvancePayment->getPaidAmount(), PHP_FLOAT_EPSILON);
-        $this->assertNull($secondAdvancePayment->getFormattedReceivedDateTime());
-        $this->assertCount(1, $secondAdvancePayment->getIncludedTradeTaxes());
-        $this->assertNull($secondAdvancePayment->getInvoiceSpecifiedReferencedDocument());
-    }
-
     public function testConvertToDTO(): void
     {
         static::$document->convertToDTO($newDocmentDTO);

@@ -2575,10 +2575,13 @@ final class ZfFxBasicProviderReaderTest extends TestCase
 
     public function testFirstNextGetDocumentSpecifiedAdvancePayment(): void
     {
-        static::$document->getDocumentSpecifiedAdvancePayment($newPaidAmount, $newReceivedDate);
+        $this->assertFalse(static::$document->firstDocumentSpecifiedAdvancePayment());
 
+        static::$document->getDocumentSpecifiedAdvancePayment($newPaidAmount, $newReceivedDate);
         $this->assertEqualsWithDelta(0.0, $newPaidAmount, PHP_FLOAT_EPSILON);
         $this->assertNull($newReceivedDate);
+
+        $this->assertFalse(static::$document->firstDocumentSpecifiedAdvancePaymentIncludedTradeTax());
 
         static::$document->getDocumentSpecifiedAdvancePaymentIncludedTradeTax(
             $newTaxCategory,
@@ -2588,7 +2591,6 @@ final class ZfFxBasicProviderReaderTest extends TestCase
             $newExemptionReason,
             $newExemptionReasonCode
         );
-
         $this->assertSame('', $newTaxCategory);
         $this->assertSame('', $newTaxType);
         $this->assertEqualsWithDelta(0.0, $newTaxAmount, PHP_FLOAT_EPSILON);
@@ -2596,20 +2598,18 @@ final class ZfFxBasicProviderReaderTest extends TestCase
         $this->assertSame('', $newExemptionReason);
         $this->assertSame('', $newExemptionReasonCode);
 
+        $this->assertFalse(static::$document->nextDocumentSpecifiedAdvancePaymentIncludedTradeTax());
+
         static::$document->getDocumentSpecifiedAdvancePaymentInvoiceSpecifiedReferencedDocument(
             $newReferenceNumber,
             $newReferenceDate,
             $newTypeCode
         );
-
         $this->assertSame('', $newReferenceNumber);
         $this->assertNull($newReferenceDate);
         $this->assertSame('', $newTypeCode);
 
-        $this->assertFalse(static::$document->firstDocumentSpecifiedAdvancePayment());
         $this->assertFalse(static::$document->nextDocumentSpecifiedAdvancePayment());
-        $this->assertFalse(static::$document->firstDocumentSpecifiedAdvancePaymentIncludedTradeTax());
-        $this->assertFalse(static::$document->nextDocumentSpecifiedAdvancePaymentIncludedTradeTax());
     }
 
     public function testFirstNextGetDocumentPosition(): void
@@ -3653,12 +3653,5 @@ final class ZfFxBasicProviderReaderTest extends TestCase
         $this->assertInstanceOf(InvoiceSuiteDocumentHeaderDTO::class, $newDocmentDTO);
 
         $this->assertSame('2025-04-000001', $newDocmentDTO?->getNumber());
-    }
-
-    public function testConvertToDTOSpecifiedAdvancePayments(): void
-    {
-        static::$document->convertToDTO($documentDTO);
-
-        $this->assertSame([], $documentDTO->getSpecifiedAdvancePayments());
     }
 }

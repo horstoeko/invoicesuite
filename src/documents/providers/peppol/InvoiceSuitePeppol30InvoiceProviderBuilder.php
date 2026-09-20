@@ -9564,6 +9564,10 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?float $newPaidAmount = null,
         ?DateTimeInterface $newFormattedReceivedDateTime = null,
     ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
         return $this;
     }
 
@@ -9578,6 +9582,10 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?float $newPaidAmount = null,
         ?DateTimeInterface $newFormattedReceivedDateTime = null,
     ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
         return $this;
     }
 
@@ -9600,6 +9608,10 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?string $newExemptionReason = null,
         ?string $newExemptionReasonCode = null,
     ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
         return $this;
     }
 
@@ -9622,6 +9634,10 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?string $newExemptionReason = null,
         ?string $newExemptionReasonCode = null,
     ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
         return $this;
     }
 
@@ -9638,6 +9654,10 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?DateTimeInterface $newReferenceDate = null,
         ?string $newTypeCode = null,
     ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $this->traceMethodExit(__METHOD__);
+
         return $this;
     }
 

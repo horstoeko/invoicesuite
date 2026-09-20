@@ -11081,8 +11081,12 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         ?float &$newPaidAmount,
         ?DateTimeInterface &$newFormattedReceivedDateTime
     ): static {
+        $this->traceMethodEnter(__METHOD__);
+
         $newPaidAmount = 0.0;
         $newFormattedReceivedDateTime = null;
+
+        $this->traceMethodExit(__METHOD__);
 
         return $this;
     }
@@ -11133,12 +11137,16 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         ?string &$newExemptionReason,
         ?string &$newExemptionReasonCode
     ): static {
+        $this->traceMethodEnter(__METHOD__);
+
         $newTaxCategory = '';
         $newTaxType = '';
         $newTaxAmount = 0.0;
         $newTaxPercent = 0.0;
         $newExemptionReason = '';
         $newExemptionReasonCode = '';
+
+        $this->traceMethodExit(__METHOD__);
 
         return $this;
     }
@@ -11160,9 +11168,13 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         ?DateTimeInterface &$newReferenceDate,
         ?string &$newTypeCode
     ): static {
+        $this->traceMethodEnter(__METHOD__);
+
         $newReferenceNumber = '';
         $newReferenceDate = null;
         $newTypeCode = '';
+
+        $this->traceMethodExit(__METHOD__);
 
         return $this;
     }
