@@ -6,6 +6,7 @@ namespace horstoeko\invoicesuite\tests\testcases\documentreadbuild;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
+use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
@@ -2573,6 +2574,45 @@ final class ZfFxBasicDocumentReaderTest extends TestCase
         $this->assertEqualsWithDelta(0.00, $newRoungingAmount, PHP_FLOAT_EPSILON);
     }
 
+    public function testFirstNextGetDocumentSpecifiedAdvancePayment(): void
+    {
+        $this->assertFalse(static::$document->firstDocumentSpecifiedAdvancePayment());
+
+        static::$document->getDocumentSpecifiedAdvancePayment($newPaidAmount, $newReceivedDate);
+        $this->assertEqualsWithDelta(0.0, $newPaidAmount, PHP_FLOAT_EPSILON);
+        $this->assertNull($newReceivedDate);
+
+        $this->assertFalse(static::$document->firstDocumentSpecifiedAdvancePaymentIncludedTradeTax());
+
+        static::$document->getDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode
+        );
+        $this->assertSame('', $newTaxCategory);
+        $this->assertSame('', $newTaxType);
+        $this->assertEqualsWithDelta(0.0, $newTaxAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $newTaxPercent, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $newExemptionReason);
+        $this->assertSame('', $newExemptionReasonCode);
+
+        $this->assertFalse(static::$document->nextDocumentSpecifiedAdvancePaymentIncludedTradeTax());
+
+        static::$document->getDocumentSpecifiedAdvancePaymentInvoiceSpecifiedReferencedDocument(
+            $newReferenceNumber,
+            $newReferenceDate,
+            $newTypeCode
+        );
+        $this->assertSame('', $newReferenceNumber);
+        $this->assertNull($newReferenceDate);
+        $this->assertSame('', $newTypeCode);
+
+        $this->assertFalse(static::$document->nextDocumentSpecifiedAdvancePayment());
+    }
+
     public function testFirstNextGetDocumentPosition(): void
     {
         // First position
@@ -3617,5 +3657,13 @@ final class ZfFxBasicDocumentReaderTest extends TestCase
 
         $this->assertSame([], $newDocmentDTO?->getSellerParty()?->getRoleCodes());
         $this->assertSame([], $newDocmentDTO?->getBuyerParty()?->getRoleCodes());
+    }
+
+    public function testCopyToBuilder(): void
+    {
+        $builder = static::$document->copyToBuilder();
+
+        $this->assertInstanceOf(InvoiceSuiteDocumentBuilder::class, $builder);
+        $this->assertSame('zffxbasic', $builder->getCurrentDocumentFormatProvider()->getUniqueId());
     }
 }

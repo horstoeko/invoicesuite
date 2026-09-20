@@ -403,6 +403,7 @@ function gendto(array $definitions): void
                     } else {
                         $adder->addBody(sprintf('if (is_null($%1$s)) {', $propertyName));
                     }
+
                     $adder->addBody('    return $this;');
                     $adder->addBody('}');
                     $adder->addBody('');
@@ -1405,6 +1406,39 @@ $definitions = [
     [
         'todir' => __DIR__ . '/../src/documents/dto',
         'ns' => 'horstoeko\invoicesuite\documents\dto',
+        'class' => 'InvoiceSuiteSpecifiedAdvancePaymentDTO',
+        'properties' => [
+            'paidAmount' => [
+                'type' => 'float',
+                'caption' => 'The amount of the advance payment',
+                'isarray' => false,
+                'isobject' => false,
+            ],
+            'formattedReceivedDateTime' => [
+                'type' => 'DateTimeInterface',
+                'caption' => 'The date on which the advance payment was received',
+                'isarray' => false,
+                'isobject' => true,
+            ],
+            'includedTradeTax' => [
+                'type' => 'horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO',
+                'caption' => 'The tax included in the advance payment',
+                'isarray' => true,
+                'isobject' => true,
+                'autoplural' => true,
+                'autopluralappendix' => 'es',
+            ],
+            'invoiceSpecifiedReferencedDocument' => [
+                'type' => 'horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentExtDTO',
+                'caption' => 'The invoice referenced by the advance payment',
+                'isarray' => false,
+                'isobject' => true,
+            ],
+        ],
+    ],
+    [
+        'todir' => __DIR__ . '/../src/documents/dto',
+        'ns' => 'horstoeko\invoicesuite\documents\dto',
         'class' => 'InvoiceSuiteDocumentHeaderDTO',
         'properties' => [
             'number' => [
@@ -1733,6 +1767,13 @@ $definitions = [
                 'caption' => 'The summation',
                 'isarray' => true,
                 'isobject' => false,
+                'autoplural' => true,
+            ],
+            'specifiedAdvancePayment' => [
+                'type' => 'InvoiceSuiteSpecifiedAdvancePaymentDTO',
+                'caption' => 'The specified advance payments',
+                'isarray' => true,
+                'isobject' => true,
                 'autoplural' => true,
             ],
         ],

@@ -303,31 +303,6 @@ final class XRechnungCIIInvoiceReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
     }
 
-    public function testFirstNextGetDocumentPositionAdditionalObjectReference(): void
-    {
-        // First position
-
-        $this->assertTrue(static::$document->firstDocumentPosition());
-
-        $this->assertTrue(static::$document->firstDocumentPositionAdditionalObjectReference());
-
-        static::$document->getDocumentPositionAdditionalObjectReference(
-            $newReferenceNumber,
-            $newTypeCode,
-            $newReferenceTypeCode
-        );
-
-        $this->assertSame('ZZZZZZZZZ', $newReferenceNumber);
-        $this->assertSame('916', $newTypeCode);
-        $this->assertSame('130', $newReferenceTypeCode);
-
-        $this->assertFalse(static::$document->nextDocumentPositionAdditionalObjectReference());
-
-        // Second position
-
-        $this->assertFalse(static::$document->nextDocumentPosition());
-    }
-
     public function testFirstNextGetDocumentProjectReference(): void
     {
         $this->assertTrue(static::$document->firstDocumentProjectReference());
@@ -2640,6 +2615,45 @@ final class XRechnungCIIInvoiceReaderTest extends TestCase
         $this->assertEqualsWithDelta(10.00, $newRoungingAmount, PHP_FLOAT_EPSILON);
     }
 
+    public function testFirstNextGetDocumentSpecifiedAdvancePayment(): void
+    {
+        $this->assertFalse(static::$document->firstDocumentSpecifiedAdvancePayment());
+
+        static::$document->getDocumentSpecifiedAdvancePayment($newPaidAmount, $newReceivedDate);
+        $this->assertEqualsWithDelta(0.0, $newPaidAmount, PHP_FLOAT_EPSILON);
+        $this->assertNull($newReceivedDate);
+
+        $this->assertFalse(static::$document->firstDocumentSpecifiedAdvancePaymentIncludedTradeTax());
+
+        static::$document->getDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode
+        );
+        $this->assertSame('', $newTaxCategory);
+        $this->assertSame('', $newTaxType);
+        $this->assertEqualsWithDelta(0.0, $newTaxAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $newTaxPercent, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $newExemptionReason);
+        $this->assertSame('', $newExemptionReasonCode);
+
+        $this->assertFalse(static::$document->nextDocumentSpecifiedAdvancePaymentIncludedTradeTax());
+
+        static::$document->getDocumentSpecifiedAdvancePaymentInvoiceSpecifiedReferencedDocument(
+            $newReferenceNumber,
+            $newReferenceDate,
+            $newTypeCode
+        );
+        $this->assertSame('', $newReferenceNumber);
+        $this->assertNull($newReferenceDate);
+        $this->assertSame('', $newTypeCode);
+
+        $this->assertFalse(static::$document->nextDocumentSpecifiedAdvancePayment());
+    }
+
     public function testFirstNextGetDocumentPosition(): void
     {
         // First position
@@ -3123,6 +3137,31 @@ final class XRechnungCIIInvoiceReaderTest extends TestCase
         $this->assertSame('', $newTypeCode);
 
         $this->assertFalse(static::$document->nextDocumentPositionInvoiceReference());
+
+        // Second position
+
+        $this->assertFalse(static::$document->nextDocumentPosition());
+    }
+
+    public function testFirstNextGetDocumentPositionAdditionalObjectReference(): void
+    {
+        // First position
+
+        $this->assertTrue(static::$document->firstDocumentPosition());
+
+        $this->assertTrue(static::$document->firstDocumentPositionAdditionalObjectReference());
+
+        static::$document->getDocumentPositionAdditionalObjectReference(
+            $newReferenceNumber,
+            $newTypeCode,
+            $newReferenceTypeCode
+        );
+
+        $this->assertSame('ZZZZZZZZZ', $newReferenceNumber);
+        $this->assertSame('916', $newTypeCode);
+        $this->assertSame('130', $newReferenceTypeCode);
+
+        $this->assertFalse(static::$document->nextDocumentPositionAdditionalObjectReference());
 
         // Second position
 

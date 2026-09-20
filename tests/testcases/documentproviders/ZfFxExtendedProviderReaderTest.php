@@ -3211,6 +3211,99 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(10.00, $newRoungingAmount, PHP_FLOAT_EPSILON);
     }
 
+    public function testFirstNextGetDocumentSpecifiedAdvancePayment(): void
+    {
+        $this->assertTrue(static::$document->firstDocumentSpecifiedAdvancePayment());
+
+        static::$document->getDocumentSpecifiedAdvancePayment($newPaidAmount, $newReceivedDate);
+
+        $this->assertEqualsWithDelta(100.0, $newPaidAmount, PHP_FLOAT_EPSILON);
+        $this->assertSame('1970-04-01', $newReceivedDate?->format('Y-m-d'));
+
+        $this->assertTrue(static::$document->firstDocumentSpecifiedAdvancePaymentIncludedTradeTax());
+
+        static::$document->getDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode
+        );
+
+        $this->assertSame('S', $newTaxCategory);
+        $this->assertSame('VAT', $newTaxType);
+        $this->assertEqualsWithDelta(19.0, $newTaxAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(19.0, $newTaxPercent, PHP_FLOAT_EPSILON);
+        $this->assertSame('Exemption reason 1', $newExemptionReason);
+        $this->assertSame('VATEX-EU-132', $newExemptionReasonCode);
+
+        $this->assertTrue(static::$document->nextDocumentSpecifiedAdvancePaymentIncludedTradeTax());
+
+        static::$document->getDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode
+        );
+
+        $this->assertSame('AA', $newTaxCategory);
+        $this->assertSame('VAT', $newTaxType);
+        $this->assertEqualsWithDelta(7.0, $newTaxAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(7.0, $newTaxPercent, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $newExemptionReason);
+        $this->assertSame('', $newExemptionReasonCode);
+        $this->assertFalse(static::$document->nextDocumentSpecifiedAdvancePaymentIncludedTradeTax());
+
+        static::$document->getDocumentSpecifiedAdvancePaymentInvoiceSpecifiedReferencedDocument(
+            $newReferenceNumber,
+            $newReferenceDate,
+            $newTypeCode
+        );
+
+        $this->assertSame('ADV-INV-1', $newReferenceNumber);
+        $this->assertSame('1970-03-15', $newReferenceDate?->format('Y-m-d'));
+        $this->assertSame('380', $newTypeCode);
+
+        $this->assertTrue(static::$document->nextDocumentSpecifiedAdvancePayment());
+
+        static::$document->getDocumentSpecifiedAdvancePayment($newPaidAmount, $newReceivedDate);
+
+        $this->assertEqualsWithDelta(200.0, $newPaidAmount, PHP_FLOAT_EPSILON);
+        $this->assertNull($newReceivedDate);
+        $this->assertTrue(static::$document->firstDocumentSpecifiedAdvancePaymentIncludedTradeTax());
+
+        static::$document->getDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode
+        );
+
+        $this->assertSame('', $newTaxCategory);
+        $this->assertSame('VAT', $newTaxType);
+        $this->assertEqualsWithDelta(38.0, $newTaxAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $newTaxPercent, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $newExemptionReason);
+        $this->assertSame('', $newExemptionReasonCode);
+        $this->assertFalse(static::$document->nextDocumentSpecifiedAdvancePaymentIncludedTradeTax());
+
+        static::$document->getDocumentSpecifiedAdvancePaymentInvoiceSpecifiedReferencedDocument(
+            $newReferenceNumber,
+            $newReferenceDate,
+            $newTypeCode
+        );
+
+        $this->assertSame('', $newReferenceNumber);
+        $this->assertNull($newReferenceDate);
+        $this->assertSame('', $newTypeCode);
+        $this->assertFalse(static::$document->nextDocumentSpecifiedAdvancePayment());
+    }
+
     public function testFirstNextGetDocumentPosition(): void
     {
         // First position

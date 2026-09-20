@@ -61,6 +61,7 @@
             <file>../tests/testcases/documentdto/InvoiceSuiteReferenceDocumentLineExtDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuiteReferenceProductDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuiteServiceChargeDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuiteSpecifiedAdvancePaymentDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuiteTaxDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuiteSummationDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuitesummationLineDTOTest.php</file>

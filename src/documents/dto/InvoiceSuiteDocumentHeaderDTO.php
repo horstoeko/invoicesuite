@@ -377,58 +377,66 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
     protected array $summations = [];
 
     /**
+     * The specified advance payments
+     *
+     * @var array<InvoiceSuiteSpecifiedAdvancePaymentDTO>
+     */
+    protected array $specifiedAdvancePayments = [];
+
+    /**
      * Constructor
      *
-     * @param null|string                                $number                          The document number issued by the seller
-     * @param null|string                                $type                            The type of the document expressed as a code
-     * @param null|string                                $description                     The document type as free text
-     * @param null|string                                $language                        The language code in which the document was written
-     * @param null|DateTimeInterface                     $date                            Date of the document. The date when the document was issued by the seller
-     * @param null|DateTimeInterface                     $completeDate                    The contractual due date of the document
-     * @param array<DateTimeInterface>                   $supplyChainEvents               The date of the delivery
-     * @param null|string                                $currency                        The code for the invoice currency
-     * @param null|string                                $taxCurrency                     The code for the tax currency
-     * @param null|bool                                  $isCopy                          The flag that indicated that this document is a copy
-     * @param null|bool                                  $isTest                          The flag that indicated that this document is a test
-     * @param array<InvoiceSuiteNoteDTO>                 $notes                           The notes for this document
-     * @param array<InvoiceSuiteDateRangeDTO>            $billingPeriods                  The start and/or end date of the billing period
-     * @param array<InvoiceSuiteIdDTO>                   $postingReferences               The posting reference
-     * @param array<InvoiceSuiteReferenceDocumentDTO>    $sellerOrderReferences           The associated seller's order confirmation
-     * @param array<InvoiceSuiteReferenceDocumentDTO>    $buyerOrderReferences            The associated buyer's order
-     * @param array<InvoiceSuiteReferenceDocumentDTO>    $quotationReferences             The associated quotation
-     * @param array<InvoiceSuiteReferenceDocumentDTO>    $contractReferences              The associated contract
-     * @param array<InvoiceSuiteReferenceDocumentExtDTO> $additionalReferences            The additional associated document
-     * @param array<InvoiceSuiteReferenceDocumentExtDTO> $invoiceReferences               The additional invoice document
-     * @param array<InvoiceSuiteProjectDTO>              $projectReferences               The project reference
-     * @param array<InvoiceSuiteReferenceDocumentDTO>    $ultimateCustomerOrderReferences The ultimate customer order reference
-     * @param array<InvoiceSuiteReferenceDocumentDTO>    $despatchAdviceReferences        The despatch advice reference
-     * @param array<InvoiceSuiteReferenceDocumentDTO>    $receivingAdviceReferences       The receiving advice reference
-     * @param array<InvoiceSuiteReferenceDocumentDTO>    $deliveryNoteReferences          The delivery note reference
-     * @param null|InvoiceSuitePartyDTO                  $sellerParty                     The Seller/Supplier Party
-     * @param null|InvoiceSuitePartyDTO                  $buyerParty                      The Buyer/Customer Party
-     * @param null|InvoiceSuitePartyDTO                  $sellerTaxRepresentativeParty    The Seller's Tax Representativ Party
-     * @param null|InvoiceSuitePartyDTO                  $buyerTaxRepresentativeParty     The Buyer's Tax Representativ Party
-     * @param null|InvoiceSuitePartyDTO                  $salesAgentParty                 The Sales Agent Party
-     * @param null|InvoiceSuitePartyDTO                  $buyerAgentParty                 The Buyer Agent Party
-     * @param null|InvoiceSuitePartyDTO                  $productEndUserParty             The Product Enduser Party
-     * @param null|InvoiceSuitePartyDTO                  $shipToParty                     The Ship-To Party
-     * @param null|InvoiceSuitePartyDTO                  $ultimateShipToParty             The Ultimate Ship-To Party
-     * @param null|InvoiceSuitePartyDTO                  $shipFromParty                   The Ship-From Party
-     * @param null|InvoiceSuitePartyDTO                  $invoicerParty                   The Invoicer Party
-     * @param null|InvoiceSuitePartyDTO                  $invoiceeParty                   The Invoicee Party
-     * @param null|InvoiceSuitePartyDTO                  $payeeParty                      The Payee Party
-     * @param null|InvoiceSuitePartyDTO                  $payerParty                      The Payer Party
-     * @param array<InvoiceSuitePaymentMeanDTO>          $paymentMeans                    The payment means
-     * @param array<InvoiceSuitePaymentTermDTO>          $paymentTerms                    The payment terms
-     * @param array<InvoiceSuiteIdDTO>                   $creditorReferences              The creditor identifier
-     * @param array<InvoiceSuiteIdDTO>                   $paymentReferences               The payment reference
-     * @param array<InvoiceSuiteIdDTO>                   $buyerReferences                 The ID for internal routing (Leitweg ID)
-     * @param array<InvoiceSuiteDocumentPositionDTO>     $positions                       The Document positions
-     * @param array<InvoiceSuiteIdDTO>                   $deliveryTerms                   delivery term
-     * @param array<InvoiceSuiteTaxDTO>                  $taxes                           The VAT breakdown
-     * @param array<InvoiceSuiteAllowanceChargeDTO>      $allowanceCharges                The allowances/charges
-     * @param array<InvoiceSuiteServiceChargeDTO>        $serviceCharges                  The allowances/charges
-     * @param array<InvoiceSuiteSummationDTO>            $summations                      The summation
+     * @param null|string                                   $number                          The document number issued by the seller
+     * @param null|string                                   $type                            The type of the document expressed as a code
+     * @param null|string                                   $description                     The document type as free text
+     * @param null|string                                   $language                        The language code in which the document was written
+     * @param null|DateTimeInterface                        $date                            Date of the document. The date when the document was issued by the seller
+     * @param null|DateTimeInterface                        $completeDate                    The contractual due date of the document
+     * @param array<DateTimeInterface>                      $supplyChainEvents               The date of the delivery
+     * @param null|string                                   $currency                        The code for the invoice currency
+     * @param null|string                                   $taxCurrency                     The code for the tax currency
+     * @param null|bool                                     $isCopy                          The flag that indicated that this document is a copy
+     * @param null|bool                                     $isTest                          The flag that indicated that this document is a test
+     * @param array<InvoiceSuiteNoteDTO>                    $notes                           The notes for this document
+     * @param array<InvoiceSuiteDateRangeDTO>               $billingPeriods                  The start and/or end date of the billing period
+     * @param array<InvoiceSuiteIdDTO>                      $postingReferences               The posting reference
+     * @param array<InvoiceSuiteReferenceDocumentDTO>       $sellerOrderReferences           The associated seller's order confirmation
+     * @param array<InvoiceSuiteReferenceDocumentDTO>       $buyerOrderReferences            The associated buyer's order
+     * @param array<InvoiceSuiteReferenceDocumentDTO>       $quotationReferences             The associated quotation
+     * @param array<InvoiceSuiteReferenceDocumentDTO>       $contractReferences              The associated contract
+     * @param array<InvoiceSuiteReferenceDocumentExtDTO>    $additionalReferences            The additional associated document
+     * @param array<InvoiceSuiteReferenceDocumentExtDTO>    $invoiceReferences               The additional invoice document
+     * @param array<InvoiceSuiteProjectDTO>                 $projectReferences               The project reference
+     * @param array<InvoiceSuiteReferenceDocumentDTO>       $ultimateCustomerOrderReferences The ultimate customer order reference
+     * @param array<InvoiceSuiteReferenceDocumentDTO>       $despatchAdviceReferences        The despatch advice reference
+     * @param array<InvoiceSuiteReferenceDocumentDTO>       $receivingAdviceReferences       The receiving advice reference
+     * @param array<InvoiceSuiteReferenceDocumentDTO>       $deliveryNoteReferences          The delivery note reference
+     * @param null|InvoiceSuitePartyDTO                     $sellerParty                     The Seller/Supplier Party
+     * @param null|InvoiceSuitePartyDTO                     $buyerParty                      The Buyer/Customer Party
+     * @param null|InvoiceSuitePartyDTO                     $sellerTaxRepresentativeParty    The Seller's Tax Representativ Party
+     * @param null|InvoiceSuitePartyDTO                     $buyerTaxRepresentativeParty     The Buyer's Tax Representativ Party
+     * @param null|InvoiceSuitePartyDTO                     $salesAgentParty                 The Sales Agent Party
+     * @param null|InvoiceSuitePartyDTO                     $buyerAgentParty                 The Buyer Agent Party
+     * @param null|InvoiceSuitePartyDTO                     $productEndUserParty             The Product Enduser Party
+     * @param null|InvoiceSuitePartyDTO                     $shipToParty                     The Ship-To Party
+     * @param null|InvoiceSuitePartyDTO                     $ultimateShipToParty             The Ultimate Ship-To Party
+     * @param null|InvoiceSuitePartyDTO                     $shipFromParty                   The Ship-From Party
+     * @param null|InvoiceSuitePartyDTO                     $invoicerParty                   The Invoicer Party
+     * @param null|InvoiceSuitePartyDTO                     $invoiceeParty                   The Invoicee Party
+     * @param null|InvoiceSuitePartyDTO                     $payeeParty                      The Payee Party
+     * @param null|InvoiceSuitePartyDTO                     $payerParty                      The Payer Party
+     * @param array<InvoiceSuitePaymentMeanDTO>             $paymentMeans                    The payment means
+     * @param array<InvoiceSuitePaymentTermDTO>             $paymentTerms                    The payment terms
+     * @param array<InvoiceSuiteIdDTO>                      $creditorReferences              The creditor identifier
+     * @param array<InvoiceSuiteIdDTO>                      $paymentReferences               The payment reference
+     * @param array<InvoiceSuiteIdDTO>                      $buyerReferences                 The ID for internal routing (Leitweg ID)
+     * @param array<InvoiceSuiteDocumentPositionDTO>        $positions                       The Document positions
+     * @param array<InvoiceSuiteIdDTO>                      $deliveryTerms                   delivery term
+     * @param array<InvoiceSuiteTaxDTO>                     $taxes                           The VAT breakdown
+     * @param array<InvoiceSuiteAllowanceChargeDTO>         $allowanceCharges                The allowances/charges
+     * @param array<InvoiceSuiteServiceChargeDTO>           $serviceCharges                  The allowances/charges
+     * @param array<InvoiceSuiteSummationDTO>               $summations                      The summation
+     * @param array<InvoiceSuiteSpecifiedAdvancePaymentDTO> $specifiedAdvancePayments        The specified advance payments
      */
     public function __construct(
         ?string $number = null,
@@ -480,7 +488,8 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
         array $taxes = [],
         array $allowanceCharges = [],
         array $serviceCharges = [],
-        array $summations = []
+        array $summations = [],
+        array $specifiedAdvancePayments = []
     ) {
         $this->setNumber($number);
         $this->setType($type);
@@ -532,6 +541,7 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
         $this->setAllowanceCharges($allowanceCharges);
         $this->setServiceCharges($serviceCharges);
         $this->setSummations($summations);
+        $this->setSpecifiedAdvancePayments($specifiedAdvancePayments);
     }
 
     /**
@@ -7769,6 +7779,262 @@ class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
         if (!InvoiceSuiteArrayUtils::empty($filteredSummation)) {
             $summation = InvoiceSuiteArrayUtils::last($filteredSummation);
             $callback($summation);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Returns the specified advance payments
+     *
+     * @return array<InvoiceSuiteSpecifiedAdvancePaymentDTO>
+     */
+    public function getSpecifiedAdvancePayments(): array
+    {
+        return $this->specifiedAdvancePayments;
+    }
+
+    /**
+     * Sets the specified advance payments
+     *
+     * @param  array<InvoiceSuiteSpecifiedAdvancePaymentDTO> $specifiedAdvancePayments The specified advance payments
+     * @return static
+     */
+    public function setSpecifiedAdvancePayments(
+        array $specifiedAdvancePayments
+    ): static {
+        foreach ($specifiedAdvancePayments as $specifiedAdvancePaymentsItem) {
+            $this->addSpecifiedAdvancePayment($specifiedAdvancePaymentsItem);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add single The specified advance payments
+     *
+     * @param  InvoiceSuiteSpecifiedAdvancePaymentDTO $specifiedAdvancePayment The specified advance payments
+     * @return static
+     */
+    public function addSpecifiedAdvancePayment(
+        ?InvoiceSuiteSpecifiedAdvancePaymentDTO $specifiedAdvancePayment
+    ): static {
+        if (is_null($specifiedAdvancePayment)) {
+            return $this;
+        }
+
+        $this->specifiedAdvancePayments[] = $specifiedAdvancePayment;
+
+        return $this;
+    }
+
+    /**
+     * Get first The specified advance payments
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function firstSpecifiedAdvancePayment(
+        callable $callback,
+        ?callable $callbackElse = null
+    ): static {
+        if (($specifiedAdvancePayment = InvoiceSuiteArrayUtils::first($this->specifiedAdvancePayments)) !== false) {
+            $callback($specifiedAdvancePayment);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get next The specified advance payments
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function nextSpecifiedAdvancePayment(
+        callable $callback,
+        ?callable $callbackElse = null
+    ): static {
+        if (($specifiedAdvancePayment = InvoiceSuiteArrayUtils::next($this->specifiedAdvancePayments)) !== false) {
+            $callback($specifiedAdvancePayment);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get previous The specified advance payments
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function previousSpecifiedAdvancePayment(
+        callable $callback,
+        ?callable $callbackElse = null
+    ): static {
+        if (($specifiedAdvancePayment = InvoiceSuiteArrayUtils::previous($this->specifiedAdvancePayments)) !== false) {
+            $callback($specifiedAdvancePayment);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last The specified advance payments
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function lastSpecifiedAdvancePayment(
+        callable $callback,
+        ?callable $callbackElse = null
+    ): static {
+        if (($specifiedAdvancePayment = InvoiceSuiteArrayUtils::last($this->specifiedAdvancePayments)) !== false) {
+            $callback($specifiedAdvancePayment);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The specified advance payments and execute callback
+     *
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
+     * @return static
+     */
+    public function forEachSpecifiedAdvancePayment(
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null
+    ): static {
+        $count = 0;
+
+        foreach ($this->specifiedAdvancePayments as $specifiedAdvancePayment) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($specifiedAdvancePayment);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The specified advance payments and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstSpecifiedAdvancePayment(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstSpecifiedAdvancePayment($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->specifiedAdvancePayments as $specifiedAdvancePayment) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($specifiedAdvancePayment);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Filter The specified advance payments
+     *
+     * @param  callable                                      $callback Callback to execute filtering for each item
+     * @return array<InvoiceSuiteSpecifiedAdvancePaymentDTO>
+     */
+    public function filterSpecifiedAdvancePayment(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->specifiedAdvancePayments, $callback);
+    }
+
+    /**
+     * Get first The specified advance payments from filtered result
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function filterFirstSpecifiedAdvancePayment(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null
+    ): static {
+        $filteredSpecifiedAdvancePayment = $this->filterSpecifiedAdvancePayment($filterCallback);
+
+        if (!InvoiceSuiteArrayUtils::empty($filteredSpecifiedAdvancePayment)) {
+            $specifiedAdvancePayment = InvoiceSuiteArrayUtils::first($filteredSpecifiedAdvancePayment);
+            $callback($specifiedAdvancePayment);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last The specified advance payments from filtered result
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function filterLastSpecifiedAdvancePayment(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null
+    ): static {
+        $filteredSpecifiedAdvancePayment = $this->filterSpecifiedAdvancePayment($filterCallback);
+
+        if (!InvoiceSuiteArrayUtils::empty($filteredSpecifiedAdvancePayment)) {
+            $specifiedAdvancePayment = InvoiceSuiteArrayUtils::last($filteredSpecifiedAdvancePayment);
+            $callback($specifiedAdvancePayment);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
         }

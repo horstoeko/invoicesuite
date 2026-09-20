@@ -103,8 +103,8 @@ class InvoiceSuiteClassFinder
         string $isSubClassOf,
         bool $disableCache = false
     ): array {
-        $discoveryNamespaces = self::getDiscoveryNamespaces();
-        $cacheKey = self::buildCacheKey($isSubClassOf, $discoveryNamespaces);
+        $discoveryNamespaces = $this->getDiscoveryNamespaces();
+        $cacheKey = $this->buildCacheKey($isSubClassOf, $discoveryNamespaces);
 
         if (!$disableCache && InvoiceSuiteArrayUtils::keyExists($this->subClassNames, $cacheKey)) {
             return $this->subClassNames[$cacheKey];
@@ -204,7 +204,7 @@ class InvoiceSuiteClassFinder
      *
      * @return array<int,string>
      */
-    private static function getDiscoveryNamespaces(): array
+    private function getDiscoveryNamespaces(): array
     {
         $discoveryNamespaces = InvoiceSuiteSettings::getDiscoveryNamespaces();
 
@@ -233,7 +233,7 @@ class InvoiceSuiteClassFinder
      * @param  array<int,string> $discoveryNamespaces
      * @return string
      */
-    private static function buildCacheKey(string $isSubClassOf, array $discoveryNamespaces): string
+    private function buildCacheKey(string $isSubClassOf, array $discoveryNamespaces): string
     {
         if (InvoiceSuiteArrayUtils::empty($discoveryNamespaces)) {
             return $isSubClassOf;

@@ -16199,6 +16199,34 @@ final class ZfFxBasicWlProviderBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:DuePayableAmount)[2]');
     }
 
+    public function testSetAddDocumentSpecifiedAdvancePayment(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentSpecifiedAdvancePayment(null, null);
+            static::$document->addDocumentSpecifiedAdvancePayment(null, new DateTime('1970-04-01'));
+            static::$document->setDocumentSpecifiedAdvancePayment(100.0, new DateTime('1970-04-01'));
+            static::$document->setDocumentSpecifiedAdvancePaymentIncludedTradeTax();
+            static::$document->addDocumentSpecifiedAdvancePaymentIncludedTradeTax('S', null, 19.0, 19.0);
+            static::$document->setDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+                'S',
+                'VAT',
+                19.0,
+                19.0,
+                'Exemption reason 1',
+                'VATEX-EU-132'
+            );
+            static::$document->addDocumentSpecifiedAdvancePaymentIncludedTradeTax('AA', 'VAT', 7.0, 7.0, '', '');
+            static::$document->setDocumentSpecifiedAdvancePaymentInvoiceReference();
+            static::$document->setDocumentSpecifiedAdvancePaymentInvoiceReference(
+                'ADV-INV-1',
+                new DateTime('1970-03-15'),
+                '380'
+            );
+            static::$document->addDocumentSpecifiedAdvancePayment(200.0);
+            static::$document->addDocumentSpecifiedAdvancePaymentIncludedTradeTax(null, 'VAT', 38.0);
+        });
+    }
+
     public function testAddDocumentPosition(): void
     {
         $this->disableRenderXmlContent();

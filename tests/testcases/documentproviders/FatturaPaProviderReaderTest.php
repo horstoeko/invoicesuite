@@ -406,6 +406,45 @@ final class FatturaPaProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(0.0, $newRoungingAmount, PHP_FLOAT_EPSILON);
     }
 
+    public function testFirstNextGetDocumentSpecifiedAdvancePayment(): void
+    {
+        $this->assertFalse(static::$document->firstDocumentSpecifiedAdvancePayment());
+
+        static::$document->getDocumentSpecifiedAdvancePayment($newPaidAmount, $newReceivedDate);
+        $this->assertEqualsWithDelta(0.0, $newPaidAmount, PHP_FLOAT_EPSILON);
+        $this->assertNull($newReceivedDate);
+
+        $this->assertFalse(static::$document->firstDocumentSpecifiedAdvancePaymentIncludedTradeTax());
+
+        static::$document->getDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode
+        );
+        $this->assertSame('', $newTaxCategory);
+        $this->assertSame('', $newTaxType);
+        $this->assertEqualsWithDelta(0.0, $newTaxAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $newTaxPercent, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $newExemptionReason);
+        $this->assertSame('', $newExemptionReasonCode);
+
+        $this->assertFalse(static::$document->nextDocumentSpecifiedAdvancePaymentIncludedTradeTax());
+
+        static::$document->getDocumentSpecifiedAdvancePaymentInvoiceSpecifiedReferencedDocument(
+            $newReferenceNumber,
+            $newReferenceDate,
+            $newTypeCode
+        );
+        $this->assertSame('', $newReferenceNumber);
+        $this->assertNull($newReferenceDate);
+        $this->assertSame('', $newTypeCode);
+
+        $this->assertFalse(static::$document->nextDocumentSpecifiedAdvancePayment());
+    }
+
     public function testFirstNextGetDocumentPosition(): void
     {
         $this->assertTrue(static::$document->firstDocumentPosition());
@@ -1041,6 +1080,8 @@ final class FatturaPaProviderReaderTest extends TestCase
         $this->assertFalse(static::$document->nextDocumentLogisticServiceCharge());
         $this->assertFalse(static::$document->firstDocumentPositionNote());
         $this->assertFalse(static::$document->nextDocumentPositionNote());
+        $this->assertFalse(static::$document->firstDocumentSpecifiedAdvancePayment());
+        $this->assertFalse(static::$document->nextDocumentSpecifiedAdvancePayment());
         $this->assertFalse(static::$document->firstDocumentPositionProductCharacteristic());
         $this->assertFalse(static::$document->nextDocumentPositionProductCharacteristic());
         $this->assertFalse(static::$document->firstDocumentPositionProductClassification());

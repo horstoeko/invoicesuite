@@ -44,9 +44,11 @@ use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineExtDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceProductDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteServiceChargeDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSpecifiedAdvancePaymentDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\AdvancePaymentType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\ram\LegalOrganizationType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\ram\LogisticsServiceChargeType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\ram\NoteType;
@@ -76,6 +78,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use ValueError;
 
 class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatReader
@@ -2342,6 +2345,61 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
                 $newDocumentRoungingAmount
             )
         );
+
+        // Document-Level Specified Advance Payments
+
+        while ($this->nextDocumentSpecifiedAdvancePayment()) {
+            $this->getDocumentSpecifiedAdvancePayment(
+                $newDocumentSpecifiedAdvancePaymentPaidAmount,
+                $newDocumentSpecifiedAdvancePaymentReceivedDateTime
+            );
+
+            $specifiedAdvancePaymentDTO = new InvoiceSuiteSpecifiedAdvancePaymentDTO(
+                $newDocumentSpecifiedAdvancePaymentPaidAmount,
+                $newDocumentSpecifiedAdvancePaymentReceivedDateTime
+            );
+
+            while ($this->nextDocumentSpecifiedAdvancePaymentIncludedTradeTax()) {
+                $this->getDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+                    $newDocumentSpecifiedAdvancePaymentTaxCategory,
+                    $newDocumentSpecifiedAdvancePaymentTaxType,
+                    $newDocumentSpecifiedAdvancePaymentTaxAmount,
+                    $newDocumentSpecifiedAdvancePaymentTaxPercent,
+                    $newDocumentSpecifiedAdvancePaymentTaxExemptionReason,
+                    $newDocumentSpecifiedAdvancePaymentTaxExemptionReasonCode
+                );
+
+                $specifiedAdvancePaymentDTO->addIncludedTradeTax(
+                    new InvoiceSuiteTaxDTO(
+                        $newDocumentSpecifiedAdvancePaymentTaxCategory,
+                        $newDocumentSpecifiedAdvancePaymentTaxType,
+                        null,
+                        $newDocumentSpecifiedAdvancePaymentTaxAmount,
+                        $newDocumentSpecifiedAdvancePaymentTaxPercent,
+                        $newDocumentSpecifiedAdvancePaymentTaxExemptionReason,
+                        $newDocumentSpecifiedAdvancePaymentTaxExemptionReasonCode
+                    )
+                );
+            }
+
+            $this->getDocumentSpecifiedAdvancePaymentInvoiceSpecifiedReferencedDocument(
+                $newDocumentSpecifiedAdvancePaymentReferenceNumber,
+                $newDocumentSpecifiedAdvancePaymentReferenceDate,
+                $newDocumentSpecifiedAdvancePaymentReferenceTypeCode
+            );
+
+            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDocumentSpecifiedAdvancePaymentReferenceNumber)) {
+                $specifiedAdvancePaymentDTO->setInvoiceSpecifiedReferencedDocument(
+                    new InvoiceSuiteReferenceDocumentExtDTO(
+                        $newDocumentSpecifiedAdvancePaymentReferenceNumber,
+                        $newDocumentSpecifiedAdvancePaymentReferenceDate,
+                        $newDocumentSpecifiedAdvancePaymentReferenceTypeCode
+                    )
+                );
+            }
+
+            $newDocumentDTO->addSpecifiedAdvancePayment($specifiedAdvancePaymentDTO);
+        }
 
         // Positions
 
@@ -15139,6 +15197,283 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $newDueAmount = $documentSummation?->getDuePayableAmount()?->getValue() ?? 0.0;
         $newPrepaidAmount = $this->supportsAtLeastBasicWl() ? ($documentSummation?->getTotalPrepaidAmount()?->getValue() ?? 0.0) : 0.0;
         $newRoungingAmount = $documentSummation?->getRoundingAmount()?->getValue() ?? 0.0;
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first specified advance payment
+     *
+     * @return bool
+     */
+    public function firstDocumentSpecifiedAdvancePayment(): bool
+    {
+        InvoiceSuitePointerUtils::resetSingle('documentspecifiedadvancepaymentincludedtradetax');
+
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedAdvancePayment() ?? []
+            ),
+            'documentspecifiedadvancepayment'
+        );
+    }
+
+    /**
+     * Go to the next specified advance payment
+     *
+     * @return bool
+     */
+    public function nextDocumentSpecifiedAdvancePayment(): bool
+    {
+        InvoiceSuitePointerUtils::resetSingle('documentspecifiedadvancepaymentincludedtradetax');
+
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedAdvancePayment() ?? []
+            ),
+            'documentspecifiedadvancepayment'
+        );
+    }
+
+    /**
+     * Get the current specified advance payment
+     *
+     * @param  null|float             $newPaidAmount                __BT-X-291, From EXTENDED__ Amount of the advance payment
+     * @param  null|DateTimeInterface $newFormattedReceivedDateTime __BT-X-292, From EXTENDED__ Date on which the advance payment was received
+     * @return static
+     *
+     * @param-out float                  $newPaidAmount
+     * @param-out null|DateTimeInterface $newFormattedReceivedDateTime
+     *
+     * @throws ValueError
+     */
+    public function getDocumentSpecifiedAdvancePayment(
+        ?float &$newPaidAmount,
+        ?DateTimeInterface &$newFormattedReceivedDateTime
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        InvoiceSuitePointerUtils::resetSingle('documentspecifiedadvancepaymentincludedtradetax');
+
+        $newPaidAmount = 0.0;
+        $newFormattedReceivedDateTime = null;
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        /**
+         * @var array<AdvancePaymentType>
+         */
+        $specifiedAdvancePayments = InvoiceSuiteArrayUtils::ensure(
+            $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedAdvancePayment() ?? []
+        );
+
+        /**
+         * @var AdvancePaymentType
+         */
+        $specifiedAdvancePayment = $specifiedAdvancePayments[InvoiceSuitePointerUtils::getValue('documentspecifiedadvancepayment')];
+
+        $newPaidAmount = $specifiedAdvancePayment->getPaidAmount()?->getValue() ?? 0.0;
+        $newFormattedReceivedDateTime = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $specifiedAdvancePayment->getFormattedReceivedDateTime()?->getDateTimeString()?->getValue() ?? '',
+            $specifiedAdvancePayment->getFormattedReceivedDateTime()?->getDateTimeString()?->getFormat() ?? ''
+        );
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first tax information in the current specified advance payment
+     *
+     * @return bool
+     */
+    public function firstDocumentSpecifiedAdvancePaymentIncludedTradeTax(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        /**
+         * @var array<AdvancePaymentType>
+         */
+        $specifiedAdvancePayments = InvoiceSuiteArrayUtils::ensure(
+            $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedAdvancePayment() ?? []
+        );
+
+        /**
+         * @var AdvancePaymentType
+         */
+        $specifiedAdvancePayment = $specifiedAdvancePayments[InvoiceSuitePointerUtils::getValue('documentspecifiedadvancepayment')];
+
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure($specifiedAdvancePayment->getIncludedTradeTax() ?? []),
+            'documentspecifiedadvancepaymentincludedtradetax'
+        );
+    }
+
+    /**
+     * Go to the next tax information in the current specified advance payment
+     *
+     * @return bool
+     */
+    public function nextDocumentSpecifiedAdvancePaymentIncludedTradeTax(): bool
+    {
+        if ($this->supportsNotAtLeastExtended()) {
+            return false;
+        }
+
+        /**
+         * @var array<AdvancePaymentType>
+         */
+        $specifiedAdvancePayments = InvoiceSuiteArrayUtils::ensure(
+            $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedAdvancePayment() ?? []
+        );
+
+        /**
+         * @var AdvancePaymentType
+         */
+        $specifiedAdvancePayment = $specifiedAdvancePayments[InvoiceSuitePointerUtils::getValue('documentspecifiedadvancepayment')];
+
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure($specifiedAdvancePayment->getIncludedTradeTax() ?? []),
+            'documentspecifiedadvancepaymentincludedtradetax'
+        );
+    }
+
+    /**
+     * Get tax information from the current specified advance payment
+     *
+     * @param  null|string $newTaxCategory         __BT-X-296, From EXTENDED__ Coded description of the tax category
+     * @param  null|string $newTaxType             __BT-X-294, From EXTENDED__ Coded description of the tax type
+     * @param  null|float  $newTaxAmount           __BT-X-293, From EXTENDED__ Tax amount included in the advance payment
+     * @param  null|float  $newTaxPercent          __BT-X-298, From EXTENDED__ Tax rate (percentage)
+     * @param  null|string $newExemptionReason     __BT-X-295, From EXTENDED__ Reason for tax exemption (free text)
+     * @param  null|string $newExemptionReasonCode __BT-X-297, From EXTENDED__ Reason for tax exemption (code)
+     * @return static
+     *
+     * @param-out string $newTaxCategory
+     * @param-out string $newTaxType
+     * @param-out float  $newTaxAmount
+     * @param-out float  $newTaxPercent
+     * @param-out string $newExemptionReason
+     * @param-out string $newExemptionReasonCode
+     */
+    public function getDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+        ?string &$newTaxCategory,
+        ?string &$newTaxType,
+        ?float &$newTaxAmount,
+        ?float &$newTaxPercent,
+        ?string &$newExemptionReason,
+        ?string &$newExemptionReasonCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newTaxCategory = '';
+        $newTaxType = '';
+        $newTaxAmount = 0.0;
+        $newTaxPercent = 0.0;
+        $newExemptionReason = '';
+        $newExemptionReasonCode = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        /**
+         * @var array<AdvancePaymentType>
+         */
+        $specifiedAdvancePayments = InvoiceSuiteArrayUtils::ensure(
+            $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedAdvancePayment() ?? []
+        );
+
+        /**
+         * @var AdvancePaymentType
+         */
+        $specifiedAdvancePayment = $specifiedAdvancePayments[InvoiceSuitePointerUtils::getValue('documentspecifiedadvancepayment')];
+
+        /**
+         * @var array<TradeTaxType>
+         */
+        $includedTradeTaxes = InvoiceSuiteArrayUtils::ensure($specifiedAdvancePayment->getIncludedTradeTax() ?? []);
+
+        /**
+         * @var TradeTaxType
+         */
+        $includedTradeTax = $includedTradeTaxes[InvoiceSuitePointerUtils::getValue('documentspecifiedadvancepaymentincludedtradetax')];
+
+        $newTaxCategory = $includedTradeTax->getCategoryCode()?->getValue() ?? '';
+        $newTaxType = $includedTradeTax->getTypeCode()?->getValue() ?? '';
+        $newTaxAmount = $includedTradeTax->getCalculatedAmount()?->getValue() ?? 0.0;
+        $newTaxPercent = $includedTradeTax->getRateApplicablePercent()?->getValue() ?? 0.0;
+        $newExemptionReason = $includedTradeTax->getExemptionReason()?->getValue() ?? '';
+        $newExemptionReasonCode = $includedTradeTax->getExemptionReasonCode()?->getValue() ?? '';
+
+        $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Get the invoice reference from the current specified advance payment
+     *
+     * @param  null|string            $newReferenceNumber __BT-X-558, From EXTENDED__ Reference number
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-560, From EXTENDED__ Issue date of the reference
+     * @param  null|string            $newTypeCode        __BT-X-559, From EXTENDED__ Type of the referenced document
+     * @return static
+     *
+     * @param-out string                 $newReferenceNumber
+     * @param-out null|DateTimeInterface $newReferenceDate
+     * @param-out string                 $newTypeCode
+     *
+     * @throws ValueError
+     */
+    public function getDocumentSpecifiedAdvancePaymentInvoiceSpecifiedReferencedDocument(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate,
+        ?string &$newTypeCode
+    ): static {
+        $this->traceMethodEnter(__METHOD__);
+
+        $newReferenceNumber = '';
+        $newReferenceDate = null;
+        $newTypeCode = '';
+
+        if ($this->supportsNotAtLeastExtendedWithTrace(__METHOD__)) {
+            return $this;
+        }
+
+        /**
+         * @var array<AdvancePaymentType>
+         */
+        $specifiedAdvancePayments = InvoiceSuiteArrayUtils::ensure(
+            $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedAdvancePayment() ?? []
+        );
+
+        /**
+         * @var AdvancePaymentType
+         */
+        $specifiedAdvancePayment = $specifiedAdvancePayments[InvoiceSuitePointerUtils::getValue('documentspecifiedadvancepayment')];
+        $invoiceReference = $specifiedAdvancePayment->getInvoiceSpecifiedReferencedDocument();
+
+        $newReferenceNumber = $invoiceReference?->getIssuerAssignedID()?->getValue() ?? '';
+        $newReferenceDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $invoiceReference?->getFormattedIssueDateTime()?->getDateTimeString()?->getValue() ?? '',
+            $invoiceReference?->getFormattedIssueDateTime()?->getDateTimeString()?->getFormat() ?? ''
+        );
+        $newTypeCode = $invoiceReference?->getTypeCode()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 

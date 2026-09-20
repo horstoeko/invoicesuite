@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\tests\testcases\documentreadbuild;
 
 use DateTime;
+use DateTimeImmutable;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistCurrencyCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
@@ -39,6 +40,7 @@ use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineExtDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceProductDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteServiceChargeDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSpecifiedAdvancePaymentDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
@@ -16284,6 +16286,34 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:DuePayableAmount)[2]');
     }
 
+    public function testSetAddDocumentSpecifiedAdvancePayment(): void
+    {
+        $this->assertXmlWasNotChanged(static function (): void {
+            static::$document->setDocumentSpecifiedAdvancePayment(null, null);
+            static::$document->addDocumentSpecifiedAdvancePayment(null, new DateTime('1970-04-01'));
+            static::$document->setDocumentSpecifiedAdvancePayment(100.0, new DateTime('1970-04-01'));
+            static::$document->setDocumentSpecifiedAdvancePaymentIncludedTradeTax();
+            static::$document->addDocumentSpecifiedAdvancePaymentIncludedTradeTax('S', null, 19.0, 19.0);
+            static::$document->setDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+                'S',
+                'VAT',
+                19.0,
+                19.0,
+                'Exemption reason 1',
+                'VATEX-EU-132'
+            );
+            static::$document->addDocumentSpecifiedAdvancePaymentIncludedTradeTax('AA', 'VAT', 7.0, 7.0, '', '');
+            static::$document->setDocumentSpecifiedAdvancePaymentInvoiceReference();
+            static::$document->setDocumentSpecifiedAdvancePaymentInvoiceReference(
+                'ADV-INV-1',
+                new DateTime('1970-03-15'),
+                '380'
+            );
+            static::$document->addDocumentSpecifiedAdvancePayment(200.0);
+            static::$document->addDocumentSpecifiedAdvancePaymentIncludedTradeTax(null, 'VAT', 38.0);
+        });
+    }
+
     public function testAddDocumentPosition(): void
     {
         $this->disableRenderXmlContent();
@@ -22502,6 +22532,18 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
                     ->setGrossAmount(107.0)
                     ->setDueAmount(108.0)
             )
+            ->addSpecifiedAdvancePayment(
+                (new InvoiceSuiteSpecifiedAdvancePaymentDTO(100.0, new DateTimeImmutable('1970-04-01')))
+                    ->addIncludedTradeTax(new InvoiceSuiteTaxDTO('S', 'VAT', null, 19.0, 19.0, 'Exemption reason 1', 'VATEX-EU-132'))
+                    ->addIncludedTradeTax(new InvoiceSuiteTaxDTO('AA', 'VAT', null, 7.0, 7.0))
+                    ->setInvoiceSpecifiedReferencedDocument(
+                        new InvoiceSuiteReferenceDocumentExtDTO('ADV-INV-1', new DateTimeImmutable('1970-03-15'), '380')
+                    )
+            )
+            ->addSpecifiedAdvancePayment(
+                (new InvoiceSuiteSpecifiedAdvancePaymentDTO(200.0))
+                    ->addIncludedTradeTax(new InvoiceSuiteTaxDTO(null, 'VAT', null, 38.0))
+            )
             ->addPosition((new InvoiceSuiteDocumentPositionDTO())
                 ->setLineId('1.1')
                 ->setParentLineId('1')
@@ -23689,6 +23731,10 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:GrandTotalAmount)[2]');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TotalPrepaidAmount)[2]');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:DuePayableAmount)[2]');
+
+        // Specified advance payment
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment');
 
         // Position General
 

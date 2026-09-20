@@ -4722,6 +4722,84 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Set the specified advance payment
+     *
+     * @param  null|float             $newPaidAmount                Amount of the advance payment
+     * @param  null|DateTimeInterface $newFormattedReceivedDateTime Date on which the advance payment was received
+     * @return static
+     */
+    abstract public function setDocumentSpecifiedAdvancePayment(
+        ?float $newPaidAmount = null,
+        ?DateTimeInterface $newFormattedReceivedDateTime = null
+    ): static;
+
+    /**
+     * Add a specified advance payment
+     *
+     * @param  null|float             $newPaidAmount                Amount of the advance payment
+     * @param  null|DateTimeInterface $newFormattedReceivedDateTime Date on which the advance payment was received
+     * @return static
+     */
+    abstract public function addDocumentSpecifiedAdvancePayment(
+        ?float $newPaidAmount = null,
+        ?DateTimeInterface $newFormattedReceivedDateTime = null
+    ): static;
+
+    /**
+     * Set tax information in the last specified advance payment
+     *
+     * @param  null|string $newTaxCategory         Coded description of the tax category
+     * @param  null|string $newTaxType             Coded description of the tax type
+     * @param  null|float  $newTaxAmount           Tax amount included in the advance payment
+     * @param  null|float  $newTaxPercent          Tax rate (percentage)
+     * @param  null|string $newExemptionReason     Reason for tax exemption (free text)
+     * @param  null|string $newExemptionReasonCode Reason for tax exemption (code)
+     * @return static
+     */
+    abstract public function setDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null
+    ): static;
+
+    /**
+     * Add tax information to the last specified advance payment
+     *
+     * @param  null|string $newTaxCategory         Coded description of the tax category
+     * @param  null|string $newTaxType             Coded description of the tax type
+     * @param  null|float  $newTaxAmount           Tax amount included in the advance payment
+     * @param  null|float  $newTaxPercent          Tax rate (percentage)
+     * @param  null|string $newExemptionReason     Reason for tax exemption (free text)
+     * @param  null|string $newExemptionReasonCode Reason for tax exemption (code)
+     * @return static
+     */
+    abstract public function addDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null
+    ): static;
+
+    /**
+     * Set the invoice reference in the last specified advance payment
+     *
+     * @param  null|string            $newReferenceNumber Reference number
+     * @param  null|DateTimeInterface $newReferenceDate   Issue date of the reference
+     * @param  null|string            $newTypeCode        Type of the referenced document
+     * @return static
+     */
+    abstract public function setDocumentSpecifiedAdvancePaymentInvoiceReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null
+    ): static;
+
+    /**
      * Add a new position to document
      *
      * @param  null|string $newPositionId           Identification of the position
