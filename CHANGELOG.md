@@ -1,3 +1,15 @@
+## v0.0.34
+
+``Previous version v0.0.33``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :bug:  | [15fd6c43](https://github.com/horstoeko/invoicesuite/commit/15fd6c43) | 2026-09-20 16:43:43 CEST | HorstOeko | [FIX] Fixed DTO Generator | 
+| :new:  | [5e28df24](https://github.com/horstoeko/invoicesuite/commit/5e28df24) | 2026-09-20 16:08:10 CEST | HorstOeko | [ENH] Added support for BG-X-45 (Advance Payment) () | [#39](https://github.com/horstoeko/invoicesuite/issues/39)
+| :bug:  | [45e1f474](https://github.com/horstoeko/invoicesuite/commit/45e1f474) | 2026-09-19 16:06:52 CEST | HorstOeko | [FIX] Updated Provider Templates | 
+
+:exclamation: _There is one internal commit_
+
 ## v0.0.33
 
 ``Previous version v0.0.32``
