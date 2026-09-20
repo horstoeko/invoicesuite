@@ -1770,7 +1770,7 @@ $definitions = [
                 'autoplural' => true,
             ],
             'specifiedAdvancePayment' => [
-                'type' => 'InvoiceSuiteSpecifiedAdvancePaymentDTO',
+                'type' => 'horstoeko\invoicesuite\documents\dto\InvoiceSuiteSpecifiedAdvancePaymentDTO',
                 'caption' => 'The specified advance payments',
                 'isarray' => true,
                 'isobject' => true,
