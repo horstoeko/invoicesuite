@@ -403,6 +403,7 @@ function gendto(array $definitions): void
                     } else {
                         $adder->addBody(sprintf('if (is_null($%1$s)) {', $propertyName));
                     }
+
                     $adder->addBody('    return $this;');
                     $adder->addBody('}');
                     $adder->addBody('');
