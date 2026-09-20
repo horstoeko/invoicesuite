@@ -38,7 +38,7 @@ final class InvoiceSuiteSpecifiedAdvancePaymentDTOTest extends TestCase
             $invoiceReference
         );
 
-        $this->assertSame(100.0, $specifiedAdvancePaymentDTO->getPaidAmount());
+        $this->assertEqualsWithDelta(100.0, $specifiedAdvancePaymentDTO->getPaidAmount(), PHP_FLOAT_EPSILON);
         $this->assertSame($receivedDate, $specifiedAdvancePaymentDTO->getFormattedReceivedDateTime());
         $this->assertSame([$includedTradeTax], $specifiedAdvancePaymentDTO->getIncludedTradeTaxes());
         $this->assertSame($invoiceReference, $specifiedAdvancePaymentDTO->getInvoiceSpecifiedReferencedDocument());
