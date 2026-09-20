@@ -22419,6 +22419,7 @@ final class ZfFxMinimumDocumentBuilderTest extends TestCase
                 (new InvoiceSuitePaymentTermDTO())
                     ->setDescription('Payment Term Description 1')
                     ->setDueDate((new DateTime())->createFromFormat('d.m.Y', '31.01.1970'))
+                    ->setMandate('MANDATE-1')
                     ->addDiscountTerm(new InvoiceSuitePaymentTermDiscountDTO(200.00, 10, 2.00, (new DateTime())->createFromFormat('d.m.Y', '24.02.1970'), new InvoiceSuitePeriodDTO(1.0, 'DAY')))
                     ->addDiscountTerm(new InvoiceSuitePaymentTermDiscountDTO(400.00, 20, 2.00, (new DateTime())->createFromFormat('d.m.Y', '24.03.1970'), new InvoiceSuitePeriodDTO(2.0, 'DAY')))
                     ->addPenaltyTerm(new InvoiceSuitePaymentTermPenaltyDTO(200.00, 10, 2.00, (new DateTime())->createFromFormat('d.m.Y', '24.02.1970'), new InvoiceSuitePeriodDTO(1.0, 'DAY')))

@@ -931,7 +931,6 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/ns:CreditNote/cac:BillingReference/cac:InvoiceDocumentReference/cbc:ID');
         $this->assertXPathNotExists('/ns:CreditNote/cac:BillingReference/cac:InvoiceDocumentReference/cbc:IssueDate');
-        $this->assertXPathNotExists('/ns:CreditNote/cac:BillingReference/cac:InvoiceDocumentReference/cbc:IssueDate');
         $this->assertXPathNotExists('/ns:CreditNote/cac:BillingReference/cac:InvoiceDocumentReference/cbc:DocumentTypeCode');
 
         static::$document->setDocumentInvoiceReference('INVREF-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), '');
@@ -1295,6 +1294,17 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/ns:CreditNote/cbc:BuyerReference');
         $this->assertXPathNotExists('(/ns:CreditNote/cbc:BuyerReference)[2]');
+    }
+
+    public function testSetDocumentDeliveryTerms(): void
+    {
+        $this->assertXPathNotExists('/ns:CreditNote/cac:DeliveryTerms');
+
+        static::$document->setDocumentDeliveryTerms(null);
+        static::$document->setDocumentDeliveryTerms('');
+        static::$document->setDocumentDeliveryTerms('DAP');
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:DeliveryTerms');
     }
 
     public function testSetAddDocumentSellerName(): void
@@ -6689,6 +6699,100 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ns:CreditNote/cac:PaymentMeans/cbc:PaymentMeansCode)[4]');
     }
 
+    public function testSetAddDocumentPaymentMeanAsCreditTransferNoSepa(): void
+    {
+        static::$document->setDocumentPaymentMeanAsCreditTransferNoSepa('iban1', 'account1', 'propid1', 'bic1', 'paymentref1');
+
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cbc:PaymentMeansCode', InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value);
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cbc:PaymentID', 'paymentref1');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:ID', 'iban1');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:Name', 'account1');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID', 'bic1');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PaymentMeans)[2]');
+
+        static::$document->addDocumentPaymentMeanAsCreditTransferNoSepa('iban2', 'account2', 'propid2', 'bic2', 'paymentref2');
+
+        $this->assertXPathValue('(/ns:CreditNote/cac:PaymentMeans/cbc:PaymentMeansCode)[2]', InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value);
+        $this->assertXPathValue('(/ns:CreditNote/cac:PaymentMeans/cbc:PaymentID)[2]', 'paymentref2');
+        $this->assertXPathValue('(/ns:CreditNote/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:ID)[2]', 'iban2');
+        $this->assertXPathValue('(/ns:CreditNote/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:Name)[2]', 'account2');
+        $this->assertXPathValue('(/ns:CreditNote/cac:PaymentMeans/cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID)[2]', 'bic2');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PaymentMeans)[3]');
+
+        static::$document->setDocumentPaymentMean();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans');
+    }
+
+    public function testSetAddDocumentPaymentMeanAsDirectDebitSepa(): void
+    {
+        static::$document->setDocumentPaymentMeanAsDirectDebitSepa('iban1', 'mandate1', 'account1');
+
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cbc:PaymentMeansCode', InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value);
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cbc:ID', 'mandate1');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID', 'iban1');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:Name', 'account1');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PaymentMeans)[2]');
+
+        static::$document->addDocumentPaymentMeanAsDirectDebitSepa('iban2', 'mandate2', 'account2');
+
+        $this->assertXPathValue('(/ns:CreditNote/cac:PaymentMeans/cbc:PaymentMeansCode)[2]', InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value);
+        $this->assertXPathValue('(/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cbc:ID)[2]', 'mandate2');
+        $this->assertXPathValue('(/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID)[2]', 'iban2');
+        $this->assertXPathValue('(/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:Name)[2]', 'account2');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PaymentMeans)[3]');
+
+        static::$document->setDocumentPaymentMean();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans');
+    }
+
+    public function testSetAddDocumentPaymentMeanAsDirectDebitNoSepa(): void
+    {
+        static::$document->setDocumentPaymentMeanAsDirectDebitNoSepa('iban1', 'mandate1', 'account1');
+
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cbc:PaymentMeansCode', InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value);
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cbc:ID', 'mandate1');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID', 'iban1');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:Name', 'account1');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PaymentMeans)[2]');
+
+        static::$document->addDocumentPaymentMeanAsDirectDebitNoSepa('iban2', 'mandate2', 'account2');
+
+        $this->assertXPathValue('(/ns:CreditNote/cac:PaymentMeans/cbc:PaymentMeansCode)[2]', InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value);
+        $this->assertXPathValue('(/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cbc:ID)[2]', 'mandate2');
+        $this->assertXPathValue('(/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID)[2]', 'iban2');
+        $this->assertXPathValue('(/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:Name)[2]', 'account2');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PaymentMeans)[3]');
+
+        static::$document->setDocumentPaymentMean();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans');
+    }
+
+    public function testSetAddDocumentPaymentMeanAsPaymentCard(): void
+    {
+        static::$document->setDocumentPaymentMeanAsPaymentCard('card1', 'holder1');
+
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cbc:PaymentMeansCode', InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value);
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cac:CardAccount/cbc:PrimaryAccountNumberID', 'card1');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cac:CardAccount/cbc:NetworkID', 'mapped-from-cii');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cac:CardAccount/cbc:HolderName', 'holder1');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PaymentMeans)[2]');
+
+        static::$document->addDocumentPaymentMeanAsPaymentCard('card2', 'holder2');
+
+        $this->assertXPathValue('(/ns:CreditNote/cac:PaymentMeans/cbc:PaymentMeansCode)[2]', InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value);
+        $this->assertXPathValue('(/ns:CreditNote/cac:PaymentMeans/cac:CardAccount/cbc:PrimaryAccountNumberID)[2]', 'card2');
+        $this->assertXPathValue('(/ns:CreditNote/cac:PaymentMeans/cac:CardAccount/cbc:NetworkID)[2]', 'mapped-from-cii');
+        $this->assertXPathValue('(/ns:CreditNote/cac:PaymentMeans/cac:CardAccount/cbc:HolderName)[2]', 'holder2');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PaymentMeans)[3]');
+
+        static::$document->setDocumentPaymentMean();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans');
+    }
+
     public function testSetAddDocumentPaymentCreditorReferenceID(): void
     {
         $this->disableRenderXmlContent();
@@ -6762,6 +6866,18 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ns:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)[4]');
     }
 
+    public function testSetAddDocumentPaymentReference(): void
+    {
+        static::$document->setDocumentPaymentMean();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans/cbc:PaymentID');
+
+        static::$document->setDocumentPaymentReference('paymentref1');
+        static::$document->addDocumentPaymentReference('paymentref2');
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans/cbc:PaymentID');
+    }
+
     public function testSetAddDocumentPaymentTerm(): void
     {
         static::$document->setDocumentPaymentTerm();
@@ -6830,6 +6946,13 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         $this->assertXPathNotExists('(/ns:CreditNote/cac:PaymentTerms/cbc:Note)[3]');
         $this->assertXPathNotExists('(/ns:CreditNote/cbc:DueDate)[3]');
 
+        static::$document->setDocumentPaymentMeanAsDirectDebitSepa('iban1', null, 'account1');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans/cbc:PaymentDueDate');
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cbc:ID');
+
         static::$document->addDocumentPaymentTerm('Term3', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'MANDATE-4');
 
         $this->disableRenderXmlContent();
@@ -6837,13 +6960,25 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         $this->assertXPathValue('/ns:CreditNote/cac:PaymentTerms/cbc:Note', 'Term3');
         $this->assertXPathNotExists('/ns:CreditNote/cbc:DueDate');
         $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[1]/cbc:PaymentDueDate', '1970-01-01');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[1]/cac:PaymentMandate/cbc:ID', 'MANDATE-4');
         $this->assertXPathNotExists('(/ns:CreditNote/cac:PaymentTerms/cbc:Note)[2]');
         $this->assertXPathNotExists('(/ns:CreditNote/cbc:DueDate)[2]');
-        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[2]/cbc:PaymentDueDate', '1970-01-01');
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans[2]');
         $this->assertXPathNotExists('(/ns:CreditNote/cac:PaymentTerms/cbc:Note)[3]');
         $this->assertXPathNotExists('(/ns:CreditNote/cbc:DueDate)[3]');
+
+        static::$document->addDocumentPaymentMeanAsDirectDebitSepa('iban2', null, 'account2');
+        static::$document->addDocumentPaymentMeanAsDirectDebitSepa('iban3', null, 'account3');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[1]/cbc:PaymentDueDate', '1970-01-01');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[1]/cac:PaymentMandate/cbc:ID', 'MANDATE-4');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[2]/cbc:PaymentDueDate', '1970-01-01');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[2]/cac:PaymentMandate/cbc:ID', 'MANDATE-4');
         $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[3]/cbc:PaymentDueDate', '1970-01-01');
-        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans[4]/cbc:PaymentDueDate');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[3]/cac:PaymentMandate/cbc:ID', 'MANDATE-4');
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans[4]');
     }
 
     public function testSetAddDocumentPaymentDiscountTermsInLastPaymentTerm(): void
@@ -8563,6 +8698,29 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
             static::$document->setDocumentPositionInvoiceReference('INVREF-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'typecode');
             static::$document->addDocumentPositionInvoiceReference('INVREF-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), 'typecode');
         });
+    }
+
+    public function testSetAddDocumentPositionAdditionalObjectReference(): void
+    {
+        static::$document->setDocumentPositionAdditionalObjectReference();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:CreditNoteLine/cac:DocumentReference');
+
+        static::$document->setDocumentPositionAdditionalObjectReference('OBJ-1', '130', '916');
+
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:DocumentReference/cbc:ID', 'OBJ-1');
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:DocumentReference/cbc:DocumentTypeCode', '130');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:CreditNoteLine/cac:DocumentReference)[2]');
+
+        static::$document->addDocumentPositionAdditionalObjectReference('OBJ-2', '130', '917');
+
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:DocumentReference/cbc:ID', 'OBJ-2');
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:DocumentReference/cbc:DocumentTypeCode', '130');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:CreditNoteLine/cac:DocumentReference)[2]');
+
+        static::$document->setDocumentPositionAdditionalObjectReference();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:CreditNoteLine/cac:DocumentReference');
     }
 
     public function testSetAddDocumentPositionGrossPrice(): void

@@ -303,31 +303,6 @@ final class XRechnungCIIInvoiceReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
     }
 
-    public function testFirstNextGetDocumentPositionAdditionalObjectReference(): void
-    {
-        // First position
-
-        $this->assertTrue(static::$document->firstDocumentPosition());
-
-        $this->assertTrue(static::$document->firstDocumentPositionAdditionalObjectReference());
-
-        static::$document->getDocumentPositionAdditionalObjectReference(
-            $newReferenceNumber,
-            $newTypeCode,
-            $newReferenceTypeCode
-        );
-
-        $this->assertSame('ZZZZZZZZZ', $newReferenceNumber);
-        $this->assertSame('916', $newTypeCode);
-        $this->assertSame('130', $newReferenceTypeCode);
-
-        $this->assertFalse(static::$document->nextDocumentPositionAdditionalObjectReference());
-
-        // Second position
-
-        $this->assertFalse(static::$document->nextDocumentPosition());
-    }
-
     public function testFirstNextGetDocumentProjectReference(): void
     {
         $this->assertTrue(static::$document->firstDocumentProjectReference());
@@ -3162,6 +3137,31 @@ final class XRechnungCIIInvoiceReaderTest extends TestCase
         $this->assertSame('', $newTypeCode);
 
         $this->assertFalse(static::$document->nextDocumentPositionInvoiceReference());
+
+        // Second position
+
+        $this->assertFalse(static::$document->nextDocumentPosition());
+    }
+
+    public function testFirstNextGetDocumentPositionAdditionalObjectReference(): void
+    {
+        // First position
+
+        $this->assertTrue(static::$document->firstDocumentPosition());
+
+        $this->assertTrue(static::$document->firstDocumentPositionAdditionalObjectReference());
+
+        static::$document->getDocumentPositionAdditionalObjectReference(
+            $newReferenceNumber,
+            $newTypeCode,
+            $newReferenceTypeCode
+        );
+
+        $this->assertSame('ZZZZZZZZZ', $newReferenceNumber);
+        $this->assertSame('916', $newTypeCode);
+        $this->assertSame('130', $newReferenceTypeCode);
+
+        $this->assertFalse(static::$document->nextDocumentPositionAdditionalObjectReference());
 
         // Second position
 

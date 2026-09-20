@@ -22540,6 +22540,7 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
                 (new InvoiceSuitePaymentTermDTO())
                     ->setDescription('Payment Term Description 1')
                     ->setDueDate((new DateTime())->createFromFormat('d.m.Y', '31.01.1970'))
+                    ->setMandate('MANDATE-1')
                     ->addDiscountTerm(new InvoiceSuitePaymentTermDiscountDTO(200.00, 10, 2.00, (new DateTime())->createFromFormat('d.m.Y', '24.02.1970'), new InvoiceSuitePeriodDTO(1.0, 'DAY')))
                     ->addDiscountTerm(new InvoiceSuitePaymentTermDiscountDTO(400.00, 20, 2.00, (new DateTime())->createFromFormat('d.m.Y', '24.03.1970'), new InvoiceSuitePeriodDTO(2.0, 'DAY')))
                     ->addPenaltyTerm(new InvoiceSuitePaymentTermPenaltyDTO(200.00, 10, 2.00, (new DateTime())->createFromFormat('d.m.Y', '24.02.1970'), new InvoiceSuitePeriodDTO(1.0, 'DAY')))
@@ -23710,7 +23711,7 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DueDateDateTime/udt:DateTimeString[@format="102"]', '19700131');
         $this->assertXPathValue('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:Description)[2]', 'Payment Term Description 2');
         $this->assertXPathValue('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DueDateDateTime/udt:DateTimeString)[2][@format="102"]', '19700331');
-        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID', 'mandate');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID', 'MANDATE-1');
         $this->assertXPathValue('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID)[2]', 'mandate');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:Description)[3]');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DueDateDateTime/udt:DateTimeString)[3]');

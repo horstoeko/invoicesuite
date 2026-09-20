@@ -6,6 +6,7 @@ namespace horstoeko\invoicesuite\tests\testcases\documentreadbuild;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
+use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
@@ -3656,5 +3657,13 @@ final class ZfFxBasicDocumentReaderTest extends TestCase
 
         $this->assertSame([], $newDocmentDTO?->getSellerParty()?->getRoleCodes());
         $this->assertSame([], $newDocmentDTO?->getBuyerParty()?->getRoleCodes());
+    }
+
+    public function testCopyToBuilder(): void
+    {
+        $builder = static::$document->copyToBuilder();
+
+        $this->assertInstanceOf(InvoiceSuiteDocumentBuilder::class, $builder);
+        $this->assertSame('zffxbasic', $builder->getCurrentDocumentFormatProvider()->getUniqueId());
     }
 }
