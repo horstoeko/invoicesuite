@@ -2640,6 +2640,45 @@ final class XRechnungCIIInvoiceReaderTest extends TestCase
         $this->assertEqualsWithDelta(10.00, $newRoungingAmount, PHP_FLOAT_EPSILON);
     }
 
+    public function testFirstNextGetDocumentSpecifiedAdvancePayment(): void
+    {
+        static::$document->getDocumentSpecifiedAdvancePayment($newPaidAmount, $newReceivedDate);
+
+        $this->assertEqualsWithDelta(0.0, $newPaidAmount, PHP_FLOAT_EPSILON);
+        $this->assertNull($newReceivedDate);
+
+        static::$document->getDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode
+        );
+
+        $this->assertSame('', $newTaxCategory);
+        $this->assertSame('', $newTaxType);
+        $this->assertEqualsWithDelta(0.0, $newTaxAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $newTaxPercent, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $newExemptionReason);
+        $this->assertSame('', $newExemptionReasonCode);
+
+        static::$document->getDocumentSpecifiedAdvancePaymentInvoiceSpecifiedReferencedDocument(
+            $newReferenceNumber,
+            $newReferenceDate,
+            $newTypeCode
+        );
+
+        $this->assertSame('', $newReferenceNumber);
+        $this->assertNull($newReferenceDate);
+        $this->assertSame('', $newTypeCode);
+
+        $this->assertFalse(static::$document->firstDocumentSpecifiedAdvancePayment());
+        $this->assertFalse(static::$document->nextDocumentSpecifiedAdvancePayment());
+        $this->assertFalse(static::$document->firstDocumentSpecifiedAdvancePaymentIncludedTradeTax());
+        $this->assertFalse(static::$document->nextDocumentSpecifiedAdvancePaymentIncludedTradeTax());
+    }
+
     public function testFirstNextGetDocumentPosition(): void
     {
         // First position
@@ -3688,6 +3727,13 @@ final class XRechnungCIIInvoiceReaderTest extends TestCase
         $this->assertSame('2025-04-000001', $newDocmentDTO?->getNumber());
         $this->assertSame(['Lieferant GmbH Description'], $newDocmentDTO?->getSellerParty()?->getDescriptions());
         $this->assertSame([], $newDocmentDTO?->getSellerParty()->getRoleCodes());
+    }
+
+    public function testConvertToDTOSpecifiedAdvancePayments(): void
+    {
+        static::$document->convertToDTO($documentDTO);
+
+        $this->assertSame([], $documentDTO->getSpecifiedAdvancePayments());
     }
 
     public function testCopyToBuilder(): void

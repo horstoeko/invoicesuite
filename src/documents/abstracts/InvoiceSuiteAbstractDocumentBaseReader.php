@@ -4720,6 +4720,94 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Go to the first specified advance payment
+     *
+     * @return bool
+     */
+    abstract public function firstDocumentSpecifiedAdvancePayment(): bool;
+
+    /**
+     * Go to the next specified advance payment
+     *
+     * @return bool
+     */
+    abstract public function nextDocumentSpecifiedAdvancePayment(): bool;
+
+    /**
+     * Get the current specified advance payment
+     *
+     * @param  null|float             $newPaidAmount                Amount of the advance payment
+     * @param  null|DateTimeInterface $newFormattedReceivedDateTime Date on which the advance payment was received
+     * @return static
+     *
+     * @param-out float                  $newPaidAmount
+     * @param-out null|DateTimeInterface $newFormattedReceivedDateTime
+     */
+    abstract public function getDocumentSpecifiedAdvancePayment(
+        ?float &$newPaidAmount,
+        ?DateTimeInterface &$newFormattedReceivedDateTime
+    ): static;
+
+    /**
+     * Go to the first tax information in the current specified advance payment
+     *
+     * @return bool
+     */
+    abstract public function firstDocumentSpecifiedAdvancePaymentIncludedTradeTax(): bool;
+
+    /**
+     * Go to the next tax information in the current specified advance payment
+     *
+     * @return bool
+     */
+    abstract public function nextDocumentSpecifiedAdvancePaymentIncludedTradeTax(): bool;
+
+    /**
+     * Get tax information from the current specified advance payment
+     *
+     * @param  null|string $newTaxCategory         Coded description of the tax category
+     * @param  null|string $newTaxType             Coded description of the tax type
+     * @param  null|float  $newTaxAmount           Tax amount included in the advance payment
+     * @param  null|float  $newTaxPercent          Tax rate (percentage)
+     * @param  null|string $newExemptionReason     Reason for tax exemption (free text)
+     * @param  null|string $newExemptionReasonCode Reason for tax exemption (code)
+     * @return static
+     *
+     * @param-out string $newTaxCategory
+     * @param-out string $newTaxType
+     * @param-out float  $newTaxAmount
+     * @param-out float  $newTaxPercent
+     * @param-out string $newExemptionReason
+     * @param-out string $newExemptionReasonCode
+     */
+    abstract public function getDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+        ?string &$newTaxCategory,
+        ?string &$newTaxType,
+        ?float &$newTaxAmount,
+        ?float &$newTaxPercent,
+        ?string &$newExemptionReason,
+        ?string &$newExemptionReasonCode
+    ): static;
+
+    /**
+     * Get the invoice reference from the current specified advance payment
+     *
+     * @param  null|string            $newReferenceNumber Reference number
+     * @param  null|DateTimeInterface $newReferenceDate   Issue date of the reference
+     * @param  null|string            $newTypeCode        Type of the referenced document
+     * @return static
+     *
+     * @param-out string                 $newReferenceNumber
+     * @param-out null|DateTimeInterface $newReferenceDate
+     * @param-out string                 $newTypeCode
+     */
+    abstract public function getDocumentSpecifiedAdvancePaymentInvoiceSpecifiedReferencedDocument(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate,
+        ?string &$newTypeCode
+    ): static;
+
+    /**
      * Go to the first document position
      *
      * @return bool

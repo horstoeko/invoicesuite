@@ -1245,6 +1245,40 @@
         <ram:ID>PREF-2</ram:ID>
         <ram:TypeCode>PREF-2-TYPE</ram:TypeCode>
       </ram:ReceivableSpecifiedTradeAccountingAccount>
+      <ram:SpecifiedAdvancePayment>
+        <ram:PaidAmount>100.00</ram:PaidAmount>
+        <ram:FormattedReceivedDateTime>
+          <qdt:DateTimeString format="102">19700401</qdt:DateTimeString>
+        </ram:FormattedReceivedDateTime>
+        <ram:IncludedTradeTax>
+          <ram:CalculatedAmount>19.00</ram:CalculatedAmount>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:ExemptionReason>Exemption reason 1</ram:ExemptionReason>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:ExemptionReasonCode>VATEX-EU-132</ram:ExemptionReasonCode>
+          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+        </ram:IncludedTradeTax>
+        <ram:IncludedTradeTax>
+          <ram:CalculatedAmount>7.00</ram:CalculatedAmount>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>AA</ram:CategoryCode>
+          <ram:RateApplicablePercent>7.00</ram:RateApplicablePercent>
+        </ram:IncludedTradeTax>
+        <ram:InvoiceSpecifiedReferencedDocument>
+          <ram:IssuerAssignedID>ADV-INV-1</ram:IssuerAssignedID>
+          <ram:TypeCode>380</ram:TypeCode>
+          <ram:FormattedIssueDateTime>
+            <qdt:DateTimeString format="102">19700315</qdt:DateTimeString>
+          </ram:FormattedIssueDateTime>
+        </ram:InvoiceSpecifiedReferencedDocument>
+      </ram:SpecifiedAdvancePayment>
+      <ram:SpecifiedAdvancePayment>
+        <ram:PaidAmount>200.00</ram:PaidAmount>
+        <ram:IncludedTradeTax>
+          <ram:CalculatedAmount>38.00</ram:CalculatedAmount>
+          <ram:TypeCode>VAT</ram:TypeCode>
+        </ram:IncludedTradeTax>
+      </ram:SpecifiedAdvancePayment>
     </ram:ApplicableHeaderTradeSettlement>
   </rsm:SupplyChainTradeTransaction>
 </rsm:CrossIndustryInvoice>

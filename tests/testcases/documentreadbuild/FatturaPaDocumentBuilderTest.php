@@ -23,6 +23,7 @@ use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProductDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteQuantityDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentExtDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSpecifiedAdvancePaymentDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
@@ -302,6 +303,85 @@ final class FatturaPaDocumentBuilderTest extends TestCase
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiBeniServizi/DatiRiepilogo/EsigibilitaIVA', 'I');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/ImportoTotaleDocumento', '244.15');
         $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/Arrotondamento', '0.00');
+    }
+
+    public function testSetAddDocumentSpecifiedAdvancePayment(): void
+    {
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/TipoDocumento', 'TD01');
+
+        static::$document->setDocumentSpecifiedAdvancePayment(null, null);
+        static::$document->addDocumentSpecifiedAdvancePayment(null, new DateTimeImmutable('1970-04-01'));
+        static::$document->setDocumentSpecifiedAdvancePayment(100.0, new DateTimeImmutable('1970-04-01'));
+        static::$document->setDocumentSpecifiedAdvancePaymentIncludedTradeTax();
+        static::$document->addDocumentSpecifiedAdvancePaymentIncludedTradeTax('S', null, 19.0, 19.0);
+        static::$document->setDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+            'S',
+            'VAT',
+            19.0,
+            19.0,
+            'Exemption reason 1',
+            'VATEX-EU-132'
+        );
+        static::$document->addDocumentSpecifiedAdvancePaymentIncludedTradeTax('AA', 'VAT', 7.0, 7.0, '', '');
+        static::$document->setDocumentSpecifiedAdvancePaymentInvoiceReference();
+        static::$document->setDocumentSpecifiedAdvancePaymentInvoiceReference(
+            'ADV-INV-1',
+            new DateTimeImmutable('1970-03-15'),
+            '380'
+        );
+        static::$document->addDocumentSpecifiedAdvancePayment(200.0);
+        static::$document->addDocumentSpecifiedAdvancePaymentIncludedTradeTax(null, 'VAT', 38.0);
+
+        $this->assertXPathValue('/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/TipoDocumento', 'TD01');
+    }
+
+    public function testCreateFromDTOSpecifiedAdvancePayments(): void
+    {
+        $firstAdvancePayment = new InvoiceSuiteSpecifiedAdvancePaymentDTO(
+            100.0,
+            new DateTimeImmutable('1970-04-01')
+        );
+        $firstAdvancePayment
+            ->addIncludedTradeTax(new InvoiceSuiteTaxDTO(
+                'S',
+                'VAT',
+                null,
+                19.0,
+                19.0,
+                'Exemption reason 1',
+                'VATEX-EU-132'
+            ))
+            ->addIncludedTradeTax(new InvoiceSuiteTaxDTO(
+                'AA',
+                'VAT',
+                null,
+                7.0,
+                7.0
+            ))
+            ->setInvoiceSpecifiedReferencedDocument(
+                new InvoiceSuiteReferenceDocumentExtDTO(
+                    'ADV-INV-1',
+                    new DateTimeImmutable('1970-03-15'),
+                    '380'
+                )
+            );
+
+        $secondAdvancePayment = new InvoiceSuiteSpecifiedAdvancePaymentDTO(200.0);
+        $secondAdvancePayment->addIncludedTradeTax(
+            new InvoiceSuiteTaxDTO(null, 'VAT', null, 38.0)
+        );
+
+        $documentDTO = new InvoiceSuiteDocumentHeaderDTO(type: '380');
+        $documentDTO
+            ->addSpecifiedAdvancePayment($firstAdvancePayment)
+            ->addSpecifiedAdvancePayment($secondAdvancePayment);
+
+        static::$document->createFromDTO($documentDTO);
+
+        $this->assertXPathValue(
+            '/p:FatturaElettronica/FatturaElettronicaBody/DatiGenerali/DatiGeneraliDocumento/TipoDocumento',
+            'TD01'
+        );
     }
 
     public function testAddDocumentPositions(): void

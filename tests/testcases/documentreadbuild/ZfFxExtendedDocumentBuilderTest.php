@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\tests\testcases\documentreadbuild;
 
 use DateTime;
+use DateTimeImmutable;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistCurrencyCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
@@ -39,6 +40,7 @@ use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineExtDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceProductDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteServiceChargeDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSpecifiedAdvancePaymentDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
@@ -16328,6 +16330,142 @@ final class ZfFxExtendedDocumentBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:GrandTotalAmount)[2]');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TotalPrepaidAmount)[2]');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:DuePayableAmount)[2]');
+    }
+
+    public function testSetAddDocumentSpecifiedAdvancePayment(): void
+    {
+        $advancePaymentPath = '/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment';
+
+        static::$document->setDocumentSpecifiedAdvancePayment(null, null);
+
+        $this->assertXPathNotExists($advancePaymentPath);
+
+        static::$document->addDocumentSpecifiedAdvancePayment(null, new DateTime('1970-04-01'));
+
+        $this->assertXPathNotExists($advancePaymentPath);
+
+        static::$document->setDocumentSpecifiedAdvancePayment(100.0, new DateTime('1970-04-01'));
+
+        $this->assertXPathValue($advancePaymentPath . '/ram:PaidAmount', '100.00');
+        $this->assertXPathValue($advancePaymentPath . '/ram:FormattedReceivedDateTime/qdt:DateTimeString[@format="102"]', '19700401');
+        $this->assertXPathNotExists('(' . $advancePaymentPath . ')[2]');
+
+        static::$document->setDocumentSpecifiedAdvancePaymentIncludedTradeTax();
+
+        $this->assertXPathNotExists($advancePaymentPath . '/ram:IncludedTradeTax');
+
+        static::$document->addDocumentSpecifiedAdvancePaymentIncludedTradeTax('S', null, 19.0, 19.0);
+
+        $this->assertXPathNotExists($advancePaymentPath . '/ram:IncludedTradeTax');
+
+        static::$document->setDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+            'S',
+            'VAT',
+            19.0,
+            19.0,
+            'Exemption reason 1',
+            'VATEX-EU-132'
+        );
+
+        $this->assertXPathValue($advancePaymentPath . '/ram:IncludedTradeTax/ram:CalculatedAmount', '19.00');
+        $this->assertXPathValue($advancePaymentPath . '/ram:IncludedTradeTax/ram:TypeCode', 'VAT');
+        $this->assertXPathValue($advancePaymentPath . '/ram:IncludedTradeTax/ram:ExemptionReason', 'Exemption reason 1');
+        $this->assertXPathValue($advancePaymentPath . '/ram:IncludedTradeTax/ram:CategoryCode', 'S');
+        $this->assertXPathValue($advancePaymentPath . '/ram:IncludedTradeTax/ram:ExemptionReasonCode', 'VATEX-EU-132');
+        $this->assertXPathValue($advancePaymentPath . '/ram:IncludedTradeTax/ram:RateApplicablePercent', '19.00');
+
+        static::$document->addDocumentSpecifiedAdvancePaymentIncludedTradeTax('', 'VAT', 7.0, null, '', '');
+
+        $this->assertXPathValue('(' . $advancePaymentPath . '/ram:IncludedTradeTax/ram:CalculatedAmount)[2]', '7.00');
+        $this->assertXPathValue('(' . $advancePaymentPath . '/ram:IncludedTradeTax/ram:TypeCode)[2]', 'VAT');
+        $this->assertXPathNotExists('(' . $advancePaymentPath . '/ram:IncludedTradeTax/ram:CategoryCode)[2]');
+        $this->assertXPathNotExists('(' . $advancePaymentPath . '/ram:IncludedTradeTax/ram:RateApplicablePercent)[2]');
+
+        static::$document->setDocumentSpecifiedAdvancePaymentInvoiceReference();
+
+        $this->assertXPathNotExists($advancePaymentPath . '/ram:InvoiceSpecifiedReferencedDocument');
+
+        static::$document->setDocumentSpecifiedAdvancePaymentInvoiceReference(
+            'ADV-INV-1',
+            new DateTime('1970-03-15'),
+            '380'
+        );
+
+        $this->assertXPathValue($advancePaymentPath . '/ram:InvoiceSpecifiedReferencedDocument/ram:IssuerAssignedID', 'ADV-INV-1');
+        $this->assertXPathValue($advancePaymentPath . '/ram:InvoiceSpecifiedReferencedDocument/ram:TypeCode', '380');
+        $this->assertXPathValue($advancePaymentPath . '/ram:InvoiceSpecifiedReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString[@format="102"]', '19700315');
+
+        static::$document->addDocumentSpecifiedAdvancePayment(200.0);
+        static::$document->addDocumentSpecifiedAdvancePaymentIncludedTradeTax(null, 'VAT', 38.0);
+
+        $this->assertXPathValue('(' . $advancePaymentPath . '/ram:PaidAmount)[2]', '200.00');
+        $this->assertXPathNotExists('(' . $advancePaymentPath . '/ram:FormattedReceivedDateTime)[2]');
+        $this->assertXPathValue('(' . $advancePaymentPath . '/ram:IncludedTradeTax/ram:CalculatedAmount)[3]', '38.00');
+        $this->assertXPathNotExists('(' . $advancePaymentPath . '/ram:InvoiceSpecifiedReferencedDocument)[2]');
+
+        static::$document->setDocumentSpecifiedAdvancePayment();
+
+        $this->assertXPathNotExists($advancePaymentPath);
+    }
+
+    public function testCreateFromDTOSpecifiedAdvancePayments(): void
+    {
+        $firstAdvancePayment = new InvoiceSuiteSpecifiedAdvancePaymentDTO(
+            100.0,
+            new DateTimeImmutable('1970-04-01')
+        );
+        $firstAdvancePayment
+            ->addIncludedTradeTax(new InvoiceSuiteTaxDTO(
+                'S',
+                'VAT',
+                null,
+                19.0,
+                19.0,
+                'Exemption reason 1',
+                'VATEX-EU-132'
+            ))
+            ->addIncludedTradeTax(new InvoiceSuiteTaxDTO(
+                'AA',
+                'VAT',
+                null,
+                7.0,
+                7.0
+            ))
+            ->setInvoiceSpecifiedReferencedDocument(
+                new InvoiceSuiteReferenceDocumentExtDTO(
+                    'ADV-INV-1',
+                    new DateTimeImmutable('1970-03-15'),
+                    '380'
+                )
+            );
+
+        $secondAdvancePayment = new InvoiceSuiteSpecifiedAdvancePaymentDTO(200.0);
+        $secondAdvancePayment->addIncludedTradeTax(
+            new InvoiceSuiteTaxDTO(null, 'VAT', null, 38.0)
+        );
+
+        $documentDTO = new InvoiceSuiteDocumentHeaderDTO(type: '380');
+        $documentDTO
+            ->addSpecifiedAdvancePayment($firstAdvancePayment)
+            ->addSpecifiedAdvancePayment($secondAdvancePayment);
+
+        static::$document->createFromDTO($documentDTO);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment/ram:PaidAmount', '100.00');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment/ram:FormattedReceivedDateTime/qdt:DateTimeString[@format="102"]', '19700401');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment/ram:IncludedTradeTax/ram:CalculatedAmount', '19.00');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment/ram:IncludedTradeTax/ram:TypeCode', 'VAT');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment/ram:IncludedTradeTax/ram:CategoryCode', 'S');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment/ram:IncludedTradeTax/ram:RateApplicablePercent', '19.00');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment/ram:InvoiceSpecifiedReferencedDocument/ram:IssuerAssignedID', 'ADV-INV-1');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment/ram:InvoiceSpecifiedReferencedDocument/ram:TypeCode', '380');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment/ram:InvoiceSpecifiedReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString[@format="102"]', '19700315');
+        $this->assertXPathValue('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment/ram:IncludedTradeTax/ram:CalculatedAmount)[2]', '7.00');
+        $this->assertXPathValue('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment/ram:PaidAmount)[2]', '200.00');
+        $this->assertXPathValue('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment/ram:IncludedTradeTax/ram:CalculatedAmount)[3]', '38.00');
+        $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment)[3]');
     }
 
     public function testAddDocumentPosition(): void

@@ -36,6 +36,7 @@ use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineExtDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceProductDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteServiceChargeDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSpecifiedAdvancePaymentDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiPagamento;
@@ -1192,6 +1193,38 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
                 $item->getPrepaidAmount(),
                 $item->getRoungingAmount()
             )
+        );
+
+        // Document-Level Specified Advance Payments
+
+        $newDocumentDTO->forEachSpecifiedAdvancePayment(
+            function (InvoiceSuiteSpecifiedAdvancePaymentDTO $item): void {
+                $this->addDocumentSpecifiedAdvancePayment(
+                    $item->getPaidAmount(),
+                    $item->getFormattedReceivedDateTime()
+                );
+
+                $item->forEachIncludedTradeTax(
+                    fn (InvoiceSuiteTaxDTO $tax): static => $this->addDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+                        $tax->getCategory(),
+                        $tax->getType(),
+                        $tax->getAmount(),
+                        $tax->getPercent(),
+                        $tax->getExemptionReason(),
+                        $tax->getExemptionReasonCode()
+                    )
+                );
+
+                $invoiceReference = $item->getInvoiceSpecifiedReferencedDocument();
+
+                if (!is_null($invoiceReference)) {
+                    $this->setDocumentSpecifiedAdvancePaymentInvoiceReference(
+                        $invoiceReference->getReferenceNumber(),
+                        $invoiceReference->getReferenceDate(),
+                        $invoiceReference->getTypeCode()
+                    );
+                }
+            }
         );
 
         // Positions
@@ -9270,6 +9303,94 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
 
         $this->traceMethodExit(__METHOD__);
 
+        return $this;
+    }
+
+    /**
+     * Set the specified advance payment
+     *
+     * @param  null|float             $newPaidAmount                Amount of the advance payment
+     * @param  null|DateTimeInterface $newFormattedReceivedDateTime Date on which the advance payment was received
+     * @return static
+     */
+    public function setDocumentSpecifiedAdvancePayment(
+        ?float $newPaidAmount = null,
+        ?DateTimeInterface $newFormattedReceivedDateTime = null
+    ): static {
+        return $this;
+    }
+
+    /**
+     * Add a specified advance payment
+     *
+     * @param  null|float             $newPaidAmount                Amount of the advance payment
+     * @param  null|DateTimeInterface $newFormattedReceivedDateTime Date on which the advance payment was received
+     * @return static
+     */
+    public function addDocumentSpecifiedAdvancePayment(
+        ?float $newPaidAmount = null,
+        ?DateTimeInterface $newFormattedReceivedDateTime = null
+    ): static {
+        return $this;
+    }
+
+    /**
+     * Set tax information in the last specified advance payment
+     *
+     * @param  null|string $newTaxCategory         Coded description of the tax category
+     * @param  null|string $newTaxType             Coded description of the tax type
+     * @param  null|float  $newTaxAmount           Tax amount included in the advance payment
+     * @param  null|float  $newTaxPercent          Tax rate (percentage)
+     * @param  null|string $newExemptionReason     Reason for tax exemption (free text)
+     * @param  null|string $newExemptionReasonCode Reason for tax exemption (code)
+     * @return static
+     */
+    public function setDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null
+    ): static {
+        return $this;
+    }
+
+    /**
+     * Add tax information to the last specified advance payment
+     *
+     * @param  null|string $newTaxCategory         Coded description of the tax category
+     * @param  null|string $newTaxType             Coded description of the tax type
+     * @param  null|float  $newTaxAmount           Tax amount included in the advance payment
+     * @param  null|float  $newTaxPercent          Tax rate (percentage)
+     * @param  null|string $newExemptionReason     Reason for tax exemption (free text)
+     * @param  null|string $newExemptionReasonCode Reason for tax exemption (code)
+     * @return static
+     */
+    public function addDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null
+    ): static {
+        return $this;
+    }
+
+    /**
+     * Set the invoice reference in the last specified advance payment
+     *
+     * @param  null|string            $newReferenceNumber Reference number
+     * @param  null|DateTimeInterface $newReferenceDate   Issue date of the reference
+     * @param  null|string            $newTypeCode        Type of the referenced document
+     * @return static
+     */
+    public function setDocumentSpecifiedAdvancePaymentInvoiceReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null
+    ): static {
         return $this;
     }
 

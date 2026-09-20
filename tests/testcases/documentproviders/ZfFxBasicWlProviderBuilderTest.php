@@ -5,9 +5,14 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
 use DateTime;
+use DateTimeImmutable;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistCurrencyCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentExtDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSpecifiedAdvancePaymentDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxBasicWlProvider;
 use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxProviderBuilder;
 use horstoeko\invoicesuite\documents\providers\zffx\models\rsm\CrossIndustryInvoice;
@@ -16197,6 +16202,88 @@ final class ZfFxBasicWlProviderBuilderTest extends TestCase
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:GrandTotalAmount)[2]');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TotalPrepaidAmount)[2]');
         $this->assertXPathNotExists('(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:DuePayableAmount)[2]');
+    }
+
+    public function testSetAddDocumentSpecifiedAdvancePayment(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment');
+
+        static::$document->setDocumentSpecifiedAdvancePayment(null, null);
+        static::$document->addDocumentSpecifiedAdvancePayment(null, new DateTime('1970-04-01'));
+        static::$document->setDocumentSpecifiedAdvancePayment(100.0, new DateTime('1970-04-01'));
+        static::$document->setDocumentSpecifiedAdvancePaymentIncludedTradeTax();
+        static::$document->addDocumentSpecifiedAdvancePaymentIncludedTradeTax('S', null, 19.0, 19.0);
+        static::$document->setDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+            'S',
+            'VAT',
+            19.0,
+            19.0,
+            'Exemption reason 1',
+            'VATEX-EU-132'
+        );
+        static::$document->addDocumentSpecifiedAdvancePaymentIncludedTradeTax('AA', 'VAT', 7.0, 7.0, '', '');
+        static::$document->setDocumentSpecifiedAdvancePaymentInvoiceReference();
+        static::$document->setDocumentSpecifiedAdvancePaymentInvoiceReference(
+            'ADV-INV-1',
+            new DateTime('1970-03-15'),
+            '380'
+        );
+        static::$document->addDocumentSpecifiedAdvancePayment(200.0);
+        static::$document->addDocumentSpecifiedAdvancePaymentIncludedTradeTax(null, 'VAT', 38.0);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment');
+    }
+
+    public function testCreateFromDTOSpecifiedAdvancePayments(): void
+    {
+        $firstAdvancePayment = new InvoiceSuiteSpecifiedAdvancePaymentDTO(
+            100.0,
+            new DateTimeImmutable('1970-04-01')
+        );
+        $firstAdvancePayment
+            ->addIncludedTradeTax(new InvoiceSuiteTaxDTO(
+                'S',
+                'VAT',
+                null,
+                19.0,
+                19.0,
+                'Exemption reason 1',
+                'VATEX-EU-132'
+            ))
+            ->addIncludedTradeTax(new InvoiceSuiteTaxDTO(
+                'AA',
+                'VAT',
+                null,
+                7.0,
+                7.0
+            ))
+            ->setInvoiceSpecifiedReferencedDocument(
+                new InvoiceSuiteReferenceDocumentExtDTO(
+                    'ADV-INV-1',
+                    new DateTimeImmutable('1970-03-15'),
+                    '380'
+                )
+            );
+
+        $secondAdvancePayment = new InvoiceSuiteSpecifiedAdvancePaymentDTO(200.0);
+        $secondAdvancePayment->addIncludedTradeTax(
+            new InvoiceSuiteTaxDTO(null, 'VAT', null, 38.0)
+        );
+
+        $documentDTO = new InvoiceSuiteDocumentHeaderDTO(type: '380');
+        $documentDTO
+            ->addSpecifiedAdvancePayment($firstAdvancePayment)
+            ->addSpecifiedAdvancePayment($secondAdvancePayment);
+
+        static::$document->createFromDTO($documentDTO);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedAdvancePayment');
     }
 
     public function testAddDocumentPosition(): void

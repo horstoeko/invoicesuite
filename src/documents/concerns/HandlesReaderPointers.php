@@ -151,6 +151,8 @@ trait HandlesReaderPointers
         InvoiceSuitePointerUtils::resetSingle('documenttax');
         InvoiceSuitePointerUtils::resetSingle('documentallowancecharge');
         InvoiceSuitePointerUtils::resetSingle('documentlogservicecharge');
+        InvoiceSuitePointerUtils::resetSingle('documentspecifiedadvancepayment');
+        InvoiceSuitePointerUtils::resetSingle('documentspecifiedadvancepaymentincludedtradetax');
         InvoiceSuitePointerUtils::resetSingle('documentposition');
 
         $this->resetCurrentDocumentPositionSubPointers();

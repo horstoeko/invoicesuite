@@ -44,6 +44,7 @@ use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineExtDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceProductDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteServiceChargeDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSpecifiedAdvancePaymentDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
@@ -2322,6 +2323,61 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
                 $newDocumentRoungingAmount
             )
         );
+
+        // Document-Level Specified Advance Payments
+
+        while ($this->nextDocumentSpecifiedAdvancePayment()) {
+            $this->getDocumentSpecifiedAdvancePayment(
+                $newDocumentSpecifiedAdvancePaymentPaidAmount,
+                $newDocumentSpecifiedAdvancePaymentReceivedDateTime
+            );
+
+            $specifiedAdvancePaymentDTO = new InvoiceSuiteSpecifiedAdvancePaymentDTO(
+                $newDocumentSpecifiedAdvancePaymentPaidAmount,
+                $newDocumentSpecifiedAdvancePaymentReceivedDateTime
+            );
+
+            while ($this->nextDocumentSpecifiedAdvancePaymentIncludedTradeTax()) {
+                $this->getDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+                    $newDocumentSpecifiedAdvancePaymentTaxCategory,
+                    $newDocumentSpecifiedAdvancePaymentTaxType,
+                    $newDocumentSpecifiedAdvancePaymentTaxAmount,
+                    $newDocumentSpecifiedAdvancePaymentTaxPercent,
+                    $newDocumentSpecifiedAdvancePaymentTaxExemptionReason,
+                    $newDocumentSpecifiedAdvancePaymentTaxExemptionReasonCode
+                );
+
+                $specifiedAdvancePaymentDTO->addIncludedTradeTax(
+                    new InvoiceSuiteTaxDTO(
+                        $newDocumentSpecifiedAdvancePaymentTaxCategory,
+                        $newDocumentSpecifiedAdvancePaymentTaxType,
+                        null,
+                        $newDocumentSpecifiedAdvancePaymentTaxAmount,
+                        $newDocumentSpecifiedAdvancePaymentTaxPercent,
+                        $newDocumentSpecifiedAdvancePaymentTaxExemptionReason,
+                        $newDocumentSpecifiedAdvancePaymentTaxExemptionReasonCode
+                    )
+                );
+            }
+
+            $this->getDocumentSpecifiedAdvancePaymentInvoiceSpecifiedReferencedDocument(
+                $newDocumentSpecifiedAdvancePaymentReferenceNumber,
+                $newDocumentSpecifiedAdvancePaymentReferenceDate,
+                $newDocumentSpecifiedAdvancePaymentReferenceTypeCode
+            );
+
+            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDocumentSpecifiedAdvancePaymentReferenceNumber)) {
+                $specifiedAdvancePaymentDTO->setInvoiceSpecifiedReferencedDocument(
+                    new InvoiceSuiteReferenceDocumentExtDTO(
+                        $newDocumentSpecifiedAdvancePaymentReferenceNumber,
+                        $newDocumentSpecifiedAdvancePaymentReferenceDate,
+                        $newDocumentSpecifiedAdvancePaymentReferenceTypeCode
+                    )
+                );
+            }
+
+            $newDocumentDTO->addSpecifiedAdvancePayment($specifiedAdvancePaymentDTO);
+        }
 
         // Positions
 
@@ -10978,6 +11034,126 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         }
 
         $this->traceMethodExit(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first specified advance payment
+     *
+     * @return bool
+     */
+    public function firstDocumentSpecifiedAdvancePayment(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next specified advance payment
+     *
+     * @return bool
+     */
+    public function nextDocumentSpecifiedAdvancePayment(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the current specified advance payment
+     *
+     * @param  null|float             $newPaidAmount                Amount of the advance payment
+     * @param  null|DateTimeInterface $newFormattedReceivedDateTime Date on which the advance payment was received
+     * @return static
+     *
+     * @param-out float                  $newPaidAmount
+     * @param-out null|DateTimeInterface $newFormattedReceivedDateTime
+     */
+    public function getDocumentSpecifiedAdvancePayment(
+        ?float &$newPaidAmount,
+        ?DateTimeInterface &$newFormattedReceivedDateTime
+    ): static {
+        $newPaidAmount = 0.0;
+        $newFormattedReceivedDateTime = null;
+
+        return $this;
+    }
+
+    /**
+     * Go to the first tax information in the current specified advance payment
+     *
+     * @return bool
+     */
+    public function firstDocumentSpecifiedAdvancePaymentIncludedTradeTax(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next tax information in the current specified advance payment
+     *
+     * @return bool
+     */
+    public function nextDocumentSpecifiedAdvancePaymentIncludedTradeTax(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get tax information from the current specified advance payment
+     *
+     * @param  null|string $newTaxCategory         Coded description of the tax category
+     * @param  null|string $newTaxType             Coded description of the tax type
+     * @param  null|float  $newTaxAmount           Tax amount included in the advance payment
+     * @param  null|float  $newTaxPercent          Tax rate (percentage)
+     * @param  null|string $newExemptionReason     Reason for tax exemption (free text)
+     * @param  null|string $newExemptionReasonCode Reason for tax exemption (code)
+     * @return static
+     *
+     * @param-out string $newTaxCategory
+     * @param-out string $newTaxType
+     * @param-out float  $newTaxAmount
+     * @param-out float  $newTaxPercent
+     * @param-out string $newExemptionReason
+     * @param-out string $newExemptionReasonCode
+     */
+    public function getDocumentSpecifiedAdvancePaymentIncludedTradeTax(
+        ?string &$newTaxCategory,
+        ?string &$newTaxType,
+        ?float &$newTaxAmount,
+        ?float &$newTaxPercent,
+        ?string &$newExemptionReason,
+        ?string &$newExemptionReasonCode
+    ): static {
+        $newTaxCategory = '';
+        $newTaxType = '';
+        $newTaxAmount = 0.0;
+        $newTaxPercent = 0.0;
+        $newExemptionReason = '';
+        $newExemptionReasonCode = '';
+
+        return $this;
+    }
+
+    /**
+     * Get the invoice reference from the current specified advance payment
+     *
+     * @param  null|string            $newReferenceNumber Reference number
+     * @param  null|DateTimeInterface $newReferenceDate   Issue date of the reference
+     * @param  null|string            $newTypeCode        Type of the referenced document
+     * @return static
+     *
+     * @param-out string                 $newReferenceNumber
+     * @param-out null|DateTimeInterface $newReferenceDate
+     * @param-out string                 $newTypeCode
+     */
+    public function getDocumentSpecifiedAdvancePaymentInvoiceSpecifiedReferencedDocument(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate,
+        ?string &$newTypeCode
+    ): static {
+        $newReferenceNumber = '';
+        $newReferenceDate = null;
+        $newTypeCode = '';
 
         return $this;
     }

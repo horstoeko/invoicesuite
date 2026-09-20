@@ -19,6 +19,7 @@ use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProjectDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentExtDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteServiceChargeDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSpecifiedAdvancePaymentDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\tests\TestCase;
@@ -77,6 +78,7 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getAllowanceCharges());
         $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getServiceCharges());
         $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getSummations());
+        $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getSpecifiedAdvancePayments());
         $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getPositions());
     }
 
@@ -510,6 +512,20 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $invoiceSuiteDocumentHeaderDTO->setSummations($summationsValue);
 
         $this->assertSame($summationsValue, $invoiceSuiteDocumentHeaderDTO->getSummations());
+    }
+
+    public function testSpecifiedAdvancePaymentsGetterAndSetter(): void
+    {
+        $invoiceSuiteDocumentHeaderDTO = new InvoiceSuiteDocumentHeaderDTO();
+        $firstAdvancePayment = new InvoiceSuiteSpecifiedAdvancePaymentDTO(100.0);
+        $secondAdvancePayment = new InvoiceSuiteSpecifiedAdvancePaymentDTO(200.0);
+
+        $invoiceSuiteDocumentHeaderDTO->setSpecifiedAdvancePayments([$firstAdvancePayment, $secondAdvancePayment]);
+
+        $this->assertSame(
+            [$firstAdvancePayment, $secondAdvancePayment],
+            $invoiceSuiteDocumentHeaderDTO->getSpecifiedAdvancePayments()
+        );
     }
 
     public function testPositionsGetterAndSetter(): void
