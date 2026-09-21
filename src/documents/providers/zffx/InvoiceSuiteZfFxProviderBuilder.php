@@ -15857,8 +15857,12 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
         $specifiedAdvancePayment->unsetIncludedTradeTax();
 
-        if (InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxAmount) || InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTaxType)) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'requiredTaxInformationIsEmpty', 'InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxAmount) || InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTaxType)');
+        if (InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxAmount)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'floatIsNullOrEmpty', 'InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxAmount)');
+        }
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxType, $newTaxCategory])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxType, $newTaxCategory])');
         }
 
         $this->addDocumentSpecifiedAdvancePaymentIncludedTradeTax(
@@ -15900,10 +15904,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxAmount) || InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTaxType)) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'requiredTaxInformationIsEmpty', 'InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxAmount) || InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTaxType)');
-        }
-
         $specifiedAdvancePayments = $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransaction()
@@ -15918,14 +15918,19 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
+        if (InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxAmount)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'floatIsNullOrEmpty', 'InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxAmount)');
+        }
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxType, $newTaxCategory])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxType, $newTaxCategory])');
+        }
+
         $includedTradeTax = $specifiedAdvancePayment->addToIncludedTradeTaxWithCreate();
 
         $includedTradeTax->getCalculatedAmountWithCreate()->setValue($newTaxAmount);
         $includedTradeTax->getTypeCodeWithCreate()->setValue($newTaxType);
-
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTaxCategory)) {
-            $includedTradeTax->getCategoryCodeWithCreate()->setValue($newTaxCategory);
-        }
+        $includedTradeTax->getCategoryCodeWithCreate()->setValue($newTaxCategory);
 
         if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxPercent)) {
             $includedTradeTax->getRateApplicablePercentWithCreate()->setValue($newTaxPercent);
@@ -19793,7 +19798,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'floatIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])');
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])');
         }
 
         $this->addDocumentPositionTax(
