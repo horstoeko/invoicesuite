@@ -2,7 +2,7 @@ name: Nightly Build
 
 on:
   schedule:
-    - cron: '17 3 * * *'
+    - cron: '0 0 * * *'
       timezone: Europe/Berlin
   workflow_dispatch:
 
