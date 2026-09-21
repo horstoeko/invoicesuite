@@ -1,3 +1,13 @@
+## v0.0.35
+
+``Previous version v0.0.34``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :bug:  | [61357e71](https://github.com/horstoeko/invoicesuite/commit/61357e71) | 2026-09-21 06:00:36 CEST | HorstOeko | [FIX] Added "Tax Category" to Gate in "Advance Payment Tax" | 
+
+:exclamation: _There is one internal commit_
+
 ## v0.0.34
 
 ``Previous version v0.0.33``
