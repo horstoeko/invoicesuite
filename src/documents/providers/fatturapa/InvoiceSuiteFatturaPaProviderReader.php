@@ -2134,6 +2134,20 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             );
         }
 
+        // Document-Level Creditor reference
+
+        while ($this->nextDocumentPaymentCreditorReferenceID()) {
+            $this->getDocumentPaymentCreditorReferenceID($newDocumentCreditorReferenceId);
+            $newDocumentDTO->addCreditorReference(new InvoiceSuiteIdDTO($newDocumentCreditorReferenceId));
+        }
+
+        // Document-Level Payment Reference
+
+        while ($this->nextDocumentPaymentReference()) {
+            $this->getDocumentPaymentReference($newDocumentPaymentReference);
+            $newDocumentDTO->addPaymentReference(new InvoiceSuiteIdDTO($newDocumentPaymentReference));
+        }
+
         // Document-Level Payment Terms
 
         while ($this->nextDocumentPaymentTerm()) {
@@ -2149,29 +2163,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
                 mandate: $newDocumentPaymentTermMandate
             );
 
-            while ($this->nextDocumentPaymentPenaltyTermsInLastPaymentTerm()) {
-                $this->getDocumentPaymentPenaltyTermsInLastPaymentTerm(
-                    $newDocumentPaymentTermPenaltyBaseAmount,
-                    $newDocumentPaymentTermPenaltyAmount,
-                    $newDocumentPaymentTermPenaltyPercent,
-                    $newDocumentPaymentTermPenaltyBaseDate,
-                    $newDocumentPaymentTermPenaltyBasePeriod,
-                    $newDocumentPaymentTermPenaltyBasePeriodUnit
-                );
-
-                $documentPaymentTermDTO->addPenaltyTerm(
-                    new InvoiceSuitePaymentTermPenaltyDTO(
-                        $newDocumentPaymentTermPenaltyBaseAmount,
-                        $newDocumentPaymentTermPenaltyAmount,
-                        $newDocumentPaymentTermPenaltyPercent,
-                        $newDocumentPaymentTermPenaltyBaseDate,
-                        new InvoiceSuitePeriodDTO(
-                            $newDocumentPaymentTermPenaltyBasePeriod,
-                            $newDocumentPaymentTermPenaltyBasePeriodUnit
-                        )
-                    )
-                );
-
+            while ($this->nextDocumentPaymentDiscountTermsInLastPaymentTerm()) {
                 $this->getDocumentPaymentDiscountTermsInLastPaymentTerm(
                     $newDocumentPaymentTermDiscountBaseAmount,
                     $newDocumentPaymentTermDiscountAmount,
@@ -2195,21 +2187,31 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
                 );
             }
 
+            while ($this->nextDocumentPaymentPenaltyTermsInLastPaymentTerm()) {
+                $this->getDocumentPaymentPenaltyTermsInLastPaymentTerm(
+                    $newDocumentPaymentTermPenaltyBaseAmount,
+                    $newDocumentPaymentTermPenaltyAmount,
+                    $newDocumentPaymentTermPenaltyPercent,
+                    $newDocumentPaymentTermPenaltyBaseDate,
+                    $newDocumentPaymentTermPenaltyBasePeriod,
+                    $newDocumentPaymentTermPenaltyBasePeriodUnit
+                );
+
+                $documentPaymentTermDTO->addPenaltyTerm(
+                    new InvoiceSuitePaymentTermPenaltyDTO(
+                        $newDocumentPaymentTermPenaltyBaseAmount,
+                        $newDocumentPaymentTermPenaltyAmount,
+                        $newDocumentPaymentTermPenaltyPercent,
+                        $newDocumentPaymentTermPenaltyBaseDate,
+                        new InvoiceSuitePeriodDTO(
+                            $newDocumentPaymentTermPenaltyBasePeriod,
+                            $newDocumentPaymentTermPenaltyBasePeriodUnit
+                        )
+                    )
+                );
+            }
+
             $newDocumentDTO->addPaymentTerm($documentPaymentTermDTO);
-        }
-
-        // Document-Level Creditor reference
-
-        while ($this->nextDocumentPaymentCreditorReferenceID()) {
-            $this->getDocumentPaymentCreditorReferenceID($newDocumentCreditorReferenceId);
-            $newDocumentDTO->addCreditorReference(new InvoiceSuiteIdDTO($newDocumentCreditorReferenceId));
-        }
-
-        // Document-Level Payment Reference
-
-        while ($this->nextDocumentPaymentReference()) {
-            $this->getDocumentPaymentReference($newDocumentPaymentReference);
-            $newDocumentDTO->addPaymentReference(new InvoiceSuiteIdDTO($newDocumentPaymentReference));
         }
 
         // Document-Level Taxes
@@ -3084,22 +3086,6 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
                 );
             }
 
-            // Position posting references
-
-            while ($this->nextDocumentPositionPostingReference()) {
-                $this->getDocumentPositionPostingReference(
-                    $newDocumentPositionPostingReferenceType,
-                    $newDocumentPositionPostingReferenceAccountId
-                );
-
-                $newDocumentPositionDTO->addPostingReference(
-                    new InvoiceSuiteIdDTO(
-                        $newDocumentPositionPostingReferenceAccountId,
-                        $newDocumentPositionPostingReferenceType
-                    )
-                );
-            }
-
             // Position taxes
 
             while ($this->nextDocumentPositionTax()) {
@@ -3170,6 +3156,22 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
                         $newDocumentPositionDiscountTotalAmount,
                         $newDocumentPositionTaxTotalAmount,
                         $newDocumentPositionGrossAmount
+                    )
+                );
+            }
+
+            // Position posting references
+
+            while ($this->nextDocumentPositionPostingReference()) {
+                $this->getDocumentPositionPostingReference(
+                    $newDocumentPositionPostingReferenceType,
+                    $newDocumentPositionPostingReferenceAccountId
+                );
+
+                $newDocumentPositionDTO->addPostingReference(
+                    new InvoiceSuiteIdDTO(
+                        $newDocumentPositionPostingReferenceAccountId,
+                        $newDocumentPositionPostingReferenceType
                     )
                 );
             }

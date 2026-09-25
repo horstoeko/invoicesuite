@@ -160,21 +160,6 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             $note->getSubjectCode()
         ));
 
-        // Document-Level Posting Reference
-
-        $newDocumentDTO->firstPostingReference(
-            fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPostingReference(
-                $item->getIdType(),
-                $item->getId()
-            )
-        );
-
-        // Document-Level Buyer Reference
-
-        $newDocumentDTO->firstBuyerReference(
-            fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentBuyerReference($item->getId())
-        );
-
         // Document-Level Billing period
 
         $newDocumentDTO->firstBillingPeriod(
@@ -185,12 +170,12 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             )
         );
 
-        // Document-Level Buyer Order Reference
+        // Document-Level Posting Reference
 
-        $newDocumentDTO->firstBuyerOrderReference(
-            fn (InvoiceSuiteReferenceDocumentDTO $item): static => $this->setDocumentBuyerOrderReference(
-                $item->getReferenceNumber(),
-                $item->getReferenceDate()
+        $newDocumentDTO->firstPostingReference(
+            fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPostingReference(
+                $item->getIdType(),
+                $item->getId()
             )
         );
 
@@ -203,29 +188,10 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             )
         );
 
-        // Document-Level Invoice Reference
+        // Document-Level Buyer Order Reference
 
-        $newDocumentDTO->forEachInvoiceReference(
-            fn (InvoiceSuiteReferenceDocumentExtDTO $item): static => $this->addDocumentInvoiceReference(
-                $item->getReferenceNumber(),
-                $item->getReferenceDate(),
-                $item->getTypeCode()
-            )
-        );
-
-        // Document-Level Despatch Advice Reference
-
-        $newDocumentDTO->firstDespatchAdviceReference(
-            fn (InvoiceSuiteReferenceDocumentDTO $item): static => $this->setDocumentDespatchAdviceReference(
-                $item->getReferenceNumber(),
-                $item->getReferenceDate()
-            )
-        );
-
-        // Document-Level Receiving Advice Reference
-
-        $newDocumentDTO->firstReceivingAdviceReference(
-            fn (InvoiceSuiteReferenceDocumentDTO $item): static => $this->setDocumentReceivingAdviceReference(
+        $newDocumentDTO->firstBuyerOrderReference(
+            fn (InvoiceSuiteReferenceDocumentDTO $item): static => $this->setDocumentBuyerOrderReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
@@ -253,6 +219,16 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             )
         );
 
+        // Document-Level Invoice Reference
+
+        $newDocumentDTO->forEachInvoiceReference(
+            fn (InvoiceSuiteReferenceDocumentExtDTO $item): static => $this->addDocumentInvoiceReference(
+                $item->getReferenceNumber(),
+                $item->getReferenceDate(),
+                $item->getTypeCode()
+            )
+        );
+
         // Document-Level Project Reference
 
         $newDocumentDTO->firstProjectReference(
@@ -262,22 +238,46 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             )
         );
 
+        // Document-Level Despatch Advice Reference
+
+        $newDocumentDTO->firstDespatchAdviceReference(
+            fn (InvoiceSuiteReferenceDocumentDTO $item): static => $this->setDocumentDespatchAdviceReference(
+                $item->getReferenceNumber(),
+                $item->getReferenceDate()
+            )
+        );
+
+        // Document-Level Receiving Advice Reference
+
+        $newDocumentDTO->firstReceivingAdviceReference(
+            fn (InvoiceSuiteReferenceDocumentDTO $item): static => $this->setDocumentReceivingAdviceReference(
+                $item->getReferenceNumber(),
+                $item->getReferenceDate()
+            )
+        );
+
+        // Document-Level Supply Chain Event
+
+        $newDocumentDTO->firstSupplyChainEvent(
+            fn (DateTimeInterface $item): static => $this->setDocumentSupplyChainEvent($item)
+        );
+
+        // Document-Level Buyer Reference
+
+        $newDocumentDTO->firstBuyerReference(
+            fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentBuyerReference($item->getId())
+        );
+
+        // Document-Level Delivery Terms
+
+        $newDocumentDTO->firstDeliveryTerm(
+            fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentDeliveryTerms($item->getId())
+        );
+
         // Document-Level Seller/Supplier Party
 
         $newDocumentDTO
             ->getSellerParty()
-            ?->firstCommunication(
-                fn (InvoiceSuiteCommunicationDTO $item): static => $this->setDocumentSellerCommunication(
-                    $item->getIdType(),
-                    $item->getId()
-                )
-            )
-            ?->forEachId(
-                fn (InvoiceSuiteIdDTO $item): static => $this->addDocumentSellerId($item->getId())
-            )
-            ?->forEachGlobalId(
-                fn (InvoiceSuiteIdDTO $item): static => $this->addDocumentSellerGlobalId($item->getId(), $item->getIdType())
-            )
             ?->firstName(
                 fn (string $item): static => $this->setDocumentSellerName($item)
             )
@@ -286,6 +286,17 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             )
             ?->firstRoleCode(
                 fn (string $item): static => $this->setDocumentSellerRoleCode($item)
+            )
+            ?->forEachId(
+                fn (InvoiceSuiteIdDTO $item): static => $this->addDocumentSellerId($item->getId())
+            )
+            ?->forEachGlobalId(
+                fn (InvoiceSuiteIdDTO $item): static => $this->addDocumentSellerGlobalId($item->getId(), $item->getIdType())
+            )
+            ?->forEachTaxRegistration(
+                fn (InvoiceSuiteIdDTO $item): static => $this->addDocumentSellerTaxRegistration($item->getIdType(), $item->getId()),
+                null,
+                2
             )
             ?->firstAddress(
                 fn (InvoiceSuiteAddressDTO $item): static => $this->setDocumentSellerAddress(
@@ -297,11 +308,6 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
                     $item->getCountry(),
                     $item->getSubDivision()
                 )
-            )
-            ?->forEachTaxRegistration(
-                fn (InvoiceSuiteIdDTO $item): static => $this->addDocumentSellerTaxRegistration($item->getIdType(), $item->getId()),
-                null,
-                2
             )
             ?->firstLegalOrganisation(
                 fn (InvoiceSuiteOrganisationDTO $item): static => $this->setDocumentSellerLegalOrganisation(
@@ -318,22 +324,18 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
                     $item->getFaxNumber(),
                     $item->getEmailAddress()
                 )
+            )
+            ?->firstCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item): static => $this->setDocumentSellerCommunication(
+                    $item->getIdType(),
+                    $item->getId()
+                )
             );
 
         // Document-Level Buyer/Customer Party
 
         $newDocumentDTO
             ->getBuyerParty()
-            ?->firstCommunication(
-                fn (InvoiceSuiteCommunicationDTO $item): static => $this->setDocumentBuyerCommunication(
-                    $item->getIdType(),
-                    $item->getId()
-                )
-            )
-            ?->firstId(
-                fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentBuyerId($item->getId()),
-                fn (): InvoiceSuitePartyDTO => $newDocumentDTO->getBuyerParty()->firstGlobalId(fn ($item): static => $this->setDocumentBuyerGlobalId($item->getId(), $item->getIdType()))
-            )
             ?->firstName(
                 fn (string $item): static => $this->setDocumentBuyerName($item)
             )
@@ -342,6 +344,13 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             )
             ?->firstRoleCode(
                 fn (string $item): static => $this->setDocumentBuyerRoleCode($item)
+            )
+            ?->firstId(
+                fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentBuyerId($item->getId()),
+                fn (): InvoiceSuitePartyDTO => $newDocumentDTO->getBuyerParty()->firstGlobalId(fn ($item): static => $this->setDocumentBuyerGlobalId($item->getId(), $item->getIdType()))
+            )
+            ?->firstTaxRegistration(
+                fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentBuyerTaxRegistration($item->getIdType(), $item->getId())
             )
             ?->firstAddress(
                 fn (InvoiceSuiteAddressDTO $item): static => $this->setDocumentBuyerAddress(
@@ -353,9 +362,6 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
                     $item->getCountry(),
                     $item->getSubDivision()
                 )
-            )
-            ?->firstTaxRegistration(
-                fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentBuyerTaxRegistration($item->getIdType(), $item->getId())
             )
             ?->firstLegalOrganisation(
                 fn (InvoiceSuiteOrganisationDTO $item): static => $this->setDocumentBuyerLegalOrganisation(
@@ -372,30 +378,11 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
                     $item->getFaxNumber(),
                     $item->getEmailAddress()
                 )
-            );
-
-        // Document-Level Payee Party
-
-        $newDocumentDTO
-            ->getPayeeParty()
-            ?->firstName(
-                fn (string $item): static => $this->setDocumentPayeeName($item)
             )
-            ?->firstDescription(
-                fn (string $item): static => $this->setDocumentPayeeDescription($item)
-            )
-            ?->firstRoleCode(
-                fn (string $item): static => $this->setDocumentPayeeRoleCode($item)
-            )
-            ?->firstId(
-                fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPayeeId($item->getId()),
-                fn (): InvoiceSuitePartyDTO => $newDocumentDTO->getPayeeParty()->firstGlobalId(fn ($item): static => $this->setDocumentPayeeGlobalId($item->getId(), $item->getIdType()))
-            )
-            ?->firstLegalOrganisation(
-                fn (InvoiceSuiteOrganisationDTO $item): static => $this->setDocumentPayeeLegalOrganisation(
+            ?->firstCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item): static => $this->setDocumentBuyerCommunication(
                     $item->getIdType(),
-                    $item->getId(),
-                    $item->getName()
+                    $item->getId()
                 )
             );
 
@@ -412,6 +399,9 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             ?->firstRoleCode(
                 fn (string $item): static => $this->setDocumentSellerTaxRepresentativeRoleCode($item)
             )
+            ?->firstTaxRegistration(
+                fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentSellerTaxRepresentativeTaxRegistration($item->getIdType(), $item->getId())
+            )
             ?->firstAddress(
                 fn (InvoiceSuiteAddressDTO $item): static => $this->setDocumentSellerTaxRepresentativeAddress(
                     $item->getAddressLine1(),
@@ -422,9 +412,6 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
                     $item->getCountry(),
                     $item->getSubDivision()
                 )
-            )
-            ?->firstTaxRegistration(
-                fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentSellerTaxRepresentativeTaxRegistration($item->getIdType(), $item->getId())
             );
 
         // Document-Level Sales Agent party
@@ -539,26 +526,10 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
                 )
             );
 
-        // Document-Level Supply Chain Event
-
-        $newDocumentDTO->firstSupplyChainEvent(
-            fn (DateTimeInterface $item): static => $this->setDocumentSupplyChainEvent($item)
-        );
-
-        // Document-Level Delivery Terms
-
-        $newDocumentDTO->firstDeliveryTerm(
-            fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentDeliveryTerms($item->getId())
-        );
-
         // Document-Level Ship-To Party
 
         $newDocumentDTO
             ->getShipToParty()
-            ?->firstId(
-                fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentShipToId($item->getId()),
-                fn (): InvoiceSuitePartyDTO => $newDocumentDTO->getShipToParty()->firstGlobalId(fn ($item): static => $this->setDocumentShipToGlobalId($item->getId(), $item->getIdType()))
-            )
             ?->firstName(
                 fn (string $item): static => $this->setDocumentShipToName($item)
             )
@@ -567,6 +538,10 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             )
             ?->firstRoleCode(
                 fn (string $item): static => $this->setDocumentShipToRoleCode($item)
+            )
+            ?->firstId(
+                fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentShipToId($item->getId()),
+                fn (): InvoiceSuitePartyDTO => $newDocumentDTO->getShipToParty()->firstGlobalId(fn ($item): static => $this->setDocumentShipToGlobalId($item->getId(), $item->getIdType()))
             )
             ?->firstAddress(
                 fn (InvoiceSuiteAddressDTO $item): static => $this->setDocumentShipToAddress(
@@ -577,6 +552,31 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
                     $item->getCity(),
                     $item->getCountry(),
                     $item->getSubDivision()
+                )
+            );
+
+        // Document-Level Payee Party
+
+        $newDocumentDTO
+            ->getPayeeParty()
+            ?->firstName(
+                fn (string $item): static => $this->setDocumentPayeeName($item)
+            )
+            ?->firstDescription(
+                fn (string $item): static => $this->setDocumentPayeeDescription($item)
+            )
+            ?->firstRoleCode(
+                fn (string $item): static => $this->setDocumentPayeeRoleCode($item)
+            )
+            ?->firstId(
+                fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPayeeId($item->getId()),
+                fn (): InvoiceSuitePartyDTO => $newDocumentDTO->getPayeeParty()->firstGlobalId(fn ($item): static => $this->setDocumentPayeeGlobalId($item->getId(), $item->getIdType()))
+            )
+            ?->firstLegalOrganisation(
+                fn (InvoiceSuiteOrganisationDTO $item): static => $this->setDocumentPayeeLegalOrganisation(
+                    $item->getIdType(),
+                    $item->getId(),
+                    $item->getName()
                 )
             );
 
@@ -599,6 +599,12 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             )
         );
 
+        // Document-Level Creditor reference
+
+        $newDocumentDTO->firstCreditorReference(
+            fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPaymentCreditorReferenceID($item->getId())
+        );
+
         // Document-Level Payment Terms
 
         $newDocumentDTO->firstPaymentTerm(
@@ -606,22 +612,6 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
                 $item->getDescription(),
                 $item->getDueDate(),
                 $item->getMandate()
-            )
-        );
-
-        // Document-Level Allowances/Charges
-
-        $newDocumentDTO->forEachAllowanceCharge(
-            fn (InvoiceSuiteAllowanceChargeDTO $item): static => $this->addDocumentAllowanceCharge(
-                $item->getChargeIndicator(),
-                $item->getAmount(),
-                $item->getBaseAmount(),
-                $item->getTaxCategory(),
-                $item->getTaxType(),
-                $item->getTaxPercent(),
-                $item->getReason(),
-                $item->getReasonCode(),
-                $item->getPercent()
             )
         );
 
@@ -641,6 +631,22 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             )
         );
 
+        // Document-Level Allowances/Charges
+
+        $newDocumentDTO->forEachAllowanceCharge(
+            fn (InvoiceSuiteAllowanceChargeDTO $item): static => $this->addDocumentAllowanceCharge(
+                $item->getChargeIndicator(),
+                $item->getAmount(),
+                $item->getBaseAmount(),
+                $item->getTaxCategory(),
+                $item->getTaxType(),
+                $item->getTaxPercent(),
+                $item->getReason(),
+                $item->getReasonCode(),
+                $item->getPercent()
+            )
+        );
+
         // Document-Level Summation
 
         $newDocumentDTO->firstSummation(
@@ -656,12 +662,6 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
                 $item->getPrepaidAmount(),
                 $item->getRoungingAmount()
             )
-        );
-
-        // Document-Level Creditor reference
-
-        $newDocumentDTO->firstCreditorReference(
-            fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPaymentCreditorReferenceID($item->getId())
         );
 
         // Document-Level Specified Advance Payments
@@ -719,45 +719,44 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
                     )
                 );
 
-                // Position Quantities
+                // Position product
 
-                $this->setDocumentPositionQuantities(
-                    $item->getQuantityBilled()?->getQuantity(),
-                    $item->getQuantityBilled()?->getQuantityUnit(),
-                    $item->getQuantityChargeFree()?->getQuantity(),
-                    $item->getQuantityChargeFree()?->getQuantityUnit(),
-                    $item->getQuantityPackage()?->getQuantity(),
-                    $item->getQuantityPackage()?->getQuantityUnit(),
-                    $item->getQuantityPerPackage()?->getQuantity(),
-                    $item->getQuantityPerPackage()?->getQuantityUnit()
+                $this->setDocumentPositionProductDetails(
+                    $item->getProduct()?->getId(),
+                    $item->getProduct()?->getName(),
+                    $item->getProduct()?->getDescription(),
+                    $item->getProduct()?->getSellerId(),
+                    $item->getProduct()?->getBuyerId(),
+                    $item->getProduct()?->getGlobalId()?->getId(),
+                    $item->getProduct()?->getGlobalId()?->getIdType(),
+                    $item->getProduct()?->getIndustryId(),
+                    $item->getProduct()?->getModelId(),
+                    $item->getProduct()?->getBatchId(),
+                    $item->getProduct()?->getBrandName(),
+                    $item->getProduct()?->getModelName(),
+                    $item->getProduct()?->getOriginTradeCountry()
                 );
 
-                // Position summation
+                // Position product characteristics
 
-                $this->setDocumentPositionSummation(
-                    $item->getSummation()?->getNetAmount(),
-                    $item->getSummation()?->getChargeTotalAmount(),
-                    $item->getSummation()?->getDiscountTotalAmount(),
-                    $item->getSummation()?->getTaxTotalAmount(),
-                    $item->getSummation()?->getGrossAmount()
-                );
-
-                // Position posting references
-
-                $item->firstPostingReference(
-                    fn (InvoiceSuiteIdDTO $postingReference): static => $this->setDocumentPositionPostingReference(
-                        $postingReference->getIdType(),
-                        $postingReference->getId()
+                $item->getProduct()?->forEachCharacteristic(
+                    fn (InvoiceSuiteProductCharacteristicDTO $characteristic): static => $this->addDocumentPositionProductCharacteristic(
+                        $characteristic->getDescription(),
+                        $characteristic->getValue(),
+                        $characteristic->getType(),
+                        $characteristic->getValueMeasure()?->getValue(),
+                        $characteristic->getValueMeasure()?->getUnit()
                     )
                 );
 
-                // Position billing period
+                // Position product classifications
 
-                $item->firstBillingPeriod(
-                    fn (InvoiceSuiteDateRangeDTO $item): static => $this->setDocumentPositionBillingPeriod(
-                        $item->getStartDate(),
-                        $item->getEndDate(),
-                        $item->getDescription()
+                $item->getProduct()?->forEachClassification(
+                    fn (InvoiceSuiteProductClassificationDTO $classification): static => $this->addDocumentPositionProductClassification(
+                        $classification->getCode(),
+                        $classification->getListId(),
+                        $classification->getListVersionId(),
+                        $classification->getName()
                     )
                 );
 
@@ -781,45 +780,34 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
                     )
                 );
 
-                // Position allowances/charges
+                // Position Net Price
 
-                $item->forEachAllowanceCharge(
-                    fn (InvoiceSuiteAllowanceChargeDTO $allowanceCharge): static => $this->addDocumentPositionAllowanceCharge(
-                        $allowanceCharge->getChargeIndicator(),
-                        $allowanceCharge->getAmount(),
-                        $allowanceCharge->getBaseAmount(),
-                        $allowanceCharge->getReason(),
-                        $allowanceCharge->getReasonCode(),
-                        $allowanceCharge->getPercent()
-                    )
+                $this->setDocumentPositionNetPrice(
+                    $item->getNetPrice()?->getAmount(),
+                    $item->getNetPrice()?->getPriceQuantity()?->getQuantity(),
+                    $item->getNetPrice()?->getPriceQuantity()?->getQuantityUnit()
                 );
 
-                // Position product
+                // Position Quantities
 
-                $this->setDocumentPositionProductDetails(
-                    $item->getProduct()?->getId(),
-                    $item->getProduct()?->getName(),
-                    $item->getProduct()?->getDescription(),
-                    $item->getProduct()?->getSellerId(),
-                    $item->getProduct()?->getBuyerId(),
-                    $item->getProduct()?->getGlobalId()?->getId(),
-                    $item->getProduct()?->getGlobalId()?->getIdType(),
-                    $item->getProduct()?->getIndustryId(),
-                    $item->getProduct()?->getModelId(),
-                    $item->getProduct()?->getBatchId(),
-                    $item->getProduct()?->getBrandName(),
-                    $item->getProduct()?->getModelName(),
-                    $item->getProduct()?->getOriginTradeCountry()
+                $this->setDocumentPositionQuantities(
+                    $item->getQuantityBilled()?->getQuantity(),
+                    $item->getQuantityBilled()?->getQuantityUnit(),
+                    $item->getQuantityChargeFree()?->getQuantity(),
+                    $item->getQuantityChargeFree()?->getQuantityUnit(),
+                    $item->getQuantityPackage()?->getQuantity(),
+                    $item->getQuantityPackage()?->getQuantityUnit(),
+                    $item->getQuantityPerPackage()?->getQuantity(),
+                    $item->getQuantityPerPackage()?->getQuantityUnit()
                 );
 
-                // Position product classifications
+                // Position billing period
 
-                $item->getProduct()?->forEachClassification(
-                    fn (InvoiceSuiteProductClassificationDTO $classification): static => $this->addDocumentPositionProductClassification(
-                        $classification->getCode(),
-                        $classification->getListId(),
-                        $classification->getListVersionId(),
-                        $classification->getName()
+                $item->firstBillingPeriod(
+                    fn (InvoiceSuiteDateRangeDTO $item): static => $this->setDocumentPositionBillingPeriod(
+                        $item->getStartDate(),
+                        $item->getEndDate(),
+                        $item->getDescription()
                     )
                 );
 
@@ -836,24 +824,36 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
                     )
                 );
 
-                // Position product characteristics
+                // Position allowances/charges
 
-                $item->getProduct()?->forEachCharacteristic(
-                    fn (InvoiceSuiteProductCharacteristicDTO $characteristic): static => $this->addDocumentPositionProductCharacteristic(
-                        $characteristic->getDescription(),
-                        $characteristic->getValue(),
-                        $characteristic->getType(),
-                        $characteristic->getValueMeasure()?->getValue(),
-                        $characteristic->getValueMeasure()?->getUnit()
+                $item->forEachAllowanceCharge(
+                    fn (InvoiceSuiteAllowanceChargeDTO $allowanceCharge): static => $this->addDocumentPositionAllowanceCharge(
+                        $allowanceCharge->getChargeIndicator(),
+                        $allowanceCharge->getAmount(),
+                        $allowanceCharge->getBaseAmount(),
+                        $allowanceCharge->getReason(),
+                        $allowanceCharge->getReasonCode(),
+                        $allowanceCharge->getPercent()
                     )
                 );
 
-                // Position Net Price
+                // Position summation
 
-                $this->setDocumentPositionNetPrice(
-                    $item->getNetPrice()?->getAmount(),
-                    $item->getNetPrice()?->getPriceQuantity()?->getQuantity(),
-                    $item->getNetPrice()?->getPriceQuantity()?->getQuantityUnit()
+                $this->setDocumentPositionSummation(
+                    $item->getSummation()?->getNetAmount(),
+                    $item->getSummation()?->getChargeTotalAmount(),
+                    $item->getSummation()?->getDiscountTotalAmount(),
+                    $item->getSummation()?->getTaxTotalAmount(),
+                    $item->getSummation()?->getGrossAmount()
+                );
+
+                // Position posting references
+
+                $item->firstPostingReference(
+                    fn (InvoiceSuiteIdDTO $postingReference): static => $this->setDocumentPositionPostingReference(
+                        $postingReference->getIdType(),
+                        $postingReference->getId()
+                    )
                 );
             }
         );

@@ -1090,6 +1090,18 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             )
         );
 
+        // Document-Level Creditor reference
+
+        $newDocumentDTO->firstCreditorReference(
+            fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPaymentCreditorReferenceID($item->getId())
+        );
+
+        // Document-Level Payment Reference
+
+        $newDocumentDTO->firstPaymentReference(
+            fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPaymentReference($item->getId())
+        );
+
         // Document-Level Payment Terms
 
         $newDocumentDTO->firstPaymentTerm(
@@ -1120,18 +1132,6 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
                     )
                 );
             }
-        );
-
-        // Document-Level Creditor reference
-
-        $newDocumentDTO->firstCreditorReference(
-            fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPaymentCreditorReferenceID($item->getId())
-        );
-
-        // Document-Level Payment Reference
-
-        $newDocumentDTO->firstPaymentReference(
-            fn (InvoiceSuiteIdDTO $item): static => $this->setDocumentPaymentReference($item->getId())
         );
 
         // Document-Level Taxes
@@ -1566,15 +1566,6 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
                     )
                 );
 
-                // Position posting references
-
-                $item->firstPostingReference(
-                    fn (InvoiceSuiteIdDTO $postingReference): static => $this->setDocumentPositionPostingReference(
-                        $postingReference->getIdType(),
-                        $postingReference->getId()
-                    )
-                );
-
                 // Position taxes
 
                 $item->forEachTax(
@@ -1609,6 +1600,15 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
                     $item->getSummation()?->getDiscountTotalAmount(),
                     $item->getSummation()?->getTaxTotalAmount(),
                     $item->getSummation()?->getGrossAmount()
+                );
+
+                // Position posting references
+
+                $item->firstPostingReference(
+                    fn (InvoiceSuiteIdDTO $postingReference): static => $this->setDocumentPositionPostingReference(
+                        $postingReference->getIdType(),
+                        $postingReference->getId()
+                    )
                 );
             }
         );
