@@ -60,17 +60,28 @@ jobs:
             echo "PHAR OK\n";
             '
 
+      - name: Generate PHAR checksum
+        id: phar_checksum
+        if: steps.build_phar.outcome == 'success' && steps.verify_phar.outcome == 'success'
+        run: |
+          cd build
+          sha256sum invoicesuite.phar > invoicesuite.phar.sha256
+          cat invoicesuite.phar.sha256
+
       - name: Determine PHAR artifact
         id: phar_artifact
         run: |
           if [ "${{ steps.build_phar.outcome }}" != "success" ]; then
             echo "path=" >> "$GITHUB_OUTPUT"
+            echo "checksum_path=" >> "$GITHUB_OUTPUT"
             echo "::warning::PHAR-Build fehlgeschlagen – kein Artifact/Release-Anhang."
           elif [ "${{ steps.verify_phar.outcome }}" != "success" ]; then
             echo "path=" >> "$GITHUB_OUTPUT"
+            echo "checksum_path=" >> "$GITHUB_OUTPUT"
             echo "::warning::PHAR-Smoke-Test fehlgeschlagen – kein Artifact/Release-Anhang."
           else
             echo "path=build/invoicesuite.phar" >> "$GITHUB_OUTPUT"
+            echo "checksum_path=build/invoicesuite.phar.sha256" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Upload artifact
@@ -78,11 +89,15 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: invoicesuite-phar
-          path: ${{ steps.phar_artifact.outputs.path }}
+          path: |
+            ${{ steps.phar_artifact.outputs.path }}
+            ${{ steps.phar_artifact.outputs.checksum_path }}
 
       - name: Attach to Release
         if: github.event_name == 'workflow_run' && steps.phar_artifact.outputs.path != ''
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.event.workflow_run.head_branch }}
-          files: ${{ steps.phar_artifact.outputs.path }}
+          files: |
+            ${{ steps.phar_artifact.outputs.path }}
+            ${{ steps.phar_artifact.outputs.checksum_path }}
