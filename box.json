@@ -1,0 +1,25 @@
+{
+    "$schema": "https://raw.githubusercontent.com/box-project/box/main/res/schema.json",
+    "alias": "invoicesuite.phar",
+    "output": "build/invoicesuite.phar",
+    "files": [
+        "composer.json",
+        "LICENSE",
+        "README.md"
+    ],
+    "finder": [
+        {
+            "name": ["*.php"],
+            "in": "src"
+        }
+    ],
+    "compression": "GZ",
+    "compactors": [
+        "KevinGH\\Box\\Compactor\\Php",
+        "KevinGH\\Box\\Compactor\\Json"
+    ],
+    "stub": true,
+    "metadata": {
+        "package": "horstoeko/invoicesuite"
+    }
+}
