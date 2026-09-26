@@ -81,3 +81,10 @@ jobs:
           else
             echo "No changes found. Skipping."
           fi
+
+      - name: Attach to Release
+        if: github.event_name == 'workflow_run' && hashFiles('CHANGELOG.md') != ''
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.workflow_run.head_branch }}
+          files: CHANGELOG.md
