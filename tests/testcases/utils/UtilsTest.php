@@ -511,6 +511,24 @@ final class UtilsTest extends TestCase
         $this->assertSame(['Jack', 'Jim', 'John'], $variable);
     }
 
+    public function testInvoiceSuiteArrayUtilsUnique(): void
+    {
+        $variable = ['John', 'Jack', 'Jim', 'John'];
+
+        $uniqueVariable = InvoiceSuiteArrayUtils::unique($variable);
+
+        $this->assertSame(['John', 'Jack', 'Jim'], $uniqueVariable);
+    }
+
+    public function testInvoiceSuiteArrayUtilsSort(): void
+    {
+        $variable = ['John', 'Jack', 'Jim'];
+
+        $sortedVariable = InvoiceSuiteArrayUtils::sort($variable);
+
+        $this->assertSame(['Jack', 'Jim', 'John'], $sortedVariable);
+    }
+
     public function testInvoiceSuiteDateTimeUtilsIsNullOrEmpty(): void
     {
         $dateTimeValue = null;
@@ -1252,6 +1270,8 @@ final class UtilsTest extends TestCase
         $this->assertCount(18, $classNames);
         $this->assertFileDoesNotExist($cacheFullFilename);
 
+        $classFinder->init();
+
         $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, false);
 
         // @phpstan-ignore method.alreadyNarrowedType
@@ -1283,6 +1303,8 @@ final class UtilsTest extends TestCase
         // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsArray($classNames);
         $this->assertEmpty($classNames);
+
+        $classFinder->init();
 
         $peppolNamespace = 'horstoeko\invoicesuite\documents\providers\peppol';
         $peppolCacheKey = InvoiceSuiteAbstractDocumentFormatProvider::class . '|' . $peppolNamespace;

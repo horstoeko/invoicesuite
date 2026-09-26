@@ -19,30 +19,30 @@ use Throwable;
 class InvoiceSuiteClassFinder
 {
     /**
-     * Instance
+     * Singleton instance (one per concrete subclass, see {@see self::factory()}).
      *
      * @var null|static
      *
      * @phpstan-var null|static
      */
-    protected static $invoiceSuiteClassFinder;
+    protected static ?self $invoiceSuiteClassFinder = null;
 
     /**
-     * Classes
+     * All class names known to the registered Composer class loader(s).
      *
      * @var array<int,string>
      */
-    private $classNames = [];
+    private array $classNames = [];
 
     /**
-     * In-memory cache for subclass lookups
+     * In-memory cache for subclass lookups, keyed by {@see self::buildCacheKey()}.
      *
      * @var array<string,array<int,string>>
      */
-    private $subClassNames = [];
+    private array $subClassNames = [];
 
     /**
-     * Constructor (Hidden)
+     * Constructor (hidden, use {@see self::factory()})
      */
     final protected function __construct()
     {
@@ -95,9 +95,9 @@ class InvoiceSuiteClassFinder
      * is not empty, only classes belonging to one of these namespaces are considered, which avoids
      * autoloading (and thus loading into memory) every other class known to the composer classloader
      *
-     * @param  string        $isSubClassOf
-     * @param  bool          $disableCache
-     * @return array<string>
+     * @param  string            $isSubClassOf
+     * @param  bool              $disableCache
+     * @return array<int,string>
      */
     public function getClassesWhenItsSubClassOf(
         string $isSubClassOf,
@@ -115,7 +115,7 @@ class InvoiceSuiteClassFinder
         $cacheFilenameFq = InvoiceSuitePathUtils::combinePathWithFile($cacheFilepath, $cacheFilename);
 
         if (!$disableCache && InvoiceSuiteFileUtils::isReadableFile($cacheFilenameFq)) {
-            $cached = @require $cacheFilenameFq;
+            $cached = require $cacheFilenameFq;
 
             if (InvoiceSuiteArrayUtils::is($cached)) {
                 $this->subClassNames[$cacheKey] = $cached;
@@ -167,6 +167,8 @@ class InvoiceSuiteClassFinder
             InvoiceSuiteFileUtils::putContentToFile($cacheFilenameFq, $cacheFilePhpCode);
         }
 
+        $this->subClassNames[$cacheKey] = $classes;
+
         return $classes;
     }
 
@@ -177,15 +179,13 @@ class InvoiceSuiteClassFinder
      */
     public static function clearCache(): void
     {
-        $files = glob(__DIR__ . '/../cache/*.cache');
+        $cacheFiles = glob(__DIR__ . '/../cache/*.cache');
+        $cacheFiles = false === $cacheFiles ? [] : $cacheFiles;
 
-        foreach ($files as $file) {
-            if (InvoiceSuiteFileUtils::isReadableFile($file)) {
-                unlink($file);
-            }
-        }
+        $jmsFiles = glob(__DIR__ . '/../cache/jms/**/*.*', GLOB_BRACE);
+        $jmsFiles = false === $jmsFiles ? [] : $jmsFiles;
 
-        $files = glob(__DIR__ . '/../cache/jms/**/*.*', GLOB_BRACE);
+        $files = InvoiceSuiteArrayUtils::merge($cacheFiles, $jmsFiles);
 
         foreach ($files as $file) {
             if (InvoiceSuiteFileUtils::isReadableFile($file)) {
@@ -197,6 +197,7 @@ class InvoiceSuiteClassFinder
     /**
      * Normalize and return the list of discovery namespaces so that equivalent but differently
      * ordered/formatted lists resolve to the exact same cache key:
+     *
      *  - trim trailing separators
      *  - drop empties
      *  - deduplicate
@@ -215,12 +216,14 @@ class InvoiceSuiteClassFinder
 
         $normalized = InvoiceSuiteArrayUtils::filter(
             $normalized,
-            static fn (string $discoveryNamespace): bool => '' !== $discoveryNamespace
+            static fn (string $discoveryNamespace): bool => !InvoiceSuiteStringUtils::stringIsNullOrEmpty($discoveryNamespace)
         );
 
-        $normalized = array_values(array_unique($normalized));
-
-        sort($normalized);
+        $normalized = InvoiceSuiteArrayUtils::sort(
+            InvoiceSuiteArrayUtils::values(
+                InvoiceSuiteArrayUtils::unique($normalized)
+            )
+        );
 
         return $normalized;
     }

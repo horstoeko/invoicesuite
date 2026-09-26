@@ -497,4 +497,34 @@ class InvoiceSuiteArrayUtils
     ): array {
         return array_column($array, $columKey, $indexKey);
     }
+
+    /**
+     * Removes duplicate values from an array
+     *
+     * @param  array<array-key, mixed> $array
+     * @param  int                     $flags
+     * @return array<array-key, mixed>
+     */
+    public static function unique(
+        array $array,
+        int $flags = SORT_STRING
+    ): array {
+        return array_unique($array, $flags);
+    }
+
+    /**
+     * Sort an array
+     *
+     * @param  array<array-key, mixed> $array
+     * @param  int                     $flags
+     * @return array<array-key, mixed>
+     */
+    public static function sort(
+        array $array,
+        int $flags = SORT_REGULAR
+    ): array {
+        sort($array, $flags);
+
+        return $array;
+    }
 }
