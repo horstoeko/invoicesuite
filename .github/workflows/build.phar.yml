@@ -37,7 +37,7 @@ jobs:
         run: |
             php -r '
             require "phar://build/invoicesuite.phar/vendor/autoload.php";
-            if (!class_exists("horstoeko\\InvoiceSuite\\InvoiceSuiteAbstractDocumentFormatProvider")) {
+            if (!class_exists("horstoeko\\invoicesuite\\documents\\abstracts\\InvoiceSuiteAbstractDocumentBaseBuilder")) {
                 fwrite(STDERR, "Smoke test failed: core class not found in PHAR\n");
                 exit(1);
             }
