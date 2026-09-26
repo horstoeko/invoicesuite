@@ -1,3 +1,14 @@
+## v0.0.36
+
+``Previous version v0.0.35``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [602c454a](https://github.com/horstoeko/invoicesuite/commit/602c454a) | 2026-09-26 10:19:49 CEST | HorstOeko | [ENH] Reworked ClassFinder | 
+| :new:  | [e09dc39d](https://github.com/horstoeko/invoicesuite/commit/e09dc39d) | 2026-09-25 05:22:20 CEST | HorstOeko | [ENH] Re-Ordered Calls in createFromDTO and convertToDTO | 
+
+:exclamation: _There are 3 internal commit(s)_
+
 ## v0.0.35
 
 ``Previous version v0.0.34``
