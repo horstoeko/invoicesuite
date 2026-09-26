@@ -1,15 +1,26 @@
 name: Build PHAR
 
 on:
+  workflow_run:
+    workflows:
+      - Release
+    types:
+      - completed
   workflow_dispatch:
 
 jobs:
   build-phar:
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+    permissions:
+      contents: write
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout sources
         uses: actions/checkout@v7
         with:
+          ref: ${{ github.event.workflow_run.head_sha || github.ref }}
           persist-credentials: false
 
       - name: Set up PHP
@@ -54,17 +65,24 @@ jobs:
         run: |
           if [ "${{ steps.build_phar.outcome }}" != "success" ]; then
             echo "path=" >> "$GITHUB_OUTPUT"
-            echo "::warning::PHAR-Build fehlgeschlagen – kein Artifact wird hochgeladen."
+            echo "::warning::PHAR-Build fehlgeschlagen – kein Artifact/Release-Anhang."
           elif [ "${{ steps.verify_phar.outcome }}" != "success" ]; then
             echo "path=" >> "$GITHUB_OUTPUT"
-            echo "::warning::PHAR-Smoke-Test fehlgeschlagen – kein Artifact wird hochgeladen."
+            echo "::warning::PHAR-Smoke-Test fehlgeschlagen – kein Artifact/Release-Anhang."
           else
             echo "path=build/invoicesuite.phar" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Upload artifact
         if: steps.phar_artifact.outputs.path != ''
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: invoicesuite-phar
           path: ${{ steps.phar_artifact.outputs.path }}
+
+      - name: Attach to Release
+        if: github.event_name == 'workflow_run' && steps.phar_artifact.outputs.path != ''
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.workflow_run.head_branch }}
+          files: ${{ steps.phar_artifact.outputs.path }}
