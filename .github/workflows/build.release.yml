@@ -26,10 +26,58 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          extensions: amqp, apcu, ast, bcmath, bz2, calendar, ctype, curl, dba, dom, ds, enchant, exif, fileinfo, ftp, gd, gettext, gmp, iconv, igbinary, imagick, imap, intl, json, ldap, libxml, mbstring, memcache, memcached, mongodb, msgpack, mysqli, mysqlnd, odbc, openssl, pcntl, pcre, pdo, pdo_dblib, pdo_firebird, pdo_mysql, pdo_odbc, pdo_pgsql, pdo_sqlite, pdo_sqlsrv, pgsql, posix, readline, redis, shmop, simplexml, snmp, soap, sockets, sqlite3, sqlsrv, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, xml, xmlreader, xmlwriter, xsl, yaml, opcache, zip, zmq
+          tools: composer:v2, box
+          coverage: none
+          ini-values: memory_limit=-1
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install production dependencies
+        uses: ramsey/composer-install@v3
+        with:
+          composer-options: "--no-dev --optimize-autoloader --classmap-authoritative --prefer-dist"
+
+      - name: Validate box.json
+        run: box validate
+
+      - name: Build PHAR
+        id: build_phar
+        continue-on-error: true
+        run: box compile
+
+      - name: Verify PHAR
+        id: verify_phar
+        if: steps.build_phar.outcome == 'success'
+        continue-on-error: true
+        run: |
+            php -r '
+            require "phar://build/invoicesuite.phar/vendor/autoload.php";
+            if (!class_exists("horstoeko\\invoicesuite\\documents\\abstracts\\InvoiceSuiteAbstractDocumentBaseBuilder")) {
+                fwrite(STDERR, "Smoke test failed: core class not found in PHAR\n");
+                exit(1);
+            }
+            echo "PHAR OK\n";
+            '
+
+      - name: Determine PHAR artifact
+        id: phar_artifact
+        run: |
+          if [ "${{ steps.build_phar.outcome }}" != "success" ]; then
+            echo "path=" >> "$GITHUB_OUTPUT"
+            echo "::warning::PHAR-Build fehlgeschlagen – Release wird OHNE PHAR erstellt."
+          elif [ "${{ steps.verify_phar.outcome }}" != "success" ]; then
+            echo "path=" >> "$GITHUB_OUTPUT"
+            echo "::warning::PHAR-Smoke-Test fehlgeschlagen – Release wird OHNE PHAR erstellt."
+          else
+            echo "path=build/invoicesuite.phar" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Generate release notes
         run: |
-          mkdir -p build
-
           currentTag="$GITHUB_REF_NAME"
           currentCommit=$(git rev-list -n 1 "$currentTag")
           previousTag=$(git describe --tags --match 'v*' --abbrev=0 "${currentCommit}^" 2>/dev/null || true)
@@ -62,3 +110,4 @@ jobs:
           immutableCreate: true
           skipIfReleaseExists: true
           bodyFile: build/releasenotes.txt
+          artifacts: ${{ steps.phar_artifact.outputs.path }}

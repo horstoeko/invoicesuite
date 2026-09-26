@@ -5,7 +5,7 @@ on:
 
 jobs:
   build-phar:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout sources
         uses: actions/checkout@v7
@@ -31,9 +31,14 @@ jobs:
         run: box validate
 
       - name: Build PHAR
+        id: build_phar
+        continue-on-error: true
         run: box compile
 
       - name: Verify PHAR
+        id: verify_phar
+        if: steps.build_phar.outcome == 'success'
+        continue-on-error: true
         run: |
             php -r '
             require "phar://build/invoicesuite.phar/vendor/autoload.php";
@@ -44,8 +49,22 @@ jobs:
             echo "PHAR OK\n";
             '
 
+      - name: Determine PHAR artifact
+        id: phar_artifact
+        run: |
+          if [ "${{ steps.build_phar.outcome }}" != "success" ]; then
+            echo "path=" >> "$GITHUB_OUTPUT"
+            echo "::warning::PHAR-Build fehlgeschlagen – kein Artifact wird hochgeladen."
+          elif [ "${{ steps.verify_phar.outcome }}" != "success" ]; then
+            echo "path=" >> "$GITHUB_OUTPUT"
+            echo "::warning::PHAR-Smoke-Test fehlgeschlagen – kein Artifact wird hochgeladen."
+          else
+            echo "path=build/invoicesuite.phar" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Upload artifact
+        if: steps.phar_artifact.outputs.path != ''
         uses: actions/upload-artifact@v4
         with:
           name: invoicesuite-phar
-          path: build/invoicesuite.phar
+          path: ${{ steps.phar_artifact.outputs.path }}
