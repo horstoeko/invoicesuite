@@ -1,0 +1,116 @@
+name: Nightly Build
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  COMPOSER_NO_AUDIT: "1"
+  COMPOSER_NO_INTERACTION: "1"
+  COMPOSER_PROCESS_TIMEOUT: "0"
+  KOSIT_REMOTE_HOST: 127.0.0.1
+  KOSIT_REMOTE_PORT: "8081"
+  VERAPDF_REMOTE_HOST: 127.0.0.1
+  VERAPDF_REMOTE_PORT: "8080"
+
+jobs:
+  build:
+    permissions:
+      contents: read
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Determine nightly build metadata
+        id: nightly-build
+        run: |
+          nightlyBuildDate=$(TZ=Europe/Berlin date +%Y-%m-%d)
+          nightlyCommitSha=$(git rev-parse HEAD)
+          nightlyShortCommitSha=${nightlyCommitSha:0:12}
+          nightlyArtifactName="invoicesuite-nightly-$nightlyBuildDate-$nightlyShortCommitSha"
+          nightlyPackageFilename="$nightlyArtifactName.zip"
+          nightlyChecksumFilename="$nightlyPackageFilename.sha256"
+
+          echo "artifact_name=$nightlyArtifactName" >> "$GITHUB_OUTPUT"
+          echo "build_date=$nightlyBuildDate" >> "$GITHUB_OUTPUT"
+          echo "commit_sha=$nightlyCommitSha" >> "$GITHUB_OUTPUT"
+          echo "short_commit_sha=$nightlyShortCommitSha" >> "$GITHUB_OUTPUT"
+          echo "package_filename=$nightlyPackageFilename" >> "$GITHUB_OUTPUT"
+          echo "checksum_filename=$nightlyChecksumFilename" >> "$GITHUB_OUTPUT"
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.6'
+          extensions: amqp, apcu, ast, bcmath, bz2, calendar, ctype, curl, dba, dom, ds, enchant, exif, fileinfo, ftp, gd, gettext, gmp, iconv, igbinary, imagick, imap, intl, json, ldap, libxml, mbstring, memcache, memcached, mongodb, msgpack, mysqli, mysqlnd, odbc, openssl, pcntl, pcre, pdo, pdo_dblib, pdo_firebird, pdo_mysql, pdo_odbc, pdo_pgsql, pdo_sqlite, pdo_sqlsrv, pgsql, posix, readline, redis, shmop, simplexml, snmp, soap, sockets, sqlite3, sqlsrv, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, xml, xmlreader, xmlwriter, xsl, yaml, opcache, zip, zmq
+          tools: composer:v2
+          coverage: none
+          ini-values: memory_limit=-1
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@v4
+        with:
+          dependency-versions: highest
+          composer-options: --prefer-dist
+          require-lock-file: false
+        env:
+          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.GITHUB_TOKEN }}"}}'
+
+      - name: Prepare build directories
+        run: |
+          mkdir -p build/dist
+          mkdir -p build/phpcsfixer-cache
+          mkdir -p build/phpstan-cache
+          mkdir -p build/phpunit-cache
+          mkdir -p build/rector-cache
+
+      - name: Run parallel lint (PHP 8.x)
+        run: vendor/bin/parallel-lint src tests
+
+      - name: Restore quality tools cache
+        id: quality-cache-restore
+        continue-on-error: true
+        uses: actions/cache/restore@v6
+        with:
+          path: |
+            build/phpcsfixer-cache
+            build/phpstan-cache
+            build/phpunit-cache
+            build/rector-cache
+          key: ${{ runner.os }}-quality-php-8.6-${{ github.run_id }}
+          restore-keys: |
+            ${{ runner.os }}-quality-php-8.6-
+
+      - name: Run PHP-CS-Fixer
+        run: vendor/bin/php-cs-fixer fix --config=build/phpcsfixer.php --dry-run --no-interaction
+
+      - name: Run PHPStan
+        run: php -d sys_temp_dir=$(pwd)/build/phpstan-cache vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G --error-format=github
+
+      - name: Run PHPUnit tests
+        run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml --no-coverage
+
+      - name: Save quality tools cache
+        if: ${{ !cancelled() && steps.quality-cache-restore.outputs.cache-hit != 'true' }}
+        continue-on-error: true
+        uses: actions/cache/save@v6
+        with:
+          path: |
+            build/phpcsfixer-cache
+            build/phpstan-cache
+            build/phpunit-cache
+            build/rector-cache
+          key: ${{ steps.quality-cache-restore.outputs.cache-primary-key }}

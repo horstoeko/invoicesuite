@@ -28,7 +28,7 @@ If applicable, add sample code to help explain your question.
 - horstoeko/invoicesuite version: [e.g. 1.2.3]
 - OS: [e.g. Windows, Linux, macOS]
 - OS version: [e.g. Windows 11, Debian 12]
-- PHP version: [e.g. PHP 8.3, PHP 8.4, PHP 8.5]
+- PHP version: [e.g. PHP 8.3, PHP 8.4, PHP 8.5, PHP 8.6]
 
 **Additional context**
 Add any other context about the question here.
