@@ -1,4 +1,4 @@
-name: Nightly Build
+name: Check PHP 8.6 compatibility
 
 on:
   workflow_dispatch:
@@ -21,7 +21,7 @@ env:
   VERAPDF_REMOTE_PORT: "8080"
 
 jobs:
-  build:
+  checkphp86compatibility:
     permissions:
       contents: read
     runs-on: ubuntu-24.04
