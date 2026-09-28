@@ -33,23 +33,6 @@ jobs:
           persist-credentials: false
           ref: ${{ github.event.repository.default_branch }}
 
-      - name: Determine nightly build metadata
-        id: nightly-build
-        run: |
-          nightlyBuildDate=$(TZ=Europe/Berlin date +%Y-%m-%d)
-          nightlyCommitSha=$(git rev-parse HEAD)
-          nightlyShortCommitSha=${nightlyCommitSha:0:12}
-          nightlyArtifactName="invoicesuite-nightly-$nightlyBuildDate-$nightlyShortCommitSha"
-          nightlyPackageFilename="$nightlyArtifactName.zip"
-          nightlyChecksumFilename="$nightlyPackageFilename.sha256"
-
-          echo "artifact_name=$nightlyArtifactName" >> "$GITHUB_OUTPUT"
-          echo "build_date=$nightlyBuildDate" >> "$GITHUB_OUTPUT"
-          echo "commit_sha=$nightlyCommitSha" >> "$GITHUB_OUTPUT"
-          echo "short_commit_sha=$nightlyShortCommitSha" >> "$GITHUB_OUTPUT"
-          echo "package_filename=$nightlyPackageFilename" >> "$GITHUB_OUTPUT"
-          echo "checksum_filename=$nightlyChecksumFilename" >> "$GITHUB_OUTPUT"
-
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -64,7 +47,7 @@ jobs:
         uses: ramsey/composer-install@v4
         with:
           dependency-versions: highest
-          composer-options: --prefer-dist
+          composer-options: "--prefer-dist --ignore-platform-reqs"
           require-lock-file: false
         env:
           COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.GITHUB_TOKEN }}"}}'
