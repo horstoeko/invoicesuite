@@ -39,6 +39,7 @@ return (new Config())
     ->setIndent("    ")
     ->setLineEnding("\n")
     ->setParallelConfig(new ParallelConfig(4, 20, 60000))
+    ->setUnsupportedPhpVersionAllowed(true)
     ->setRules(
         [
             '@PSR12' => true,
