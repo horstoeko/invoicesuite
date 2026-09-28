@@ -58,6 +58,25 @@ jobs:
       - name: Validate Composer configuration
         run: composer validate --strict
 
+      - name: Check dependency resolution for PHP 8.6
+        id: dependency-check
+        continue-on-error: true
+        run: |
+          composer update \
+            --dry-run \
+            --with-all-dependencies \
+            --prefer-dist \
+            --no-interaction
+
+      - name: Diagnose PHP 8.6 dependency conflicts
+        if: ${{ steps.dependency-check.outcome == 'failure' }}
+        run: |
+          echo "::error::Composer could not resolve all dependencies for PHP 8.6."
+          echo
+          echo "Packages blocking PHP 8.6:"
+          composer prohibits php 8.6 --tree || true
+          exit 1
+
       - name: Install Composer dependencies
         uses: ramsey/composer-install@v4
         with:
