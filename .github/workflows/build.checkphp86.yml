@@ -89,6 +89,110 @@ jobs:
       - name: Check platform requirements
         run: composer check-platform-reqs
 
+      - name: Report PHP 8.6 compatible dependency versions
+        run: |
+          echo
+          echo "============================================================"
+          echo " Direct dependencies resolved for PHP 8.6"
+          echo "============================================================"
+          echo
+
+          php <<'PHP'
+          <?php
+
+          $composerJson = json_decode(
+              file_get_contents('composer.json'),
+              true,
+              flags: JSON_THROW_ON_ERROR
+          );
+
+          $composerLock = json_decode(
+              file_get_contents('composer.lock'),
+              true,
+              flags: JSON_THROW_ON_ERROR
+          );
+
+          $directDependencies = array_merge(
+              array_keys($composerJson['require'] ?? []),
+              array_keys($composerJson['require-dev'] ?? [])
+          );
+
+          $directDependencies = array_values(array_unique(
+              array_filter(
+                  $directDependencies,
+                  static fn (string $package): bool =>
+                      $package !== 'php'
+                      && !str_starts_with($package, 'ext-')
+                      && !str_starts_with($package, 'lib-')
+              )
+          ));
+
+          $lockedPackages = [];
+
+          foreach (
+              array_merge(
+                  $composerLock['packages'] ?? [],
+                  $composerLock['packages-dev'] ?? []
+              ) as $package
+          ) {
+              $lockedPackages[$package['name']] = $package;
+          }
+
+          printf(
+              "%-45s %-20s %-20s\n",
+              'Package',
+              'Constraint',
+              'PHP 8.6 version'
+          );
+
+          printf(
+              "%'-45s %'-20s %'-20s\n",
+              '',
+              '',
+              ''
+          );
+
+          foreach ($directDependencies as $packageName) {
+              $constraint =
+                  $composerJson['require'][$packageName]
+                  ?? $composerJson['require-dev'][$packageName]
+                  ?? '-';
+
+              $version =
+                  $lockedPackages[$packageName]['version']
+                  ?? 'NOT RESOLVED';
+
+              printf(
+                  "%-45s %-20s %-20s\n",
+                  $packageName,
+                  $constraint,
+                  $version
+              );
+          }
+
+          echo PHP_EOL;
+          PHP
+
+      - name: Show all resolved package versions
+        run: |
+          echo
+          echo "All packages resolved under PHP 8.6:"
+          echo
+          composer show \
+            --no-interaction \
+            --format=json \
+            | php -r '
+              $data = json_decode(stream_get_contents(STDIN), true);
+
+              foreach ($data["installed"] ?? [] as $package) {
+                  printf(
+                      "%-50s %s\n",
+                      $package["name"],
+                      $package["version"]
+                  );
+              }
+            '
+
       - name: Prepare build directories
         run: |
           mkdir -p build/phpstan-cache
