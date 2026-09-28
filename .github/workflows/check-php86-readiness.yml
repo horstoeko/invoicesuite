@@ -1,0 +1,285 @@
+name: Check PHP8.6 Readiness
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Daily at 05:17 UTC; scheduled workflows run from the default branch.
+    - cron: '17 5 * * *'
+  push:
+    paths:
+      - '.github/workflows/check-php86-readiness.yml'
+      - 'composer.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: php86-readiness-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  readiness:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    defaults:
+      run:
+        shell: bash
+    env:
+      COMPOSER_NO_INTERACTION: '1'
+      COMPOSER_PROCESS_TIMEOUT: '0'
+      COMPOSER_MEMORY_LIMIT: '-1'
+      COMPOSER_AUTH: '{"github-oauth":{"github.com":"${{ secrets.GITHUB_TOKEN }}"}}'
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up PHP 8.6 nightly
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.6'
+          extensions: dom, fileinfo, json, libxml, simplexml, zip, gd, mbstring, intl, xml, xmlwriter, iconv, bcmath
+          tools: composer:v2
+          coverage: none
+          ini-values: memory_limit=-1
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Probe dependencies and check InvoiceSuite
+        run: |
+          set -Eeuo pipefail
+          
+          report="$GITHUB_WORKSPACE/.php86-readiness"
+          logs="$report/logs"
+          rows="$report/dependencies.json"
+          mkdir -p "$logs"
+          printf '[]\n' > "$rows"
+          status=error
+          phase='Setup'
+          detail='The check stopped before dependency resolution completed.'
+          stage=''
+          
+          finish() {
+            local exit_code=$?
+            trap - EXIT
+            set +e
+          
+            jq -n --slurpfile dependencies "$rows" \
+              --arg status "$status" --arg phase "$phase" --arg detail "$detail" \
+              --arg php "$(php -r 'echo PHP_VERSION;' 2>/dev/null)" \
+              '{status: $status, phase: $phase, detail: $detail, php: $php, dependencies: $dependencies[0]}' \
+              > "$report/report.json"
+          
+            {
+              printf '# PHP 8.6 readiness\n\n'
+              printf '**Result:** %s — %s\n\n' "$phase" "$detail"
+              printf 'PHP: `%s` · Composer: `%s`\n\n' \
+                "$(php -r 'echo PHP_VERSION;' 2>/dev/null)" \
+                "$(composer --version --no-ansi 2>/dev/null | head -n 1)"
+              printf 'Composer used disposable manifests with direct package constraints set to `*` and PHP modeled as 8.6.0. '
+              printf 'The checked-in manifest, lockfile and vendor directory were not modified. '
+              printf 'The combined constraints were resolved together; an individual candidate is informational.\n\n'
+              printf '| Section | Dependency | Current constraint | Individual version | Candidate constraint | Combined version | Verified constraint |\n'
+              printf '| --- | --- | --- | --- | --- | --- | --- |\n'
+              jq -r '
+                def cell: tostring | gsub("\\|"; "&#124;") | gsub("[\\r\\n]"; " ");
+                .[] | "| \(.section | cell) | \(.package | cell) | \(.original | cell) | \(.individual | cell) | \(.suggested | cell) | \(.combined | cell) | \(.combined_constraint | cell) |"
+              ' "$rows"
+            } > "$report/report.md"
+          
+            if [[ -n "${GITHUB_STEP_SUMMARY:-}" ]]; then
+              cat "$report/report.md" >> "$GITHUB_STEP_SUMMARY"
+            fi
+            printf 'Result: %s. The formatted table is in the GitHub job summary.\n' "$status"
+            exit "$exit_code"
+          }
+          trap finish EXIT
+          
+          fail_infrastructure() {
+            status=error
+            phase='Composer / infrastructure'
+            detail="$1"
+            exit 2
+          }
+          
+          classify_solver_failure() {
+            local log_file=$1 context=$2
+            if grep -Eiq 'curl error|Could not resolve host|Authentication failed|Could not authenticate|Failed to download|Connection timed out|HTTP/[12](\.[0-9])? (401|403|5[0-9][0-9])' "$log_file"; then
+              fail_infrastructure "Repository access failed during $context; see the log artifact."
+            fi
+            if ! grep -Eiq 'Your requirements could not be resolved|Could not find a matching version of package|No matching package found|could not be found in any version' "$log_file"; then
+              fail_infrastructure "Composer failed during $context without a dependency conflict; see the log artifact."
+            fi
+          }
+          
+          manifest() {
+            local section=$1 package=$2 destination=$3
+            jq --arg section "$section" --arg package "$package" '
+              del(.scripts)
+              | .config.platform.php = "8.6.0"
+              | .require.php = "8.6.*"
+              | .["require-dev"] //= {}
+              | .require |= with_entries(
+                  if (.key | contains("/")) then
+                    if $section == "" or ($section == "require" and .key == $package)
+                    then .value = "*" else empty end
+                  else . end)
+              | .["require-dev"] |= with_entries(
+                  if (.key | contains("/")) then
+                    if $section == "" or ($section == "require-dev" and .key == $package)
+                    then .value = "*" else empty end
+                  else . end)
+            ' "$GITHUB_WORKSPACE/composer.json" > "$destination"
+          }
+          
+          resolve() {
+            local directory=$1 log_file=$2
+            (cd "$directory" || return 99
+             composer update --no-install --no-scripts --no-plugins \
+               --no-interaction --prefer-dist --no-progress > "$log_file" 2>&1)
+          }
+          
+          locked_version() {
+            jq -er --arg name "$2" \
+              'first((.packages[]?, .["packages-dev"][]?) | select(.name == $name) | .version)' \
+              "$1/composer.lock"
+          }
+          
+          recommended_constraint() {
+            local version=$1
+            if [[ $version =~ ^v?([0-9]+)\.([0-9]+)\.([0-9]+)(\.0)?$ ]]; then
+              printf '^%s.%s.%s' "${BASH_REMATCH[1]}" "${BASH_REMATCH[2]}" "${BASH_REMATCH[3]}"
+            else
+              printf '%s' "$version"
+            fi
+          }
+          
+          add_row() {
+            jq --arg section "$1" --arg package "$2" --arg original "$3" \
+              --arg individual "$4" --arg suggested "$5" \
+              '. += [{section: $section, package: $package, original: $original,
+                      individual: $individual, suggested: $suggested,
+                      combined: "—", combined_constraint: "—"}]' \
+              "$rows" > "$rows.tmp"
+            mv "$rows.tmp" "$rows"
+          }
+          
+          set_combined() {
+            jq --arg package "$1" --arg version "$2" --arg constraint "$3" \
+              'map(if .package == $package then .combined = $version | .combined_constraint = $constraint else . end)' \
+              "$rows" > "$rows.tmp"
+            mv "$rows.tmp" "$rows"
+          }
+          
+          run_check() {
+            local name=$1
+            shift
+            if (cd "$project" && "$@") > "$logs/check-$name.txt" 2>&1; then
+              return
+            else
+              local result=$?
+            fi
+            status=failed
+            phase="InvoiceSuite: $name"
+            detail="The $name check failed (exit $result); see check-$name.txt in the log artifact."
+            exit 1
+          }
+          
+          stage="$(mktemp -d "${RUNNER_TEMP:-/tmp}/php86-readiness.XXXXXXXX")"
+          mapfile -t requirements < <(jq -r '
+            ["require", "require-dev"][] as $section
+            | .[$section] | to_entries[]
+            | select(.key | contains("/"))
+            | [$section, .key, .value] | @tsv
+          ' "$GITHUB_WORKSPACE/composer.json")
+          
+          for entry in "${requirements[@]}"; do
+            IFS=$'\t' read -r section package original <<< "$entry"
+            key="${package//\//_}"
+            directory="$stage/probes/$key"
+            mkdir -p "$directory"
+            manifest "$section" "$package" "$directory/composer.json"
+            if resolve "$directory" "$logs/probe-$key.txt"; then
+              version="$(locked_version "$directory" "$package")" || fail_infrastructure "No locked version for $package."
+              add_row "$section" "$package" "$original" "$version" "$(recommended_constraint "$version")"
+            else
+              classify_solver_failure "$logs/probe-$key.txt" "$package"
+              add_row "$section" "$package" "$original" 'unresolved (see log)' '—'
+            fi
+          done
+          
+          combined="$stage/combined"
+          mkdir -p "$combined"
+          manifest '' '' "$combined/composer.json"
+          if ! resolve "$combined" "$logs/combined-star.txt"; then
+            classify_solver_failure "$logs/combined-star.txt" 'the complete graph'
+            status=blocked
+            phase='Combined resolution blocked'
+            detail='The direct dependencies cannot yet be resolved together on PHP 8.6; see combined-star.txt.'
+            exit 0
+          fi
+          
+          for entry in "${requirements[@]}"; do
+            IFS=$'\t' read -r section package original <<< "$entry"
+            version="$(locked_version "$combined" "$package")" || fail_infrastructure "No combined locked version for $package."
+            constraint="$(recommended_constraint "$version")"
+            set_combined "$package" "$version" "$constraint"
+            jq --arg section "$section" --arg package "$package" --arg constraint "$constraint" \
+              '.[$section][$package] = $constraint' "$combined/composer.json" > "$combined/composer.tmp"
+            mv "$combined/composer.tmp" "$combined/composer.json"
+          done
+          
+          if ! resolve "$combined" "$logs/combined-constraints.txt"; then
+            classify_solver_failure "$logs/combined-constraints.txt" 'the suggested constraints'
+            # Exact versions reproduce the graph if a broad caret range introduces a conflict.
+            for entry in "${requirements[@]}"; do
+              IFS=$'\t' read -r section package original <<< "$entry"
+              version="$(jq -er --arg package "$package" '.[] | select(.package == $package) | .combined' "$rows")" \
+                || fail_infrastructure "No fallback version for $package."
+              set_combined "$package" "$version" "$version"
+              jq --arg section "$section" --arg package "$package" --arg version "$version" \
+                '.[$section][$package] = $version' "$combined/composer.json" > "$combined/composer.tmp"
+              mv "$combined/composer.tmp" "$combined/composer.json"
+            done
+            if ! resolve "$combined" "$logs/combined-exact.txt"; then
+              fail_infrastructure 'The exact versions failed after a successful wildcard resolution.'
+            fi
+          fi
+          
+          for entry in "${requirements[@]}"; do
+            IFS=$'\t' read -r section package original <<< "$entry"
+            version="$(locked_version "$combined" "$package")" || fail_infrastructure "No verified version for $package."
+            constraint="$(jq -r --arg package "$package" '.[] | select(.package == $package) | .combined_constraint' "$rows")"
+            set_combined "$package" "$version" "$constraint"
+          done
+          
+          project="$stage/project"
+          mkdir -p "$project"
+          rsync -a --exclude='.git/' --exclude='vendor/' --exclude='.php86-readiness/' \
+            "$GITHUB_WORKSPACE/" "$project/"
+          cp "$combined/composer.json" "$combined/composer.lock" "$project/"
+          jq --slurpfile source "$GITHUB_WORKSPACE/composer.json" \
+            '.scripts = ($source[0].scripts // {})' "$project/composer.json" > "$project/composer.tmp"
+          mv "$project/composer.tmp" "$project/composer.json"
+          mkdir -p "$project/build/"{builddoc,coverage,coverage-html,dist,logs,phpdoc,phpcsfixer-cache,phpstan-cache,phpunit-cache,rector-cache}
+          
+          run_check install composer install --no-interaction --prefer-dist --no-progress
+          run_check platform composer check-platform-reqs
+          run_check lint vendor/bin/parallel-lint src tests
+          run_check phpstan php vendor/bin/phpstan analyze -c build/phpstan.neon \
+            --autoload-file=vendor/autoload.php --no-interaction --memory-limit=4G --error-format=github
+          run_check phpunit vendor/bin/phpunit --configuration build/phpunit.xml --no-coverage
+          
+          status=ready
+          phase='Ready'
+          detail='All direct dependencies resolve together; installation, platform check, lint, PHPStan and PHPUnit pass.'
+
+      - name: Upload Composer and test logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: php86-readiness-${{ github.run_id }}
+          path: .php86-readiness/
+          if-no-files-found: ignore
+          retention-days: 30
