@@ -1,0 +1,1041 @@
+name: Watch PHP 8.6 readiness
+
+on:
+  schedule:
+    - cron: "17 5 * * *"
+      timezone: "Europe/Berlin"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  COMPOSER_NO_AUDIT: "1"
+  COMPOSER_NO_INTERACTION: "1"
+  COMPOSER_PROCESS_TIMEOUT: "0"
+
+jobs:
+  watchphp86readiness:
+    name: Watch PHP 8.6 readiness
+
+    permissions:
+      contents: read
+
+    runs-on: ubuntu-24.04
+
+    steps:
+      # ======================================================================
+      # Checkout
+      # ======================================================================
+
+      - name: Checkout sources
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.repository.default_branch }}
+
+      # ======================================================================
+      # Detect extensions required by the project.
+      #
+      # Only ext-* dependencies explicitly required by composer.json are
+      # installed. This avoids installing a huge set of unrelated extensions.
+      # ======================================================================
+
+      - name: Detect required PHP extensions
+        id: required_extensions
+        run: |
+          extensions="$(
+            jq -r '
+              ((.require // {}) + (."require-dev" // {}))
+              | keys[]
+              | select(startswith("ext-"))
+              | sub("^ext-"; "")
+            ' composer.json \
+              | sort -u \
+              | paste -sd, -
+          )"
+
+          echo "Required extensions: ${extensions:-none}"
+          echo "extensions=$extensions" >> "$GITHUB_OUTPUT"
+
+      # ======================================================================
+      # PHP 8.6
+      #
+      # A failure here means "not ready yet", therefore continue-on-error.
+      # ======================================================================
+
+      - name: Set up PHP 8.6
+        id: setup_php
+        continue-on-error: true
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.6"
+          extensions: ${{ steps.required_extensions.outputs.extensions }}
+          tools: composer:v2
+          coverage: none
+          ini-values: |
+            memory_limit=-1
+            error_reporting=E_ALL
+            display_errors=On
+            zend.assertions=1
+            assert.exception=1
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          fail-fast: true
+
+      - name: Verify PHP 8.6 runtime
+        id: verify_php
+        if: ${{ steps.setup_php.outcome == 'success' }}
+        continue-on-error: true
+        run: |
+          php -r '
+              printf(
+                  "Running PHP %s\n",
+                  PHP_VERSION
+              );
+
+              if (PHP_MAJOR_VERSION !== 8 || PHP_MINOR_VERSION !== 6) {
+                  fwrite(
+                      STDERR,
+                      sprintf(
+                          "Expected PHP 8.6, got PHP %s\n",
+                          PHP_VERSION
+                      )
+                  );
+
+                  exit(1);
+              }
+          '
+
+      - name: Show PHP environment
+        if: ${{ steps.verify_php.outcome == 'success' }}
+        run: |
+          echo "============================================================"
+          echo " PHP environment"
+          echo "============================================================"
+          echo
+
+          php --version
+
+          echo
+          composer --version
+
+          echo
+          php --ini
+
+          echo
+          echo "Installed PHP modules:"
+          php -m
+
+      # ======================================================================
+      # Validate the ORIGINAL composer.json before modifying the CI workspace.
+      # ======================================================================
+
+      - name: Validate original Composer configuration
+        id: validate_composer
+        if: ${{ steps.verify_php.outcome == 'success' }}
+        continue-on-error: true
+        run: |
+          composer validate \
+            --no-check-lock \
+            --no-check-publish
+
+      # ======================================================================
+      # Create the PHP 8.6 test manifest.
+      #
+      # IMPORTANT:
+      #
+      # The repository itself is NOT changed. GitHub Actions uses a disposable
+      # working copy.
+      #
+      # We keep an original copy in RUNNER_TEMP for reports.
+      #
+      # Normal require / require-dev packages:
+      #
+      #     ^2.0   -> *
+      #     ~5.4   -> *
+      #     >=3.0  -> *
+      #
+      # Platform dependencies remain unchanged:
+      #
+      #     ext-*
+      #     lib-*
+      #     composer
+      #     composer-plugin-api
+      #     composer-runtime-api
+      #
+      # The root PHP constraint is changed to ^8.6 because the purpose of this
+      # watcher is to determine whether the project COULD move to PHP 8.6.
+      #
+      # config.platform is removed so the REAL PHP 8.6 environment is used.
+      # ======================================================================
+
+      - name: Prepare unconstrained PHP 8.6 dependency test
+        id: prepare_unconstrained_test
+        if: ${{ steps.verify_php.outcome == 'success' }}
+        run: |
+          cp composer.json \
+            "$RUNNER_TEMP/php86-original-composer.json"
+
+          if [ -f composer.lock ]; then
+            cp composer.lock \
+              "$RUNNER_TEMP/php86-original-composer.lock"
+          fi
+
+          php <<'PHP'
+          <?php
+
+          declare(strict_types=1);
+
+          $file = 'composer.json';
+
+          $composer = json_decode(
+              file_get_contents($file),
+              true,
+              flags: JSON_THROW_ON_ERROR
+          );
+
+          $isPlatformPackage = static function (string $package): bool {
+              if ($package === 'php') {
+                  return true;
+              }
+
+              if (str_starts_with($package, 'php-')) {
+                  return true;
+              }
+
+              if (str_starts_with($package, 'ext-')) {
+                  return true;
+              }
+
+              if (str_starts_with($package, 'lib-')) {
+                  return true;
+              }
+
+              return in_array(
+                  $package,
+                  [
+                      'composer',
+                      'composer-plugin-api',
+                      'composer-runtime-api',
+                  ],
+                  true
+              );
+          };
+
+          foreach (['require', 'require-dev'] as $section) {
+              if (!isset($composer[$section])) {
+                  continue;
+              }
+
+              foreach ($composer[$section] as $package => &$constraint) {
+                  /*
+                   * The purpose of the watcher is to test PHP 8.6 itself,
+                   * regardless of whether the currently published root
+                   * constraint already permits it.
+                   */
+                  if ($package === 'php') {
+                      $constraint = '^8.6';
+
+                      continue;
+                  }
+
+                  /*
+                   * Do not weaken extension/library/Composer platform
+                   * requirements.
+                   */
+                  if ($isPlatformPackage($package)) {
+                      continue;
+                  }
+
+                  /*
+                   * Ignore the currently published dependency constraint.
+                   *
+                   * Composer is now free to choose a newer major version if
+                   * that is what PHP 8.6 requires.
+                   */
+                  $constraint = '*';
+              }
+
+              unset($constraint);
+          }
+
+          /*
+           * If the project does not currently have an explicit PHP
+           * requirement, add one for this test.
+           */
+          $composer['require'] ??= [];
+
+          if (!isset($composer['require']['php'])) {
+              $composer['require']['php'] = '^8.6';
+          }
+
+          /*
+           * A config.platform entry could make Composer pretend that another
+           * PHP/extension environment is being used. That would invalidate
+           * this test, so remove it from the temporary CI manifest.
+           */
+          if (isset($composer['config']['platform'])) {
+              unset($composer['config']['platform']);
+          }
+
+          file_put_contents(
+              $file,
+              json_encode(
+                  $composer,
+                  JSON_PRETTY_PRINT
+                  | JSON_UNESCAPED_SLASHES
+                  | JSON_THROW_ON_ERROR
+              ) . PHP_EOL
+          );
+          PHP
+
+          # A checked-in lock file would keep the old dependency selection
+          # alive. The watcher deliberately performs a completely fresh solve.
+          rm -f composer.lock
+
+          cp composer.json \
+            "$RUNNER_TEMP/php86-unconstrained-composer.json"
+
+          echo
+          echo "============================================================"
+          echo " Dependency constraints used by the PHP 8.6 watcher"
+          echo "============================================================"
+          echo
+
+          php <<'PHP'
+          <?php
+
+          declare(strict_types=1);
+
+          $original = json_decode(
+              file_get_contents(
+                  getenv('RUNNER_TEMP')
+                  . '/php86-original-composer.json'
+              ),
+              true,
+              flags: JSON_THROW_ON_ERROR
+          );
+
+          $modified = json_decode(
+              file_get_contents('composer.json'),
+              true,
+              flags: JSON_THROW_ON_ERROR
+          );
+
+          printf(
+              "%-45s %-24s %-24s\n",
+              'Package',
+              'Original constraint',
+              'Watcher constraint'
+          );
+
+          printf(
+              "%'-45s %'-24s %'-24s\n",
+              '',
+              '',
+              ''
+          );
+
+          foreach (['require', 'require-dev'] as $section) {
+              foreach ($original[$section] ?? [] as $package => $constraint) {
+                  $watcherConstraint =
+                      $modified[$section][$package]
+                      ?? '-';
+
+                  printf(
+                      "%-45s %-24s %-24s\n",
+                      $package,
+                      $constraint,
+                      $watcherConstraint
+                  );
+              }
+          }
+          PHP
+
+      # ======================================================================
+      # THE IMPORTANT TEST
+      #
+      # Resolve ALL dependencies again under the actual PHP 8.6 runtime,
+      # ignoring normal root package version constraints.
+      #
+      # No --ignore-platform-reqs!
+      #
+      # If e.g.
+      #
+      #   package/a ^2.0
+      #
+      # does not support PHP 8.6, but package/a 3.2.0 does, Composer is free
+      # to select 3.2.0 here.
+      #
+      # This also INSTALLS the resolved dependency set. PHPStan/PHPUnit later
+      # run against exactly these versions.
+      # ======================================================================
+
+      - name: Resolve unrestricted dependency set for PHP 8.6
+        id: dependency_resolution
+        if: ${{ steps.prepare_unconstrained_test.outcome == 'success' }}
+        continue-on-error: true
+        env:
+          COMPOSER_AUTH: '{"github-oauth":{"github.com":"${{ secrets.GITHUB_TOKEN }}"}}'
+        run: |
+          echo "============================================================"
+          echo " Resolving unrestricted dependency tree on PHP 8.6"
+          echo "============================================================"
+          echo
+
+          composer update \
+            --with-all-dependencies \
+            --prefer-dist \
+            --no-interaction \
+            --no-progress
+
+      # ======================================================================
+      # If the complete dependency graph cannot yet be resolved, investigate
+      # every direct package independently.
+      #
+      # This answers:
+      #
+      #   "Does this package already have ANY PHP 8.6 compatible version?"
+      #
+      # Again: the original constraint is deliberately ignored.
+      # ======================================================================
+
+      - name: Probe direct dependencies individually
+        id: individual_dependency_probe
+        if: >-
+          ${{
+            steps.prepare_unconstrained_test.outcome == 'success'
+            && steps.dependency_resolution.outcome == 'failure'
+          }}
+        continue-on-error: true
+        env:
+          COMPOSER_AUTH: '{"github-oauth":{"github.com":"${{ secrets.GITHUB_TOKEN }}"}}'
+        run: |
+          set -u
+
+          ORIGINAL_JSON="$RUNNER_TEMP/php86-original-composer.json"
+          PACKAGE_LIST="$(mktemp)"
+          REPORT_FILE="$(mktemp)"
+
+          cleanup() {
+            rm -f "$PACKAGE_LIST" "$REPORT_FILE"
+          }
+
+          trap cleanup EXIT
+
+          php -r '
+              $composer = json_decode(
+                  file_get_contents($argv[1]),
+                  true,
+                  flags: JSON_THROW_ON_ERROR
+              );
+
+              $dependencies = array_merge(
+                  $composer["require"] ?? [],
+                  $composer["require-dev"] ?? []
+              );
+
+              $isPlatform = static function (string $package): bool {
+                  return $package === "php"
+                      || str_starts_with($package, "php-")
+                      || str_starts_with($package, "ext-")
+                      || str_starts_with($package, "lib-")
+                      || in_array(
+                          $package,
+                          [
+                              "composer",
+                              "composer-plugin-api",
+                              "composer-runtime-api",
+                          ],
+                          true
+                      );
+              };
+
+              $packages = [];
+
+              foreach ($dependencies as $package => $constraint) {
+                  if (!$isPlatform($package)) {
+                      $packages[$package] = $constraint;
+                  }
+              }
+
+              ksort($packages);
+
+              foreach ($packages as $package => $constraint) {
+                  echo $package, PHP_EOL;
+              }
+          ' "$ORIGINAL_JSON" > "$PACKAGE_LIST"
+
+          echo
+          echo "=========================================================================="
+          echo " Independent PHP 8.6 dependency candidates"
+          echo "=========================================================================="
+          echo
+
+          printf "%-45s %-24s %-24s\n" \
+            "Package" \
+            "Original constraint" \
+            "PHP 8.6 candidate"
+
+          printf "%-45s %-24s %-24s\n" \
+            "---------------------------------------------" \
+            "------------------------" \
+            "------------------------"
+
+          {
+            echo "## Individual PHP 8.6 dependency candidates"
+            echo
+            echo "The original root version constraints are ignored for this probe."
+            echo
+            echo "| Package | Original constraint | PHP 8.6 candidate |"
+            echo "|---|---|---|"
+          } >> "$REPORT_FILE"
+
+          while IFS= read -r package; do
+            [ -z "$package" ] && continue
+
+            constraint="$(
+              php -r '
+                  $composer = json_decode(
+                      file_get_contents($argv[1]),
+                      true,
+                      flags: JSON_THROW_ON_ERROR
+                  );
+
+                  echo $composer["require"][$argv[2]]
+                      ?? $composer["require-dev"][$argv[2]]
+                      ?? "-";
+              ' "$ORIGINAL_JSON" "$package"
+            )"
+
+            tmp_dir="$(mktemp -d)"
+
+            php -r '
+                $root = json_decode(
+                    file_get_contents($argv[1]),
+                    true,
+                    flags: JSON_THROW_ON_ERROR
+                );
+
+                $probe = [
+                    "name" => "php86/dependency-probe",
+                    "description" => "Temporary PHP 8.6 dependency probe",
+                    "type" => "project",
+                    "require" => [
+                        "php" => "^8.6",
+                        $argv[2] => "*",
+                    ],
+                ];
+
+                /*
+                 * Private/custom repositories may be needed to find the
+                 * dependency.
+                 */
+                if (isset($root["repositories"])) {
+                    $probe["repositories"] = $root["repositories"];
+                }
+
+                /*
+                 * Preserve the project stability policy.
+                 */
+                if (isset($root["minimum-stability"])) {
+                    $probe["minimum-stability"] =
+                        $root["minimum-stability"];
+                }
+
+                if (isset($root["prefer-stable"])) {
+                    $probe["prefer-stable"] =
+                        $root["prefer-stable"];
+                }
+
+                file_put_contents(
+                    $argv[3] . "/composer.json",
+                    json_encode(
+                        $probe,
+                        JSON_PRETTY_PRINT
+                        | JSON_UNESCAPED_SLASHES
+                        | JSON_THROW_ON_ERROR
+                    ) . PHP_EOL
+                );
+            ' "$ORIGINAL_JSON" "$package" "$tmp_dir"
+
+            candidate="NO PHP 8.6 CANDIDATE"
+
+            if (
+              cd "$tmp_dir"
+
+              composer update \
+                --no-install \
+                --no-interaction \
+                --no-progress \
+                --no-scripts \
+                --no-plugins \
+                >/dev/null 2>&1
+            ); then
+              candidate="$(
+                php -r '
+                    $lock = json_decode(
+                        file_get_contents("composer.lock"),
+                        true,
+                        flags: JSON_THROW_ON_ERROR
+                    );
+
+                    foreach ($lock["packages"] ?? [] as $item) {
+                        if ($item["name"] === $argv[1]) {
+                            echo $item["version"];
+                            exit;
+                        }
+                    }
+
+                    echo "UNKNOWN";
+                ' "$package"
+              )"
+            fi
+
+            cd "$GITHUB_WORKSPACE"
+
+            printf "%-45s %-24s %-24s\n" \
+              "$package" \
+              "$constraint" \
+              "$candidate"
+
+            summary_constraint="${constraint//|/\\|}"
+            summary_candidate="${candidate//|/\\|}"
+
+            echo "| $package | \`$summary_constraint\` | \`$summary_candidate\` |" \
+              >> "$REPORT_FILE"
+
+            if [ "$candidate" = "NO PHP 8.6 CANDIDATE" ]; then
+              echo "::warning title=PHP 8.6 dependency blocker::$package currently has no independently resolvable PHP 8.6 compatible version."
+            elif [ "$candidate" != "UNKNOWN" ]; then
+              echo "::notice title=PHP 8.6 dependency candidate::$package can independently resolve to $candidate on PHP 8.6. Original constraint: $constraint"
+            fi
+
+            rm -rf "$tmp_dir"
+          done < "$PACKAGE_LIST"
+
+          {
+            echo
+            echo "> These are isolated package tests. A package may work individually while the complete dependency graph still contains conflicts."
+          } >> "$REPORT_FILE"
+
+          cat "$REPORT_FILE" >> "$GITHUB_STEP_SUMMARY"
+
+      # ======================================================================
+      # Successful global resolution:
+      #
+      # Show exactly which versions Composer selected and compare them with
+      # the original root constraint and, if available, the old lock version.
+      # ======================================================================
+
+      - name: Report PHP 8.6 dependency set
+        id: dependency_report
+        if: ${{ steps.dependency_resolution.outcome == 'success' }}
+        continue-on-error: true
+        run: |
+          echo
+          echo "============================================================================"
+          echo " Dependency set selected for PHP 8.6"
+          echo "============================================================================"
+          echo
+
+          php <<'PHP'
+          <?php
+
+          declare(strict_types=1);
+
+          $runnerTemp = getenv('RUNNER_TEMP');
+
+          $original = json_decode(
+              file_get_contents(
+                  $runnerTemp
+                  . '/php86-original-composer.json'
+              ),
+              true,
+              flags: JSON_THROW_ON_ERROR
+          );
+
+          $newLock = json_decode(
+              file_get_contents('composer.lock'),
+              true,
+              flags: JSON_THROW_ON_ERROR
+          );
+
+          $oldLockFile =
+              $runnerTemp
+              . '/php86-original-composer.lock';
+
+          $oldLock = file_exists($oldLockFile)
+              ? json_decode(
+                  file_get_contents($oldLockFile),
+                  true,
+                  flags: JSON_THROW_ON_ERROR
+              )
+              : [
+                  'packages' => [],
+                  'packages-dev' => [],
+              ];
+
+          $indexPackages = static function (array $lock): array {
+              $result = [];
+
+              foreach (
+                  array_merge(
+                      $lock['packages'] ?? [],
+                      $lock['packages-dev'] ?? []
+                  ) as $package
+              ) {
+                  $result[$package['name']] =
+                      $package['version'];
+              }
+
+              return $result;
+          };
+
+          $oldVersions = $indexPackages($oldLock);
+          $newVersions = $indexPackages($newLock);
+
+          $isPlatformPackage = static function (string $package): bool {
+              return $package === 'php'
+                  || str_starts_with($package, 'php-')
+                  || str_starts_with($package, 'ext-')
+                  || str_starts_with($package, 'lib-')
+                  || in_array(
+                      $package,
+                      [
+                          'composer',
+                          'composer-plugin-api',
+                          'composer-runtime-api',
+                      ],
+                      true
+                  );
+          };
+
+          $dependencies = [];
+
+          foreach (['require', 'require-dev'] as $section) {
+              foreach ($original[$section] ?? [] as $package => $constraint) {
+                  if ($isPlatformPackage($package)) {
+                      continue;
+                  }
+
+                  $dependencies[$package] = [
+                      'scope' => $section,
+                      'constraint' => $constraint,
+                  ];
+              }
+          }
+
+          ksort($dependencies);
+
+          printf(
+              "%-40s %-12s %-22s %-18s %-18s\n",
+              'Package',
+              'Scope',
+              'Old constraint',
+              'Old locked',
+              'PHP 8.6 resolved'
+          );
+
+          printf(
+              "%'-40s %'-12s %'-22s %'-18s %'-18s\n",
+              '',
+              '',
+              '',
+              '',
+              ''
+          );
+
+          $summary = fopen(
+              getenv('GITHUB_STEP_SUMMARY'),
+              'ab'
+          );
+
+          fwrite(
+              $summary,
+              PHP_EOL
+              . '## Dependency set resolved for PHP 8.6'
+              . PHP_EOL
+              . PHP_EOL
+              . '| Package | Scope | Original constraint | Previous lock | PHP 8.6 resolved |'
+              . PHP_EOL
+              . '|---|---|---|---|---|'
+              . PHP_EOL
+          );
+
+          foreach ($dependencies as $package => $information) {
+              $oldVersion =
+                  $oldVersions[$package]
+                  ?? '-';
+
+              $newVersion =
+                  $newVersions[$package]
+                  ?? 'NOT RESOLVED';
+
+              printf(
+                  "%-40s %-12s %-22s %-18s %-18s\n",
+                  $package,
+                  $information['scope'],
+                  $information['constraint'],
+                  $oldVersion,
+                  $newVersion
+              );
+
+              $constraint = str_replace(
+                  '|',
+                  '\|',
+                  $information['constraint']
+              );
+
+              fwrite(
+                  $summary,
+                  sprintf(
+                      "| %s | %s | `%s` | `%s` | `%s` |%s",
+                      $package,
+                      $information['scope'],
+                      $constraint,
+                      $oldVersion,
+                      $newVersion,
+                      PHP_EOL
+                  )
+              );
+
+              if (
+                  $oldVersion !== '-'
+                  && $oldVersion !== $newVersion
+                  && $newVersion !== 'NOT RESOLVED'
+              ) {
+                  printf(
+                      "::notice title=PHP 8.6 dependency update::%s changes from %s to %s when resolving without the original %s constraint.%s",
+                      $package,
+                      $oldVersion,
+                      $newVersion,
+                      $information['constraint'],
+                      PHP_EOL
+                  );
+              }
+          }
+
+          fwrite(
+              $summary,
+              PHP_EOL
+              . '> The PHP 8.6 resolved version is selected after temporarily removing the normal root version constraints. The real composer.json has not been changed in the repository.'
+              . PHP_EOL
+          );
+
+          fclose($summary);
+          PHP
+
+      # ======================================================================
+      # Verify the ACTUAL installed dependency set against the actual PHP 8.6
+      # runtime and actual extensions.
+      # ======================================================================
+
+      - name: Check platform requirements
+        id: platform_check
+        if: ${{ steps.dependency_resolution.outcome == 'success' }}
+        continue-on-error: true
+        run: |
+          composer check-platform-reqs
+
+      # ======================================================================
+      # Test preparation
+      # ======================================================================
+
+      - name: Prepare build directories
+        if: ${{ steps.dependency_resolution.outcome == 'success' }}
+        run: |
+          mkdir -p build/phpstan-cache
+          mkdir -p build/phpunit-cache
+
+      # ======================================================================
+      # Syntax check
+      # ======================================================================
+
+      - name: Run parallel lint
+        id: lint
+        if: ${{ steps.dependency_resolution.outcome == 'success' }}
+        continue-on-error: true
+        run: |
+          vendor/bin/parallel-lint src tests
+
+      # ======================================================================
+      # PHPStan
+      #
+      # This runs against the newly selected, unrestricted PHP 8.6 dependency
+      # set, not against the versions from the original constraints.
+      # ======================================================================
+
+      - name: Run PHPStan
+        id: phpstan
+        if: ${{ steps.dependency_resolution.outcome == 'success' }}
+        continue-on-error: true
+        run: |
+          php \
+            -d error_reporting=E_ALL \
+            -d display_errors=On \
+            -d sys_temp_dir="$(pwd)/build/phpstan-cache" \
+            vendor/bin/phpstan analyze \
+            -c build/phpstan.neon \
+            --autoload-file=vendor/autoload.php \
+            --no-interaction \
+            --memory-limit=4G \
+            --error-format=github
+
+      # ======================================================================
+      # PHPUnit
+      #
+      # This is the decisive runtime test against the dependency versions
+      # Composer selected for PHP 8.6.
+      # ======================================================================
+
+      - name: Run PHPUnit tests
+        id: phpunit
+        if: ${{ steps.dependency_resolution.outcome == 'success' }}
+        continue-on-error: true
+        run: |
+          php \
+            -d error_reporting=E_ALL \
+            -d display_errors=On \
+            -d zend.assertions=1 \
+            -d assert.exception=1 \
+            vendor/bin/phpunit \
+            --configuration build/phpunit.xml \
+            --no-coverage \
+            --stop-on-failure
+
+      # ======================================================================
+      # Human-readable summary
+      #
+      # Failures here are intentionally treated as "not ready yet".
+      # ======================================================================
+
+      - name: Write PHP 8.6 readiness summary
+        if: ${{ always() }}
+        env:
+          SETUP_PHP: ${{ steps.setup_php.outcome }}
+          VERIFY_PHP: ${{ steps.verify_php.outcome }}
+          VALIDATE_COMPOSER: ${{ steps.validate_composer.outcome }}
+          PREPARE_TEST: ${{ steps.prepare_unconstrained_test.outcome }}
+          DEPENDENCY_RESOLUTION: ${{ steps.dependency_resolution.outcome }}
+          PLATFORM_CHECK: ${{ steps.platform_check.outcome }}
+          LINT: ${{ steps.lint.outcome }}
+          PHPSTAN: ${{ steps.phpstan.outcome }}
+          PHPUNIT: ${{ steps.phpunit.outcome }}
+        run: |
+          status_icon() {
+            case "$1" in
+              success)
+                printf "✅"
+                ;;
+              failure)
+                printf "❌"
+                ;;
+              skipped|"")
+                printf "⏭️"
+                ;;
+              *)
+                printf "⚠️"
+                ;;
+            esac
+          }
+
+          {
+            echo
+            echo "## PHP 8.6 readiness status"
+            echo
+            echo "| Check | Result |"
+            echo "|---|---|"
+            echo "| PHP 8.6 setup | $(status_icon "$SETUP_PHP") \`$SETUP_PHP\` |"
+            echo "| PHP 8.6 runtime | $(status_icon "$VERIFY_PHP") \`$VERIFY_PHP\` |"
+            echo "| Original composer.json | $(status_icon "$VALIDATE_COMPOSER") \`$VALIDATE_COMPOSER\` |"
+            echo "| Unconstrained test manifest | $(status_icon "$PREPARE_TEST") \`$PREPARE_TEST\` |"
+            echo "| Unrestricted dependency resolution | $(status_icon "$DEPENDENCY_RESOLUTION") \`$DEPENDENCY_RESOLUTION\` |"
+            echo "| Platform requirements | $(status_icon "$PLATFORM_CHECK") \`$PLATFORM_CHECK\` |"
+            echo "| PHP syntax | $(status_icon "$LINT") \`$LINT\` |"
+            echo "| PHPStan | $(status_icon "$PHPSTAN") \`$PHPSTAN\` |"
+            echo "| PHPUnit | $(status_icon "$PHPUNIT") \`$PHPUNIT\` |"
+            echo
+
+            if \
+              [ "$SETUP_PHP" = "success" ] && \
+              [ "$VERIFY_PHP" = "success" ] && \
+              [ "$VALIDATE_COMPOSER" = "success" ] && \
+              [ "$PREPARE_TEST" = "success" ] && \
+              [ "$DEPENDENCY_RESOLUTION" = "success" ] && \
+              [ "$PLATFORM_CHECK" = "success" ] && \
+              [ "$LINT" = "success" ] && \
+              [ "$PHPSTAN" = "success" ] && \
+              [ "$PHPUNIT" = "success" ]
+            then
+              echo "### 🎉 PHP 8.6 READY"
+              echo
+              echo "A complete dependency set could be resolved without the current root package version constraints."
+              echo
+              echo "The resulting dependency set:"
+              echo
+              echo "- installs successfully on PHP 8.6"
+              echo "- satisfies the real platform requirements"
+              echo "- passes the syntax check"
+              echo "- passes PHPStan"
+              echo "- passes PHPUnit"
+              echo
+              echo "**Review the resolved versions above and update the real composer.json constraints for the PHP 8.6 release.**"
+            else
+              echo "### ⏳ PHP 8.6 not ready yet"
+              echo
+              echo "At least one required readiness check is still unsuccessful."
+              echo
+              echo "This is the normal state of the watcher and therefore does not fail the workflow."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # ======================================================================
+      # READY SIGNAL
+      #
+      # The watcher intentionally becomes RED only when all technical PHP 8.6
+      # readiness checks succeed.
+      #
+      # At that point the failure is the notification:
+      #
+      #                 PHP 8.6 IS READY
+      #
+      # ======================================================================
+
+      - name: Signal PHP 8.6 readiness
+        if: >-
+          ${{
+            always()
+            && steps.setup_php.outcome == 'success'
+            && steps.verify_php.outcome == 'success'
+            && steps.validate_composer.outcome == 'success'
+            && steps.prepare_unconstrained_test.outcome == 'success'
+            && steps.dependency_resolution.outcome == 'success'
+            && steps.platform_check.outcome == 'success'
+            && steps.lint.outcome == 'success'
+            && steps.phpstan.outcome == 'success'
+            && steps.phpunit.outcome == 'success'
+          }}
+        run: |
+          echo
+          echo "============================================================"
+          echo "                  PHP 8.6 READY"
+          echo "============================================================"
+          echo
+          echo "Composer found a complete PHP 8.6 dependency set after"
+          echo "removing the current root dependency version constraints."
+          echo
+          echo "Lint, PHPStan and PHPUnit all pass with that dependency set."
+          echo
+          echo "::error title=PHP 8.6 READY::A complete PHP 8.6 compatible dependency set exists and the library passes lint, PHPStan and PHPUnit. Review the resolved package versions and update composer.json for the PHP 8.6 release."
+          echo
+          echo "This workflow is intentionally failing to attract attention."
+          echo
+
+          exit 1
