@@ -1,0 +1,58 @@
+name: Check PHP8.6 Readiness
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Daily at 05:17 UTC; scheduled workflows run from the default branch.
+    - cron: '17 5 * * *'
+  push:
+    paths:
+      - '.github/workflows/check-php86-readiness.yml'
+      - '.github/scripts/php86-readiness.php'
+      - 'composer.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: php86-readiness-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  readiness:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      COMPOSER_NO_INTERACTION: '1'
+      COMPOSER_PROCESS_TIMEOUT: '0'
+      COMPOSER_MEMORY_LIMIT: '-1'
+      COMPOSER_AUTH: '{"github-oauth":{"github.com":"${{ secrets.GITHUB_TOKEN }}"}}'
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up PHP 8.6 nightly
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.6'
+          extensions: dom, fileinfo, json, libxml, simplexml, zip, gd, mbstring, intl, xml, xmlwriter, iconv, bcmath
+          tools: composer:v2
+          coverage: none
+          ini-values: memory_limit=-1
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Probe dependencies and check InvoiceSuite
+        id: probe
+        run: php .github/scripts/php86-readiness.php
+
+      - name: Upload detailed report and Composer logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: php86-readiness-${{ github.run_id }}
+          path: .php86-readiness/
+          if-no-files-found: ignore
+          retention-days: 30
