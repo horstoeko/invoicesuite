@@ -3,6 +3,7 @@ name: Check PHP8.6 Readiness
 on:
   workflow_dispatch:
   schedule:
+    # Daily at 05:17 UTC; scheduled workflows run from the default branch.
     - cron: '17 5 * * *'
   push:
     paths:
@@ -79,6 +80,17 @@ jobs:
               printf 'Composer used disposable manifests with direct package constraints set to `*` and PHP modeled as 8.6.0. '
               printf 'The checked-in manifest, lockfile and vendor directory were not modified. '
               printf 'The combined constraints were resolved together; an individual candidate is informational.\n\n'
+
+              printf '### Column guide\n\n'
+              printf '%s\n' '- **Section:** `require` is a runtime dependency; `require-dev` is a development dependency.'
+              printf '%s\n' '- **Dependency:** A package listed directly in the project’s `composer.json`.'
+              printf '%s\n' '- **Current constraint:** The version constraint currently declared in `composer.json`.'
+              printf '%s\n' '- **Individual version:** The version Composer resolves for this package alone on PHP 8.6 when its constraint is temporarily set to `*`. This does not guarantee that all packages resolve together.'
+              printf '%s\n' '- **Candidate constraint:** A suggested constraint derived from the individual version. It has not been verified with the complete dependency graph.'
+              printf '%s\n' '- **Combined version:** The version selected when all direct dependencies are resolved together using the verified constraints.'
+              printf '%s\n' '- **Verified constraint:** The constraint successfully resolved in the complete graph; an exact version is used if the suggested ranges conflict.'
+              printf '\nA dash means no version or constraint was available for that probe.\n\n'
+
               printf '| Section | Dependency | Current constraint | Individual version | Candidate constraint | Combined version | Verified constraint |\n'
               printf '| --- | --- | --- | --- | --- | --- | --- |\n'
               jq -r '
