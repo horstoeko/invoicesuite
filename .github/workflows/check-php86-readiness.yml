@@ -3,7 +3,6 @@ name: Check PHP8.6 Readiness
 on:
   workflow_dispatch:
   schedule:
-    # Daily at 05:17 UTC; scheduled workflows run from the default branch.
     - cron: '17 5 * * *'
   push:
     paths:
@@ -49,7 +48,7 @@ jobs:
       - name: Probe dependencies and check InvoiceSuite
         run: |
           set -Eeuo pipefail
-          
+
           report="$GITHUB_WORKSPACE/.php86-readiness"
           logs="$report/logs"
           rows="$report/dependencies.json"
@@ -59,18 +58,18 @@ jobs:
           phase='Setup'
           detail='The check stopped before dependency resolution completed.'
           stage=''
-          
+
           finish() {
             local exit_code=$?
             trap - EXIT
             set +e
-          
+
             jq -n --slurpfile dependencies "$rows" \
               --arg status "$status" --arg phase "$phase" --arg detail "$detail" \
               --arg php "$(php -r 'echo PHP_VERSION;' 2>/dev/null)" \
               '{status: $status, phase: $phase, detail: $detail, php: $php, dependencies: $dependencies[0]}' \
               > "$report/report.json"
-          
+
             {
               printf '# PHP 8.6 readiness\n\n'
               printf '**Result:** %s — %s\n\n' "$phase" "$detail"
@@ -87,7 +86,7 @@ jobs:
                 .[] | "| \(.section | cell) | \(.package | cell) | \(.original | cell) | \(.individual | cell) | \(.suggested | cell) | \(.combined | cell) | \(.combined_constraint | cell) |"
               ' "$rows"
             } > "$report/report.md"
-          
+
             if [[ -n "${GITHUB_STEP_SUMMARY:-}" ]]; then
               cat "$report/report.md" >> "$GITHUB_STEP_SUMMARY"
             fi
@@ -95,14 +94,14 @@ jobs:
             exit "$exit_code"
           }
           trap finish EXIT
-          
+
           fail_infrastructure() {
             status=error
             phase='Composer / infrastructure'
             detail="$1"
             exit 2
           }
-          
+
           classify_solver_failure() {
             local log_file=$1 context=$2
             if grep -Eiq 'curl error|Could not resolve host|Authentication failed|Could not authenticate|Failed to download|Connection timed out|HTTP/[12](\.[0-9])? (401|403|5[0-9][0-9])' "$log_file"; then
@@ -112,7 +111,7 @@ jobs:
               fail_infrastructure "Composer failed during $context without a dependency conflict; see the log artifact."
             fi
           }
-          
+
           manifest() {
             local section=$1 package=$2 destination=$3
             jq --arg section "$section" --arg package "$package" '
@@ -132,20 +131,20 @@ jobs:
                   else . end)
             ' "$GITHUB_WORKSPACE/composer.json" > "$destination"
           }
-          
+
           resolve() {
             local directory=$1 log_file=$2
             (cd "$directory" || return 99
              composer update --no-install --no-scripts --no-plugins \
                --no-interaction --prefer-dist --no-progress > "$log_file" 2>&1)
           }
-          
+
           locked_version() {
             jq -er --arg name "$2" \
               'first((.packages[]?, .["packages-dev"][]?) | select(.name == $name) | .version)' \
               "$1/composer.lock"
           }
-          
+
           recommended_constraint() {
             local version=$1
             if [[ $version =~ ^v?([0-9]+)\.([0-9]+)\.([0-9]+)(\.0)?$ ]]; then
@@ -154,7 +153,7 @@ jobs:
               printf '%s' "$version"
             fi
           }
-          
+
           add_row() {
             jq --arg section "$1" --arg package "$2" --arg original "$3" \
               --arg individual "$4" --arg suggested "$5" \
@@ -164,14 +163,14 @@ jobs:
               "$rows" > "$rows.tmp"
             mv "$rows.tmp" "$rows"
           }
-          
+
           set_combined() {
             jq --arg package "$1" --arg version "$2" --arg constraint "$3" \
               'map(if .package == $package then .combined = $version | .combined_constraint = $constraint else . end)' \
               "$rows" > "$rows.tmp"
             mv "$rows.tmp" "$rows"
           }
-          
+
           run_check() {
             local name=$1
             shift
@@ -185,7 +184,7 @@ jobs:
             detail="The $name check failed (exit $result); see check-$name.txt in the log artifact."
             exit 1
           }
-          
+
           stage="$(mktemp -d "${RUNNER_TEMP:-/tmp}/php86-readiness.XXXXXXXX")"
           mapfile -t requirements < <(jq -r '
             ["require", "require-dev"][] as $section
@@ -193,7 +192,7 @@ jobs:
             | select(.key | contains("/"))
             | [$section, .key, .value] | @tsv
           ' "$GITHUB_WORKSPACE/composer.json")
-          
+
           for entry in "${requirements[@]}"; do
             IFS=$'\t' read -r section package original <<< "$entry"
             key="${package//\//_}"
@@ -208,7 +207,7 @@ jobs:
               add_row "$section" "$package" "$original" 'unresolved (see log)' '—'
             fi
           done
-          
+
           combined="$stage/combined"
           mkdir -p "$combined"
           manifest '' '' "$combined/composer.json"
@@ -219,7 +218,7 @@ jobs:
             detail='The direct dependencies cannot yet be resolved together on PHP 8.6; see combined-star.txt.'
             exit 0
           fi
-          
+
           for entry in "${requirements[@]}"; do
             IFS=$'\t' read -r section package original <<< "$entry"
             version="$(locked_version "$combined" "$package")" || fail_infrastructure "No combined locked version for $package."
@@ -229,7 +228,7 @@ jobs:
               '.[$section][$package] = $constraint' "$combined/composer.json" > "$combined/composer.tmp"
             mv "$combined/composer.tmp" "$combined/composer.json"
           done
-          
+
           if ! resolve "$combined" "$logs/combined-constraints.txt"; then
             classify_solver_failure "$logs/combined-constraints.txt" 'the suggested constraints'
             # Exact versions reproduce the graph if a broad caret range introduces a conflict.
@@ -246,14 +245,14 @@ jobs:
               fail_infrastructure 'The exact versions failed after a successful wildcard resolution.'
             fi
           fi
-          
+
           for entry in "${requirements[@]}"; do
             IFS=$'\t' read -r section package original <<< "$entry"
             version="$(locked_version "$combined" "$package")" || fail_infrastructure "No verified version for $package."
             constraint="$(jq -r --arg package "$package" '.[] | select(.package == $package) | .combined_constraint' "$rows")"
             set_combined "$package" "$version" "$constraint"
           done
-          
+
           project="$stage/project"
           mkdir -p "$project"
           rsync -a --exclude='.git/' --exclude='vendor/' --exclude='.php86-readiness/' \
@@ -263,14 +262,14 @@ jobs:
             '.scripts = ($source[0].scripts // {})' "$project/composer.json" > "$project/composer.tmp"
           mv "$project/composer.tmp" "$project/composer.json"
           mkdir -p "$project/build/"{builddoc,coverage,coverage-html,dist,logs,phpdoc,phpcsfixer-cache,phpstan-cache,phpunit-cache,rector-cache}
-          
+
           run_check install composer install --no-interaction --prefer-dist --no-progress
           run_check platform composer check-platform-reqs
           run_check lint vendor/bin/parallel-lint src tests
           run_check phpstan php vendor/bin/phpstan analyze -c build/phpstan.neon \
             --autoload-file=vendor/autoload.php --no-interaction --memory-limit=4G --error-format=github
           run_check phpunit vendor/bin/phpunit --configuration build/phpunit.xml --no-coverage
-          
+
           status=ready
           phase='Ready'
           detail='All direct dependencies resolve together; installation, platform check, lint, PHPStan and PHPUnit pass.'
@@ -281,5 +280,6 @@ jobs:
         with:
           name: php86-readiness-${{ github.run_id }}
           path: .php86-readiness/
-          if-no-files-found: ignore
+          include-hidden-files: true
+          if-no-files-found: error
           retention-days: 30
