@@ -219,13 +219,11 @@ class InvoiceSuiteClassFinder
             static fn (string $discoveryNamespace): bool => !InvoiceSuiteStringUtils::stringIsNullOrEmpty($discoveryNamespace)
         );
 
-        $normalized = InvoiceSuiteArrayUtils::sort(
+        return InvoiceSuiteArrayUtils::sort(
             InvoiceSuiteArrayUtils::values(
                 InvoiceSuiteArrayUtils::unique($normalized)
             )
         );
-
-        return $normalized;
     }
 
     /**
