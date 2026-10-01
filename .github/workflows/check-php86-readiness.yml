@@ -288,7 +288,7 @@ jobs:
 
       - name: Upload Composer and test logs
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: php86-readiness-${{ github.run_id }}
           path: .php86-readiness/
