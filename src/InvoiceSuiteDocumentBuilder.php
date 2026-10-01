@@ -1253,6 +1253,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     /**
      * Set the contact information of the seller/supplier party
      *
+     * For EN 16931-compliant CII output, `$newPersonName` and `$newDepartmentName` are alternative CII representations
+     * of the seller contact point (BT-41) and must not both be populated (CII-SR-465). The builder does not apply any precedence.
+     *
      * @param  null|string $newPersonName     name of contact person or department or office for the contact point
      * @param  null|string $newDepartmentName name of the department for the contact point
      * @param  null|string $newPhoneNumber    telephone number for the contact point
@@ -1274,6 +1277,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
 
     /**
      * Add contact information of the seller/supplier party
+     *
+     * For EN 16931-compliant CII output, `$newPersonName` and `$newDepartmentName` are alternative CII representations
+     * of the seller contact point (BT-41) and must not both be populated (CII-SR-465). The builder does not apply any precedence.
      *
      * @param  null|string $newPersonName     name of contact person or department or office for the contact point
      * @param  null|string $newDepartmentName name of the department for the contact point
@@ -1593,6 +1599,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
     /**
      * Set the contact information of the buyer/customer party
      *
+     * For EN 16931-compliant CII output, `$newPersonName` and `$newDepartmentName` are alternative CII representations
+     * of the buyer contact point (BT-56) and must not both be populated (CII-SR-466). The builder does not apply any precedence.
+     *
      * @param  null|string $newPersonName
      * @param  null|string $newDepartmentName
      * @param  null|string $newPhoneNumber
@@ -1614,6 +1623,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
 
     /**
      * Add contact information of the buyer/customer party
+     *
+     * For EN 16931-compliant CII output, `$newPersonName` and `$newDepartmentName` are alternative CII representations
+     * of the buyer contact point (BT-56) and must not both be populated (CII-SR-466). The builder does not apply any precedence.
      *
      * @param  null|string $newPersonName     name of contact person or department or office for the contact point
      * @param  null|string $newDepartmentName name of the department for the contact point

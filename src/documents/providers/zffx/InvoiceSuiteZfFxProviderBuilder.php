@@ -3953,6 +3953,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     /**
      * Set the contact information of the seller/supplier party
      *
+     * For EN 16931-compliant CII output, `$newPersonName` and `$newDepartmentName` are alternative CII representations
+     * of the seller contact point (BT-41) and must not both be populated (CII-SR-465). The builder does not apply any precedence.
+     *
      * @param  null|string $newPersonName     __BT-41, From EN 16931__ Name of contact person or department or office for the contact point
      * @param  null|string $newDepartmentName __BT-41-0, From EN 16931__ Name of the department for the contact point
      * @param  null|string $newPhoneNumber    __BT-42, From EN 16931__ Telephone number for the contact point
@@ -4007,6 +4010,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
     /**
      * Add contact information of the seller/supplier party
+     *
+     * For EN 16931-compliant CII output, `$newPersonName` and `$newDepartmentName` are alternative CII representations
+     * of the seller contact point (BT-41) and must not both be populated (CII-SR-465). The builder does not apply any precedence.
      *
      * @param  null|string $newPersonName     __BT-41, From EN 16931__ Name of contact person or department or office for the contact point
      * @param  null|string $newDepartmentName __BT-41-0, From EN 16931__ Name of the department for the contact point
@@ -4760,6 +4766,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     /**
      * Set the contact information of the buyer/customer party
      *
+     * For EN 16931-compliant CII output, `$newPersonName` and `$newDepartmentName` are alternative CII representations
+     * of the buyer contact point (BT-56) and must not both be populated (CII-SR-466). The builder does not apply any precedence.
+     *
      * @param  null|string $newPersonName     __BT-56, From EN 16931__ Name of contact person or department or office for the contact point
      * @param  null|string $newDepartmentName __BT-56-0, From EN 16931__ Name of the department for the contact point
      * @param  null|string $newPhoneNumber    __BT-57, From EN 16931__ Telephone number for the contact point
@@ -4814,6 +4823,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
     /**
      * Add contact information of the buyer/customer party
+     *
+     * For EN 16931-compliant CII output, `$newPersonName` and `$newDepartmentName` are alternative CII representations
+     * of the buyer contact point (BT-56) and must not both be populated (CII-SR-466). The builder does not apply any precedence.
      *
      * @param  null|string $newPersonName     __BT-56, From EN 16931__ Name of contact person or department or office for the contact point
      * @param  null|string $newDepartmentName __BT-56-0, From EN 16931__ Name of the department for the contact point
