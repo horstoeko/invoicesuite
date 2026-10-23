@@ -22,6 +22,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\stringmanagement\StringUtils;
 use horstoeko\zugferd\ZugferdDocumentBuilder;
 use horstoeko\zugferd\ZugferdProfiles;
+use RuntimeException;
 
 /**
  * Legca-Class representing the base class of all document descriptors.
@@ -53,10 +54,14 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
 
     private const VT_LOGSERVICECHARGE = 9;
 
+    private const VT_EXCEPTIONREASONCODE = 10;
+
+    private const VT_EXCEPTIONREASON = 11;
+
     /**
      * Used for internal vat summation
      *
-     * @var array<string, array{0:string,1:string,2:float,3:float,4:float,5:float,6:float,7:float,8:float,9:float}>
+     * @var array<string, array{0:string,1:string,2:float,3:float,4:float,5:float,6:float,7:float,8:float,9:float,10:string,11:string}>
      */
     protected $vatBreakdown = [];
 
@@ -638,7 +643,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
         $this->setDocumentPositionProductDetails($productName);
         $this->setDocumentPositionNetPrice($unitPrice);
         $this->setDocumentPositionQuantity($quantity, $unitCode);
-        $this->addDocumentPositionTax($taxCategoryCode, $taxTypeCode, $taxPercent);
+        $this->addDocumentPositionTax($taxCategoryCode, $taxTypeCode, $this->getTaxPercent($taxCategoryCode, $taxTypeCode, $taxPercent));
         $this->setDocumentPositionLineSummation($lineTotalAmount);
 
         if ($hasChargeAmountIsAllowance) {
@@ -864,6 +869,36 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
+     * Set VAT Exceptions
+     *
+     * @param  string $taxCategoryCode
+     * @param  string $taxTypeCode
+     * @param  float  $taxPercent
+     * @param  string $taxExemptionReasonCode
+     * @param  string $taxExemptionReason
+     * @return self
+     *
+     * @throws RuntimeException
+     */
+    public function doSetVatExemptionReason(
+        string $taxCategoryCode,
+        string $taxTypeCode,
+        float $taxPercent,
+        string $taxExemptionReasonCode,
+        string $taxExemptionReason
+    ): self {
+        $this->updateVatExemptionReasonsInInternalVatBuffer(
+            $taxCategoryCode,
+            $taxTypeCode,
+            $taxPercent,
+            $taxExemptionReasonCode,
+            $taxExemptionReason
+        );
+
+        return $this;
+    }
+
+    /**
      * Sets the prepaid amount
      *
      * @param  float                  $totalPrepaidAmount __BT-113, From BASIC WL__ Prepayment amount
@@ -936,6 +971,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * @param  float  $lineTotalAmount
      * @param  float  $chargeAmount
      * @param  float  $allowanceAmount
+     * @param  float  $logisticServiceCharge
      * @return void
      */
     protected function addToInternalVatBuffer(
@@ -947,7 +983,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
         float $allowanceAmount,
         float $logisticServiceCharge
     ) {
-        $vatGroup = InvoiceSuiteStringUtils::md5($taxCategoryCode . '_' . $taxTypeCode . '_' . InvoiceSuiteStringUtils::numberFormat($taxPercent, 10, '_', '__'));
+        $vatGroup = $this->getKeyForInternalVatBuffer($taxCategoryCode, $taxTypeCode, $taxPercent);
 
         $this->vatBreakdown[$vatGroup] ??= [
             self::VT_TAXCATEGORY => $taxCategoryCode,
@@ -960,6 +996,8 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
             self::VT_CALCULATEDAMOUNT => 0.0,
             self::VT_LOGSERVICECHARGE => 0.0,
             self::VT_BASISAMOUNT => 0.0,
+            self::VT_EXCEPTIONREASONCODE => '',
+            self::VT_EXCEPTIONREASON => '',
         ];
 
         $this->vatBreakdown[$vatGroup][self::VT_LINETOTALBASISAMOUNT] += $lineTotalAmount;
@@ -982,6 +1020,39 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
+     * Update VAT Exceptions in internal VAT buffer
+     *
+     * @param  string $taxCategoryCode
+     * @param  string $taxTypeCode
+     * @param  float  $taxPercent
+     * @param  string $taxExemptionReasonCode
+     * @param  string $taxExemptionReason
+     * @return void
+     *
+     * @throws RuntimeException
+     */
+    protected function updateVatExemptionReasonsInInternalVatBuffer(
+        string $taxCategoryCode,
+        string $taxTypeCode,
+        float $taxPercent,
+        string $taxExemptionReasonCode,
+        string $taxExemptionReason
+    ): void {
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($taxExemptionReasonCode) && StringUtils::stringIsNullOrEmpty($taxExemptionReason)) {
+            return;
+        }
+
+        $vatGroup = $this->getKeyForInternalVatBuffer($taxCategoryCode, $taxTypeCode, $taxPercent);
+
+        if (!isset($this->vatBreakdown[$vatGroup])) {
+            throw new RuntimeException(sprintf('No VAT-Table-Entry found for VAT-Category %s, VAT-Type %s and VAT-Rate %s', $taxCategoryCode, $taxTypeCode, $taxPercent));
+        }
+
+        $this->vatBreakdown[$vatGroup][self::VT_EXCEPTIONREASONCODE] = $taxExemptionReasonCode;
+        $this->vatBreakdown[$vatGroup][self::VT_EXCEPTIONREASON] = $taxExemptionReason;
+    }
+
+    /**
      * Writes the document vat breakdown from the internal vat buffer
      *
      * @return void
@@ -994,9 +1065,9 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
                 $item[self::VT_TAXTYPE],
                 $item[self::VT_BASISAMOUNT],
                 $item[self::VT_CALCULATEDAMOUNT],
-                $item[self::VT_TAXPERCENT],
-                null,
-                null,
+                $this->getTaxPercent($item[self::VT_TAXCATEGORY], $item[self::VT_TAXTYPE], $item[self::VT_TAXPERCENT]),
+                $item[self::VT_EXCEPTIONREASON],
+                $item[self::VT_EXCEPTIONREASONCODE],
                 $item[self::VT_LINETOTALBASISAMOUNT],
                 $item[self::VT_ALLOWANCECHARGEAMOUNT]
             );
@@ -1019,5 +1090,37 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
         }
 
         return $sum;
+    }
+
+    /**
+     * Create the key for the internal VAT Buffer
+     *
+     * @param  string $taxCategoryCode
+     * @param  string $taxTypeCode
+     * @param  float  $taxPercent
+     * @return string
+     */
+    protected function getKeyForInternalVatBuffer(
+        string $taxCategoryCode,
+        string $taxTypeCode,
+        float $taxPercent
+    ): string {
+        return md5($taxCategoryCode . '_' . $taxTypeCode . '_' . number_format($taxPercent, 10, '_', '__'));
+    }
+
+    /**
+     * Get a clean VAT rate
+     *
+     * @param  string     $taxCategoryCode
+     * @param  string     $taxTypeCode
+     * @param  float      $taxPercent
+     * @return null|float
+     */
+    protected function getTaxPercent(
+        string $taxCategoryCode,
+        string $taxTypeCode,
+        float $taxPercent
+    ): ?float {
+        return 'O' === $taxCategoryCode ? null : $taxPercent;
     }
 }
