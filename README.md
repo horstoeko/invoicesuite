@@ -18,7 +18,10 @@
 - [Overview](#overview)
 - [Dependencies](#dependencies)
 - [Installation](#installation)
+- [Community integrations](#community-integrations)
+  - [VAMPIRE PHP: e-invoice validation in pure PHP](#vampire-php-e-invoice-validation-in-pure-php)
 - [Documentation](#documentation)
+
 
 <!-- omit in toc -->
 ## AI
