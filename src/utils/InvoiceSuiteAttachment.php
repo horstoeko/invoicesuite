@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\mimedb\MimeDb;
+use JsonSerializable;
 
 /**
  * class representing a definition for a binary object
@@ -18,7 +19,7 @@ use horstoeko\mimedb\MimeDb;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteAttachment
+class InvoiceSuiteAttachment implements JsonSerializable
 {
     /**
      * Indicator that attachment comes from a real file
@@ -84,6 +85,19 @@ class InvoiceSuiteAttachment
         $this->internalContent = $internalContent;
         $this->internalFilename = InvoiceSuiteFileUtils::getFilenameWithoutExtension($internalFilename);
         $this->internalFilenameExtension = InvoiceSuiteStringUtils::lower(InvoiceSuiteFileUtils::getFileExtension($internalFilename));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function jsonSerialize(): mixed
+    {
+        return [
+            'internalType' => $this->internalType,
+            'internalContent' => $this->internalContent,
+            'internalFilename' => $this->internalFilename,
+            'internalFilenameExtension' => $this->internalFilenameExtension,
+        ];
     }
 
     /**
