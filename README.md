@@ -75,6 +75,16 @@ There is one recommended way to install `horstoeko/invoicesuite`
 composer require "horstoeko/invoicesuite"
 ```
 
+## Community integrations
+
+### VAMPIRE PHP: e-invoice validation in pure PHP
+
+Extend your InvoiceSuite workflow with [VAMPIRE PHP](https://github.com/invoicePress/vampire-php), an independent community project by invoicePress. It validates electronic invoices against supported XML schemas and official business rule sets for EN 16931, XRechnung, Factur-X / ZUGFeRD, and Peppol BIS Billing entirely in PHP, without Java or external validation services.
+
+The dedicated [invoicepress/vampire-invoicesuite](https://github.com/invoicePress/vampire-invoicesuite) package integrates with InvoiceSuite’s document validator architecture through `InvoiceSuiteVampireDocumentValidator`, providing validation messages and reports for your application.
+
+See the project documentation for installation, supported formats, compatible InvoiceSuite versions, and usage examples.
+
 ## Documentation
 
 See our [wiki](https://github.com/horstoeko/invoicesuite/wiki)...
