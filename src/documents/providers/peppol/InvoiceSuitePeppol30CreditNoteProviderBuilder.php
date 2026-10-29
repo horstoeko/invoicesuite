@@ -798,7 +798,7 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
                     );
 
                     $item->getGrossPrice()->firstAllowanceCharge(
-                        fn (InvoiceSuiteAllowanceChargeDTO $itemGrossPriceAllowanceCharge): static => $this->addDocumentPositionGrossPriceAllowanceCharge(
+                        fn (InvoiceSuiteAllowanceChargeDTO $itemGrossPriceAllowanceCharge): static => $this->setDocumentPositionGrossPriceAllowanceCharge(
                             $itemGrossPriceAllowanceCharge->getAmount(),
                             $itemGrossPriceAllowanceCharge->getChargeIndicator(),
                             $itemGrossPriceAllowanceCharge->getPercent(),
