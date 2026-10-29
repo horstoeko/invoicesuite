@@ -358,6 +358,11 @@
     <cac:Price>
       <cbc:PriceAmount currencyID="EUR">1.00</cbc:PriceAmount>
       <cbc:BaseQuantity unitCode="C62">2.00</cbc:BaseQuantity>
+      <cac:AllowanceCharge>
+        <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+        <cbc:Amount currencyID="EUR">2.00</cbc:Amount>
+        <cbc:BaseAmount currencyID="EUR">3.00</cbc:BaseAmount>
+      </cac:AllowanceCharge>
     </cac:Price>
   </cac:CreditNoteLine>
 </CreditNote>

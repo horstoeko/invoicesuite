@@ -9139,11 +9139,72 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionGrossPrice(): void
     {
-        $this->assertXmlWasNotChanged(static function (): void {
-            static::$document->setDocumentPositionGrossPrice(1.00, 2.00, 'C62');
-            static::$document->setDocumentPositionGrossPriceAllowanceCharge(1.0, false, 2.0, 3.0, 'reason', 'reasoncode');
-            static::$document->addDocumentPositionGrossPriceAllowanceCharge(10.0, true, 20.0, 30.0, 'reason2', 'reasoncode2');
-        });
+        static::$document->setDocumentPositionNetPrice(410.0, 2.0, 'C62');
+        static::$document->setDocumentPositionGrossPrice(450.0, 2.0, 'C62');
+        static::$document->setDocumentPositionGrossPriceAllowanceCharge(40.0, false);
+        static::$document->setDocumentCurrency('EUR');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cbc:PriceAmount', '410.00');
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cbc:BaseQuantity[@unitCode="C62"]', '2.00');
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:ChargeIndicator', 'false');
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:Amount[@currencyID="EUR"]', '40.00');
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:BaseAmount[@currencyID="EUR"]', '450.00');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge)[2]');
+
+        static::$document->setDocumentPositionNetPrice(405.0, 2.0, 'C62');
+        static::$document->setDocumentPositionGrossPrice(450.0, 2.0, 'C62');
+        static::$document->setDocumentPositionGrossPriceAllowanceCharge(40.0, false);
+        static::$document->addDocumentPositionGrossPriceAllowanceCharge(45.0, false);
+        static::$document->setDocumentCurrency('USD');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cbc:PriceAmount', '405.00');
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:ChargeIndicator', 'false');
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:Amount[@currencyID="USD"]', '45.00');
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:BaseAmount[@currencyID="USD"]', '450.00');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge)[2]');
+
+        static::$document->addDocumentPositionGrossPriceAllowanceCharge(10.0, true);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:ChargeIndicator', 'false');
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:Amount', '45.00');
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:BaseAmount', '450.00');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge)[2]');
+
+        static::$document->setDocumentPositionNetPrice(450.0);
+        static::$document->setDocumentPositionGrossPrice(450.0);
+        static::$document->setDocumentPositionGrossPriceAllowanceCharge(45.0, false);
+        static::$document->addDocumentPositionGrossPriceAllowanceCharge(10.0, null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:Amount', '0.00');
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:BaseAmount', '450.00');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge)[2]');
+
+        static::$document->setDocumentPositionGrossPriceAllowanceCharge(40.0, false);
+        static::$document->setDocumentPositionGrossPriceAllowanceCharge();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:Amount', '0.00');
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:BaseAmount', '450.00');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge)[2]');
+
+        static::$document->setDocumentPositionGrossPrice();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge');
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cbc:PriceAmount', '450.00');
+
+        static::$document->setDocumentPositionNetPrice();
+        static::$document->setDocumentCurrency();
     }
 
     public function testSetDocumentPositionNetPrice(): void
@@ -10480,7 +10541,7 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
                 ->addInvoiceReference(new InvoiceSuiteReferenceDocumentLineExtDTO('INVREF-1', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), 'TYPECODE-2', 'REFTYPECODE-2', 'DESC-2'))
                 ->addAdditionalObjectReference(new InvoiceSuiteReferenceDocumentExtDTO(referenceNumber: 'OBJ-1', typeCode: '916', referenceTypeCode: '130'))
                 ->addAdditionalObjectReference(new InvoiceSuiteReferenceDocumentExtDTO(referenceNumber: 'OBJ-2', typeCode: '917', referenceTypeCode: '131'))
-                ->setGrossPrice(new InvoiceSuitePriceGrossDTO(100.0, new InvoiceSuiteQuantityDTO(1.0, 'C62'), [new InvoiceSuiteAllowanceChargeDTO(false, 1.0, 2.0, 3.0, 'S', 'VAT', 19.0, 'REASON-1', 'REASONCODE-1')]))
+                ->setGrossPrice(new InvoiceSuitePriceGrossDTO(2.0, new InvoiceSuiteQuantityDTO(2.0, 'C62'), [new InvoiceSuiteAllowanceChargeDTO(false, 1.0, 2.0, 3.0, 'S', 'VAT', 19.0, 'REASON-1', 'REASONCODE-1'), new InvoiceSuiteAllowanceChargeDTO(false, 0.5)]))
                 ->setNetPrice(new InvoiceSuitePriceNetDTO(1.0, new InvoiceSuiteQuantityDTO(2.0, 'C62')))
                 ->setQuantityBilled(new InvoiceSuiteQuantityDTO(1.0, 'C62'))
                 ->setQuantityChargeFree(new InvoiceSuiteQuantityDTO(2.0, 'C62'))
@@ -11096,6 +11157,11 @@ final class XRechnungUBLCreditNoteBuilderTest extends TestCase
         // Position Invoice Reference
 
         // Position Gross Price
+
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:ChargeIndicator', 'false');
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:Amount[@currencyID="EUR"]', '1.00');
+        $this->assertXPathValue('/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:BaseAmount[@currencyID="EUR"]', '2.00');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge)[2]');
 
         // Position Net Price
 

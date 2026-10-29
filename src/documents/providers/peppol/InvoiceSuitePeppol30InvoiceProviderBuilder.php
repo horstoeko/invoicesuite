@@ -788,6 +788,27 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
                     $item->getNetPrice()?->getPriceQuantity()?->getQuantityUnit()
                 );
 
+                // Position Gross Price
+
+                if (!is_null($item->getGrossPrice())) {
+                    $this->setDocumentPositionGrossPrice(
+                        $item->getGrossPrice()->getAmount(),
+                        $item->getGrossPrice()->getPriceQuantity()?->getQuantity(),
+                        $item->getGrossPrice()->getPriceQuantity()?->getQuantityUnit()
+                    );
+
+                    $item->getGrossPrice()->firstAllowanceCharge(
+                        fn (InvoiceSuiteAllowanceChargeDTO $itemGrossPriceAllowanceCharge): static => $this->addDocumentPositionGrossPriceAllowanceCharge(
+                            $itemGrossPriceAllowanceCharge->getAmount(),
+                            $itemGrossPriceAllowanceCharge->getChargeIndicator(),
+                            $itemGrossPriceAllowanceCharge->getPercent(),
+                            $itemGrossPriceAllowanceCharge->getBaseAmount(),
+                            $itemGrossPriceAllowanceCharge->getReason(),
+                            $itemGrossPriceAllowanceCharge->getReasonCode()
+                        )
+                    );
+                }
+
                 // Position Quantities
 
                 $this->setDocumentPositionQuantities(
@@ -10611,6 +10632,35 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
+        $this
+            ->getUblRootObject()
+            ->getLatestDocumentLine()
+            ?->getPrice()
+            ?->unsetAllowanceCharge();
+
+        if (InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newGrossPrice)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'floatIsNullOrEmpty', 'InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newGrossPrice)');
+        }
+
+        $price = $this
+            ->getUblRootObject()
+            ->getLatestDocumentLineWithCreate()
+            ->getPriceWithCreate();
+
+        $allowanceCharge = $price->addOnceToAllowanceChargeWithCreate();
+        $allowanceCharge->setChargeIndicator(false);
+        $allowanceCharge->getAmountWithCreate()->setValue(0.0);
+        $allowanceCharge->getBaseAmountWithCreate()->setValue($newGrossPrice);
+
+        if (
+            !InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newGrossPriceBasisQuantity)
+            && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newGrossPriceBasisQuantityUnit)
+        ) {
+            $price->getBaseQuantityWithCreate()->setValue($newGrossPriceBasisQuantity)->setUnitCode($newGrossPriceBasisQuantityUnit);
+        }
+
+        $this->updateCurrencies();
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10637,6 +10687,32 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
+        $price = $this
+            ->getUblRootObject()
+            ->getLatestDocumentLine()
+            ?->getPrice();
+
+        if (is_null($price)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'null', 'is_null($price)');
+        }
+
+        if (InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newGrossPriceAllowanceChargeAmount) || is_null($newIsCharge)) {
+            $price->firstAllowanceCharge()?->getAmountWithCreate()->setValue(0.0);
+
+            return $this->traceMethodEarlyExit(__METHOD__, 'floatIsNullOrEmpty', 'InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newGrossPriceAllowanceChargeAmount) || is_null($newIsCharge)');
+        }
+
+        if (false !== $newIsCharge) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'chargeNotSupported', 'Peppol does not allow charges on price level');
+        }
+
+        $allowanceCharge = $price->addOnceToAllowanceChargeWithCreate();
+        $allowanceCharge->getAmountWithCreate()->setValue($newGrossPriceAllowanceChargeAmount);
+        $allowanceCharge->setChargeIndicator(false);
+        $price->setAllowanceCharge([$allowanceCharge]);
+
+        $this->updateCurrencies();
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -10662,6 +10738,15 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?string $newGrossPriceAllowanceChargeReasonCode = null,
     ): static {
         $this->traceMethodEnter(__METHOD__);
+
+        $this->setDocumentPositionGrossPriceAllowanceCharge(
+            $newGrossPriceAllowanceChargeAmount,
+            $newIsCharge,
+            $newGrossPriceAllowanceChargePercent,
+            $newGrossPriceAllowanceChargeBasisAmount,
+            $newGrossPriceAllowanceChargeReason,
+            $newGrossPriceAllowanceChargeReasonCode
+        );
 
         $this->traceMethodExit(__METHOD__);
 
@@ -11995,6 +12080,10 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         foreach ($this->getUblRootObject()->getInvoiceLine() ?? [] as $invoiceLine) {
             $invoiceLine->getPrice()?->getPriceAmount()?->setCurrencyID($invoiceCurrencyCode);
             $invoiceLine->getLineExtensionAmount()?->setCurrencyID($invoiceCurrencyCode);
+
+            $priceDiscount = $invoiceLine->getPrice()?->firstAllowanceCharge();
+            $priceDiscount?->getAmount()?->setCurrencyID($invoiceCurrencyCode);
+            $priceDiscount?->getBaseAmount()?->setCurrencyID($invoiceCurrencyCode);
 
             foreach ($invoiceLine->getAllowanceCharge() ?? [] as $allowanceCharge) {
                 $allowanceCharge->getAmount()?->setCurrencyID($invoiceCurrencyCode);

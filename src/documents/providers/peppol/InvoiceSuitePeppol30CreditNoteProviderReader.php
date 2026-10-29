@@ -12189,7 +12189,7 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      */
     public function firstDcumentPositionGrossPrice(): bool
     {
-        return false;
+        return !is_null($this->resolveCurrentDocumentPosition()->getPrice()?->firstAllowanceCharge()?->getBaseAmount());
     }
 
     /**
@@ -12215,6 +12215,14 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         $newGrossPriceBasisQuantity = 0.0;
         $newGrossPriceBasisQuantityUnit = '';
 
+        $price = $this->resolveCurrentDocumentPosition()->getPrice();
+
+        if (!is_null($price?->firstAllowanceCharge()?->getBaseAmount())) {
+            $newGrossPrice = $price->firstAllowanceCharge()->getBaseAmount()->getValue() ?? 0.0;
+            $newGrossPriceBasisQuantity = $price->getBaseQuantity()?->getValue() ?? 0.0;
+            $newGrossPriceBasisQuantityUnit = $price->getBaseQuantity()?->getUnitCode() ?? '';
+        }
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -12227,7 +12235,10 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      */
     public function firstDocumentPositionGrossPriceAllowanceCharge(): bool
     {
-        return false;
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getPrice()?->getAllowanceCharge() ?? []),
+            'documentpositiongrosspriceallowancecharge'
+        );
     }
 
     /**
@@ -12237,7 +12248,10 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      */
     public function nextDocumentPositionGrossPriceAllowanceCharge(): bool
     {
-        return false;
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getPrice()?->getAllowanceCharge() ?? []),
+            'documentpositiongrosspriceallowancecharge'
+        );
     }
 
     /**
@@ -12268,8 +12282,11 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        $newGrossPriceAllowanceChargeAmount = 0.0;
-        $newIsCharge = false;
+        $positionGrossPriceAllowanceCharges = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getPrice()?->getAllowanceCharge() ?? []);
+        $positionGrossPriceAllowanceCharge = $positionGrossPriceAllowanceCharges[InvoiceSuitePointerUtils::getValue('documentpositiongrosspriceallowancecharge')] ?? null;
+
+        $newGrossPriceAllowanceChargeAmount = $positionGrossPriceAllowanceCharge?->getAmount()?->getValue() ?? 0.0;
+        $newIsCharge = $positionGrossPriceAllowanceCharge?->getChargeIndicator() ?? false;
         $newGrossPriceAllowanceChargePercent = 0.0;
         $newGrossPriceAllowanceChargeBasisAmount = 0.0;
         $newGrossPriceAllowanceChargeReason = '';

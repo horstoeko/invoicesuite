@@ -3159,7 +3159,7 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
 
         $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertFalse(static::$document->firstDcumentPositionGrossPrice());
+        $this->assertTrue(static::$document->firstDcumentPositionGrossPrice());
 
         static::$document->getDocumentPositionGrossPrice(
             $newGrossPrice,
@@ -3167,11 +3167,11 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
             $newGrossPriceBasisQuantityUnit
         );
 
-        $this->assertEqualsWithDelta(0.0, $newGrossPrice, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(0.0, $newGrossPriceBasisQuantity, PHP_FLOAT_EPSILON);
-        $this->assertSame('', $newGrossPriceBasisQuantityUnit);
+        $this->assertEqualsWithDelta(3.0, $newGrossPrice, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(2.0, $newGrossPriceBasisQuantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('C62', $newGrossPriceBasisQuantityUnit);
 
-        $this->assertFalse(static::$document->firstDocumentPositionGrossPriceAllowanceCharge());
+        $this->assertTrue(static::$document->firstDocumentPositionGrossPriceAllowanceCharge());
 
         static::$document->getDocumentPositionGrossPriceAllowanceCharge(
             $newGrossPriceAllowanceChargeAmount,
@@ -3182,7 +3182,7 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
             $newGrossPriceAllowanceChargeReasonCode
         );
 
-        $this->assertEqualsWithDelta(0.0, $newGrossPriceAllowanceChargeAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(2.0, $newGrossPriceAllowanceChargeAmount, PHP_FLOAT_EPSILON);
         $this->assertFalse($newIsCharge);
         $this->assertEqualsWithDelta(0.0, $newGrossPriceAllowanceChargePercent, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(0.0, $newGrossPriceAllowanceChargeBasisAmount, PHP_FLOAT_EPSILON);
@@ -3710,5 +3710,10 @@ final class XRechnungUBLCreditNoteProviderReaderTest extends TestCase
         $this->assertInstanceOf(InvoiceSuiteDocumentHeaderDTO::class, $newDocmentDTO);
 
         $this->assertSame('2025-04-000001', $newDocmentDTO?->getNumber());
+
+        $grossPrice = $newDocmentDTO?->getPositions()[0]->getGrossPrice();
+        $this->assertEqualsWithDelta(3.0, $grossPrice?->getAmount(), PHP_FLOAT_EPSILON);
+        $this->assertCount(1, $grossPrice?->getAllowanceCharges() ?? []);
+        $this->assertEqualsWithDelta(2.0, $grossPrice?->getAllowanceCharges()[0]->getAmount(), PHP_FLOAT_EPSILON);
     }
 }

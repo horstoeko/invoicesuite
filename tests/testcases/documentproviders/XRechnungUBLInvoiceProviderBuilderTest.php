@@ -8702,11 +8702,72 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionGrossPrice(): void
     {
-        $this->assertXmlWasNotChanged(static function (): void {
-            static::$document->setDocumentPositionGrossPrice(1.00, 2.00, 'C62');
-            static::$document->setDocumentPositionGrossPriceAllowanceCharge(1.0, false, 2.0, 3.0, 'reason', 'reasoncode');
-            static::$document->addDocumentPositionGrossPriceAllowanceCharge(10.0, true, 20.0, 30.0, 'reason2', 'reasoncode2');
-        });
+        static::$document->setDocumentPositionNetPrice(410.0, 2.0, 'C62');
+        static::$document->setDocumentPositionGrossPrice(450.0, 2.0, 'C62');
+        static::$document->setDocumentPositionGrossPriceAllowanceCharge(40.0, false);
+        static::$document->setDocumentCurrency('EUR');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', '410.00');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity[@unitCode="C62"]', '2.00');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge/cbc:ChargeIndicator', 'false');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge/cbc:Amount[@currencyID="EUR"]', '40.00');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge/cbc:BaseAmount[@currencyID="EUR"]', '450.00');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge)[2]');
+
+        static::$document->setDocumentPositionNetPrice(405.0, 2.0, 'C62');
+        static::$document->setDocumentPositionGrossPrice(450.0, 2.0, 'C62');
+        static::$document->setDocumentPositionGrossPriceAllowanceCharge(40.0, false);
+        static::$document->addDocumentPositionGrossPriceAllowanceCharge(45.0, false);
+        static::$document->setDocumentCurrency('USD');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', '405.00');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge/cbc:ChargeIndicator', 'false');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge/cbc:Amount[@currencyID="USD"]', '45.00');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge/cbc:BaseAmount[@currencyID="USD"]', '450.00');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge)[2]');
+
+        static::$document->addDocumentPositionGrossPriceAllowanceCharge(10.0, true);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge/cbc:ChargeIndicator', 'false');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge/cbc:Amount', '45.00');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge/cbc:BaseAmount', '450.00');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge)[2]');
+
+        static::$document->setDocumentPositionNetPrice(450.0);
+        static::$document->setDocumentPositionGrossPrice(450.0);
+        static::$document->setDocumentPositionGrossPriceAllowanceCharge(45.0, false);
+        static::$document->addDocumentPositionGrossPriceAllowanceCharge(10.0, null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge/cbc:Amount', '0.00');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge/cbc:BaseAmount', '450.00');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge)[2]');
+
+        static::$document->setDocumentPositionGrossPriceAllowanceCharge(40.0, false);
+        static::$document->setDocumentPositionGrossPriceAllowanceCharge();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge/cbc:Amount', '0.00');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge/cbc:BaseAmount', '450.00');
+        $this->assertXPathNotExists('(/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge)[2]');
+
+        static::$document->setDocumentPositionGrossPrice();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge');
+        $this->assertXPathValue('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', '450.00');
+
+        static::$document->setDocumentPositionNetPrice();
+        static::$document->setDocumentCurrency();
     }
 
     public function testSetDocumentPositionNetPrice(): void
