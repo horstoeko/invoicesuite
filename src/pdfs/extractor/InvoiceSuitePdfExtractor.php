@@ -16,6 +16,7 @@ use ArrayIterator;
 use Countable;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
+use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
@@ -24,6 +25,7 @@ use JsonSerializable;
 use LogicException;
 use PrinsFrank\PdfParser\Exception\PdfParserException;
 use PrinsFrank\PdfParser\PdfParser as PrinsFrankPdfParser;
+use Smalot\PdfParser\Config as SmalotPdfParserConfig;
 use Smalot\PdfParser\Parser as SmalotPdfParser;
 use Traversable;
 
@@ -194,7 +196,9 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
         $this->attachmentList = [];
 
         if (class_exists(SmalotPdfParser::class)) {
-            $pdfParser = new SmalotPdfParser();
+            $pdfParserConfig = ($pdfParserConfig = InvoiceSuiteSettings::getPdfParserConfig()) instanceof SmalotPdfParserConfig ? $pdfParserConfig : null;
+
+            $pdfParser = new SmalotPdfParser([], $pdfParserConfig);
             // @phpstan-ignore missingType.checkedException
             $pdfParsed = $pdfParser->parseContent($pdfContent);
             $fileSpecs = $pdfParsed->getObjectsByType('Filespec');

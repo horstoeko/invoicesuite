@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\tests\testcases\compat\zugferd;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use horstoeko\zugferd\ZugferdSettings;
+use Smalot\PdfParser\Config as SmalotPdfParserConfig;
 
 final class ZugferdSettingsTest extends TestCase
 {
@@ -280,5 +281,16 @@ final class ZugferdSettingsTest extends TestCase
             $expected,
             $actual
         );
+    }
+
+    public function testPdfParserConfig(): void
+    {
+        $this->assertNull(ZugferdSettings::getPdfParserConfig());
+
+        $config = new SmalotPdfParserConfig();
+        $config->setDecodeMemoryLimit(32 * 1024 * 1204);
+        ZugferdSettings::setPdfParserConfig($config);
+
+        $this->assertSame($config, ZugferdSettings::getPdfParserConfig());
     }
 }

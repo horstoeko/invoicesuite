@@ -89,6 +89,13 @@ class InvoiceSuiteSettings
     protected static $discoveryNamespaces = [];
 
     /**
+     * An optional config for a PDF parser (actually only used by smalot\pdfparser)
+     *
+     * @var ?object
+     */
+    protected static $pdfParserConfig;
+
+    /**
      * Get the number of decimals to use for amount values
      *
      * @return int
@@ -364,5 +371,26 @@ class InvoiceSuiteSettings
     public static function getSourceDirectory(): string
     {
         return InvoiceSuitePathUtils::combineAllPaths(static::getRootDirectory(), 'src');
+    }
+
+    /**
+     * Get a PdfParser config
+     *
+     * @param  null|object $config
+     * @return void
+     */
+    public static function setPdfParserConfig(?object $config): void
+    {
+        self::$pdfParserConfig = $config;
+    }
+
+    /**
+     * Get a PdfParser config
+     *
+     * @return null|object
+     */
+    public static function getPdfParserConfig(): ?object
+    {
+        return self::$pdfParserConfig;
     }
 }

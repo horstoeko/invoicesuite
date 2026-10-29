@@ -410,4 +410,37 @@ class ZugferdSettings
     {
         return InvoiceSuitePathUtils::combinePathWithFile(static::getAssetDirectory(), static::$xmpMetaDataFilename);
     }
+
+    /**
+     * Set a PdfParser config
+     *
+     * This is optional, to allow for customization of PdfParser used by
+     * PdfReader.
+     *
+     * Example:
+     *
+     * ```
+     * $config = new Config();
+     * $config->setDecodeMemoryLimit(16 * 1024 * 1024);
+     * $config->setRetainImageContent(false);
+     * ZugferdSettings::setPdfParserConfig($config);
+     * ```
+     *
+     * @param  null|object $config
+     * @return void
+     */
+    public static function setPdfParserConfig(?object $config): void
+    {
+        InvoiceSuiteSettings::setPdfParserConfig($config);
+    }
+
+    /**
+     * Get the PdfParser config
+     *
+     * @return null|object
+     */
+    public static function getPdfParserConfig(): ?object
+    {
+        return InvoiceSuiteSettings::getPdfParserConfig();
+    }
 }
