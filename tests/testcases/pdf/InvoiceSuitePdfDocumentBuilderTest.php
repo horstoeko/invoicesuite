@@ -443,11 +443,11 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $this->assertArrayHasKey(1, $fileSpecs);
         $this->assertArrayHasKey(2, $fileSpecs);
         $this->assertSame('factur-x.xml', $fileSpecs[0]->getFileSpecificationString());
-        $this->assertSame('text/xml', ltrim($fileSpecs[0]->getEmbeddedFile()->getSubType() ?? '', '/'));
+        $this->assertSame('text/xml', ltrim($fileSpecs[0]->getEmbeddedFile()->getSubType()->getText() ?? '', '/'));
         $this->assertSame('02_picture.jpg', $fileSpecs[1]->getFileSpecificationString());
-        $this->assertSame('image/jpeg', ltrim($fileSpecs[1]->getEmbeddedFile()->getSubType() ?? '', '/'));
+        $this->assertSame('image/jpeg', ltrim($fileSpecs[1]->getEmbeddedFile()->getSubType()->getText() ?? '', '/'));
         $this->assertSame('pdf.pdf', $fileSpecs[2]->getFileSpecificationString());
-        $this->assertSame('application/pdf', ltrim($fileSpecs[2]->getEmbeddedFile()->getSubType() ?? '', '/'));
+        $this->assertSame('application/pdf', ltrim($fileSpecs[2]->getEmbeddedFile()->getSubType()->getText() ?? '', '/'));
         $this->assertSame('Invoice 2025-04-000001 issued by Lieferant GmbH', $pdfParsed->getInformationDictionary()?->getTitle());
         $this->assertSame('Lieferant GmbH', $pdfParsed->getInformationDictionary()->getAuthor());
         $this->assertStringContainsString('FPDF', (string) $pdfParsed->getInformationDictionary()->getProducer());
