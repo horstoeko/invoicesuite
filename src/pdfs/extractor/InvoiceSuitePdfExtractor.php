@@ -237,7 +237,7 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
 
         foreach ($fileSpecs as $fileSpec) {
             $this->attachmentList[] = new InvoiceSuitePdfExtractorAttachment(
-                $fileSpec->getEmbeddedFile()->getStream()->toString(),
+                $fileSpec->getEmbeddedFile()->getContent()->toString(),
                 $fileSpec->getFileSpecificationString(),
                 InvoiceSuiteStringUtils::trimStart($fileSpec->getEmbeddedFile()->getSubType() ?? '', '/')
             );
