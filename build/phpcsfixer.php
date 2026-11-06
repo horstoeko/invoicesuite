@@ -36,7 +36,7 @@ return (new Config())
     ->setUsingCache(true)
     ->setCacheFile($rootDir . '/build/phpcsfixer-cache/.php-cs-fixer.cache')
     ->setFinder($finder)
-    ->setIndent("    ")
+    ->setIndent('    ')
     ->setLineEnding("\n")
     ->setParallelConfig(new ParallelConfig(4, 20, 60000))
     ->setUnsupportedPhpVersionAllowed(true)
@@ -46,10 +46,10 @@ return (new Config())
             '@PhpCsFixer' => true,
             'ordered_imports' => [
                 'sort_algorithm' => 'alpha',
-                'imports_order'  => [
+                'imports_order' => [
                     'class',
                     'function',
-                    'const'
+                    'const',
                 ],
             ],
             'no_unused_imports' => true,
@@ -60,19 +60,19 @@ return (new Config())
             'array_syntax' => ['syntax' => 'short'],
             'trailing_comma_in_multiline' => [
                 'elements' => [
-                    'arrays'
+                    'arrays',
                 ],
             ],
             'modifier_keywords' => [
                 'elements' => ['property', 'method', 'const'],
             ],
             'constant_case' => [
-                'case' => 'lower'
+                'case' => 'lower',
             ],
             'self_accessor' => true,
             'static_lambda' => true,
             'function_declaration' => [
-                'closure_function_spacing' => 'one'
+                'closure_function_spacing' => 'one',
             ],
             'method_argument_space' => [
                 'on_multiline' => 'ensure_fully_multiline',
@@ -115,7 +115,7 @@ return (new Config())
                     ['param', 'return'],
                     ['throws'],
                     ['deprecated', 'since'],
-                    ['var', 'JMS\\*']
+                    ['var', 'JMS\*'],
                 ],
                 'skip_unlisted_annotations' => false,
             ],
@@ -125,7 +125,7 @@ return (new Config())
                     'return',
                     'throw',
                     'try',
-                    'if'
+                    'if',
                 ],
             ],
             'no_useless_return' => true,
@@ -133,7 +133,7 @@ return (new Config())
             'no_superfluous_phpdoc_tags' => false,
             'no_empty_phpdoc' => false,
             'global_namespace_import' => [
-                'import_classes'   => true,
+                'import_classes' => true,
                 'import_constants' => false,
                 'import_functions' => false,
             ],

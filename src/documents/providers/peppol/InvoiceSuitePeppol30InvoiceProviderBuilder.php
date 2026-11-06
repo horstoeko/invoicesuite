@@ -10702,7 +10702,7 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this->traceMethodEarlyExit(__METHOD__, 'floatIsNullOrEmpty', 'InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newGrossPriceAllowanceChargeAmount) || is_null($newIsCharge)');
         }
 
-        if (false !== $newIsCharge) {
+        if ($newIsCharge) {
             return $this->traceMethodEarlyExit(__METHOD__, 'chargeNotSupported', 'Peppol does not allow charges on price level');
         }
 

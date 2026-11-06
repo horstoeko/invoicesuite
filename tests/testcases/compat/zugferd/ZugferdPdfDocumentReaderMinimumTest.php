@@ -40,7 +40,7 @@ final class ZugferdPdfDocumentReaderMinimumTest extends TestCase
         $this->assertSame('F20220027', $documentno);
         $this->assertSame(InvoiceSuiteCodelistDocumentTypes::COMMERCIAL_INVOICE->value, $documenttypecode);
         $this->assertInstanceOf(DateTime::class, $documentdate);
-        $this->assertEquals(DateTime::createFromFormat('Ymd', '20220131')->format('Ymd'), $documentdate->format('Ymd'));
+        $this->assertSame(DateTime::createFromFormat('Ymd', '20220131')->format('Ymd'), $documentdate->format('Ymd'));
         $this->assertSame('EUR', $invoiceCurrency);
         $this->assertSame('', $taxCurrency);
         $this->assertSame('', $documentname);

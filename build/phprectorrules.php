@@ -4,20 +4,18 @@ declare(strict_types=1);
 
 use PhpParser\Node;
 use PhpParser\Node\Arg;
-use PhpParser\Node\Identifier;
 use PhpParser\Node\Expr\Array_;
-use Rector\Rector\AbstractRector;
-use PhpParser\Node\Expr\StaticCall;
-use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
-
 use PhpParser\Node\Expr\MethodCall;
+use PhpParser\Node\Expr\StaticCall;
+use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt\If_;
 use PhpParser\NodeFinder;
 use Rector\PhpParser\Printer\BetterStandardPrinter;
-
+use Rector\Rector\AbstractRector;
+use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
+use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 
 final class OneIsNullOrEmptySingleElementToStringIsNullOrEmptyRector extends AbstractRector
 {
@@ -44,19 +42,19 @@ CODE
     }
 
     public function refactor(
-        Node $node): ?Node
-    {
+        Node $node
+    ): ?Node {
         if (!$node instanceof StaticCall) {
             return null;
         }
 
-        if (!$node->class instanceof Node\Name) {
+        if (!$node->class instanceof Name) {
             return null;
         }
 
         $allowedClassNames = [
             'InvoiceSuiteStringUtils',
-            'horstoeko\\invoicesuite\\utils\\InvoiceSuiteStringUtils',
+            'horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils',
         ];
 
         $classOk = false;
@@ -76,7 +74,7 @@ CODE
             return null;
         }
 
-        if (count($node->args) !== 1) {
+        if (1 !== count($node->args)) {
             return null;
         }
 
@@ -86,17 +84,17 @@ CODE
             return null;
         }
 
-        if (count($firstArgValue->items) !== 1) {
+        if (1 !== count($firstArgValue->items)) {
             return null;
         }
 
         $item = $firstArgValue->items[0];
 
-        if ($item === null) {
+        if (null === $item) {
             return null;
         }
 
-        if ($item->key !== null) {
+        if (null !== $item->key) {
             return null;
         }
 
@@ -111,8 +109,7 @@ final class OneIsNullOrEmptyIfTraceToStringIsNullOrEmptyRector extends AbstractR
 {
     public function __construct(
         private BetterStandardPrinter $betterStandardPrinter,
-    ) {
-    }
+    ) {}
 
     public function getRuleDefinition(): RuleDefinition
     {
@@ -142,8 +139,8 @@ CODE
     }
 
     public function refactor(
-        Node $node): ?Node
-    {
+        Node $node
+    ): ?Node {
         if (!$node instanceof If_) {
             return null;
         }
@@ -163,8 +160,8 @@ CODE
     }
 
     private function refactorCondition(
-        If_ $if): bool
-    {
+        If_ $if
+    ): bool {
         $nodeFinder = new NodeFinder();
 
         $staticCalls = $nodeFinder->findInstanceOf($if->cond, StaticCall::class);
@@ -180,7 +177,7 @@ CODE
                 continue;
             }
 
-            if (\count($staticCall->args) !== 1) {
+            if (1 !== \count($staticCall->args)) {
                 continue;
             }
 
@@ -190,13 +187,13 @@ CODE
                 continue;
             }
 
-            if (\count($argValue->items) !== 1) {
+            if (1 !== \count($argValue->items)) {
                 continue;
             }
 
             $item = $argValue->items[0];
 
-            if ($item === null || $item->key !== null) {
+            if (null === $item || null !== $item->key) {
                 continue;
             }
 
@@ -210,8 +207,9 @@ CODE
     }
 
     private function updateTraceMethodEarlyExit(
-        If_ $if, string $condAsString): void
-    {
+        If_ $if,
+        string $condAsString
+    ): void {
         $nodeFinder = new NodeFinder();
 
         $methodCalls = $nodeFinder->findInstanceOf($if->stmts, MethodCall::class);
@@ -227,7 +225,7 @@ CODE
 
             $second = $methodCall->args[1]->value;
 
-            if ($second instanceof String_ && $second->value === 'oneIsNullOrEmpty') {
+            if ($second instanceof String_ && 'oneIsNullOrEmpty' === $second->value) {
                 $methodCall->args[1]->value = new String_('stringIsNullOrEmpty');
             }
 
@@ -240,8 +238,8 @@ CODE
     }
 
     private function conditionContainsStringIsNullOrEmpty(
-        If_ $if): bool
-    {
+        If_ $if
+    ): bool {
         $nodeFinder = new NodeFinder();
 
         $staticCalls = $nodeFinder->findInstanceOf($if->cond, StaticCall::class);
@@ -260,22 +258,22 @@ CODE
     }
 
     private function isInvoiceSuiteStringUtilsClass(
-        StaticCall $staticCall): bool
-    {
+        StaticCall $staticCall
+    ): bool {
         if (!$staticCall->class instanceof Name) {
             return false;
         }
 
         return $this->isName($staticCall->class, 'InvoiceSuiteStringUtils')
-            || $this->isName($staticCall->class, 'horstoeko\\invoicesuite\\utils\\InvoiceSuiteStringUtils');
+            || $this->isName($staticCall->class, 'horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils');
     }
 
     private function normalizeInvoiceSuiteStringUtilsClassName(
-        string $code): string
-    {
+        string $code
+    ): string {
         $patterns = [
-            '~\\\\horstoeko\\\\invoicesuite\\\\utils\\\\InvoiceSuiteStringUtils~',
-            '~horstoeko\\\\invoicesuite\\\\utils\\\\InvoiceSuiteStringUtils~',
+            '~\\\horstoeko\\\invoicesuite\\\utils\\\InvoiceSuiteStringUtils~',
+            '~horstoeko\\\invoicesuite\\\utils\\\InvoiceSuiteStringUtils~',
         ];
 
         return preg_replace($patterns, 'InvoiceSuiteStringUtils', $code) ?? $code;
@@ -286,8 +284,7 @@ final class AllIsNullOrEmptyIfTraceToStringIsNullOrEmptyRector extends AbstractR
 {
     public function __construct(
         private BetterStandardPrinter $betterStandardPrinter,
-    ) {
-    }
+    ) {}
 
     public function getRuleDefinition(): RuleDefinition
     {
@@ -317,8 +314,8 @@ CODE
     }
 
     public function refactor(
-        Node $node): ?Node
-    {
+        Node $node
+    ): ?Node {
         if (!$node instanceof If_) {
             return null;
         }
@@ -338,8 +335,8 @@ CODE
     }
 
     private function refactorCondition(
-        If_ $if): bool
-    {
+        If_ $if
+    ): bool {
         $nodeFinder = new NodeFinder();
 
         $staticCalls = $nodeFinder->findInstanceOf($if->cond, StaticCall::class);
@@ -355,7 +352,7 @@ CODE
                 continue;
             }
 
-            if (\count($staticCall->args) !== 1) {
+            if (1 !== \count($staticCall->args)) {
                 continue;
             }
 
@@ -365,13 +362,13 @@ CODE
                 continue;
             }
 
-            if (\count($argValue->items) !== 1) {
+            if (1 !== \count($argValue->items)) {
                 continue;
             }
 
             $item = $argValue->items[0];
 
-            if ($item === null || $item->key !== null) {
+            if (null === $item || null !== $item->key) {
                 continue;
             }
 
@@ -385,8 +382,9 @@ CODE
     }
 
     private function updateTraceMethodEarlyExit(
-        If_ $if, string $condAsString): void
-    {
+        If_ $if,
+        string $condAsString
+    ): void {
         $nodeFinder = new NodeFinder();
 
         $methodCalls = $nodeFinder->findInstanceOf($if->stmts, MethodCall::class);
@@ -402,7 +400,7 @@ CODE
 
             $second = $methodCall->args[1]->value;
 
-            if ($second instanceof String_ && $second->value === 'allIsNullOrEmpty') {
+            if ($second instanceof String_ && 'allIsNullOrEmpty' === $second->value) {
                 $methodCall->args[1]->value = new String_('stringIsNullOrEmpty');
             }
 
@@ -415,8 +413,8 @@ CODE
     }
 
     private function conditionContainsStringIsNullOrEmpty(
-        If_ $if): bool
-    {
+        If_ $if
+    ): bool {
         $nodeFinder = new NodeFinder();
 
         $staticCalls = $nodeFinder->findInstanceOf($if->cond, StaticCall::class);
@@ -435,22 +433,22 @@ CODE
     }
 
     private function isInvoiceSuiteStringUtilsClass(
-        StaticCall $staticCall): bool
-    {
+        StaticCall $staticCall
+    ): bool {
         if (!$staticCall->class instanceof Name) {
             return false;
         }
 
         return $this->isName($staticCall->class, 'InvoiceSuiteStringUtils')
-            || $this->isName($staticCall->class, 'horstoeko\\invoicesuite\\utils\\InvoiceSuiteStringUtils');
+            || $this->isName($staticCall->class, 'horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils');
     }
 
     private function normalizeInvoiceSuiteStringUtilsClassName(
-        string $code): string
-    {
+        string $code
+    ): string {
         $patterns = [
-            '~\\\\horstoeko\\\\invoicesuite\\\\utils\\\\InvoiceSuiteStringUtils~',
-            '~horstoeko\\\\invoicesuite\\\\utils\\\\InvoiceSuiteStringUtils~',
+            '~\\\horstoeko\\\invoicesuite\\\utils\\\InvoiceSuiteStringUtils~',
+            '~horstoeko\\\invoicesuite\\\utils\\\InvoiceSuiteStringUtils~',
         ];
 
         return preg_replace($patterns, 'InvoiceSuiteStringUtils', $code) ?? $code;
@@ -461,8 +459,7 @@ final class OneIsNullOrEmptyIfTraceToDatetTimeIsNullOrEmptyRector extends Abstra
 {
     public function __construct(
         private BetterStandardPrinter $betterStandardPrinter,
-    ) {
-    }
+    ) {}
 
     public function getRuleDefinition(): RuleDefinition
     {
@@ -492,8 +489,8 @@ CODE
     }
 
     public function refactor(
-        Node $node): ?Node
-    {
+        Node $node
+    ): ?Node {
         if (!$node instanceof If_) {
             return null;
         }
@@ -513,8 +510,8 @@ CODE
     }
 
     private function refactorCondition(
-        If_ $if): bool
-    {
+        If_ $if
+    ): bool {
         $nodeFinder = new NodeFinder();
 
         $staticCalls = $nodeFinder->findInstanceOf($if->cond, StaticCall::class);
@@ -530,7 +527,7 @@ CODE
                 continue;
             }
 
-            if (\count($staticCall->args) !== 1) {
+            if (1 !== \count($staticCall->args)) {
                 continue;
             }
 
@@ -540,13 +537,13 @@ CODE
                 continue;
             }
 
-            if (\count($argValue->items) !== 1) {
+            if (1 !== \count($argValue->items)) {
                 continue;
             }
 
             $item = $argValue->items[0];
 
-            if ($item === null || $item->key !== null) {
+            if (null === $item || null !== $item->key) {
                 continue;
             }
 
@@ -560,8 +557,9 @@ CODE
     }
 
     private function updateTraceMethodEarlyExit(
-        If_ $if, string $condAsString): void
-    {
+        If_ $if,
+        string $condAsString
+    ): void {
         $nodeFinder = new NodeFinder();
 
         $methodCalls = $nodeFinder->findInstanceOf($if->stmts, MethodCall::class);
@@ -577,7 +575,7 @@ CODE
 
             $second = $methodCall->args[1]->value;
 
-            if ($second instanceof String_ && $second->value === 'oneIsNullOrEmpty') {
+            if ($second instanceof String_ && 'oneIsNullOrEmpty' === $second->value) {
                 $methodCall->args[1]->value = new String_('datetimeIsNullOrEmpty');
             }
 
@@ -590,8 +588,8 @@ CODE
     }
 
     private function conditionContainsDateTimeIsNullOrEmpty(
-        If_ $if): bool
-    {
+        If_ $if
+    ): bool {
         $nodeFinder = new NodeFinder();
 
         $staticCalls = $nodeFinder->findInstanceOf($if->cond, StaticCall::class);
@@ -610,22 +608,22 @@ CODE
     }
 
     private function isInvoiceSuiteDateTimeUtilsClass(
-        StaticCall $staticCall): bool
-    {
+        StaticCall $staticCall
+    ): bool {
         if (!$staticCall->class instanceof Name) {
             return false;
         }
 
         return $this->isName($staticCall->class, 'InvoiceSuiteDateTimeUtils')
-            || $this->isName($staticCall->class, 'horstoeko\\invoicesuite\\utils\\InvoiceSuiteDateTimeUtils');
+            || $this->isName($staticCall->class, 'horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils');
     }
 
     private function normalizeInvoiceSuiteDateTimeUtilsClassName(
-        string $code): string
-    {
+        string $code
+    ): string {
         $patterns = [
-            '~\\\\horstoeko\\\\invoicesuite\\\\utils\\\\InvoiceSuiteDateTimeUtils~',
-            '~horstoeko\\\\invoicesuite\\\\utils\\\\InvoiceSuiteDateTimeUtils~',
+            '~\\\horstoeko\\\invoicesuite\\\utils\\\InvoiceSuiteDateTimeUtils~',
+            '~horstoeko\\\invoicesuite\\\utils\\\InvoiceSuiteDateTimeUtils~',
         ];
 
         return preg_replace($patterns, 'InvoiceSuiteDateTimeUtils', $code) ?? $code;
@@ -636,8 +634,7 @@ final class OneIsNullOrEmptyIfTraceToFloatIsNullOrEmptyRector extends AbstractRe
 {
     public function __construct(
         private BetterStandardPrinter $betterStandardPrinter,
-    ) {
-    }
+    ) {}
 
     public function getRuleDefinition(): RuleDefinition
     {
@@ -667,8 +664,8 @@ CODE
     }
 
     public function refactor(
-        Node $node): ?Node
-    {
+        Node $node
+    ): ?Node {
         if (!$node instanceof If_) {
             return null;
         }
@@ -688,8 +685,8 @@ CODE
     }
 
     private function refactorCondition(
-        If_ $if): bool
-    {
+        If_ $if
+    ): bool {
         $nodeFinder = new NodeFinder();
 
         $staticCalls = $nodeFinder->findInstanceOf($if->cond, StaticCall::class);
@@ -705,7 +702,7 @@ CODE
                 continue;
             }
 
-            if (\count($staticCall->args) !== 1) {
+            if (1 !== \count($staticCall->args)) {
                 continue;
             }
 
@@ -715,13 +712,13 @@ CODE
                 continue;
             }
 
-            if (\count($argValue->items) !== 1) {
+            if (1 !== \count($argValue->items)) {
                 continue;
             }
 
             $item = $argValue->items[0];
 
-            if ($item === null || $item->key !== null) {
+            if (null === $item || null !== $item->key) {
                 continue;
             }
 
@@ -735,8 +732,9 @@ CODE
     }
 
     private function updateTraceMethodEarlyExit(
-        If_ $if, string $condAsString): void
-    {
+        If_ $if,
+        string $condAsString
+    ): void {
         $nodeFinder = new NodeFinder();
 
         $methodCalls = $nodeFinder->findInstanceOf($if->stmts, MethodCall::class);
@@ -752,7 +750,7 @@ CODE
 
             $second = $methodCall->args[1]->value;
 
-            if ($second instanceof String_ && $second->value === 'oneIsNullOrEmpty') {
+            if ($second instanceof String_ && 'oneIsNullOrEmpty' === $second->value) {
                 $methodCall->args[1]->value = new String_('floatIsNullOrEmpty');
             }
 
@@ -765,8 +763,8 @@ CODE
     }
 
     private function conditionContainsfloatIsNullOrEmpty(
-        If_ $if): bool
-    {
+        If_ $if
+    ): bool {
         $nodeFinder = new NodeFinder();
 
         $staticCalls = $nodeFinder->findInstanceOf($if->cond, StaticCall::class);
@@ -785,22 +783,22 @@ CODE
     }
 
     private function isInvoiceSuiteFloatUtilsClass(
-        StaticCall $staticCall): bool
-    {
+        StaticCall $staticCall
+    ): bool {
         if (!$staticCall->class instanceof Name) {
             return false;
         }
 
         return $this->isName($staticCall->class, 'InvoiceSuiteFloatUtils')
-            || $this->isName($staticCall->class, 'horstoeko\\invoicesuite\\utils\\InvoiceSuiteFloatUtils');
+            || $this->isName($staticCall->class, 'horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils');
     }
 
     private function normalizeInvoiceSuiteFloatUtilsClassName(
-        string $code): string
-    {
+        string $code
+    ): string {
         $patterns = [
-            '~\\\\horstoeko\\\\invoicesuite\\\\utils\\\\InvoiceSuiteFloatUtils~',
-            '~horstoeko\\\\invoicesuite\\\\utils\\\\InvoiceSuiteFloatUtils~',
+            '~\\\horstoeko\\\invoicesuite\\\utils\\\InvoiceSuiteFloatUtils~',
+            '~horstoeko\\\invoicesuite\\\utils\\\InvoiceSuiteFloatUtils~',
         ];
 
         return preg_replace($patterns, 'InvoiceSuiteFloatUtils', $code) ?? $code;

@@ -38,7 +38,7 @@ final class ZugferdPdfDocumentReaderExtended2Test extends TestCase
         $this->assertSame('F20200027', $documentno);
         $this->assertSame(InvoiceSuiteCodelistDocumentTypes::COMMERCIAL_INVOICE->value, $documenttypecode);
         $this->assertInstanceOf(DateTime::class, $documentdate);
-        $this->assertEquals(DateTime::createFromFormat('Ymd', '20200115')->format('Ymd'), $documentdate->format('Ymd'));
+        $this->assertSame(DateTime::createFromFormat('Ymd', '20200115')->format('Ymd'), $documentdate->format('Ymd'));
         $this->assertSame('EUR', $invoiceCurrency);
         $this->assertSame('', $taxCurrency);
         $this->assertSame('', $documentname);
@@ -949,7 +949,7 @@ final class ZugferdPdfDocumentReaderExtended2Test extends TestCase
         self::$document->getDocumentSupplyChainEvent($supplychainevent);
         $this->assertInstanceOf(DateTime::class, $supplychainevent);
         $this->assertInstanceOf('DateTime', $supplychainevent);
-        $this->assertEquals(DateTime::createFromFormat('Ymd', '20200115')->format('Ymd'), $supplychainevent?->format('Ymd'));
+        $this->assertSame(DateTime::createFromFormat('Ymd', '20200115')->format('Ymd'), $supplychainevent?->format('Ymd'));
     }
 
     public function testDocumentDespatchAdviceReferencedDocument(): void
@@ -977,9 +977,9 @@ final class ZugferdPdfDocumentReaderExtended2Test extends TestCase
     {
         self::$document->getDocumentBillingPeriod($docbillingperiodstart, $docbillingperiodend);
         $this->assertInstanceOf('DateTime', $docbillingperiodstart);
-        $this->assertEquals(DateTime::createFromFormat('Ymd', '20191201')->format('Ymd'), $docbillingperiodstart?->format('Ymd'));
+        $this->assertSame(DateTime::createFromFormat('Ymd', '20191201')->format('Ymd'), $docbillingperiodstart?->format('Ymd'));
         $this->assertInstanceOf('DateTime', $docbillingperiodend);
-        $this->assertEquals(DateTime::createFromFormat('Ymd', '20191231')->format('Ymd'), $docbillingperiodend?->format('Ymd'));
+        $this->assertSame(DateTime::createFromFormat('Ymd', '20191231')->format('Ymd'), $docbillingperiodend?->format('Ymd'));
     }
 
     public function testDocumentAllowanceCharges(): void
@@ -1003,7 +1003,7 @@ final class ZugferdPdfDocumentReaderExtended2Test extends TestCase
         $this->assertArrayHasKey('partialpaymentamount', $docpaymentterms[0]);
         $this->assertSame('', $docpaymentterms[0]['description']);
         $this->assertInstanceOf('DateTime', $docpaymentterms[0]['duedate']);
-        $this->assertEquals(DateTime::createFromFormat('Ymd', '20200215')->format('Ymd'), $docpaymentterms[0]['duedate']->format('Ymd'));
+        $this->assertSame(DateTime::createFromFormat('Ymd', '20200215')->format('Ymd'), $docpaymentterms[0]['duedate']->format('Ymd'));
         $this->assertSame('', $docpaymentterms[0]['directdebitmandateid']);
         $this->assertEqualsWithDelta(0.0, $docpaymentterms[0]['partialpaymentamount'], PHP_FLOAT_EPSILON);
     }
@@ -1145,7 +1145,7 @@ final class ZugferdPdfDocumentReaderExtended2Test extends TestCase
 
         $this->assertSame('', $termdescription);
         $this->assertInstanceOf('DateTime', $termduedate);
-        $this->assertEquals(DateTime::createFromFormat('Ymd', '20200215')->format('Ymd'), $termduedate?->format('Ymd'));
+        $this->assertSame(DateTime::createFromFormat('Ymd', '20200215')->format('Ymd'), $termduedate?->format('Ymd'));
         $this->assertSame('', $termmandate);
         $this->assertEqualsWithDelta(0.0, $dispercent, PHP_FLOAT_EPSILON);
         $this->assertNotInstanceOf(DateTime::class, $discbasedatetime);
@@ -1262,9 +1262,9 @@ final class ZugferdPdfDocumentReaderExtended2Test extends TestCase
 
         self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
         $this->assertInstanceOf('DateTime', $docposstartdate);
-        $this->assertEquals(DateTime::createFromFormat('Ymd', '20191201')->format('Ymd'), $docposstartdate?->format('Ymd'));
+        $this->assertSame(DateTime::createFromFormat('Ymd', '20191201')->format('Ymd'), $docposstartdate?->format('Ymd'));
         $this->assertInstanceOf('DateTime', $docpostenddate);
-        $this->assertEquals(DateTime::createFromFormat('Ymd', '20191231')->format('Ymd'), $docpostenddate?->format('Ymd'));
+        $this->assertSame(DateTime::createFromFormat('Ymd', '20191231')->format('Ymd'), $docpostenddate?->format('Ymd'));
 
         $this->assertFalse(self::$document->firstDocumentPositionNote());
         $this->assertFalse(self::$document->nextDocumentPositionNote());
@@ -1371,7 +1371,7 @@ final class ZugferdPdfDocumentReaderExtended2Test extends TestCase
 
         self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
         $this->assertInstanceOf('DateTime', $docposstartdate);
-        $this->assertEquals(DateTime::createFromFormat('Ymd', '20191201')->format('Ymd'), $docposstartdate?->format('Ymd'));
+        $this->assertSame(DateTime::createFromFormat('Ymd', '20191201')->format('Ymd'), $docposstartdate?->format('Ymd'));
         $this->assertNotInstanceOf(DateTime::class, $docpostenddate);
 
         $this->assertFalse(self::$document->firstDocumentPositionNote());
@@ -1480,7 +1480,7 @@ final class ZugferdPdfDocumentReaderExtended2Test extends TestCase
         self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
         $this->assertNotInstanceOf(DateTime::class, $docposstartdate);
         $this->assertInstanceOf('DateTime', $docpostenddate);
-        $this->assertEquals(DateTime::createFromFormat('Ymd', '20191231')->format('Ymd'), $docpostenddate?->format('Ymd'));
+        $this->assertSame(DateTime::createFromFormat('Ymd', '20191231')->format('Ymd'), $docpostenddate?->format('Ymd'));
 
         $this->assertFalse(self::$document->firstDocumentPositionNote());
         $this->assertFalse(self::$document->nextDocumentPositionNote());

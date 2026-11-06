@@ -40,7 +40,7 @@ final class ZugferdPdfDocumentReaderExtendedTest extends TestCase
         $this->assertSame('KR87654321012', $documentno);
         $this->assertSame(InvoiceSuiteCodelistDocumentTypes::COMMERCIAL_INVOICE->value, $documenttypecode);
         $this->assertInstanceOf(DateTime::class, $documentdate);
-        $this->assertEquals(DateTime::createFromFormat('Ymd', '20181006')->format('Ymd'), $documentdate->format('Ymd'));
+        $this->assertSame(DateTime::createFromFormat('Ymd', '20181006')->format('Ymd'), $documentdate->format('Ymd'));
         $this->assertSame('EUR', $invoiceCurrency);
         $this->assertSame('', $taxCurrency);
         $this->assertSame('KOSTENRECHNUNG', $documentname);
@@ -976,7 +976,7 @@ final class ZugferdPdfDocumentReaderExtendedTest extends TestCase
         self::$document->getDocumentSupplyChainEvent($supplychainevent);
         $this->assertInstanceOf(DateTime::class, $supplychainevent);
         $this->assertInstanceOf('DateTime', $supplychainevent);
-        $this->assertEquals(DateTime::createFromFormat('Ymd', '20180930')->format('Ymd'), $supplychainevent?->format('Ymd'));
+        $this->assertSame(DateTime::createFromFormat('Ymd', '20180930')->format('Ymd'), $supplychainevent?->format('Ymd'));
     }
 
     public function testDocumentDespatchAdviceReferencedDocument(): void

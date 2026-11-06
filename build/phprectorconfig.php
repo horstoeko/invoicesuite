@@ -10,14 +10,14 @@ use Rector\CodeQuality\Rector\New_\NewStaticToNewSelfRector;
 use Rector\CodingStyle\Rector\FuncCall\CallUserFuncArrayToVariadicRector;
 use Rector\CodingStyle\Rector\FuncCall\FunctionFirstClassCallableRector;
 use Rector\Config\RectorConfig;
-use Rector\DeadCode\Rector\ClassMethod\RemoveDuplicatedReturnSelfDocblockRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveMixedDocblockOverruledByNativeTypeRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessUnionReturnDocblockRector;
 use Rector\DeadCode\Rector\Property\RemoveUselessVarTagRector;
 use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
-use Rector\TypeDeclaration\Rector\StmtsAwareInterface\DeclareStrictTypesRector;
+use Rector\PHPUnit\Set\PHPUnitSetList;
+use Rector\Set\ValueObject\SetList;
 use Rector\ValueObject\PhpVersion;
 
 return RectorConfig::configure()
@@ -44,29 +44,22 @@ return RectorConfig::configure()
         FunctionFirstClassCallableRector::class => [
             __DIR__ . '/../src/visualizers/renderers/InvoiceSuiteVisualizerLaravelRenderer.php',
         ],
-        RemoveDuplicatedReturnSelfDocblockRector::class,
         RemoveUselessUnionReturnDocblockRector::class,
         RemoveMixedDocblockOverruledByNativeTypeRector::class,
     ])
     ->withPhpVersion(PhpVersion::PHP_82)
     ->withPhpSets(php82: true)
-    ->withPreparedSets(
-        deadCode: true,
-        codeQuality: true,
-        codingStyle: true,
-        phpunitCodeQuality: true,
-    )
+    ->withSets([
+        SetList::DEAD_CODE,
+        SetList::CODE_QUALITY,
+        SetList::CODING_STYLE,
+        PHPUnitSetList::PHPUNIT_CODE_QUALITY,
+    ])
     ->withComposerBased(
         phpunit: true,
         symfony: true,
     )
-    ->withRules([
-        DeclareStrictTypesRector::class,
-    ])
-    ->withImportNames(
-        importShortClasses: true,
-        removeUnusedImports: true,
-    )
+    ->withImportNames()
     ->withTypeGuardedClasses([
         InvoiceSuiteAbstractDocumentBaseBuilder::class,
         InvoiceSuiteAbstractDocumentBaseReader::class,

@@ -21,9 +21,8 @@ class InvoiceSuiteClassFinder
     /**
      * Singleton instance (one per concrete subclass, see {@see self::factory()}).
      *
-     * @var null|static
      *
-     * @phpstan-var null|static
+     * @var null|static
      */
     protected static ?self $invoiceSuiteClassFinder = null;
 
