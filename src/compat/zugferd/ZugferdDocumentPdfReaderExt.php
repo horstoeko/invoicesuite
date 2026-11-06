@@ -59,6 +59,8 @@ class ZugferdDocumentPdfReaderExt
 
     /**
      * (Hidden) Constructor
+     *
+     * @param InvoiceSuitePdfDocumentReader $pdfDocumentReader
      */
     final protected function __construct(
         /**

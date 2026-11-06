@@ -175,8 +175,8 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     /**
      * Output a table.
      *
-     * @param  array<int,string>           $headers
-     * @param  array<int,array<int,mixed>> $rows
+     * @param  array<int, string>            $headers
+     * @param  array<int, array<int, mixed>> $rows
      * @return static
      */
     protected function outputTable(
@@ -201,9 +201,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     /**
      * Conditionally output a table.
      *
-     * @param  bool                        $condition
-     * @param  array<int,string>           $headers
-     * @param  array<int,array<int,mixed>> $rows
+     * @param  bool                          $condition
+     * @param  array<int, string>            $headers
+     * @param  array<int, array<int, mixed>> $rows
      * @return static
      */
     protected function outputTableWhen(
@@ -416,9 +416,9 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     /**
      * Get an string-array option
      *
-     * @param  string   $name
-     * @param  string[] $default
-     * @return string[]
+     * @param  string        $name
+     * @param  array<string> $default
+     * @return array<string>
      *
      * @throws ConsoleInvalidArgumentException
      */

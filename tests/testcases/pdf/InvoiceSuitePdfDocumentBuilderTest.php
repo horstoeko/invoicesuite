@@ -26,7 +26,14 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
     /**
      * @dataProvider zffxProfileProvider
      *
+     * @param string      $expectedProfile
+     * @param string      $expectedXmlContains
      * @param bool|string $expectedUseOfXmlFile
+     * @param bool        $expectusePdfContent
+     * @param string      $expectXmpName
+     * @param string      $expectXmpVersion
+     * @param string      $expectPdfAConformanceLevel
+     * @param int         $expectOutputType
      */
     public function testZfFxPdfBuilder(
         string $expectedProfile,

@@ -79,35 +79,35 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
     /**
      * Get parameters
      *
-     * @return array<string,mixed>
+     * @return array<string, mixed>
      */
     abstract public function getParameters(): array;
 
     /**
      * Get meta data directories
      *
-     * @return array<string,string>
+     * @return array<string, string>
      */
     abstract public function getSerializerMetadataDirectories(): array;
 
     /**
      * Get custom handlers
      *
-     * @return array<int,string>
+     * @return array<int, string>
      */
     abstract public function getSerializerHandlers(): array;
 
     /**
      * Get custom listeners
      *
-     * @return array<string,Closure>
+     * @return array<string, Closure>
      */
     abstract public function getSerializerListeners(): array;
 
     /**
      * Get event subscribers
      *
-     * @return array<int,string>
+     * @return array<int, string>
      */
     abstract public function getSerializerSubscribers(): array;
 

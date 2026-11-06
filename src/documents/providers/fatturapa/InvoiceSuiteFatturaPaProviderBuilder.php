@@ -9263,6 +9263,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
      * @param  null|float $newDiscountTotalAmount Sum of the discounts
      * @param  null|float $newTaxBasisAmount      Total invoice amount excluding sales tax
      * @param  null|float $newTaxTotalAmount      Total amount of the invoice sales tax (in the invoice currency)
+     * @param  null|float $newTaxTotalAmount2     VAT total in the tax accounting currency
      * @param  null|float $newGrossAmount         Total invoice amount including sales tax
      * @param  null|float $newDueAmount           Payment amount due
      * @param  null|float $newPrepaidAmount       Prepayment amount

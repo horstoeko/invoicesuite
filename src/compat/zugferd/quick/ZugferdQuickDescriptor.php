@@ -683,10 +683,10 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * @param  string                 $lineId          __BT-126, From BASIC__ Identification of the invoice item
      * @param  string                 $productName     __BT-153, From BASIC__ A name of the item (item name)
      * @param  float                  $unitPrice       __BT-146, From BASIC__ Net price of the item
-     * @param  float                  $quantity        __BT-129, From BASIC__ The quantity of individual items (goods or services) billed in the relevant line
-     * @param  string                 $unitCode        __BT-130, From BASIC__ The unit of measure applicable to the amount billed
      * @param  float                  $chargeAmount    __BT-136/BT-141, From BASIC__ The surcharge amount excluding sales tax
      * @param  string                 $chargeReason    __BT-139/BT-144, From BASIC__ The reason given in text form for the invoice item surcharge
+     * @param  float                  $quantity        __BT-129, From BASIC__ The quantity of individual items (goods or services) billed in the relevant line
+     * @param  string                 $unitCode        __BT-130, From BASIC__ The unit of measure applicable to the amount billed
      * @param  string                 $taxCategoryCode __BT-151, From BASIC__ Coded description of a sales tax category
      * @param  string                 $taxTypeCode     __BT-151-0, From BASIC__ In EN 16931 only the tax type “sales tax” with the code “VAT” is supported. Should other types of tax be specified, such as an insurance tax or a mineral oil tax the EXTENDED profile must be used. The code for the tax type must then be taken from the code list
      *                                                 UNTDID 5153.
@@ -716,10 +716,10 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * @param  string                 $lineId          __BT-126, From BASIC__ Identification of the invoice item
      * @param  string                 $productName     __BT-153, From BASIC__ A name of the item (item name)
      * @param  float                  $unitPrice       __BT-146, From BASIC__ Net price of the item
-     * @param  float                  $quantity        __BT-129, From BASIC__ The quantity of individual items (goods or services) billed in the relevant line
-     * @param  string                 $unitCode        __BT-130, From BASIC__ The unit of measure applicable to the amount billed
      * @param  float                  $discountAmount  __BT-136/BT-141, From BASIC__ The discount amount excluding sales tax
      * @param  string                 $discountReason  __BT-139/BT-144, From BASIC__ The reason given in text form for the invoice item discount
+     * @param  float                  $quantity        __BT-129, From BASIC__ The quantity of individual items (goods or services) billed in the relevant line
+     * @param  string                 $unitCode        __BT-130, From BASIC__ The unit of measure applicable to the amount billed
      * @param  string                 $taxCategoryCode __BT-151, From BASIC__ Coded description of a sales tax category
      * @param  string                 $taxTypeCode     __BT-151-0, From BASIC__ In EN 16931 only the tax type “sales tax” with the code “VAT” is supported. Should other types of tax be specified, such as an insurance tax or a mineral oil tax the EXTENDED profile must be used. The code for the tax type must then be taken from the code list
      *                                                 UNTDID 5153.

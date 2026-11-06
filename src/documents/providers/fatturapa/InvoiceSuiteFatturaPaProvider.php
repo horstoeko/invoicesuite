@@ -65,7 +65,7 @@ class InvoiceSuiteFatturaPaProvider extends InvoiceSuiteAbstractDocumentFormatPr
     /**
      * Get parameters
      *
-     * @return array<string,mixed>
+     * @return array<string, mixed>
      */
     public function getParameters(): array
     {
@@ -75,7 +75,7 @@ class InvoiceSuiteFatturaPaProvider extends InvoiceSuiteAbstractDocumentFormatPr
     /**
      * Get meta data directories
      *
-     * @return array<string,string>
+     * @return array<string, string>
      */
     public function getSerializerMetadataDirectories(): array
     {
@@ -85,7 +85,7 @@ class InvoiceSuiteFatturaPaProvider extends InvoiceSuiteAbstractDocumentFormatPr
     /**
      * Get custom handlers
      *
-     * @return array<int,string>
+     * @return array<int, string>
      */
     public function getSerializerHandlers(): array
     {
@@ -97,7 +97,7 @@ class InvoiceSuiteFatturaPaProvider extends InvoiceSuiteAbstractDocumentFormatPr
     /**
      * Get custom listeners
      *
-     * @return array<string,Closure>
+     * @return array<string, Closure>
      */
     public function getSerializerListeners(): array
     {
@@ -107,7 +107,7 @@ class InvoiceSuiteFatturaPaProvider extends InvoiceSuiteAbstractDocumentFormatPr
     /**
      * Get event subscribers
      *
-     * @return array<int,string>
+     * @return array<int, string>
      */
     public function getSerializerSubscribers(): array
     {

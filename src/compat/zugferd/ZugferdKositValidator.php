@@ -328,7 +328,7 @@ class ZugferdKositValidator
     /**
      * Returns an array of all validation errors
      *
-     * @return array<int,string>
+     * @return array<int, string>
      *
      * @throws InvoiceSuiteInvalidArgumentException
      */
@@ -364,7 +364,7 @@ class ZugferdKositValidator
     /**
      * Returns an array of all validation warnings
      *
-     * @return array<int,string>
+     * @return array<int, string>
      *
      * @throws InvoiceSuiteInvalidArgumentException
      */
@@ -400,7 +400,7 @@ class ZugferdKositValidator
     /**
      * Returns an array of all validation information
      *
-     * @return array<int,string>
+     * @return array<int, string>
      *
      * @throws InvoiceSuiteInvalidArgumentException
      */
@@ -436,7 +436,7 @@ class ZugferdKositValidator
     /**
      * Return an array of all internal errors (such as download error or system exceptions)
      *
-     * @return array<int,string>
+     * @return array<int, string>
      *
      * @throws InvoiceSuiteInvalidArgumentException
      */
@@ -472,7 +472,7 @@ class ZugferdKositValidator
     /**
      * Returns an array of all messages from process system (calling external applications)
      *
-     * @return array<int,string>
+     * @return array<int, string>
      *
      * @throws InvoiceSuiteInvalidArgumentException
      */

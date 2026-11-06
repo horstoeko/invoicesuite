@@ -63,8 +63,8 @@ class InvoiceSuiteConsoleCommandTestCase extends TestCase
     /**
      * Decode a JSON command output.
      *
-     * @param  string              $jsonOutput
-     * @return array<string,mixed>
+     * @param  string               $jsonOutput
+     * @return array<string, mixed>
      *
      * @throws JsonException
      */

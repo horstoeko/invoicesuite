@@ -157,7 +157,7 @@ class ZugferdXsdValidator
     /**
      * Returns an array of all validation errors
      *
-     * @return array<int,string>
+     * @return array<int, string>
      *
      * @throws InvoiceSuiteInvalidArgumentException
      */

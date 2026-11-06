@@ -230,7 +230,7 @@ class InvoiceSuiteSettings
     /**
      * Returns a list of node paths which have a special number of decimal places
      *
-     * @return array<string,int>
+     * @return array<string, int>
      */
     public static function getSpecialDecimalPlacesMaps(): array
     {
@@ -257,7 +257,7 @@ class InvoiceSuiteSettings
     /**
      * Update the map of node paths which have a special number of decimal places
      *
-     * @param  array<string,int> $specialDecimalPlacesMaps
+     * @param  array<string, int> $specialDecimalPlacesMaps
      * @return void
      */
     public static function setSpecialDecimalPlacesMaps(
@@ -333,7 +333,7 @@ class InvoiceSuiteSettings
      * Set the namespaces to restrict document format provider discovery to. Pass an
      * empty array to disable filtering and scan every class known to the composer classloader
      *
-     * @param  array<int,string> $discoveryNamespaces
+     * @param  array<int, string> $discoveryNamespaces
      * @return void
      */
     public static function setDiscoveryNamespaces(
@@ -346,7 +346,7 @@ class InvoiceSuiteSettings
      * Get the namespaces which document format provider discovery is restricted to. Empty
      * means no restriction (scan every class known to the composer classloader)
      *
-     * @return array<int,string>
+     * @return array<int, string>
      */
     public static function getDiscoveryNamespaces(): array
     {

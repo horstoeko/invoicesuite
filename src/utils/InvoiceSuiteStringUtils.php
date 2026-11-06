@@ -47,10 +47,10 @@ class InvoiceSuiteStringUtils
     /**
      * Split a string by a string
      *
-     * @param  string            $separator
-     * @param  string            $string
-     * @param  int<min, max>     $limit
-     * @return array<int,string>
+     * @param  string             $separator
+     * @param  string             $string
+     * @param  int<min, max>      $limit
+     * @return array<int, string>
      */
     public static function explode(
         string $separator,
@@ -77,9 +77,9 @@ class InvoiceSuiteStringUtils
     /**
      * Convert a string from one character encoding to another
      *
-     * @param  string                        $string
-     * @param  string                        $toEncoding
-     * @param  null|array<int,string>|string $fromEncoding
+     * @param  string                         $string
+     * @param  string                         $toEncoding
+     * @param  null|array<int, string>|string $fromEncoding
      * @return string
      */
     public static function mbConvertEncoding(
@@ -93,7 +93,7 @@ class InvoiceSuiteStringUtils
     /**
      * Return all supported multibyte encodings
      *
-     * @return array<int,string>
+     * @return array<int, string>
      */
     public static function mbListEncodings(): array
     {
@@ -431,10 +431,10 @@ class InvoiceSuiteStringUtils
      *
      * @template TSubject of string|string[]
      *
-     * @param  string|string[] $search
-     * @param  string|string[] $replace
-     * @param  TSubject        $subject $subject
-     * @param  null|int        $count
+     * @param  array<string>|string $search
+     * @param  array<string>|string $replace
+     * @param  TSubject             $subject $subject
+     * @param  null|int             $count
      * @return TSubject
      */
     public static function replace(
@@ -535,8 +535,8 @@ class InvoiceSuiteStringUtils
     /**
      * Translate certain characters
      *
-     * @param  string               $string
-     * @param  array<string,string> $replacements
+     * @param  string                $string
+     * @param  array<string, string> $replacements
      * @return string
      */
     public static function translateArray(

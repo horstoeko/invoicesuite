@@ -290,7 +290,7 @@ class InvoiceSuiteVisualizer
     /**
      * Add multiple additional directories where the PDF-Engine will search for fonts
      *
-     * @param  string[] $directories
+     * @param  array<string> $directories
      * @return static
      */
     public function addPdfFontDirectories(
@@ -348,7 +348,7 @@ class InvoiceSuiteVisualizer
      * Add multiple font definitions from a string array.
      * Each string in the array must be in the form "name:style:filename".
      *
-     * @param  string[] $data The Font Data in the form "name:style:filename"
+     * @param  array<string> $data The Font Data in the form "name:style:filename"
      * @return static
      */
     public function addPdfFontDatasFromStringArray(

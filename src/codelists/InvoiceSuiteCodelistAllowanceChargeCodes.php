@@ -2624,7 +2624,7 @@ enum InvoiceSuiteCodelistAllowanceChargeCodes: string
     /**
      * Returns the URLs where the data are hosted
      *
-     * @return array<int,string>
+     * @return array<int, string>
      *
      * @codeCoverageIgnore
      */
@@ -2638,7 +2638,7 @@ enum InvoiceSuiteCodelistAllowanceChargeCodes: string
     /**
      * Returns the URLs from where the data was downloaded
      *
-     * @return array<int,string>
+     * @return array<int, string>
      *
      * @codeCoverageIgnore
      */

@@ -352,7 +352,7 @@ class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countabl
     /**
      * Count message items.
      *
-     * @return int<0,max> number of stored message items
+     * @return int<0, max> number of stored message items
      */
     public function count(): int
     {

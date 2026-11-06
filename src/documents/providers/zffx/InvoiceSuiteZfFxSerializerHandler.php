@@ -68,8 +68,9 @@ class InvoiceSuiteZfFxSerializerHandler implements SubscribingHandlerInterface
      * Serialize Anount type
      * The amounts will be serialized (by default) with a precission of 2 digits
      *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed                   $data
+     * @param  XmlSerializationVisitor $visitor
+     * @param  mixed                   $data
+     * @return DOMText
      *
      * @throws DOMException
      * @throws TypeError
@@ -100,8 +101,9 @@ class InvoiceSuiteZfFxSerializerHandler implements SubscribingHandlerInterface
      * Serialize quantity type
      * The quantity will be serialized (by default) with a precission of 2 digits
      *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed                   $data
+     * @param  XmlSerializationVisitor $visitor
+     * @param  mixed                   $data
+     * @return DOMText
      *
      * @throws DOMException
      * @throws TypeError
@@ -132,8 +134,9 @@ class InvoiceSuiteZfFxSerializerHandler implements SubscribingHandlerInterface
      * Serialize a percantage value
      * The value will be serialized (by default) with a precission of 2 digits
      *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed                   $data
+     * @param  XmlSerializationVisitor $visitor
+     * @param  mixed                   $data
+     * @return DOMText
      */
     public function serializePercentType(
         XmlSerializationVisitor $visitor,
@@ -153,8 +156,9 @@ class InvoiceSuiteZfFxSerializerHandler implements SubscribingHandlerInterface
      * Serialize a meassure value
      * The value will be serialized (by default) with a precission of 2 digits
      *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed                   $data
+     * @param  XmlSerializationVisitor $visitor
+     * @param  mixed                   $data
+     * @return DOMText
      *
      * @throws DOMException
      * @throws TypeError
@@ -186,8 +190,9 @@ class InvoiceSuiteZfFxSerializerHandler implements SubscribingHandlerInterface
      * False and true values will be serialized correctly (false won't be serialized
      * in the default implementation)
      *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed                   $data
+     * @param  XmlSerializationVisitor $visitor
+     * @param  mixed                   $data
+     * @return DOMElement
      *
      * @throws DOMException
      */

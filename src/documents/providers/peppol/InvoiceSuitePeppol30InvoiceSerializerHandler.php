@@ -217,8 +217,9 @@ class InvoiceSuitePeppol30InvoiceSerializerHandler implements SubscribingHandler
      * Serialize Anount type
      * The amounts will be serialized (by default) with a precission of 2 digits
      *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed                   $data
+     * @param  XmlSerializationVisitor $visitor
+     * @param  mixed                   $data
+     * @return DOMText
      *
      * @throws DOMException
      * @throws TypeError
@@ -249,8 +250,9 @@ class InvoiceSuitePeppol30InvoiceSerializerHandler implements SubscribingHandler
      * Serialize quantity type
      * The quantity will be serialized (by default) with a precission of 2 digits
      *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed                   $data
+     * @param  XmlSerializationVisitor $visitor
+     * @param  mixed                   $data
+     * @return DOMText
      *
      * @throws DOMException
      * @throws TypeError
@@ -281,8 +283,9 @@ class InvoiceSuitePeppol30InvoiceSerializerHandler implements SubscribingHandler
      * Serialize a percantage value
      * The value will be serialized (by default) with a precission of 2 digits
      *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed                   $data
+     * @param  XmlSerializationVisitor $visitor
+     * @param  mixed                   $data
+     * @return DOMText
      */
     public function serializePercentType(
         XmlSerializationVisitor $visitor,
@@ -302,8 +305,9 @@ class InvoiceSuitePeppol30InvoiceSerializerHandler implements SubscribingHandler
      * Serialize a meassure value
      * The value will be serialized (by default) with a precission of 2 digits
      *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed                   $data
+     * @param  XmlSerializationVisitor $visitor
+     * @param  mixed                   $data
+     * @return DOMText
      *
      * @throws DOMException
      * @throws TypeError
@@ -335,8 +339,9 @@ class InvoiceSuitePeppol30InvoiceSerializerHandler implements SubscribingHandler
      * False and true values will be serialized correctly (false won't be serialized
      * in the default implementation)
      *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed                   $data
+     * @param  XmlSerializationVisitor $visitor
+     * @param  mixed                   $data
+     * @return DOMElement
      *
      * @throws DOMException
      */
@@ -366,9 +371,9 @@ class InvoiceSuitePeppol30InvoiceSerializerHandler implements SubscribingHandler
     /**
      * Serialze JSON date
      *
-     * @param  JsonSerializationVisitor                      $visitor
-     * @param  DateTime                                      $date
-     * @param  array{name: string, params: array<int,mixed>} $type
+     * @param  JsonSerializationVisitor                       $visitor
+     * @param  DateTime                                       $date
+     * @param  array{name: string, params: array<int, mixed>} $type
      * @return string
      */
     public function serializeJsonDate(
@@ -398,9 +403,9 @@ class InvoiceSuitePeppol30InvoiceSerializerHandler implements SubscribingHandler
     /**
      * Serialze JSON Date/Time
      *
-     * @param  JsonSerializationVisitor                      $visitor
-     * @param  DateTime                                      $date
-     * @param  array{name: string, params: array<int,mixed>} $type
+     * @param  JsonSerializationVisitor                       $visitor
+     * @param  DateTime                                       $date
+     * @param  array{name: string, params: array<int, mixed>} $type
      * @return string
      */
     public function serializeJsonDateTime(
@@ -430,9 +435,9 @@ class InvoiceSuitePeppol30InvoiceSerializerHandler implements SubscribingHandler
     /**
      * Serialize JSON time
      *
-     * @param  JsonSerializationVisitor                      $visitor
-     * @param  DateTime                                      $date
-     * @param  array{name: string, params: array<int,mixed>} $type
+     * @param  JsonSerializationVisitor                       $visitor
+     * @param  DateTime                                       $date
+     * @param  array{name: string, params: array<int, mixed>} $type
      * @return string
      */
     public function serializeJsonTime(
@@ -476,9 +481,9 @@ class InvoiceSuitePeppol30InvoiceSerializerHandler implements SubscribingHandler
     /**
      * Serialize JSON BASE64
      *
-     * @param  JsonSerializationVisitor                      $visitor
-     * @param  mixed                                         $data
-     * @param  array{name: string, params: array<int,mixed>} $type
+     * @param  JsonSerializationVisitor                       $visitor
+     * @param  mixed                                          $data
+     * @param  array{name: string, params: array<int, mixed>} $type
      * @return string
      */
     public function serializeBase64EncodedToJson(

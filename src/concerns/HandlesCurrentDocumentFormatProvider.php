@@ -70,7 +70,7 @@ trait HandlesCurrentDocumentFormatProvider
     /**
      * Resolve parameters from the requested format provider
      *
-     * @return array<string,mixed>
+     * @return array<string, mixed>
      */
     public function resolveCurrentDocumentFormatProviderParameters(): array
     {

@@ -10502,6 +10502,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
      *
      * @param  null|string            $newDescription Text description of the payment terms
      * @param  null|DateTimeInterface $newDueDate     Date by which payment is due
+     * @param  null|string            $newMandate     Direct debit mandate identifier
      * @return static
      *
      * @param-out string                 $newDescription
@@ -10949,6 +10950,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
      * @param  null|float $newDiscountTotalAmount Sum of the discounts
      * @param  null|float $newTaxBasisAmount      Total invoice amount excluding sales tax
      * @param  null|float $newTaxTotalAmount      Total amount of the invoice sales tax (in the invoice currency)
+     * @param  null|float $newTaxTotalAmount2     VAT total in the tax accounting currency
      * @param  null|float $newGrossAmount         Total invoice amount including sales tax
      * @param  null|float $newDueAmount           Payment amount due
      * @param  null|float $newPrepaidAmount       Prepayment amount
@@ -11763,13 +11765,13 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
     /**
      * Get an additional associated document (line reference) from latest position
      *
-     * @param  null|string                 $newReferenceNumber         Additional document number
-     * @param  null|string                 $newReferenceLineNumber     Additional document line number
-     * @param  null|DateTimeInterface      $newReferenceDate           Additional document date
-     * @param  null|string                 $newTypeCode                Additional document type code
-     * @param  null|string                 $newReferenceTypeCode       Additional document reference-type code
-     * @param  null|string                 $newDescription             Additional document description
-     * @param  null|InvoiceSuiteAttachment &$newInvoiceSuiteAttachment Additional document attachment
+     * @param  null|string                 $newReferenceNumber        Additional document number
+     * @param  null|string                 $newReferenceLineNumber    Additional document line number
+     * @param  null|DateTimeInterface      $newReferenceDate          Additional document date
+     * @param  null|string                 $newTypeCode               Additional document type code
+     * @param  null|string                 $newReferenceTypeCode      Additional document reference-type code
+     * @param  null|string                 $newDescription            Additional document description
+     * @param  null|InvoiceSuiteAttachment $newInvoiceSuiteAttachment Additional document attachment
      * @return static
      *
      * @param-out string                      $newReferenceNumber
@@ -13551,7 +13553,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
     /**
      * Get the electronic routing information of the buyer in DTO-compatible form.
      *
-     * @return array<int,array{type:string,uri:string}>
+     * @return array<int, array{type: string, uri: string}>
      */
     private function getBuyerCommunications(): array
     {

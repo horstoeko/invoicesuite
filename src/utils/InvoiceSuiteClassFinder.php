@@ -94,9 +94,9 @@ class InvoiceSuiteClassFinder
      * is not empty, only classes belonging to one of these namespaces are considered, which avoids
      * autoloading (and thus loading into memory) every other class known to the composer classloader
      *
-     * @param  string            $isSubClassOf
-     * @param  bool              $disableCache
-     * @return array<int,string>
+     * @param  string             $isSubClassOf
+     * @param  bool               $disableCache
+     * @return array<int, string>
      */
     public function getClassesWhenItsSubClassOf(
         string $isSubClassOf,
@@ -202,7 +202,7 @@ class InvoiceSuiteClassFinder
      *  - deduplicate
      *  - sort
      *
-     * @return array<int,string>
+     * @return array<int, string>
      */
     private function getDiscoveryNamespaces(): array
     {
@@ -229,8 +229,8 @@ class InvoiceSuiteClassFinder
      * Build a cache key to include $discoveryNamespaces if specified. Empty list should keep the same value.
      * The list of namespaces should be normalized to ensure same key is generated.
      *
-     * @param  string            $isSubClassOf
-     * @param  array<int,string> $discoveryNamespaces
+     * @param  string             $isSubClassOf
+     * @param  array<int, string> $discoveryNamespaces
      * @return string
      */
     private function buildCacheKey(string $isSubClassOf, array $discoveryNamespaces): string

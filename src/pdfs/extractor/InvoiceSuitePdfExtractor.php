@@ -108,6 +108,8 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
 
     /**
      * Enable count
+     *
+     * @return int<0, max>
      */
     public function count(): int
     {

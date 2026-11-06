@@ -192,7 +192,7 @@ class InvoiceSuitePdfDocumentReader implements JsonSerializable
     /**
      * Get all additional document attachment
      *
-     * @return array<int,InvoiceSuitePdfExtractorAttachment>
+     * @return array<int, InvoiceSuitePdfExtractorAttachment>
      */
     public function getAdditionalDocumentAttachments(): array
     {

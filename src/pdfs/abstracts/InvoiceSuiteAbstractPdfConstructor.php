@@ -544,7 +544,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Get the callback for metainformation
      *
-     * @return null|callable(string $whichTemplate,string $xmlContent,array{invoiceId: string, docTypeName: string, seller: string, date: string} $invoiceInformation,string $defaultValue): string
+     * @return null|callable(string $whichTemplate, string $xmlContent, array{invoiceId: string, docTypeName: string, seller: string, date: string} $invoiceInformation, string $defaultValue): string
      */
     public function getMetaInformationCallback(): ?callable
     {
@@ -554,7 +554,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Set the callback for metainformation
      *
-     * @param  null|callable(string $whichTemplate,string $xmlContent,array{invoiceId: string, docTypeName: string, seller: string, date: string} $invoiceInformation,string $defaultValue): string $newMetaInformationCallback
+     * @param  null|callable(string $whichTemplate, string $xmlContent, array{invoiceId: string, docTypeName: string, seller: string, date: string} $invoiceInformation, string $defaultValue): string $newMetaInformationCallback
      * @return static
      */
     public function setMetaInformationCallback(

@@ -59,6 +59,7 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
     /**
      * Sets the location of the mein XSD-scheme file
      *
+     * @param  string $newXsdFilename
      * @return static
      *
      * @throws InvoiceSuiteFileNotFoundException

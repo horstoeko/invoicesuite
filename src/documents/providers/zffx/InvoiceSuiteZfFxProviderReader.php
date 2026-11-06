@@ -14102,6 +14102,8 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get communication information of the Payer party
      *
+     * @param  null|string $newType
+     * @param  null|string $newUri
      * @return static
      *
      * @param-out string $newType

@@ -169,7 +169,7 @@ class ZugferdDocuflairValidator
     /**
      * Returns an array of all validation errors
      *
-     * @return array<int,string>
+     * @return array<int, string>
      *
      * @throws InvoiceSuiteInvalidArgumentException
      */
@@ -205,7 +205,7 @@ class ZugferdDocuflairValidator
     /**
      * Returns an array of all validation warnings
      *
-     * @return array<int,string>
+     * @return array<int, string>
      *
      * @throws InvoiceSuiteInvalidArgumentException
      */
@@ -241,7 +241,7 @@ class ZugferdDocuflairValidator
     /**
      * Returns an array of all validation information
      *
-     * @return array<int,string>
+     * @return array<int, string>
      *
      * @throws InvoiceSuiteInvalidArgumentException
      */
@@ -277,7 +277,7 @@ class ZugferdDocuflairValidator
     /**
      * Return an array of all internal process errors
      *
-     * @return array<int,string>
+     * @return array<int, string>
      *
      * @throws InvoiceSuiteInvalidArgumentException
      */
@@ -313,7 +313,7 @@ class ZugferdDocuflairValidator
     /**
      * Returns an array of all process output messages
      *
-     * @return array<int,string>
+     * @return array<int, string>
      *
      * @throws InvoiceSuiteInvalidArgumentException
      */

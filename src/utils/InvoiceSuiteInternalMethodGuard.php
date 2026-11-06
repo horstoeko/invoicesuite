@@ -26,7 +26,8 @@ class InvoiceSuiteInternalMethodGuard
     /**
      * Ensure that an internal method is called from an allowed namespace
      *
-     * @param string $internalMethod
+     * @param  string $internalMethod
+     * @return void
      *
      * @throws InvoiceSuiteInternalMethodCallException
      */
@@ -59,7 +60,7 @@ class InvoiceSuiteInternalMethodGuard
     /**
      * Get the full method name from a debug backtrace frame
      *
-     * @param  array<string,mixed> $backtraceFrame
+     * @param  array<string, mixed> $backtraceFrame
      * @return string
      */
     private static function getMethodName(
@@ -78,8 +79,8 @@ class InvoiceSuiteInternalMethodGuard
     /**
      * Check if class name matches any namespace prefix
      *
-     * @param  string            $className
-     * @param  array<int,string> $namespacePrefixes
+     * @param  string             $className
+     * @param  array<int, string> $namespacePrefixes
      * @return bool
      */
     private static function matchesAnyNamespacePrefix(
@@ -98,7 +99,7 @@ class InvoiceSuiteInternalMethodGuard
     /**
      * Return a list of allowed namespaces
      *
-     * @return array<int,string>
+     * @return array<int, string>
      */
     private static function getAllowedNamespaces(): array
     {
@@ -111,7 +112,7 @@ class InvoiceSuiteInternalMethodGuard
     /**
      * Return a list of namespaces to exclude
      *
-     * @return array<int,string>
+     * @return array<int, string>
      */
     private static function getExcludedNamespaces(): array
     {

@@ -103,10 +103,10 @@ class InvoiceSuiteMakeProviderCommand extends InvoiceSuiteAbstractCommand
     /**
      * Render and write a template file.
      *
-     * @param  string               $templatePath
-     * @param  string               $targetPath
-     * @param  array<string,string> $replacements
-     * @param  bool                 $forceOverwrite
+     * @param  string                $templatePath
+     * @param  string                $targetPath
+     * @param  array<string, string> $replacements
+     * @param  bool                  $forceOverwrite
      * @return static
      *
      * @throws InvoiceSuiteFileNotFoundException

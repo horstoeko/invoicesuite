@@ -1021,8 +1021,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Runs a process. If the process runned successfully this method
      * returns true, otherwise false
      *
-     * @param  array<int,string> $command
-     * @param  string            $workingdirectory
+     * @param  array<int, string> $command
+     * @param  string             $workingdirectory
      * @return bool
      *
      * @throws InvoiceSuiteInvalidArgumentException

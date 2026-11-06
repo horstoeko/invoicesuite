@@ -46,8 +46,8 @@ class ZugferdProfileResolver
     /**
      * Resolve profile id and profile definition by the content of $xmlContent
      *
-     * @param  string                     $xmlContent
-     * @return array{0:int, 1:ProfileDef}
+     * @param  string                       $xmlContent
+     * @return array{0: int, 1: ProfileDef}
      *
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
@@ -102,8 +102,8 @@ class ZugferdProfileResolver
     /**
      * Resolve profile id and profile definition by it's id
      *
-     * @param  int                        $profileId
-     * @return array{0:int, 1:ProfileDef}
+     * @param  int                          $profileId
+     * @return array{0: int, 1: ProfileDef}
      *
      * @throws InvoiceSuiteUnknownProfileException
      */

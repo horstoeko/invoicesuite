@@ -3304,19 +3304,19 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
     /**
      * Set information about billing documents that provide evidence of claims made in the bill
      *
-     * @param  string                        $issuerAssignedId   __BT-122, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based
-     * @param  string                        $typeCode           __BT-122-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
-     *                                                           - Code 916 "reference paper" is used to reference the identification of the
-     *                                                           document on which the invoice is based - Code 50 "Price / sales catalog response"
-     *                                                           is used to reference the tender or the lot - Code 130 "invoice data sheet" is used
-     *                                                           to reference an identifier for an object specified by the seller
-     * @param  null|string                   $uriId              __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
-     *                                                           supporting documents for the invoiced amounts. External documents are not part of the invoice. Invoice processing should be possible without access to external documents. Access to external documents can entail certain risks.
-     * @param  null|array<int,string>|string $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
-     * @param  null|string                   $refTypeCode        __BT-18-1, From ENN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
-     * @param  null|DateTimeInterface        $issueDate          __BT-X-149, From EXTENDED__ Document date
-     * @param  null|string                   $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
-     * @param  null|string                   $base64EncodedData  __BT-125, From EN 16931__ Contains BASE64-Encoded data an attachment document embedded as a binary object. You must provide $binaryDataFilename
+     * @param  string                         $issuerAssignedId   __BT-122, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based
+     * @param  string                         $typeCode           __BT-122-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
+     *                                                            - Code 916 "reference paper" is used to reference the identification of the
+     *                                                            document on which the invoice is based - Code 50 "Price / sales catalog response"
+     *                                                            is used to reference the tender or the lot - Code 130 "invoice data sheet" is used
+     *                                                            to reference an identifier for an object specified by the seller
+     * @param  null|string                    $uriId              __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
+     *                                                            supporting documents for the invoiced amounts. External documents are not part of the invoice. Invoice processing should be possible without access to external documents. Access to external documents can entail certain risks.
+     * @param  null|array<int, string>|string $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  null|string                    $refTypeCode        __BT-18-1, From ENN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @param  null|DateTimeInterface         $issueDate          __BT-X-149, From EXTENDED__ Document date
+     * @param  null|string                    $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
+     * @param  null|string                    $base64EncodedData  __BT-125, From EN 16931__ Contains BASE64-Encoded data an attachment document embedded as a binary object. You must provide $binaryDataFilename
      * @return static
      *
      * @throws InvoiceSuiteFileNotFoundException
@@ -3369,9 +3369,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
      * The option of linking to an external document is required, for example, when large attachments and/or sensitive information, e.g. for personal services, are involved,
      * which must be separated from the invoice.
      *
-     * @param  string                        $issuerAssignedId __BT-122, From EN 16931__ Identification of the document supporting the invoice
-     * @param  string                        $uriId            __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
-     * @param  null|array<int,string>|string $name             __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  string                         $issuerAssignedId __BT-122, From EN 16931__ Identification of the document supporting the invoice
+     * @param  string                         $uriId            __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
+     * @param  null|array<int, string>|string $name             __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
      * @return static
      *
      * @throws InvoiceSuiteFileNotFoundException
@@ -3395,9 +3395,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
      * Add an invoice supporting additional document reference with an URL which specifies the location where the information can be found
      * The invoice supporting documents can be used to reference both a document number, which should be known to the recipient, and an embedded file (such as a timesheet as a PDF file).
      *
-     * @param  string                        $issuerAssignedId   __BT-122, From EN 16931__ Identification of the document supporting the invoice
-     * @param  string                        $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
-     * @param  null|array<int,string>|string $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  string                         $issuerAssignedId   __BT-122, From EN 16931__ Identification of the document supporting the invoice
+     * @param  string                         $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
+     * @param  null|array<int, string>|string $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
      * @return static
      *
      * @throws InvoiceSuiteFileNotFoundException
@@ -3462,10 +3462,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
      * Add an invoice supporting additional document reference with an URL which specifies the location where the information can be found
      * The invoice supporting documents can be used to reference both a document number, which should be known to the recipient, and an embedded file (such as a timesheet as a PDF file).
      *
-     * @param  string                        $issuerAssignedId   __BT-122, From EN 16931__ Identification of the document supporting the invoice
-     * @param  string                        $attachmentFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
-     * @param  string                        $base64EncodedData  __BT-125, From EN 16931__ Contains BASE64-Encoded data an attachment document embedded as a binary object. You must provide $binaryDataFilename
-     * @param  null|array<int,string>|string $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  string                         $issuerAssignedId   __BT-122, From EN 16931__ Identification of the document supporting the invoice
+     * @param  string                         $attachmentFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
+     * @param  string                         $base64EncodedData  __BT-125, From EN 16931__ Contains BASE64-Encoded data an attachment document embedded as a binary object. You must provide $binaryDataFilename
+     * @param  null|array<int, string>|string $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
      * @return ZugferdDocumentBuilder
      *
      * @throws InvoiceSuiteFileNotFoundException
@@ -3984,11 +3984,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
     /**
      * Add detailed information on logistics service fees
      *
-     * @param  string                 $description            __BT-X-271, From EXTENDED__ Identification of the service fee
-     * @param  float                  $appliedAmount          __BT-X-272, From EXTENDED__ Amount of the service fee
-     * @param  null|array<int,string> $taxTypeCodes           __BT-X-273-0, From EXTENDED__ Code of the Tax type. Note: Fixed value = "VAT"
-     * @param  null|array<int,string> $taxCategoryCodes       __BT-X-273, From EXTENDED__ Code of the VAT category
-     * @param  null|array<int,float>  $rateApplicablePercents __BT-X-274, From EXTENDED__ The sales tax rate, expressed as the percentage applicable to the sales tax category in question. Note: The code of the sales tax category and the category-specific sales tax rate must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
+     * @param  string                  $description            __BT-X-271, From EXTENDED__ Identification of the service fee
+     * @param  float                   $appliedAmount          __BT-X-272, From EXTENDED__ Amount of the service fee
+     * @param  null|array<int, string> $taxTypeCodes           __BT-X-273-0, From EXTENDED__ Code of the Tax type. Note: Fixed value = "VAT"
+     * @param  null|array<int, string> $taxCategoryCodes       __BT-X-273, From EXTENDED__ Code of the VAT category
+     * @param  null|array<int, float>  $rateApplicablePercents __BT-X-274, From EXTENDED__ The sales tax rate, expressed as the percentage applicable to the sales tax category in question. Note: The code of the sales tax category and the category-specific sales tax rate must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
      * @return static
      */
     public function addDocumentLogisticsServiceCharge(
@@ -4111,9 +4111,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
      * Add a payment term in XRechnung-Style (in the Form #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=2.53#)
      *
      * @param  string                 $description                __BT-20, From _EN 16931 XRECHNUNG__ Text to add
-     * @param  array<int,int>         $paymentDiscountDays        __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount days (array of integer)
-     * @param  array<int,float>       $paymentDiscountPercents    __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount percents (array of decimal)
-     * @param  array<int,float>       $paymentDiscountBaseAmounts __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount base amounts (array of decimal)
+     * @param  array<int, int>        $paymentDiscountDays        __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount days (array of integer)
+     * @param  array<int, float>      $paymentDiscountPercents    __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount percents (array of decimal)
+     * @param  array<int, float>      $paymentDiscountBaseAmounts __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount base amounts (array of decimal)
      * @param  null|DateTimeInterface $dueDate                    __BT-9, From EN 16931 XRECHNUNG__ The date by which payment is due Note: The payment due date reflects the net payment due date. In the case of partial payments, this indicates the first due date of a net payment. The corresponding description of more complex payment terms can be given in BT-20.
      * @param  null|string            $directDebitMandateID       __BT-89, From EN 16931 XRECHNUNG__ Unique identifier assigned by the payee to reference the direct debit authorization
      * @return static
@@ -4311,6 +4311,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
      * @param  null|string $batchID            __BT-X-534. From EXTENDED__ Identification of the batch (lot) of the product
      * @param  null|string $brandName          __BT-X-535. From EXTENDED__ The brand name, expressed as text, for this product
      * @param  null|string $modelName          __BT-X-536. From EXTENDED__ Model designation of the product
+     * @param  null|string $country
      * @return static
      */
     public function setDocumentPositionProductDetails(

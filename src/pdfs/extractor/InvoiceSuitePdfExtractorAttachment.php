@@ -98,6 +98,7 @@ class InvoiceSuitePdfExtractorAttachment implements JsonSerializable
     /**
      * Set the content of a PDF attachment
      *
+     * @param  string $newAttachmentContent
      * @return static
      */
     public function setAttachmentContent(
@@ -121,6 +122,7 @@ class InvoiceSuitePdfExtractorAttachment implements JsonSerializable
     /**
      * Set the filename of a PDF attachment
      *
+     * @param  string $newAttachmentFilename
      * @return static
      */
     public function setAttachmentFilename(
@@ -144,6 +146,7 @@ class InvoiceSuitePdfExtractorAttachment implements JsonSerializable
     /**
      * Set the mime type of a PDF attachment
      *
+     * @param  string $newAttachmentMimeType
      * @return static
      */
     public function setAttachmentMimeType(

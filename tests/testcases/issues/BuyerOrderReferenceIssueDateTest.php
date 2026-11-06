@@ -45,7 +45,7 @@ final class BuyerOrderReferenceIssueDateTest extends TestCase
      * providers are absent on purpose: they enable the parameter, and are covered by
      * CtcFrUBLInvoiceProviderBuilderTest and CtcFrUBLCreditNoteProviderBuilderTest.
      *
-     * @return Iterator<string,array<string>>
+     * @return Iterator<string, array<string>>
      */
     public function ublProviderProvider(): Iterator
     {

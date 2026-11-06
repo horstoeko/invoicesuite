@@ -64,8 +64,8 @@ class InvoiceSuitePointerUtils
     /**
      * Check that an array has key. The array key is identified by a pointer state
      *
-     * @param  array<mixed,mixed> $array
-     * @param  string             $name
+     * @param  array<mixed, mixed> $array
+     * @param  string              $name
      * @return bool
      */
     public static function has(
@@ -80,8 +80,8 @@ class InvoiceSuitePointerUtils
     /**
      * Seek to first and check if array has an element
      *
-     * @param  array<mixed,mixed> $array
-     * @param  string             $name
+     * @param  array<mixed, mixed> $array
+     * @param  string              $name
      * @return bool
      */
     public static function hasFirst(
@@ -96,8 +96,8 @@ class InvoiceSuitePointerUtils
     /**
      * Seek to next and check if array has an element
      *
-     * @param  array<mixed,mixed> $array
-     * @param  string             $name
+     * @param  array<mixed, mixed> $array
+     * @param  string              $name
      * @return bool
      */
     public static function hasNext(

@@ -65,10 +65,10 @@ class InvoiceSuiteFatturaPaSerializerHandler implements SubscribingHandlerInterf
     }
 
     /**
-     * @param  XmlSerializationVisitor      $visitor
-     * @param  null|float                   $data
-     * @param  array<string,array<int,int>> $type
-     * @param  Context                      $context
+     * @param  XmlSerializationVisitor        $visitor
+     * @param  null|float                     $data
+     * @param  array<string, array<int, int>> $type
+     * @param  Context                        $context
      * @return null|DOMNode
      */
     public function serializeDecimalToXml(
@@ -96,10 +96,10 @@ class InvoiceSuiteFatturaPaSerializerHandler implements SubscribingHandlerInterf
     }
 
     /**
-     * @param  XmlDeserializationVisitor    $visitor
-     * @param  mixed                        $data
-     * @param  array<string,array<int,int>> $type
-     * @param  Context                      $context
+     * @param  XmlDeserializationVisitor      $visitor
+     * @param  mixed                          $data
+     * @param  array<string, array<int, int>> $type
+     * @param  Context                        $context
      * @return null|float
      */
     public function deserializeDecimalFromXml(
@@ -122,7 +122,7 @@ class InvoiceSuiteFatturaPaSerializerHandler implements SubscribingHandlerInterf
     /**
      * @param  XmlSerializationVisitor $visitor
      * @param  null|int                $data
-     * @param  array<int,int>          $type
+     * @param  array<int, int>         $type
      * @param  Context                 $context
      * @return null|DOMNode
      */
@@ -142,7 +142,7 @@ class InvoiceSuiteFatturaPaSerializerHandler implements SubscribingHandlerInterf
     /**
      * @param  XmlDeserializationVisitor $visitor
      * @param  mixed                     $data
-     * @param  array<int,int>            $type
+     * @param  array<int, int>           $type
      * @param  Context                   $context
      * @return null|int
      */
@@ -166,7 +166,7 @@ class InvoiceSuiteFatturaPaSerializerHandler implements SubscribingHandlerInterf
      *
      * @param  XmlSerializationVisitor $visitor
      * @param  DateTimeInterface       $data
-     * @param  array<string,mixed>     $type
+     * @param  array<string, mixed>    $type
      * @param  Context                 $context
      * @return DOMNode
      */
@@ -180,8 +180,8 @@ class InvoiceSuiteFatturaPaSerializerHandler implements SubscribingHandlerInterf
     }
 
     /**
-     * @param  array<string,array<int,int>> $type
-     * @return array<int,int>
+     * @param  array<string, array<int, int>> $type
+     * @return array<int, int>
      */
     private function readScaleParams(
         array $type

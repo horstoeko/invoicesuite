@@ -168,6 +168,7 @@ trait InvoiceSuiteZfFxChecksProfiles
     /**
      * Checks if a tag is not valid for the EXTENDED profile, a trace is written
      *
+     * @param  string $method
      * @return bool
      */
     protected function supportsNotAtLeastExtendedWithTrace(
@@ -179,6 +180,7 @@ trait InvoiceSuiteZfFxChecksProfiles
     /**
      * Checks if a tag is not valid for the EN 16931 (COMFORT) profile, a trace is written
      *
+     * @param  string $method
      * @return bool
      */
     protected function supportsNotAtLeastEn16931WithTrace(
@@ -190,6 +192,7 @@ trait InvoiceSuiteZfFxChecksProfiles
     /**
      * Checks if a tag is not valid for the BASIC profile, a trace is written
      *
+     * @param  string $method
      * @return bool
      */
     protected function supportsNotAtLeastBasicWithTrace(
@@ -201,6 +204,7 @@ trait InvoiceSuiteZfFxChecksProfiles
     /**
      * Checks if a tag is not valid for the BASIC WL profile, a trace is written
      *
+     * @param  string $method
      * @return bool
      */
     protected function supportsNotAtLeastBasicWlWithTrace(
@@ -212,6 +216,7 @@ trait InvoiceSuiteZfFxChecksProfiles
     /**
      * Checks if a tag is not valid for the MINIMUM profile, a trace is written
      *
+     * @param  string $method
      * @return bool
      */
     protected function supportsNotAtLeastMinimumWithTrace(
