@@ -3665,7 +3665,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
      *                                       - 97: Report
      * @param  null|string $information      __BT-82, From EN 16931__ The expected or used means of payment expressed in text form, e.g. cash, bank transfer, direct debit, credit card, etc.
      * @param  null|string $cardType         __BT-, From __ The type of the card
-     * @param  null|string $cardId           __BT-87, From EN 16931__ Payment card identifier. Values longer than 10 characters are shortened to the first 6 and last 4 characters.
+     * @param  null|string $cardId           __BT-87, From EN 16931__ The primary account number (PAN) to which the card used for payment belongs. In accordance with card payment security standards, an invoice should never contain a full payment card master account number. The following specification of the PCI Security Standards Council currently applies: The first 6 and last 4 digits at most are to be displayed
      * @param  null|string $cardHolderName   __BT-88, From EN 16931__ Name of the payment card holder
      * @param  null|string $buyerIban        __BT-91, From BASIC WL__ The account to be debited by the direct debit
      * @param  null|string $payeeIban        __BT-84, From BASIC WL__ A unique identifier for the financial account held with a payment service provider to which the payment should be made
@@ -3688,10 +3688,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
         ?string $payeeBic = null,
         ?string $buyerAccountName = null
     ): static {
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($cardId) && InvoiceSuiteStringUtils::length($cardId) > 10) {
-            $cardId = InvoiceSuiteStringUtils::substring($cardId, 0, 6) . InvoiceSuiteStringUtils::substring($cardId, -4);
-        }
-
         $this->documentBuilder->addDocumentPaymentMean(
             $typeCode,
             $information,
@@ -3828,7 +3824,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
      * Sets the document payment means to _Payment card_
      *
      * @param  string      $cardType       __BT-, From __ The type of the card
-     * @param  string      $cardId         __BT-87, From EN 16931__ Payment card identifier. Values longer than 10 characters are shortened to the first 6 and last 4 characters.
+     * @param  string      $cardId         __BT-87, From EN 16931__ The primary account number (PAN) to which the card used for payment belongs. In accordance with card payment security standards, an invoice should never contain a full payment card master account number. The following specification of the PCI Security Standards Council currently applies: The first 6 and last 4 digits at most are to be displayed
      * @param  null|string $cardHolderName __BT-88, From EN 16931__ Name of the payment card holder
      * @return static
      */
@@ -3837,12 +3833,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
         string $cardId,
         ?string $cardHolderName = null
     ): static {
-        return $this->addDocumentPaymentMean(
-            InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
-            cardType: $cardType,
-            cardId: $cardId,
-            cardHolderName: $cardHolderName
+        $this->documentBuilder->addDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
+            newFinancialCardId: $cardId,
+            newFinancialCardHolder: $cardHolderName
         );
+
+        return $this;
     }
 
     /**

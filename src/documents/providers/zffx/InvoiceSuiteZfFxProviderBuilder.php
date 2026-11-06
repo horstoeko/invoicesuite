@@ -14332,6 +14332,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         if ($this->supportsAtLeastEn16931() && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newFinancialCardId)) {
+            if (InvoiceSuiteStringUtils::length($newFinancialCardId) > 10) {
+                $newFinancialCardId = InvoiceSuiteStringUtils::substring($newFinancialCardId, 0, 6) . InvoiceSuiteStringUtils::substring($newFinancialCardId, -4);
+            }
+
             $paymentMean
                 ->getApplicableTradeSettlementFinancialCardWithCreate()
                 ->getIDWithCreate()
