@@ -49,7 +49,7 @@ class InvoiceSuiteStringUtils
      *
      * @param  string             $separator
      * @param  string             $string
-     * @param  int<min, max>      $limit
+     * @param  int                $limit
      * @return array<int, string>
      */
     public static function explode(
