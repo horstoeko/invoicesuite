@@ -1,3 +1,19 @@
+## v0.0.38
+
+``Previous version v0.0.37``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [c9da86ea](https://github.com/horstoeko/invoicesuite/commit/c9da86ea) | 2026-10-31 21:21:52 CET | PrinsFrank | [ENH] Update dependency on prinsfrank/pdfparser to v4 () | [#46](https://github.com/horstoeko/invoicesuite/issues/46)
+| :new:  | [7a944351](https://github.com/horstoeko/invoicesuite/commit/7a944351) | 2026-10-29 17:00:11 CET | HorstOeko | [ENH] Added configurable PdfParser Settings (see horstoeko/zugferd PR 395) -> Fix method call in DTO Builder | 
+| :new:  | [8962282e](https://github.com/horstoeko/invoicesuite/commit/8962282e) | 2026-10-29 16:54:27 CET | HorstOeko | [ENH] Added configurable PdfParser Settings (see horstoeko/zugferd PR 395) | 
+| :new:  | [34a46e0e](https://github.com/horstoeko/invoicesuite/commit/34a46e0e) | 2026-10-29 16:19:00 CET | HorstOeko | [ENH] Added Support for BT-147 in PEPPOL Providers | 
+| :new:  | [1ae3b273](https://github.com/horstoeko/invoicesuite/commit/1ae3b273) | 2026-10-27 08:40:15 CET | HorstOeko | [ENH] InvoiceSuiteAttachment is now JsonSerializable | 
+| :new:  | [88ba1552](https://github.com/horstoeko/invoicesuite/commit/88ba1552) | 2026-10-23 10:11:29 CEST | HorstOeko | [ENH] ZugferdQuickDescriptor (Compat): VAT breakdown for E / AE / K / G / O never gets an exemption reason | 
+| :new:  | [504d28d0](https://github.com/horstoeko/invoicesuite/commit/504d28d0) | 2026-09-29 05:40:44 CEST | HorstOeko | [ENH] Bumped version of "setasign/fpdi" to 2.6.8 | 
+
+:exclamation: _There are 27 internal commit(s)_
+
 ## v0.0.37
 
 :exclamation: _There are 9 internal commit(s)_
