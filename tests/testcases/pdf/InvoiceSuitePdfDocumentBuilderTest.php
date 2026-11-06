@@ -109,13 +109,6 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $this->assertInstanceOf(InvoiceSuiteAbstractPdfConstructor::class, $methodValue);
         $this->assertInstanceOf(InvoiceSuiteZffxPdfConstructor::class, $methodValue);
 
-        // PdfWriter
-
-        $propPdfWriter = $this->getPrivatePropertyFromObject($propValue, 'pdfWriter');
-        $propPdfWriterValue = $propPdfWriter->getValue($propValue);
-
-        $this->assertInstanceOf(InvoiceSuiteZffxPdfWriter::class, $propPdfWriterValue);
-
         // Initial values
 
         $this->assertSame('', $pdfDOcumentBuilder->getAdditionalCreatorTool());
@@ -382,11 +375,25 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
 
         $this->assertSame('1.0', $expectXmpVersion);
 
-        $method = $this->getPrivateMethodFromObject($propPdfConstructorValue, 'updatePdfMetadata');
-        $method->invoke($propPdfConstructorValue);
+        $pdfDOcumentBuilder->setDeterministicModeToEnabled();
+
+        $pdfContent = '';
+
+        if (1 === $expectOutputType) {
+            $pdfContent = $pdfDOcumentBuilder->generatePdfDocumentAndGetContent();
+        }
+
+        if (2 === $expectOutputType) {
+            $saveToFilename = InvoiceSuitePathUtils::combinePathWithFile(sys_get_temp_dir(), 'output.pdf');
+            $pdfDOcumentBuilder->generatePdfDocumentAndSaveToFile($saveToFilename);
+            $this->assertFileExists($saveToFilename);
+            $this->registerFileForTestMethodTeardown($saveToFilename);
+            $pdfContent = file_get_contents($saveToFilename);
+        }
 
         $propPdfWriter = $this->getPrivatePropertyFromObject($propPdfConstructorValue, 'pdfWriter');
         $propPdfWriterValue = $propPdfWriter->getValue($propPdfConstructorValue);
+        $this->assertInstanceOf(InvoiceSuiteZffxPdfWriter::class, $propPdfWriterValue);
 
         $propPdfWriterMetaData = $this->getPrivatePropertyFromObject($propPdfWriterValue, 'metadata');
         $propPdfWriterMetaDataValue = $propPdfWriterMetaData->getValue($propPdfWriterValue);
@@ -419,22 +426,6 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $this->assertStringContainsString(sprintf('<fx:ConformanceLevel>%s</fx:ConformanceLevel>', $expectXmpName), (string) $propPdfWriterMetaDataValue[0]);
         $this->assertStringContainsString(sprintf('<pdfaid:conformance>%s</pdfaid:conformance>', $expectPdfAConformanceLevel), (string) $propPdfWriterMetaDataValue[2]);
 
-        $pdfDOcumentBuilder->setDeterministicModeToEnabled();
-
-        $pdfContent = '';
-
-        if (1 === $expectOutputType) {
-            $pdfContent = $pdfDOcumentBuilder->generatePdfDocumentAndGetContent();
-        }
-
-        if (2 === $expectOutputType) {
-            $saveToFilename = InvoiceSuitePathUtils::combinePathWithFile(sys_get_temp_dir(), 'output.pdf');
-            $pdfDOcumentBuilder->generatePdfDocumentAndSaveToFile($saveToFilename);
-            $this->assertFileExists($saveToFilename);
-            $this->registerFileForTestMethodTeardown($saveToFilename);
-            $pdfContent = file_get_contents($saveToFilename);
-        }
-
         $pdfParser = new PdfParser();
         $pdfParsed = $pdfParser->parseString($pdfContent);
         $fileSpecs = $pdfParsed->getCatalog()->getFileSpecifications();
@@ -460,6 +451,12 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $this->assertStringContainsString('FPDF', (string) $pdfParsed->getInformationDictionary()->getProducer());
         $this->assertInstanceOf(DateTimeInterface::class, $pdfParsed->getInformationDictionary()->getCreationDate());
         $this->assertSame('2000-01-01', $pdfParsed->getInformationDictionary()->getCreationDate()->format('Y-m-d'));
+
+        $this->assertSame(
+            $pdfContent,
+            $pdfDOcumentBuilder->generatePdfDocumentAndGetContent(),
+            'Repeated generation with the same builder must produce the same PDF in deterministic mode.'
+        );
 
         unset($pdfDOcumentBuilder);
     }

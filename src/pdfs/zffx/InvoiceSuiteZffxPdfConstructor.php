@@ -13,7 +13,6 @@ namespace horstoeko\invoicesuite\pdfs\zffx;
 
 use DateTime;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
-use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\pdfs\abstracts\InvoiceSuiteAbstractPdfConstructor;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
@@ -39,25 +38,7 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
      *
      * @var InvoiceSuiteZffxPdfWriter
      */
-    private $pdfWriter;
-
-    /**
-     * Constructor
-     *
-     * @param  InvoiceSuiteAbstractDocumentFormatProvider $newProvider
-     * @param  string                                     $newRawDocumentContent
-     * @param  string                                     $newRawPdfContent
-     * @return static
-     */
-    public function __construct(
-        InvoiceSuiteAbstractDocumentFormatProvider $newProvider,
-        string $newRawDocumentContent,
-        string $newRawPdfContent
-    ) {
-        parent::__construct($newProvider, $newRawDocumentContent, $newRawPdfContent);
-
-        $this->pdfWriter = new InvoiceSuiteZffxPdfWriter();
-    }
+    private InvoiceSuiteZffxPdfWriter $pdfWriter;
 
     /**
      * Generate the final PDF
@@ -71,6 +52,8 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
      */
     protected function generatePdfDocument(): static
     {
+        $this->pdfWriter = new InvoiceSuiteZffxPdfWriter();
+
         // Set deterministic mode
 
         $this->pdfWriter->setDeterministicMode($this->getDeterministicMode());
