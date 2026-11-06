@@ -143,7 +143,7 @@ final class ZugferdQuickDescriptorTest extends TestCase
 
         $this->assertSame(self::$descriptor, $result);
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[5]/ram:TypeCode', '48');
-        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[5]/ram:ApplicableTradeSettlementFinancialCard/ram:ID', '123456XXXX7890');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[5]/ram:ApplicableTradeSettlementFinancialCard/ram:ID', '1234567890');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[5]/ram:ApplicableTradeSettlementFinancialCard/ram:CardholderName', 'Bank Card Holder');
     }
 
@@ -155,7 +155,7 @@ final class ZugferdQuickDescriptorTest extends TestCase
 
         $this->assertSame(self::$descriptor, $result);
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[6]/ram:TypeCode', '54');
-        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[6]/ram:ApplicableTradeSettlementFinancialCard/ram:ID', '223456XXXX7890');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[6]/ram:ApplicableTradeSettlementFinancialCard/ram:ID', '2234567890');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[6]/ram:ApplicableTradeSettlementFinancialCard/ram:CardholderName', 'Credit Card Holder');
     }
 
@@ -167,7 +167,7 @@ final class ZugferdQuickDescriptorTest extends TestCase
 
         $this->assertSame(self::$descriptor, $result);
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[7]/ram:TypeCode', '55');
-        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[7]/ram:ApplicableTradeSettlementFinancialCard/ram:ID', '323456XXXX7890');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[7]/ram:ApplicableTradeSettlementFinancialCard/ram:ID', '3234567890');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[7]/ram:ApplicableTradeSettlementFinancialCard/ram:CardholderName', 'Debit Card Holder');
     }
 
