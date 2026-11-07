@@ -129,4 +129,88 @@ class InvoiceSuiteFileUtils extends FileUtils
     ): false|string {
         return (new finfo(FILEINFO_MIME_TYPE))->buffer($content);
     }
+
+    /**
+     * Check whether the content has a JSON MIME type.
+     *
+     * @param  string $content The content to inspect
+     * @return bool
+     */
+    public static function isJsonContent(
+        string $content
+    ): bool {
+        $mimeType = static::getMimeTypeFromContent($content);
+
+        return false !== $mimeType && InvoiceSuiteStringUtils::equalsNoCase($mimeType, 'application/json');
+    }
+
+    /**
+     * Check whether the content has an XML MIME type.
+     *
+     * @param  string $content The content to inspect
+     * @return bool
+     */
+    public static function isXmlContent(
+        string $content
+    ): bool {
+        $mimeType = static::getMimeTypeFromContent($content);
+
+        return false !== $mimeType && InvoiceSuiteArrayUtils::inArrayNoCase(['application/xml', 'text/xml'], $mimeType);
+    }
+
+    /**
+     * Check whether the content has a PDF MIME type.
+     *
+     * @param  string $content The content to inspect
+     * @return bool
+     */
+    public static function isPdfContent(
+        string $content
+    ): bool {
+        $mimeType = static::getMimeTypeFromContent($content);
+
+        return false !== $mimeType && InvoiceSuiteStringUtils::equalsNoCase($mimeType, 'application/pdf');
+    }
+
+    /**
+     * Check whether the file has a JSON MIME type.
+     *
+     * @param  string $filename The path to the file
+     * @return bool
+     */
+    public static function isJsonFile(
+        string $filename
+    ): bool {
+        $mimeType = static::getMimeTypeFromFile($filename);
+
+        return false !== $mimeType && InvoiceSuiteStringUtils::equalsNoCase($mimeType, 'application/json');
+    }
+
+    /**
+     * Check whether the file has an XML MIME type.
+     *
+     * @param  string $filename The path to the file
+     * @return bool
+     */
+    public static function isXmlFile(
+        string $filename
+    ): bool {
+        $mimeType = static::getMimeTypeFromFile($filename);
+
+        return false !== $mimeType && InvoiceSuiteArrayUtils::inArrayNoCase(['application/xml', 'text/xml'], $mimeType);
+    }
+
+    /**
+     * Check whether the file has a PDF MIME type.
+     *
+     * @param  string $filename The path to the file
+     * @return bool
+     */
+    public static function isPdfFile(
+        string $filename
+    ): bool {
+        $mimeType = static::getMimeTypeFromFile($filename);
+
+        return false !== $mimeType && InvoiceSuiteStringUtils::equalsNoCase($mimeType, 'application/pdf');
+    }
 }
