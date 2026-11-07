@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\utils;
 
-use finfo;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
@@ -252,8 +251,7 @@ class InvoiceSuiteAttachment implements JsonSerializable
             return false;
         }
 
-        $tempFileInfo = new finfo(FILEINFO_MIME_TYPE);
-        $mimeType = $tempFileInfo->buffer($this->internalContent);
+        $mimeType = InvoiceSuiteFileUtils::getMimeTypeFromContent($this->internalContent);
 
         if ('text/plain' === $mimeType && 'csv' === $this->internalFilenameExtension) {
             return 'text/csv';

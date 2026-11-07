@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\utils;
 
+use finfo;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\stringmanagement\FileUtils;
@@ -99,5 +100,33 @@ class InvoiceSuiteFileUtils extends FileUtils
         mixed $content
     ): bool {
         return false !== file_put_contents($filename, $content, LOCK_EX);
+    }
+
+    /**
+     * Detect the MIME type of a readable file from its contents.
+     *
+     * @param  string       $filename The path to the file
+     * @return false|string The detected MIME type, or false if detection fails
+     */
+    public static function getMimeTypeFromFile(
+        string $filename
+    ): false|string {
+        if (!static::isReadableFile($filename)) {
+            return false;
+        }
+
+        return (new finfo(FILEINFO_MIME_TYPE))->file($filename);
+    }
+
+    /**
+     * Detect the MIME type of raw content, including binary data.
+     *
+     * @param  string       $content The content to inspect
+     * @return false|string The detected MIME type, or false if detection fails
+     */
+    public static function getMimeTypeFromContent(
+        string $content
+    ): false|string {
+        return (new finfo(FILEINFO_MIME_TYPE))->buffer($content);
     }
 }

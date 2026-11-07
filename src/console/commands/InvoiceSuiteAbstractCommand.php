@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\console\commands;
 
-use finfo;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\InvoiceSuiteSettings;
@@ -813,8 +812,7 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     ): string {
         $filename = $this->ensureFileExists($filename);
 
-        $fileInfo = new finfo(FILEINFO_MIME_TYPE);
-        $fileMimeType = $fileInfo->file($filename, FILEINFO_MIME_TYPE);
+        $fileMimeType = InvoiceSuiteFileUtils::getMimeTypeFromFile($filename);
 
         if (false === $fileMimeType) {
             throw new RuntimeException(InvoiceSuiteStringUtils::sprintf('Unable to detect MIME type for file "%s".', $filename));

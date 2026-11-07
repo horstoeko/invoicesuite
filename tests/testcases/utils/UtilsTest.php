@@ -1407,6 +1407,10 @@ final class UtilsTest extends TestCase
         $this->assertTrue(InvoiceSuiteFileUtils::isReadableFile(__DIR__ . '/../../assets/99_FileUtilsTest_tobase64.txt'));
         $this->assertFalse(InvoiceSuiteFileUtils::isReadableFile(__DIR__ . '/../../assets/filenotexists.txt'));
 
+        $this->assertSame('text/plain', InvoiceSuiteFileUtils::getMimeTypeFromFile(__DIR__ . '/../../assets/99_FileUtilsTest_tobase64.txt'));
+        $this->assertFalse(InvoiceSuiteFileUtils::getMimeTypeFromFile(__DIR__ . '/../../assets/filenotexists.txt'));
+        $this->assertSame('text/xml', InvoiceSuiteFileUtils::getMimeTypeFromContent('<?xml version="1.0"?><invoice/>'));
+
         $this->assertSame('', InvoiceSuiteFileUtils::getContentFromFileOrString(''));
         $this->assertSame('http://test.de', InvoiceSuiteFileUtils::getContentFromFileOrString('http://test.de'));
         $this->assertSame("I am a testfile. Don't modify me...", InvoiceSuiteFileUtils::getContentFromFileOrString(__DIR__ . '/../../assets/99_FileUtilsTest_tobase64.txt'));
