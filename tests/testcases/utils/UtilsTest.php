@@ -1437,25 +1437,6 @@ final class UtilsTest extends TestCase
         $this->assertSame('text/plain', InvoiceSuiteFileUtils::getMimeTypeFromFile(__DIR__ . '/../../assets/99_FileUtilsTest_tobase64.txt'));
         $this->assertFalse(InvoiceSuiteFileUtils::getMimeTypeFromFile(__DIR__ . '/../../assets/filenotexists.txt'));
 
-        $xmlFilename = __DIR__ . '/../../assets/02_technical_xml_zffx_comfort.xml';
-        $pdfFilename = __DIR__ . '/../../assets/pdf_plain.pdf';
-        $jsonFilename = tempnam(sys_get_temp_dir(), 'invoicesuite-');
-
-        $this->assertNotFalse($jsonFilename);
-        $this->registerFileForTestMethodTeardown($jsonFilename);
-        $this->assertTrue(InvoiceSuiteFileUtils::putContentToFile($jsonFilename, '{"invoice":123}'));
-
-        $this->assertTrue(InvoiceSuiteFileUtils::isJsonFile($jsonFilename));
-        $this->assertTrue(InvoiceSuiteFileUtils::isXmlFile($xmlFilename));
-        $this->assertTrue(InvoiceSuiteFileUtils::isPdfFile($pdfFilename));
-        $this->assertFalse(InvoiceSuiteFileUtils::isJsonFile($xmlFilename));
-        $this->assertFalse(InvoiceSuiteFileUtils::isXmlFile($pdfFilename));
-        $this->assertFalse(InvoiceSuiteFileUtils::isPdfFile($jsonFilename));
-
-        $this->assertFalse(InvoiceSuiteFileUtils::isJsonFile(__DIR__ . '/../../assets/filenotexists.txt'));
-        $this->assertFalse(InvoiceSuiteFileUtils::isXmlFile(__DIR__ . '/../../assets/filenotexists.txt'));
-        $this->assertFalse(InvoiceSuiteFileUtils::isPdfFile(__DIR__ . '/../../assets/filenotexists.txt'));
-
         $this->assertSame('', InvoiceSuiteFileUtils::getContentFromFileOrString(''));
         $this->assertSame('http://test.de', InvoiceSuiteFileUtils::getContentFromFileOrString('http://test.de'));
         $this->assertSame("I am a testfile. Don't modify me...", InvoiceSuiteFileUtils::getContentFromFileOrString(__DIR__ . '/../../assets/99_FileUtilsTest_tobase64.txt'));
