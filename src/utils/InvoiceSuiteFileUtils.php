@@ -133,7 +133,7 @@ class InvoiceSuiteFileUtils extends FileUtils
     }
 
     /**
-     * Check whether the file has an XML MIME type.
+     * Check whether the file has an XML MIME type or contains well-formed XML.
      *
      * @param  string $filename The path to the file
      * @return bool
@@ -143,7 +143,11 @@ class InvoiceSuiteFileUtils extends FileUtils
     ): bool {
         $mimeType = static::getMimeTypeFromFile($filename);
 
-        return false !== $mimeType && InvoiceSuiteArrayUtils::inArrayNoCase(['application/xml', 'text/xml'], $mimeType);
+        if (false !== $mimeType && InvoiceSuiteArrayUtils::inArrayNoCase(['application/xml', 'text/xml'], $mimeType)) {
+            return true;
+        }
+
+        return static::isReadableFile($filename) && false !== InvoiceSuiteXmlUtils::loadFile($filename);
     }
 
     /**
