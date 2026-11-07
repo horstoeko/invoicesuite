@@ -8,6 +8,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteExceptionCodes;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
+use horstoeko\invoicesuite\InvoiceSuitePdfDocumentReader;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use horstoeko\invoicesuite\validators\InvoiceSuiteXsdDocumentValidator;
@@ -54,6 +55,23 @@ final class InvoiceSuiteXsdDocumentValidatorTest extends TestCase
         $this->assertSame($documentReader->getOriginalDocumentContent(), $validator->getOriginalDocumentContent());
         $this->assertSame(
             $documentReader->getCurrentDocumentFormatProvider()->getValidationXsdFilename(),
+            $validator->getXsdFilename()
+        );
+    }
+
+    public function testCreateFromPdfDocumentReader(): void
+    {
+        $pdfDocumentReader = InvoiceSuitePdfDocumentReader::createFromFile($this->getSamplePdfPath());
+
+        $validator = InvoiceSuiteXsdDocumentValidator::createFromPdfDocumentReader($pdfDocumentReader);
+
+        $this->assertSame(
+            $pdfDocumentReader->getInvoiceDocumentAttachment()?->getAttachmentContent(),
+            $validator->getOriginalDocumentContent()
+        );
+        $this->assertSame($pdfDocumentReader->getCurrentDocumentFormatProvider(), $validator->getCurrentDocumentFormatProvider());
+        $this->assertSame(
+            $pdfDocumentReader->getCurrentDocumentFormatProvider()->getValidationXsdFilename(),
             $validator->getXsdFilename()
         );
     }
@@ -144,6 +162,14 @@ final class InvoiceSuiteXsdDocumentValidatorTest extends TestCase
         return InvoiceSuitePathUtils::combinePathWithFile(
             InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', 'assets'),
             '02_technical_xml_zffx_comfort.xml'
+        );
+    }
+
+    private function getSamplePdfPath(): string
+    {
+        return InvoiceSuitePathUtils::combinePathWithFile(
+            InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', 'assets'),
+            'pdf_with_multiple_attachments.pdf'
         );
     }
 }

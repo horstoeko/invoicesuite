@@ -23,6 +23,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteValidationContentNotSpecifiedException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
+use horstoeko\invoicesuite\InvoiceSuitePdfDocumentReader;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
@@ -99,6 +100,21 @@ abstract class InvoiceSuiteAbstractDocumentValidator
         return (new static())
             ->intializeAfterConstruct()
             ->setDocumentBuilder($fromDocumentBuilder);
+    }
+
+    /**
+     * Create a validator instance for the invoice XML embedded in a PDF.
+     *
+     * @param  InvoiceSuitePdfDocumentReader $fromPdfDocumentReader
+     * @return static
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteInvalidArgumentException
+     */
+    public static function createFromPdfDocumentReader(
+        InvoiceSuitePdfDocumentReader $fromPdfDocumentReader
+    ): static {
+        return static::createFromDocumentReader($fromPdfDocumentReader->getDocumentReader());
     }
 
     /**
