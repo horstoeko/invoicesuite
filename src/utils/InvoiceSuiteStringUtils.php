@@ -8,6 +8,7 @@ use Exception;
 use finfo;
 use horstoeko\stringmanagement\StringUtils;
 use Random\RandomException;
+use Throwable;
 
 /**
  * class representing string utilities
@@ -560,7 +561,7 @@ class InvoiceSuiteStringUtils
     }
 
     /**
-     * Check whether the content has a JSON MIME type.
+     * Check whether the content is a well-formed JSON object or array.
      *
      * @param  string $content The content to inspect
      * @return bool
@@ -568,9 +569,17 @@ class InvoiceSuiteStringUtils
     public static function isJsonString(
         string $content
     ): bool {
-        $mimeType = static::getMimeTypeFromString($content);
+        if (static::stringIsNullOrEmpty($content)) {
+            return false;
+        }
 
-        return false !== $mimeType && static::equalsNoCase($mimeType, 'application/json');
+        try {
+            $jsonDecoded = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+
+            return is_object($jsonDecoded) || InvoiceSuiteArrayUtils::is($jsonDecoded);
+        } catch (Throwable) {
+            return false;
+        }
     }
 
     /**
@@ -588,7 +597,7 @@ class InvoiceSuiteStringUtils
     }
 
     /**
-     * Check whether the content has an XML MIME type.
+     * Check whether the content is a well-formed XML document.
      *
      * @param  string $content The content to inspect
      * @return bool
@@ -596,8 +605,19 @@ class InvoiceSuiteStringUtils
     public static function isXmlString(
         string $content
     ): bool {
-        $mimeType = static::getMimeTypeFromString($content);
+        if (static::stringIsNullOrEmpty($content)) {
+            return false;
+        }
 
-        return false !== $mimeType && InvoiceSuiteArrayUtils::inArrayNoCase(['application/xml', 'text/xml'], $mimeType);
+        $prevUseInternalErrors = \libxml_use_internal_errors(true);
+
+        try {
+            libxml_clear_errors();
+
+            return false !== InvoiceSuiteXmlUtils::loadXml($content);
+        } finally {
+            libxml_clear_errors();
+            libxml_use_internal_errors($prevUseInternalErrors);
+        }
     }
 }

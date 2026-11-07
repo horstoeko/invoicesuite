@@ -917,7 +917,12 @@ final class UtilsTest extends TestCase
     public function testInvoiceSuiteStringUtilsMime(): void
     {
         $jsonContent = '{"invoice":123}';
+        $jsonContent2 = '[{"invoice":123}]';
+        $jsonConentInvalid = '123';
+        $jsonConentInvalid2 = '{"invoice":';
         $xmlContent = '<?xml version="1.0"?><invoice/>';
+        $xmlContent2 = '<invoice/>';
+        $xmlContentInvalid = '<?xml version="1.0"?><invoice>';
         $pdfContent = InvoiceSuiteFileUtils::getContentFromFile(__DIR__ . '/../../assets/pdf_plain.pdf');
 
         $this->assertSame('text/xml', InvoiceSuiteStringUtils::getMimeTypeFromString($xmlContent));
@@ -928,6 +933,12 @@ final class UtilsTest extends TestCase
         $this->assertFalse(InvoiceSuiteStringUtils::isJsonString($xmlContent));
         $this->assertFalse(InvoiceSuiteStringUtils::isXmlString($jsonContent));
         $this->assertFalse(InvoiceSuiteStringUtils::isPdfString($xmlContent));
+
+        $this->assertTrue(InvoiceSuiteStringUtils::isJsonString($jsonContent2));
+        $this->assertFalse(InvoiceSuiteStringUtils::isJsonString($jsonConentInvalid));
+        $this->assertFalse(InvoiceSuiteStringUtils::isJsonString($jsonConentInvalid2));
+        $this->assertTrue(InvoiceSuiteStringUtils::isXmlString($xmlContent2));
+        $this->assertFalse(InvoiceSuiteStringUtils::isXmlString($xmlContentInvalid));
     }
 
     public function testInvoiceSuitePointerUtilsFirst(): void
@@ -1426,7 +1437,7 @@ final class UtilsTest extends TestCase
         $this->assertSame('text/plain', InvoiceSuiteFileUtils::getMimeTypeFromFile(__DIR__ . '/../../assets/99_FileUtilsTest_tobase64.txt'));
         $this->assertFalse(InvoiceSuiteFileUtils::getMimeTypeFromFile(__DIR__ . '/../../assets/filenotexists.txt'));
 
-        $xmlFilename = __DIR__ . '/../../assets/02_technical_xml_zffx_xrechnung.xml';
+        $xmlFilename = __DIR__ . '/../../assets/02_technical_xml_zffx_comfort.xml';
         $pdfFilename = __DIR__ . '/../../assets/pdf_plain.pdf';
         $jsonFilename = tempnam(sys_get_temp_dir(), 'invoicesuite-');
 

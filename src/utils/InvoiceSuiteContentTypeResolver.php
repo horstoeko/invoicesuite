@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\utils;
 
-use Throwable;
-
 /**
  * class representing tools for getting the content type
  *
@@ -25,61 +23,14 @@ class InvoiceSuiteContentTypeResolver
     public static function resolveContentType(
         string $fromContent
     ): ?InvoiceSuiteContentType {
-        if (static::isValidJson($fromContent)) {
+        if (InvoiceSuiteStringUtils::isJsonString($fromContent)) {
             return InvoiceSuiteContentType::JSON;
         }
 
-        if (static::isValidXml($fromContent)) {
+        if (InvoiceSuiteStringUtils::isXmlString($fromContent)) {
             return InvoiceSuiteContentType::XML;
         }
 
         return null;
-    }
-
-    /**
-     * Test that $fromContent is a valid XML
-     *
-     * @param  string $fromContent
-     * @return bool
-     */
-    protected static function isValidXml(
-        string $fromContent
-    ): bool {
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($fromContent)) {
-            return false;
-        }
-
-        $prevUseInternalErrors = \libxml_use_internal_errors(true);
-
-        try {
-            libxml_clear_errors();
-
-            return false !== InvoiceSuiteXmlUtils::loadXml($fromContent);
-        } finally {
-            libxml_clear_errors();
-            libxml_use_internal_errors($prevUseInternalErrors);
-        }
-    }
-
-    /**
-     * Test that $fromContent is a valid JSON
-     *
-     * @param  string $fromContent
-     * @return bool
-     */
-    protected static function isValidJson(
-        string $fromContent
-    ): bool {
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($fromContent)) {
-            return false;
-        }
-
-        try {
-            $jsonDecoded = json_decode($fromContent, false, 512, JSON_THROW_ON_ERROR);
-
-            return is_object($jsonDecoded) || InvoiceSuiteArrayUtils::is($jsonDecoded);
-        } catch (Throwable) {
-            return false;
-        }
     }
 }
