@@ -1426,7 +1426,7 @@ final class UtilsTest extends TestCase
         $this->assertSame('text/plain', InvoiceSuiteFileUtils::getMimeTypeFromFile(__DIR__ . '/../../assets/99_FileUtilsTest_tobase64.txt'));
         $this->assertFalse(InvoiceSuiteFileUtils::getMimeTypeFromFile(__DIR__ . '/../../assets/filenotexists.txt'));
 
-        $xmlFilename = __DIR__ . '/../../assets/00_case_comfort_simple.xml';
+        $xmlFilename = __DIR__ . '/../../assets/02_technical_xml_zffx_xrechnung.xml';
         $pdfFilename = __DIR__ . '/../../assets/pdf_plain.pdf';
         $jsonFilename = tempnam(sys_get_temp_dir(), 'invoicesuite-');
 
