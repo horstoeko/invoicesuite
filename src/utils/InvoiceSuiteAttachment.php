@@ -251,7 +251,7 @@ class InvoiceSuiteAttachment implements JsonSerializable
             return false;
         }
 
-        $mimeType = InvoiceSuiteFileUtils::getMimeTypeFromContent($this->internalContent);
+        $mimeType = InvoiceSuiteStringUtils::getMimeTypeFromContent($this->internalContent);
 
         if ('text/plain' === $mimeType && 'csv' === $this->internalFilenameExtension) {
             return 'text/csv';

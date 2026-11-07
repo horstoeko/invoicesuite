@@ -914,6 +914,22 @@ final class UtilsTest extends TestCase
         $this->assertSame('My name is John', InvoiceSuiteStringUtils::translateArray('My name is {{name}}', ['{{name}}' => 'John']));
     }
 
+    public function testInvoiceSuiteStringUtilsMime(): void
+    {
+        $jsonContent = '{"invoice":123}';
+        $xmlContent = '<?xml version="1.0"?><invoice/>';
+        $pdfContent = InvoiceSuiteFileUtils::getContentFromFile(__DIR__ . '/../../assets/pdf_plain.pdf');
+
+        $this->assertSame('text/xml', InvoiceSuiteStringUtils::getMimeTypeFromContent($xmlContent));
+
+        $this->assertTrue(InvoiceSuiteStringUtils::isJsonContent($jsonContent));
+        $this->assertTrue(InvoiceSuiteStringUtils::isXmlContent($xmlContent));
+        $this->assertTrue(InvoiceSuiteStringUtils::isPdfContent($pdfContent));
+        $this->assertFalse(InvoiceSuiteStringUtils::isJsonContent($xmlContent));
+        $this->assertFalse(InvoiceSuiteStringUtils::isXmlContent($jsonContent));
+        $this->assertFalse(InvoiceSuiteStringUtils::isPdfContent($xmlContent));
+    }
+
     public function testInvoiceSuitePointerUtilsFirst(): void
     {
         InvoiceSuitePointerUtils::first('ptr1');
@@ -1410,25 +1426,13 @@ final class UtilsTest extends TestCase
         $this->assertSame('text/plain', InvoiceSuiteFileUtils::getMimeTypeFromFile(__DIR__ . '/../../assets/99_FileUtilsTest_tobase64.txt'));
         $this->assertFalse(InvoiceSuiteFileUtils::getMimeTypeFromFile(__DIR__ . '/../../assets/filenotexists.txt'));
 
-        $jsonFilename = tempnam(sys_get_temp_dir(), 'invoicesuite-');
-        $jsonContent = '{"invoice":123}';
         $xmlFilename = __DIR__ . '/../../assets/00_case_comfort_simple.xml';
-        $xmlContent = '<?xml version="1.0"?><invoice/>';
         $pdfFilename = __DIR__ . '/../../assets/pdf_plain.pdf';
-        $pdfContent = InvoiceSuiteFileUtils::getContentFromFile($pdfFilename);
+        $jsonFilename = tempnam(sys_get_temp_dir(), 'invoicesuite-');
 
         $this->assertNotFalse($jsonFilename);
         $this->registerFileForTestMethodTeardown($jsonFilename);
-        $this->assertTrue(InvoiceSuiteFileUtils::putContentToFile($jsonFilename, $jsonContent));
-
-        $this->assertSame('text/xml', InvoiceSuiteFileUtils::getMimeTypeFromContent($xmlContent));
-
-        $this->assertTrue(InvoiceSuiteFileUtils::isJsonContent($jsonContent));
-        $this->assertTrue(InvoiceSuiteFileUtils::isXmlContent($xmlContent));
-        $this->assertTrue(InvoiceSuiteFileUtils::isPdfContent($pdfContent));
-        $this->assertFalse(InvoiceSuiteFileUtils::isJsonContent($xmlContent));
-        $this->assertFalse(InvoiceSuiteFileUtils::isXmlContent($jsonContent));
-        $this->assertFalse(InvoiceSuiteFileUtils::isPdfContent($xmlContent));
+        $this->assertTrue(InvoiceSuiteFileUtils::putContentToFile($jsonFilename, '{"invoice":123}'));
 
         $this->assertTrue(InvoiceSuiteFileUtils::isJsonFile($jsonFilename));
         $this->assertTrue(InvoiceSuiteFileUtils::isXmlFile($xmlFilename));
