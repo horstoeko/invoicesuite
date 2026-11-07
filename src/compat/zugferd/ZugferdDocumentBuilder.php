@@ -22,7 +22,6 @@ use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistReferenceCodeQualifiers
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesSafeInvoking;
 use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxProfiles;
-use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeSettlementHeaderMonetarySummationType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException;
