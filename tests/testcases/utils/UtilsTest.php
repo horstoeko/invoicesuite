@@ -920,14 +920,14 @@ final class UtilsTest extends TestCase
         $xmlContent = '<?xml version="1.0"?><invoice/>';
         $pdfContent = InvoiceSuiteFileUtils::getContentFromFile(__DIR__ . '/../../assets/pdf_plain.pdf');
 
-        $this->assertSame('text/xml', InvoiceSuiteStringUtils::getMimeTypeFromContent($xmlContent));
+        $this->assertSame('text/xml', InvoiceSuiteStringUtils::getMimeTypeFromString($xmlContent));
 
-        $this->assertTrue(InvoiceSuiteStringUtils::isJsonContent($jsonContent));
-        $this->assertTrue(InvoiceSuiteStringUtils::isXmlContent($xmlContent));
-        $this->assertTrue(InvoiceSuiteStringUtils::isPdfContent($pdfContent));
-        $this->assertFalse(InvoiceSuiteStringUtils::isJsonContent($xmlContent));
-        $this->assertFalse(InvoiceSuiteStringUtils::isXmlContent($jsonContent));
-        $this->assertFalse(InvoiceSuiteStringUtils::isPdfContent($xmlContent));
+        $this->assertTrue(InvoiceSuiteStringUtils::isJsonString($jsonContent));
+        $this->assertTrue(InvoiceSuiteStringUtils::isXmlString($xmlContent));
+        $this->assertTrue(InvoiceSuiteStringUtils::isPdfString($pdfContent));
+        $this->assertFalse(InvoiceSuiteStringUtils::isJsonString($xmlContent));
+        $this->assertFalse(InvoiceSuiteStringUtils::isXmlString($jsonContent));
+        $this->assertFalse(InvoiceSuiteStringUtils::isPdfString($xmlContent));
     }
 
     public function testInvoiceSuitePointerUtilsFirst(): void

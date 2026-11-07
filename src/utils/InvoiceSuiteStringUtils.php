@@ -553,7 +553,7 @@ class InvoiceSuiteStringUtils
      * @param  string       $content The content to inspect
      * @return false|string The detected MIME type, or false if detection fails
      */
-    public static function getMimeTypeFromContent(
+    public static function getMimeTypeFromString(
         string $content
     ): false|string {
         return (new finfo(FILEINFO_MIME_TYPE))->buffer($content);
@@ -565,10 +565,10 @@ class InvoiceSuiteStringUtils
      * @param  string $content The content to inspect
      * @return bool
      */
-    public static function isJsonContent(
+    public static function isJsonString(
         string $content
     ): bool {
-        $mimeType = static::getMimeTypeFromContent($content);
+        $mimeType = static::getMimeTypeFromString($content);
 
         return false !== $mimeType && static::equalsNoCase($mimeType, 'application/json');
     }
@@ -579,10 +579,10 @@ class InvoiceSuiteStringUtils
      * @param  string $content The content to inspect
      * @return bool
      */
-    public static function isPdfContent(
+    public static function isPdfString(
         string $content
     ): bool {
-        $mimeType = static::getMimeTypeFromContent($content);
+        $mimeType = static::getMimeTypeFromString($content);
 
         return false !== $mimeType && static::equalsNoCase($mimeType, 'application/pdf');
     }
@@ -593,10 +593,10 @@ class InvoiceSuiteStringUtils
      * @param  string $content The content to inspect
      * @return bool
      */
-    public static function isXmlContent(
+    public static function isXmlString(
         string $content
     ): bool {
-        $mimeType = static::getMimeTypeFromContent($content);
+        $mimeType = static::getMimeTypeFromString($content);
 
         return false !== $mimeType && InvoiceSuiteArrayUtils::inArrayNoCase(['application/xml', 'text/xml'], $mimeType);
     }
