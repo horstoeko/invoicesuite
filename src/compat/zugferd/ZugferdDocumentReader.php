@@ -16,6 +16,7 @@ use DateTimeInterface;
 use Error;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesSafeInvoking;
+use horstoeko\invoicesuite\documents\providers\zffx\models\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
@@ -400,6 +401,26 @@ class ZugferdDocumentReader extends ZugferdDocument
         $this->documentReader->getDocumentCompleteDate($effectiveSpecifiedPeriod);
 
         return $this;
+    }
+
+    /**
+     * Read the tax accounting currency, its tax total, and the exchange rate.
+     *
+     * @param  null|string $foreignCurrencyCode The tax accounting currency
+     * @param  null|float  $foreignTaxAmount    The tax total in the tax accounting currency
+     * @param  null|float  $exchangeRate        The exchange rate from the invoice currency
+     * @return static
+     *
+     * @param-out string $foreignCurrencyCode
+     * @param-out float  $foreignTaxAmount
+     * @param-out float  $exchangeRate
+     */
+    public function getDocumentForeignCurrency(
+        ?string &$foreignCurrencyCode,
+        ?float &$foreignTaxAmount,
+        ?float &$exchangeRate
+    ): static {
+        return $this->internalGetForeignCurrency($foreignCurrencyCode, $foreignTaxAmount, $exchangeRate);
     }
 
     /**
@@ -6317,6 +6338,51 @@ class ZugferdDocumentReader extends ZugferdDocument
         if ($newInvoiceSuiteAttachment->isUrlAttachment()) {
             $uriId = $newInvoiceSuiteAttachment->getRawContent();
         }
+
+        return $this;
+    }
+
+    /**
+     * Read the tax accounting currency, its tax total, and the exchange rate from the CII invoice.
+     *
+     * @param  null|string $taxCurrency       The tax accounting currency
+     * @param  null|float  $taxCurrencyAmount The tax total in the tax accounting currency
+     * @param  null|float  $exchangeRate      The exchange rate from the invoice currency
+     * @return static
+     *
+     * @param-out string $taxCurrency
+     * @param-out float  $taxCurrencyAmount
+     * @param-out float  $exchangeRate
+     */
+    private function internalGetForeignCurrency(
+        ?string &$taxCurrency,
+        ?float &$taxCurrencyAmount,
+        ?float &$exchangeRate
+    ): static {
+        $taxCurrency = '';
+        $taxCurrencyAmount = 0.0;
+        $exchangeRate = 0.0;
+
+        $this->documentReader->getDocumentTaxCurrency($taxCurrency);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($taxCurrency)) {
+            return $this;
+        }
+
+        /** @var CrossIndustryInvoiceType $documentRoot */
+        $documentRoot = $this->documentReader->getCurrentDocumentFormatProvider()->getReader()->getDocumentRootObject();
+        $headerTradeSettlement = $documentRoot->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement();
+        $taxTotalAmounts = $headerTradeSettlement?->getSpecifiedTradeSettlementHeaderMonetarySummation()?->getTaxTotalAmount() ?? [];
+
+        foreach ($taxTotalAmounts as $taxTotalAmount) {
+            if ($taxTotalAmount->getCurrencyID() === $taxCurrency) {
+                $taxCurrencyAmount = $taxTotalAmount->getValue() ?? 0.0;
+
+                break;
+            }
+        }
+
+        $exchangeRate = $headerTradeSettlement?->getTaxApplicableTradeCurrencyExchange()?->getConversionRate()?->getValue() ?? 0.0;
 
         return $this;
     }

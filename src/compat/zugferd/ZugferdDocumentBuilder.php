@@ -21,6 +21,10 @@ use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistReferenceCodeQualifiers;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesSafeInvoking;
+use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxProfiles;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeSettlementHeaderMonetarySummationType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\rsm\CrossIndustryInvoiceType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
@@ -29,6 +33,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteMessageBagItem;
 use horstoeko\invoicesuite\utils\InvoiceSuiteMessageSeverity;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
@@ -550,10 +555,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
         ?float $foreignTaxAmount = null,
         ?float $exchangeRate = null
     ): static {
-        // TODO Make it complete
-        $this->documentBuilder->setDocumentTaxCurrency($foreignCurrencyCode);
-
-        return $this;
+        return $this->internalSetForeignCurrency($foreignCurrencyCode, $foreignTaxAmount, $exchangeRate);
     }
 
     /**
@@ -5596,5 +5598,83 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
     protected function onBeforeGetContent(): void
     {
         // Do nothing
+    }
+
+    /**
+     * Set the tax accounting currency, optionally with its tax total and exchange rate.
+     *
+     * @param  null|string $taxCurrency       The tax accounting currency
+     * @param  null|float  $taxCurrencyAmount The tax total in the tax accounting currency
+     * @param  null|float  $exchangeRate      The explicit exchange rate, if supplied
+     * @return static
+     */
+    private function internalSetForeignCurrency(
+        ?string $taxCurrency,
+        ?float $taxCurrencyAmount,
+        ?float $exchangeRate
+    ): static {
+        /** @var CrossIndustryInvoiceType $documentRoot */
+        $documentRoot = $this->documentBuilder->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject();
+        $headerTradeSettlement = $documentRoot->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement();
+        $documentSummation = $headerTradeSettlement?->getSpecifiedTradeSettlementHeaderMonetarySummation();
+        $invoiceCurrency = $headerTradeSettlement?->getInvoiceCurrencyCode()?->getValue();
+        $conversionRate = null;
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($taxCurrency) && !InvoiceSuiteFloatUtils::floatIsNullOrEmpty($taxCurrencyAmount)) {
+            $maximumProfile = $this->documentBuilder->getCurrentDocumentFormatProviderParameterValueInt('WantsMaximumProfile', -1);
+
+            if ($maximumProfile < InvoiceSuiteZfFxProfiles::BASICWL->value || InvoiceSuiteStringUtils::stringIsNullOrEmpty($invoiceCurrency) || $invoiceCurrency === $taxCurrency) {
+                return $this;
+            }
+
+            $invoiceTaxTotal = null;
+            $taxCurrencyTotal = null;
+
+            foreach ($documentSummation->getTaxTotalAmount() ?? [] as $taxTotalAmount) {
+                if ($taxTotalAmount->getCurrencyID() === $invoiceCurrency) {
+                    $invoiceTaxTotal = $taxTotalAmount;
+                } else {
+                    $taxCurrencyTotal = $taxTotalAmount;
+                }
+            }
+
+            $invoiceTaxTotalAmount = $invoiceTaxTotal?->getValue();
+
+            if (null === $invoiceTaxTotal || InvoiceSuiteFloatUtils::floatIsNullOrEmpty($invoiceTaxTotalAmount) || 0.0 === $invoiceTaxTotalAmount) {
+                return $this;
+            }
+
+            $taxCurrencyTotal ??= new AmountType();
+            $taxCurrencyTotal->setValue($taxCurrencyAmount);
+            $documentSummation->setTaxTotalAmount([$invoiceTaxTotal, $taxCurrencyTotal]);
+
+            if ($maximumProfile >= InvoiceSuiteZfFxProfiles::EXTENDED->value) {
+                $conversionRate = $exchangeRate ?? round($taxCurrencyAmount / $invoiceTaxTotalAmount, 5);
+            }
+        } elseif ($headerTradeSettlement?->getTaxCurrencyCode()?->getValue() !== $taxCurrency) {
+            $taxTotalAmounts = $documentSummation?->getTaxTotalAmount() ?? [];
+
+            if (isset($taxTotalAmounts[1])) {
+                unset($taxTotalAmounts[1]);
+                $documentSummation?->setTaxTotalAmount($taxTotalAmounts);
+            }
+        }
+
+        $exchangeTargetCurrency = $headerTradeSettlement?->getTaxApplicableTradeCurrencyExchange()?->getTargetCurrencyCode()?->getValue();
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($exchangeTargetCurrency) && $exchangeTargetCurrency !== $taxCurrency) {
+            $headerTradeSettlement?->unsetTaxApplicableTradeCurrencyExchange();
+        }
+
+        $this->documentBuilder->setDocumentTaxCurrency($taxCurrency);
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($conversionRate)) {
+            $currencyExchange = $headerTradeSettlement?->getTaxApplicableTradeCurrencyExchangeWithCreate();
+            $currencyExchange?->getSourceCurrencyCodeWithCreate()->setValue($invoiceCurrency);
+            $currencyExchange?->getTargetCurrencyCodeWithCreate()->setValue($taxCurrency);
+            $currencyExchange?->getConversionRateWithCreate()->setValue($conversionRate);
+        }
+
+        return $this;
     }
 }
