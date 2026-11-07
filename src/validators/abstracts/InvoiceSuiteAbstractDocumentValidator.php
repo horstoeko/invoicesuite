@@ -19,7 +19,9 @@ use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentForma
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteInternalMethodCallException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteValidationContentNotSpecifiedException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
@@ -28,6 +30,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use JMS\Serializer\Exception\RuntimeException as JMSSerializerRuntimeException;
+use PrinsFrank\PdfParser\Exception\PdfParserException;
 
 /**
  * Class representing methods base functionallity for a document validator
@@ -132,6 +135,34 @@ abstract class InvoiceSuiteAbstractDocumentValidator
         return (new static())
             ->intializeAfterConstruct()
             ->setDocumentContent($fromDocumentContent);
+    }
+
+    /**
+     * Create a validator from XML, JSON, or a PDF containing an embedded invoice.
+     *
+     * @param  string $fromDocumentContent
+     * @return static
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteInternalMethodCallException
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws JMSSerializerRuntimeException
+     * @throws PdfParserException
+     */
+    public static function createFromVariableContent(
+        string $fromDocumentContent
+    ): static {
+        if (InvoiceSuiteStringUtils::isPdfString($fromDocumentContent)) {
+            return static::createFromPdfDocumentReader(InvoiceSuitePdfDocumentReader::createFromContent($fromDocumentContent));
+        }
+
+        if (InvoiceSuiteStringUtils::isJsonString($fromDocumentContent) || InvoiceSuiteStringUtils::isXmlString($fromDocumentContent)) {
+            return static::createFromDocumentReader(InvoiceSuiteDocumentReader::createFromContent($fromDocumentContent));
+        }
+
+        throw new InvoiceSuiteUnknownContentException();
     }
 
     /**

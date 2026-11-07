@@ -6,10 +6,13 @@ namespace horstoeko\invoicesuite\tests\testcases\validators;
 
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteExceptionCodes;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentReader;
 use horstoeko\invoicesuite\tests\TestCase;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use horstoeko\invoicesuite\validators\InvoiceSuiteXsdDocumentValidator;
 
@@ -24,6 +27,52 @@ final class InvoiceSuiteXsdDocumentValidatorTest extends TestCase
         $this->assertSame($documentContent, $validator->getOriginalDocumentContent());
         $this->assertSame('zffxcomfort', $validator->getCurrentDocumentFormatProvider()->getUniqueId());
         $this->assertSame('', $validator->getXsdFilename());
+    }
+
+    /**
+     * Verify that XML and PDF content use the reader's format provider and schema.
+     *
+     * @return void
+     */
+    public function testCreateFromVariableContent(): void
+    {
+        $pdfContent = InvoiceSuiteFileUtils::getContentFromFile($this->getSamplePdfPath());
+        $pdfDocumentReader = InvoiceSuitePdfDocumentReader::createFromContent($pdfContent);
+        $xmlContent = $pdfDocumentReader->getDocumentReader()->getOriginalDocumentContent();
+        $formatProvider = $pdfDocumentReader->getCurrentDocumentFormatProvider();
+
+        foreach (['XML' => $xmlContent, 'PDF' => $pdfContent] as $contentType => $documentContent) {
+            $validator = InvoiceSuiteXsdDocumentValidator::createFromVariableContent($documentContent);
+
+            $this->assertSame($xmlContent, $validator->getOriginalDocumentContent(), $contentType);
+            $this->assertSame($formatProvider->getUniqueId(), $validator->getCurrentDocumentFormatProvider()->getUniqueId(), $contentType);
+            $this->assertSame($formatProvider->getValidationXsdFilename(), $validator->getXsdFilename(), $contentType);
+        }
+    }
+
+    /**
+     * Verify that recognized JSON reaches format provider resolution.
+     *
+     * @return void
+     */
+    public function testCreateFromVariableContentThrowsForJsonWithoutFormatProvider(): void
+    {
+        $this->expectException(InvoiceSuiteFormatProviderNotFoundException::class);
+
+        InvoiceSuiteXsdDocumentValidator::createFromVariableContent('{"invoice":123}');
+    }
+
+    /**
+     * Verify that unrecognized content is rejected before a reader is created.
+     *
+     * @return void
+     */
+    public function testCreateFromVariableContentThrowsForUnknownContent(): void
+    {
+        $this->expectException(InvoiceSuiteUnknownContentException::class);
+        $this->expectExceptionCode(InvoiceSuiteExceptionCodes::UNKNOWN_CONTENT);
+
+        InvoiceSuiteXsdDocumentValidator::createFromVariableContent('not an invoice');
     }
 
     public function testCreateFromDocumentReader(): void
