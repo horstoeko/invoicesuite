@@ -18,6 +18,7 @@
 - [Overview](#overview)
 - [Dependencies](#dependencies)
 - [Installation](#installation)
+  - [Using the PHAR as a library](#using-the-phar-as-a-library)
 - [Community integrations](#community-integrations)
   - [VAMPIRE PHP: e-invoice validation in pure PHP](#vampire-php-e-invoice-validation-in-pure-php)
 - [Documentation](#documentation)
@@ -72,10 +73,26 @@ This package makes use of...
 
 ## Installation
 
-There is one recommended way to install `horstoeko/invoicesuite`
+Install `horstoeko/invoicesuite` with Composer.
 
 ```bash
 composer require "horstoeko/invoicesuite"
+```
+
+### Using the PHAR as a library
+
+For projects without Composer, download `invoicesuite.phar` from the [GitHub releases](https://github.com/horstoeko/invoicesuite/releases). The PHAR bundles InvoiceSuite and its production dependencies.
+
+Place the PHAR next to your PHP script and load its bundled autoloader.
+
+```php
+<?php
+
+use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
+
+require_once 'phar://' . __DIR__ . '/invoicesuite.phar/vendor/autoload.php';
+
+$reader = InvoiceSuiteDocumentReader::createFromFile(__DIR__ . '/invoice.xml');
 ```
 
 ## Community integrations
