@@ -65,7 +65,7 @@
             <file>../tests/testcases/documentdto/InvoiceSuiteTaxDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuiteSummationDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuitesummationLineDTOTest.php</file>
-            <file>../tests/testcases/documentdto/InvoiceSuiteDocumentDtoSerializerTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuiteDocumentDTOSerializerTest.php</file>
         </testsuite>
         <testsuite name="models">
             <file>../tests/testcases/documentmodels/UblModelTest.php</file>
