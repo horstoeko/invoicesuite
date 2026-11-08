@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -30,6 +31,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
      *
      * @var array<string>
      */
+    #[JMS\Accessor(getter: 'getNames', setter: 'setNames')]
+    #[JMS\SerializedName('names')]
+    #[JMS\Type('array<string>')]
     protected array $names = [];
 
     /**
@@ -37,6 +41,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
      *
      * @var array<string>
      */
+    #[JMS\Accessor(getter: 'getDescriptions', setter: 'setDescriptions')]
+    #[JMS\SerializedName('descriptions')]
+    #[JMS\Type('array<string>')]
     protected array $descriptions = [];
 
     /**
@@ -44,6 +51,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
      *
      * @var array<string>
      */
+    #[JMS\Accessor(getter: 'getRoleCodes', setter: 'setRoleCodes')]
+    #[JMS\SerializedName('roleCodes')]
+    #[JMS\Type('array<string>')]
     protected array $roleCodes = [];
 
     /**
@@ -51,6 +61,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteIdDTO>
      */
+    #[JMS\Accessor(getter: 'getIds', setter: 'setIds')]
+    #[JMS\SerializedName('ids')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteIdDTO>')]
     protected array $ids = [];
 
     /**
@@ -58,6 +71,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteIdDTO>
      */
+    #[JMS\Accessor(getter: 'getGlobalIds', setter: 'setGlobalIds')]
+    #[JMS\SerializedName('globalIds')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteIdDTO>')]
     protected array $globalIds = [];
 
     /**
@@ -65,6 +81,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteIdDTO>
      */
+    #[JMS\Accessor(getter: 'getTaxRegistrations', setter: 'setTaxRegistrations')]
+    #[JMS\SerializedName('taxRegistrations')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteIdDTO>')]
     protected array $taxRegistrations = [];
 
     /**
@@ -72,6 +91,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteAddressDTO>
      */
+    #[JMS\Accessor(getter: 'getAddresses', setter: 'setAddresses')]
+    #[JMS\SerializedName('addresses')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteAddressDTO>')]
     protected array $addresses = [];
 
     /**
@@ -79,6 +101,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteOrganisationDTO>
      */
+    #[JMS\Accessor(getter: 'getLegalOrganisations', setter: 'setLegalOrganisations')]
+    #[JMS\SerializedName('legalOrganisations')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteOrganisationDTO>')]
     protected array $legalOrganisations = [];
 
     /**
@@ -86,6 +111,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteContactDTO>
      */
+    #[JMS\Accessor(getter: 'getContacts', setter: 'setContacts')]
+    #[JMS\SerializedName('contacts')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteContactDTO>')]
     protected array $contacts = [];
 
     /**
@@ -93,6 +121,9 @@ class InvoiceSuitePartyDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteCommunicationDTO>
      */
+    #[JMS\Accessor(getter: 'getCommunications', setter: 'setCommunications')]
+    #[JMS\SerializedName('communications')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteCommunicationDTO>')]
     protected array $communications = [];
 
     /**

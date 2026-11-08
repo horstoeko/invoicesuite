@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -29,6 +30,9 @@ class InvoiceSuiteServiceChargeDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getAmount', setter: 'setAmount')]
+    #[JMS\SerializedName('amount')]
+    #[JMS\Type('float')]
     protected ?float $amount = null;
 
     /**
@@ -36,6 +40,9 @@ class InvoiceSuiteServiceChargeDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getDescription', setter: 'setDescription')]
+    #[JMS\SerializedName('description')]
+    #[JMS\Type('string')]
     protected ?string $description = null;
 
     /**
@@ -43,6 +50,9 @@ class InvoiceSuiteServiceChargeDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getTaxCategory', setter: 'setTaxCategory')]
+    #[JMS\SerializedName('taxCategory')]
+    #[JMS\Type('string')]
     protected ?string $taxCategory = null;
 
     /**
@@ -50,6 +60,9 @@ class InvoiceSuiteServiceChargeDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getTaxType', setter: 'setTaxType')]
+    #[JMS\SerializedName('taxType')]
+    #[JMS\Type('string')]
     protected ?string $taxType = null;
 
     /**
@@ -57,6 +70,9 @@ class InvoiceSuiteServiceChargeDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getTaxPercent', setter: 'setTaxPercent')]
+    #[JMS\SerializedName('taxPercent')]
+    #[JMS\Type('float')]
     protected ?float $taxPercent = null;
 
     /**

@@ -14,6 +14,7 @@ namespace horstoeko\invoicesuite\documents\dto;
 use DateTimeInterface;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -31,6 +32,9 @@ class InvoiceSuitePaymentTermDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getDescription', setter: 'setDescription')]
+    #[JMS\SerializedName('description')]
+    #[JMS\Type('string')]
     protected ?string $description = null;
 
     /**
@@ -38,6 +42,9 @@ class InvoiceSuitePaymentTermDTO implements JsonSerializable
      *
      * @var null|DateTimeInterface
      */
+    #[JMS\Accessor(getter: 'getDueDate', setter: 'setDueDate')]
+    #[JMS\SerializedName('dueDate')]
+    #[JMS\Type('DateTimeInterface<\'Y-m-d\TH:i:s.uP\'>')]
     protected ?DateTimeInterface $dueDate = null;
 
     /**
@@ -45,6 +52,9 @@ class InvoiceSuitePaymentTermDTO implements JsonSerializable
      *
      * @var array<InvoiceSuitePaymentTermDiscountDTO>
      */
+    #[JMS\Accessor(getter: 'getDiscountTerms', setter: 'setDiscountTerms')]
+    #[JMS\SerializedName('discountTerms')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentTermDiscountDTO>')]
     protected array $discountTerms = [];
 
     /**
@@ -52,6 +62,9 @@ class InvoiceSuitePaymentTermDTO implements JsonSerializable
      *
      * @var array<InvoiceSuitePaymentTermPenaltyDTO>
      */
+    #[JMS\Accessor(getter: 'getPenaltyTerms', setter: 'setPenaltyTerms')]
+    #[JMS\SerializedName('penaltyTerms')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentTermPenaltyDTO>')]
     protected array $penaltyTerms = [];
 
     /**
@@ -59,6 +72,9 @@ class InvoiceSuitePaymentTermDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getMandate', setter: 'setMandate')]
+    #[JMS\SerializedName('mandate')]
+    #[JMS\Type('string')]
     protected ?string $mandate = null;
 
     /**

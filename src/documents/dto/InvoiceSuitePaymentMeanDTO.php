@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -30,6 +31,9 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getTypeCode', setter: 'setTypeCode')]
+    #[JMS\SerializedName('typeCode')]
+    #[JMS\Type('string')]
     protected ?string $typeCode = null;
 
     /**
@@ -37,6 +41,9 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getName', setter: 'setName')]
+    #[JMS\SerializedName('name')]
+    #[JMS\Type('string')]
     protected ?string $name = null;
 
     /**
@@ -44,6 +51,9 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getFinancialCardId', setter: 'setFinancialCardId')]
+    #[JMS\SerializedName('financialCardId')]
+    #[JMS\Type('string')]
     protected ?string $financialCardId = null;
 
     /**
@@ -51,6 +61,9 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getFinancialCardHolder', setter: 'setFinancialCardHolder')]
+    #[JMS\SerializedName('financialCardHolder')]
+    #[JMS\Type('string')]
     protected ?string $financialCardHolder = null;
 
     /**
@@ -58,6 +71,9 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getBuyerIban', setter: 'setBuyerIban')]
+    #[JMS\SerializedName('buyerIban')]
+    #[JMS\Type('string')]
     protected ?string $buyerIban = null;
 
     /**
@@ -65,6 +81,9 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getPayeeIban', setter: 'setPayeeIban')]
+    #[JMS\SerializedName('payeeIban')]
+    #[JMS\Type('string')]
     protected ?string $payeeIban = null;
 
     /**
@@ -72,6 +91,9 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getPayeeAccountName', setter: 'setPayeeAccountName')]
+    #[JMS\SerializedName('payeeAccountName')]
+    #[JMS\Type('string')]
     protected ?string $payeeAccountName = null;
 
     /**
@@ -79,6 +101,9 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getPayeeProprietaryId', setter: 'setPayeeProprietaryId')]
+    #[JMS\SerializedName('payeeProprietaryId')]
+    #[JMS\Type('string')]
     protected ?string $payeeProprietaryId = null;
 
     /**
@@ -86,6 +111,9 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getPayeeBic', setter: 'setPayeeBic')]
+    #[JMS\SerializedName('payeeBic')]
+    #[JMS\Type('string')]
     protected ?string $payeeBic = null;
 
     /**
@@ -93,6 +121,9 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getPaymentReference', setter: 'setPaymentReference')]
+    #[JMS\SerializedName('paymentReference')]
+    #[JMS\Type('string')]
     protected ?string $paymentReference = null;
 
     /**
@@ -100,6 +131,9 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getMandate', setter: 'setMandate')]
+    #[JMS\SerializedName('mandate')]
+    #[JMS\Type('string')]
     protected ?string $mandate = null;
 
     /**
@@ -107,6 +141,9 @@ class InvoiceSuitePaymentMeanDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getBuyerAccountName', setter: 'setBuyerAccountName')]
+    #[JMS\SerializedName('buyerAccountName')]
+    #[JMS\Type('string')]
     protected ?string $buyerAccountName = null;
 
     /**

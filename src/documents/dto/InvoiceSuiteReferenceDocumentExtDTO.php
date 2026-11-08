@@ -14,6 +14,7 @@ namespace horstoeko\invoicesuite\documents\dto;
 use DateTimeInterface;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -31,6 +32,9 @@ class InvoiceSuiteReferenceDocumentExtDTO extends InvoiceSuiteReferenceDocumentD
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getTypeCode', setter: 'setTypeCode')]
+    #[JMS\SerializedName('typeCode')]
+    #[JMS\Type('string')]
     protected ?string $typeCode = null;
 
     /**
@@ -38,6 +42,9 @@ class InvoiceSuiteReferenceDocumentExtDTO extends InvoiceSuiteReferenceDocumentD
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getReferenceTypeCode', setter: 'setReferenceTypeCode')]
+    #[JMS\SerializedName('referenceTypeCode')]
+    #[JMS\Type('string')]
     protected ?string $referenceTypeCode = null;
 
     /**
@@ -45,6 +52,9 @@ class InvoiceSuiteReferenceDocumentExtDTO extends InvoiceSuiteReferenceDocumentD
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getDescription', setter: 'setDescription')]
+    #[JMS\SerializedName('description')]
+    #[JMS\Type('string')]
     protected ?string $description = null;
 
     /**
@@ -52,6 +62,9 @@ class InvoiceSuiteReferenceDocumentExtDTO extends InvoiceSuiteReferenceDocumentD
      *
      * @var null|InvoiceSuiteAttachment
      */
+    #[JMS\Accessor(getter: 'getAttachment', setter: 'setAttachment')]
+    #[JMS\SerializedName('attachment')]
+    #[JMS\Type('horstoeko\invoicesuite\utils\InvoiceSuiteAttachment')]
     protected ?InvoiceSuiteAttachment $attachment = null;
 
     /**

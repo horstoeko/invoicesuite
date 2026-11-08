@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\documents\dto;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -30,6 +31,9 @@ class InvoiceSuiteDateRangeDTO implements JsonSerializable
      *
      * @var null|DateTimeInterface
      */
+    #[JMS\Accessor(getter: 'getStartDate', setter: 'setStartDate')]
+    #[JMS\SerializedName('startDate')]
+    #[JMS\Type('DateTimeInterface<\'Y-m-d\TH:i:s.uP\'>')]
     protected ?DateTimeInterface $startDate = null;
 
     /**
@@ -37,6 +41,9 @@ class InvoiceSuiteDateRangeDTO implements JsonSerializable
      *
      * @var null|DateTimeInterface
      */
+    #[JMS\Accessor(getter: 'getEndDate', setter: 'setEndDate')]
+    #[JMS\SerializedName('endDate')]
+    #[JMS\Type('DateTimeInterface<\'Y-m-d\TH:i:s.uP\'>')]
     protected ?DateTimeInterface $endDate = null;
 
     /**
@@ -44,6 +51,9 @@ class InvoiceSuiteDateRangeDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getDescription', setter: 'setDescription')]
+    #[JMS\SerializedName('description')]
+    #[JMS\Type('string')]
     protected ?string $description = null;
 
     /**

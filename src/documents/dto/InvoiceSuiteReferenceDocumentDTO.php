@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\documents\dto;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -30,6 +31,9 @@ class InvoiceSuiteReferenceDocumentDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getReferenceNumber', setter: 'setReferenceNumber')]
+    #[JMS\SerializedName('referenceNumber')]
+    #[JMS\Type('string')]
     protected ?string $referenceNumber = null;
 
     /**
@@ -37,6 +41,9 @@ class InvoiceSuiteReferenceDocumentDTO implements JsonSerializable
      *
      * @var null|DateTimeInterface
      */
+    #[JMS\Accessor(getter: 'getReferenceDate', setter: 'setReferenceDate')]
+    #[JMS\SerializedName('referenceDate')]
+    #[JMS\Type('DateTimeInterface<\'Y-m-d\TH:i:s.uP\'>')]
     protected ?DateTimeInterface $referenceDate = null;
 
     /**

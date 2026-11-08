@@ -1,6 +1,9 @@
 <?php
 
 use horstoeko\stringmanagement\PathUtils;
+use JMS\Serializer\Annotation\Accessor;
+use JMS\Serializer\Annotation\SerializedName;
+use JMS\Serializer\Annotation\Type;
 use Nette\PhpGenerator\Closure;
 use Nette\PhpGenerator\GlobalFunction;
 use Nette\PhpGenerator\Helpers;
@@ -152,6 +155,10 @@ function gendto(array $definitions): void
         $namespace = $phpFile->addNamespace($definition['ns']);
 
         $namespace->addUse('JsonSerializable');
+
+        if ([] !== $definition['properties']) {
+            $namespace->addUse('JMS\Serializer\Annotation', 'JMS');
+        }
 
         $class = $namespace->addClass($definition['class']);
         $class->addComment(sprintf('Class representing a DTO for %s', $definition['purpose'] ?? '...'));
@@ -377,6 +384,11 @@ function gendto(array $definitions): void
             }
 
             $setter->addComment(sprintf("Sets %4\$s\n\n@param %3\$s \$%2\$s %1\$s\n@return static", $propertyCaption, $propertyClassPropertyName, $propertyTypeHint, lcfirst((string) $propertyCaption)));
+
+            $property->addAttribute(Accessor::class, ['getter' => $getter->getName(), 'setter' => $setter->getName()]);
+            $property->addAttribute(SerializedName::class, [$property->getName()]);
+            $serializerType = 'DateTimeInterface' === $propertyType ? "DateTimeInterface<'Y-m-d\\TH:i:s.uP'>" : $propertyType;
+            $property->addAttribute(Type::class, [$propertyIsArray ? sprintf('array<%s>', $serializerType) : $serializerType]);
 
             /*
              * --------------------------------

@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\documents\dto;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -30,6 +31,9 @@ class InvoiceSuiteSpecifiedAdvancePaymentDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getPaidAmount', setter: 'setPaidAmount')]
+    #[JMS\SerializedName('paidAmount')]
+    #[JMS\Type('float')]
     protected ?float $paidAmount = null;
 
     /**
@@ -37,6 +41,9 @@ class InvoiceSuiteSpecifiedAdvancePaymentDTO implements JsonSerializable
      *
      * @var null|DateTimeInterface
      */
+    #[JMS\Accessor(getter: 'getFormattedReceivedDateTime', setter: 'setFormattedReceivedDateTime')]
+    #[JMS\SerializedName('formattedReceivedDateTime')]
+    #[JMS\Type('DateTimeInterface<\'Y-m-d\TH:i:s.uP\'>')]
     protected ?DateTimeInterface $formattedReceivedDateTime = null;
 
     /**
@@ -44,6 +51,9 @@ class InvoiceSuiteSpecifiedAdvancePaymentDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteTaxDTO>
      */
+    #[JMS\Accessor(getter: 'getIncludedTradeTaxes', setter: 'setIncludedTradeTaxes')]
+    #[JMS\SerializedName('includedTradeTaxes')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO>')]
     protected array $includedTradeTaxes = [];
 
     /**
@@ -51,6 +61,9 @@ class InvoiceSuiteSpecifiedAdvancePaymentDTO implements JsonSerializable
      *
      * @var null|InvoiceSuiteReferenceDocumentExtDTO
      */
+    #[JMS\Accessor(getter: 'getInvoiceSpecifiedReferencedDocument', setter: 'setInvoiceSpecifiedReferencedDocument')]
+    #[JMS\SerializedName('invoiceSpecifiedReferencedDocument')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentExtDTO')]
     protected ?InvoiceSuiteReferenceDocumentExtDTO $invoiceSpecifiedReferencedDocument = null;
 
     /**

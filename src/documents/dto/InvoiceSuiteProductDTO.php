@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -30,6 +31,9 @@ class InvoiceSuiteProductDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getId', setter: 'setId')]
+    #[JMS\SerializedName('id')]
+    #[JMS\Type('string')]
     protected ?string $id = null;
 
     /**
@@ -37,6 +41,9 @@ class InvoiceSuiteProductDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getName', setter: 'setName')]
+    #[JMS\SerializedName('name')]
+    #[JMS\Type('string')]
     protected ?string $name = null;
 
     /**
@@ -44,6 +51,9 @@ class InvoiceSuiteProductDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getDescription', setter: 'setDescription')]
+    #[JMS\SerializedName('description')]
+    #[JMS\Type('string')]
     protected ?string $description = null;
 
     /**
@@ -51,6 +61,9 @@ class InvoiceSuiteProductDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getSellerId', setter: 'setSellerId')]
+    #[JMS\SerializedName('sellerId')]
+    #[JMS\Type('string')]
     protected ?string $sellerId = null;
 
     /**
@@ -58,6 +71,9 @@ class InvoiceSuiteProductDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getBuyerId', setter: 'setBuyerId')]
+    #[JMS\SerializedName('buyerId')]
+    #[JMS\Type('string')]
     protected ?string $buyerId = null;
 
     /**
@@ -65,6 +81,9 @@ class InvoiceSuiteProductDTO implements JsonSerializable
      *
      * @var null|InvoiceSuiteIdDTO
      */
+    #[JMS\Accessor(getter: 'getGlobalId', setter: 'setGlobalId')]
+    #[JMS\SerializedName('globalId')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\dto\InvoiceSuiteIdDTO')]
     protected ?InvoiceSuiteIdDTO $globalId = null;
 
     /**
@@ -72,6 +91,9 @@ class InvoiceSuiteProductDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getIndustryId', setter: 'setIndustryId')]
+    #[JMS\SerializedName('industryId')]
+    #[JMS\Type('string')]
     protected ?string $industryId = null;
 
     /**
@@ -79,6 +101,9 @@ class InvoiceSuiteProductDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getModelId', setter: 'setModelId')]
+    #[JMS\SerializedName('modelId')]
+    #[JMS\Type('string')]
     protected ?string $modelId = null;
 
     /**
@@ -86,6 +111,9 @@ class InvoiceSuiteProductDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getBatchId', setter: 'setBatchId')]
+    #[JMS\SerializedName('batchId')]
+    #[JMS\Type('string')]
     protected ?string $batchId = null;
 
     /**
@@ -93,6 +121,9 @@ class InvoiceSuiteProductDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getBrandName', setter: 'setBrandName')]
+    #[JMS\SerializedName('brandName')]
+    #[JMS\Type('string')]
     protected ?string $brandName = null;
 
     /**
@@ -100,6 +131,9 @@ class InvoiceSuiteProductDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getModelName', setter: 'setModelName')]
+    #[JMS\SerializedName('modelName')]
+    #[JMS\Type('string')]
     protected ?string $modelName = null;
 
     /**
@@ -107,6 +141,9 @@ class InvoiceSuiteProductDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getOriginTradeCountry', setter: 'setOriginTradeCountry')]
+    #[JMS\SerializedName('originTradeCountry')]
+    #[JMS\Type('string')]
     protected ?string $originTradeCountry = null;
 
     /**
@@ -114,6 +151,9 @@ class InvoiceSuiteProductDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteProductCharacteristicDTO>
      */
+    #[JMS\Accessor(getter: 'getCharacteristics', setter: 'setCharacteristics')]
+    #[JMS\SerializedName('characteristics')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteProductCharacteristicDTO>')]
     protected array $characteristics = [];
 
     /**
@@ -121,6 +161,9 @@ class InvoiceSuiteProductDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteProductClassificationDTO>
      */
+    #[JMS\Accessor(getter: 'getClassifications', setter: 'setClassifications')]
+    #[JMS\SerializedName('classifications')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteProductClassificationDTO>')]
     protected array $classifications = [];
 
     /**
@@ -128,6 +171,9 @@ class InvoiceSuiteProductDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteReferenceProductDTO>
      */
+    #[JMS\Accessor(getter: 'getReferenceProducts', setter: 'setReferenceProducts')]
+    #[JMS\SerializedName('referenceProducts')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceProductDTO>')]
     protected array $referenceProducts = [];
 
     /**

@@ -14,6 +14,7 @@ namespace horstoeko\invoicesuite\documents\dto;
 use DateTimeInterface;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -31,6 +32,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getLineId', setter: 'setLineId')]
+    #[JMS\SerializedName('lineId')]
+    #[JMS\Type('string')]
     protected ?string $lineId = null;
 
     /**
@@ -38,6 +42,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getParentLineId', setter: 'setParentLineId')]
+    #[JMS\SerializedName('parentLineId')]
+    #[JMS\Type('string')]
     protected ?string $parentLineId = null;
 
     /**
@@ -45,6 +52,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getLineStatus', setter: 'setLineStatus')]
+    #[JMS\SerializedName('lineStatus')]
+    #[JMS\Type('string')]
     protected ?string $lineStatus = null;
 
     /**
@@ -52,6 +62,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getLineStatusReason', setter: 'setLineStatusReason')]
+    #[JMS\SerializedName('lineStatusReason')]
+    #[JMS\Type('string')]
     protected ?string $lineStatusReason = null;
 
     /**
@@ -59,6 +72,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteNoteDTO>
      */
+    #[JMS\Accessor(getter: 'getNote', setter: 'setNote')]
+    #[JMS\SerializedName('note')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteNoteDTO>')]
     protected array $note = [];
 
     /**
@@ -66,6 +82,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var null|InvoiceSuiteProductDTO
      */
+    #[JMS\Accessor(getter: 'getProduct', setter: 'setProduct')]
+    #[JMS\SerializedName('product')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\dto\InvoiceSuiteProductDTO')]
     protected ?InvoiceSuiteProductDTO $product = null;
 
     /**
@@ -73,6 +92,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteReferenceDocumentLineDTO>
      */
+    #[JMS\Accessor(getter: 'getSellerOrderReferences', setter: 'setSellerOrderReferences')]
+    #[JMS\SerializedName('sellerOrderReferences')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineDTO>')]
     protected array $sellerOrderReferences = [];
 
     /**
@@ -80,6 +102,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteReferenceDocumentLineDTO>
      */
+    #[JMS\Accessor(getter: 'getBuyerOrderReferences', setter: 'setBuyerOrderReferences')]
+    #[JMS\SerializedName('buyerOrderReferences')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineDTO>')]
     protected array $buyerOrderReferences = [];
 
     /**
@@ -87,6 +112,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteReferenceDocumentLineDTO>
      */
+    #[JMS\Accessor(getter: 'getQuotationReferences', setter: 'setQuotationReferences')]
+    #[JMS\SerializedName('quotationReferences')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineDTO>')]
     protected array $quotationReferences = [];
 
     /**
@@ -94,6 +122,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteReferenceDocumentLineDTO>
      */
+    #[JMS\Accessor(getter: 'getContractReferences', setter: 'setContractReferences')]
+    #[JMS\SerializedName('contractReferences')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineDTO>')]
     protected array $contractReferences = [];
 
     /**
@@ -101,6 +132,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteReferenceDocumentLineExtDTO>
      */
+    #[JMS\Accessor(getter: 'getAdditionalReferences', setter: 'setAdditionalReferences')]
+    #[JMS\SerializedName('additionalReferences')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineExtDTO>')]
     protected array $additionalReferences = [];
 
     /**
@@ -108,6 +142,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteReferenceDocumentLineDTO>
      */
+    #[JMS\Accessor(getter: 'getUltimateCustomerOrderReferences', setter: 'setUltimateCustomerOrderReferences')]
+    #[JMS\SerializedName('ultimateCustomerOrderReferences')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineDTO>')]
     protected array $ultimateCustomerOrderReferences = [];
 
     /**
@@ -115,6 +152,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteReferenceDocumentLineDTO>
      */
+    #[JMS\Accessor(getter: 'getDespatchAdviceReferences', setter: 'setDespatchAdviceReferences')]
+    #[JMS\SerializedName('despatchAdviceReferences')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineDTO>')]
     protected array $despatchAdviceReferences = [];
 
     /**
@@ -122,6 +162,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteReferenceDocumentLineDTO>
      */
+    #[JMS\Accessor(getter: 'getReceivingAdviceReferences', setter: 'setReceivingAdviceReferences')]
+    #[JMS\SerializedName('receivingAdviceReferences')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineDTO>')]
     protected array $receivingAdviceReferences = [];
 
     /**
@@ -129,6 +172,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteReferenceDocumentLineDTO>
      */
+    #[JMS\Accessor(getter: 'getDeliveryNoteReferences', setter: 'setDeliveryNoteReferences')]
+    #[JMS\SerializedName('deliveryNoteReferences')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineDTO>')]
     protected array $deliveryNoteReferences = [];
 
     /**
@@ -136,6 +182,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteReferenceDocumentLineExtDTO>
      */
+    #[JMS\Accessor(getter: 'getInvoiceReferences', setter: 'setInvoiceReferences')]
+    #[JMS\SerializedName('invoiceReferences')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineExtDTO>')]
     protected array $invoiceReferences = [];
 
     /**
@@ -143,6 +192,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteReferenceDocumentExtDTO>
      */
+    #[JMS\Accessor(getter: 'getAdditionalObjectReferences', setter: 'setAdditionalObjectReferences')]
+    #[JMS\SerializedName('additionalObjectReferences')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentExtDTO>')]
     protected array $additionalObjectReferences = [];
 
     /**
@@ -150,6 +202,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var null|InvoiceSuitePriceGrossDTO
      */
+    #[JMS\Accessor(getter: 'getGrossPrice', setter: 'setGrossPrice')]
+    #[JMS\SerializedName('grossPrice')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\dto\InvoiceSuitePriceGrossDTO')]
     protected ?InvoiceSuitePriceGrossDTO $grossPrice = null;
 
     /**
@@ -157,6 +212,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var null|InvoiceSuitePriceNetDTO
      */
+    #[JMS\Accessor(getter: 'getNetPrice', setter: 'setNetPrice')]
+    #[JMS\SerializedName('netPrice')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\dto\InvoiceSuitePriceNetDTO')]
     protected ?InvoiceSuitePriceNetDTO $netPrice = null;
 
     /**
@@ -164,6 +222,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var null|InvoiceSuiteQuantityDTO
      */
+    #[JMS\Accessor(getter: 'getQuantityBilled', setter: 'setQuantityBilled')]
+    #[JMS\SerializedName('quantityBilled')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\dto\InvoiceSuiteQuantityDTO')]
     protected ?InvoiceSuiteQuantityDTO $quantityBilled = null;
 
     /**
@@ -171,6 +232,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var null|InvoiceSuiteQuantityDTO
      */
+    #[JMS\Accessor(getter: 'getQuantityChargeFree', setter: 'setQuantityChargeFree')]
+    #[JMS\SerializedName('quantityChargeFree')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\dto\InvoiceSuiteQuantityDTO')]
     protected ?InvoiceSuiteQuantityDTO $quantityChargeFree = null;
 
     /**
@@ -178,6 +242,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var null|InvoiceSuiteQuantityDTO
      */
+    #[JMS\Accessor(getter: 'getQuantityPackage', setter: 'setQuantityPackage')]
+    #[JMS\SerializedName('quantityPackage')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\dto\InvoiceSuiteQuantityDTO')]
     protected ?InvoiceSuiteQuantityDTO $quantityPackage = null;
 
     /**
@@ -185,6 +252,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var null|InvoiceSuiteQuantityDTO
      */
+    #[JMS\Accessor(getter: 'getQuantityPerPackage', setter: 'setQuantityPerPackage')]
+    #[JMS\SerializedName('quantityPerPackage')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\dto\InvoiceSuiteQuantityDTO')]
     protected ?InvoiceSuiteQuantityDTO $quantityPerPackage = null;
 
     /**
@@ -192,6 +262,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var null|InvoiceSuitePartyDTO
      */
+    #[JMS\Accessor(getter: 'getShipToParty', setter: 'setShipToParty')]
+    #[JMS\SerializedName('shipToParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\dto\InvoiceSuitePartyDTO')]
     protected ?InvoiceSuitePartyDTO $shipToParty = null;
 
     /**
@@ -199,6 +272,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var null|InvoiceSuitePartyDTO
      */
+    #[JMS\Accessor(getter: 'getUltimateShipToParty', setter: 'setUltimateShipToParty')]
+    #[JMS\SerializedName('ultimateShipToParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\dto\InvoiceSuitePartyDTO')]
     protected ?InvoiceSuitePartyDTO $ultimateShipToParty = null;
 
     /**
@@ -206,6 +282,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var array<DateTimeInterface>
      */
+    #[JMS\Accessor(getter: 'getSupplyChainEvents', setter: 'setSupplyChainEvents')]
+    #[JMS\SerializedName('supplyChainEvents')]
+    #[JMS\Type('array<DateTimeInterface<\'Y-m-d\TH:i:s.uP\'>>')]
     protected array $supplyChainEvents = [];
 
     /**
@@ -213,6 +292,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteDateRangeDTO>
      */
+    #[JMS\Accessor(getter: 'getBillingPeriods', setter: 'setBillingPeriods')]
+    #[JMS\SerializedName('billingPeriods')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteDateRangeDTO>')]
     protected array $billingPeriods = [];
 
     /**
@@ -220,6 +302,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteIdDTO>
      */
+    #[JMS\Accessor(getter: 'getPostingReferences', setter: 'setPostingReferences')]
+    #[JMS\SerializedName('postingReferences')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteIdDTO>')]
     protected array $postingReferences = [];
 
     /**
@@ -227,6 +312,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteTaxDTO>
      */
+    #[JMS\Accessor(getter: 'getTaxes', setter: 'setTaxes')]
+    #[JMS\SerializedName('taxes')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO>')]
     protected array $taxes = [];
 
     /**
@@ -234,6 +322,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var array<InvoiceSuiteAllowanceChargeDTO>
      */
+    #[JMS\Accessor(getter: 'getAllowanceCharges', setter: 'setAllowanceCharges')]
+    #[JMS\SerializedName('allowanceCharges')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteAllowanceChargeDTO>')]
     protected array $allowanceCharges = [];
 
     /**
@@ -241,6 +332,9 @@ class InvoiceSuiteDocumentPositionDTO implements JsonSerializable
      *
      * @var null|InvoiceSuitesummationLineDTO
      */
+    #[JMS\Accessor(getter: 'getSummation', setter: 'setSummation')]
+    #[JMS\SerializedName('summation')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO')]
     protected ?InvoiceSuitesummationLineDTO $summation = null;
 
     /**

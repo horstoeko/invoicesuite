@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -29,6 +30,9 @@ class InvoiceSuiteProductClassificationDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getCode', setter: 'setCode')]
+    #[JMS\SerializedName('code')]
+    #[JMS\Type('string')]
     protected ?string $code = null;
 
     /**
@@ -36,6 +40,9 @@ class InvoiceSuiteProductClassificationDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getName', setter: 'setName')]
+    #[JMS\SerializedName('name')]
+    #[JMS\Type('string')]
     protected ?string $name = null;
 
     /**
@@ -43,6 +50,9 @@ class InvoiceSuiteProductClassificationDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getListId', setter: 'setListId')]
+    #[JMS\SerializedName('listId')]
+    #[JMS\Type('string')]
     protected ?string $listId = null;
 
     /**
@@ -50,6 +60,9 @@ class InvoiceSuiteProductClassificationDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getListVersionId', setter: 'setListVersionId')]
+    #[JMS\SerializedName('listVersionId')]
+    #[JMS\Type('string')]
     protected ?string $listVersionId = null;
 
     /**

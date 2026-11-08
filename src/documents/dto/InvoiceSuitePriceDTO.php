@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\documents\dto;
 
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -28,6 +29,9 @@ class InvoiceSuitePriceDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getAmount', setter: 'setAmount')]
+    #[JMS\SerializedName('amount')]
+    #[JMS\Type('float')]
     protected ?float $amount = null;
 
     /**
@@ -35,6 +39,9 @@ class InvoiceSuitePriceDTO implements JsonSerializable
      *
      * @var null|InvoiceSuiteQuantityDTO
      */
+    #[JMS\Accessor(getter: 'getPriceQuantity', setter: 'setPriceQuantity')]
+    #[JMS\SerializedName('priceQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\dto\InvoiceSuiteQuantityDTO')]
     protected ?InvoiceSuiteQuantityDTO $priceQuantity = null;
 
     /**

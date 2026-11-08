@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -29,6 +30,9 @@ class InvoiceSuiteContactDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getPersonName', setter: 'setPersonName')]
+    #[JMS\SerializedName('personName')]
+    #[JMS\Type('string')]
     protected ?string $personName = null;
 
     /**
@@ -36,6 +40,9 @@ class InvoiceSuiteContactDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getDepartmentName', setter: 'setDepartmentName')]
+    #[JMS\SerializedName('departmentName')]
+    #[JMS\Type('string')]
     protected ?string $departmentName = null;
 
     /**
@@ -43,6 +50,9 @@ class InvoiceSuiteContactDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getPhoneNumber', setter: 'setPhoneNumber')]
+    #[JMS\SerializedName('phoneNumber')]
+    #[JMS\Type('string')]
     protected ?string $phoneNumber = null;
 
     /**
@@ -50,6 +60,9 @@ class InvoiceSuiteContactDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getFaxNumber', setter: 'setFaxNumber')]
+    #[JMS\SerializedName('faxNumber')]
+    #[JMS\Type('string')]
     protected ?string $faxNumber = null;
 
     /**
@@ -57,6 +70,9 @@ class InvoiceSuiteContactDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getEmailAddress', setter: 'setEmailAddress')]
+    #[JMS\SerializedName('emailAddress')]
+    #[JMS\Type('string')]
     protected ?string $emailAddress = null;
 
     /**

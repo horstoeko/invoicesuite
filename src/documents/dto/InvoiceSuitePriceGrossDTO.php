@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -29,6 +30,9 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO implements JsonSeri
      *
      * @var array<InvoiceSuiteAllowanceChargeDTO>
      */
+    #[JMS\Accessor(getter: 'getAllowanceCharges', setter: 'setAllowanceCharges')]
+    #[JMS\SerializedName('allowanceCharges')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteAllowanceChargeDTO>')]
     protected array $allowanceCharges = [];
 
     /**

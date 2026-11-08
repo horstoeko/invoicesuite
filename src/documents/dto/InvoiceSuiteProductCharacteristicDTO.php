@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -29,6 +30,9 @@ class InvoiceSuiteProductCharacteristicDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getDescription', setter: 'setDescription')]
+    #[JMS\SerializedName('description')]
+    #[JMS\Type('string')]
     protected ?string $description = null;
 
     /**
@@ -36,6 +40,9 @@ class InvoiceSuiteProductCharacteristicDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getValue', setter: 'setValue')]
+    #[JMS\SerializedName('value')]
+    #[JMS\Type('string')]
     protected ?string $value = null;
 
     /**
@@ -43,6 +50,9 @@ class InvoiceSuiteProductCharacteristicDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getType', setter: 'setType')]
+    #[JMS\SerializedName('type')]
+    #[JMS\Type('string')]
     protected ?string $type = null;
 
     /**
@@ -50,6 +60,9 @@ class InvoiceSuiteProductCharacteristicDTO implements JsonSerializable
      *
      * @var null|InvoiceSuiteMeasureDTO
      */
+    #[JMS\Accessor(getter: 'getValueMeasure', setter: 'setValueMeasure')]
+    #[JMS\SerializedName('valueMeasure')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\dto\InvoiceSuiteMeasureDTO')]
     protected ?InvoiceSuiteMeasureDTO $valueMeasure = null;
 
     /**

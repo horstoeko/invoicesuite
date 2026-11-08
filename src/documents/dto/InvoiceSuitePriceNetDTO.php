@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -29,6 +30,9 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO implements JsonSerial
      *
      * @var array<InvoiceSuiteTaxDTO>
      */
+    #[JMS\Accessor(getter: 'getTaxes', setter: 'setTaxes')]
+    #[JMS\SerializedName('taxes')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO>')]
     protected array $taxes = [];
 
     /**

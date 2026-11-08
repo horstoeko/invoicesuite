@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use DateTimeInterface;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -29,6 +30,9 @@ class InvoiceSuitePaymentTermDiscountDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getBaseAmount', setter: 'setBaseAmount')]
+    #[JMS\SerializedName('baseAmount')]
+    #[JMS\Type('float')]
     protected ?float $baseAmount = null;
 
     /**
@@ -36,6 +40,9 @@ class InvoiceSuitePaymentTermDiscountDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getDiscountAmount', setter: 'setDiscountAmount')]
+    #[JMS\SerializedName('discountAmount')]
+    #[JMS\Type('float')]
     protected ?float $discountAmount = null;
 
     /**
@@ -43,6 +50,9 @@ class InvoiceSuitePaymentTermDiscountDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getDiscountPercent', setter: 'setDiscountPercent')]
+    #[JMS\SerializedName('discountPercent')]
+    #[JMS\Type('float')]
     protected ?float $discountPercent = null;
 
     /**
@@ -50,6 +60,9 @@ class InvoiceSuitePaymentTermDiscountDTO implements JsonSerializable
      *
      * @var null|DateTimeInterface
      */
+    #[JMS\Accessor(getter: 'getBaseDate', setter: 'setBaseDate')]
+    #[JMS\SerializedName('baseDate')]
+    #[JMS\Type('DateTimeInterface<\'Y-m-d\TH:i:s.uP\'>')]
     protected ?DateTimeInterface $baseDate = null;
 
     /**
@@ -57,6 +70,9 @@ class InvoiceSuitePaymentTermDiscountDTO implements JsonSerializable
      *
      * @var null|InvoiceSuitePeriodDTO
      */
+    #[JMS\Accessor(getter: 'getPeriod', setter: 'setPeriod')]
+    #[JMS\SerializedName('period')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\dto\InvoiceSuitePeriodDTO')]
     protected ?InvoiceSuitePeriodDTO $period = null;
 
     /**

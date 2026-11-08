@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\documents\dto;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -30,6 +31,9 @@ class InvoiceSuiteTaxDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getCategory', setter: 'setCategory')]
+    #[JMS\SerializedName('category')]
+    #[JMS\Type('string')]
     protected ?string $category = null;
 
     /**
@@ -37,6 +41,9 @@ class InvoiceSuiteTaxDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getType', setter: 'setType')]
+    #[JMS\SerializedName('type')]
+    #[JMS\Type('string')]
     protected ?string $type = null;
 
     /**
@@ -44,6 +51,9 @@ class InvoiceSuiteTaxDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getBasisAmount', setter: 'setBasisAmount')]
+    #[JMS\SerializedName('basisAmount')]
+    #[JMS\Type('float')]
     protected ?float $basisAmount = null;
 
     /**
@@ -51,6 +61,9 @@ class InvoiceSuiteTaxDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getAmount', setter: 'setAmount')]
+    #[JMS\SerializedName('amount')]
+    #[JMS\Type('float')]
     protected ?float $amount = null;
 
     /**
@@ -58,6 +71,9 @@ class InvoiceSuiteTaxDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getPercent', setter: 'setPercent')]
+    #[JMS\SerializedName('percent')]
+    #[JMS\Type('float')]
     protected ?float $percent = null;
 
     /**
@@ -65,6 +81,9 @@ class InvoiceSuiteTaxDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getExemptionReason', setter: 'setExemptionReason')]
+    #[JMS\SerializedName('exemptionReason')]
+    #[JMS\Type('string')]
     protected ?string $exemptionReason = null;
 
     /**
@@ -72,6 +91,9 @@ class InvoiceSuiteTaxDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getExemptionReasonCode', setter: 'setExemptionReasonCode')]
+    #[JMS\SerializedName('exemptionReasonCode')]
+    #[JMS\Type('string')]
     protected ?string $exemptionReasonCode = null;
 
     /**
@@ -79,6 +101,9 @@ class InvoiceSuiteTaxDTO implements JsonSerializable
      *
      * @var null|DateTimeInterface
      */
+    #[JMS\Accessor(getter: 'getDueDate', setter: 'setDueDate')]
+    #[JMS\SerializedName('dueDate')]
+    #[JMS\Type('DateTimeInterface<\'Y-m-d\TH:i:s.uP\'>')]
     protected ?DateTimeInterface $dueDate = null;
 
     /**
@@ -86,6 +111,9 @@ class InvoiceSuiteTaxDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getDueCode', setter: 'setDueCode')]
+    #[JMS\SerializedName('dueCode')]
+    #[JMS\Type('string')]
     protected ?string $dueCode = null;
 
     /**

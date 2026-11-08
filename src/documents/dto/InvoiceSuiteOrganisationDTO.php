@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -29,6 +30,9 @@ class InvoiceSuiteOrganisationDTO extends InvoiceSuiteIdDTO implements JsonSeria
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getName', setter: 'setName')]
+    #[JMS\SerializedName('name')]
+    #[JMS\Type('string')]
     protected ?string $name = null;
 
     /**

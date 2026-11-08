@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -29,6 +30,9 @@ class InvoiceSuiteNoteDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getContent', setter: 'setContent')]
+    #[JMS\SerializedName('content')]
+    #[JMS\Type('string')]
     protected ?string $content = null;
 
     /**
@@ -36,6 +40,9 @@ class InvoiceSuiteNoteDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getContentCode', setter: 'setContentCode')]
+    #[JMS\SerializedName('contentCode')]
+    #[JMS\Type('string')]
     protected ?string $contentCode = null;
 
     /**
@@ -43,6 +50,9 @@ class InvoiceSuiteNoteDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getSubjectCode', setter: 'setSubjectCode')]
+    #[JMS\SerializedName('subjectCode')]
+    #[JMS\Type('string')]
     protected ?string $subjectCode = null;
 
     /**

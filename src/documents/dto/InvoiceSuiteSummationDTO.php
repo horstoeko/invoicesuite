@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\documents\dto;
 
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -28,6 +29,9 @@ class InvoiceSuiteSummationDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getNetAmount', setter: 'setNetAmount')]
+    #[JMS\SerializedName('netAmount')]
+    #[JMS\Type('float')]
     protected ?float $netAmount = null;
 
     /**
@@ -35,6 +39,9 @@ class InvoiceSuiteSummationDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getChargeTotalAmount', setter: 'setChargeTotalAmount')]
+    #[JMS\SerializedName('chargeTotalAmount')]
+    #[JMS\Type('float')]
     protected ?float $chargeTotalAmount = null;
 
     /**
@@ -42,6 +49,9 @@ class InvoiceSuiteSummationDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getDiscountTotalAmount', setter: 'setDiscountTotalAmount')]
+    #[JMS\SerializedName('discountTotalAmount')]
+    #[JMS\Type('float')]
     protected ?float $discountTotalAmount = null;
 
     /**
@@ -49,6 +59,9 @@ class InvoiceSuiteSummationDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getTaxBasisAmount', setter: 'setTaxBasisAmount')]
+    #[JMS\SerializedName('taxBasisAmount')]
+    #[JMS\Type('float')]
     protected ?float $taxBasisAmount = null;
 
     /**
@@ -56,6 +69,9 @@ class InvoiceSuiteSummationDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getTaxTotalAmount', setter: 'setTaxTotalAmount')]
+    #[JMS\SerializedName('taxTotalAmount')]
+    #[JMS\Type('float')]
     protected ?float $taxTotalAmount = null;
 
     /**
@@ -63,6 +79,9 @@ class InvoiceSuiteSummationDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getTaxTotalAmount2', setter: 'setTaxTotalAmount2')]
+    #[JMS\SerializedName('taxTotalAmount2')]
+    #[JMS\Type('float')]
     protected ?float $taxTotalAmount2 = null;
 
     /**
@@ -70,6 +89,9 @@ class InvoiceSuiteSummationDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getGrossAmount', setter: 'setGrossAmount')]
+    #[JMS\SerializedName('grossAmount')]
+    #[JMS\Type('float')]
     protected ?float $grossAmount = null;
 
     /**
@@ -77,6 +99,9 @@ class InvoiceSuiteSummationDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getDueAmount', setter: 'setDueAmount')]
+    #[JMS\SerializedName('dueAmount')]
+    #[JMS\Type('float')]
     protected ?float $dueAmount = null;
 
     /**
@@ -84,6 +109,9 @@ class InvoiceSuiteSummationDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getPrepaidAmount', setter: 'setPrepaidAmount')]
+    #[JMS\SerializedName('prepaidAmount')]
+    #[JMS\Type('float')]
     protected ?float $prepaidAmount = null;
 
     /**
@@ -91,6 +119,9 @@ class InvoiceSuiteSummationDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getRoungingAmount', setter: 'setRoungingAmount')]
+    #[JMS\SerializedName('roungingAmount')]
+    #[JMS\Type('float')]
     protected ?float $roungingAmount = null;
 
     /**

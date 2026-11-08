@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -29,6 +30,9 @@ class InvoiceSuiteAddressDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getAddressLine1', setter: 'setAddressLine1')]
+    #[JMS\SerializedName('addressLine1')]
+    #[JMS\Type('string')]
     protected ?string $addressLine1 = null;
 
     /**
@@ -36,6 +40,9 @@ class InvoiceSuiteAddressDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getAddressLine2', setter: 'setAddressLine2')]
+    #[JMS\SerializedName('addressLine2')]
+    #[JMS\Type('string')]
     protected ?string $addressLine2 = null;
 
     /**
@@ -43,6 +50,9 @@ class InvoiceSuiteAddressDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getAddressLine3', setter: 'setAddressLine3')]
+    #[JMS\SerializedName('addressLine3')]
+    #[JMS\Type('string')]
     protected ?string $addressLine3 = null;
 
     /**
@@ -50,6 +60,9 @@ class InvoiceSuiteAddressDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getPostcode', setter: 'setPostcode')]
+    #[JMS\SerializedName('postcode')]
+    #[JMS\Type('string')]
     protected ?string $postcode = null;
 
     /**
@@ -57,6 +70,9 @@ class InvoiceSuiteAddressDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getCity', setter: 'setCity')]
+    #[JMS\SerializedName('city')]
+    #[JMS\Type('string')]
     protected ?string $city = null;
 
     /**
@@ -64,6 +80,9 @@ class InvoiceSuiteAddressDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getCountry', setter: 'setCountry')]
+    #[JMS\SerializedName('country')]
+    #[JMS\Type('string')]
     protected ?string $country = null;
 
     /**
@@ -71,6 +90,9 @@ class InvoiceSuiteAddressDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getSubDivision', setter: 'setSubDivision')]
+    #[JMS\SerializedName('subDivision')]
+    #[JMS\Type('string')]
     protected ?string $subDivision = null;
 
     /**

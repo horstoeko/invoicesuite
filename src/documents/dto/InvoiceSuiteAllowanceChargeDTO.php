@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Annotation as JMS;
 use JsonSerializable;
 
 /**
@@ -29,6 +30,9 @@ class InvoiceSuiteAllowanceChargeDTO implements JsonSerializable
      *
      * @var null|bool
      */
+    #[JMS\Accessor(getter: 'getChargeIndicator', setter: 'setChargeIndicator')]
+    #[JMS\SerializedName('chargeIndicator')]
+    #[JMS\Type('bool')]
     protected ?bool $chargeIndicator = null;
 
     /**
@@ -36,6 +40,9 @@ class InvoiceSuiteAllowanceChargeDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getAmount', setter: 'setAmount')]
+    #[JMS\SerializedName('amount')]
+    #[JMS\Type('float')]
     protected ?float $amount = null;
 
     /**
@@ -43,6 +50,9 @@ class InvoiceSuiteAllowanceChargeDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getBaseAmount', setter: 'setBaseAmount')]
+    #[JMS\SerializedName('baseAmount')]
+    #[JMS\Type('float')]
     protected ?float $baseAmount = null;
 
     /**
@@ -50,6 +60,9 @@ class InvoiceSuiteAllowanceChargeDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getPercent', setter: 'setPercent')]
+    #[JMS\SerializedName('percent')]
+    #[JMS\Type('float')]
     protected ?float $percent = null;
 
     /**
@@ -57,6 +70,9 @@ class InvoiceSuiteAllowanceChargeDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getTaxCategory', setter: 'setTaxCategory')]
+    #[JMS\SerializedName('taxCategory')]
+    #[JMS\Type('string')]
     protected ?string $taxCategory = null;
 
     /**
@@ -64,6 +80,9 @@ class InvoiceSuiteAllowanceChargeDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getTaxType', setter: 'setTaxType')]
+    #[JMS\SerializedName('taxType')]
+    #[JMS\Type('string')]
     protected ?string $taxType = null;
 
     /**
@@ -71,6 +90,9 @@ class InvoiceSuiteAllowanceChargeDTO implements JsonSerializable
      *
      * @var null|float
      */
+    #[JMS\Accessor(getter: 'getTaxPercent', setter: 'setTaxPercent')]
+    #[JMS\SerializedName('taxPercent')]
+    #[JMS\Type('float')]
     protected ?float $taxPercent = null;
 
     /**
@@ -78,6 +100,9 @@ class InvoiceSuiteAllowanceChargeDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getReason', setter: 'setReason')]
+    #[JMS\SerializedName('reason')]
+    #[JMS\Type('string')]
     protected ?string $reason = null;
 
     /**
@@ -85,6 +110,9 @@ class InvoiceSuiteAllowanceChargeDTO implements JsonSerializable
      *
      * @var null|string
      */
+    #[JMS\Accessor(getter: 'getReasonCode', setter: 'setReasonCode')]
+    #[JMS\SerializedName('reasonCode')]
+    #[JMS\Type('string')]
     protected ?string $reasonCode = null;
 
     /**
