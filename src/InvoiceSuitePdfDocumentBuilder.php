@@ -358,6 +358,20 @@ class InvoiceSuitePdfDocumentBuilder
     }
 
     /**
+     * Set whether imported PDF pages use transparency groups
+     *
+     * @param  bool   $importPagesAsTransparencyGroup
+     * @return static
+     */
+    public function setImportPagesAsTransparencyGroup(
+        bool $importPagesAsTransparencyGroup
+    ): static {
+        $this->getCurrentPdfConstructor()->setImportPagesAsTransparencyGroup($importPagesAsTransparencyGroup);
+
+        return $this;
+    }
+
+    /**
      * Get a list of additional documents to attach
      *
      * @return array<int, array{content: string, filename: string, displayname: string, relationship: InvoiceSuitePdfAttachmentRelationship, mimetype: string}>

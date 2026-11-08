@@ -91,7 +91,7 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
         $pageCount = $this->pdfWriter->setSourceFile(PdfStreamReader::createByString($this->getRawPdfContent()));
 
         for ($pageNumber = 1; $pageNumber <= $pageCount; ++$pageNumber) {
-            $pageContent = $this->pdfWriter->importPage($pageNumber, '/MediaBox', true, true);
+            $pageContent = $this->pdfWriter->importPage($pageNumber, '/MediaBox', $this->getImportPagesAsTransparencyGroup(), true);
             $this->pdfWriter->AddPage();
             $this->pdfWriter->useTemplate($pageContent, 0, 0, null, null, true);
         }

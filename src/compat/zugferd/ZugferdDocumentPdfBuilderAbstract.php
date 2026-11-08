@@ -212,6 +212,20 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
+     * Set whether imported PDF pages use transparency groups
+     *
+     * @param  bool   $importPagesAsTransparencyGroup
+     * @return static
+     */
+    public function setImportPagesAsTransparencyGroup(
+        bool $importPagesAsTransparencyGroup
+    ): static {
+        $this->pdfDocumentBuilder->setImportPagesAsTransparencyGroup($importPagesAsTransparencyGroup);
+
+        return $this;
+    }
+
+    /**
      * Attach an additional file to PDF. The file that is specified in $fullFilename must exists
      *
      * @param  string $fullFilename

@@ -117,6 +117,13 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     private $attachmentPaneVisibility = true;
 
     /**
+     * Whether imported PDF pages use transparency groups
+     *
+     * @var bool
+     */
+    private $importPagesAsTransparencyGroup = true;
+
+    /**
      * Constructor
      *
      * @param  InvoiceSuiteAbstractDocumentFormatProvider $newProvider
@@ -310,6 +317,30 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     public function setPdfAConformanceLevelToUnicode(): static
     {
         return $this->setPdfAConformanceLevel(InvoiceSuitePdfAConformanceLevel::UNICODE);
+    }
+
+    /**
+     * Get whether imported PDF pages use transparency groups
+     *
+     * @return bool
+     */
+    public function getImportPagesAsTransparencyGroup(): bool
+    {
+        return $this->importPagesAsTransparencyGroup;
+    }
+
+    /**
+     * Set whether imported PDF pages use transparency groups
+     *
+     * @param  bool   $importPagesAsTransparencyGroup
+     * @return static
+     */
+    public function setImportPagesAsTransparencyGroup(
+        bool $importPagesAsTransparencyGroup
+    ): static {
+        $this->importPagesAsTransparencyGroup = $importPagesAsTransparencyGroup;
+
+        return $this;
     }
 
     /**

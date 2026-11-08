@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\tests\testcases\compat\zugferd;
 
 use horstoeko\invoicesuite\tests\TestCase;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
 use horstoeko\zugferd\ZugferdDocumentPdfMerger;
 use Smalot\PdfParser\Parser as PdfParser;
@@ -19,6 +20,13 @@ final class ZugferdDocumentPdfMergerTest extends TestCase
         $pdfMerger = new ZugferdDocumentPdfMerger($xmlFilename, $pdfFilename);
 
         $this->checkAndValidateMerger($pdfMerger);
+
+        // Disabling transparency groups removes the group from the imported page.
+        $this->assertSame($pdfMerger, $pdfMerger->setImportPagesAsTransparencyGroup(false));
+        $pdfWithoutTransparencyGroup = (new PdfParser())->parseContent($pdfMerger->downloadString());
+        $importedForms = $pdfWithoutTransparencyGroup->getObjectsByType('XObject', 'Form');
+        $this->assertCount(1, $importedForms);
+        $this->assertArrayNotHasKey('Group', InvoiceSuiteArrayUtils::first($importedForms)->getDetails());
     }
 
     public function testConstructByXmlContentAndPdfFile(): void
@@ -72,6 +80,11 @@ final class ZugferdDocumentPdfMergerTest extends TestCase
 
         $pdfParser = new PdfParser();
         $pdfParsed = $pdfParser->parseContent($pdfContent);
+        $importedForms = $pdfParsed->getObjectsByType('XObject', 'Form');
+
+        $this->assertCount(1, $importedForms);
+        $this->assertSame('Transparency', InvoiceSuiteArrayUtils::first($importedForms)->getDetails()['Group']['S'] ?? null);
+
         $pdfFilespecs = $pdfParsed->getObjectsByType('Filespec');
 
         $this->assertCount(1, $pdfFilespecs);
