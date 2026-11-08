@@ -428,14 +428,17 @@ final class InvoiceSuiteDocumentDtoSerializerTest extends TestCase
     public function testCompleteInvoiceJsonRoundtrip(): void
     {
         $document = $this->dtoFixtures[InvoiceSuiteDocumentHeaderDTO::class];
-        $this->assertInstanceOf(InvoiceSuiteDocumentHeaderDTO::class, $document);
-        $expectedJsonValues = $this->normalizeJsonValue($document);
 
+        $this->assertInstanceOf(InvoiceSuiteDocumentHeaderDTO::class, $document);
+
+        $expectedJsonValues = $this->normalizeJsonValue($document);
         $json = $this->documentSerializer->serialize($document);
         $decodedJson = json_decode($json, true, flags: JSON_THROW_ON_ERROR);
+
         $this->assertSame($expectedJsonValues, $this->normalizeJsonValue($decodedJson));
 
         $restoredDocument = $this->documentSerializer->deserialize($json);
+
         $this->assertEquals($document, $restoredDocument);
         $this->assertSame($expectedJsonValues, $this->normalizeJsonValue($restoredDocument));
         $this->assertSame($json, $this->documentSerializer->serialize($restoredDocument));
