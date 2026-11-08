@@ -1,3 +1,28 @@
+## v0.0.39
+
+``Previous version v0.0.38``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [6f95fddf](https://github.com/horstoeko/invoicesuite/commit/6f95fddf) | 2026-11-08 11:04:11 CET | HorstOeko | [ENH] Serialize/Deserialize DTOs with JMS Serializer | 
+| :bug:  | [18197fff](https://github.com/horstoeko/invoicesuite/commit/18197fff) | 2026-11-08 10:07:37 CET | HorstOeko | [FIX] PDF/A output intent: OutputCondition key was written as OuputCondition | 
+| :new:  | [86ec189f](https://github.com/horstoeko/invoicesuite/commit/86ec189f) | 2026-11-07 15:19:07 CET | HorstOeko | [ENH] Added support for Foreign Currency in Compat-Layer () | [#47](https://github.com/horstoeko/invoicesuite/issues/47)
+| :new:  | [dc7b4768](https://github.com/horstoeko/invoicesuite/commit/dc7b4768) | 2026-11-07 12:14:44 CET | HorstOeko | [ENH] Remove unused MIME shortcuts from InvoiceSuiteFileUtils | 
+| :new:  | [66ad7880](https://github.com/horstoeko/invoicesuite/commit/66ad7880) | 2026-11-07 12:03:39 CET | HorstOeko | [ENH] Add createFromVariableContent to document validators | 
+| :new:  | [929cf516](https://github.com/horstoeko/invoicesuite/commit/929cf516) | 2026-11-07 11:56:55 CET | HorstOeko | [ENH] Consolidated ContentType-/MimeType-Detection | 
+| :new:  | [a2dcfe6d](https://github.com/horstoeko/invoicesuite/commit/a2dcfe6d) | 2026-11-07 10:36:52 CET | HorstOeko | [ENH] Fixed MimeType Detection for XML | 
+| :new:  | [fc2981c4](https://github.com/horstoeko/invoicesuite/commit/fc2981c4) | 2026-11-07 10:33:28 CET | HorstOeko | [ENH] Fixed MimeType Detection for XML | 
+| :new:  | [be9e3bba](https://github.com/horstoeko/invoicesuite/commit/be9e3bba) | 2026-11-07 10:11:07 CET | HorstOeko | [ENH] Renamed Mime-Methods in InvoiceSuiteStringUtils | 
+| :new:  | [a7f23be5](https://github.com/horstoeko/invoicesuite/commit/a7f23be5) | 2026-11-07 10:05:58 CET | HorstOeko | [ENH] Move content MIME helpers to InvoiceSuiteStringUtils | 
+| :new:  | [49aacaf9](https://github.com/horstoeko/invoicesuite/commit/49aacaf9) | 2026-11-07 09:49:47 CET | HorstOeko | [ENH] Added MimeType-Shortcut Methods for JSON/XML/PDF in InvoiceSuiteFileUtils | 
+| :new:  | [4b96e0ea](https://github.com/horstoeko/invoicesuite/commit/4b96e0ea) | 2026-11-07 09:12:54 CET | HorstOeko | [ENH] Added InvoiceSuitePdfDocumentReader-Support for Validators | 
+| :new:  | [e3ffb8fd](https://github.com/horstoeko/invoicesuite/commit/e3ffb8fd) | 2026-11-07 08:34:43 CET | HorstOeko | [ENH] Added MimeType Detection to InvoiceSuiteFileUtils | 
+| :new:  | [69bf7e3c](https://github.com/horstoeko/invoicesuite/commit/69bf7e3c) | 2026-11-06 23:09:15 CET | HorstOeko | [ENH] Support repeated PDF generation with the same builder | 
+| :bug:  | [7e26b84f](https://github.com/horstoeko/invoicesuite/commit/7e26b84f) | 2026-11-06 20:28:50 CET | HorstOeko | [FIX] Fixed Payment-CardID-Handling in Compat-Mode (Part 2) | 
+| :bug:  | [9ee7c3f3](https://github.com/horstoeko/invoicesuite/commit/9ee7c3f3) | 2026-11-06 20:09:17 CET | HorstOeko | [FIX] Fixed Payment-CardID-Handling in Compat-Mode | 
+
+:exclamation: _There are 6 internal commit(s)_
+
 ## v0.0.38
 
 ``Previous version v0.0.37``
