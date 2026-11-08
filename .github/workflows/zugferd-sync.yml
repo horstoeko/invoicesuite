@@ -32,7 +32,7 @@ jobs:
             const sourceRepo = 'zugferd';
             const targetOwner = context.repo.owner;
             const targetRepo = context.repo.repo;
-            const requested = '${{ inputs.pull_request || '' }}'.trim();
+            const requested = process.env.SOURCE_PR.trim();
             const cutoff = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
             const pullRequests = [];
 
@@ -136,5 +136,6 @@ jobs:
                 }
               }
         env:
+          SOURCE_PR: ${{ inputs.pull_request || '' }}
           AUTO_ASSIGN: ${{ vars.ZUGFERD_SYNC_AUTO_ASSIGN }}
           HAS_COPILOT_TOKEN: ${{ secrets.ZUGFERD_SYNC_COPILOT_TOKEN != '' }}
