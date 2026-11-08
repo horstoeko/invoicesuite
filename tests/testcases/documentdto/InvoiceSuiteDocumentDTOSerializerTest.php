@@ -50,7 +50,7 @@ use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerInterface;
 use JsonSerializable;
 
-final class InvoiceSuiteDocumentDtoSerializerTest extends TestCase
+final class InvoiceSuiteDocumentDTOSerializerTest extends TestCase
 {
     /**
      * @var array<class-string<JsonSerializable>, JsonSerializable>
