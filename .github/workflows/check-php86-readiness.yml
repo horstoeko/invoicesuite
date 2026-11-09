@@ -97,6 +97,18 @@ jobs:
                 def cell: tostring | gsub("\\|"; "&#124;") | gsub("[\\r\\n]"; " ");
                 .[] | "| \(.section | cell) | \(.package | cell) | \(.original | cell) | \(.individual | cell) | \(.suggested | cell) | \(.combined | cell) | \(.combined_constraint | cell) |"
               ' "$rows"
+
+              printf '\n### PHP 8.6 dependency blockers\n\n'
+              jq -r --arg status "$status" '
+                [.[] | select(.individual == "unresolved (see log)")]
+                | if length > 0 then
+                    .[] | "- `\(.package)` (`\(.section)`) — see `logs/probe-\(.package | gsub("/"; "_")).txt`."
+                  elif $status == "blocked" then
+                    "See `logs/combined-star.txt` for the combined dependency conflict."
+                  else
+                    "No blockers identified by the completed individual probes."
+                  end
+              ' "$rows"
             } > "$report/report.md"
 
             if [[ -n "${GITHUB_STEP_SUMMARY:-}" ]]; then
