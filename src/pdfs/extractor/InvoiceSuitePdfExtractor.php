@@ -23,6 +23,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use IteratorAggregate;
 use JsonSerializable;
 use LogicException;
+use PrinsFrank\PdfParser\Document\Dictionary\Decorator\FileSpecification;
 use PrinsFrank\PdfParser\Exception\PdfParserException;
 use PrinsFrank\PdfParser\PdfParser as PrinsFrankPdfParser;
 use Smalot\PdfParser\Config as SmalotPdfParserConfig;
@@ -230,6 +231,7 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
 
         $pdfParser = new PrinsFrankPdfParser();
         $pdfParsed = $pdfParser->parseString($pdfContent);
+        /** @var list<FileSpecification> */
         $fileSpecs = $pdfParsed->getCatalog()->getFileSpecifications();
 
         $fileSpecs = InvoiceSuiteArrayUtils::filter(
