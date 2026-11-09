@@ -11,6 +11,7 @@ use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\tests\traits\HandlesXmlTests;
 use Iterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 final class CreditNotePaymentDueDateTest extends TestCase
 {
@@ -19,9 +20,8 @@ final class CreditNotePaymentDueDateTest extends TestCase
     /**
      * @param  string $providerUniqueId
      * @return void
-     *
-     * @dataProvider ublCreditNoteProviderProvider
      */
+    #[DataProvider('ublCreditNoteProviderProvider')]
     public function testDueDateIsWrittenForEveryUblCreditNoteProvider(
         string $providerUniqueId
     ): void {
