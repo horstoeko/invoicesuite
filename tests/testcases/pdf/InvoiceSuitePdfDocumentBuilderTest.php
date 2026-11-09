@@ -19,13 +19,12 @@ use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfWriter;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use Iterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PrinsFrank\PdfParser\PdfParser;
 
 final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
 {
     /**
-     * @dataProvider zffxProfileProvider
-     *
      * @param string      $expectedProfile
      * @param string      $expectedXmlContains
      * @param bool|string $expectedUseOfXmlFile
@@ -35,6 +34,7 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
      * @param string      $expectPdfAConformanceLevel
      * @param int         $expectOutputType
      */
+    #[DataProvider('zffxProfileProvider')]
     public function testZfFxPdfBuilder(
         string $expectedProfile,
         string $expectedXmlContains,

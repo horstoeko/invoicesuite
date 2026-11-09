@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\tests\traits\HandlesXmlTests;
 use Iterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 final class PaymentTermPaymentMeanOrderTest extends TestCase
 {
@@ -20,9 +21,8 @@ final class PaymentTermPaymentMeanOrderTest extends TestCase
      * @param  string $providerUniqueId
      * @param  string $rootElementName
      * @return void
-     *
-     * @dataProvider ublProviderProvider
      */
+    #[DataProvider('ublProviderProvider')]
     public function testMandateIsOnlyPropagatedToDirectDebitPaymentMeans(
         string $providerUniqueId,
         string $rootElementName
@@ -54,9 +54,8 @@ final class PaymentTermPaymentMeanOrderTest extends TestCase
      * @param  string $providerUniqueId
      * @param  string $rootElementName
      * @return void
-     *
-     * @dataProvider ublProviderProvider
      */
+    #[DataProvider('ublProviderProvider')]
     public function testExplicitPaymentMeanMandateWinsIndependentlyOfCallOrder(
         string $providerUniqueId,
         string $rootElementName
@@ -96,9 +95,8 @@ final class PaymentTermPaymentMeanOrderTest extends TestCase
      * @param  string $rootElementName
      * @param  string $dueDateXPath
      * @return void
-     *
-     * @dataProvider ublProviderWithDueDateProvider
      */
+    #[DataProvider('ublProviderWithDueDateProvider')]
     public function testReplacingPaymentTermSynchronizesPropagatedValues(
         string $providerUniqueId,
         string $rootElementName,

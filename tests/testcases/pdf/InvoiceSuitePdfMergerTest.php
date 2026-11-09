@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractor;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use Iterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 final class InvoiceSuitePdfMergerTest extends TestCase
 {
@@ -19,9 +20,8 @@ final class InvoiceSuitePdfMergerTest extends TestCase
      * @param  string $fromPdfFilename
      * @param  string $toPdfFilename
      * @return void
-     *
-     * @dataProvider caseProvider
      */
+    #[DataProvider('caseProvider')]
     public function testMergePdfWithXmlTest(
         string $fromXmlFilename,
         string $fromPdfFilename,
@@ -71,7 +71,7 @@ final class InvoiceSuitePdfMergerTest extends TestCase
      *
      * @return Iterator
      */
-    public function caseProvider(): Iterator
+    public static function caseProvider(): Iterator
     {
         yield 'case1' => ['00_case_comfort_simple.xml', 'pdf_plain.pdf', '00_case_comfort_simple.pdf'];
         yield 'case2' => ['00_case_extended_simple.xml', 'pdf_plain.pdf', '00_case_extended_simple.pdf'];

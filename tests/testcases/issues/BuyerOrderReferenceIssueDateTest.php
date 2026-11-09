@@ -14,6 +14,7 @@ use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\tests\traits\HandlesXmlTests;
 use Iterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 final class BuyerOrderReferenceIssueDateTest extends TestCase
 {
@@ -23,9 +24,8 @@ final class BuyerOrderReferenceIssueDateTest extends TestCase
      * @param  string $providerUniqueId
      * @param  string $rootElementName
      * @return void
-     *
-     * @dataProvider ublProviderProvider
      */
+    #[DataProvider('ublProviderProvider')]
     public function testIssueDateIsOmittedByDefault(
         string $providerUniqueId,
         string $rootElementName
@@ -47,7 +47,7 @@ final class BuyerOrderReferenceIssueDateTest extends TestCase
      *
      * @return Iterator<string, array<string>>
      */
-    public function ublProviderProvider(): Iterator
+    public static function ublProviderProvider(): Iterator
     {
         yield 'peppol30invoice' => ['peppol30invoice', 'Invoice'];
         yield 'peppol30creditnote' => ['peppol30creditnote', 'CreditNote'];

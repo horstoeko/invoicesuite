@@ -17,6 +17,7 @@ use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistTextSubjectCodeQualifie
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistUnitCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistVatCategoryCodes;
 use horstoeko\invoicesuite\tests\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use ValueError;
 
 final class AllCodelistsEnumsTest extends TestCase
@@ -57,9 +58,8 @@ final class AllCodelistsEnumsTest extends TestCase
      * @param  string $expectedName
      * @param  mixed  $expectedValue
      * @return void
-     *
-     * @dataProvider provideExpectedOrder
      */
+    #[DataProvider('provideExpectedOrder')]
     public function testOrderAndValuesAreStable(
         string $enumClass,
         int $index,
@@ -78,7 +78,7 @@ final class AllCodelistsEnumsTest extends TestCase
      *     3: string
      * }>
      */
-    public function provideExpectedOrder(): iterable
+    public static function provideExpectedOrder(): iterable
     {
         yield 'InvoiceSuiteCodelistAllowanceChargeCodes:ACCEPTANCE' => [InvoiceSuiteCodelistAllowanceChargeCodes::class, 0, 'ACCEPTANCE', 'AAS'];
         yield 'InvoiceSuiteCodelistAllowanceChargeCodes:ADDI_PACK' => [InvoiceSuiteCodelistAllowanceChargeCodes::class, 1, 'ADDI_PACK', 'ABL'];
@@ -5449,9 +5449,8 @@ final class AllCodelistsEnumsTest extends TestCase
      * @param  string $enumClass
      * @param  mixed  $value
      * @return void
-     *
-     * @dataProvider provideValidValues
      */
+    #[DataProvider('provideValidValues')]
     public function testFromAndTryFromRoundtrip(
         string $enumClass,
         $value
@@ -5467,7 +5466,7 @@ final class AllCodelistsEnumsTest extends TestCase
      *     1: int|string
      * }>
      */
-    public function provideValidValues(): iterable
+    public static function provideValidValues(): iterable
     {
         foreach (InvoiceSuiteCodelistAllowanceChargeCodes::cases() as $c) {
             yield 'InvoiceSuiteCodelistAllowanceChargeCodes:' . $c->name => [InvoiceSuiteCodelistAllowanceChargeCodes::class, $c->value];
@@ -5522,9 +5521,8 @@ final class AllCodelistsEnumsTest extends TestCase
      * @param  string $enumClass
      * @param  mixed  $invalid
      * @return void
-     *
-     * @dataProvider provideInvalidValues
      */
+    #[DataProvider('provideInvalidValues')]
     public function testInvalidValues(
         string $enumClass,
         $invalid
@@ -5542,7 +5540,7 @@ final class AllCodelistsEnumsTest extends TestCase
      *     1: string
      * }>
      */
-    public function provideInvalidValues(): iterable
+    public static function provideInvalidValues(): iterable
     {
         yield 'InvoiceSuiteCodelistAllowanceChargeCodes' => [InvoiceSuiteCodelistAllowanceChargeCodes::class, '__INVALID__'];
         yield 'InvoiceSuiteCodelistCountryCodes' => [InvoiceSuiteCodelistCountryCodes::class, '__INVALID__'];

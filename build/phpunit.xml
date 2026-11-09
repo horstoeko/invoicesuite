@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" bootstrap="../vendor/autoload.php" backupGlobals="false" backupStaticAttributes="false" colors="true" verbose="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnFailure="false" cacheResultFile="phpunit-cache/test-results">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../vendor/phpunit/phpunit/phpunit.xsd" bootstrap="../vendor/autoload.php" backupGlobals="false" backupStaticProperties="false" colors="true" processIsolation="false" stopOnFailure="false" failOnNotice="true" failOnWarning="true" cacheDirectory="phpunit-cache">
     <testsuites>
         <testsuite name="utils">
             <file>../tests/testcases/utils/UtilsTest.php</file>
@@ -199,12 +199,12 @@
             <file>../tests/testcases/issues/CreditNotePaymentDueDateTest.php</file>
         </testsuite>
     </testsuites>
-    <coverage cacheDirectory="phpunit-cache/code-coverage" processUncoveredFiles="true">
+    <source>
         <include>
             <directory suffix=".php">../src</directory>
         </include>
-        <exclude>
-        </exclude>
+    </source>
+    <coverage>
         <report>
             <xml outputDirectory="coverage"/>
             <html outputDirectory="coverage-html"/>

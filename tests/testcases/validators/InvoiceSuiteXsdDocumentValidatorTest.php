@@ -181,7 +181,8 @@ final class InvoiceSuiteXsdDocumentValidatorTest extends TestCase
         $validator = InvoiceSuiteXsdDocumentValidator::createFromFile($this->getSampleXmlPath());
         $validator->setXsdFilename($this->getSampleXmlPath());
 
-        $this->assertSame($validator, $validator->validate());
+        // libxml also emits a PHP warning for the deliberately invalid schema.
+        $this->assertSame($validator, @$validator->validate());
         $this->assertFalse($validator->hasErrorMessagesInMessageBag());
         $this->assertTrue($validator->hasInternalErrorMessagesInMessageBag());
     }
