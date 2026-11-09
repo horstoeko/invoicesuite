@@ -202,6 +202,7 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
         $pdfCreatorToolInfos = $this->getCreatorToolName();
 
         $pdfMetadataInfos = $this->preparePdfMetadata();
+
         $this->pdfWriter->setPdfMetadataInfos($pdfMetadataInfos);
 
         $xmp = InvoiceSuiteXmlUtils::loadSimpleXmlFileOrFail(
@@ -215,12 +216,14 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
         $descFx->children('fx', true)->{'ConformanceLevel'} = InvoiceSuiteStringUtils::upper($this->getXmlAttachmentXmpName());
         $descFx->children('fx', true)->{'Version'} = InvoiceSuiteStringUtils::upper($this->getXmlAttachmentXmpVersion());
         $descFx->children('fx', true)->{'DocumentFileName'} = $this->getCurrentDocumentFormatProvider()->getPdfDefaultAttachmentFilename();
+
         $this->pdfWriter->addMetadataDescriptionNode($descFx->asXML());
 
         $this->pdfWriter->addMetadataDescriptionNode($descriptionNodes[1]->asXML());
 
         $descPdfAid = $descriptionNodes[2];
         $descPdfAid->children('pdfaid', true)->{'conformance'} = $this->getPdfAConformanceLevel()->value;
+
         $this->pdfWriter->addMetadataDescriptionNode($descPdfAid->asXML());
 
         $descDc = $descriptionNodes[3];
@@ -233,6 +236,7 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
 
         $descAdobe = $descriptionNodes[4];
         $descAdobe->children('pdf', true)->{'Producer'} = 'FPDF';
+
         $this->pdfWriter->addMetadataDescriptionNode($descAdobe->asXML());
 
         $descXmp = $descriptionNodes[5];
