@@ -1,3 +1,13 @@
+## v0.0.40
+
+``Previous version v0.0.39``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [e57afdaa](https://github.com/horstoeko/invoicesuite/commit/e57afdaa) | 2026-11-08 17:24:28 CET | HorstOeko | [ENH] Make PDF import transparency groups configurable (https://github.com/horstoeko/zugferd/pull/399) | 
+
+:exclamation: _There are 2 internal commit(s)_
+
 ## v0.0.39
 
 ``Previous version v0.0.38``
