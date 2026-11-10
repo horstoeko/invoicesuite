@@ -1,3 +1,15 @@
+## v0.0.41
+
+``Previous version v0.0.40``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :bug:  | [8d07c175](https://github.com/horstoeko/invoicesuite/commit/8d07c175) | 2026-11-10 05:14:58 CET | HorstOeko | [FIX] Added Exception for Symfony in ClassFinder | 
+| :new:  | [11d8c393](https://github.com/horstoeko/invoicesuite/commit/11d8c393) | 2026-11-09 17:39:23 CET | HorstOeko | [ENH] Upgrade to PHPUnit 13 and migrate the existing tests () | [#49](https://github.com/horstoeko/invoicesuite/issues/49)
+| :new:  | [f7ed0bc4](https://github.com/horstoeko/invoicesuite/commit/f7ed0bc4) | 2026-11-09 16:43:10 CET | HorstOeko | [ENH] Added "PHP 8.6 dependency blockers" to "PHP8.6 Readiness"-Workflow | 
+
+:exclamation: _There are 3 internal commit(s)_
+
 ## v0.0.40
 
 ``Previous version v0.0.39``
