@@ -145,6 +145,10 @@ class InvoiceSuiteClassFinder
         try {
             foreach ($classNamesToScan as $className) {
                 try {
+                    if ($this->isExceptionClass($className)) {
+                        continue;
+                    }
+
                     if (is_subclass_of($className, $isSubClassOf)) {
                         $classes[] = $className;
                     }
@@ -239,5 +243,25 @@ class InvoiceSuiteClassFinder
         }
 
         return $isSubClassOf . '|' . implode(',', $discoveryNamespaces);
+    }
+
+    /**
+     * Check for classes which should not checked
+     *
+     * @param  string $className
+     * @return bool
+     */
+    private function isExceptionClass(string $className): bool
+    {
+        // Symfony Console compiler passes require the optional DependencyInjection component.
+
+        if (
+            InvoiceSuiteStringUtils::startsWith($className, 'Symfony\Component\Console\DependencyInjection\\')
+            && !interface_exists('Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface')
+        ) {
+            return true;
+        }
+
+        return false;
     }
 }
