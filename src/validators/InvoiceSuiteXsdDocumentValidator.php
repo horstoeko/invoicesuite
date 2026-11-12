@@ -229,11 +229,11 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
     /**
      * Validate XML agains the specified XSD
      *
-     * @return bool
+     * @return void
      *
      * @throws InvoiceSuiteInvalidArgumentException
      */
-    private function performValidation(): bool
+    private function performValidation(): void
     {
         $prevUseInternalErrors = libxml_use_internal_errors(true);
 
@@ -246,7 +246,7 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
             );
 
             if ($doc->schemaValidate($this->getXsdFilename(), LIBXML_NONET)) {
-                return true;
+                return;
             }
 
             foreach (libxml_get_errors() as $xmlError) {
@@ -279,7 +279,5 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
             libxml_clear_errors();
             libxml_use_internal_errors($prevUseInternalErrors);
         }
-
-        return false;
     }
 }

@@ -746,34 +746,36 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     /**
      * Runs the validator java application
      *
-     * @return bool
+     * @return void
      *
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws TypeError
      * @throws ValueError
      */
-    private function performValidation(): bool
+    private function performValidation(): void
     {
         if (true === $this->remoteModeEnabled) {
-            return $this->performValidationRemote();
+            $this->performValidationRemote();
+
+            return;
         }
 
-        return $this->performValidationLocal();
+        $this->performValidationLocal();
     }
 
     /**
      * Runs the validator java application locally
      *
-     * @return bool
+     * @return void
      *
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws TypeError
      * @throws ValueError
      */
-    private function performValidationLocal(): bool
+    private function performValidationLocal(): void
     {
         if (true === $this->remoteModeEnabled) {
-            return true;
+            return;
         }
 
         $this->resetFileToValidateFilename();
@@ -781,7 +783,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
         if (false === InvoiceSuiteFileUtils::putContentToFile($this->resolveFileToValidateFilename(), $this->getRawDocumentContent())) {
             $this->addInternalErrorMessageToMessageBag('Cannot create temporary file which contains the XML to validate');
 
-            return false;
+            return;
         }
 
         $applicationOptions = [
@@ -797,24 +799,20 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
 
         if (!$this->runValidationApplication($applicationOptions, $this->resolveBaseDirectory())) {
             $this->parseValidatorXmlReportByFile();
-
-            return false;
         }
-
-        return true;
     }
 
     /**
      * Runs the validator java application on the remote host
      *
-     * @return bool
+     * @return void
      *
      * @throws InvoiceSuiteInvalidArgumentException
      */
-    private function performValidationRemote(): bool
+    private function performValidationRemote(): void
     {
         if (true !== $this->remoteModeEnabled) {
-            return true;
+            return;
         }
 
         try {
@@ -838,7 +836,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
                 $this->addInternalErrorMessageToMessageBag('Failed to connect to the host where the Validator is running in daemon mode');
                 $this->addInternalErrorMessageToMessageBag(curl_error($httpConnection));
 
-                return false;
+                return;
             }
 
             $responseStatusCode = curl_getinfo($httpConnection, CURLINFO_HTTP_CODE);
@@ -847,16 +845,10 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
                 if (preg_match('/<\?xml.*?\?>.*<\/.+>/s', $response, $matches)) {
                     $this->parseValidatorXmlReportByContent($matches[0]);
                 }
-
-                return false;
             }
         } catch (Throwable $throwable) {
             $this->addInternalErrorMessageToMessageBag($throwable->getMessage());
-
-            return false;
         }
-
-        return true;
     }
 
     /**
