@@ -258,7 +258,17 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
                 );
 
                 if ($xmlError->code >= 1801 && $xmlError->code <= 1899) {
-                    $this->addErrorMessageToMessageBag($validationMessage);
+                    $this->addErrorMessageToMessageBag(
+                        newMessageContent: $validationMessage,
+                        newMessageAdditionalData: [
+                            'source' => 'xsd',
+                            'ruleId' => '',
+                            'location' => '',
+                            'line' => max($xmlError->line, 0),
+                            'column' => max($xmlError->column, 0),
+                            'code' => (string) $xmlError->code,
+                        ]
+                    );
                 } else {
                     $this->addInternalErrorMessageToMessageBag($validationMessage);
                 }

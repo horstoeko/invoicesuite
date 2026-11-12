@@ -336,7 +336,14 @@ class InvoiceSuiteDocuflairDocumentValidator extends InvoiceSuiteAbstractDocumen
                         $documentFinding['level'] ?? '',
                         $documentFinding['location'] ?? '',
                     ),
-                    newMessageAdditionalData: $documentFinding
+                    newMessageAdditionalData: [
+                        'source' => 'docuflair',
+                        'ruleId' => $documentFinding['ruleId'] ?? '',
+                        'location' => $documentFinding['location'] ?? '',
+                        'line' => 0,
+                        'column' => 0,
+                        'code' => $documentFinding['code'] ?? '',
+                    ]
                 );
             }
         }

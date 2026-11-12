@@ -170,10 +170,64 @@ final class InvoiceSuiteXsdDocumentValidatorTest extends TestCase
         $this->assertTrue($validator->hasErrorMessagesInMessageBag());
         $this->assertSame(4, $validator->countErrorMessagesInMessageBag());
         $this->assertFalse($validator->hasInternalErrorMessagesInMessageBag());
+
+        $errorMessages = $validator->getErrorMessagesInMessageBag();
+
         $this->assertStringContainsString(
             "Element '{urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100}TypeCode'",
-            $validator->getErrorMessagesInMessageBag()[0]->getMessageContent()
+            $errorMessages[0]->getMessageContent()
         );
+
+        $additionalData = $errorMessages[0]->getMessageAdditionalData();
+
+        $this->assertSame('xsd', $additionalData['source']);
+        $this->assertSame('', $additionalData['ruleId']);
+        $this->assertSame('', $additionalData['location']);
+        $this->assertSame(43, $additionalData['line']);
+        $this->assertIsInt($additionalData['column']);
+        $this->assertSame('1871', $additionalData['code']);
+
+        $this->assertStringContainsString(
+            "Element '{urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100}ClassName'",
+            $errorMessages[1]->getMessageContent()
+        );
+
+        $additionalData = $errorMessages[1]->getMessageAdditionalData();
+
+        $this->assertSame('xsd', $additionalData['source']);
+        $this->assertSame('', $additionalData['ruleId']);
+        $this->assertSame('', $additionalData['location']);
+        $this->assertSame(53, $additionalData['line']);
+        $this->assertIsInt($additionalData['column']);
+        $this->assertSame('1871', $additionalData['code']);
+
+        $this->assertStringContainsString(
+            "Element '{urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100}AdditionalReferencedDocument'",
+            $errorMessages[2]->getMessageContent()
+        );
+
+        $additionalData = $errorMessages[2]->getMessageAdditionalData();
+
+        $this->assertSame('xsd', $additionalData['source']);
+        $this->assertSame('', $additionalData['ruleId']);
+        $this->assertSame('', $additionalData['location']);
+        $this->assertSame(134, $additionalData['line']);
+        $this->assertIsInt($additionalData['column']);
+        $this->assertSame('1871', $additionalData['code']);
+
+        $this->assertStringContainsString(
+            "Element '{urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100}SpecifiedTaxRegistration'",
+            $errorMessages[3]->getMessageContent()
+        );
+
+        $additionalData = $errorMessages[3]->getMessageAdditionalData();
+
+        $this->assertSame('xsd', $additionalData['source']);
+        $this->assertSame('', $additionalData['ruleId']);
+        $this->assertSame('', $additionalData['location']);
+        $this->assertSame(184, $additionalData['line']);
+        $this->assertIsInt($additionalData['column']);
+        $this->assertSame('1871', $additionalData['code']);
     }
 
     public function testValidateTreatsInvalidXsdAsInternalError(): void

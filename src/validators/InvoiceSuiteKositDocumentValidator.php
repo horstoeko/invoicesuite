@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\validators;
 
 use DOMDocument;
+use DOMElement;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
@@ -947,11 +948,29 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
 
         foreach ($resultAreas as $resultArea) {
             $queryResult = $domXPath->query(InvoiceSuiteStringUtils::sprintf("//rep:report/rep:scenarioMatched/rep:validationStepResult[@id='%s']/s:resource/s:name", $resultArea));
-            $resourceName = is_null($queryResult->item(0)) ? $resultArea : $queryResult->item(0)->nodeValue;
+            $resourceName = InvoiceSuiteStringUtils::asNullWhenEmpty($queryResult->item(0)?->nodeValue);
             foreach ($messageTypeMaps as $messageType => $reportMessageType) {
                 $queryResult = $domXPath->query(InvoiceSuiteStringUtils::sprintf("//rep:report/rep:scenarioMatched/rep:validationStepResult[@id='%s']/rep:message[@level='%s']", $resultArea, $reportMessageType));
-                foreach ($queryResult as $queryItem) {
-                    $this->addMessageToMessageBag(InvoiceSuiteStringUtils::sprintf('%s: %s', $resourceName, $queryItem->nodeValue), InvoiceSuiteMessageSeverity::from($messageType));
+                foreach ($queryResult as $reportMessage) {
+                    /** @var DOMElement $reportMessage */
+                    $messageCode = $reportMessage->getAttribute('code');
+                    $messageLine = filter_var($reportMessage->getAttribute('lineNumber'), FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+                    $messageColumn = filter_var($reportMessage->getAttribute('columnNumber'), FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+
+                    $this->addMessageToMessageBag(
+                        newMessageContent: null === $resourceName
+                            ? $reportMessage->textContent
+                            : InvoiceSuiteStringUtils::sprintf('%s: %s', $resourceName, $reportMessage->textContent),
+                        newMessageSeverity: InvoiceSuiteMessageSeverity::from($messageType),
+                        newMessageAdditionalData: [
+                            'source' => 'kosit',
+                            'ruleId' => InvoiceSuiteStringUtils::startsWith($resultArea, 'val-sch.') && 'UNSPECIFIC' !== $messageCode ? $messageCode : '',
+                            'location' => $reportMessage->getAttribute('xpathLocation'),
+                            'line' => $messageLine > 0 ? $messageLine : 0,
+                            'column' => $messageColumn > 0 ? $messageColumn : 0,
+                            'code' => $messageCode,
+                        ]
+                    );
                 }
             }
         }
