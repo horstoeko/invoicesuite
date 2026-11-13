@@ -44,28 +44,28 @@ class InvoiceSuiteDocumentDTOSerializer
     /**
      * Serialize a document DTO to JSON.
      *
-     * @param  InvoiceSuiteDocumentHeaderDTO $document The document DTO
+     * @param  InvoiceSuiteDocumentHeaderDTO $dto The document DTO
      * @return string                        The JSON representation of the DTO
      *
      * @throws JMSSerializerRuntimeException
      */
-    public function serialize(InvoiceSuiteDocumentHeaderDTO $document): string
+    public function serialize(InvoiceSuiteDocumentHeaderDTO $dto): string
     {
-        return $this->serializer->serialize($document, 'json', SerializationContext::create()->setSerializeNull(true));
+        return $this->serializer->serialize($dto, 'json', SerializationContext::create()->setSerializeNull(true));
     }
 
     /**
      * Reconstruct a document DTO from JSON.
      *
-     * @param  string                        $document The JSON representation of the DTO
+     * @param  string                        $dtoJson The JSON representation of the DTO
      * @return InvoiceSuiteDocumentHeaderDTO The reconstructed document DTO
      *
      * @throws InvoiceSuiteInvalidArgumentException If the document or an attachment is invalid
      * @throws JMSSerializerRuntimeException
      */
-    public function deserialize(string $document): InvoiceSuiteDocumentHeaderDTO
+    public function deserialize(string $dtoJson): InvoiceSuiteDocumentHeaderDTO
     {
-        $document = $this->serializer->deserialize($document, InvoiceSuiteDocumentHeaderDTO::class, 'json');
+        $document = $this->serializer->deserialize($dtoJson, InvoiceSuiteDocumentHeaderDTO::class, 'json');
 
         if (!$document instanceof InvoiceSuiteDocumentHeaderDTO) {
             throw new InvoiceSuiteInvalidArgumentException('Expected an invoice DTO in JSON');
