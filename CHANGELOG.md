@@ -1,3 +1,16 @@
+## v0.0.42
+
+``Previous version v0.0.41``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [c3757754](https://github.com/horstoeko/invoicesuite/commit/c3757754) | 2026-11-13 16:58:18 CET | HorstOeko | [ENH] Register DTO attachment handling as a JMS subscriber -> Renamed Variables | 
+| :new:  | [f8c0404b](https://github.com/horstoeko/invoicesuite/commit/f8c0404b) | 2026-11-13 16:50:56 CET | HorstOeko | [ENH] Register DTO attachment handling as a JMS subscriber | 
+| :new:  | [eda64460](https://github.com/horstoeko/invoicesuite/commit/eda64460) | 2026-11-12 16:13:52 CET | HorstOeko | [ENH] Remove unused boolean returns from XSD and KoSIT validators | 
+| :new:  | [db38f3c1](https://github.com/horstoeko/invoicesuite/commit/db38f3c1) | 2026-11-12 05:05:03 CET | HorstOeko | [ENH] Standardize validation finding metadata | 
+
+:exclamation: _There is one internal commit_
+
 ## v0.0.41
 
 ``Previous version v0.0.40``
