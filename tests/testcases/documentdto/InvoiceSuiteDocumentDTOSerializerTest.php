@@ -11,7 +11,7 @@ use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAllowanceChargeDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteCommunicationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteContactDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDateRangeDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentDtoSerializer;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentDTOSerializer;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentPositionDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteIdDTO;
@@ -57,7 +57,7 @@ final class InvoiceSuiteDocumentDTOSerializerTest extends TestCase
      */
     private array $dtoFixtures;
 
-    private InvoiceSuiteDocumentDtoSerializer $documentSerializer;
+    private InvoiceSuiteDocumentDTOSerializer $documentSerializer;
 
     private SerializerInterface $serializer;
 
@@ -69,7 +69,7 @@ final class InvoiceSuiteDocumentDTOSerializerTest extends TestCase
         parent::setUp();
 
         $this->dtoFixtures = $this->createDtoFixtures();
-        $this->documentSerializer = new InvoiceSuiteDocumentDtoSerializer();
+        $this->documentSerializer = new InvoiceSuiteDocumentDTOSerializer();
 
         // The public serializer accepts document headers. Test each DTO with the same JMS configuration.
         $this->serializer = $this->getPrivatePropertyFromObject($this->documentSerializer, 'serializer')->getValue($this->documentSerializer);

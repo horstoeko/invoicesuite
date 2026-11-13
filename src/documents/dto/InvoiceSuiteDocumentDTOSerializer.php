@@ -5,14 +5,8 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
-use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
-use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
-use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use JMS\Serializer\Exception\RuntimeException as JMSSerializerRuntimeException;
-use JMS\Serializer\GraphNavigatorInterface;
 use JMS\Serializer\Handler\HandlerRegistryInterface;
-use JMS\Serializer\JsonDeserializationVisitor;
-use JMS\Serializer\JsonSerializationVisitor;
 use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
@@ -42,30 +36,7 @@ class InvoiceSuiteDocumentDTOSerializer
         $this->serializer = SerializerBuilder::create()
             ->addDefaultHandlers()
             ->configureHandlers(static function (HandlerRegistryInterface $registry): void {
-                $registry->registerHandler(
-                    GraphNavigatorInterface::DIRECTION_SERIALIZATION,
-                    InvoiceSuiteAttachment::class,
-                    'json',
-                    static fn (JsonSerializationVisitor $visitor, InvoiceSuiteAttachment $attachment): array => $attachment->isUrlAttachment()
-                        ? ['url' => $attachment->getRawContent()]
-                        : ['filename' => $attachment->getFilename(), 'contentBase64' => $attachment->getContent()]
-                );
-                $registry->registerHandler(
-                    GraphNavigatorInterface::DIRECTION_DESERIALIZATION,
-                    InvoiceSuiteAttachment::class,
-                    'json',
-                    static function (JsonDeserializationVisitor $visitor, mixed $data): InvoiceSuiteAttachment {
-                        if (InvoiceSuiteArrayUtils::is($data) && InvoiceSuiteStringUtils::is($data['url'] ?? null)) {
-                            return InvoiceSuiteAttachment::fromUrl($data['url']);
-                        }
-
-                        if (InvoiceSuiteArrayUtils::is($data) && InvoiceSuiteStringUtils::is($data['filename'] ?? null) && InvoiceSuiteStringUtils::is($data['contentBase64'] ?? null)) {
-                            return InvoiceSuiteAttachment::fromBase64String($data['contentBase64'], $data['filename']);
-                        }
-
-                        throw new InvoiceSuiteInvalidArgumentException('Invalid attachment in invoice DTO JSON');
-                    }
-                );
+                $registry->registerSubscribingHandler(new InvoiceSuiteDocumentDTOSerializerAttachmentHandler());
             })
             ->build();
     }
@@ -86,15 +57,15 @@ class InvoiceSuiteDocumentDTOSerializer
     /**
      * Reconstruct a document DTO from JSON.
      *
-     * @param  string                        $json The JSON representation of the DTO
+     * @param  string                        $document The JSON representation of the DTO
      * @return InvoiceSuiteDocumentHeaderDTO The reconstructed document DTO
      *
      * @throws InvoiceSuiteInvalidArgumentException If the document or an attachment is invalid
      * @throws JMSSerializerRuntimeException
      */
-    public function deserialize(string $json): InvoiceSuiteDocumentHeaderDTO
+    public function deserialize(string $document): InvoiceSuiteDocumentHeaderDTO
     {
-        $document = $this->serializer->deserialize($json, InvoiceSuiteDocumentHeaderDTO::class, 'json');
+        $document = $this->serializer->deserialize($document, InvoiceSuiteDocumentHeaderDTO::class, 'json');
 
         if (!$document instanceof InvoiceSuiteDocumentHeaderDTO) {
             throw new InvoiceSuiteInvalidArgumentException('Expected an invoice DTO in JSON');
