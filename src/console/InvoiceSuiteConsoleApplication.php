@@ -55,14 +55,14 @@ class InvoiceSuiteConsoleApplication extends Application
      */
     protected function registerBuiltInCommands(): void
     {
-        $this->addCommand(new InvoiceSuiteListProvidersCommand());
-        $this->addCommand(new InvoiceSuiteMakeProviderCommand());
-        $this->addCommand(new InvoiceSuiteDetectCommand());
-        $this->addCommand(new InvoiceSuiteMergePdfCommand());
-        $this->addCommand(new InvoiceSuiteValidateCommand());
-        $this->addCommand(new InvoiceSuiteVisualizeCommand());
-        $this->addCommand(new InvoiceSuiteExportPdfAttachmentsCommand());
-        $this->addCommand(new InvoiceSuiteCacheClearCommand());
-        $this->addCommand(new InvoiceSuiteCacheRebuildCommand());
+        $this->add(new InvoiceSuiteListProvidersCommand());
+        $this->add(new InvoiceSuiteMakeProviderCommand());
+        $this->add(new InvoiceSuiteDetectCommand());
+        $this->add(new InvoiceSuiteMergePdfCommand());
+        $this->add(new InvoiceSuiteValidateCommand());
+        $this->add(new InvoiceSuiteVisualizeCommand());
+        $this->add(new InvoiceSuiteExportPdfAttachmentsCommand());
+        $this->add(new InvoiceSuiteCacheClearCommand());
+        $this->add(new InvoiceSuiteCacheRebuildCommand());
     }
 }
