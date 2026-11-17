@@ -157,6 +157,7 @@
         <testsuite name="validator">
             <file>../tests/testcases/validators/InvoiceSuiteAbstractDocumentValidatorTest.php</file>
             <file>../tests/testcases/validators/InvoiceSuiteXsdDocumentValidatorTest.php</file>
+            <file>../tests/testcases/validators/InvoiceSuiteCompositeDocumentValidatorTest.php</file>
         </testsuite>
         <testsuite name="compat">
             <!-- Document General -->
