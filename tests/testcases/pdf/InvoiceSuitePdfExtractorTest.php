@@ -124,7 +124,7 @@ final class InvoiceSuitePdfExtractorTest extends TestCase
     {
         $this->expectException(InvoiceSuiteFileNotFoundException::class);
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::FILENOTFOUND);
-        $this->expectExceptionMessageIsOrContains('notexisting.pdf was not found');
+        $this->expectExceptionMessage('notexisting.pdf was not found');
 
         InvoiceSuitePdfExtractor::fromFile($this->getNotExistingSamplePdfPath());
     }

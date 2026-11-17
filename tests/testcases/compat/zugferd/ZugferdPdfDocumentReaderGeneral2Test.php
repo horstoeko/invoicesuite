@@ -24,7 +24,7 @@ final class ZugferdPdfDocumentReaderGeneral2Test extends TestCase
     public function testReadFromFileWhichHasNoValidAttachment(): void
     {
         $this->expectException(InvoiceSuiteFormatProviderNotFoundException::class);
-        $this->expectExceptionMessageIsOrContains('The format provider with unique id unknown was not found');
+        $this->expectExceptionMessage('The format provider with unique id unknown was not found');
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::FORMATPROVIDER_NOTFOUND);
 
         ZugferdDocumentPdfReaderExt::readAndGuessFromFile(__DIR__ . '/../../../assets/pdf_plain.pdf');
@@ -40,7 +40,7 @@ final class ZugferdPdfDocumentReaderGeneral2Test extends TestCase
     public function testReadFromContentWhichHasNoValidAttachment(): void
     {
         $this->expectException(InvoiceSuiteFormatProviderNotFoundException::class);
-        $this->expectExceptionMessageIsOrContains('The format provider with unique id unknown was not found');
+        $this->expectExceptionMessage('The format provider with unique id unknown was not found');
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::FORMATPROVIDER_NOTFOUND);
 
         $pdfContent = file_get_contents(__DIR__ . '/../../../assets/pdf_plain.pdf');
@@ -67,7 +67,7 @@ final class ZugferdPdfDocumentReaderGeneral2Test extends TestCase
     public function testGetXmlFromFileWhichHasNoValidAttachment(): void
     {
         $this->expectException(InvoiceSuiteFormatProviderNotFoundException::class);
-        $this->expectExceptionMessageIsOrContains('The format provider with unique id unknown was not found');
+        $this->expectExceptionMessage('The format provider with unique id unknown was not found');
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::FORMATPROVIDER_NOTFOUND);
 
         ZugferdDocumentPdfReaderExt::getInvoiceDocumentContentFromFile(__DIR__ . '/../../../assets/pdf_plain.pdf');
@@ -83,7 +83,7 @@ final class ZugferdPdfDocumentReaderGeneral2Test extends TestCase
     public function testGetXmlFromContentWhichHasNoValidAttachment(): void
     {
         $this->expectException(InvoiceSuiteFormatProviderNotFoundException::class);
-        $this->expectExceptionMessageIsOrContains('The format provider with unique id unknown was not found');
+        $this->expectExceptionMessage('The format provider with unique id unknown was not found');
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::FORMATPROVIDER_NOTFOUND);
 
         $pdfContent = file_get_contents(__DIR__ . '/../../../assets/pdf_plain.pdf');

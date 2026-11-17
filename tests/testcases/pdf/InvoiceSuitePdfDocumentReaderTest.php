@@ -67,7 +67,7 @@ final class InvoiceSuitePdfDocumentReaderTest extends TestCase
     public function testCreateFromContentWithDocumentFormatProviderRejectsExternalCall(): void
     {
         $this->expectException(InvoiceSuiteInternalMethodCallException::class);
-        $this->expectExceptionMessageIsOrContains(InvoiceSuiteDocumentReader::class . '::createFromContentWithDocumentFormatProvider is marked as @internal and may only be called by internal classes.');
+        $this->expectExceptionMessage(InvoiceSuiteDocumentReader::class . '::createFromContentWithDocumentFormatProvider is marked as @internal and may only be called by internal classes.');
 
         InvoiceSuiteDocumentReader::createFromContentWithDocumentFormatProvider(
             InvoiceSuiteFileUtils::getContentFromFile($this->getSampleXmlPath()),
@@ -78,7 +78,7 @@ final class InvoiceSuitePdfDocumentReaderTest extends TestCase
     public function testCreateFromFileWithDocumentFormatProviderRejectsExternalCall(): void
     {
         $this->expectException(InvoiceSuiteInternalMethodCallException::class);
-        $this->expectExceptionMessageIsOrContains(InvoiceSuiteDocumentReader::class . '::createFromFileWithDocumentFormatProvider is marked as @internal and may only be called by internal classes.');
+        $this->expectExceptionMessage(InvoiceSuiteDocumentReader::class . '::createFromFileWithDocumentFormatProvider is marked as @internal and may only be called by internal classes.');
 
         InvoiceSuiteDocumentReader::createFromFileWithDocumentFormatProvider(
             $this->getSampleXmlPath(),
@@ -90,7 +90,7 @@ final class InvoiceSuitePdfDocumentReaderTest extends TestCase
     {
         $this->expectException(InvoiceSuiteFileNotFoundException::class);
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::FILENOTFOUND);
-        $this->expectExceptionMessageIsOrContains('notexisting.pdf was not found');
+        $this->expectExceptionMessage('notexisting.pdf was not found');
 
         InvoiceSuitePdfDocumentReader::createFromFile($this->getNotExistingSamplePdfPath());
     }
@@ -99,7 +99,7 @@ final class InvoiceSuitePdfDocumentReaderTest extends TestCase
     {
         $this->expectException(InvoiceSuiteFormatProviderNotFoundException::class);
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::FORMATPROVIDER_NOTFOUND);
-        $this->expectExceptionMessageIsOrContains('The format provider with unique id unknown was not found');
+        $this->expectExceptionMessage('The format provider with unique id unknown was not found');
 
         InvoiceSuitePdfDocumentReader::createFromFile($this->getInvalidSamplePdfPath());
     }

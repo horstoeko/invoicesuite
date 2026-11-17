@@ -92,7 +92,7 @@ final class ZugferdDocumentPdfBuilderTest extends TestCase
     public function testBuildFromSourcePdfFileWhichDoesNotExist(): void
     {
         $this->expectException(InvoiceSuiteFileNotFoundException::class);
-        $this->expectExceptionMessageIsOrContains('The file /tmp/anonexisting.pdf was not found');
+        $this->expectExceptionMessage('The file /tmp/anonexisting.pdf was not found');
 
         ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, '/tmp/anonexisting.pdf');
     }
@@ -131,7 +131,7 @@ final class ZugferdDocumentPdfBuilderTest extends TestCase
     public function testBuildFromSourcePdfStringWhichIsInvalid(): void
     {
         $this->expectException(PdfParserException::class);
-        $this->expectExceptionMessageIsOrContains('Unable to find PDF file header.');
+        $this->expectExceptionMessage('Unable to find PDF file header.');
 
         $pdfContent = 'this_is_not_a_pdf_string';
 
@@ -290,7 +290,7 @@ final class ZugferdDocumentPdfBuilderTest extends TestCase
         $filename = __DIR__ . '/unknown.txt';
 
         $this->expectException(InvoiceSuiteFileNotFoundException::class);
-        $this->expectExceptionMessageIsOrContains(sprintf('The file %s was not found', $filename));
+        $this->expectExceptionMessage(sprintf('The file %s was not found', $filename));
 
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->attachAdditionalFileByRealFile($filename);
@@ -299,7 +299,7 @@ final class ZugferdDocumentPdfBuilderTest extends TestCase
     public function testAttachAdditionalFileFileIsEmpty(): void
     {
         $this->expectException(InvoiceSuiteInvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains('You must specify a filename for the content to attach');
+        $this->expectExceptionMessage('You must specify a filename for the content to attach');
 
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->attachAdditionalFileByRealFile('');
@@ -310,7 +310,7 @@ final class ZugferdDocumentPdfBuilderTest extends TestCase
         $filename = __DIR__ . '/../../../assets/99_dummy_attachment_1.dummy';
 
         $this->expectException(InvoiceSuiteUnknownContentException::class);
-        $this->expectExceptionMessageIsOrContains('Unknown content');
+        $this->expectExceptionMessage('Unknown content');
 
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->attachAdditionalFileByRealFile($filename);
@@ -394,7 +394,7 @@ final class ZugferdDocumentPdfBuilderTest extends TestCase
     public function testAttachAdditionalFileByContentEmptyContent(): void
     {
         $this->expectException(InvoiceSuiteInvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains('You must specify a content to attach');
+        $this->expectExceptionMessage('You must specify a content to attach');
 
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->attachAdditionalFileByContent('', '', '', '');
@@ -403,7 +403,7 @@ final class ZugferdDocumentPdfBuilderTest extends TestCase
     public function testAttachAdditionalFileByContentEmptyFilename(): void
     {
         $this->expectException(InvoiceSuiteInvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains('You must specify a filename for the content to attach');
+        $this->expectExceptionMessage('You must specify a filename for the content to attach');
 
         $filename = __DIR__ . '/../../../assets/99_txt_addattachment_1.txt';
 

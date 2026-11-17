@@ -225,7 +225,7 @@ final class InvoiceSuiteCompositeDocumentValidatorTest extends TestCase
         $validator->setValidatorOptions(InvoiceSuiteXsdDocumentValidator::class, ['setUnknownOption' => []]);
 
         $this->expectException(InvoiceSuiteInvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains('Invalid validator option method ' . InvoiceSuiteXsdDocumentValidator::class . '::setUnknownOption');
+        $this->expectExceptionMessage('Invalid validator option method ' . InvoiceSuiteXsdDocumentValidator::class . '::setUnknownOption');
 
         $validator->validate();
     }

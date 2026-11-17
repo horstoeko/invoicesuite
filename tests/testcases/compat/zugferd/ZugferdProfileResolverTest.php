@@ -193,7 +193,7 @@ final class ZugferdProfileResolverTest extends TestCase
     public function testResolveUnknownProfile(): void
     {
         $this->expectException(InvoiceSuiteFormatProviderNotFoundException::class);
-        $this->expectExceptionMessageIsOrContains('The format provider with unique id unknown was not found');
+        $this->expectExceptionMessage('The format provider with unique id unknown was not found');
 
         ZugferdProfileResolver::resolveProfileId($this->deliverUnknownProfile());
     }
@@ -201,7 +201,7 @@ final class ZugferdProfileResolverTest extends TestCase
     public function testResolveInvalidXml(): void
     {
         $this->expectException(Exception::class);
-        $this->expectExceptionMessageIsOrContains('The format provider with unique id unknown was not found');
+        $this->expectExceptionMessage('The format provider with unique id unknown was not found');
 
         ZugferdProfileResolver::resolveProfileId($this->deliverInvalidXml());
     }
@@ -269,7 +269,7 @@ final class ZugferdProfileResolverTest extends TestCase
     {
         $this->expectException(InvoiceSuiteUnknownProfileException::class);
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::UNKNOWN_PROFILE);
-        $this->expectExceptionMessageIsOrContains('Unknown profile id -1');
+        $this->expectExceptionMessage('Unknown profile id -1');
 
         ZugferdProfileResolver::resolveProfileDefById(-1);
     }
@@ -317,7 +317,7 @@ final class ZugferdProfileResolverTest extends TestCase
     public function testXmlButProfileNotFound(): void
     {
         $this->expectException(InvoiceSuiteFormatProviderNotFoundException::class);
-        $this->expectExceptionMessageIsOrContains('The format provider with unique id unknown was not found');
+        $this->expectExceptionMessage('The format provider with unique id unknown was not found');
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::FORMATPROVIDER_NOTFOUND);
 
         ZugferdProfileResolver::resolveProfileDef($this->deliverUnknownXml());

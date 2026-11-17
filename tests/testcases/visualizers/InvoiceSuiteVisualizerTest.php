@@ -123,7 +123,7 @@ final class InvoiceSuiteVisualizerTest extends TestCase
         $visualizer = $this->createVisualizer();
 
         $this->expectException(InvoiceSuiteInvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains('The template must not be empty');
+        $this->expectExceptionMessage('The template must not be empty');
 
         $visualizer->setTemplate('');
     }
@@ -287,7 +287,7 @@ TMPL;
 
         $this->expectException(InvoiceSuiteTemplateNotSpecifiedException::class);
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::TEMPLATE_NOT_SPECIFIED);
-        $this->expectExceptionMessageIsOrContains('No template specified');
+        $this->expectExceptionMessage('No template specified');
 
         $visualizer->renderMarkup();
     }
@@ -301,7 +301,7 @@ TMPL;
         $this->assertFileDoesNotExist($missingTemplateFilename);
         $this->expectException(InvoiceSuiteTemplateNotFoundException::class);
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::TEMPLATE_NOT_FOUND);
-        $this->expectExceptionMessageIsOrContains('The template ' . $missingTemplateFilename . ' was not found');
+        $this->expectExceptionMessage('The template ' . $missingTemplateFilename . ' was not found');
 
         $visualizer->renderMarkup();
     }
