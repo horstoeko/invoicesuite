@@ -51,7 +51,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
     public function testInvoiceSuiteMessageBagCreateWithInvalidArgs(): void
     {
         $this->expectException(InvoiceSuiteInvalidArgumentException::class);
-        $this->expectExceptionMessage('InvoiceSuiteMessageBag only accepts instances of InvoiceSuiteMessageBagItem.');
+        $this->expectExceptionMessageIsOrContains('InvoiceSuiteMessageBag only accepts instances of InvoiceSuiteMessageBagItem.');
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::INVALID_ARGUMENT);
 
         // @phpstan-ignore argument.type
@@ -347,7 +347,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         ]);
 
         $this->expectException(InvoiceSuiteInvalidArgumentException::class);
-        $this->expectExceptionMessage('Offset must be an int.');
+        $this->expectExceptionMessageIsOrContains('Offset must be an int.');
 
         $this->assertArrayHasKey('key', $messageBag);
     }
@@ -361,7 +361,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         ]);
 
         $this->expectException(InvoiceSuiteInvalidArgumentException::class);
-        $this->expectExceptionMessage('Offset must be an int.');
+        $this->expectExceptionMessageIsOrContains('Offset must be an int.');
 
         $this->assertNotInstanceOf(InvoiceSuiteMessageBagItem::class, $messageBag['key']);
     }
@@ -375,7 +375,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         ]);
 
         $this->expectException(LogicException::class);
-        $this->expectExceptionMessage('Messages are read-only via array access.');
+        $this->expectExceptionMessageIsOrContains('Messages are read-only via array access.');
 
         $messageBag[4] = new InvoiceSuiteMessageBagItem('message-1');
     }
@@ -389,7 +389,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         ]);
 
         $this->expectException(LogicException::class);
-        $this->expectExceptionMessage('Messages are read-only via array access.');
+        $this->expectExceptionMessageIsOrContains('Messages are read-only via array access.');
 
         unset($messageBag[0]);
     }

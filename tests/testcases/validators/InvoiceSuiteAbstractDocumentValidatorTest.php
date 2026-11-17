@@ -191,7 +191,7 @@ final class InvoiceSuiteAbstractDocumentValidatorTest extends TestCase
 
         $this->expectException(InvoiceSuiteValidationContentNotSpecifiedException::class);
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::VALIDATION_CONTENT_NOT_SPECIFIED);
-        $this->expectExceptionMessage('You did not present any content to validate');
+        $this->expectExceptionMessageIsOrContains('You did not present any content to validate');
 
         $validatorInstance->validate();
     }

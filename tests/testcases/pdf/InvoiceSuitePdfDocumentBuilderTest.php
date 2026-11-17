@@ -516,7 +516,7 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
     public function testProviderThatDoesNotSupportPdf(): void
     {
         $this->expectException(InvoiceSuiteInvalidArgumentException::class);
-        $this->expectExceptionMessage('Provider xrechnungublinvoice does not support PDF embedding');
+        $this->expectExceptionMessageIsOrContains('Provider xrechnungublinvoice does not support PDF embedding');
         $this->expectExceptionCode(-1005);
 
         $documentBuilder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('xrechnungublinvoice');

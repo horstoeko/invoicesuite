@@ -1139,7 +1139,7 @@ final class UtilsTest extends TestCase
         $this->assertSame('test.json', $attachment->getFilename());
 
         $this->expectException(InvoiceSuiteInvalidArgumentException::class);
-        $this->expectExceptionMessage('Not a BASE64 string');
+        $this->expectExceptionMessageIsOrContains('Not a BASE64 string');
 
         InvoiceSuiteAttachment::fromBase64String('{"a":"b","c":2}', 'test.txt');
     }
@@ -1158,7 +1158,7 @@ final class UtilsTest extends TestCase
         $this->assertFalse($attachment->getFilename());
 
         // $this->expectException(InvoiceSuiteInvalidArgumentException::class);
-        // $this->expectExceptionMessage('Not a valid URL: Dummy');
+        // $this->expectExceptionMessageIsOrContains('Not a valid URL: Dummy');
 
         // InvoiceSuiteAttachment::fromUrl('Dummy');
     }

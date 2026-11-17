@@ -89,7 +89,7 @@ final class InvoiceSuiteValidateCommandTest extends InvoiceSuiteConsoleCommandTe
     public function testCommandRejectsPdfWithoutInvoiceAttachment(): void
     {
         $this->expectException(InvoiceSuiteFormatProviderNotFoundException::class);
-        $this->expectExceptionMessage('The format provider with unique id unknown was not found');
+        $this->expectExceptionMessageIsOrContains('The format provider with unique id unknown was not found');
 
         $commandTester = $this->createCommandTester('invoicesuite:validate');
 

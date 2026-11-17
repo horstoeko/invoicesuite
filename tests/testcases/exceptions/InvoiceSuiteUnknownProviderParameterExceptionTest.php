@@ -13,7 +13,7 @@ final class InvoiceSuiteUnknownProviderParameterExceptionTest extends TestCase
     public function testException(): void
     {
         $this->expectException(InvoiceSuiteUnknownProviderParameterException::class);
-        $this->expectExceptionMessage('Unknown provider parameter someparameter');
+        $this->expectExceptionMessageIsOrContains('Unknown provider parameter someparameter');
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::UNKNOWN_PROVIDER_PARAMETER);
 
         throw new InvoiceSuiteUnknownProviderParameterException('someparameter');

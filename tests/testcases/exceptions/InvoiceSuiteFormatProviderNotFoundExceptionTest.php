@@ -13,7 +13,7 @@ final class InvoiceSuiteFormatProviderNotFoundExceptionTest extends TestCase
     public function testException(): void
     {
         $this->expectException(InvoiceSuiteFormatProviderNotFoundException::class);
-        $this->expectExceptionMessage('The format provider with unique id someprovider was not found');
+        $this->expectExceptionMessageIsOrContains('The format provider with unique id someprovider was not found');
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::FORMATPROVIDER_NOTFOUND);
 
         throw new InvoiceSuiteFormatProviderNotFoundException('someprovider');

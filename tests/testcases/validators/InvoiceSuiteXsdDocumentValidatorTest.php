@@ -147,7 +147,7 @@ final class InvoiceSuiteXsdDocumentValidatorTest extends TestCase
 
         $this->expectException(InvoiceSuiteFileNotFoundException::class);
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::FILENOTFOUND);
-        $this->expectExceptionMessage('notexisting.xsd was not found');
+        $this->expectExceptionMessageIsOrContains('notexisting.xsd was not found');
 
         $validator->setXsdFilename($xsdFilename);
     }

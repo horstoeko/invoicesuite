@@ -13,7 +13,7 @@ final class InvoiceSuiteUnknownContentTest extends TestCase
     public function testException(): void
     {
         $this->expectException(InvoiceSuiteUnknownContentException::class);
-        $this->expectExceptionMessage('Unknown content');
+        $this->expectExceptionMessageIsOrContains('Unknown content');
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::UNKNOWN_CONTENT);
 
         throw new InvoiceSuiteUnknownContentException();

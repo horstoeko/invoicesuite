@@ -13,7 +13,7 @@ final class InvoiceSuiteFileNotFoundExceptionTest extends TestCase
     public function testException(): void
     {
         $this->expectException(InvoiceSuiteFileNotFoundException::class);
-        $this->expectExceptionMessage('The file somefile.ext was not found');
+        $this->expectExceptionMessageIsOrContains('The file somefile.ext was not found');
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::FILENOTFOUND);
 
         throw new InvoiceSuiteFileNotFoundException('somefile.ext');
