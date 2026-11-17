@@ -82,7 +82,19 @@ class InvoiceSuiteClassFinder
         $this->clear();
 
         foreach (ClassLoader::getRegisteredLoaders() as $loader) {
-            $this->classNames = InvoiceSuiteArrayUtils::merge($this->classNames, InvoiceSuiteArrayUtils::keys($loader->getClassMap()));
+            $classNames = InvoiceSuiteArrayUtils::keys($loader->getClassMap());
+
+            // Only inspect potential format provider classes.
+            $providerClasses = array_filter(
+                $classNames,
+                static fn(string $className): bool =>
+                    str_ends_with($className, 'Provider')
+            );
+
+            $this->classNames = InvoiceSuiteArrayUtils::merge(
+                $this->classNames,
+                $providerClasses
+            );
         }
 
         return $this;
