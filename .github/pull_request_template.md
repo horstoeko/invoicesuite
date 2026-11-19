@@ -13,6 +13,20 @@ Pull requests that do not contain the requested information, contain unchecked m
 - You remain fully responsible for all submitted content, including automated or AI-assisted changes.
 - Automated or AI-assisted changes are accepted only when every change has been personally reviewed, understood, tested, and clearly justified by the submitter.
 
+## Code quality checks (required before creating a pull request)
+
+Before creating a pull request, you **must** run the project's code quality checks locally:
+
+```bash
+composer checkstyle:run
+```
+
+- If PHP-CS-Fixer reports coding style violations, apply the project's formatting rules using `composer phpcsfixer:run`. Review and commit the resulting changes.
+- Any errors reported by PHPStan **must be fixed in the code** before submitting the pull request. Do not suppress or ignore them merely to make the checks pass.
+- After resolving all reported issues, run `composer checkstyle:run` again. All checks must pass before the pull request is created.
+
+Pull requests that fail these required checks may be returned for correction without further review.
+
 # Description
 
 Describe the problem and the proposed solution.
@@ -54,6 +68,9 @@ Include the commands you ran, the relevant test cases, and any instructions requ
 - [ ] I understand the submitted code and can explain how it works.
 - [ ] I have tested the change locally.
 - [ ] Existing tests pass locally.
+- [ ] I ran `composer checkstyle:run` locally before creating this pull request, and all checks pass.
+- [ ] I fixed all PHP-CS-Fixer coding style violations (using `composer phpcsfixer:run` where necessary).
+- [ ] I fixed all errors reported by PHPStan without introducing unjustified suppressions or ignores.
 - [ ] My changes introduce no new warnings or static-analysis errors.
 - [ ] I have added or updated meaningful tests where applicable.
 - [ ] I have updated the documentation where necessary.
