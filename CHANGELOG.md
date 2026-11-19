@@ -1,3 +1,21 @@
+## v0.0.43
+
+``Previous version v0.0.42``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :bug:  | [f071cad2](https://github.com/horstoeko/invoicesuite/commit/f071cad2) | 2026-11-19 18:28:07 CET | HorstOeko | [FIX] Prevent ClassFinder cache writes inside PHAR archives | 
+| :bug:  | [abb47535](https://github.com/horstoeko/invoicesuite/commit/abb47535) | 2026-11-19 17:56:11 CET | HorstOeko | [FIX] Fixed PHAR-Build-Workflow | 
+| :bug:  | [45e4fd6f](https://github.com/horstoeko/invoicesuite/commit/45e4fd6f) | 2026-11-19 17:48:01 CET | HorstOeko | [FIX] Fixed PHAR workflow | 
+| :bug:  | [63738912](https://github.com/horstoeko/invoicesuite/commit/63738912) | 2026-11-19 17:06:07 CET | HorstOeko | [FIX] Enable XSD validation from PHAR archives | 
+| :bug:  | [44b228a8](https://github.com/horstoeko/invoicesuite/commit/44b228a8) | 2026-11-19 15:38:55 CET | HorstOeko | [FIX] Fix PDF attachment MIME type handling for pdfparser 4.x () () | [#52](https://github.com/horstoeko/invoicesuite/issues/52), [#54](https://github.com/horstoeko/invoicesuite/issues/54)
+| :new:  | [fa5dac30](https://github.com/horstoeko/invoicesuite/commit/fa5dac30) | 2026-11-17 16:38:00 CET | HorstOeko | [ENH] Revert: Change obsolete expectExceptionMessage to expectExceptionMessageIsOrContains | 
+| :new:  | [1aa178a0](https://github.com/horstoeko/invoicesuite/commit/1aa178a0) | 2026-11-17 16:33:35 CET | HorstOeko | [ENH] Change obsolete expectExceptionMessage to expectExceptionMessageIsOrContains | 
+| :new:  | [7776bffc](https://github.com/horstoeko/invoicesuite/commit/7776bffc) | 2026-11-17 16:20:34 CET | HorstOeko | [ENH] Added Tests for InvoiceSuiteCompositeDocumentValidator | 
+| :new:  | [5cf463f6](https://github.com/horstoeko/invoicesuite/commit/5cf463f6) | 2026-11-17 05:30:25 CET | HorstOeko | [ENH] Intrducing the InvoiceSuiteCompositeDocumentValidator | 
+
+:exclamation: _There are 3 internal commit(s)_
+
 ## v0.0.42
 
 ``Previous version v0.0.41``
