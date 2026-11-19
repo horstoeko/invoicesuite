@@ -24,6 +24,8 @@ use IteratorAggregate;
 use JsonSerializable;
 use LogicException;
 use PrinsFrank\PdfParser\Document\Dictionary\Decorator\FileSpecification;
+use PrinsFrank\PdfParser\Document\Dictionary\DictionaryValue\Name\SubtypeNameValue;
+use PrinsFrank\PdfParser\Document\Dictionary\DictionaryValue\TextString\NameObjectStringValue;
 use PrinsFrank\PdfParser\Exception\PdfParserException;
 use PrinsFrank\PdfParser\PdfParser as PrinsFrankPdfParser;
 use Smalot\PdfParser\Config as SmalotPdfParserConfig;
@@ -240,10 +242,19 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
         );
 
         foreach ($fileSpecs as $fileSpec) {
+            $embeddedFile = $fileSpec->getEmbeddedFile();
+            $subType = $embeddedFile->getSubType();
+
+            $mimeType = match (true) {
+                $subType instanceof NameObjectStringValue => $subType->getText(),
+                $subType instanceof SubtypeNameValue => $subType->value,
+                default => '',
+            };
+
             $this->attachmentList[] = new InvoiceSuitePdfExtractorAttachment(
-                $fileSpec->getEmbeddedFile()->getContent()->toString(),
+                $embeddedFile->getContent()->toString(),
                 $fileSpec->getFileSpecificationString(),
-                InvoiceSuiteStringUtils::trimStart($fileSpec->getEmbeddedFile()->getSubType() ?? '', '/')
+                InvoiceSuiteStringUtils::trimStart($mimeType, '/')
             );
         }
 
