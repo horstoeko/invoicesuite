@@ -161,7 +161,7 @@ class InvoiceSuiteClassFinder
             error_reporting($previousErrorReportingState);
         }
 
-        if (!$disableCache) {
+        if (!$disableCache && !InvoiceSuiteFileUtils::isRunningFromPhar()) {
             @mkdir(directory: $cacheFilepath, recursive: true);
 
             $cacheFilePhpCode = "<?php\ndeclare(strict_types=1);\nreturn " . var_export(InvoiceSuiteArrayUtils::values($classes), true) . ";\n";

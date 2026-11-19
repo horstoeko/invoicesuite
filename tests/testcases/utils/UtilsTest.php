@@ -1441,6 +1441,8 @@ final class UtilsTest extends TestCase
         $this->assertSame('http://test.de', InvoiceSuiteFileUtils::getContentFromFileOrString('http://test.de'));
         $this->assertSame("I am a testfile. Don't modify me...", InvoiceSuiteFileUtils::getContentFromFileOrString(__DIR__ . '/../../assets/99_FileUtilsTest_tobase64.txt'));
         $this->assertSame(__DIR__ . '/../../assets/filenotexists.txt', InvoiceSuiteFileUtils::getContentFromFileOrString(__DIR__ . '/../../assets/filenotexists.txt'));
+
+        $this->assertFalse(InvoiceSuiteFileUtils::isRunningFromPhar());
     }
 
     public function testInvoiceSuitePathUtils(): void

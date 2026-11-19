@@ -117,4 +117,14 @@ class InvoiceSuiteFileUtils extends FileUtils
 
         return (new finfo(FILEINFO_MIME_TYPE))->file($filename);
     }
+
+    /**
+     * Returns true when InvoiceSuite is executed from a PHAR archive.
+     *
+     * @return bool
+     */
+    public static function isRunningFromPhar(): bool
+    {
+        return 1 === preg_match('~^phar://~i', __DIR__);
+    }
 }
