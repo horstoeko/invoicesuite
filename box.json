@@ -7,9 +7,12 @@
         "LICENSE",
         "README.md"
     ],
+    "directories": [
+        "vendor"
+    ],
     "finder": [
         {
-            "name": ["*.php"],
+            "name": ["*.php", "*.xsd"],
             "in": "src"
         }
     ],

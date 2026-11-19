@@ -32,7 +32,7 @@ class InvoiceSuiteFileUtils extends FileUtils
             return false;
         }
 
-        if (preg_match('~^[a-z][a-z0-9+.-]*://~i', $filename)) {
+        if (preg_match('~^(?!phar://)[a-z][a-z0-9+.-]*://~i', $filename)) {
             return false;
         }
 
