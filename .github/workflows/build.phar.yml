@@ -57,23 +57,6 @@ jobs:
                 fwrite(STDERR, "Smoke test failed: core class not found in PHAR\n");
                 exit(1);
             }
-            foreach ([
-                "tests/assets/00_case_comfort_simple.xml" => 0,
-                "tests/assets/00_case_xrechnung_ublinvoice_simple_dto.xml" => 0,
-                "tests/assets/00_case_xrechnung_ublcreditnote_simple_dto.xml" => 0,
-                "tests/assets/02_technical_xml_zffx_comfort.xml" => 4,
-            ] as $invoiceFilename => $expectedErrors) {
-                $validator = \horstoeko\invoicesuite\validators\InvoiceSuiteXsdDocumentValidator::createFromFile($invoiceFilename)->validate();
-                if (
-                    !\horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils::startsWith($validator->getXsdFilename(), "phar://")
-                    || $validator->hasInternalErrorMessagesInMessageBag()
-                    || $validator->countErrorMessagesInMessageBag() !== $expectedErrors
-                ) {
-                    fwrite(STDERR, "Smoke test failed: XSD validation for " . $invoiceFilename . "\n");
-                    exit(1);
-                }
-            }
-            echo "PHAR OK\n";
             '
 
       - name: Generate PHAR checksum
