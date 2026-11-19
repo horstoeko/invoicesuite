@@ -23,31 +23,6 @@
   - [VAMPIRE PHP: e-invoice validation in pure PHP](#vampire-php-e-invoice-validation-in-pure-php)
 - [Documentation](#documentation)
 
-
-<!-- omit in toc -->
-## AI
-
-InvoiceSuite deals with electronic invoicing and implements specifications, business rules, validation rules, and data structures that may have **legal, regulatory, accounting, and tax-related implications**.
-
-A change that looks technically correct can still be wrong from a business, specification, legal, or tax perspective. Plausible-looking code is therefore not enough.
-
-Contributors are expected to:
-
-* understand the code they submit and its business context;
-* verify requirements against the relevant standards and documentation;
-* consider compatibility, edge cases, and existing behavior;
-* write meaningful tests based on actual requirements;
-* review their implementation critically;
-* be able to explain **why** their implementation is correct.
-
-AI-assisted development is welcome as a tool, but its output must be reviewed with particular care. If AI-generated or AI-assisted code is included in a pull request, the contributor must fully understand it, verify its assumptions, check it against the relevant specifications and requirements, and ensure that the tests actually cover the intended behavior.
-
-Responsibility always remains with the person submitting the change. This is especially important for electronic invoices, validation, monetary values, taxes, document semantics, and regulatory requirements, where incorrect assumptions can have consequences beyond an ordinary software defect.
-
-This policy is not about accepting or rejecting AI. It is about **accountability, expertise, and informed engineering decisions**.
-
-**Use the tools you find helpful. Understand the result. Review it critically. Take responsibility for the code you submit.**
-
 ## License
 
 The code in this project is provided under the [MIT](https://opensource.org/licenses/MIT) license.
@@ -122,3 +97,27 @@ See our [wiki](https://github.com/horstoeko/invoicesuite/wiki)...
 - [BT-Rules for ZUGFeRD/Factur-X/XRechnung](https://github.com/horstoeko/invoicesuite/wiki/BT-rule-overview)
 - [Available providers](https://github.com/horstoeko/invoicesuite/wiki/Available-providers)
 - [Class and method overview](https://github.com/horstoeko/invoicesuite/wiki/Class-and-method-overview)
+
+<!-- omit in toc -->
+## AI
+
+InvoiceSuite deals with electronic invoicing and implements specifications, business rules, validation rules, and data structures that may have **legal, regulatory, accounting, and tax-related implications**.
+
+A change that looks technically correct can still be wrong from a business, specification, legal, or tax perspective. Plausible-looking code is therefore not enough.
+
+Contributors are expected to:
+
+* understand the code they submit and its business context;
+* verify requirements against the relevant standards and documentation;
+* consider compatibility, edge cases, and existing behavior;
+* write meaningful tests based on actual requirements;
+* review their implementation critically;
+* be able to explain **why** their implementation is correct.
+
+AI-assisted development is welcome as a tool, but its output must be reviewed with particular care. If AI-generated or AI-assisted code is included in a pull request, the contributor must fully understand it, verify its assumptions, check it against the relevant specifications and requirements, and ensure that the tests actually cover the intended behavior.
+
+Responsibility always remains with the person submitting the change. This is especially important for electronic invoices, validation, monetary values, taxes, document semantics, and regulatory requirements, where incorrect assumptions can have consequences beyond an ordinary software defect.
+
+This policy is not about accepting or rejecting AI. It is about **accountability, expertise, and informed engineering decisions**.
+
+**Use the tools you find helpful. Understand the result. Review it critically. Take responsibility for the code you submit.**
