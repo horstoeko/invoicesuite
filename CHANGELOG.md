@@ -1,3 +1,13 @@
+## v0.0.44
+
+``Previous version v0.0.43``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :bug:  | [38df5bf0](https://github.com/horstoeko/invoicesuite/commit/38df5bf0) | 2026-11-20 05:28:23 CET | HorstOeko | [FIX] Use addCommands() for Symfony Console compatibility | 
+
+:exclamation: _There is one internal commit_
+
 ## v0.0.43
 
 ``Previous version v0.0.42``
