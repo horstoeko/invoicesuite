@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\concerns;
 use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
 use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
 use horstoeko\invoicesuite\InvoiceSuiteSettings;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use JMS\Serializer\EventDispatcher\EventDispatcher;
 use JMS\Serializer\Handler\EnumHandler;
@@ -49,10 +50,14 @@ trait HandlesDocumentSerializer
         $this->documentSerializerBuilder->enableEnumSupport();
 
         if (InvoiceSuiteSettings::hasSerializerCacheDirectory()) {
-            $this->documentSerializerBuilder->setCacheDir(InvoiceSuiteSettings::getSerializerCacheDirectory());
+            $cacheDirectory = InvoiceSuiteSettings::getSerializerCacheDirectory();
+        } elseif (InvoiceSuiteFileUtils::isRunningFromPhar()) {
+            $cacheDirectory = InvoiceSuitePathUtils::combineAllPaths(sys_get_temp_dir(), 'invoicesuite', 'cache', 'jms');
         } else {
-            $this->documentSerializerBuilder->setCacheDir(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', 'cache', 'jms'));
+            $cacheDirectory = InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', 'cache', 'jms');
         }
+
+        $this->documentSerializerBuilder->setCacheDir($cacheDirectory);
 
         $this->documentSerializerBuilder->configureHandlers(function (HandlerRegistryInterface $handlerRegistry): void {
             $handlerRegistry->registerSubscribingHandler(new BaseTypesHandler());

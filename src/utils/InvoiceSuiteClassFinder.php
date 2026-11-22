@@ -109,7 +109,7 @@ class InvoiceSuiteClassFinder
         }
 
         $cacheFilename = InvoiceSuiteStringUtils::md5((string) preg_replace('/[^a-zA-Z0-9]/', '', InvoiceSuiteStringUtils::sprintf('invoicesuite-cf-%s', $cacheKey))) . '.cache';
-        $cacheFilepath = InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', 'cache');
+        $cacheFilepath = self::getCacheDirectory();
         $cacheFilenameFq = InvoiceSuitePathUtils::combinePathWithFile($cacheFilepath, $cacheFilename);
 
         if (!$disableCache && InvoiceSuiteFileUtils::isReadableFile($cacheFilenameFq)) {
@@ -161,7 +161,7 @@ class InvoiceSuiteClassFinder
             error_reporting($previousErrorReportingState);
         }
 
-        if (!$disableCache && !InvoiceSuiteFileUtils::isRunningFromPhar()) {
+        if (!$disableCache) {
             @mkdir(directory: $cacheFilepath, recursive: true);
 
             $cacheFilePhpCode = "<?php\ndeclare(strict_types=1);\nreturn " . var_export(InvoiceSuiteArrayUtils::values($classes), true) . ";\n";
@@ -181,17 +181,12 @@ class InvoiceSuiteClassFinder
      */
     public static function clearCache(): void
     {
-        $cacheFiles = glob(__DIR__ . '/../cache/*.cache');
+        $cacheFiles = glob(InvoiceSuitePathUtils::combinePathWithFile(self::getCacheDirectory(), '*.cache'));
         $cacheFiles = false === $cacheFiles ? [] : $cacheFiles;
 
-        $jmsFiles = glob(__DIR__ . '/../cache/jms/**/*.*', GLOB_BRACE);
-        $jmsFiles = false === $jmsFiles ? [] : $jmsFiles;
-
-        $files = InvoiceSuiteArrayUtils::merge($cacheFiles, $jmsFiles);
-
-        foreach ($files as $file) {
-            if (InvoiceSuiteFileUtils::isReadableFile($file)) {
-                unlink($file);
+        foreach ($cacheFiles as $cacheFile) {
+            if (InvoiceSuiteFileUtils::isReadableFile($cacheFile)) {
+                unlink($cacheFile);
             }
         }
     }
@@ -263,5 +258,29 @@ class InvoiceSuiteClassFinder
         }
 
         return false;
+    }
+
+    /**
+     * Get the class finder cache directory
+     *
+     * @return string
+     */
+    private static function getCacheDirectory(): string
+    {
+        if (InvoiceSuiteFileUtils::isRunningFromPhar()) {
+            return InvoiceSuitePathUtils::combineAllPaths(
+                sys_get_temp_dir(),
+                'invoicesuite',
+                'cache',
+                'classfinder'
+            );
+        }
+
+        return InvoiceSuitePathUtils::combineAllPaths(
+            __DIR__,
+            '..',
+            'cache',
+            'classfinder'
+        );
     }
 }
