@@ -16,7 +16,7 @@ final class InvoiceSuiteCacheClearCommandTest extends InvoiceSuiteConsoleCommand
      */
     public function testCommandClearsCacheFiles(): void
     {
-        $cacheFilename = InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__, 3), 'src', 'cache', 'console-command-test.cache');
+        $cacheFilename = InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__, 3), 'src', 'cache', 'classfinder', 'console-command-test.cache');
 
         $this->registerFileForTestMethodTeardown($cacheFilename);
 

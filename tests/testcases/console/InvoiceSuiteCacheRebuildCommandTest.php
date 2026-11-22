@@ -19,8 +19,8 @@ final class InvoiceSuiteCacheRebuildCommandTest extends InvoiceSuiteConsoleComma
      */
     public function testCommandRebuildsCacheFiles(): void
     {
-        $cacheFilename = InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__, 3), 'src', 'cache', 'fb2c9c3d46a7d2650a8813477106ebca.cache');
-        $obsoleteCacheFilename = InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__, 3), 'src', 'cache', 'console-command-test.cache');
+        $cacheFilename = InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__, 3), 'src', 'cache', 'classfinder', 'fb2c9c3d46a7d2650a8813477106ebca.cache');
+        $obsoleteCacheFilename = InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__, 3), 'src', 'cache', 'classfinder', 'console-command-test.cache');
 
         $this->registerFileForTestMethodTeardown($cacheFilename);
         $this->registerFileForTestMethodTeardown($obsoleteCacheFilename);
@@ -51,7 +51,7 @@ final class InvoiceSuiteCacheRebuildCommandTest extends InvoiceSuiteConsoleComma
     {
         $namespace = 'horstoeko\invoicesuite\documents\providers\peppol';
         $cacheKey = InvoiceSuiteAbstractDocumentFormatProvider::class . '|' . $namespace;
-        $cacheFilename = InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__, 3), 'src', 'cache', md5((string) preg_replace('/[^a-zA-Z0-9]/', '', sprintf('invoicesuite-cf-%s', $cacheKey))) . '.cache');
+        $cacheFilename = InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__, 3), 'src', 'cache', 'classfinder', md5((string) preg_replace('/[^a-zA-Z0-9]/', '', sprintf('invoicesuite-cf-%s', $cacheKey))) . '.cache');
 
         $this->registerFileForTestMethodTeardown($cacheFilename);
 
