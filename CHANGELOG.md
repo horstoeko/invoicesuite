@@ -1,3 +1,13 @@
+## v0.0.45
+
+``Previous version v0.0.44``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new_moon:  | [e367f2cb](https://github.com/horstoeko/invoicesuite/commit/e367f2cb) | 2026-11-22 15:35:28 CET | HorstOeko | Issue 55 () | [#56](https://github.com/horstoeko/invoicesuite/issues/56)
+
+:exclamation: _There is one internal commit_
+
 ## v0.0.44
 
 ``Previous version v0.0.43``
