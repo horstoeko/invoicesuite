@@ -14,6 +14,7 @@ use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
+use horstoeko\invoicesuite\utils\InvoiceSuiteCacheUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteClassFinder;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
@@ -1352,6 +1353,30 @@ final class UtilsTest extends TestCase
         InvoiceSuiteSettings::setDiscoveryNamespaces([]);
         $this->assertFileDoesNotExist(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache'), 'fb2c9c3d46a7d2650a8813477106ebca.cache'));
         $this->assertFileDoesNotExist($peppolCacheFullFilename);
+    }
+
+    /**
+     * Verify the default cache directories and the serializer directory setting.
+     *
+     * @return void
+     */
+    public function testInvoiceSuiteCacheUtils(): void
+    {
+        $previousSerializerCacheDirectory = InvoiceSuiteSettings::getSerializerCacheDirectory();
+
+        try {
+            InvoiceSuiteSettings::setSerializerCacheDirectory('');
+
+            $this->assertSame(InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__, 3), 'src', 'utils', '..', 'cache', 'classfinder'), InvoiceSuiteCacheUtils::getClassFinderCacheDirectory());
+            $this->assertSame(InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__, 3), 'src', 'utils', '..', 'cache', 'jms'), InvoiceSuiteCacheUtils::getSerializerCacheDirectory());
+
+            InvoiceSuiteSettings::setSerializerCacheDirectory('custom-serializer-cache');
+
+            $this->assertSame('custom-serializer-cache', InvoiceSuiteCacheUtils::getSerializerCacheDirectory());
+            $this->assertSame(InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__, 3), 'src', 'utils', '..', 'cache', 'classfinder'), InvoiceSuiteCacheUtils::getClassFinderCacheDirectory());
+        } finally {
+            InvoiceSuiteSettings::setSerializerCacheDirectory($previousSerializerCacheDirectory);
+        }
     }
 
     public function testInvoiceSuiteFileUtils(): void

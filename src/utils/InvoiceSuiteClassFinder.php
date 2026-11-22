@@ -109,7 +109,7 @@ class InvoiceSuiteClassFinder
         }
 
         $cacheFilename = InvoiceSuiteStringUtils::md5((string) preg_replace('/[^a-zA-Z0-9]/', '', InvoiceSuiteStringUtils::sprintf('invoicesuite-cf-%s', $cacheKey))) . '.cache';
-        $cacheFilepath = self::getCacheDirectory();
+        $cacheFilepath = InvoiceSuiteCacheUtils::getClassFinderCacheDirectory();
         $cacheFilenameFq = InvoiceSuitePathUtils::combinePathWithFile($cacheFilepath, $cacheFilename);
 
         if (!$disableCache && InvoiceSuiteFileUtils::isReadableFile($cacheFilenameFq)) {
@@ -181,7 +181,7 @@ class InvoiceSuiteClassFinder
      */
     public static function clearCache(): void
     {
-        $cacheFiles = glob(InvoiceSuitePathUtils::combinePathWithFile(self::getCacheDirectory(), '*.cache'));
+        $cacheFiles = glob(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuiteCacheUtils::getClassFinderCacheDirectory(), '*.cache'));
         $cacheFiles = false === $cacheFiles ? [] : $cacheFiles;
 
         foreach ($cacheFiles as $cacheFile) {
@@ -258,29 +258,5 @@ class InvoiceSuiteClassFinder
         }
 
         return false;
-    }
-
-    /**
-     * Get the class finder cache directory
-     *
-     * @return string
-     */
-    private static function getCacheDirectory(): string
-    {
-        if (InvoiceSuiteFileUtils::isRunningFromPhar()) {
-            return InvoiceSuitePathUtils::combineAllPaths(
-                sys_get_temp_dir(),
-                'invoicesuite',
-                'cache',
-                'classfinder'
-            );
-        }
-
-        return InvoiceSuitePathUtils::combineAllPaths(
-            __DIR__,
-            '..',
-            'cache',
-            'classfinder'
-        );
     }
 }
