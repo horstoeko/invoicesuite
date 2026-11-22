@@ -1236,7 +1236,7 @@ final class UtilsTest extends TestCase
     public function testInvoiceSuiteClassFinderFactory(): void
     {
         $cacheFilename = md5((string) preg_replace('/[^a-zA-Z0-9]/', '', sprintf('invoicesuite-cf-%s', InvoiceSuiteAbstractDocumentFormatProvider::class))) . '.cache';
-        $cacheFullFilename = __DIR__ . '/../../../src/cache/' . $cacheFilename;
+        $cacheFullFilename = __DIR__ . '/../../../src/cache/classfinder/' . $cacheFilename;
         @unlink($cacheFullFilename);
 
         // One
@@ -1313,7 +1313,7 @@ final class UtilsTest extends TestCase
         $this->assertCount(18, $classNames);
         $this->assertFileExists($cacheFullFilename);
 
-        $this->assertFileExists(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache'), 'fb2c9c3d46a7d2650a8813477106ebca.cache'));
+        $this->assertFileExists(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache', 'classfinder'), 'fb2c9c3d46a7d2650a8813477106ebca.cache'));
 
         // Discovery namespaces
 
@@ -1336,7 +1336,7 @@ final class UtilsTest extends TestCase
         $peppolNamespace = 'horstoeko\invoicesuite\documents\providers\peppol';
         $peppolCacheKey = InvoiceSuiteAbstractDocumentFormatProvider::class . '|' . $peppolNamespace;
         $peppolCacheFilename = md5((string) preg_replace('/[^a-zA-Z0-9]/', '', sprintf('invoicesuite-cf-%s', $peppolCacheKey))) . '.cache';
-        $peppolCacheFullFilename = InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache'), $peppolCacheFilename);
+        $peppolCacheFullFilename = InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache', 'classfinder'), $peppolCacheFilename);
         @unlink($peppolCacheFullFilename);
 
         InvoiceSuiteSettings::setDiscoveryNamespaces([$peppolNamespace]);
