@@ -133,7 +133,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     public function setBaseDirectory(
         string $newBaseDirectory
     ): static {
-        if (is_dir($newBaseDirectory)) {
+        if (InvoiceSuitePathUtils::isDirectory($newBaseDirectory)) {
             $this->baseDirectory = $newBaseDirectory;
         }
 
@@ -391,7 +391,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      */
     protected function intializeAfterConstruct(): static
     {
-        $this->baseDirectory = sys_get_temp_dir();
+        $this->baseDirectory = InvoiceSuitePathUtils::getTempDirectory();
 
         return parent::intializeAfterConstruct();
     }
@@ -407,8 +407,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
 
         $baseDirectory = InvoiceSuitePathUtils::combinePathWithPath($this->baseDirectory, InvoiceSuiteStringUtils::sprintf('kositvalidator-%s', $baseDirectorySuffix));
 
-        if (!is_dir($baseDirectory)) {
-            @mkdir($baseDirectory);
+        if (!InvoiceSuitePathUtils::isDirectory($baseDirectory)) {
+            @InvoiceSuitePathUtils::createDirectory($baseDirectory);
         }
 
         return $baseDirectory;
@@ -983,7 +983,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
             return;
         }
 
-        if (!is_dir($this->resolveBaseDirectory())) {
+        if (!InvoiceSuitePathUtils::isDirectory($this->resolveBaseDirectory())) {
             return;
         }
 
@@ -1003,11 +1003,11 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
             return;
         }
 
-        if (!is_dir($directoryToRemove)) {
+        if (!InvoiceSuitePathUtils::isDirectory($directoryToRemove)) {
             return;
         }
 
-        $filenames = scandir($directoryToRemove);
+        $filenames = InvoiceSuitePathUtils::scanDirectory($directoryToRemove);
 
         if (false === $filenames) {
             return;
@@ -1017,7 +1017,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
             if ('.' !== $filename && '..' !== $filename) {
                 $filenameWithPath = InvoiceSuitePathUtils::combinePathWithFile($directoryToRemove, $filename);
 
-                if (is_dir($filenameWithPath) && !is_link($filenameWithPath)) {
+                if (InvoiceSuitePathUtils::isDirectory($filenameWithPath) && !is_link($filenameWithPath)) {
                     $this->cleanupBaseDirectoryInternal($filenameWithPath);
                 } else {
                     unlink($filenameWithPath);
@@ -1025,7 +1025,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
             }
         }
 
-        rmdir($directoryToRemove);
+        InvoiceSuitePathUtils::removeDirectory($directoryToRemove);
     }
 
     /**

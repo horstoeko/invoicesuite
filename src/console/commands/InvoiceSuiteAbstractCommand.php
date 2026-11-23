@@ -16,6 +16,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
@@ -719,7 +720,7 @@ abstract class InvoiceSuiteAbstractCommand extends Command
             throw new RuntimeException('The directory name must not be empty.');
         }
 
-        if (!is_dir($directory) && !mkdir($directory, 0777, true) && !is_dir($directory)) {
+        if (!InvoiceSuitePathUtils::isDirectory($directory) && !InvoiceSuitePathUtils::createDirectory($directory, 0777, true) && !InvoiceSuitePathUtils::isDirectory($directory)) {
             throw new RuntimeException(InvoiceSuiteStringUtils::sprintf('Unable to create directory "%s".', $directory));
         }
 

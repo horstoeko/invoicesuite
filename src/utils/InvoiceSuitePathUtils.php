@@ -21,6 +21,8 @@ class InvoiceSuitePathUtils extends PathUtils
      *
      * @param  string $directory
      * @return bool
+     *
+     * @phpstan-impure
      */
     public static function isDirectory(
         string $directory
@@ -76,5 +78,35 @@ class InvoiceSuitePathUtils extends PathUtils
     public static function getTempDirectory(): string
     {
         return sys_get_temp_dir();
+    }
+
+    /**
+     * Get the directory entries in the requested sorting order.
+     *
+     * @param  string             $directory
+     * @param  0|1|2              $sortingOrder One of the SCANDIR_SORT_* constants
+     * @return false|list<string>
+     *
+     * @phpstan-impure
+     */
+    public static function scanDirectory(
+        string $directory,
+        int $sortingOrder = SCANDIR_SORT_ASCENDING
+    ): array|false {
+        return scandir($directory, $sortingOrder);
+    }
+
+    /**
+     * Remove an empty directory.
+     *
+     * @param  string $directory
+     * @return bool
+     *
+     * @phpstan-impure
+     */
+    public static function removeDirectory(
+        string $directory
+    ): bool {
+        return rmdir($directory);
     }
 }

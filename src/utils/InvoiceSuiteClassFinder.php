@@ -162,7 +162,7 @@ class InvoiceSuiteClassFinder
         }
 
         if (!$disableCache) {
-            @mkdir(directory: $cacheFilepath, recursive: true);
+            @InvoiceSuitePathUtils::createDirectory(directory: $cacheFilepath, recursive: true);
 
             $cacheFilePhpCode = "<?php\ndeclare(strict_types=1);\nreturn " . var_export(InvoiceSuiteArrayUtils::values($classes), true) . ";\n";
 

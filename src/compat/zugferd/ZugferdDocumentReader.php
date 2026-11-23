@@ -352,7 +352,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function setBinaryDataDirectory(
         string $binaryDataDirectory
     ): static {
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($binaryDataDirectory) && is_dir($binaryDataDirectory)) {
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($binaryDataDirectory) && InvoiceSuitePathUtils::isDirectory($binaryDataDirectory)) {
             $this->binarydatadirectory = $binaryDataDirectory;
         }
 

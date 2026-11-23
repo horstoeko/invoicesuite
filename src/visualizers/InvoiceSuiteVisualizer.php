@@ -278,7 +278,7 @@ class InvoiceSuiteVisualizer
             return $this;
         }
 
-        if (!is_dir($directory)) {
+        if (!InvoiceSuitePathUtils::isDirectory($directory)) {
             return $this;
         }
 
@@ -573,7 +573,7 @@ class InvoiceSuiteVisualizer
         $defaultFontData = $defaultFontConfig['fontdata'];
 
         $config = [
-            'tempDir' => sys_get_temp_dir() . '/mpdf',
+            'tempDir' => InvoiceSuitePathUtils::getTempDirectory() . '/mpdf',
             'fontDir' => InvoiceSuiteArrayUtils::merge($defaultFontDirs, $this->pdfFontDirectories),
             'fontdata' => $defaultFontData + $this->pdfFontData,
             'default_font' => $this->pdfFontDefault,
