@@ -1491,6 +1491,34 @@ final class UtilsTest extends TestCase
         $this->assertSame(sprintf('%shome%suser%sjohn', $ds, $ds, $ds), InvoiceSuitePathUtils::combineAllPaths(sprintf('%shome%s%s', $ds, $ds, $ds), sprintf('%suser%s%s', $ds, $ds, $ds), 'john'));
         $this->assertSame(sprintf('%shome%suser%sjohn', $ds, $ds, $ds), InvoiceSuitePathUtils::combineAllPaths(sprintf('%shome%s%s', $ds, $ds, $ds), sprintf('%suser%s%s', $ds, $ds, $ds), $ds . 'john'));
 
+        $temporaryDirectory = InvoiceSuitePathUtils::combineAllPaths(InvoiceSuitePathUtils::getTempDirectory(), 'invoicesuite-path-utils-' . InvoiceSuiteStringUtils::createGuid());
+        $nestedDirectory = InvoiceSuitePathUtils::combineAllPaths($temporaryDirectory, 'parent', 'child');
+
+        $this->assertSame(sys_get_temp_dir(), InvoiceSuitePathUtils::getTempDirectory());
+        $this->assertTrue(InvoiceSuitePathUtils::isDirectory(InvoiceSuitePathUtils::getTempDirectory()));
+        $this->assertFalse(InvoiceSuitePathUtils::isDirectory(__FILE__));
+        $this->assertFalse(InvoiceSuitePathUtils::isReadableDirectory(__FILE__));
+        $this->assertFalse(InvoiceSuitePathUtils::isWritableDirectory(__FILE__));
+        $this->assertFalse(InvoiceSuitePathUtils::isDirectory($temporaryDirectory));
+        $this->assertFalse(InvoiceSuitePathUtils::isReadableDirectory($temporaryDirectory));
+        $this->assertFalse(InvoiceSuitePathUtils::isWritableDirectory($temporaryDirectory));
+
+        try {
+            $this->assertTrue(InvoiceSuitePathUtils::createDirectory($temporaryDirectory));
+            $this->assertTrue(InvoiceSuitePathUtils::isDirectory($temporaryDirectory));
+            $this->assertTrue(InvoiceSuitePathUtils::isReadableDirectory($temporaryDirectory));
+            $this->assertTrue(InvoiceSuitePathUtils::isWritableDirectory($temporaryDirectory));
+
+            $this->assertTrue(InvoiceSuitePathUtils::createDirectory($nestedDirectory, 0770, true));
+            $this->assertDirectoryExists($nestedDirectory);
+        } finally {
+            if (InvoiceSuitePathUtils::isDirectory($temporaryDirectory)) {
+                InvoiceSuitePathUtils::recursiveRemoveDirectory($temporaryDirectory);
+            }
+        }
+
+        $this->assertFalse(InvoiceSuitePathUtils::isDirectory($temporaryDirectory));
+
         $this->assertNotSame('', InvoiceSuitePathUtils::getHashedDirectory(3));
         $this->assertSame(3, substr_count(InvoiceSuitePathUtils::getHashedDirectory(3), DIRECTORY_SEPARATOR));
         $this->assertStringStartsWith(DIRECTORY_SEPARATOR, InvoiceSuitePathUtils::getHashedDirectory(3));
