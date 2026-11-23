@@ -1007,25 +1007,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
             return;
         }
 
-        $filenames = InvoiceSuitePathUtils::scanDirectory($directoryToRemove);
-
-        if (false === $filenames) {
-            return;
-        }
-
-        foreach ($filenames as $filename) {
-            if ('.' !== $filename && '..' !== $filename) {
-                $filenameWithPath = InvoiceSuitePathUtils::combinePathWithFile($directoryToRemove, $filename);
-
-                if (InvoiceSuitePathUtils::isDirectory($filenameWithPath) && !is_link($filenameWithPath)) {
-                    $this->cleanupBaseDirectoryInternal($filenameWithPath);
-                } else {
-                    unlink($filenameWithPath);
-                }
-            }
-        }
-
-        InvoiceSuitePathUtils::removeDirectory($directoryToRemove);
+        InvoiceSuitePathUtils::recursiveRemoveDirectory($directoryToRemove);
     }
 
     /**
