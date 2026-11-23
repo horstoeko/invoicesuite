@@ -34,7 +34,7 @@ class InvoiceSuiteCacheClearCommand extends InvoiceSuiteAbstractCommand
     protected function configure(): void
     {
         $this->setName('invoicesuite:cache:clear');
-        $this->setDescription('Clear InvoiceSuite class finder and serializer cache files');
+        $this->setDescription('Clear InvoiceSuite class finder cache files');
     }
 
     /**
