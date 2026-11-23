@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\console;
 
+use horstoeko\invoicesuite\utils\InvoiceSuiteCacheUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use Symfony\Component\Console\Command\Command;
 
@@ -16,9 +17,14 @@ final class InvoiceSuiteCacheClearCommandTest extends InvoiceSuiteConsoleCommand
      */
     public function testCommandClearsCacheFiles(): void
     {
-        $cacheFilename = InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__, 3), 'src', 'cache', 'classfinder', 'console-command-test.cache');
+        $cacheDirectory = InvoiceSuiteCacheUtils::getClassFinderCacheDirectory();
+        $cacheFilename = InvoiceSuitePathUtils::combinePathWithFile($cacheDirectory, 'console-command-test.cache');
 
         $this->registerFileForTestMethodTeardown($cacheFilename);
+
+        if (!is_dir($cacheDirectory)) {
+            mkdir($cacheDirectory, recursive: true);
+        }
 
         file_put_contents($cacheFilename, 'test');
 

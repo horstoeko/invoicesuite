@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\utils;
 
 use horstoeko\invoicesuite\InvoiceSuiteSettings;
+use RuntimeException;
 
 /**
  * Class representing utilities for cache directories.
@@ -46,14 +47,56 @@ class InvoiceSuiteCacheUtils
     }
 
     /**
-     * Get the default cache directory for regular and PHAR installations.
+     * Ensure the class finder cache directory exists and is readable and writable.
+     *
+     * @return string the resolved cache directory
+     *
+     * @throws RuntimeException if the directory cannot be created or accessed
+     */
+    public static function ensureClassFinderCacheDirectory(): string
+    {
+        $cacheDirectory = self::getClassFinderCacheDirectory();
+
+        if (!is_dir($cacheDirectory) && !@mkdir($cacheDirectory, 0777, true) && !is_dir($cacheDirectory)) {
+            throw new RuntimeException(InvoiceSuiteStringUtils::sprintf('Could not create cache directory "%s".', $cacheDirectory));
+        }
+
+        if (!is_readable($cacheDirectory) || !is_writable($cacheDirectory)) {
+            throw new RuntimeException(InvoiceSuiteStringUtils::sprintf('Cache directory "%s" must be readable and writable.', $cacheDirectory));
+        }
+
+        return $cacheDirectory;
+    }
+
+    /**
+     * Ensure the serializer cache directory exists and is readable and writable.
+     *
+     * @return string the resolved cache directory
+     *
+     * @throws RuntimeException if the directory cannot be created or accessed
+     */
+    public static function ensureSerializerCacheDirectory(): string
+    {
+        $cacheDirectory = self::getSerializerCacheDirectory();
+
+        if (!is_dir($cacheDirectory) && !@mkdir($cacheDirectory, 0777, true) && !is_dir($cacheDirectory)) {
+            throw new RuntimeException(InvoiceSuiteStringUtils::sprintf('Could not create cache directory "%s".', $cacheDirectory));
+        }
+
+        if (!is_readable($cacheDirectory) || !is_writable($cacheDirectory)) {
+            throw new RuntimeException(InvoiceSuiteStringUtils::sprintf('Cache directory "%s" must be readable and writable.', $cacheDirectory));
+        }
+
+        return $cacheDirectory;
+    }
+
+    /**
+     * Get the default cache directory in the system temporary directory.
      *
      * @return string
      */
     private static function getCacheDirectory(): string
     {
-        return InvoiceSuiteFileUtils::isRunningFromPhar()
-            ? InvoiceSuitePathUtils::combineAllPaths(sys_get_temp_dir(), 'invoicesuite', 'cache')
-            : InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', 'cache');
+        return InvoiceSuitePathUtils::combineAllPaths(sys_get_temp_dir(), 'invoicesuite', 'cache');
     }
 }

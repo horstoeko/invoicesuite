@@ -1237,7 +1237,7 @@ final class UtilsTest extends TestCase
     public function testInvoiceSuiteClassFinderFactory(): void
     {
         $cacheFilename = md5((string) preg_replace('/[^a-zA-Z0-9]/', '', sprintf('invoicesuite-cf-%s', InvoiceSuiteAbstractDocumentFormatProvider::class))) . '.cache';
-        $cacheFullFilename = __DIR__ . '/../../../src/cache/classfinder/' . $cacheFilename;
+        $cacheFullFilename = InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuiteCacheUtils::getClassFinderCacheDirectory(), $cacheFilename);
         @unlink($cacheFullFilename);
 
         // One
@@ -1314,7 +1314,7 @@ final class UtilsTest extends TestCase
         $this->assertCount(18, $classNames);
         $this->assertFileExists($cacheFullFilename);
 
-        $this->assertFileExists(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache', 'classfinder'), 'fb2c9c3d46a7d2650a8813477106ebca.cache'));
+        $this->assertFileExists(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuiteCacheUtils::getClassFinderCacheDirectory(), 'fb2c9c3d46a7d2650a8813477106ebca.cache'));
 
         // Discovery namespaces
 
@@ -1337,7 +1337,7 @@ final class UtilsTest extends TestCase
         $peppolNamespace = 'horstoeko\invoicesuite\documents\providers\peppol';
         $peppolCacheKey = InvoiceSuiteAbstractDocumentFormatProvider::class . '|' . $peppolNamespace;
         $peppolCacheFilename = md5((string) preg_replace('/[^a-zA-Z0-9]/', '', sprintf('invoicesuite-cf-%s', $peppolCacheKey))) . '.cache';
-        $peppolCacheFullFilename = InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache', 'classfinder'), $peppolCacheFilename);
+        $peppolCacheFullFilename = InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuiteCacheUtils::getClassFinderCacheDirectory(), $peppolCacheFilename);
         @unlink($peppolCacheFullFilename);
 
         InvoiceSuiteSettings::setDiscoveryNamespaces([$peppolNamespace]);
@@ -1351,7 +1351,7 @@ final class UtilsTest extends TestCase
 
         InvoiceSuiteClassFinder::clearCache();
         InvoiceSuiteSettings::setDiscoveryNamespaces([]);
-        $this->assertFileDoesNotExist(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache'), 'fb2c9c3d46a7d2650a8813477106ebca.cache'));
+        $this->assertFileDoesNotExist(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuiteCacheUtils::getClassFinderCacheDirectory(), 'fb2c9c3d46a7d2650a8813477106ebca.cache'));
         $this->assertFileDoesNotExist($peppolCacheFullFilename);
     }
 
@@ -1367,13 +1367,13 @@ final class UtilsTest extends TestCase
         try {
             InvoiceSuiteSettings::setSerializerCacheDirectory('');
 
-            $this->assertSame(InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__, 3), 'src', 'utils', '..', 'cache', 'classfinder'), InvoiceSuiteCacheUtils::getClassFinderCacheDirectory());
-            $this->assertSame(InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__, 3), 'src', 'utils', '..', 'cache', 'jms'), InvoiceSuiteCacheUtils::getSerializerCacheDirectory());
+            $this->assertSame(InvoiceSuitePathUtils::combineAllPaths(sys_get_temp_dir(), 'invoicesuite', 'cache', 'classfinder'), InvoiceSuiteCacheUtils::getClassFinderCacheDirectory());
+            $this->assertSame(InvoiceSuitePathUtils::combineAllPaths(sys_get_temp_dir(), 'invoicesuite', 'cache', 'jms'), InvoiceSuiteCacheUtils::getSerializerCacheDirectory());
 
             InvoiceSuiteSettings::setSerializerCacheDirectory('custom-serializer-cache');
 
             $this->assertSame('custom-serializer-cache', InvoiceSuiteCacheUtils::getSerializerCacheDirectory());
-            $this->assertSame(InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__, 3), 'src', 'utils', '..', 'cache', 'classfinder'), InvoiceSuiteCacheUtils::getClassFinderCacheDirectory());
+            $this->assertSame(InvoiceSuitePathUtils::combineAllPaths(sys_get_temp_dir(), 'invoicesuite', 'cache', 'classfinder'), InvoiceSuiteCacheUtils::getClassFinderCacheDirectory());
         } finally {
             InvoiceSuiteSettings::setSerializerCacheDirectory($previousSerializerCacheDirectory);
         }
