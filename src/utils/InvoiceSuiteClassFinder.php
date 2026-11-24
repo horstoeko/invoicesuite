@@ -257,6 +257,15 @@ class InvoiceSuiteClassFinder
             return true;
         }
 
+        // Symfony HttpKernel compiler passes require an optional DependencyInjection trait.
+
+        if (
+            InvoiceSuiteStringUtils::startsWith($className, 'Symfony\Component\HttpKernel\DependencyInjection\\')
+            && !trait_exists('Symfony\Component\DependencyInjection\Compiler\PriorityTaggedServiceTrait')
+        ) {
+            return true;
+        }
+
         return false;
     }
 }
