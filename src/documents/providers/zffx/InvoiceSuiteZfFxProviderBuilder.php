@@ -19809,10 +19809,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxPercent)) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'floatIsNullOrEmpty', 'InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxPercent)');
-        }
-
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])) {
             return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])');
         }
@@ -19856,10 +19852,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxPercent)) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'floatIsNullOrEmpty', 'InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxPercent)');
-        }
-
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])) {
             return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])');
         }
@@ -19882,7 +19874,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
         $tradeTax->getCategoryCodeWithCreate()->setValue($newTaxCategory);
         $tradeTax->getTypeCodeWithCreate()->setValue($newTaxType);
-        $tradeTax->getRateApplicablePercentWithCreate()->setValue($newTaxPercent);
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxPercent)) {
+            $tradeTax->getRateApplicablePercentWithCreate()->setValue($newTaxPercent);
+        }
 
         if ($this->supportsAtLeastExtended() && !InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxAmount)) {
             $tradeTax->getCalculatedAmountWithCreate()->setValue($newTaxAmount);
