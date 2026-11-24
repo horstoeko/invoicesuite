@@ -241,31 +241,13 @@ class InvoiceSuiteClassFinder
     }
 
     /**
-     * Check for classes which should not checked
+     * Check for classes which should not be checked
      *
      * @param  string $className
      * @return bool
      */
     private function isExceptionClass(string $className): bool
     {
-        // Symfony Console compiler passes require the optional DependencyInjection component.
-
-        if (
-            InvoiceSuiteStringUtils::startsWith($className, 'Symfony\Component\Console\DependencyInjection\\')
-            && !interface_exists('Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface')
-        ) {
-            return true;
-        }
-
-        // Symfony HttpKernel compiler passes require an optional DependencyInjection trait.
-
-        if (
-            InvoiceSuiteStringUtils::startsWith($className, 'Symfony\Component\HttpKernel\DependencyInjection\\')
-            && !trait_exists('Symfony\Component\DependencyInjection\Compiler\PriorityTaggedServiceTrait')
-        ) {
-            return true;
-        }
-
-        return false;
+        return InvoiceSuiteStringUtils::startsWith($className, 'Symfony\\');
     }
 }
