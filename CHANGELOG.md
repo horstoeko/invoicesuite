@@ -1,3 +1,14 @@
+## v0.0.47
+
+``Previous version v0.0.46``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [f295f3b6](https://github.com/horstoeko/invoicesuite/commit/f295f3b6) | 2026-11-24 20:05:56 CET | HorstOeko | [ENH] Add methods for appending discovery namespaces | 
+| :new:  | [bff96f94](https://github.com/horstoeko/invoicesuite/commit/bff96f94) | 2026-11-24 19:11:22 CET | HorstOeko | [ENH] Restrict automatic discovery to the InvoiceSuite namespace () | [#61](https://github.com/horstoeko/invoicesuite/issues/61)
+
+:exclamation: _There is one internal commit_
+
 ## v0.0.46
 
 ``Previous version v0.0.45``
