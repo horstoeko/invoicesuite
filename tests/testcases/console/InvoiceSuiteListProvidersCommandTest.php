@@ -72,7 +72,7 @@ final class InvoiceSuiteListProvidersCommandTest extends InvoiceSuiteConsoleComm
             '--discovery-namespace' => ['horstoeko\invoicesuite\documents\providers\peppol'],
         ]);
 
-        InvoiceSuiteSettings::setDiscoveryNamespaces([]);
+        InvoiceSuiteSettings::setDefaultDiscoveryNamespaces();
 
         $this->assertSame(Command::SUCCESS, $exitCode);
 

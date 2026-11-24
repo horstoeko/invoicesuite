@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\console;
 
-use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteCacheUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteClassFinder;
@@ -21,7 +20,7 @@ final class InvoiceSuiteCacheRebuildCommandTest extends InvoiceSuiteConsoleComma
     public function testCommandRebuildsCacheFiles(): void
     {
         $cacheDirectory = InvoiceSuiteCacheUtils::getClassFinderCacheDirectory();
-        $cacheFilename = InvoiceSuitePathUtils::combinePathWithFile($cacheDirectory, 'fb2c9c3d46a7d2650a8813477106ebca.cache');
+        $cacheFilename = InvoiceSuitePathUtils::combinePathWithFile($cacheDirectory, '0660b1d1e91ef69c1c64a343f40429ba.cache');
         $obsoleteCacheFilename = InvoiceSuitePathUtils::combinePathWithFile($cacheDirectory, 'console-command-test.cache');
 
         $this->registerFileForTestMethodTeardown($cacheFilename);
@@ -56,8 +55,7 @@ final class InvoiceSuiteCacheRebuildCommandTest extends InvoiceSuiteConsoleComma
     public function testCommandRebuildsCacheFilesWithNamespaceFilter(): void
     {
         $namespace = 'horstoeko\invoicesuite\documents\providers\peppol';
-        $cacheKey = InvoiceSuiteAbstractDocumentFormatProvider::class . '|' . $namespace;
-        $cacheFilename = InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuiteCacheUtils::getClassFinderCacheDirectory(), md5((string) preg_replace('/[^a-zA-Z0-9]/', '', sprintf('invoicesuite-cf-%s', $cacheKey))) . '.cache');
+        $cacheFilename = InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuiteCacheUtils::getClassFinderCacheDirectory(), 'd6de4b6b8bd85fc2e85c9e63db10674b.cache');
 
         $this->registerFileForTestMethodTeardown($cacheFilename);
 
@@ -69,7 +67,7 @@ final class InvoiceSuiteCacheRebuildCommandTest extends InvoiceSuiteConsoleComma
             '--discovery-namespace' => [$namespace],
         ]);
 
-        InvoiceSuiteSettings::setDiscoveryNamespaces([]);
+        InvoiceSuiteSettings::setDefaultDiscoveryNamespaces();
 
         $this->assertSame(Command::SUCCESS, $exitCode);
         $this->assertFileExists($cacheFilename);

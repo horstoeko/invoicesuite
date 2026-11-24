@@ -316,7 +316,7 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     }
 
     /**
-     * Check if an option was actually given a value on the command line,
+     * Check whether an option has a value other than null or an empty array
      *
      * @param  string $name
      * @return bool
@@ -325,7 +325,7 @@ abstract class InvoiceSuiteAbstractCommand extends Command
         string $name
     ): bool {
         try {
-            return null !== $this->input->getOption($name);
+            return !InvoiceSuiteArrayUtils::arrayContains([null, []], $this->input->getOption($name));
         } catch (ConsoleInvalidArgumentException) {
             return false;
         }
