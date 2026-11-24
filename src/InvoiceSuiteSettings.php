@@ -344,6 +344,41 @@ class InvoiceSuiteSettings
     }
 
     /**
+     * Append a non-empty namespace prefix to the configured discovery namespaces
+     *
+     * Null values and empty strings are ignored.
+     *
+     * @param  null|string $discoveryNamespace
+     * @return void
+     */
+    public static function addDiscoveryNamespace(
+        ?string $discoveryNamespace
+    ): void {
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($discoveryNamespace)) {
+            return;
+        }
+
+        static::$discoveryNamespaces[] = $discoveryNamespace;
+    }
+
+    /**
+     * Append namespace prefixes to the configured discovery namespaces
+     *
+     * Null values and empty strings are ignored.
+     * Adding prefixes to an empty list enables namespace filtering for those prefixes.
+     *
+     * @param  array<int, null|string> $discoveryNamespaces
+     * @return void
+     */
+    public static function addDiscoveryNamespaces(
+        array $discoveryNamespaces
+    ): void {
+        foreach ($discoveryNamespaces as $discoveryNamespace) {
+            static::addDiscoveryNamespace($discoveryNamespace);
+        }
+    }
+
+    /**
      * Get the namespaces used for class discovery. Defaults to the InvoiceSuite namespace.
      * Empty means no namespace restriction.
      *
