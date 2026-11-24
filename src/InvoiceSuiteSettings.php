@@ -81,12 +81,12 @@ class InvoiceSuiteSettings
     protected static $serializerCacheDirectory = '';
 
     /**
-     * Namespaces to restrict document format provider discovery to. Empty means
-     * no restriction (scan every class known to the composer classloader)
+     * Namespaces to restrict class discovery to. Defaults to the InvoiceSuite namespace.
+     * Empty means no namespace restriction (scan every class in the Composer class maps).
      *
      * @var array<int,string>
      */
-    protected static $discoveryNamespaces = [];
+    protected static $discoveryNamespaces = ['horstoeko\invoicesuite'];
 
     /**
      * An optional config for a PDF parser (actually only used by smalot\pdfparser)
@@ -330,8 +330,9 @@ class InvoiceSuiteSettings
     }
 
     /**
-     * Set the namespaces to restrict document format provider discovery to. Pass an
-     * empty array to disable filtering and scan every class known to the composer classloader
+     * Replace the namespaces used for class discovery. Include the InvoiceSuite namespace
+     * when adding external providers or validators to keep the built-in classes available.
+     * Pass an empty array to disable namespace filtering.
      *
      * @param  array<int, string> $discoveryNamespaces
      * @return void
@@ -343,14 +344,24 @@ class InvoiceSuiteSettings
     }
 
     /**
-     * Get the namespaces which document format provider discovery is restricted to. Empty
-     * means no restriction (scan every class known to the composer classloader)
+     * Get the namespaces used for class discovery. Defaults to the InvoiceSuite namespace.
+     * Empty means no namespace restriction.
      *
      * @return array<int, string>
      */
     public static function getDiscoveryNamespaces(): array
     {
         return static::$discoveryNamespaces;
+    }
+
+    /**
+     * Set default namespaces used for class discovery
+     *
+     * @return void
+     */
+    public static function setDefaultDiscoveryNamespaces(): void
+    {
+        static::setDiscoveryNamespaces(['horstoeko\invoicesuite']);
     }
 
     /**
