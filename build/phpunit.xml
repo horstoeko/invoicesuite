@@ -198,6 +198,7 @@
             <file>../tests/testcases/issues/PaymentTermsWithEmptyDescriptionCompatTest.php</file>
             <file>../tests/testcases/issues/BuyerOrderReferenceIssueDateTest.php</file>
             <file>../tests/testcases/issues/CreditNotePaymentDueDateTest.php</file>
+            <file>../tests/testcases/issues/CiiDocumentPositionTaxWithoutRateTest.php</file>
         </testsuite>
     </testsuites>
     <source>
