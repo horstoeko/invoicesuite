@@ -1,3 +1,21 @@
+## v0.0.46
+
+``Previous version v0.0.45``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [3aa82346](https://github.com/horstoeko/invoicesuite/commit/3aa82346) | 2026-11-24 16:15:59 CET | HorstOeko | [ENH] Exclude Symfony classes from ClassFinder discovery () | [#60](https://github.com/horstoeko/invoicesuite/issues/60)
+| :new:  | [ab390280](https://github.com/horstoeko/invoicesuite/commit/ab390280) | 2026-11-24 16:09:25 CET | HorstOeko | [ENH] Improve ClassFinder compatibility with Symfony HttpKernel () | [#60](https://github.com/horstoeko/invoicesuite/issues/60)
+| :new_moon:  | [2c0963fb](https://github.com/horstoeko/invoicesuite/commit/2c0963fb) | 2026-11-24 06:04:07 CET | HorstOeko | Fix CII line tax handling when VAT rate is null () () | [#58](https://github.com/horstoeko/invoicesuite/issues/58), [#59](https://github.com/horstoeko/invoicesuite/issues/59)
+| :new:  | [aced76c2](https://github.com/horstoeko/invoicesuite/commit/aced76c2) | 2026-11-23 18:03:39 CET | HorstOeko | [ENH] Extended InvoiceSuitePathUtils (Part 3) | 
+| :new:  | [465003f3](https://github.com/horstoeko/invoicesuite/commit/465003f3) | 2026-11-23 17:39:39 CET | HorstOeko | [ENH] Extended InvoiceSuitePathUtils (Part 2) | 
+| :new:  | [0fdcc4cf](https://github.com/horstoeko/invoicesuite/commit/0fdcc4cf) | 2026-11-23 16:50:34 CET | HorstOeko | [ENH] Extended InvoiceSuitePathUtils (Part 1) | 
+| :new:  | [95a16376](https://github.com/horstoeko/invoicesuite/commit/95a16376) | 2026-11-23 16:06:35 CET | HorstOeko | [ENH] Use system temporary directories for default caches () | [#57](https://github.com/horstoeko/invoicesuite/issues/57)
+| :bug:  | [62884af0](https://github.com/horstoeko/invoicesuite/commit/62884af0) | 2026-11-23 04:58:30 CET | HorstOeko | [FIX] Changed Description of "InvoiceSuiteCacheClearCommand" | 
+| :new:  | [20e34ae8](https://github.com/horstoeko/invoicesuite/commit/20e34ae8) | 2026-11-22 17:09:53 CET | HorstOeko | [ENH] Centralize cache directory resolution in InvoiceSuiteCacheUtils | 
+
+:exclamation: _There is one internal commit_
+
 ## v0.0.45
 
 ``Previous version v0.0.44``
