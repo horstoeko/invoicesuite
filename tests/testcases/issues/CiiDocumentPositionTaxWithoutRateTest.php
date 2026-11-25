@@ -19,8 +19,7 @@ final class CiiDocumentPositionTaxWithoutRateTest extends TestCase
         static::$document->addDocumentPosition('1');
         static::$document->setDocumentPositionTax(
             newTaxCategory: 'O',
-            newTaxType: 'VAT',
-            newTaxPercent: null
+            newTaxType: 'VAT'
         );
 
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax/ram:TypeCode', 'VAT');
@@ -35,8 +34,7 @@ final class CiiDocumentPositionTaxWithoutRateTest extends TestCase
         static::$document->addDocumentPosition('1');
         static::$document->setDocumentPositionTax(
             newTaxCategory: 'O',
-            newTaxType: 'VAT',
-            newTaxPercent: null
+            newTaxType: 'VAT'
         );
 
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax/ram:TypeCode', 'VAT');
@@ -67,8 +65,7 @@ final class CiiDocumentPositionTaxWithoutRateTest extends TestCase
         static::$document->addDocumentPosition('1');
         static::$document->addDocumentPositionTax(
             newTaxCategory: 'O',
-            newTaxType: 'VAT',
-            newTaxPercent: null
+            newTaxType: 'VAT'
         );
 
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax/ram:TypeCode', 'VAT');
