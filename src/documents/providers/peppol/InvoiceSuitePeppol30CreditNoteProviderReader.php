@@ -10622,7 +10622,7 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
 
         $newDescription = $documentPaymentTerm->firstNote()?->getValue() ?? '';
         $newDueDate = $this->resolveDocumentPaymentDueDate();
-        $newMandate = '';
+        $newMandate = $this->getUblRootObject()->firstPaymentMeansWithMandate()?->getPaymentMandate()?->getID()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 

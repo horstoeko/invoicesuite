@@ -10643,7 +10643,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
 
         $newDescription = $documentPaymentTerm->firstNote()?->getValue() ?? '';
         $newDueDate = $this->getUblRootObject()->getDueDate();
-        $newMandate = '';
+        $newMandate = $this->getUblRootObject()->firstPaymentMeansWithMandate()?->getPaymentMandate()?->getID()?->getValue() ?? '';
 
         $this->traceMethodExit(__METHOD__);
 

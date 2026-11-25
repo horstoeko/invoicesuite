@@ -2406,7 +2406,7 @@ final class XRechnungUBLInvoiceProviderReaderTest extends TestCase
 
         $this->assertSame('Payment Term Description 1', $newDescription);
         $this->assertSame('19700131', $newDueDate?->format('Ymd'));
-        $this->assertSame('', $newMandate);
+        $this->assertSame('mandate', $newMandate);
 
         // Second Payment Term
 
@@ -3718,5 +3718,8 @@ final class XRechnungUBLInvoiceProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(3.0, $grossPrice?->getAmount(), PHP_FLOAT_EPSILON);
         $this->assertCount(1, $grossPrice?->getAllowanceCharges() ?? []);
         $this->assertEqualsWithDelta(2.0, $grossPrice?->getAllowanceCharges()[0]->getAmount(), PHP_FLOAT_EPSILON);
+
+        $this->assertSame('mandate', $newDocmentDTO->getPaymentMeans()[0]->getMandate());
+        $this->assertSame('mandate', $newDocmentDTO->getPaymentTerms()[0]->getMandate());
     }
 }

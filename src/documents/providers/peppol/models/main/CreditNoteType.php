@@ -54,6 +54,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UBLVersionID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UUID;
 use horstoeko\invoicesuite\documents\providers\peppol\models\ext\UBLExtension;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use JMS\Serializer\Annotation as JMS;
 
 #[JMS\XmlNamespace(uri: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', prefix: 'cac')]
@@ -3541,6 +3542,21 @@ class CreditNoteType
         }
 
         return $this->paymentMeans[0];
+    }
+
+    /**
+     * @return null|PaymentMeans
+     */
+    public function firstPaymentMeansWithMandate(): ?PaymentMeans
+    {
+        $documentPaymentMeans = InvoiceSuiteArrayUtils::filter(
+            $this->getPaymentMeans() ?? [],
+            static fn (PaymentMeans $paymentMean): bool => !InvoiceSuiteStringUtils::stringIsNullOrEmpty($paymentMean->getPaymentMandate()?->getID()?->getValue())
+        );
+
+        $documentPaymentMean = InvoiceSuiteArrayUtils::first($documentPaymentMeans);
+
+        return false !== $documentPaymentMean ? $documentPaymentMean : null;
     }
 
     /**
