@@ -1,3 +1,14 @@
+## v0.0.48
+
+``Previous version v0.0.47``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [fb38bb27](https://github.com/horstoeko/invoicesuite/commit/fb38bb27) | 2026-11-26 16:10:02 CET | HorstOeko | [ENH] Make Peppol payment term updates and resets consistent () | [#63](https://github.com/horstoeko/invoicesuite/issues/63)
+| :bug:  | [01b87482](https://github.com/horstoeko/invoicesuite/commit/01b87482) | 2026-11-25 13:23:09 CET | HorstOeko | [FIX] Return mandate references when reading UBL invoice and credit note payment terms () | [#62](https://github.com/horstoeko/invoicesuite/issues/62)
+
+:exclamation: _There are 2 internal commit(s)_
+
 ## v0.0.47
 
 ``Previous version v0.0.46``
