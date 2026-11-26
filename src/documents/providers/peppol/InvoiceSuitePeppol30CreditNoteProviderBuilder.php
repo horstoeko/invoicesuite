@@ -8951,10 +8951,17 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     /**
      * Set payment term
      *
-     * BT-9 is written even when BT-20 is empty, mirroring the CII builders: the two terms are
-     * independent in EN 16931 (BT-9 is 0..1 on its own) and cac:PaymentTerms is only created
-     * when there actually is a note, since Peppol allows no other child there. For credit
-     * notes BT-9 lives in cac:PaymentMeans/cbc:PaymentDueDate, see updateDueDates().
+     * Replaces the payment term description and remembers the supplied due date and mandate.
+     * A due date can be supplied without a description; a mandate on its own is ignored.
+     *
+     * The due date is applied immediately to existing payment means and to those added later.
+     * The mandate is applied to existing direct debit payment means (codes 49 and 59) and
+     * to those added later without a mandate.
+     * No payment means are created.
+     *
+     * Each call first clears the previous description and remembered values. Dates and mandate
+     * references applied from payment terms are marked internally and removed on replacement or reset.
+     * Independently supplied payment mean values and bank account data are preserved.
      *
      * @param  null|string            $newDescription Text description of the payment terms
      * @param  null|DateTimeInterface $newDueDate     Date by which payment is due
@@ -8971,6 +8978,16 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         $this
             ->getUblRootObject()
             ->unsetPaymentTerms();
+
+        foreach ($this->getUblRootObject()->getPaymentMeans() ?? [] as $paymentMean) {
+            if ($paymentMean->getPaymentMandate()?->getID()?->hasObjectFlag('paymenttermmandate')) {
+                $paymentMean->getPaymentMandate()->unsetID();
+            }
+
+            if ($paymentMean->hasObjectFlag('paymenttermduedate')) {
+                $paymentMean->unsetPaymentDueDate()->removeFromObjectFlags('paymenttermduedate');
+            }
+        }
 
         $this->removeKeyValuePair('duedatefrompaymentterm');
         $this->removeKeyValuePair('mandantefrompaymentterm');
@@ -12122,63 +12139,57 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
     }
 
     /**
-     * Update Direct Debit Mandate
+     * Apply the remembered payment term mandate to direct debit payment means
      *
      * @return static
      */
     private function updateMandates(): static
     {
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->getKeyValuePair('mandantefrompaymentterm', ''))) {
+        $newMandate = $this->getKeyValuePair('mandantefrompaymentterm', '');
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newMandate)) {
             return $this;
         }
 
-        $paymentMeans = $this
-            ->getUblRootObject()
-            ->getPaymentMeans() ?? [];
-
         $paymentMeans = InvoiceSuiteArrayUtils::filter(
-            $paymentMeans,
-            static fn (PaymentMeans $paymentMean): bool => InvoiceSuiteStringUtils::stringIsNullOrEmpty(
-                $paymentMean->getPaymentMandate()?->getID()?->getValue()
-            )
+            $this->getUblRootObject()->getPaymentMeans() ?? [],
+            static fn (PaymentMeans $paymentMean): bool => InvoiceSuiteArrayUtils::arrayContains([
+                InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
+                InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
+            ], $paymentMean->getPaymentMeansCode()?->getValue())
         );
 
         foreach ($paymentMeans as $paymentMean) {
             $paymentMean
                 ->getPaymentMandateWithCreate()
                 ->getIDWithCreate()
-                ->setValue($this->getKeyValuePair('mandantefrompaymentterm', ''));
+                ->addToObjectFlags('paymenttermmandate')
+                ->setValue($newMandate);
         }
 
         return $this;
     }
 
     /**
-     * Update the payment due date in the payment means
+     * Apply the remembered payment term due date to existing payment means
      *
-     * EN 16931 binds BT-9 to cac:PaymentMeans/cbc:PaymentDueDate for UBL credit notes,
-     * because the CreditNote schema has no cbc:DueDate of its own. The date is remembered
-     * when the payment term is set and re-applied whenever a payment mean is added, so the
-     * order of the calls does not matter. No cac:PaymentMeans is created on purpose: Peppol
-     * requires cbc:PaymentMeansCode inside it, so synthesizing one would emit an invalid
-     * document.
+     * UBL credit notes store the due date on payment means. No payment means are created.
+     * The date is marked internally so replacing or clearing the payment term removes it.
      *
      * @return static
      */
     private function updateDueDates(): static
     {
-        $documentPaymentDueDate = $this->getKeyValuePair('duedatefrompaymentterm', null);
+        $newDueDate = $this->getKeyValuePair('duedatefrompaymentterm', null);
 
-        if (!$documentPaymentDueDate instanceof DateTimeInterface) {
+        if (!$newDueDate instanceof DateTimeInterface) {
             return $this;
         }
 
-        $paymentMeans = $this
-            ->getUblRootObject()
-            ->getPaymentMeans() ?? [];
-
-        foreach ($paymentMeans as $paymentMean) {
-            $paymentMean->setPaymentDueDate($documentPaymentDueDate);
+        foreach ($this->getUblRootObject()->getPaymentMeans() ?? [] as $paymentMean) {
+            $paymentMean
+                ->addToObjectFlags('paymenttermduedate')
+                ->setPaymentDueDate($newDueDate);
         }
 
         return $this;

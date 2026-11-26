@@ -8970,12 +8970,16 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     /**
      * Set payment term
      *
-     * BT-9 is written even when BT-20 is empty: the two terms are independent in EN 16931
-     * (BT-9 is 0..1 on its own, and BR-CO-25 asks for either of them) and cac:PaymentTerms is
-     * only created when there actually is a note, since Peppol allows no other child there.
-     * BT-89 stays tied to a non-empty BT-20 on purpose, because updateMandates() writes it
-     * without looking at cbc:PaymentMeansCode, which BR-DE-23-b and BR-DE-24-b forbid outside
-     * a direct debit.
+     * Replaces the payment term description and invoice due date, and remembers the supplied mandate.
+     * A due date can be supplied without a description; a mandate on its own is ignored.
+     *
+     * The due date is written to the invoice immediately. The mandate is applied to existing
+     * direct debit payment means (codes 49 and 59) and to those added later without a mandate.
+     * No payment means are created.
+     *
+     * Each call first clears the previous description, invoice due date and remembered values.
+     * Mandate references applied from payment terms are marked internally and removed on replacement
+     * or reset. Independently supplied mandate references and bank account data are preserved.
      *
      * @param  null|string            $newDescription Text description of the payment terms
      * @param  null|DateTimeInterface $newDueDate     Date by which payment is due
@@ -8991,7 +8995,14 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
 
         $this
             ->getUblRootObject()
-            ->unsetPaymentTerms();
+            ->unsetPaymentTerms()
+            ->unsetDueDate();
+
+        foreach ($this->getUblRootObject()->getPaymentMeans() ?? [] as $paymentMean) {
+            if ($paymentMean->getPaymentMandate()?->getID()?->hasObjectFlag('paymenttermmandate')) {
+                $paymentMean->getPaymentMandate()->unsetID();
+            }
+        }
 
         $this->removeKeyValuePair('mandantefrompaymentterm');
 
@@ -12141,32 +12152,32 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     }
 
     /**
-     * Update Direct Debit Mandate
+     * Apply the remembered payment term mandate to direct debit payment means
      *
      * @return static
      */
     private function updateMandates(): static
     {
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->getKeyValuePair('mandantefrompaymentterm', ''))) {
+        $newMandate = $this->getKeyValuePair('mandantefrompaymentterm', '');
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newMandate)) {
             return $this;
         }
 
-        $paymentMeans = $this
-            ->getUblRootObject()
-            ->getPaymentMeans() ?? [];
-
         $paymentMeans = InvoiceSuiteArrayUtils::filter(
-            $paymentMeans,
-            static fn (PaymentMeans $paymentMean): bool => InvoiceSuiteStringUtils::stringIsNullOrEmpty(
-                $paymentMean->getPaymentMandate()?->getID()?->getValue()
-            )
+            $this->getUblRootObject()->getPaymentMeans() ?? [],
+            static fn (PaymentMeans $paymentMean): bool => InvoiceSuiteArrayUtils::arrayContains([
+                InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
+                InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
+            ], $paymentMean->getPaymentMeansCode()?->getValue())
         );
 
         foreach ($paymentMeans as $paymentMean) {
             $paymentMean
                 ->getPaymentMandateWithCreate()
                 ->getIDWithCreate()
-                ->setValue($this->getKeyValuePair('mandantefrompaymentterm', ''));
+                ->addToObjectFlags('paymenttermmandate')
+                ->setValue($newMandate);
         }
 
         return $this;
