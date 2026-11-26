@@ -6979,6 +6979,117 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[3]/cbc:PaymentDueDate', '1970-01-01');
         $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[3]/cac:PaymentMandate/cbc:ID', 'MANDATE-4');
         $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans[4]');
+
+        // Payment terms alone must not create payment means to carry their values.
+
+        static::$document->setDocumentPaymentMean();
+        static::$document->setDocumentPaymentTerm('Initial term', new DateTime('1970-01-31'), 'TERM-MANDATE');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentTerms/cbc:Note', 'Initial term');
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans');
+        $this->assertXPathNotExists('/ns:CreditNote/cbc:DueDate');
+
+        // Both direct debit types inherit the mandate; a bank transfer does not.
+
+        static::$document->addDocumentPaymentMeanAsDirectDebitSepa('iban-sepa');
+        static::$document->addDocumentPaymentMeanAsDirectDebitNoSepa('iban-no-sepa');
+        static::$document->addDocumentPaymentMeanAsCreditTransferSepa('iban-transfer');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[1]/cbc:PaymentMeansCode', '59');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[2]/cbc:PaymentMeansCode', '49');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[3]/cbc:PaymentMeansCode', '58');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[1]/cac:PaymentMandate/cbc:ID', 'TERM-MANDATE');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[2]/cac:PaymentMandate/cbc:ID', 'TERM-MANDATE');
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans[3]/cac:PaymentMandate/cbc:ID');
+
+        // Updating a term replaces mandate references and dates already written to XML.
+
+        static::$document->addDocumentPaymentTerm('Updated term', new DateTime('1970-02-28'), 'UPDATED-MANDATE');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentTerms/cbc:Note', 'Updated term');
+        $this->assertXPathNotExists('(/ns:CreditNote/cac:PaymentTerms/cbc:Note)[2]');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[1]/cac:PaymentMandate/cbc:ID', 'UPDATED-MANDATE');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[2]/cac:PaymentMandate/cbc:ID', 'UPDATED-MANDATE');
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans[3]/cac:PaymentMandate/cbc:ID');
+        $this->assertXPathNotExists('/ns:CreditNote/cbc:DueDate');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[1]/cbc:PaymentDueDate', '1970-02-28');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[2]/cbc:PaymentDueDate', '1970-02-28');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[3]/cbc:PaymentDueDate', '1970-02-28');
+
+        // A description-only replacement removes propagated values and keeps all accounts.
+
+        static::$document->setDocumentPaymentTerm('Description only');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentTerms/cbc:Note', 'Description only');
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cbc:ID');
+        $this->assertXPathNotExists('/ns:CreditNote/cbc:DueDate');
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans/cbc:PaymentDueDate');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[1]/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID', 'iban-sepa');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[2]/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID', 'iban-no-sepa');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[3]/cac:PayeeFinancialAccount/cbc:ID', 'iban-transfer');
+
+        // An empty replacement also removes values serialized before the reset.
+
+        static::$document->setDocumentPaymentTerm('Term to clear', new DateTime('1970-03-31'), 'RESET-MANDATE');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[1]/cac:PaymentMandate/cbc:ID', 'RESET-MANDATE');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[1]/cbc:PaymentDueDate', '1970-03-31');
+
+        static::$document->setDocumentPaymentTerm();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentTerms');
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cbc:ID');
+        $this->assertXPathNotExists('/ns:CreditNote/cbc:DueDate');
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans/cbc:PaymentDueDate');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans[1]/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID', 'iban-sepa');
+
+        // A separate mandate survives cleanup when the payment term supplies only a date.
+
+        static::$document->setDocumentPaymentMeanAsDirectDebitSepa('iban-independent', 'INDEPENDENT-MANDATE');
+        static::$document->setDocumentPaymentTerm('Term with date only', new DateTime('1970-04-30'));
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cbc:ID', 'INDEPENDENT-MANDATE');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cbc:PaymentDueDate', '1970-04-30');
+
+        static::$document->setDocumentPaymentTerm('Term without date');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cbc:ID', 'INDEPENDENT-MANDATE');
+        $this->assertXPathNotExists('/ns:CreditNote/cbc:DueDate');
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans/cbc:PaymentDueDate');
+
+        static::$document->setDocumentPaymentTerm();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentTerms');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cbc:ID', 'INDEPENDENT-MANDATE');
+        $this->assertXPathValue('/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID', 'iban-independent');
+
+        // Reset payment terms must not supply old values to a later payment mean.
+
+        static::$document->setDocumentPaymentMeanAsDirectDebitSepa('iban-after-reset');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans/cac:PaymentMandate/cbc:ID');
+        $this->assertXPathNotExists('/ns:CreditNote/cbc:DueDate');
+        $this->assertXPathNotExists('/ns:CreditNote/cac:PaymentMeans/cbc:PaymentDueDate');
     }
 
     public function testSetAddDocumentPaymentDiscountTermsInLastPaymentTerm(): void
