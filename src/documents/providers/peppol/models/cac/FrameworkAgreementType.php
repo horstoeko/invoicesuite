@@ -290,6 +290,22 @@ class FrameworkAgreementType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Justification): mixed $callback
+     * @return static
+     */
+    public function forEachJustification(
+        callable $callback
+    ): static {
+        foreach ($this->justification ?? [] as $justification) {
+            $callback($justification);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Frequency>
      */
     public function getFrequency(): ?array
@@ -411,6 +427,22 @@ class FrameworkAgreementType
         }
 
         return $this->frequency[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Frequency): mixed $callback
+     * @return static
+     */
+    public function forEachFrequency(
+        callable $callback
+    ): static {
+        foreach ($this->frequency ?? [] as $frequency) {
+            $callback($frequency);
+        }
+
+        return $this;
     }
 
     /**
@@ -575,5 +607,21 @@ class FrameworkAgreementType
         }
 
         return $this->subsequentProcessTenderRequirement[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SubsequentProcessTenderRequirement): mixed $callback
+     * @return static
+     */
+    public function forEachSubsequentProcessTenderRequirement(
+        callable $callback
+    ): static {
+        foreach ($this->subsequentProcessTenderRequirement ?? [] as $subsequentProcessTenderRequirement) {
+            $callback($subsequentProcessTenderRequirement);
+        }
+
+        return $this;
     }
 }

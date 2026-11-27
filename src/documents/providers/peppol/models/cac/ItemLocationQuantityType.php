@@ -428,6 +428,22 @@ class ItemLocationQuantityType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TradingRestrictions): mixed $callback
+     * @return static
+     */
+    public function forEachTradingRestrictions(
+        callable $callback
+    ): static {
+        foreach ($this->tradingRestrictions ?? [] as $tradingRestriction) {
+            $callback($tradingRestriction);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ApplicableTerritoryAddress>
      */
     public function getApplicableTerritoryAddress(): ?array
@@ -549,6 +565,22 @@ class ItemLocationQuantityType
         }
 
         return $this->applicableTerritoryAddress[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ApplicableTerritoryAddress): mixed $callback
+     * @return static
+     */
+    public function forEachApplicableTerritoryAddress(
+        callable $callback
+    ): static {
+        foreach ($this->applicableTerritoryAddress ?? [] as $applicableTerritoryAddress) {
+            $callback($applicableTerritoryAddress);
+        }
+
+        return $this;
     }
 
     /**
@@ -716,6 +748,22 @@ class ItemLocationQuantityType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DeliveryUnit): mixed $callback
+     * @return static
+     */
+    public function forEachDeliveryUnit(
+        callable $callback
+    ): static {
+        foreach ($this->deliveryUnit ?? [] as $deliveryUnit) {
+            $callback($deliveryUnit);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ApplicableTaxCategory>
      */
     public function getApplicableTaxCategory(): ?array
@@ -837,6 +885,22 @@ class ItemLocationQuantityType
         }
 
         return $this->applicableTaxCategory[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ApplicableTaxCategory): mixed $callback
+     * @return static
+     */
+    public function forEachApplicableTaxCategory(
+        callable $callback
+    ): static {
+        foreach ($this->applicableTaxCategory ?? [] as $applicableTaxCategory) {
+            $callback($applicableTaxCategory);
+        }
+
+        return $this;
     }
 
     /**
@@ -1001,6 +1065,22 @@ class ItemLocationQuantityType
         }
 
         return $this->allowanceCharge[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AllowanceCharge): mixed $callback
+     * @return static
+     */
+    public function forEachAllowanceCharge(
+        callable $callback
+    ): static {
+        foreach ($this->allowanceCharge ?? [] as $allowanceCharge) {
+            $callback($allowanceCharge);
+        }
+
+        return $this;
     }
 
     /**

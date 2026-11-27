@@ -261,6 +261,22 @@ class DeliveryTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SpecialTerms): mixed $callback
+     * @return static
+     */
+    public function forEachSpecialTerms(
+        callable $callback
+    ): static {
+        foreach ($this->specialTerms ?? [] as $specialTerm) {
+            $callback($specialTerm);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|LossRiskResponsibilityCode
      */
     public function getLossRiskResponsibilityCode(): ?LossRiskResponsibilityCode
@@ -422,6 +438,22 @@ class DeliveryTermsType
         }
 
         return $this->lossRisk[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(LossRisk): mixed $callback
+     * @return static
+     */
+    public function forEachLossRisk(
+        callable $callback
+    ): static {
+        foreach ($this->lossRisk ?? [] as $lossRisk) {
+            $callback($lossRisk);
+        }
+
+        return $this;
     }
 
     /**

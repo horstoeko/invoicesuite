@@ -236,6 +236,22 @@ class SalesItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ActivityProperty): mixed $callback
+     * @return static
+     */
+    public function forEachActivityProperty(
+        callable $callback
+    ): static {
+        foreach ($this->activityProperty ?? [] as $activityProperty) {
+            $callback($activityProperty);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TaxExclusivePrice>
      */
     public function getTaxExclusivePrice(): ?array
@@ -360,6 +376,22 @@ class SalesItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TaxExclusivePrice): mixed $callback
+     * @return static
+     */
+    public function forEachTaxExclusivePrice(
+        callable $callback
+    ): static {
+        foreach ($this->taxExclusivePrice ?? [] as $taxExclusivePrice) {
+            $callback($taxExclusivePrice);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TaxInclusivePrice>
      */
     public function getTaxInclusivePrice(): ?array
@@ -481,6 +513,22 @@ class SalesItemType
         }
 
         return $this->taxInclusivePrice[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TaxInclusivePrice): mixed $callback
+     * @return static
+     */
+    public function forEachTaxInclusivePrice(
+        callable $callback
+    ): static {
+        foreach ($this->taxInclusivePrice ?? [] as $taxInclusivePrice) {
+            $callback($taxInclusivePrice);
+        }
+
+        return $this;
     }
 
     /**

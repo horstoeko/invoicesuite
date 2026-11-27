@@ -138,4 +138,20 @@ class TransformsType
 
         return $this->transform[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TransformType): mixed $callback
+     * @return static
+     */
+    public function forEachTransform(
+        callable $callback
+    ): static {
+        foreach ($this->transform ?? [] as $transform) {
+            $callback($transform);
+        }
+
+        return $this;
+    }
 }

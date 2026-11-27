@@ -323,4 +323,20 @@ class PromotionalEventType
 
         return $this->promotionalSpecification[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PromotionalSpecification): mixed $callback
+     * @return static
+     */
+    public function forEachPromotionalSpecification(
+        callable $callback
+    ): static {
+        foreach ($this->promotionalSpecification ?? [] as $promotionalSpecification) {
+            $callback($promotionalSpecification);
+        }
+
+        return $this;
+    }
 }

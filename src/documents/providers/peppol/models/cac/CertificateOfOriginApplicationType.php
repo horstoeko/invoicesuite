@@ -524,6 +524,22 @@ class CertificateOfOriginApplicationType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Remarks): mixed $callback
+     * @return static
+     */
+    public function forEachRemarks(
+        callable $callback
+    ): static {
+        foreach ($this->remarks ?? [] as $remark) {
+            $callback($remark);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|Shipment
      */
     public function getShipment(): ?Shipment
@@ -685,6 +701,22 @@ class CertificateOfOriginApplicationType
         }
 
         return $this->endorserParty[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(EndorserParty): mixed $callback
+     * @return static
+     */
+    public function forEachEndorserParty(
+        callable $callback
+    ): static {
+        foreach ($this->endorserParty ?? [] as $endorserParty) {
+            $callback($endorserParty);
+        }
+
+        return $this;
     }
 
     /**
@@ -1012,6 +1044,22 @@ class CertificateOfOriginApplicationType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DocumentDistribution): mixed $callback
+     * @return static
+     */
+    public function forEachDocumentDistribution(
+        callable $callback
+    ): static {
+        foreach ($this->documentDistribution ?? [] as $documentDistribution) {
+            $callback($documentDistribution);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<SupportingDocumentReference>
      */
     public function getSupportingDocumentReference(): ?array
@@ -1136,6 +1184,22 @@ class CertificateOfOriginApplicationType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SupportingDocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachSupportingDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->supportingDocumentReference ?? [] as $supportingDocumentReference) {
+            $callback($supportingDocumentReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Signature>
      */
     public function getSignature(): ?array
@@ -1257,5 +1321,21 @@ class CertificateOfOriginApplicationType
         }
 
         return $this->signature[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Signature): mixed $callback
+     * @return static
+     */
+    public function forEachSignature(
+        callable $callback
+    ): static {
+        foreach ($this->signature ?? [] as $signature) {
+            $callback($signature);
+        }
+
+        return $this;
     }
 }

@@ -689,6 +689,22 @@ class GoodsItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|bool
      */
     public function getHazardousRiskIndicator(): ?bool
@@ -1673,6 +1689,22 @@ class GoodsItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Item): mixed $callback
+     * @return static
+     */
+    public function forEachItem(
+        callable $callback
+    ): static {
+        foreach ($this->item ?? [] as $item) {
+            $callback($item);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<GoodsItemContainer>
      */
     public function getGoodsItemContainer(): ?array
@@ -1794,6 +1826,22 @@ class GoodsItemType
         }
 
         return $this->goodsItemContainer[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(GoodsItemContainer): mixed $callback
+     * @return static
+     */
+    public function forEachGoodsItemContainer(
+        callable $callback
+    ): static {
+        foreach ($this->goodsItemContainer ?? [] as $goodsItemContainer) {
+            $callback($goodsItemContainer);
+        }
+
+        return $this;
     }
 
     /**
@@ -1921,6 +1969,22 @@ class GoodsItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(FreightAllowanceCharge): mixed $callback
+     * @return static
+     */
+    public function forEachFreightAllowanceCharge(
+        callable $callback
+    ): static {
+        foreach ($this->freightAllowanceCharge ?? [] as $freightAllowanceCharge) {
+            $callback($freightAllowanceCharge);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<InvoiceLine>
      */
     public function getInvoiceLine(): ?array
@@ -2042,6 +2106,22 @@ class GoodsItemType
         }
 
         return $this->invoiceLine[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(InvoiceLine): mixed $callback
+     * @return static
+     */
+    public function forEachInvoiceLine(
+        callable $callback
+    ): static {
+        foreach ($this->invoiceLine ?? [] as $invoiceLine) {
+            $callback($invoiceLine);
+        }
+
+        return $this;
     }
 
     /**
@@ -2169,6 +2249,22 @@ class GoodsItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Temperature): mixed $callback
+     * @return static
+     */
+    public function forEachTemperature(
+        callable $callback
+    ): static {
+        foreach ($this->temperature ?? [] as $temperature) {
+            $callback($temperature);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ContainedGoodsItem>
      */
     public function getContainedGoodsItem(): ?array
@@ -2290,6 +2386,22 @@ class GoodsItemType
         }
 
         return $this->containedGoodsItem[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ContainedGoodsItem): mixed $callback
+     * @return static
+     */
+    public function forEachContainedGoodsItem(
+        callable $callback
+    ): static {
+        foreach ($this->containedGoodsItem ?? [] as $containedGoodsItem) {
+            $callback($containedGoodsItem);
+        }
+
+        return $this;
     }
 
     /**
@@ -2577,6 +2689,22 @@ class GoodsItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(MeasurementDimension): mixed $callback
+     * @return static
+     */
+    public function forEachMeasurementDimension(
+        callable $callback
+    ): static {
+        foreach ($this->measurementDimension ?? [] as $measurementDimension) {
+            $callback($measurementDimension);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ContainingPackage>
      */
     public function getContainingPackage(): ?array
@@ -2698,6 +2826,22 @@ class GoodsItemType
         }
 
         return $this->containingPackage[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ContainingPackage): mixed $callback
+     * @return static
+     */
+    public function forEachContainingPackage(
+        callable $callback
+    ): static {
+        foreach ($this->containingPackage ?? [] as $containingPackage) {
+            $callback($containingPackage);
+        }
+
+        return $this;
     }
 
     /**

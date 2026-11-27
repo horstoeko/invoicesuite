@@ -239,6 +239,22 @@ class ReferencedProductType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(IDType): mixed $callback
+     * @return static
+     */
+    public function forEachGlobalID(
+        callable $callback
+    ): static {
+        foreach ($this->globalID ?? [] as $globalID) {
+            $callback($globalID);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|IDType
      */
     public function getSellerAssignedID(): ?IDType

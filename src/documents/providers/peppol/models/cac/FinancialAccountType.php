@@ -484,6 +484,22 @@ class FinancialAccountType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PaymentNote): mixed $callback
+     * @return static
+     */
+    public function forEachPaymentNote(
+        callable $callback
+    ): static {
+        foreach ($this->paymentNote ?? [] as $paymentNote) {
+            $callback($paymentNote);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|FinancialInstitutionBranch
      */
     public function getFinancialInstitutionBranch(): ?FinancialInstitutionBranch

@@ -377,6 +377,22 @@ class AwardingCriterionType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|WeightNumeric
      */
     public function getWeightNumeric(): ?WeightNumeric
@@ -541,6 +557,22 @@ class AwardingCriterionType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Weight): mixed $callback
+     * @return static
+     */
+    public function forEachWeight(
+        callable $callback
+    ): static {
+        foreach ($this->weight ?? [] as $weight) {
+            $callback($weight);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<CalculationExpression>
      */
     public function getCalculationExpression(): ?array
@@ -662,6 +694,22 @@ class AwardingCriterionType
         }
 
         return $this->calculationExpression[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(CalculationExpression): mixed $callback
+     * @return static
+     */
+    public function forEachCalculationExpression(
+        callable $callback
+    ): static {
+        foreach ($this->calculationExpression ?? [] as $calculationExpression) {
+            $callback($calculationExpression);
+        }
+
+        return $this;
     }
 
     /**
@@ -989,6 +1037,22 @@ class AwardingCriterionType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(MinimumImprovementBid): mixed $callback
+     * @return static
+     */
+    public function forEachMinimumImprovementBid(
+        callable $callback
+    ): static {
+        foreach ($this->minimumImprovementBid ?? [] as $minimumImprovementBid) {
+            $callback($minimumImprovementBid);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<SubordinateAwardingCriterion>
      */
     public function getSubordinateAwardingCriterion(): ?array
@@ -1110,5 +1174,21 @@ class AwardingCriterionType
         }
 
         return $this->subordinateAwardingCriterion[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SubordinateAwardingCriterion): mixed $callback
+     * @return static
+     */
+    public function forEachSubordinateAwardingCriterion(
+        callable $callback
+    ): static {
+        foreach ($this->subordinateAwardingCriterion ?? [] as $subordinateAwardingCriterion) {
+            $callback($subordinateAwardingCriterion);
+        }
+
+        return $this;
     }
 }

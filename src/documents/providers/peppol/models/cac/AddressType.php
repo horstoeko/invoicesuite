@@ -1420,6 +1420,22 @@ class AddressType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AddressLine): mixed $callback
+     * @return static
+     */
+    public function forEachAddressLine(
+        callable $callback
+    ): static {
+        foreach ($this->addressLine ?? [] as $addressLine) {
+            $callback($addressLine);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|Country
      */
     public function getCountry(): ?Country
@@ -1581,5 +1597,21 @@ class AddressType
         }
 
         return $this->locationCoordinate[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(LocationCoordinate): mixed $callback
+     * @return static
+     */
+    public function forEachLocationCoordinate(
+        callable $callback
+    ): static {
+        foreach ($this->locationCoordinate ?? [] as $locationCoordinate) {
+            $callback($locationCoordinate);
+        }
+
+        return $this;
     }
 }

@@ -479,6 +479,22 @@ class PaymentMeansType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(InstructionNote): mixed $callback
+     * @return static
+     */
+    public function forEachInstructionNote(
+        callable $callback
+    ): static {
+        foreach ($this->instructionNote ?? [] as $instructionNote) {
+            $callback($instructionNote);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<PaymentID>
      */
     public function getPaymentID(): ?array
@@ -600,6 +616,22 @@ class PaymentMeansType
         }
 
         return $this->paymentID[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PaymentID): mixed $callback
+     * @return static
+     */
+    public function forEachPaymentID(
+        callable $callback
+    ): static {
+        foreach ($this->paymentID ?? [] as $paymentID) {
+            $callback($paymentID);
+        }
+
+        return $this;
     }
 
     /**

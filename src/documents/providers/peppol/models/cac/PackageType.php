@@ -503,6 +503,22 @@ class PackageType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PackingMaterial): mixed $callback
+     * @return static
+     */
+    public function forEachPackingMaterial(
+        callable $callback
+    ): static {
+        foreach ($this->packingMaterial ?? [] as $packingMaterial) {
+            $callback($packingMaterial);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|TraceID
      */
     public function getTraceID(): ?TraceID
@@ -664,6 +680,22 @@ class PackageType
         }
 
         return $this->containedPackage[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ContainedPackage): mixed $callback
+     * @return static
+     */
+    public function forEachContainedPackage(
+        callable $callback
+    ): static {
+        foreach ($this->containedPackage ?? [] as $containedPackage) {
+            $callback($containedPackage);
+        }
+
+        return $this;
     }
 
     /**
@@ -831,6 +863,22 @@ class PackageType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(GoodsItem): mixed $callback
+     * @return static
+     */
+    public function forEachGoodsItem(
+        callable $callback
+    ): static {
+        foreach ($this->goodsItem ?? [] as $goodsItem) {
+            $callback($goodsItem);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<MeasurementDimension>
      */
     public function getMeasurementDimension(): ?array
@@ -955,6 +1003,22 @@ class PackageType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(MeasurementDimension): mixed $callback
+     * @return static
+     */
+    public function forEachMeasurementDimension(
+        callable $callback
+    ): static {
+        foreach ($this->measurementDimension ?? [] as $measurementDimension) {
+            $callback($measurementDimension);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<DeliveryUnit>
      */
     public function getDeliveryUnit(): ?array
@@ -1076,6 +1140,22 @@ class PackageType
         }
 
         return $this->deliveryUnit[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DeliveryUnit): mixed $callback
+     * @return static
+     */
+    public function forEachDeliveryUnit(
+        callable $callback
+    ): static {
+        foreach ($this->deliveryUnit ?? [] as $deliveryUnit) {
+            $callback($deliveryUnit);
+        }
+
+        return $this;
     }
 
     /**

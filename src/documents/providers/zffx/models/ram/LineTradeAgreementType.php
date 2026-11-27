@@ -419,6 +419,22 @@ class LineTradeAgreementType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ReferencedDocumentType): mixed $callback
+     * @return static
+     */
+    public function forEachAdditionalReferencedDocument(
+        callable $callback
+    ): static {
+        foreach ($this->additionalReferencedDocument ?? [] as $additionalReferencedDocument) {
+            $callback($additionalReferencedDocument);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|TradePriceType
      */
     public function getGrossPriceProductTradePrice(): ?TradePriceType
@@ -630,5 +646,21 @@ class LineTradeAgreementType
         }
 
         return $this->ultimateCustomerOrderReferencedDocument[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ReferencedDocumentType): mixed $callback
+     * @return static
+     */
+    public function forEachUltimateCustomerOrderReferencedDocument(
+        callable $callback
+    ): static {
+        foreach ($this->ultimateCustomerOrderReferencedDocument ?? [] as $ultimateCustomerOrderReferencedDocument) {
+            $callback($ultimateCustomerOrderReferencedDocument);
+        }
+
+        return $this;
     }
 }

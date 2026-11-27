@@ -175,6 +175,22 @@ class ContractExecutionRequirementType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Name): mixed $callback
+     * @return static
+     */
+    public function forEachName(
+        callable $callback
+    ): static {
+        foreach ($this->name ?? [] as $name) {
+            $callback($name);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|ExecutionRequirementCode
      */
     public function getExecutionRequirementCode(): ?ExecutionRequirementCode
@@ -336,5 +352,21 @@ class ContractExecutionRequirementType
         }
 
         return $this->description[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
     }
 }

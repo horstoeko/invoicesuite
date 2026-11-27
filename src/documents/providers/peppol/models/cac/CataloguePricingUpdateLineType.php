@@ -301,4 +301,20 @@ class CataloguePricingUpdateLineType
 
         return $this->requiredItemLocationQuantity[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(RequiredItemLocationQuantity): mixed $callback
+     * @return static
+     */
+    public function forEachRequiredItemLocationQuantity(
+        callable $callback
+    ): static {
+        foreach ($this->requiredItemLocationQuantity ?? [] as $requiredItemLocationQuantity) {
+            $callback($requiredItemLocationQuantity);
+        }
+
+        return $this;
+    }
 }

@@ -331,6 +331,22 @@ class PowerOfAttorneyType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|NotaryParty
      */
     public function getNotaryParty(): ?NotaryParty
@@ -535,6 +551,22 @@ class PowerOfAttorneyType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(WitnessParty): mixed $callback
+     * @return static
+     */
+    public function forEachWitnessParty(
+        callable $callback
+    ): static {
+        foreach ($this->witnessParty ?? [] as $witnessParty) {
+            $callback($witnessParty);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<MandateDocumentReference>
      */
     public function getMandateDocumentReference(): ?array
@@ -656,5 +688,21 @@ class PowerOfAttorneyType
         }
 
         return $this->mandateDocumentReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(MandateDocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachMandateDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->mandateDocumentReference ?? [] as $mandateDocumentReference) {
+            $callback($mandateDocumentReference);
+        }
+
+        return $this;
     }
 }

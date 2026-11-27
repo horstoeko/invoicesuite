@@ -518,6 +518,16 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(FormattedDateTimeType::class, $testValueForFormattedReceivedDateTime);
         $this->assertSame($testValueForFormattedReceivedDateTime, $model->getFormattedReceivedDateTime());
 
+        $itemsBeforeForEach = $model->getIncludedTradeTax();
+
+        $this->assertSame($model, $model->forEachIncludedTradeTax(
+            static function (TradeTaxType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getIncludedTradeTax());
+
         // (1) Property IncludedTradeTax - Test set empty array
 
         $includedTradeTaxItems = [];
@@ -573,6 +583,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstIncludedTradeTaxOnceItem, $secondIncludedTradeTaxOnceItem);
 
+        $itemsBeforeForEach = $model->getIncludedTradeTax();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachIncludedTradeTax(
+            static function (TradeTaxType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getIncludedTradeTax());
+
         // (7) Property IncludedTradeTax - Clesr
 
         $model->clearIncludedTradeTax();
@@ -581,6 +603,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachIncludedTradeTax(
+            static function (TradeTaxType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
 
         // Property InvoiceSpecifiedReferencedDocument
 
@@ -850,6 +878,16 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(CodeType::class, $testValueForLineStatusReasonCode);
         $this->assertSame($testValueForLineStatusReasonCode, $model->getLineStatusReasonCode());
 
+        $itemsBeforeForEach = $model->getIncludedNote();
+
+        $this->assertSame($model, $model->forEachIncludedNote(
+            static function (NoteType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getIncludedNote());
+
         // (1) Property IncludedNote - Test set empty array
 
         $includedNoteItems = [];
@@ -905,6 +943,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstIncludedNoteOnceItem, $secondIncludedNoteOnceItem);
 
+        $itemsBeforeForEach = $model->getIncludedNote();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachIncludedNote(
+            static function (NoteType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getIncludedNote());
+
         // (7) Property IncludedNote - Clesr
 
         $model->clearIncludedNote();
@@ -913,6 +963,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachIncludedNote(
+            static function (NoteType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
     }
 
     /**
@@ -1078,6 +1134,16 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(IDType::class, $testValueForLanguageID);
         $this->assertSame($testValueForLanguageID, $model->getLanguageID());
 
+        $itemsBeforeForEach = $model->getIncludedNote();
+
+        $this->assertSame($model, $model->forEachIncludedNote(
+            static function (NoteType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getIncludedNote());
+
         // (1) Property IncludedNote - Test set empty array
 
         $includedNoteItems = [];
@@ -1133,6 +1199,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstIncludedNoteOnceItem, $secondIncludedNoteOnceItem);
 
+        $itemsBeforeForEach = $model->getIncludedNote();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachIncludedNote(
+            static function (NoteType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getIncludedNote());
+
         // (7) Property IncludedNote - Clesr
 
         $model->clearIncludedNote();
@@ -1141,6 +1219,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachIncludedNote(
+            static function (NoteType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
 
         // Property EffectiveSpecifiedPeriod
 
@@ -1418,6 +1502,16 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForContractReferencedDocument);
         $this->assertSame($testValueForContractReferencedDocument, $model->getContractReferencedDocument());
 
+        $itemsBeforeForEach = $model->getAdditionalReferencedDocument();
+
+        $this->assertSame($model, $model->forEachAdditionalReferencedDocument(
+            static function (ReferencedDocumentType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getAdditionalReferencedDocument());
+
         // (1) Property AdditionalReferencedDocument - Test set empty array
 
         $additionalReferencedDocumentItems = [];
@@ -1473,6 +1567,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstAdditionalReferencedDocumentOnceItem, $secondAdditionalReferencedDocumentOnceItem);
 
+        $itemsBeforeForEach = $model->getAdditionalReferencedDocument();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachAdditionalReferencedDocument(
+            static function (ReferencedDocumentType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getAdditionalReferencedDocument());
+
         // (7) Property AdditionalReferencedDocument - Clesr
 
         $model->clearAdditionalReferencedDocument();
@@ -1481,6 +1587,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachAdditionalReferencedDocument(
+            static function (ReferencedDocumentType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
 
         // Property BuyerAgentTradeParty
 
@@ -1513,6 +1625,16 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(ProcuringProjectType::class, $testValueForSpecifiedProcuringProject);
         $this->assertSame($testValueForSpecifiedProcuringProject, $model->getSpecifiedProcuringProject());
+
+        $itemsBeforeForEach = $model->getUltimateCustomerOrderReferencedDocument();
+
+        $this->assertSame($model, $model->forEachUltimateCustomerOrderReferencedDocument(
+            static function (ReferencedDocumentType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getUltimateCustomerOrderReferencedDocument());
 
         // (1) Property UltimateCustomerOrderReferencedDocument - Test set empty array
 
@@ -1569,6 +1691,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstUltimateCustomerOrderReferencedDocumentOnceItem, $secondUltimateCustomerOrderReferencedDocumentOnceItem);
 
+        $itemsBeforeForEach = $model->getUltimateCustomerOrderReferencedDocument();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachUltimateCustomerOrderReferencedDocument(
+            static function (ReferencedDocumentType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getUltimateCustomerOrderReferencedDocument());
+
         // (7) Property UltimateCustomerOrderReferencedDocument - Clesr
 
         $model->clearUltimateCustomerOrderReferencedDocument();
@@ -1577,6 +1711,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachUltimateCustomerOrderReferencedDocument(
+            static function (ReferencedDocumentType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
     }
 
     /**
@@ -1587,6 +1727,16 @@ final class ZffxModelTest extends TestCase
         $model = new HeaderTradeDeliveryType();
 
         $this->assertInstanceOf(HeaderTradeDeliveryType::class, $model);
+
+        $itemsBeforeForEach = $model->getRelatedSupplyChainConsignment();
+
+        $this->assertSame($model, $model->forEachRelatedSupplyChainConsignment(
+            static function (LogisticsTransportMovementType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getRelatedSupplyChainConsignment());
 
         // (1) Property RelatedSupplyChainConsignment - Test set empty array
 
@@ -1643,6 +1793,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstRelatedSupplyChainConsignmentOnceItem, $secondRelatedSupplyChainConsignmentOnceItem);
 
+        $itemsBeforeForEach = $model->getRelatedSupplyChainConsignment();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachRelatedSupplyChainConsignment(
+            static function (LogisticsTransportMovementType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getRelatedSupplyChainConsignment());
+
         // (7) Property RelatedSupplyChainConsignment - Clesr
 
         $model->clearRelatedSupplyChainConsignment();
@@ -1651,6 +1813,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachRelatedSupplyChainConsignment(
+            static function (LogisticsTransportMovementType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
 
         // Property ShipToTradeParty
 
@@ -1934,6 +2102,16 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(TradeCurrencyExchangeType::class, $testValueForTaxApplicableTradeCurrencyExchange);
         $this->assertSame($testValueForTaxApplicableTradeCurrencyExchange, $model->getTaxApplicableTradeCurrencyExchange());
 
+        $itemsBeforeForEach = $model->getSpecifiedTradeSettlementPaymentMeans();
+
+        $this->assertSame($model, $model->forEachSpecifiedTradeSettlementPaymentMeans(
+            static function (TradeSettlementPaymentMeansType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTradeSettlementPaymentMeans());
+
         // (1) Property SpecifiedTradeSettlementPaymentMeans - Test set empty array
 
         $specifiedTradeSettlementPaymentMeansItems = [];
@@ -1989,6 +2167,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstSpecifiedTradeSettlementPaymentMeansOnceItem, $secondSpecifiedTradeSettlementPaymentMeansOnceItem);
 
+        $itemsBeforeForEach = $model->getSpecifiedTradeSettlementPaymentMeans();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedTradeSettlementPaymentMeans(
+            static function (TradeSettlementPaymentMeansType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTradeSettlementPaymentMeans());
+
         // (7) Property SpecifiedTradeSettlementPaymentMeans - Clesr
 
         $model->clearSpecifiedTradeSettlementPaymentMeans();
@@ -1997,6 +2187,22 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachSpecifiedTradeSettlementPaymentMeans(
+            static function (TradeSettlementPaymentMeansType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
+
+        $itemsBeforeForEach = $model->getApplicableTradeTax();
+
+        $this->assertSame($model, $model->forEachApplicableTradeTax(
+            static function (TradeTaxType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getApplicableTradeTax());
 
         // (1) Property ApplicableTradeTax - Test set empty array
 
@@ -2053,6 +2259,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstApplicableTradeTaxOnceItem, $secondApplicableTradeTaxOnceItem);
 
+        $itemsBeforeForEach = $model->getApplicableTradeTax();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachApplicableTradeTax(
+            static function (TradeTaxType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getApplicableTradeTax());
+
         // (7) Property ApplicableTradeTax - Clesr
 
         $model->clearApplicableTradeTax();
@@ -2061,6 +2279,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachApplicableTradeTax(
+            static function (TradeTaxType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
 
         // Property BillingSpecifiedPeriod
 
@@ -2077,6 +2301,16 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(SpecifiedPeriodType::class, $testValueForBillingSpecifiedPeriod);
         $this->assertSame($testValueForBillingSpecifiedPeriod, $model->getBillingSpecifiedPeriod());
+
+        $itemsBeforeForEach = $model->getSpecifiedTradeAllowanceCharge();
+
+        $this->assertSame($model, $model->forEachSpecifiedTradeAllowanceCharge(
+            static function (TradeAllowanceChargeType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTradeAllowanceCharge());
 
         // (1) Property SpecifiedTradeAllowanceCharge - Test set empty array
 
@@ -2133,6 +2367,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstSpecifiedTradeAllowanceChargeOnceItem, $secondSpecifiedTradeAllowanceChargeOnceItem);
 
+        $itemsBeforeForEach = $model->getSpecifiedTradeAllowanceCharge();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedTradeAllowanceCharge(
+            static function (TradeAllowanceChargeType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTradeAllowanceCharge());
+
         // (7) Property SpecifiedTradeAllowanceCharge - Clesr
 
         $model->clearSpecifiedTradeAllowanceCharge();
@@ -2141,6 +2387,22 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachSpecifiedTradeAllowanceCharge(
+            static function (TradeAllowanceChargeType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
+
+        $itemsBeforeForEach = $model->getSpecifiedLogisticsServiceCharge();
+
+        $this->assertSame($model, $model->forEachSpecifiedLogisticsServiceCharge(
+            static function (LogisticsServiceChargeType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedLogisticsServiceCharge());
 
         // (1) Property SpecifiedLogisticsServiceCharge - Test set empty array
 
@@ -2197,6 +2459,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstSpecifiedLogisticsServiceChargeOnceItem, $secondSpecifiedLogisticsServiceChargeOnceItem);
 
+        $itemsBeforeForEach = $model->getSpecifiedLogisticsServiceCharge();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedLogisticsServiceCharge(
+            static function (LogisticsServiceChargeType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedLogisticsServiceCharge());
+
         // (7) Property SpecifiedLogisticsServiceCharge - Clesr
 
         $model->clearSpecifiedLogisticsServiceCharge();
@@ -2205,6 +2479,22 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachSpecifiedLogisticsServiceCharge(
+            static function (LogisticsServiceChargeType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
+
+        $itemsBeforeForEach = $model->getSpecifiedTradePaymentTerms();
+
+        $this->assertSame($model, $model->forEachSpecifiedTradePaymentTerms(
+            static function (TradePaymentTermsType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTradePaymentTerms());
 
         // (1) Property SpecifiedTradePaymentTerms - Test set empty array
 
@@ -2261,6 +2551,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstSpecifiedTradePaymentTermsOnceItem, $secondSpecifiedTradePaymentTermsOnceItem);
 
+        $itemsBeforeForEach = $model->getSpecifiedTradePaymentTerms();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedTradePaymentTerms(
+            static function (TradePaymentTermsType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTradePaymentTerms());
+
         // (7) Property SpecifiedTradePaymentTerms - Clesr
 
         $model->clearSpecifiedTradePaymentTerms();
@@ -2269,6 +2571,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachSpecifiedTradePaymentTerms(
+            static function (TradePaymentTermsType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
 
         // Property SpecifiedTradeSettlementHeaderMonetarySummation
 
@@ -2285,6 +2593,16 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(TradeSettlementHeaderMonetarySummationType::class, $testValueForSpecifiedTradeSettlementHeaderMonetarySummation);
         $this->assertSame($testValueForSpecifiedTradeSettlementHeaderMonetarySummation, $model->getSpecifiedTradeSettlementHeaderMonetarySummation());
+
+        $itemsBeforeForEach = $model->getSpecifiedFinancialAdjustment();
+
+        $this->assertSame($model, $model->forEachSpecifiedFinancialAdjustment(
+            static function (FinancialAdjustmentType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedFinancialAdjustment());
 
         // (1) Property SpecifiedFinancialAdjustment - Test set empty array
 
@@ -2341,6 +2659,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstSpecifiedFinancialAdjustmentOnceItem, $secondSpecifiedFinancialAdjustmentOnceItem);
 
+        $itemsBeforeForEach = $model->getSpecifiedFinancialAdjustment();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedFinancialAdjustment(
+            static function (FinancialAdjustmentType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedFinancialAdjustment());
+
         // (7) Property SpecifiedFinancialAdjustment - Clear
 
         $model->clearSpecifiedFinancialAdjustment();
@@ -2349,6 +2679,22 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachSpecifiedFinancialAdjustment(
+            static function (FinancialAdjustmentType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
+
+        $itemsBeforeForEach = $model->getInvoiceReferencedDocument();
+
+        $this->assertSame($model, $model->forEachInvoiceReferencedDocument(
+            static function (ReferencedDocumentType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getInvoiceReferencedDocument());
 
         // (1) Property InvoiceReferencedDocument - Test set empty array
 
@@ -2405,6 +2751,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstInvoiceReferencedDocumentOnceItem, $secondInvoiceReferencedDocumentOnceItem);
 
+        $itemsBeforeForEach = $model->getInvoiceReferencedDocument();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachInvoiceReferencedDocument(
+            static function (ReferencedDocumentType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getInvoiceReferencedDocument());
+
         // (7) Property InvoiceReferencedDocument - Clesr
 
         $model->clearInvoiceReferencedDocument();
@@ -2413,6 +2771,22 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachInvoiceReferencedDocument(
+            static function (ReferencedDocumentType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
+
+        $itemsBeforeForEach = $model->getReceivableSpecifiedTradeAccountingAccount();
+
+        $this->assertSame($model, $model->forEachReceivableSpecifiedTradeAccountingAccount(
+            static function (TradeAccountingAccountType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getReceivableSpecifiedTradeAccountingAccount());
 
         // (1) Property ReceivableSpecifiedTradeAccountingAccount - Test set empty array
 
@@ -2469,6 +2843,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstReceivableSpecifiedTradeAccountingAccountOnceItem, $secondReceivableSpecifiedTradeAccountingAccountOnceItem);
 
+        $itemsBeforeForEach = $model->getReceivableSpecifiedTradeAccountingAccount();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachReceivableSpecifiedTradeAccountingAccount(
+            static function (TradeAccountingAccountType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getReceivableSpecifiedTradeAccountingAccount());
+
         // (7) Property ReceivableSpecifiedTradeAccountingAccount - Clesr
 
         $model->clearReceivableSpecifiedTradeAccountingAccount();
@@ -2477,6 +2863,22 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachReceivableSpecifiedTradeAccountingAccount(
+            static function (TradeAccountingAccountType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
+
+        $itemsBeforeForEach = $model->getSpecifiedAdvancePayment();
+
+        $this->assertSame($model, $model->forEachSpecifiedAdvancePayment(
+            static function (AdvancePaymentType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedAdvancePayment());
 
         // (1) Property SpecifiedAdvancePayment - Test set empty array
 
@@ -2533,6 +2935,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstSpecifiedAdvancePaymentOnceItem, $secondSpecifiedAdvancePaymentOnceItem);
 
+        $itemsBeforeForEach = $model->getSpecifiedAdvancePayment();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedAdvancePayment(
+            static function (AdvancePaymentType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedAdvancePayment());
+
         // (7) Property SpecifiedAdvancePayment - Clesr
 
         $model->clearSpecifiedAdvancePayment();
@@ -2541,6 +2955,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachSpecifiedAdvancePayment(
+            static function (AdvancePaymentType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
     }
 
     /**
@@ -2674,6 +3094,16 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForContractReferencedDocument);
         $this->assertSame($testValueForContractReferencedDocument, $model->getContractReferencedDocument());
 
+        $itemsBeforeForEach = $model->getAdditionalReferencedDocument();
+
+        $this->assertSame($model, $model->forEachAdditionalReferencedDocument(
+            static function (ReferencedDocumentType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getAdditionalReferencedDocument());
+
         // (1) Property AdditionalReferencedDocument - Test set empty array
 
         $additionalReferencedDocumentItems = [];
@@ -2729,6 +3159,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstAdditionalReferencedDocumentOnceItem, $secondAdditionalReferencedDocumentOnceItem);
 
+        $itemsBeforeForEach = $model->getAdditionalReferencedDocument();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachAdditionalReferencedDocument(
+            static function (ReferencedDocumentType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getAdditionalReferencedDocument());
+
         // (7) Property AdditionalReferencedDocument - Clesr
 
         $model->clearAdditionalReferencedDocument();
@@ -2737,6 +3179,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachAdditionalReferencedDocument(
+            static function (ReferencedDocumentType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
 
         // Property GrossPriceProductTradePrice
 
@@ -2769,6 +3217,16 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(TradePriceType::class, $testValueForNetPriceProductTradePrice);
         $this->assertSame($testValueForNetPriceProductTradePrice, $model->getNetPriceProductTradePrice());
+
+        $itemsBeforeForEach = $model->getUltimateCustomerOrderReferencedDocument();
+
+        $this->assertSame($model, $model->forEachUltimateCustomerOrderReferencedDocument(
+            static function (ReferencedDocumentType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getUltimateCustomerOrderReferencedDocument());
 
         // (1) Property UltimateCustomerOrderReferencedDocument - Test set empty array
 
@@ -2825,6 +3283,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstUltimateCustomerOrderReferencedDocumentOnceItem, $secondUltimateCustomerOrderReferencedDocumentOnceItem);
 
+        $itemsBeforeForEach = $model->getUltimateCustomerOrderReferencedDocument();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachUltimateCustomerOrderReferencedDocument(
+            static function (ReferencedDocumentType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getUltimateCustomerOrderReferencedDocument());
+
         // (7) Property UltimateCustomerOrderReferencedDocument - Clesr
 
         $model->clearUltimateCustomerOrderReferencedDocument();
@@ -2833,6 +3303,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachUltimateCustomerOrderReferencedDocument(
+            static function (ReferencedDocumentType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
     }
 
     /**
@@ -3014,6 +3490,16 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(LineTradeSettlementType::class, $model);
 
+        $itemsBeforeForEach = $model->getApplicableTradeTax();
+
+        $this->assertSame($model, $model->forEachApplicableTradeTax(
+            static function (TradeTaxType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getApplicableTradeTax());
+
         // (1) Property ApplicableTradeTax - Test set empty array
 
         $applicableTradeTaxItems = [];
@@ -3069,6 +3555,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstApplicableTradeTaxOnceItem, $secondApplicableTradeTaxOnceItem);
 
+        $itemsBeforeForEach = $model->getApplicableTradeTax();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachApplicableTradeTax(
+            static function (TradeTaxType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getApplicableTradeTax());
+
         // (7) Property ApplicableTradeTax - Clesr
 
         $model->clearApplicableTradeTax();
@@ -3077,6 +3575,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachApplicableTradeTax(
+            static function (TradeTaxType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
 
         // Property BillingSpecifiedPeriod
 
@@ -3093,6 +3597,16 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(SpecifiedPeriodType::class, $testValueForBillingSpecifiedPeriod);
         $this->assertSame($testValueForBillingSpecifiedPeriod, $model->getBillingSpecifiedPeriod());
+
+        $itemsBeforeForEach = $model->getSpecifiedTradeAllowanceCharge();
+
+        $this->assertSame($model, $model->forEachSpecifiedTradeAllowanceCharge(
+            static function (TradeAllowanceChargeType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTradeAllowanceCharge());
 
         // (1) Property SpecifiedTradeAllowanceCharge - Test set empty array
 
@@ -3149,6 +3663,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstSpecifiedTradeAllowanceChargeOnceItem, $secondSpecifiedTradeAllowanceChargeOnceItem);
 
+        $itemsBeforeForEach = $model->getSpecifiedTradeAllowanceCharge();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedTradeAllowanceCharge(
+            static function (TradeAllowanceChargeType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTradeAllowanceCharge());
+
         // (7) Property SpecifiedTradeAllowanceCharge - Clesr
 
         $model->clearSpecifiedTradeAllowanceCharge();
@@ -3157,6 +3683,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachSpecifiedTradeAllowanceCharge(
+            static function (TradeAllowanceChargeType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
 
         // Property SpecifiedTradeSettlementLineMonetarySummation
 
@@ -3189,6 +3721,16 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForInvoiceReferencedDocument);
         $this->assertSame($testValueForInvoiceReferencedDocument, $model->getInvoiceReferencedDocument());
+
+        $itemsBeforeForEach = $model->getAdditionalReferencedDocument();
+
+        $this->assertSame($model, $model->forEachAdditionalReferencedDocument(
+            static function (ReferencedDocumentType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getAdditionalReferencedDocument());
 
         // (1) Property AdditionalReferencedDocument - Test set empty array
 
@@ -3245,6 +3787,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstAdditionalReferencedDocumentOnceItem, $secondAdditionalReferencedDocumentOnceItem);
 
+        $itemsBeforeForEach = $model->getAdditionalReferencedDocument();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachAdditionalReferencedDocument(
+            static function (ReferencedDocumentType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getAdditionalReferencedDocument());
+
         // (7) Property AdditionalReferencedDocument - Clesr
 
         $model->clearAdditionalReferencedDocument();
@@ -3253,6 +3807,22 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachAdditionalReferencedDocument(
+            static function (ReferencedDocumentType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
+
+        $itemsBeforeForEach = $model->getReceivableSpecifiedTradeAccountingAccount();
+
+        $this->assertSame($model, $model->forEachReceivableSpecifiedTradeAccountingAccount(
+            static function (TradeAccountingAccountType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getReceivableSpecifiedTradeAccountingAccount());
 
         // (1) Property ReceivableSpecifiedTradeAccountingAccount - Test set empty array
 
@@ -3309,6 +3879,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstReceivableSpecifiedTradeAccountingAccountOnceItem, $secondReceivableSpecifiedTradeAccountingAccountOnceItem);
 
+        $itemsBeforeForEach = $model->getReceivableSpecifiedTradeAccountingAccount();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachReceivableSpecifiedTradeAccountingAccount(
+            static function (TradeAccountingAccountType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getReceivableSpecifiedTradeAccountingAccount());
+
         // (7) Property ReceivableSpecifiedTradeAccountingAccount - Clesr
 
         $model->clearReceivableSpecifiedTradeAccountingAccount();
@@ -3317,6 +3899,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachReceivableSpecifiedTradeAccountingAccount(
+            static function (TradeAccountingAccountType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
     }
 
     /**
@@ -3359,6 +3947,16 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(AmountType::class, $testValueForAppliedAmount);
         $this->assertSame($testValueForAppliedAmount, $model->getAppliedAmount());
+
+        $itemsBeforeForEach = $model->getAppliedTradeTax();
+
+        $this->assertSame($model, $model->forEachAppliedTradeTax(
+            static function (TradeTaxType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getAppliedTradeTax());
 
         // (1) Property AppliedTradeTax - Test set empty array
 
@@ -3415,6 +4013,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstAppliedTradeTaxOnceItem, $secondAppliedTradeTaxOnceItem);
 
+        $itemsBeforeForEach = $model->getAppliedTradeTax();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachAppliedTradeTax(
+            static function (TradeTaxType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getAppliedTradeTax());
+
         // (7) Property AppliedTradeTax - Clesr
 
         $model->clearAppliedTradeTax();
@@ -3423,6 +4033,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachAppliedTradeTax(
+            static function (TradeTaxType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
     }
 
     /**
@@ -3830,6 +4446,16 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(IDType::class, $testValueForID);
         $this->assertSame($testValueForID, $model->getID());
 
+        $itemsBeforeForEach = $model->getGlobalID();
+
+        $this->assertSame($model, $model->forEachGlobalID(
+            static function (IDType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getGlobalID());
+
         // (1) Property GlobalID - Test set empty array
 
         $globalIDItems = [];
@@ -3885,6 +4511,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstGlobalIDOnceItem, $secondGlobalIDOnceItem);
 
+        $itemsBeforeForEach = $model->getGlobalID();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachGlobalID(
+            static function (IDType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getGlobalID());
+
         // (7) Property GlobalID - Clesr
 
         $model->clearGlobalID();
@@ -3893,6 +4531,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachGlobalID(
+            static function (IDType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
 
         // Property SellerAssignedID
 
@@ -4074,6 +4718,16 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(SupplyChainConsignmentType::class, $model);
 
+        $itemsBeforeForEach = $model->getSpecifiedLogisticsTransportMovement();
+
+        $this->assertSame($model, $model->forEachSpecifiedLogisticsTransportMovement(
+            static function (LogisticsTransportMovementType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedLogisticsTransportMovement());
+
         // (1) Property SpecifiedLogisticsTransportMovement - Test set empty array
 
         $specifiedLogisticsTransportMovementItems = [];
@@ -4129,6 +4783,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstSpecifiedLogisticsTransportMovementOnceItem, $secondSpecifiedLogisticsTransportMovementOnceItem);
 
+        $itemsBeforeForEach = $model->getSpecifiedLogisticsTransportMovement();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedLogisticsTransportMovement(
+            static function (LogisticsTransportMovementType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedLogisticsTransportMovement());
+
         // (7) Property SpecifiedLogisticsTransportMovement - Clesr
 
         $model->clearSpecifiedLogisticsTransportMovement();
@@ -4137,6 +4803,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachSpecifiedLogisticsTransportMovement(
+            static function (LogisticsTransportMovementType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
     }
 
     /**
@@ -4264,6 +4936,16 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(SupplyChainTradeTransactionType::class, $model);
 
+        $itemsBeforeForEach = $model->getIncludedSupplyChainTradeLineItem();
+
+        $this->assertSame($model, $model->forEachIncludedSupplyChainTradeLineItem(
+            static function (SupplyChainTradeLineItemType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getIncludedSupplyChainTradeLineItem());
+
         // (1) Property IncludedSupplyChainTradeLineItem - Test set empty array
 
         $includedSupplyChainTradeLineItemItems = [];
@@ -4332,6 +5014,18 @@ final class ZffxModelTest extends TestCase
         $this->assertIsBool($hasLatestIncludedSupplyChainTradeLineItem);
         $this->assertTrue($hasLatestIncludedSupplyChainTradeLineItem);
 
+        $itemsBeforeForEach = $model->getIncludedSupplyChainTradeLineItem();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachIncludedSupplyChainTradeLineItem(
+            static function (SupplyChainTradeLineItemType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getIncludedSupplyChainTradeLineItem());
+
         // (7) Property IncludedSupplyChainTradeLineItem - Clesr
 
         $model->clearIncludedSupplyChainTradeLineItem();
@@ -4340,6 +5034,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachIncludedSupplyChainTradeLineItem(
+            static function (SupplyChainTradeLineItemType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
 
         // Property ApplicableHeaderTradeAgreement
 
@@ -4986,6 +5686,16 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(TradePartyType::class, $model);
 
+        $itemsBeforeForEach = $model->getID();
+
+        $this->assertSame($model, $model->forEachID(
+            static function (IDType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getID());
+
         // (1) Property ID - Test set empty array
 
         $iDItems = [];
@@ -5041,6 +5751,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstIDOnceItem, $secondIDOnceItem);
 
+        $itemsBeforeForEach = $model->getID();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachID(
+            static function (IDType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getID());
+
         // (7) Property ID - Clesr
 
         $model->clearID();
@@ -5049,6 +5771,22 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachID(
+            static function (IDType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
+
+        $itemsBeforeForEach = $model->getGlobalID();
+
+        $this->assertSame($model, $model->forEachGlobalID(
+            static function (IDType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getGlobalID());
 
         // (1) Property GlobalID - Test set empty array
 
@@ -5105,6 +5843,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstGlobalIDOnceItem, $secondGlobalIDOnceItem);
 
+        $itemsBeforeForEach = $model->getGlobalID();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachGlobalID(
+            static function (IDType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getGlobalID());
+
         // (7) Property GlobalID - Clesr
 
         $model->clearGlobalID();
@@ -5113,6 +5863,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachGlobalID(
+            static function (IDType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
 
         // Property Name
 
@@ -5178,6 +5934,16 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(LegalOrganizationType::class, $testValueForSpecifiedLegalOrganization);
         $this->assertSame($testValueForSpecifiedLegalOrganization, $model->getSpecifiedLegalOrganization());
 
+        $itemsBeforeForEach = $model->getDefinedTradeContact();
+
+        $this->assertSame($model, $model->forEachDefinedTradeContact(
+            static function (TradeContactType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getDefinedTradeContact());
+
         // (1) Property DefinedTradeContact - Test set empty array
 
         $definedTradeContactItems = [];
@@ -5233,6 +5999,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstDefinedTradeContactOnceItem, $secondDefinedTradeContactOnceItem);
 
+        $itemsBeforeForEach = $model->getDefinedTradeContact();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachDefinedTradeContact(
+            static function (TradeContactType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getDefinedTradeContact());
+
         // (7) Property DefinedTradeContact - Clesr
 
         $model->clearDefinedTradeContact();
@@ -5241,6 +6019,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachDefinedTradeContact(
+            static function (TradeContactType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
 
         // Property PostalTradeAddress
 
@@ -5273,6 +6057,16 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(UniversalCommunicationType::class, $testValueForURIUniversalCommunication);
         $this->assertSame($testValueForURIUniversalCommunication, $model->getURIUniversalCommunication());
+
+        $itemsBeforeForEach = $model->getSpecifiedTaxRegistration();
+
+        $this->assertSame($model, $model->forEachSpecifiedTaxRegistration(
+            static function (TaxRegistrationType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTaxRegistration());
 
         // (1) Property SpecifiedTaxRegistration - Test set empty array
 
@@ -5329,6 +6123,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstSpecifiedTaxRegistrationOnceItem, $secondSpecifiedTaxRegistrationOnceItem);
 
+        $itemsBeforeForEach = $model->getSpecifiedTaxRegistration();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedTaxRegistration(
+            static function (TaxRegistrationType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTaxRegistration());
+
         // (7) Property SpecifiedTaxRegistration - Clesr
 
         $model->clearSpecifiedTaxRegistration();
@@ -5337,6 +6143,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachSpecifiedTaxRegistration(
+            static function (TaxRegistrationType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
     }
 
     /**
@@ -5682,6 +6494,16 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(QuantityType::class, $testValueForBasisQuantity);
         $this->assertSame($testValueForBasisQuantity, $model->getBasisQuantity());
 
+        $itemsBeforeForEach = $model->getAppliedTradeAllowanceCharge();
+
+        $this->assertSame($model, $model->forEachAppliedTradeAllowanceCharge(
+            static function (TradeAllowanceChargeType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getAppliedTradeAllowanceCharge());
+
         // (1) Property AppliedTradeAllowanceCharge - Test set empty array
 
         $appliedTradeAllowanceChargeItems = [];
@@ -5737,6 +6559,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstAppliedTradeAllowanceChargeOnceItem, $secondAppliedTradeAllowanceChargeOnceItem);
 
+        $itemsBeforeForEach = $model->getAppliedTradeAllowanceCharge();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachAppliedTradeAllowanceCharge(
+            static function (TradeAllowanceChargeType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getAppliedTradeAllowanceCharge());
+
         // (7) Property AppliedTradeAllowanceCharge - Clesr
 
         $model->clearAppliedTradeAllowanceCharge();
@@ -5745,6 +6579,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachAppliedTradeAllowanceCharge(
+            static function (TradeAllowanceChargeType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
 
         // Property IncludedTradeTax
 
@@ -5942,6 +6782,16 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(TextType::class, $testValueForDescription);
         $this->assertSame($testValueForDescription, $model->getDescription());
 
+        $itemsBeforeForEach = $model->getBatchID();
+
+        $this->assertSame($model, $model->forEachBatchID(
+            static function (IDType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getBatchID());
+
         // (1) Property BatchID - Test set empty array
 
         $batchIDItems = [];
@@ -5997,6 +6847,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstBatchIDOnceItem, $secondBatchIDOnceItem);
 
+        $itemsBeforeForEach = $model->getBatchID();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachBatchID(
+            static function (IDType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getBatchID());
+
         // (7) Property BatchID - Clesr
 
         $model->clearBatchID();
@@ -6005,6 +6867,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachBatchID(
+            static function (IDType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
 
         // Property BrandName
 
@@ -6037,6 +6905,16 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(TextType::class, $testValueForModelName);
         $this->assertSame($testValueForModelName, $model->getModelName());
+
+        $itemsBeforeForEach = $model->getApplicableProductCharacteristic();
+
+        $this->assertSame($model, $model->forEachApplicableProductCharacteristic(
+            static function (ProductCharacteristicType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getApplicableProductCharacteristic());
 
         // (1) Property ApplicableProductCharacteristic - Test set empty array
 
@@ -6093,6 +6971,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstApplicableProductCharacteristicOnceItem, $secondApplicableProductCharacteristicOnceItem);
 
+        $itemsBeforeForEach = $model->getApplicableProductCharacteristic();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachApplicableProductCharacteristic(
+            static function (ProductCharacteristicType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getApplicableProductCharacteristic());
+
         // (7) Property ApplicableProductCharacteristic - Clesr
 
         $model->clearApplicableProductCharacteristic();
@@ -6101,6 +6991,22 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachApplicableProductCharacteristic(
+            static function (ProductCharacteristicType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
+
+        $itemsBeforeForEach = $model->getDesignatedProductClassification();
+
+        $this->assertSame($model, $model->forEachDesignatedProductClassification(
+            static function (ProductClassificationType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getDesignatedProductClassification());
 
         // (1) Property DesignatedProductClassification - Test set empty array
 
@@ -6157,6 +7063,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstDesignatedProductClassificationOnceItem, $secondDesignatedProductClassificationOnceItem);
 
+        $itemsBeforeForEach = $model->getDesignatedProductClassification();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachDesignatedProductClassification(
+            static function (ProductClassificationType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getDesignatedProductClassification());
+
         // (7) Property DesignatedProductClassification - Clesr
 
         $model->clearDesignatedProductClassification();
@@ -6165,6 +7083,22 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachDesignatedProductClassification(
+            static function (ProductClassificationType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
+
+        $itemsBeforeForEach = $model->getIndividualTradeProductInstance();
+
+        $this->assertSame($model, $model->forEachIndividualTradeProductInstance(
+            static function (TradeProductInstanceType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getIndividualTradeProductInstance());
 
         // (1) Property IndividualTradeProductInstance - Test set empty array
 
@@ -6221,6 +7155,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstIndividualTradeProductInstanceOnceItem, $secondIndividualTradeProductInstanceOnceItem);
 
+        $itemsBeforeForEach = $model->getIndividualTradeProductInstance();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachIndividualTradeProductInstance(
+            static function (TradeProductInstanceType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getIndividualTradeProductInstance());
+
         // (7) Property IndividualTradeProductInstance - Clesr
 
         $model->clearIndividualTradeProductInstance();
@@ -6229,6 +7175,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachIndividualTradeProductInstance(
+            static function (TradeProductInstanceType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
 
         // Property OriginTradeCountry
 
@@ -6261,6 +7213,16 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(TradePartyType::class, $testValueForManufacturerTradeParty);
         $this->assertSame($testValueForManufacturerTradeParty, $model->getManufacturerTradeParty());
+
+        $itemsBeforeForEach = $model->getIncludedReferencedProduct();
+
+        $this->assertSame($model, $model->forEachIncludedReferencedProduct(
+            static function (ReferencedProductType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getIncludedReferencedProduct());
 
         // (1) Property IncludedReferencedProduct - Test set empty array
 
@@ -6317,6 +7279,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstIncludedReferencedProductOnceItem, $secondIncludedReferencedProductOnceItem);
 
+        $itemsBeforeForEach = $model->getIncludedReferencedProduct();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachIncludedReferencedProduct(
+            static function (ReferencedProductType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getIncludedReferencedProduct());
+
         // (7) Property IncludedReferencedProduct - Clesr
 
         $model->clearIncludedReferencedProduct();
@@ -6325,6 +7299,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachIncludedReferencedProduct(
+            static function (ReferencedProductType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
     }
 
     /**
@@ -6442,6 +7422,16 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(AmountType::class, $testValueForTaxBasisTotalAmount);
         $this->assertSame($testValueForTaxBasisTotalAmount, $model->getTaxBasisTotalAmount());
 
+        $itemsBeforeForEach = $model->getTaxTotalAmount();
+
+        $this->assertSame($model, $model->forEachTaxTotalAmount(
+            static function (AmountType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getTaxTotalAmount());
+
         // (1) Property TaxTotalAmount - Test set empty array
 
         $taxTotalAmountItems = [];
@@ -6497,6 +7487,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstTaxTotalAmountOnceItem, $secondTaxTotalAmountOnceItem);
 
+        $itemsBeforeForEach = $model->getTaxTotalAmount();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachTaxTotalAmount(
+            static function (AmountType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getTaxTotalAmount());
+
         // (7) Property TaxTotalAmount - Clesr
 
         $model->clearTaxTotalAmount();
@@ -6505,6 +7507,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachTaxTotalAmount(
+            static function (AmountType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
 
         // Property RoundingAmount
 
@@ -6628,6 +7636,16 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(AmountType::class, $testValueForAllowanceTotalAmount);
         $this->assertSame($testValueForAllowanceTotalAmount, $model->getAllowanceTotalAmount());
 
+        $itemsBeforeForEach = $model->getTaxTotalAmount();
+
+        $this->assertSame($model, $model->forEachTaxTotalAmount(
+            static function (AmountType $item): void {
+                self::fail('The callback must not be called for an unset array.');
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $model->getTaxTotalAmount());
+
         // (1) Property TaxTotalAmount - Test set empty array
 
         $taxTotalAmountItems = [];
@@ -6683,6 +7701,18 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstTaxTotalAmountOnceItem, $secondTaxTotalAmountOnceItem);
 
+        $itemsBeforeForEach = $model->getTaxTotalAmount();
+        $itemsFromForEach = [];
+
+        $this->assertSame($model, $model->forEachTaxTotalAmount(
+            static function (AmountType $item) use (&$itemsFromForEach): void {
+                $itemsFromForEach[] = $item;
+            }
+        ));
+
+        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
+        $this->assertSame($itemsBeforeForEach, $model->getTaxTotalAmount());
+
         // (7) Property TaxTotalAmount - Clear
 
         $model->clearTaxTotalAmount();
@@ -6691,6 +7721,12 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
+
+        $this->assertSame($model, $model->forEachTaxTotalAmount(
+            static function (AmountType $item): void {
+                self::fail('The callback must not be called for an empty array.');
+            }
+        ));
 
         // Property GrandTotalAmount
 

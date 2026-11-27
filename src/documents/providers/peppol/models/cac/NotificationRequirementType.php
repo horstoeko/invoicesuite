@@ -329,6 +329,22 @@ class NotificationRequirementType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(NotifyParty): mixed $callback
+     * @return static
+     */
+    public function forEachNotifyParty(
+        callable $callback
+    ): static {
+        foreach ($this->notifyParty ?? [] as $notifyParty) {
+            $callback($notifyParty);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<NotificationPeriod>
      */
     public function getNotificationPeriod(): ?array
@@ -453,6 +469,22 @@ class NotificationRequirementType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(NotificationPeriod): mixed $callback
+     * @return static
+     */
+    public function forEachNotificationPeriod(
+        callable $callback
+    ): static {
+        foreach ($this->notificationPeriod ?? [] as $notificationPeriod) {
+            $callback($notificationPeriod);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<NotificationLocation>
      */
     public function getNotificationLocation(): ?array
@@ -574,5 +606,21 @@ class NotificationRequirementType
         }
 
         return $this->notificationLocation[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(NotificationLocation): mixed $callback
+     * @return static
+     */
+    public function forEachNotificationLocation(
+        callable $callback
+    ): static {
+        foreach ($this->notificationLocation ?? [] as $notificationLocation) {
+            $callback($notificationLocation);
+        }
+
+        return $this;
     }
 }

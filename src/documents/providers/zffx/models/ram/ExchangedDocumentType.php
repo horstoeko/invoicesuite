@@ -441,6 +441,22 @@ class ExchangedDocumentType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(NoteType): mixed $callback
+     * @return static
+     */
+    public function forEachIncludedNote(
+        callable $callback
+    ): static {
+        foreach ($this->includedNote ?? [] as $includedNote) {
+            $callback($includedNote);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|SpecifiedPeriodType
      */
     public function getEffectiveSpecifiedPeriod(): ?SpecifiedPeriodType

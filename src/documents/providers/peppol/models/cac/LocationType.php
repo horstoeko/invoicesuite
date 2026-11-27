@@ -322,6 +322,22 @@ class LocationType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Conditions>
      */
     public function getConditions(): ?array
@@ -443,6 +459,22 @@ class LocationType
         }
 
         return $this->conditions[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Conditions): mixed $callback
+     * @return static
+     */
+    public function forEachConditions(
+        callable $callback
+    ): static {
+        foreach ($this->conditions ?? [] as $condition) {
+            $callback($condition);
+        }
+
+        return $this;
     }
 
     /**
@@ -770,6 +802,22 @@ class LocationType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ValidityPeriod): mixed $callback
+     * @return static
+     */
+    public function forEachValidityPeriod(
+        callable $callback
+    ): static {
+        foreach ($this->validityPeriod ?? [] as $validityPeriod) {
+            $callback($validityPeriod);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|Address
      */
     public function getAddress(): ?Address
@@ -934,6 +982,22 @@ class LocationType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SubsidiaryLocation): mixed $callback
+     * @return static
+     */
+    public function forEachSubsidiaryLocation(
+        callable $callback
+    ): static {
+        foreach ($this->subsidiaryLocation ?? [] as $subsidiaryLocation) {
+            $callback($subsidiaryLocation);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<LocationCoordinate>
      */
     public function getLocationCoordinate(): ?array
@@ -1055,5 +1119,21 @@ class LocationType
         }
 
         return $this->locationCoordinate[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(LocationCoordinate): mixed $callback
+     * @return static
+     */
+    public function forEachLocationCoordinate(
+        callable $callback
+    ): static {
+        foreach ($this->locationCoordinate ?? [] as $locationCoordinate) {
+            $callback($locationCoordinate);
+        }
+
+        return $this;
     }
 }

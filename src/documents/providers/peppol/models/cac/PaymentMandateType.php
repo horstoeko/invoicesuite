@@ -611,4 +611,20 @@ class PaymentMandateType
 
         return $this->clause[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Clause): mixed $callback
+     * @return static
+     */
+    public function forEachClause(
+        callable $callback
+    ): static {
+        foreach ($this->clause ?? [] as $clause) {
+            $callback($clause);
+        }
+
+        return $this;
+    }
 }

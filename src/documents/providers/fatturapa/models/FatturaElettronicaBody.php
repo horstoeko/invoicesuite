@@ -332,6 +332,22 @@ final class FatturaElettronicaBody
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DatiPagamento): mixed $callback
+     * @return static
+     */
+    public function forEachDatiPagamento(
+        callable $callback
+    ): static {
+        foreach ($this->datiPagamento ?? [] as $datoPagamento) {
+            $callback($datoPagamento);
+        }
+
+        return $this;
+    }
+
+    /**
      * @translation-german Anhänge
      *
      * @return null|array<Allegati>
@@ -443,5 +459,21 @@ final class FatturaElettronicaBody
         }
 
         return $this->allegati[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Allegati): mixed $callback
+     * @return static
+     */
+    public function forEachAllegati(
+        callable $callback
+    ): static {
+        foreach ($this->allegati ?? [] as $allegato) {
+            $callback($allegato);
+        }
+
+        return $this;
     }
 }

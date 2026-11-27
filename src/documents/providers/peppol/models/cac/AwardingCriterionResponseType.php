@@ -303,6 +303,22 @@ class AwardingCriterionResponseType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AwardingCriterionDescription): mixed $callback
+     * @return static
+     */
+    public function forEachAwardingCriterionDescription(
+        callable $callback
+    ): static {
+        foreach ($this->awardingCriterionDescription ?? [] as $awardingCriterionDescription) {
+            $callback($awardingCriterionDescription);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Description>
      */
     public function getDescription(): ?array
@@ -424,6 +440,22 @@ class AwardingCriterionResponseType
         }
 
         return $this->description[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
     }
 
     /**
@@ -628,5 +660,21 @@ class AwardingCriterionResponseType
         }
 
         return $this->subordinateAwardingCriterionResponse[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SubordinateAwardingCriterionResponse): mixed $callback
+     * @return static
+     */
+    public function forEachSubordinateAwardingCriterionResponse(
+        callable $callback
+    ): static {
+        foreach ($this->subordinateAwardingCriterionResponse ?? [] as $subordinateAwardingCriterionResponse) {
+            $callback($subordinateAwardingCriterionResponse);
+        }
+
+        return $this;
     }
 }

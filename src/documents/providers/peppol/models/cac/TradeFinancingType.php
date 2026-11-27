@@ -338,6 +338,22 @@ class TradeFinancingType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->documentReference ?? [] as $documentReference) {
+            $callback($documentReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|FinancingParty
      */
     public function getFinancingParty(): ?FinancingParty
@@ -539,5 +555,21 @@ class TradeFinancingType
         }
 
         return $this->clause[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Clause): mixed $callback
+     * @return static
+     */
+    public function forEachClause(
+        callable $callback
+    ): static {
+        foreach ($this->clause ?? [] as $clause) {
+            $callback($clause);
+        }
+
+        return $this;
     }
 }

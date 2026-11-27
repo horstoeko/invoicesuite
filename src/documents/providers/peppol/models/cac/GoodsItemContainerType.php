@@ -251,4 +251,20 @@ class GoodsItemContainerType
 
         return $this->transportEquipment[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TransportEquipment): mixed $callback
+     * @return static
+     */
+    public function forEachTransportEquipment(
+        callable $callback
+    ): static {
+        foreach ($this->transportEquipment ?? [] as $transportEquipment) {
+            $callback($transportEquipment);
+        }
+
+        return $this;
+    }
 }

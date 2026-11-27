@@ -179,6 +179,22 @@ final class DatiDocumentiCorrelati
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(int): mixed $callback
+     * @return static
+     */
+    public function forEachRiferimentoNumeroLinea(
+        callable $callback
+    ): static {
+        foreach ($this->riferimentoNumeroLinea ?? [] as $riferimentoNumeroLinea) {
+            $callback($riferimentoNumeroLinea);
+        }
+
+        return $this;
+    }
+
+    /**
      * @translation-german-untranslated
      *
      * @return null|string

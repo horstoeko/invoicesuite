@@ -213,6 +213,22 @@ class PromotionalSpecificationType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PromotionalEventLineItem): mixed $callback
+     * @return static
+     */
+    public function forEachPromotionalEventLineItem(
+        callable $callback
+    ): static {
+        foreach ($this->promotionalEventLineItem ?? [] as $promotionalEventLineItem) {
+            $callback($promotionalEventLineItem);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<EventTactic>
      */
     public function getEventTactic(): ?array
@@ -334,5 +350,21 @@ class PromotionalSpecificationType
         }
 
         return $this->eventTactic[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(EventTactic): mixed $callback
+     * @return static
+     */
+    public function forEachEventTactic(
+        callable $callback
+    ): static {
+        foreach ($this->eventTactic ?? [] as $eventTactic) {
+            $callback($eventTactic);
+        }
+
+        return $this;
     }
 }

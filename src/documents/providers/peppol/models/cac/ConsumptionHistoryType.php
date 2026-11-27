@@ -421,6 +421,22 @@ class ConsumptionHistoryType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|Period
      */
     public function getPeriod(): ?Period

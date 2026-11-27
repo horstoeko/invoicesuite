@@ -198,4 +198,20 @@ class PricingReferenceType
 
         return $this->alternativeConditionPrice[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AlternativeConditionPrice): mixed $callback
+     * @return static
+     */
+    public function forEachAlternativeConditionPrice(
+        callable $callback
+    ): static {
+        foreach ($this->alternativeConditionPrice ?? [] as $alternativeConditionPrice) {
+            $callback($alternativeConditionPrice);
+        }
+
+        return $this;
+    }
 }

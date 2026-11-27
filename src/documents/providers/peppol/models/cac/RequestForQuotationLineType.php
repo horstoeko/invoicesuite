@@ -312,6 +312,22 @@ class RequestForQuotationLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|bool
      */
     public function getOptionalLineItemIndicator(): ?bool
@@ -543,6 +559,22 @@ class RequestForQuotationLineType
         }
 
         return $this->documentReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->documentReference ?? [] as $documentReference) {
+            $callback($documentReference);
+        }
+
+        return $this;
     }
 
     /**

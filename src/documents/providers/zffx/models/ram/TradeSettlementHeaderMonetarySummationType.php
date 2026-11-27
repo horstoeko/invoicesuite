@@ -368,6 +368,22 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AmountType): mixed $callback
+     * @return static
+     */
+    public function forEachTaxTotalAmount(
+        callable $callback
+    ): static {
+        foreach ($this->taxTotalAmount ?? [] as $taxTotalAmount) {
+            $callback($taxTotalAmount);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|AmountType
      */
     public function getRoundingAmount(): ?AmountType

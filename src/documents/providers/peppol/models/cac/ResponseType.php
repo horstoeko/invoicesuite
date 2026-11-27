@@ -289,6 +289,22 @@ class ResponseType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|DateTimeInterface
      */
     public function getEffectiveDate(): ?DateTimeInterface
@@ -470,5 +486,21 @@ class ResponseType
         }
 
         return $this->status[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Status): mixed $callback
+     * @return static
+     */
+    public function forEachStatus(
+        callable $callback
+    ): static {
+        foreach ($this->status ?? [] as $status) {
+            $callback($status);
+        }
+
+        return $this;
     }
 }

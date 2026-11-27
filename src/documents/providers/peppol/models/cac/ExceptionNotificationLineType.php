@@ -356,6 +356,22 @@ class ExceptionNotificationLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Description>
      */
     public function getDescription(): ?array
@@ -477,6 +493,22 @@ class ExceptionNotificationLineType
         }
 
         return $this->description[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
     }
 
     /**
@@ -961,6 +993,22 @@ class ExceptionNotificationLineType
         }
 
         return $this->documentReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->documentReference ?? [] as $documentReference) {
+            $callback($documentReference);
+        }
+
+        return $this;
     }
 
     /**

@@ -1625,6 +1625,22 @@ class ConsignmentType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SummaryDescription): mixed $callback
+     * @return static
+     */
+    public function forEachSummaryDescription(
+        callable $callback
+    ): static {
+        foreach ($this->summaryDescription ?? [] as $summaryDescription) {
+            $callback($summaryDescription);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|TotalInvoiceAmount
      */
     public function getTotalInvoiceAmount(): ?TotalInvoiceAmount
@@ -1826,6 +1842,22 @@ class ConsignmentType
         }
 
         return $this->tariffDescription[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TariffDescription): mixed $callback
+     * @return static
+     */
+    public function forEachTariffDescription(
+        callable $callback
+    ): static {
+        foreach ($this->tariffDescription ?? [] as $tariffDescription) {
+            $callback($tariffDescription);
+        }
+
+        return $this;
     }
 
     /**
@@ -2313,6 +2345,22 @@ class ConsignmentType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Remarks): mixed $callback
+     * @return static
+     */
+    public function forEachRemarks(
+        callable $callback
+    ): static {
+        foreach ($this->remarks ?? [] as $remark) {
+            $callback($remark);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|bool
      */
     public function getHazardousRiskIndicator(): ?bool
@@ -2707,6 +2755,22 @@ class ConsignmentType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(CarrierServiceInstructions): mixed $callback
+     * @return static
+     */
+    public function forEachCarrierServiceInstructions(
+        callable $callback
+    ): static {
+        foreach ($this->carrierServiceInstructions ?? [] as $carrierServiceInstruction) {
+            $callback($carrierServiceInstruction);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<CustomsClearanceServiceInstructions>
      */
     public function getCustomsClearanceServiceInstructions(): ?array
@@ -2828,6 +2892,22 @@ class ConsignmentType
         }
 
         return $this->customsClearanceServiceInstructions[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(CustomsClearanceServiceInstructions): mixed $callback
+     * @return static
+     */
+    public function forEachCustomsClearanceServiceInstructions(
+        callable $callback
+    ): static {
+        foreach ($this->customsClearanceServiceInstructions ?? [] as $customsClearanceServiceInstruction) {
+            $callback($customsClearanceServiceInstruction);
+        }
+
+        return $this;
     }
 
     /**
@@ -2955,6 +3035,22 @@ class ConsignmentType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ForwarderServiceInstructions): mixed $callback
+     * @return static
+     */
+    public function forEachForwarderServiceInstructions(
+        callable $callback
+    ): static {
+        foreach ($this->forwarderServiceInstructions ?? [] as $forwarderServiceInstruction) {
+            $callback($forwarderServiceInstruction);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<SpecialServiceInstructions>
      */
     public function getSpecialServiceInstructions(): ?array
@@ -3076,6 +3172,22 @@ class ConsignmentType
         }
 
         return $this->specialServiceInstructions[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SpecialServiceInstructions): mixed $callback
+     * @return static
+     */
+    public function forEachSpecialServiceInstructions(
+        callable $callback
+    ): static {
+        foreach ($this->specialServiceInstructions ?? [] as $specialServiceInstruction) {
+            $callback($specialServiceInstruction);
+        }
+
+        return $this;
     }
 
     /**
@@ -3323,6 +3435,22 @@ class ConsignmentType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(HandlingInstructions): mixed $callback
+     * @return static
+     */
+    public function forEachHandlingInstructions(
+        callable $callback
+    ): static {
+        foreach ($this->handlingInstructions ?? [] as $handlingInstruction) {
+            $callback($handlingInstruction);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Information>
      */
     public function getInformation(): ?array
@@ -3444,6 +3572,22 @@ class ConsignmentType
         }
 
         return $this->information[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Information): mixed $callback
+     * @return static
+     */
+    public function forEachInformation(
+        callable $callback
+    ): static {
+        foreach ($this->information ?? [] as $information) {
+            $callback($information);
+        }
+
+        return $this;
     }
 
     /**
@@ -3811,6 +3955,22 @@ class ConsignmentType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SpecialInstructions): mixed $callback
+     * @return static
+     */
+    public function forEachSpecialInstructions(
+        callable $callback
+    ): static {
+        foreach ($this->specialInstructions ?? [] as $specialInstruction) {
+            $callback($specialInstruction);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|bool
      */
     public function getSplitConsignmentIndicator(): ?bool
@@ -3962,6 +4122,22 @@ class ConsignmentType
         }
 
         return $this->deliveryInstructions[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DeliveryInstructions): mixed $callback
+     * @return static
+     */
+    public function forEachDeliveryInstructions(
+        callable $callback
+    ): static {
+        foreach ($this->deliveryInstructions ?? [] as $deliveryInstruction) {
+            $callback($deliveryInstruction);
+        }
+
+        return $this;
     }
 
     /**
@@ -4156,6 +4332,22 @@ class ConsignmentType
         }
 
         return $this->haulageInstructions[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(HaulageInstructions): mixed $callback
+     * @return static
+     */
+    public function forEachHaulageInstructions(
+        callable $callback
+    ): static {
+        foreach ($this->haulageInstructions ?? [] as $haulageInstruction) {
+            $callback($haulageInstruction);
+        }
+
+        return $this;
     }
 
     /**
@@ -4403,6 +4595,22 @@ class ConsignmentType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ConsolidatedShipment): mixed $callback
+     * @return static
+     */
+    public function forEachConsolidatedShipment(
+        callable $callback
+    ): static {
+        foreach ($this->consolidatedShipment ?? [] as $consolidatedShipment) {
+            $callback($consolidatedShipment);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<CustomsDeclaration>
      */
     public function getCustomsDeclaration(): ?array
@@ -4524,6 +4732,22 @@ class ConsignmentType
         }
 
         return $this->customsDeclaration[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(CustomsDeclaration): mixed $callback
+     * @return static
+     */
+    public function forEachCustomsDeclaration(
+        callable $callback
+    ): static {
+        foreach ($this->customsDeclaration ?? [] as $customsDeclaration) {
+            $callback($customsDeclaration);
+        }
+
+        return $this;
     }
 
     /**
@@ -4811,6 +5035,22 @@ class ConsignmentType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Status): mixed $callback
+     * @return static
+     */
+    public function forEachStatus(
+        callable $callback
+    ): static {
+        foreach ($this->status ?? [] as $status) {
+            $callback($status);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ChildConsignment>
      */
     public function getChildConsignment(): ?array
@@ -4932,6 +5172,22 @@ class ConsignmentType
         }
 
         return $this->childConsignment[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ChildConsignment): mixed $callback
+     * @return static
+     */
+    public function forEachChildConsignment(
+        callable $callback
+    ): static {
+        foreach ($this->childConsignment ?? [] as $childConsignment) {
+            $callback($childConsignment);
+        }
+
+        return $this;
     }
 
     /**
@@ -5819,6 +6075,22 @@ class ConsignmentType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TransitCountry): mixed $callback
+     * @return static
+     */
+    public function forEachTransitCountry(
+        callable $callback
+    ): static {
+        foreach ($this->transitCountry ?? [] as $transitCountry) {
+            $callback($transitCountry);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|TransportContract
      */
     public function getTransportContract(): ?TransportContract
@@ -5980,6 +6252,22 @@ class ConsignmentType
         }
 
         return $this->transportEvent[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TransportEvent): mixed $callback
+     * @return static
+     */
+    public function forEachTransportEvent(
+        callable $callback
+    ): static {
+        foreach ($this->transportEvent ?? [] as $transportEvent) {
+            $callback($transportEvent);
+        }
+
+        return $this;
     }
 
     /**
@@ -6387,6 +6675,22 @@ class ConsignmentType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(FreightAllowanceCharge): mixed $callback
+     * @return static
+     */
+    public function forEachFreightAllowanceCharge(
+        callable $callback
+    ): static {
+        foreach ($this->freightAllowanceCharge ?? [] as $freightAllowanceCharge) {
+            $callback($freightAllowanceCharge);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ExtraAllowanceCharge>
      */
     public function getExtraAllowanceCharge(): ?array
@@ -6508,6 +6812,22 @@ class ConsignmentType
         }
 
         return $this->extraAllowanceCharge[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ExtraAllowanceCharge): mixed $callback
+     * @return static
+     */
+    public function forEachExtraAllowanceCharge(
+        callable $callback
+    ): static {
+        foreach ($this->extraAllowanceCharge ?? [] as $extraAllowanceCharge) {
+            $callback($extraAllowanceCharge);
+        }
+
+        return $this;
     }
 
     /**
@@ -6635,6 +6955,22 @@ class ConsignmentType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(MainCarriageShipmentStage): mixed $callback
+     * @return static
+     */
+    public function forEachMainCarriageShipmentStage(
+        callable $callback
+    ): static {
+        foreach ($this->mainCarriageShipmentStage ?? [] as $mainCarriageShipmentStage) {
+            $callback($mainCarriageShipmentStage);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<PreCarriageShipmentStage>
      */
     public function getPreCarriageShipmentStage(): ?array
@@ -6756,6 +7092,22 @@ class ConsignmentType
         }
 
         return $this->preCarriageShipmentStage[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PreCarriageShipmentStage): mixed $callback
+     * @return static
+     */
+    public function forEachPreCarriageShipmentStage(
+        callable $callback
+    ): static {
+        foreach ($this->preCarriageShipmentStage ?? [] as $preCarriageShipmentStage) {
+            $callback($preCarriageShipmentStage);
+        }
+
+        return $this;
     }
 
     /**
@@ -6883,6 +7235,22 @@ class ConsignmentType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(OnCarriageShipmentStage): mixed $callback
+     * @return static
+     */
+    public function forEachOnCarriageShipmentStage(
+        callable $callback
+    ): static {
+        foreach ($this->onCarriageShipmentStage ?? [] as $onCarriageShipmentStage) {
+            $callback($onCarriageShipmentStage);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TransportHandlingUnit>
      */
     public function getTransportHandlingUnit(): ?array
@@ -7004,6 +7372,22 @@ class ConsignmentType
         }
 
         return $this->transportHandlingUnit[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TransportHandlingUnit): mixed $callback
+     * @return static
+     */
+    public function forEachTransportHandlingUnit(
+        callable $callback
+    ): static {
+        foreach ($this->transportHandlingUnit ?? [] as $transportHandlingUnit) {
+            $callback($transportHandlingUnit);
+        }
+
+        return $this;
     }
 
     /**

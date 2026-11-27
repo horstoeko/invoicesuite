@@ -317,4 +317,20 @@ class SupplyChainTradeTransactionType
 
         return InvoiceSuiteArrayUtils::empty($supplyChainTradeLineItems);
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SupplyChainTradeLineItemType): mixed $callback
+     * @return static
+     */
+    public function forEachIncludedSupplyChainTradeLineItem(
+        callable $callback
+    ): static {
+        foreach ($this->includedSupplyChainTradeLineItem ?? [] as $includedSupplyChainTradeLineItem) {
+            $callback($includedSupplyChainTradeLineItem);
+        }
+
+        return $this;
+    }
 }

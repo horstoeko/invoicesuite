@@ -579,6 +579,22 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(HandlingInstructions): mixed $callback
+     * @return static
+     */
+    public function forEachHandlingInstructions(
+        callable $callback
+    ): static {
+        foreach ($this->handlingInstructions ?? [] as $handlingInstruction) {
+            $callback($handlingInstruction);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|bool
      */
     public function getHazardousRiskIndicator(): ?bool
@@ -813,6 +829,22 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DamageRemarks): mixed $callback
+     * @return static
+     */
+    public function forEachDamageRemarks(
+        callable $callback
+    ): static {
+        foreach ($this->damageRemarks ?? [] as $damageRemark) {
+            $callback($damageRemark);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ShippingMarks>
      */
     public function getShippingMarks(): ?array
@@ -934,6 +966,22 @@ class TransportHandlingUnitType
         }
 
         return $this->shippingMarks[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ShippingMarks): mixed $callback
+     * @return static
+     */
+    public function forEachShippingMarks(
+        callable $callback
+    ): static {
+        foreach ($this->shippingMarks ?? [] as $shippingMark) {
+            $callback($shippingMark);
+        }
+
+        return $this;
     }
 
     /**
@@ -1101,6 +1149,22 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(HandlingUnitDespatchLine): mixed $callback
+     * @return static
+     */
+    public function forEachHandlingUnitDespatchLine(
+        callable $callback
+    ): static {
+        foreach ($this->handlingUnitDespatchLine ?? [] as $handlingUnitDespatchLine) {
+            $callback($handlingUnitDespatchLine);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ActualPackage>
      */
     public function getActualPackage(): ?array
@@ -1222,6 +1286,22 @@ class TransportHandlingUnitType
         }
 
         return $this->actualPackage[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ActualPackage): mixed $callback
+     * @return static
+     */
+    public function forEachActualPackage(
+        callable $callback
+    ): static {
+        foreach ($this->actualPackage ?? [] as $actualPackage) {
+            $callback($actualPackage);
+        }
+
+        return $this;
     }
 
     /**
@@ -1349,6 +1429,22 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ReceivedHandlingUnitReceiptLine): mixed $callback
+     * @return static
+     */
+    public function forEachReceivedHandlingUnitReceiptLine(
+        callable $callback
+    ): static {
+        foreach ($this->receivedHandlingUnitReceiptLine ?? [] as $receivedHandlingUnitReceiptLine) {
+            $callback($receivedHandlingUnitReceiptLine);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TransportEquipment>
      */
     public function getTransportEquipment(): ?array
@@ -1470,6 +1566,22 @@ class TransportHandlingUnitType
         }
 
         return $this->transportEquipment[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TransportEquipment): mixed $callback
+     * @return static
+     */
+    public function forEachTransportEquipment(
+        callable $callback
+    ): static {
+        foreach ($this->transportEquipment ?? [] as $transportEquipment) {
+            $callback($transportEquipment);
+        }
+
+        return $this;
     }
 
     /**
@@ -1597,6 +1709,22 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TransportMeans): mixed $callback
+     * @return static
+     */
+    public function forEachTransportMeans(
+        callable $callback
+    ): static {
+        foreach ($this->transportMeans ?? [] as $transportMean) {
+            $callback($transportMean);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<HazardousGoodsTransit>
      */
     public function getHazardousGoodsTransit(): ?array
@@ -1721,6 +1849,22 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(HazardousGoodsTransit): mixed $callback
+     * @return static
+     */
+    public function forEachHazardousGoodsTransit(
+        callable $callback
+    ): static {
+        foreach ($this->hazardousGoodsTransit ?? [] as $hazardousGoodsTransit) {
+            $callback($hazardousGoodsTransit);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<MeasurementDimension>
      */
     public function getMeasurementDimension(): ?array
@@ -1842,6 +1986,22 @@ class TransportHandlingUnitType
         }
 
         return $this->measurementDimension[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(MeasurementDimension): mixed $callback
+     * @return static
+     */
+    public function forEachMeasurementDimension(
+        callable $callback
+    ): static {
+        foreach ($this->measurementDimension ?? [] as $measurementDimension) {
+            $callback($measurementDimension);
+        }
+
+        return $this;
     }
 
     /**
@@ -2049,6 +2209,22 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(GoodsItem): mixed $callback
+     * @return static
+     */
+    public function forEachGoodsItem(
+        callable $callback
+    ): static {
+        foreach ($this->goodsItem ?? [] as $goodsItem) {
+            $callback($goodsItem);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|FloorSpaceMeasurementDimension
      */
     public function getFloorSpaceMeasurementDimension(): ?FloorSpaceMeasurementDimension
@@ -2253,6 +2429,22 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ShipmentDocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachShipmentDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->shipmentDocumentReference ?? [] as $shipmentDocumentReference) {
+            $callback($shipmentDocumentReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Status>
      */
     public function getStatus(): ?array
@@ -2374,6 +2566,22 @@ class TransportHandlingUnitType
         }
 
         return $this->status[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Status): mixed $callback
+     * @return static
+     */
+    public function forEachStatus(
+        callable $callback
+    ): static {
+        foreach ($this->status ?? [] as $status) {
+            $callback($status);
+        }
+
+        return $this;
     }
 
     /**
@@ -2501,6 +2709,22 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(CustomsDeclaration): mixed $callback
+     * @return static
+     */
+    public function forEachCustomsDeclaration(
+        callable $callback
+    ): static {
+        foreach ($this->customsDeclaration ?? [] as $customsDeclaration) {
+            $callback($customsDeclaration);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ReferencedShipment>
      */
     public function getReferencedShipment(): ?array
@@ -2625,6 +2849,22 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ReferencedShipment): mixed $callback
+     * @return static
+     */
+    public function forEachReferencedShipment(
+        callable $callback
+    ): static {
+        foreach ($this->referencedShipment ?? [] as $referencedShipment) {
+            $callback($referencedShipment);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Package>
      */
     public function getPackage(): ?array
@@ -2746,5 +2986,21 @@ class TransportHandlingUnitType
         }
 
         return $this->package[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Package): mixed $callback
+     * @return static
+     */
+    public function forEachPackage(
+        callable $callback
+    ): static {
+        foreach ($this->package ?? [] as $package) {
+            $callback($package);
+        }
+
+        return $this;
     }
 }

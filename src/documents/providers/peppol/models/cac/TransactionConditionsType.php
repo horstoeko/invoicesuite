@@ -266,6 +266,22 @@ class TransactionConditionsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<DocumentReference>
      */
     public function getDocumentReference(): ?array
@@ -387,5 +403,21 @@ class TransactionConditionsType
         }
 
         return $this->documentReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->documentReference ?? [] as $documentReference) {
+            $callback($documentReference);
+        }
+
+        return $this;
     }
 }

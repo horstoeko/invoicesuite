@@ -284,6 +284,22 @@ class ConsumptionPointType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|SubscriberID
      */
     public function getSubscriberID(): ?SubscriberID
@@ -645,5 +661,21 @@ class ConsumptionPointType
         }
 
         return $this->utilityMeter[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(UtilityMeter): mixed $callback
+     * @return static
+     */
+    public function forEachUtilityMeter(
+        callable $callback
+    ): static {
+        foreach ($this->utilityMeter ?? [] as $utilityMeter) {
+            $callback($utilityMeter);
+        }
+
+        return $this;
     }
 }

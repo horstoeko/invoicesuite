@@ -198,6 +198,22 @@ class EconomicOperatorShortListType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(LimitationDescription): mixed $callback
+     * @return static
+     */
+    public function forEachLimitationDescription(
+        callable $callback
+    ): static {
+        foreach ($this->limitationDescription ?? [] as $limitationDescription) {
+            $callback($limitationDescription);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|ExpectedQuantity
      */
     public function getExpectedQuantity(): ?ExpectedQuantity
@@ -439,5 +455,21 @@ class EconomicOperatorShortListType
         }
 
         return $this->preSelectedParty[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PreSelectedParty): mixed $callback
+     * @return static
+     */
+    public function forEachPreSelectedParty(
+        callable $callback
+    ): static {
+        foreach ($this->preSelectedParty ?? [] as $preSelectedParty) {
+            $callback($preSelectedParty);
+        }
+
+        return $this;
     }
 }

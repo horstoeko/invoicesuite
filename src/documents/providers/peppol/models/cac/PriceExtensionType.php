@@ -199,4 +199,20 @@ class PriceExtensionType
 
         return $this->taxTotal[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TaxTotal): mixed $callback
+     * @return static
+     */
+    public function forEachTaxTotal(
+        callable $callback
+    ): static {
+        foreach ($this->taxTotal ?? [] as $taxTotal) {
+            $callback($taxTotal);
+        }
+
+        return $this;
+    }
 }

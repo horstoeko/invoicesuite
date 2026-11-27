@@ -187,6 +187,22 @@ class DeclarationType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Name): mixed $callback
+     * @return static
+     */
+    public function forEachName(
+        callable $callback
+    ): static {
+        foreach ($this->name ?? [] as $name) {
+            $callback($name);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|DeclarationTypeCode
      */
     public function getDeclarationTypeCode(): ?DeclarationTypeCode
@@ -351,6 +367,22 @@ class DeclarationType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<EvidenceSupplied>
      */
     public function getEvidenceSupplied(): ?array
@@ -472,5 +504,21 @@ class DeclarationType
         }
 
         return $this->evidenceSupplied[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(EvidenceSupplied): mixed $callback
+     * @return static
+     */
+    public function forEachEvidenceSupplied(
+        callable $callback
+    ): static {
+        foreach ($this->evidenceSupplied ?? [] as $evidenceSupplied) {
+            $callback($evidenceSupplied);
+        }
+
+        return $this;
     }
 }

@@ -389,6 +389,22 @@ final class DettaglioLinee
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(CodiceArticolo): mixed $callback
+     * @return static
+     */
+    public function forEachCodiceArticolo(
+        callable $callback
+    ): static {
+        foreach ($this->codiceArticolo ?? [] as $codiceArticolo) {
+            $callback($codiceArticolo);
+        }
+
+        return $this;
+    }
+
+    /**
      * @translation-german Beschreibung
      *
      * @return null|string
@@ -719,6 +735,22 @@ final class DettaglioLinee
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ScontoMaggiorazione): mixed $callback
+     * @return static
+     */
+    public function forEachScontoMaggiorazione(
+        callable $callback
+    ): static {
+        foreach ($this->scontoMaggiorazione ?? [] as $scontoMaggiorazione) {
+            $callback($scontoMaggiorazione);
+        }
+
+        return $this;
+    }
+
+    /**
      * @translation-german Prezzo Gesamt
      *
      * @return null|float
@@ -1010,5 +1042,21 @@ final class DettaglioLinee
         }
 
         return $this->altriDatiGestionali[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AltriDatiGestionali): mixed $callback
+     * @return static
+     */
+    public function forEachAltriDatiGestionali(
+        callable $callback
+    ): static {
+        foreach ($this->altriDatiGestionali ?? [] as $altroDatoGestionale) {
+            $callback($altroDatoGestionale);
+        }
+
+        return $this;
     }
 }

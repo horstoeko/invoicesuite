@@ -713,6 +713,22 @@ class MeterReadingType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(MeterReadingComments): mixed $callback
+     * @return static
+     */
+    public function forEachMeterReadingComments(
+        callable $callback
+    ): static {
+        foreach ($this->meterReadingComments ?? [] as $meterReadingComment) {
+            $callback($meterReadingComment);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|DeliveredQuantity
      */
     public function getDeliveredQuantity(): ?DeliveredQuantity

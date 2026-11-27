@@ -440,6 +440,22 @@ class ItemInstanceType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AdditionalItemProperty): mixed $callback
+     * @return static
+     */
+    public function forEachAdditionalItemProperty(
+        callable $callback
+    ): static {
+        foreach ($this->additionalItemProperty ?? [] as $additionalItemProperty) {
+            $callback($additionalItemProperty);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|LotIdentification
      */
     public function getLotIdentification(): ?LotIdentification

@@ -382,6 +382,22 @@ class StatusType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|StatusReasonCode
      */
     public function getStatusReasonCode(): ?StatusReasonCode
@@ -546,6 +562,22 @@ class StatusType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(StatusReason): mixed $callback
+     * @return static
+     */
+    public function forEachStatusReason(
+        callable $callback
+    ): static {
+        foreach ($this->statusReason ?? [] as $statusReason) {
+            $callback($statusReason);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|SequenceID
      */
     public function getSequenceID(): ?SequenceID
@@ -707,6 +739,22 @@ class StatusType
         }
 
         return $this->text[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Text): mixed $callback
+     * @return static
+     */
+    public function forEachText(
+        callable $callback
+    ): static {
+        foreach ($this->text ?? [] as $text) {
+            $callback($text);
+        }
+
+        return $this;
     }
 
     /**
@@ -941,5 +989,21 @@ class StatusType
         }
 
         return $this->condition[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Condition): mixed $callback
+     * @return static
+     */
+    public function forEachCondition(
+        callable $callback
+    ): static {
+        foreach ($this->condition ?? [] as $condition) {
+            $callback($condition);
+        }
+
+        return $this;
     }
 }

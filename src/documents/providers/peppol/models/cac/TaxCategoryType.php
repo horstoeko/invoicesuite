@@ -497,6 +497,22 @@ class TaxCategoryType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TaxExemptionReason): mixed $callback
+     * @return static
+     */
+    public function forEachTaxExemptionReason(
+        callable $callback
+    ): static {
+        foreach ($this->taxExemptionReason ?? [] as $taxExemptionReason) {
+            $callback($taxExemptionReason);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|TierRange
      */
     public function getTierRange(): ?TierRange

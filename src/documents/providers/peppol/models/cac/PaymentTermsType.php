@@ -402,6 +402,22 @@ class PaymentTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PaymentMeansID): mixed $callback
+     * @return static
+     */
+    public function forEachPaymentMeansID(
+        callable $callback
+    ): static {
+        foreach ($this->paymentMeansID ?? [] as $paymentMeansID) {
+            $callback($paymentMeansID);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|PrepaidPaymentReferenceID
      */
     public function getPrepaidPaymentReferenceID(): ?PrepaidPaymentReferenceID
@@ -563,6 +579,22 @@ class PaymentTermsType
         }
 
         return $this->note[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
     }
 
     /**

@@ -531,6 +531,22 @@ class HazardousItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AdditionalInformation): mixed $callback
+     * @return static
+     */
+    public function forEachAdditionalInformation(
+        callable $callback
+    ): static {
+        foreach ($this->additionalInformation ?? [] as $additionalInformation) {
+            $callback($additionalInformation);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|UNDGCode
      */
     public function getUNDGCode(): ?UNDGCode
@@ -1215,6 +1231,22 @@ class HazardousItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SecondaryHazard): mixed $callback
+     * @return static
+     */
+    public function forEachSecondaryHazard(
+        callable $callback
+    ): static {
+        foreach ($this->secondaryHazard ?? [] as $secondaryHazard) {
+            $callback($secondaryHazard);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<HazardousGoodsTransit>
      */
     public function getHazardousGoodsTransit(): ?array
@@ -1336,6 +1368,22 @@ class HazardousItemType
         }
 
         return $this->hazardousGoodsTransit[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(HazardousGoodsTransit): mixed $callback
+     * @return static
+     */
+    public function forEachHazardousGoodsTransit(
+        callable $callback
+    ): static {
+        foreach ($this->hazardousGoodsTransit ?? [] as $hazardousGoodsTransit) {
+            $callback($hazardousGoodsTransit);
+        }
+
+        return $this;
     }
 
     /**
@@ -1540,5 +1588,21 @@ class HazardousItemType
         }
 
         return $this->additionalTemperature[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AdditionalTemperature): mixed $callback
+     * @return static
+     */
+    public function forEachAdditionalTemperature(
+        callable $callback
+    ): static {
+        foreach ($this->additionalTemperature ?? [] as $additionalTemperature) {
+            $callback($additionalTemperature);
+        }
+
+        return $this;
     }
 }

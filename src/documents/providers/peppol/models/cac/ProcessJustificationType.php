@@ -267,6 +267,22 @@ class ProcessJustificationType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ProcessReason): mixed $callback
+     * @return static
+     */
+    public function forEachProcessReason(
+        callable $callback
+    ): static {
+        foreach ($this->processReason ?? [] as $processReason) {
+            $callback($processReason);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Description>
      */
     public function getDescription(): ?array
@@ -388,5 +404,21 @@ class ProcessJustificationType
         }
 
         return $this->description[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
     }
 }

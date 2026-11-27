@@ -750,6 +750,22 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TradeSettlementPaymentMeansType): mixed $callback
+     * @return static
+     */
+    public function forEachSpecifiedTradeSettlementPaymentMeans(
+        callable $callback
+    ): static {
+        foreach ($this->specifiedTradeSettlementPaymentMeans ?? [] as $specifiedTradeSettlementPaymentMean) {
+            $callback($specifiedTradeSettlementPaymentMean);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TradeTaxType>
      */
     public function getApplicableTradeTax(): ?array
@@ -841,6 +857,22 @@ class HeaderTradeSettlementType
         }
 
         return $this->applicableTradeTax[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TradeTaxType): mixed $callback
+     * @return static
+     */
+    public function forEachApplicableTradeTax(
+        callable $callback
+    ): static {
+        foreach ($this->applicableTradeTax ?? [] as $applicableTradeTax) {
+            $callback($applicableTradeTax);
+        }
+
+        return $this;
     }
 
     /**
@@ -978,6 +1010,22 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TradeAllowanceChargeType): mixed $callback
+     * @return static
+     */
+    public function forEachSpecifiedTradeAllowanceCharge(
+        callable $callback
+    ): static {
+        foreach ($this->specifiedTradeAllowanceCharge ?? [] as $specifiedTradeAllowanceCharge) {
+            $callback($specifiedTradeAllowanceCharge);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<LogisticsServiceChargeType>
      */
     public function getSpecifiedLogisticsServiceCharge(): ?array
@@ -1072,6 +1120,22 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(LogisticsServiceChargeType): mixed $callback
+     * @return static
+     */
+    public function forEachSpecifiedLogisticsServiceCharge(
+        callable $callback
+    ): static {
+        foreach ($this->specifiedLogisticsServiceCharge ?? [] as $specifiedLogisticsServiceCharge) {
+            $callback($specifiedLogisticsServiceCharge);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TradePaymentTermsType>
      */
     public function getSpecifiedTradePaymentTerms(): ?array
@@ -1163,6 +1227,22 @@ class HeaderTradeSettlementType
         }
 
         return $this->specifiedTradePaymentTerms[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TradePaymentTermsType): mixed $callback
+     * @return static
+     */
+    public function forEachSpecifiedTradePaymentTerms(
+        callable $callback
+    ): static {
+        foreach ($this->specifiedTradePaymentTerms ?? [] as $specifiedTradePaymentTerm) {
+            $callback($specifiedTradePaymentTerm);
+        }
+
+        return $this;
     }
 
     /**
@@ -1300,6 +1380,22 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(FinancialAdjustmentType): mixed $callback
+     * @return static
+     */
+    public function forEachSpecifiedFinancialAdjustment(
+        callable $callback
+    ): static {
+        foreach ($this->specifiedFinancialAdjustment ?? [] as $specifiedFinancialAdjustment) {
+            $callback($specifiedFinancialAdjustment);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ReferencedDocumentType>
      */
     public function getInvoiceReferencedDocument(): ?array
@@ -1391,6 +1487,22 @@ class HeaderTradeSettlementType
         }
 
         return $this->invoiceReferencedDocument[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ReferencedDocumentType): mixed $callback
+     * @return static
+     */
+    public function forEachInvoiceReferencedDocument(
+        callable $callback
+    ): static {
+        foreach ($this->invoiceReferencedDocument ?? [] as $invoiceReferencedDocument) {
+            $callback($invoiceReferencedDocument);
+        }
+
+        return $this;
     }
 
     /**
@@ -1488,6 +1600,22 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TradeAccountingAccountType): mixed $callback
+     * @return static
+     */
+    public function forEachReceivableSpecifiedTradeAccountingAccount(
+        callable $callback
+    ): static {
+        foreach ($this->receivableSpecifiedTradeAccountingAccount ?? [] as $receivableSpecifiedTradeAccountingAccount) {
+            $callback($receivableSpecifiedTradeAccountingAccount);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<AdvancePaymentType>
      */
     public function getSpecifiedAdvancePayment(): ?array
@@ -1579,5 +1707,21 @@ class HeaderTradeSettlementType
         }
 
         return $this->specifiedAdvancePayment[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AdvancePaymentType): mixed $callback
+     * @return static
+     */
+    public function forEachSpecifiedAdvancePayment(
+        callable $callback
+    ): static {
+        foreach ($this->specifiedAdvancePayment ?? [] as $specifiedAdvancePayment) {
+            $callback($specifiedAdvancePayment);
+        }
+
+        return $this;
     }
 }

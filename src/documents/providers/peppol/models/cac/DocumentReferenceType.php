@@ -587,6 +587,22 @@ class DocumentReferenceType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(XPath): mixed $callback
+     * @return static
+     */
+    public function forEachXPath(
+        callable $callback
+    ): static {
+        foreach ($this->xPath ?? [] as $xPath) {
+            $callback($xPath);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|LanguageID
      */
     public function getLanguageID(): ?LanguageID
@@ -868,6 +884,22 @@ class DocumentReferenceType
         }
 
         return $this->documentDescription[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DocumentDescription): mixed $callback
+     * @return static
+     */
+    public function forEachDocumentDescription(
+        callable $callback
+    ): static {
+        foreach ($this->documentDescription ?? [] as $documentDescription) {
+            $callback($documentDescription);
+        }
+
+        return $this;
     }
 
     /**

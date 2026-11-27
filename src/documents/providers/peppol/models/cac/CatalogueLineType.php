@@ -662,6 +662,22 @@ class CatalogueLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|bool
      */
     public function getOrderableIndicator(): ?bool
@@ -1013,6 +1029,22 @@ class CatalogueLineType
         }
 
         return $this->warrantyInformation[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(WarrantyInformation): mixed $callback
+     * @return static
+     */
+    public function forEachWarrantyInformation(
+        callable $callback
+    ): static {
+        foreach ($this->warrantyInformation ?? [] as $warrantyInformation) {
+            $callback($warrantyInformation);
+        }
+
+        return $this;
     }
 
     /**
@@ -1380,6 +1412,22 @@ class CatalogueLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ItemComparison): mixed $callback
+     * @return static
+     */
+    public function forEachItemComparison(
+        callable $callback
+    ): static {
+        foreach ($this->itemComparison ?? [] as $itemComparison) {
+            $callback($itemComparison);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ComponentRelatedItem>
      */
     public function getComponentRelatedItem(): ?array
@@ -1501,6 +1549,22 @@ class CatalogueLineType
         }
 
         return $this->componentRelatedItem[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ComponentRelatedItem): mixed $callback
+     * @return static
+     */
+    public function forEachComponentRelatedItem(
+        callable $callback
+    ): static {
+        foreach ($this->componentRelatedItem ?? [] as $componentRelatedItem) {
+            $callback($componentRelatedItem);
+        }
+
+        return $this;
     }
 
     /**
@@ -1628,6 +1692,22 @@ class CatalogueLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AccessoryRelatedItem): mixed $callback
+     * @return static
+     */
+    public function forEachAccessoryRelatedItem(
+        callable $callback
+    ): static {
+        foreach ($this->accessoryRelatedItem ?? [] as $accessoryRelatedItem) {
+            $callback($accessoryRelatedItem);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<RequiredRelatedItem>
      */
     public function getRequiredRelatedItem(): ?array
@@ -1749,6 +1829,22 @@ class CatalogueLineType
         }
 
         return $this->requiredRelatedItem[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(RequiredRelatedItem): mixed $callback
+     * @return static
+     */
+    public function forEachRequiredRelatedItem(
+        callable $callback
+    ): static {
+        foreach ($this->requiredRelatedItem ?? [] as $requiredRelatedItem) {
+            $callback($requiredRelatedItem);
+        }
+
+        return $this;
     }
 
     /**
@@ -1876,6 +1972,22 @@ class CatalogueLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ReplacementRelatedItem): mixed $callback
+     * @return static
+     */
+    public function forEachReplacementRelatedItem(
+        callable $callback
+    ): static {
+        foreach ($this->replacementRelatedItem ?? [] as $replacementRelatedItem) {
+            $callback($replacementRelatedItem);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ComplementaryRelatedItem>
      */
     public function getComplementaryRelatedItem(): ?array
@@ -1997,6 +2109,22 @@ class CatalogueLineType
         }
 
         return $this->complementaryRelatedItem[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ComplementaryRelatedItem): mixed $callback
+     * @return static
+     */
+    public function forEachComplementaryRelatedItem(
+        callable $callback
+    ): static {
+        foreach ($this->complementaryRelatedItem ?? [] as $complementaryRelatedItem) {
+            $callback($complementaryRelatedItem);
+        }
+
+        return $this;
     }
 
     /**
@@ -2124,6 +2252,22 @@ class CatalogueLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ReplacedRelatedItem): mixed $callback
+     * @return static
+     */
+    public function forEachReplacedRelatedItem(
+        callable $callback
+    ): static {
+        foreach ($this->replacedRelatedItem ?? [] as $replacedRelatedItem) {
+            $callback($replacedRelatedItem);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<RequiredItemLocationQuantity>
      */
     public function getRequiredItemLocationQuantity(): ?array
@@ -2248,6 +2392,22 @@ class CatalogueLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(RequiredItemLocationQuantity): mixed $callback
+     * @return static
+     */
+    public function forEachRequiredItemLocationQuantity(
+        callable $callback
+    ): static {
+        foreach ($this->requiredItemLocationQuantity ?? [] as $requiredItemLocationQuantity) {
+            $callback($requiredItemLocationQuantity);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<DocumentReference>
      */
     public function getDocumentReference(): ?array
@@ -2369,6 +2529,22 @@ class CatalogueLineType
         }
 
         return $this->documentReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->documentReference ?? [] as $documentReference) {
+            $callback($documentReference);
+        }
+
+        return $this;
     }
 
     /**
@@ -2533,6 +2709,22 @@ class CatalogueLineType
         }
 
         return $this->keywordItemProperty[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(KeywordItemProperty): mixed $callback
+     * @return static
+     */
+    public function forEachKeywordItemProperty(
+        callable $callback
+    ): static {
+        foreach ($this->keywordItemProperty ?? [] as $keywordItemProperty) {
+            $callback($keywordItemProperty);
+        }
+
+        return $this;
     }
 
     /**

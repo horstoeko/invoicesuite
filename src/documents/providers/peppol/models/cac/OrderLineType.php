@@ -295,6 +295,22 @@ class OrderLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|LineItem
      */
     public function getLineItem(): ?LineItem
@@ -459,6 +475,22 @@ class OrderLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SellerProposedSubstituteLineItem): mixed $callback
+     * @return static
+     */
+    public function forEachSellerProposedSubstituteLineItem(
+        callable $callback
+    ): static {
+        foreach ($this->sellerProposedSubstituteLineItem ?? [] as $sellerProposedSubstituteLineItem) {
+            $callback($sellerProposedSubstituteLineItem);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<SellerSubstitutedLineItem>
      */
     public function getSellerSubstitutedLineItem(): ?array
@@ -583,6 +615,22 @@ class OrderLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SellerSubstitutedLineItem): mixed $callback
+     * @return static
+     */
+    public function forEachSellerSubstitutedLineItem(
+        callable $callback
+    ): static {
+        foreach ($this->sellerSubstitutedLineItem ?? [] as $sellerSubstitutedLineItem) {
+            $callback($sellerSubstitutedLineItem);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<BuyerProposedSubstituteLineItem>
      */
     public function getBuyerProposedSubstituteLineItem(): ?array
@@ -704,6 +752,22 @@ class OrderLineType
         }
 
         return $this->buyerProposedSubstituteLineItem[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(BuyerProposedSubstituteLineItem): mixed $callback
+     * @return static
+     */
+    public function forEachBuyerProposedSubstituteLineItem(
+        callable $callback
+    ): static {
+        foreach ($this->buyerProposedSubstituteLineItem ?? [] as $buyerProposedSubstituteLineItem) {
+            $callback($buyerProposedSubstituteLineItem);
+        }
+
+        return $this;
     }
 
     /**
@@ -911,6 +975,22 @@ class OrderLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(OrderLineReference): mixed $callback
+     * @return static
+     */
+    public function forEachOrderLineReference(
+        callable $callback
+    ): static {
+        foreach ($this->orderLineReference ?? [] as $orderLineReference) {
+            $callback($orderLineReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<DocumentReference>
      */
     public function getDocumentReference(): ?array
@@ -1032,5 +1112,21 @@ class OrderLineType
         }
 
         return $this->documentReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->documentReference ?? [] as $documentReference) {
+            $callback($documentReference);
+        }
+
+        return $this;
     }
 }

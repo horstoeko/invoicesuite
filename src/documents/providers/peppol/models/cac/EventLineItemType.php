@@ -263,6 +263,22 @@ class EventLineItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(RetailPlannedImpact): mixed $callback
+     * @return static
+     */
+    public function forEachRetailPlannedImpact(
+        callable $callback
+    ): static {
+        foreach ($this->retailPlannedImpact ?? [] as $retailPlannedImpact) {
+            $callback($retailPlannedImpact);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|SupplyItem
      */
     public function getSupplyItem(): ?SupplyItem

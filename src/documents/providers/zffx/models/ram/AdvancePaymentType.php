@@ -234,6 +234,22 @@ class AdvancePaymentType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TradeTaxType): mixed $callback
+     * @return static
+     */
+    public function forEachIncludedTradeTax(
+        callable $callback
+    ): static {
+        foreach ($this->includedTradeTax ?? [] as $includedTradeTax) {
+            $callback($includedTradeTax);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|ReferencedDocumentType
      */
     public function getInvoiceSpecifiedReferencedDocument(): ?ReferencedDocumentType

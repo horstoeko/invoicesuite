@@ -199,6 +199,22 @@ class TendererRequirementType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Name): mixed $callback
+     * @return static
+     */
+    public function forEachName(
+        callable $callback
+    ): static {
+        foreach ($this->name ?? [] as $name) {
+            $callback($name);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|TendererRequirementTypeCode
      */
     public function getTendererRequirementTypeCode(): ?TendererRequirementTypeCode
@@ -363,6 +379,22 @@ class TendererRequirementType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|LegalReference
      */
     public function getLegalReference(): ?LegalReference
@@ -524,5 +556,21 @@ class TendererRequirementType
         }
 
         return $this->suggestedEvidence[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SuggestedEvidence): mixed $callback
+     * @return static
+     */
+    public function forEachSuggestedEvidence(
+        callable $callback
+    ): static {
+        foreach ($this->suggestedEvidence ?? [] as $suggestedEvidence) {
+            $callback($suggestedEvidence);
+        }
+
+        return $this;
     }
 }

@@ -198,4 +198,20 @@ class LineResponseType
 
         return $this->response[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Response): mixed $callback
+     * @return static
+     */
+    public function forEachResponse(
+        callable $callback
+    ): static {
+        foreach ($this->response ?? [] as $response) {
+            $callback($response);
+        }
+
+        return $this;
+    }
 }

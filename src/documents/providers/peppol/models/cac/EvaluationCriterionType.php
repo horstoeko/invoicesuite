@@ -274,6 +274,22 @@ class EvaluationCriterionType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|ThresholdAmount
      */
     public function getThresholdAmount(): ?ThresholdAmount
@@ -518,6 +534,22 @@ class EvaluationCriterionType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Expression): mixed $callback
+     * @return static
+     */
+    public function forEachExpression(
+        callable $callback
+    ): static {
+        foreach ($this->expression ?? [] as $expression) {
+            $callback($expression);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|DurationPeriod
      */
     public function getDurationPeriod(): ?DurationPeriod
@@ -679,5 +711,21 @@ class EvaluationCriterionType
         }
 
         return $this->suggestedEvidence[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SuggestedEvidence): mixed $callback
+     * @return static
+     */
+    public function forEachSuggestedEvidence(
+        callable $callback
+    ): static {
+        foreach ($this->suggestedEvidence ?? [] as $suggestedEvidence) {
+            $callback($suggestedEvidence);
+        }
+
+        return $this;
     }
 }

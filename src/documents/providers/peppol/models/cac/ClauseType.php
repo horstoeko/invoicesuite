@@ -200,4 +200,20 @@ class ClauseType
 
         return $this->content[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Content): mixed $callback
+     * @return static
+     */
+    public function forEachContent(
+        callable $callback
+    ): static {
+        foreach ($this->content ?? [] as $content) {
+            $callback($content);
+        }
+
+        return $this;
+    }
 }

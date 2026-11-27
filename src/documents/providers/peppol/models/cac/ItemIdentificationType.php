@@ -328,6 +328,22 @@ class ItemIdentificationType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PhysicalAttribute): mixed $callback
+     * @return static
+     */
+    public function forEachPhysicalAttribute(
+        callable $callback
+    ): static {
+        foreach ($this->physicalAttribute ?? [] as $physicalAttribute) {
+            $callback($physicalAttribute);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<MeasurementDimension>
      */
     public function getMeasurementDimension(): ?array
@@ -449,6 +465,22 @@ class ItemIdentificationType
         }
 
         return $this->measurementDimension[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(MeasurementDimension): mixed $callback
+     * @return static
+     */
+    public function forEachMeasurementDimension(
+        callable $callback
+    ): static {
+        foreach ($this->measurementDimension ?? [] as $measurementDimension) {
+            $callback($measurementDimension);
+        }
+
+        return $this;
     }
 
     /**

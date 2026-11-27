@@ -493,6 +493,22 @@ class ItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|PackQuantity
      */
     public function getPackQuantity(): ?PackQuantity
@@ -797,6 +813,22 @@ class ItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AdditionalInformation): mixed $callback
+     * @return static
+     */
+    public function forEachAdditionalInformation(
+        callable $callback
+    ): static {
+        foreach ($this->additionalInformation ?? [] as $additionalInformation) {
+            $callback($additionalInformation);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Keyword>
      */
     public function getKeyword(): ?array
@@ -918,6 +950,22 @@ class ItemType
         }
 
         return $this->keyword[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Keyword): mixed $callback
+     * @return static
+     */
+    public function forEachKeyword(
+        callable $callback
+    ): static {
+        foreach ($this->keyword ?? [] as $keyword) {
+            $callback($keyword);
+        }
+
+        return $this;
     }
 
     /**
@@ -1045,6 +1093,22 @@ class ItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(BrandName): mixed $callback
+     * @return static
+     */
+    public function forEachBrandName(
+        callable $callback
+    ): static {
+        foreach ($this->brandName ?? [] as $brandName) {
+            $callback($brandName);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ModelName>
      */
     public function getModelName(): ?array
@@ -1166,6 +1230,22 @@ class ItemType
         }
 
         return $this->modelName[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ModelName): mixed $callback
+     * @return static
+     */
+    public function forEachModelName(
+        callable $callback
+    ): static {
+        foreach ($this->modelName ?? [] as $modelName) {
+            $callback($modelName);
+        }
+
+        return $this;
     }
 
     /**
@@ -1373,6 +1453,22 @@ class ItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ManufacturersItemIdentification): mixed $callback
+     * @return static
+     */
+    public function forEachManufacturersItemIdentification(
+        callable $callback
+    ): static {
+        foreach ($this->manufacturersItemIdentification ?? [] as $manufacturersItemIdentification) {
+            $callback($manufacturersItemIdentification);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|StandardItemIdentification
      */
     public function getStandardItemIdentification(): ?StandardItemIdentification
@@ -1577,6 +1673,22 @@ class ItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AdditionalItemIdentification): mixed $callback
+     * @return static
+     */
+    public function forEachAdditionalItemIdentification(
+        callable $callback
+    ): static {
+        foreach ($this->additionalItemIdentification ?? [] as $additionalItemIdentification) {
+            $callback($additionalItemIdentification);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|CatalogueDocumentReference
      */
     public function getCatalogueDocumentReference(): ?CatalogueDocumentReference
@@ -1738,6 +1850,22 @@ class ItemType
         }
 
         return $this->itemSpecificationDocumentReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ItemSpecificationDocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachItemSpecificationDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->itemSpecificationDocumentReference ?? [] as $itemSpecificationDocumentReference) {
+            $callback($itemSpecificationDocumentReference);
+        }
+
+        return $this;
     }
 
     /**
@@ -1905,6 +2033,22 @@ class ItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(CommodityClassification): mixed $callback
+     * @return static
+     */
+    public function forEachCommodityClassification(
+        callable $callback
+    ): static {
+        foreach ($this->commodityClassification ?? [] as $commodityClassification) {
+            $callback($commodityClassification);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TransactionConditions>
      */
     public function getTransactionConditions(): ?array
@@ -2026,6 +2170,22 @@ class ItemType
         }
 
         return $this->transactionConditions[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TransactionConditions): mixed $callback
+     * @return static
+     */
+    public function forEachTransactionConditions(
+        callable $callback
+    ): static {
+        foreach ($this->transactionConditions ?? [] as $transactionCondition) {
+            $callback($transactionCondition);
+        }
+
+        return $this;
     }
 
     /**
@@ -2153,6 +2313,22 @@ class ItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(HazardousItem): mixed $callback
+     * @return static
+     */
+    public function forEachHazardousItem(
+        callable $callback
+    ): static {
+        foreach ($this->hazardousItem ?? [] as $hazardousItem) {
+            $callback($hazardousItem);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ClassifiedTaxCategory>
      */
     public function getClassifiedTaxCategory(): ?array
@@ -2274,6 +2450,22 @@ class ItemType
         }
 
         return $this->classifiedTaxCategory[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ClassifiedTaxCategory): mixed $callback
+     * @return static
+     */
+    public function forEachClassifiedTaxCategory(
+        callable $callback
+    ): static {
+        foreach ($this->classifiedTaxCategory ?? [] as $classifiedTaxCategory) {
+            $callback($classifiedTaxCategory);
+        }
+
+        return $this;
     }
 
     /**
@@ -2401,6 +2593,22 @@ class ItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AdditionalItemProperty): mixed $callback
+     * @return static
+     */
+    public function forEachAdditionalItemProperty(
+        callable $callback
+    ): static {
+        foreach ($this->additionalItemProperty ?? [] as $additionalItemProperty) {
+            $callback($additionalItemProperty);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ManufacturerParty>
      */
     public function getManufacturerParty(): ?array
@@ -2522,6 +2730,22 @@ class ItemType
         }
 
         return $this->manufacturerParty[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ManufacturerParty): mixed $callback
+     * @return static
+     */
+    public function forEachManufacturerParty(
+        callable $callback
+    ): static {
+        foreach ($this->manufacturerParty ?? [] as $manufacturerParty) {
+            $callback($manufacturerParty);
+        }
+
+        return $this;
     }
 
     /**
@@ -2689,6 +2913,22 @@ class ItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(OriginAddress): mixed $callback
+     * @return static
+     */
+    public function forEachOriginAddress(
+        callable $callback
+    ): static {
+        foreach ($this->originAddress ?? [] as $originAddress) {
+            $callback($originAddress);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ItemInstance>
      */
     public function getItemInstance(): ?array
@@ -2810,6 +3050,22 @@ class ItemType
         }
 
         return $this->itemInstance[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ItemInstance): mixed $callback
+     * @return static
+     */
+    public function forEachItemInstance(
+        callable $callback
+    ): static {
+        foreach ($this->itemInstance ?? [] as $itemInstance) {
+            $callback($itemInstance);
+        }
+
+        return $this;
     }
 
     /**
@@ -2937,6 +3193,22 @@ class ItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Certificate): mixed $callback
+     * @return static
+     */
+    public function forEachCertificate(
+        callable $callback
+    ): static {
+        foreach ($this->certificate ?? [] as $certificate) {
+            $callback($certificate);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Dimension>
      */
     public function getDimension(): ?array
@@ -3058,5 +3330,21 @@ class ItemType
         }
 
         return $this->dimension[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Dimension): mixed $callback
+     * @return static
+     */
+    public function forEachDimension(
+        callable $callback
+    ): static {
+        foreach ($this->dimension ?? [] as $dimension) {
+            $callback($dimension);
+        }
+
+        return $this;
     }
 }

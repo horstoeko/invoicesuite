@@ -393,6 +393,22 @@ class ProcurementProjectType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Name): mixed $callback
+     * @return static
+     */
+    public function forEachName(
+        callable $callback
+    ): static {
+        foreach ($this->name ?? [] as $name) {
+            $callback($name);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Description>
      */
     public function getDescription(): ?array
@@ -514,6 +530,22 @@ class ProcurementProjectType
         }
 
         return $this->description[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
     }
 
     /**
@@ -801,6 +833,22 @@ class ProcurementProjectType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(FeeDescription): mixed $callback
+     * @return static
+     */
+    public function forEachFeeDescription(
+        callable $callback
+    ): static {
+        foreach ($this->feeDescription ?? [] as $feeDescription) {
+            $callback($feeDescription);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|DateTimeInterface
      */
     public function getRequestedDeliveryDate(): ?DateTimeInterface
@@ -992,6 +1040,22 @@ class ProcurementProjectType
         }
 
         return $this->note[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
     }
 
     /**
@@ -1199,6 +1263,22 @@ class ProcurementProjectType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AdditionalCommodityClassification): mixed $callback
+     * @return static
+     */
+    public function forEachAdditionalCommodityClassification(
+        callable $callback
+    ): static {
+        foreach ($this->additionalCommodityClassification ?? [] as $additionalCommodityClassification) {
+            $callback($additionalCommodityClassification);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<RealizedLocation>
      */
     public function getRealizedLocation(): ?array
@@ -1320,6 +1400,22 @@ class ProcurementProjectType
         }
 
         return $this->realizedLocation[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(RealizedLocation): mixed $callback
+     * @return static
+     */
+    public function forEachRealizedLocation(
+        callable $callback
+    ): static {
+        foreach ($this->realizedLocation ?? [] as $realizedLocation) {
+            $callback($realizedLocation);
+        }
+
+        return $this;
     }
 
     /**
@@ -1524,5 +1620,21 @@ class ProcurementProjectType
         }
 
         return $this->requestForTenderLine[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(RequestForTenderLine): mixed $callback
+     * @return static
+     */
+    public function forEachRequestForTenderLine(
+        callable $callback
+    ): static {
+        foreach ($this->requestForTenderLine ?? [] as $requestForTenderLine) {
+            $callback($requestForTenderLine);
+        }
+
+        return $this;
     }
 }

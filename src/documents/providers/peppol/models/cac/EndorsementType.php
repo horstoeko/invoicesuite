@@ -277,6 +277,22 @@ class EndorsementType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Remarks): mixed $callback
+     * @return static
+     */
+    public function forEachRemarks(
+        callable $callback
+    ): static {
+        foreach ($this->remarks ?? [] as $remark) {
+            $callback($remark);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|EndorserParty
      */
     public function getEndorserParty(): ?EndorserParty
@@ -438,5 +454,21 @@ class EndorsementType
         }
 
         return $this->signature[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Signature): mixed $callback
+     * @return static
+     */
+    public function forEachSignature(
+        callable $callback
+    ): static {
+        foreach ($this->signature ?? [] as $signature) {
+            $callback($signature);
+        }
+
+        return $this;
     }
 }

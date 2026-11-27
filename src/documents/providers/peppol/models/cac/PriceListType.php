@@ -264,6 +264,22 @@ class PriceListType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ValidityPeriod): mixed $callback
+     * @return static
+     */
+    public function forEachValidityPeriod(
+        callable $callback
+    ): static {
+        foreach ($this->validityPeriod ?? [] as $validityPeriod) {
+            $callback($validityPeriod);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|PreviousPriceList
      */
     public function getPreviousPriceList(): ?PreviousPriceList

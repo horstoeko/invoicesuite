@@ -506,4 +506,20 @@ class ActivityDataLineType
 
         return $this->salesItem[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SalesItem): mixed $callback
+     * @return static
+     */
+    public function forEachSalesItem(
+        callable $callback
+    ): static {
+        foreach ($this->salesItem ?? [] as $salesItem) {
+            $callback($salesItem);
+        }
+
+        return $this;
+    }
 }

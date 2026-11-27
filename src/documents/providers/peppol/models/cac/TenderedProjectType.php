@@ -348,6 +348,22 @@ class TenderedProjectType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(FeeDescription): mixed $callback
+     * @return static
+     */
+    public function forEachFeeDescription(
+        callable $callback
+    ): static {
+        foreach ($this->feeDescription ?? [] as $feeDescription) {
+            $callback($feeDescription);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|TenderEnvelopeID
      */
     public function getTenderEnvelopeID(): ?TenderEnvelopeID
@@ -592,6 +608,22 @@ class TenderedProjectType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(EvidenceDocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachEvidenceDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->evidenceDocumentReference ?? [] as $evidenceDocumentReference) {
+            $callback($evidenceDocumentReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TaxTotal>
      */
     public function getTaxTotal(): ?array
@@ -713,6 +745,22 @@ class TenderedProjectType
         }
 
         return $this->taxTotal[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TaxTotal): mixed $callback
+     * @return static
+     */
+    public function forEachTaxTotal(
+        callable $callback
+    ): static {
+        foreach ($this->taxTotal ?? [] as $taxTotal) {
+            $callback($taxTotal);
+        }
+
+        return $this;
     }
 
     /**
@@ -880,6 +928,22 @@ class TenderedProjectType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TenderLine): mixed $callback
+     * @return static
+     */
+    public function forEachTenderLine(
+        callable $callback
+    ): static {
+        foreach ($this->tenderLine ?? [] as $tenderLine) {
+            $callback($tenderLine);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<AwardingCriterionResponse>
      */
     public function getAwardingCriterionResponse(): ?array
@@ -1001,5 +1065,21 @@ class TenderedProjectType
         }
 
         return $this->awardingCriterionResponse[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AwardingCriterionResponse): mixed $callback
+     * @return static
+     */
+    public function forEachAwardingCriterionResponse(
+        callable $callback
+    ): static {
+        foreach ($this->awardingCriterionResponse ?? [] as $awardingCriterionResponse) {
+            $callback($awardingCriterionResponse);
+        }
+
+        return $this;
     }
 }

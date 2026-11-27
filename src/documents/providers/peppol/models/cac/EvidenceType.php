@@ -300,6 +300,22 @@ class EvidenceType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<CandidateStatement>
      */
     public function getCandidateStatement(): ?array
@@ -421,6 +437,22 @@ class EvidenceType
         }
 
         return $this->candidateStatement[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(CandidateStatement): mixed $callback
+     * @return static
+     */
+    public function forEachCandidateStatement(
+        callable $callback
+    ): static {
+        foreach ($this->candidateStatement ?? [] as $candidateStatement) {
+            $callback($candidateStatement);
+        }
+
+        return $this;
     }
 
     /**

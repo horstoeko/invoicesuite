@@ -234,6 +234,22 @@ class TradePriceType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TradeAllowanceChargeType): mixed $callback
+     * @return static
+     */
+    public function forEachAppliedTradeAllowanceCharge(
+        callable $callback
+    ): static {
+        foreach ($this->appliedTradeAllowanceCharge ?? [] as $appliedTradeAllowanceCharge) {
+            $callback($appliedTradeAllowanceCharge);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|TradeTaxType
      */
     public function getIncludedTradeTax(): ?TradeTaxType

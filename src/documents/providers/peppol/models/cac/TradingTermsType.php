@@ -173,6 +173,22 @@ class TradingTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Information): mixed $callback
+     * @return static
+     */
+    public function forEachInformation(
+        callable $callback
+    ): static {
+        foreach ($this->information ?? [] as $information) {
+            $callback($information);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|Reference
      */
     public function getReference(): ?Reference

@@ -504,4 +504,20 @@ class BillingReferenceType
 
         return $this->billingReferenceLine[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(BillingReferenceLine): mixed $callback
+     * @return static
+     */
+    public function forEachBillingReferenceLine(
+        callable $callback
+    ): static {
+        foreach ($this->billingReferenceLine ?? [] as $billingReferenceLine) {
+            $callback($billingReferenceLine);
+        }
+
+        return $this;
+    }
 }

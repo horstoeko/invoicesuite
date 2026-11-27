@@ -333,4 +333,20 @@ class TaxTotalType
 
         return $this->taxSubtotal[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TaxSubtotal): mixed $callback
+     * @return static
+     */
+    public function forEachTaxSubtotal(
+        callable $callback
+    ): static {
+        foreach ($this->taxSubtotal ?? [] as $taxSubtotal) {
+            $callback($taxSubtotal);
+        }
+
+        return $this;
+    }
 }

@@ -570,6 +570,22 @@ class TransportationServiceType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TransportationServiceDescription): mixed $callback
+     * @return static
+     */
+    public function forEachTransportationServiceDescription(
+        callable $callback
+    ): static {
+        foreach ($this->transportationServiceDescription ?? [] as $transportationServiceDescription) {
+            $callback($transportationServiceDescription);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|TransportationServiceDetailsURI
      */
     public function getTransportationServiceDetailsURI(): ?TransportationServiceDetailsURI
@@ -874,6 +890,22 @@ class TransportationServiceType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TransportEquipment): mixed $callback
+     * @return static
+     */
+    public function forEachTransportEquipment(
+        callable $callback
+    ): static {
+        foreach ($this->transportEquipment ?? [] as $transportEquipment) {
+            $callback($transportEquipment);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<SupportedTransportEquipment>
      */
     public function getSupportedTransportEquipment(): ?array
@@ -995,6 +1027,22 @@ class TransportationServiceType
         }
 
         return $this->supportedTransportEquipment[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SupportedTransportEquipment): mixed $callback
+     * @return static
+     */
+    public function forEachSupportedTransportEquipment(
+        callable $callback
+    ): static {
+        foreach ($this->supportedTransportEquipment ?? [] as $supportedTransportEquipment) {
+            $callback($supportedTransportEquipment);
+        }
+
+        return $this;
     }
 
     /**
@@ -1122,6 +1170,22 @@ class TransportationServiceType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(UnsupportedTransportEquipment): mixed $callback
+     * @return static
+     */
+    public function forEachUnsupportedTransportEquipment(
+        callable $callback
+    ): static {
+        foreach ($this->unsupportedTransportEquipment ?? [] as $unsupportedTransportEquipment) {
+            $callback($unsupportedTransportEquipment);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<CommodityClassification>
      */
     public function getCommodityClassification(): ?array
@@ -1243,6 +1307,22 @@ class TransportationServiceType
         }
 
         return $this->commodityClassification[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(CommodityClassification): mixed $callback
+     * @return static
+     */
+    public function forEachCommodityClassification(
+        callable $callback
+    ): static {
+        foreach ($this->commodityClassification ?? [] as $commodityClassification) {
+            $callback($commodityClassification);
+        }
+
+        return $this;
     }
 
     /**
@@ -1370,6 +1450,22 @@ class TransportationServiceType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SupportedCommodityClassification): mixed $callback
+     * @return static
+     */
+    public function forEachSupportedCommodityClassification(
+        callable $callback
+    ): static {
+        foreach ($this->supportedCommodityClassification ?? [] as $supportedCommodityClassification) {
+            $callback($supportedCommodityClassification);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<UnsupportedCommodityClassification>
      */
     public function getUnsupportedCommodityClassification(): ?array
@@ -1491,6 +1587,22 @@ class TransportationServiceType
         }
 
         return $this->unsupportedCommodityClassification[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(UnsupportedCommodityClassification): mixed $callback
+     * @return static
+     */
+    public function forEachUnsupportedCommodityClassification(
+        callable $callback
+    ): static {
+        foreach ($this->unsupportedCommodityClassification ?? [] as $unsupportedCommodityClassification) {
+            $callback($unsupportedCommodityClassification);
+        }
+
+        return $this;
     }
 
     /**
@@ -1658,6 +1770,22 @@ class TransportationServiceType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ShipmentStage): mixed $callback
+     * @return static
+     */
+    public function forEachShipmentStage(
+        callable $callback
+    ): static {
+        foreach ($this->shipmentStage ?? [] as $shipmentStage) {
+            $callback($shipmentStage);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TransportEvent>
      */
     public function getTransportEvent(): ?array
@@ -1779,6 +1907,22 @@ class TransportationServiceType
         }
 
         return $this->transportEvent[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TransportEvent): mixed $callback
+     * @return static
+     */
+    public function forEachTransportEvent(
+        callable $callback
+    ): static {
+        foreach ($this->transportEvent ?? [] as $transportEvent) {
+            $callback($transportEvent);
+        }
+
+        return $this;
     }
 
     /**
@@ -1946,6 +2090,22 @@ class TransportationServiceType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(EnvironmentalEmission): mixed $callback
+     * @return static
+     */
+    public function forEachEnvironmentalEmission(
+        callable $callback
+    ): static {
+        foreach ($this->environmentalEmission ?? [] as $environmentalEmission) {
+            $callback($environmentalEmission);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|EstimatedDurationPeriod
      */
     public function getEstimatedDurationPeriod(): ?EstimatedDurationPeriod
@@ -2107,5 +2267,21 @@ class TransportationServiceType
         }
 
         return $this->scheduledServiceFrequency[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ScheduledServiceFrequency): mixed $callback
+     * @return static
+     */
+    public function forEachScheduledServiceFrequency(
+        callable $callback
+    ): static {
+        foreach ($this->scheduledServiceFrequency ?? [] as $scheduledServiceFrequency) {
+            $callback($scheduledServiceFrequency);
+        }
+
+        return $this;
     }
 }

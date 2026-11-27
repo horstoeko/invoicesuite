@@ -68,6 +68,7 @@
             <file>../tests/testcases/documentdto/InvoiceSuiteDocumentDTOSerializerTest.php</file>
         </testsuite>
         <testsuite name="models">
+            <file>../tests/testcases/documentmodels/FatturaPaModelTest.php</file>
             <file>../tests/testcases/documentmodels/UblModelTest.php</file>
             <file>../tests/testcases/documentmodels/ZffxModelTest.php</file>
         </testsuite>

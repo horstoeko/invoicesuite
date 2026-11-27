@@ -387,6 +387,22 @@ class RemittanceAdviceLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|UUID
      */
     public function getUUID(): ?UUID
@@ -991,6 +1007,22 @@ class RemittanceAdviceLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(InvoicePeriod): mixed $callback
+     * @return static
+     */
+    public function forEachInvoicePeriod(
+        callable $callback
+    ): static {
+        foreach ($this->invoicePeriod ?? [] as $invoicePeriod) {
+            $callback($invoicePeriod);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<BillingReference>
      */
     public function getBillingReference(): ?array
@@ -1115,6 +1147,22 @@ class RemittanceAdviceLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(BillingReference): mixed $callback
+     * @return static
+     */
+    public function forEachBillingReference(
+        callable $callback
+    ): static {
+        foreach ($this->billingReference ?? [] as $billingReference) {
+            $callback($billingReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<DocumentReference>
      */
     public function getDocumentReference(): ?array
@@ -1236,6 +1284,22 @@ class RemittanceAdviceLineType
         }
 
         return $this->documentReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->documentReference ?? [] as $documentReference) {
+            $callback($documentReference);
+        }
+
+        return $this;
     }
 
     /**

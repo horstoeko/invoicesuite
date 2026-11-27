@@ -197,6 +197,22 @@ class ContractExtensionType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(OptionsDescription): mixed $callback
+     * @return static
+     */
+    public function forEachOptionsDescription(
+        callable $callback
+    ): static {
+        foreach ($this->optionsDescription ?? [] as $optionsDescription) {
+            $callback($optionsDescription);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|MinimumNumberNumeric
      */
     public function getMinimumNumberNumeric(): ?MinimumNumberNumeric
@@ -438,5 +454,21 @@ class ContractExtensionType
         }
 
         return $this->renewal[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Renewal): mixed $callback
+     * @return static
+     */
+    public function forEachRenewal(
+        callable $callback
+    ): static {
+        foreach ($this->renewal ?? [] as $renewal) {
+            $callback($renewal);
+        }
+
+        return $this;
     }
 }

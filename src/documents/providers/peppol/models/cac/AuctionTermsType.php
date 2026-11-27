@@ -255,6 +255,22 @@ class AuctionTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(JustificationDescription): mixed $callback
+     * @return static
+     */
+    public function forEachJustificationDescription(
+        callable $callback
+    ): static {
+        foreach ($this->justificationDescription ?? [] as $justificationDescription) {
+            $callback($justificationDescription);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Description>
      */
     public function getDescription(): ?array
@@ -376,6 +392,22 @@ class AuctionTermsType
         }
 
         return $this->description[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
     }
 
     /**
@@ -503,6 +535,22 @@ class AuctionTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ProcessDescription): mixed $callback
+     * @return static
+     */
+    public function forEachProcessDescription(
+        callable $callback
+    ): static {
+        foreach ($this->processDescription ?? [] as $processDescription) {
+            $callback($processDescription);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ConditionsDescription>
      */
     public function getConditionsDescription(): ?array
@@ -627,6 +675,22 @@ class AuctionTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ConditionsDescription): mixed $callback
+     * @return static
+     */
+    public function forEachConditionsDescription(
+        callable $callback
+    ): static {
+        foreach ($this->conditionsDescription ?? [] as $conditionsDescription) {
+            $callback($conditionsDescription);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ElectronicDeviceDescription>
      */
     public function getElectronicDeviceDescription(): ?array
@@ -748,6 +812,22 @@ class AuctionTermsType
         }
 
         return $this->electronicDeviceDescription[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ElectronicDeviceDescription): mixed $callback
+     * @return static
+     */
+    public function forEachElectronicDeviceDescription(
+        callable $callback
+    ): static {
+        foreach ($this->electronicDeviceDescription ?? [] as $electronicDeviceDescription) {
+            $callback($electronicDeviceDescription);
+        }
+
+        return $this;
     }
 
     /**

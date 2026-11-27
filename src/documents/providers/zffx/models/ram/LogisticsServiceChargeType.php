@@ -221,4 +221,20 @@ class LogisticsServiceChargeType
 
         return $this->appliedTradeTax[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TradeTaxType): mixed $callback
+     * @return static
+     */
+    public function forEachAppliedTradeTax(
+        callable $callback
+    ): static {
+        foreach ($this->appliedTradeTax ?? [] as $appliedTradeTax) {
+            $callback($appliedTradeTax);
+        }
+
+        return $this;
+    }
 }

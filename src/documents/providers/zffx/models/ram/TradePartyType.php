@@ -224,6 +224,22 @@ class TradePartyType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(IDType): mixed $callback
+     * @return static
+     */
+    public function forEachID(
+        callable $callback
+    ): static {
+        foreach ($this->iD ?? [] as $iD) {
+            $callback($iD);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<IDType>
      */
     public function getGlobalID(): ?array
@@ -315,6 +331,22 @@ class TradePartyType
         }
 
         return $this->globalID[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(IDType): mixed $callback
+     * @return static
+     */
+    public function forEachGlobalID(
+        callable $callback
+    ): static {
+        foreach ($this->globalID ?? [] as $globalID) {
+            $callback($globalID);
+        }
+
+        return $this;
     }
 
     /**
@@ -572,6 +604,22 @@ class TradePartyType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TradeContactType): mixed $callback
+     * @return static
+     */
+    public function forEachDefinedTradeContact(
+        callable $callback
+    ): static {
+        foreach ($this->definedTradeContact ?? [] as $definedTradeContact) {
+            $callback($definedTradeContact);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|TradeAddressType
      */
     public function getPostalTradeAddress(): ?TradeAddressType
@@ -743,5 +791,21 @@ class TradePartyType
         }
 
         return $this->specifiedTaxRegistration[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TaxRegistrationType): mixed $callback
+     * @return static
+     */
+    public function forEachSpecifiedTaxRegistration(
+        callable $callback
+    ): static {
+        foreach ($this->specifiedTaxRegistration ?? [] as $specifiedTaxRegistration) {
+            $callback($specifiedTaxRegistration);
+        }
+
+        return $this;
     }
 }

@@ -187,4 +187,20 @@ final class DatiPagamento
 
         return $this->dettaglioPagamento[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DettaglioPagamento): mixed $callback
+     * @return static
+     */
+    public function forEachDettaglioPagamento(
+        callable $callback
+    ): static {
+        foreach ($this->dettaglioPagamento ?? [] as $dettaglioPagamento) {
+            $callback($dettaglioPagamento);
+        }
+
+        return $this;
+    }
 }

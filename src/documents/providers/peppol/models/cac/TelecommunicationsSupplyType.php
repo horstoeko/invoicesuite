@@ -330,6 +330,22 @@ class TelecommunicationsSupplyType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|TotalAmount
      */
     public function getTotalAmount(): ?TotalAmount
@@ -491,5 +507,21 @@ class TelecommunicationsSupplyType
         }
 
         return $this->telecommunicationsSupplyLine[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TelecommunicationsSupplyLine): mixed $callback
+     * @return static
+     */
+    public function forEachTelecommunicationsSupplyLine(
+        callable $callback
+    ): static {
+        foreach ($this->telecommunicationsSupplyLine ?? [] as $telecommunicationsSupplyLine) {
+            $callback($telecommunicationsSupplyLine);
+        }
+
+        return $this;
     }
 }

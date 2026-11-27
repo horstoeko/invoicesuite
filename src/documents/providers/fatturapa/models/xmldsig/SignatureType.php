@@ -336,6 +336,22 @@ class SignatureType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ObjectType): mixed $callback
+     * @return static
+     */
+    public function forEachObject(
+        callable $callback
+    ): static {
+        foreach ($this->object ?? [] as $object) {
+            $callback($object);
+        }
+
+        return $this;
+    }
+
+    /**
      * @translation-german-untranslated
      *
      * @return null|string

@@ -301,6 +301,22 @@ class WorkPhaseReferenceType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(WorkPhase): mixed $callback
+     * @return static
+     */
+    public function forEachWorkPhase(
+        callable $callback
+    ): static {
+        foreach ($this->workPhase ?? [] as $workPhase) {
+            $callback($workPhase);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|ProgressPercent
      */
     public function getProgressPercent(): ?ProgressPercent
@@ -522,5 +538,21 @@ class WorkPhaseReferenceType
         }
 
         return $this->workOrderDocumentReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(WorkOrderDocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachWorkOrderDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->workOrderDocumentReference ?? [] as $workOrderDocumentReference) {
+            $callback($workOrderDocumentReference);
+        }
+
+        return $this;
     }
 }

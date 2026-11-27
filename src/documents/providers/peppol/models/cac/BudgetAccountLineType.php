@@ -251,4 +251,20 @@ class BudgetAccountLineType
 
         return $this->budgetAccount[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(BudgetAccount): mixed $callback
+     * @return static
+     */
+    public function forEachBudgetAccount(
+        callable $callback
+    ): static {
+        foreach ($this->budgetAccount ?? [] as $budgetAccount) {
+            $callback($budgetAccount);
+        }
+
+        return $this;
+    }
 }

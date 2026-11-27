@@ -297,6 +297,22 @@ class ConsumptionType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AllowanceCharge): mixed $callback
+     * @return static
+     */
+    public function forEachAllowanceCharge(
+        callable $callback
+    ): static {
+        foreach ($this->allowanceCharge ?? [] as $allowanceCharge) {
+            $callback($allowanceCharge);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TaxTotal>
      */
     public function getTaxTotal(): ?array
@@ -418,6 +434,22 @@ class ConsumptionType
         }
 
         return $this->taxTotal[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TaxTotal): mixed $callback
+     * @return static
+     */
+    public function forEachTaxTotal(
+        callable $callback
+    ): static {
+        foreach ($this->taxTotal ?? [] as $taxTotal) {
+            $callback($taxTotal);
+        }
+
+        return $this;
     }
 
     /**

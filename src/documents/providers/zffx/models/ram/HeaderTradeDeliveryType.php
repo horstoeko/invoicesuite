@@ -196,6 +196,22 @@ class HeaderTradeDeliveryType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(LogisticsTransportMovementType): mixed $callback
+     * @return static
+     */
+    public function forEachRelatedSupplyChainConsignment(
+        callable $callback
+    ): static {
+        foreach ($this->relatedSupplyChainConsignment ?? [] as $relatedSupplyChainConsignment) {
+            $callback($relatedSupplyChainConsignment);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|TradePartyType
      */
     public function getShipToTradeParty(): ?TradePartyType

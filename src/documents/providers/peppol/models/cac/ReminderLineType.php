@@ -344,6 +344,22 @@ class ReminderLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|UUID
      */
     public function getUUID(): ?UUID
@@ -818,6 +834,22 @@ class ReminderLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ReminderPeriod): mixed $callback
+     * @return static
+     */
+    public function forEachReminderPeriod(
+        callable $callback
+    ): static {
+        foreach ($this->reminderPeriod ?? [] as $reminderPeriod) {
+            $callback($reminderPeriod);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<BillingReference>
      */
     public function getBillingReference(): ?array
@@ -939,6 +971,22 @@ class ReminderLineType
         }
 
         return $this->billingReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(BillingReference): mixed $callback
+     * @return static
+     */
+    public function forEachBillingReference(
+        callable $callback
+    ): static {
+        foreach ($this->billingReference ?? [] as $billingReference) {
+            $callback($billingReference);
+        }
+
+        return $this;
     }
 
     /**

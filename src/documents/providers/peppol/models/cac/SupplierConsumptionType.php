@@ -206,6 +206,22 @@ class SupplierConsumptionType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|UtilitySupplierParty
      */
     public function getUtilitySupplierParty(): ?UtilitySupplierParty
@@ -487,5 +503,21 @@ class SupplierConsumptionType
         }
 
         return $this->consumptionLine[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ConsumptionLine): mixed $callback
+     * @return static
+     */
+    public function forEachConsumptionLine(
+        callable $callback
+    ): static {
+        foreach ($this->consumptionLine ?? [] as $consumptionLine) {
+            $callback($consumptionLine);
+        }
+
+        return $this;
     }
 }

@@ -200,4 +200,20 @@ class EconomicOperatorRoleType
 
         return $this->roleDescription[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(RoleDescription): mixed $callback
+     * @return static
+     */
+    public function forEachRoleDescription(
+        callable $callback
+    ): static {
+        foreach ($this->roleDescription ?? [] as $roleDescription) {
+            $callback($roleDescription);
+        }
+
+        return $this;
+    }
 }

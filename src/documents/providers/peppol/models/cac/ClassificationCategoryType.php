@@ -266,6 +266,22 @@ class ClassificationCategoryType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<CategorizesClassificationCategory>
      */
     public function getCategorizesClassificationCategory(): ?array
@@ -387,5 +403,21 @@ class ClassificationCategoryType
         }
 
         return $this->categorizesClassificationCategory[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(CategorizesClassificationCategory): mixed $callback
+     * @return static
+     */
+    public function forEachCategorizesClassificationCategory(
+        callable $callback
+    ): static {
+        foreach ($this->categorizesClassificationCategory ?? [] as $categorizesClassificationCategory) {
+            $callback($categorizesClassificationCategory);
+        }
+
+        return $this;
     }
 }

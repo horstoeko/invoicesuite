@@ -314,6 +314,22 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|LineExtensionAmount
      */
     public function getLineExtensionAmount(): ?LineExtensionAmount
@@ -478,6 +494,22 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ExchangeRate): mixed $callback
+     * @return static
+     */
+    public function forEachExchangeRate(
+        callable $callback
+    ): static {
+        foreach ($this->exchangeRate ?? [] as $exchangeRate) {
+            $callback($exchangeRate);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<AllowanceCharge>
      */
     public function getAllowanceCharge(): ?array
@@ -599,6 +631,22 @@ class TelecommunicationsSupplyLineType
         }
 
         return $this->allowanceCharge[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AllowanceCharge): mixed $callback
+     * @return static
+     */
+    public function forEachAllowanceCharge(
+        callable $callback
+    ): static {
+        foreach ($this->allowanceCharge ?? [] as $allowanceCharge) {
+            $callback($allowanceCharge);
+        }
+
+        return $this;
     }
 
     /**
@@ -726,6 +774,22 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TaxTotal): mixed $callback
+     * @return static
+     */
+    public function forEachTaxTotal(
+        callable $callback
+    ): static {
+        foreach ($this->taxTotal ?? [] as $taxTotal) {
+            $callback($taxTotal);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TelecommunicationsService>
      */
     public function getTelecommunicationsService(): ?array
@@ -847,5 +911,21 @@ class TelecommunicationsSupplyLineType
         }
 
         return $this->telecommunicationsService[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TelecommunicationsService): mixed $callback
+     * @return static
+     */
+    public function forEachTelecommunicationsService(
+        callable $callback
+    ): static {
+        foreach ($this->telecommunicationsService ?? [] as $telecommunicationsService) {
+            $callback($telecommunicationsService);
+        }
+
+        return $this;
     }
 }

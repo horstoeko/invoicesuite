@@ -241,4 +241,20 @@ class LotIdentificationType
 
         return $this->additionalItemProperty[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AdditionalItemProperty): mixed $callback
+     * @return static
+     */
+    public function forEachAdditionalItemProperty(
+        callable $callback
+    ): static {
+        foreach ($this->additionalItemProperty ?? [] as $additionalItemProperty) {
+            $callback($additionalItemProperty);
+        }
+
+        return $this;
+    }
 }

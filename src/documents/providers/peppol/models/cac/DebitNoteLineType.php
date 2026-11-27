@@ -467,6 +467,22 @@ class DebitNoteLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|DebitedQuantity
      */
     public function getDebitedQuantity(): ?DebitedQuantity
@@ -821,6 +837,22 @@ class DebitNoteLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DiscrepancyResponse): mixed $callback
+     * @return static
+     */
+    public function forEachDiscrepancyResponse(
+        callable $callback
+    ): static {
+        foreach ($this->discrepancyResponse ?? [] as $discrepancyResponse) {
+            $callback($discrepancyResponse);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<DespatchLineReference>
      */
     public function getDespatchLineReference(): ?array
@@ -942,6 +974,22 @@ class DebitNoteLineType
         }
 
         return $this->despatchLineReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DespatchLineReference): mixed $callback
+     * @return static
+     */
+    public function forEachDespatchLineReference(
+        callable $callback
+    ): static {
+        foreach ($this->despatchLineReference ?? [] as $despatchLineReference) {
+            $callback($despatchLineReference);
+        }
+
+        return $this;
     }
 
     /**
@@ -1069,6 +1117,22 @@ class DebitNoteLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ReceiptLineReference): mixed $callback
+     * @return static
+     */
+    public function forEachReceiptLineReference(
+        callable $callback
+    ): static {
+        foreach ($this->receiptLineReference ?? [] as $receiptLineReference) {
+            $callback($receiptLineReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<BillingReference>
      */
     public function getBillingReference(): ?array
@@ -1193,6 +1257,22 @@ class DebitNoteLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(BillingReference): mixed $callback
+     * @return static
+     */
+    public function forEachBillingReference(
+        callable $callback
+    ): static {
+        foreach ($this->billingReference ?? [] as $billingReference) {
+            $callback($billingReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<DocumentReference>
      */
     public function getDocumentReference(): ?array
@@ -1314,6 +1394,22 @@ class DebitNoteLineType
         }
 
         return $this->documentReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->documentReference ?? [] as $documentReference) {
+            $callback($documentReference);
+        }
+
+        return $this;
     }
 
     /**
@@ -1481,6 +1577,22 @@ class DebitNoteLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Delivery): mixed $callback
+     * @return static
+     */
+    public function forEachDelivery(
+        callable $callback
+    ): static {
+        foreach ($this->delivery ?? [] as $delivery) {
+            $callback($delivery);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TaxTotal>
      */
     public function getTaxTotal(): ?array
@@ -1605,6 +1717,22 @@ class DebitNoteLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TaxTotal): mixed $callback
+     * @return static
+     */
+    public function forEachTaxTotal(
+        callable $callback
+    ): static {
+        foreach ($this->taxTotal ?? [] as $taxTotal) {
+            $callback($taxTotal);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<AllowanceCharge>
      */
     public function getAllowanceCharge(): ?array
@@ -1726,6 +1854,22 @@ class DebitNoteLineType
         }
 
         return $this->allowanceCharge[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AllowanceCharge): mixed $callback
+     * @return static
+     */
+    public function forEachAllowanceCharge(
+        callable $callback
+    ): static {
+        foreach ($this->allowanceCharge ?? [] as $allowanceCharge) {
+            $callback($allowanceCharge);
+        }
+
+        return $this;
     }
 
     /**
@@ -1930,5 +2074,21 @@ class DebitNoteLineType
         }
 
         return $this->subDebitNoteLine[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SubDebitNoteLine): mixed $callback
+     * @return static
+     */
+    public function forEachSubDebitNoteLine(
+        callable $callback
+    ): static {
+        foreach ($this->subDebitNoteLine ?? [] as $subDebitNoteLine) {
+            $callback($subDebitNoteLine);
+        }
+
+        return $this;
     }
 }

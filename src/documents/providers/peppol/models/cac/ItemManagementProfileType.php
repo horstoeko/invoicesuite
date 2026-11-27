@@ -415,6 +415,22 @@ class ItemManagementProfileType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ReplenishmentOwnerDescription): mixed $callback
+     * @return static
+     */
+    public function forEachReplenishmentOwnerDescription(
+        callable $callback
+    ): static {
+        foreach ($this->replenishmentOwnerDescription ?? [] as $replenishmentOwnerDescription) {
+            $callback($replenishmentOwnerDescription);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|TargetServicePercent
      */
     public function getTargetServicePercent(): ?TargetServicePercent

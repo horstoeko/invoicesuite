@@ -541,6 +541,22 @@ class ContractType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|VersionID
      */
     public function getVersionID(): ?VersionID
@@ -705,6 +721,22 @@ class ContractType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|ValidityPeriod
      */
     public function getValidityPeriod(): ?ValidityPeriod
@@ -866,6 +898,22 @@ class ContractType
         }
 
         return $this->contractDocumentReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ContractDocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachContractDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->contractDocumentReference ?? [] as $contractDocumentReference) {
+            $callback($contractDocumentReference);
+        }
+
+        return $this;
     }
 
     /**

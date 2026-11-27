@@ -303,4 +303,20 @@ class CorporateRegistrationSchemeType
 
         return $this->jurisdictionRegionAddress[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(JurisdictionRegionAddress): mixed $callback
+     * @return static
+     */
+    public function forEachJurisdictionRegionAddress(
+        callable $callback
+    ): static {
+        foreach ($this->jurisdictionRegionAddress ?? [] as $jurisdictionRegionAddress) {
+            $callback($jurisdictionRegionAddress);
+        }
+
+        return $this;
+    }
 }

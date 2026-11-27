@@ -421,6 +421,22 @@ class MeterType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(MeterReading): mixed $callback
+     * @return static
+     */
+    public function forEachMeterReading(
+        callable $callback
+    ): static {
+        foreach ($this->meterReading ?? [] as $meterReading) {
+            $callback($meterReading);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<MeterProperty>
      */
     public function getMeterProperty(): ?array
@@ -542,5 +558,21 @@ class MeterType
         }
 
         return $this->meterProperty[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(MeterProperty): mixed $callback
+     * @return static
+     */
+    public function forEachMeterProperty(
+        callable $callback
+    ): static {
+        foreach ($this->meterProperty ?? [] as $meterProperty) {
+            $callback($meterProperty);
+        }
+
+        return $this;
     }
 }

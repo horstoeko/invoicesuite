@@ -147,4 +147,20 @@ class UBLExtensionsType
 
         return $this->uBLExtension[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(UBLExtension): mixed $callback
+     * @return static
+     */
+    public function forEachUBLExtension(
+        callable $callback
+    ): static {
+        foreach ($this->uBLExtension ?? [] as $uBLExtension) {
+            $callback($uBLExtension);
+        }
+
+        return $this;
+    }
 }

@@ -306,6 +306,22 @@ final class DatiGenerali
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DatiDocumentiCorrelati): mixed $callback
+     * @return static
+     */
+    public function forEachDatiOrdineAcquisto(
+        callable $callback
+    ): static {
+        foreach ($this->datiOrdineAcquisto ?? [] as $datoOrdineAcquisto) {
+            $callback($datoOrdineAcquisto);
+        }
+
+        return $this;
+    }
+
+    /**
      * @translation-german Vertragsdaten
      *
      * @return null|array<DatiDocumentiCorrelati>
@@ -417,6 +433,22 @@ final class DatiGenerali
         }
 
         return $this->datiContratto[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DatiDocumentiCorrelati): mixed $callback
+     * @return static
+     */
+    public function forEachDatiContratto(
+        callable $callback
+    ): static {
+        foreach ($this->datiContratto ?? [] as $datoContratto) {
+            $callback($datoContratto);
+        }
+
+        return $this;
     }
 
     /**
@@ -534,6 +566,22 @@ final class DatiGenerali
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DatiDocumentiCorrelati): mixed $callback
+     * @return static
+     */
+    public function forEachDatiConvenzione(
+        callable $callback
+    ): static {
+        foreach ($this->datiConvenzione ?? [] as $datoConvenzione) {
+            $callback($datoConvenzione);
+        }
+
+        return $this;
+    }
+
+    /**
      * @translation-german Empfangsdaten
      *
      * @return null|array<DatiDocumentiCorrelati>
@@ -645,6 +693,22 @@ final class DatiGenerali
         }
 
         return $this->datiRicezione[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DatiDocumentiCorrelati): mixed $callback
+     * @return static
+     */
+    public function forEachDatiRicezione(
+        callable $callback
+    ): static {
+        foreach ($this->datiRicezione ?? [] as $datoRicezione) {
+            $callback($datoRicezione);
+        }
+
+        return $this;
     }
 
     /**
@@ -762,6 +826,22 @@ final class DatiGenerali
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DatiDocumentiCorrelati): mixed $callback
+     * @return static
+     */
+    public function forEachDatiFattureCollegate(
+        callable $callback
+    ): static {
+        foreach ($this->datiFattureCollegate ?? [] as $datoFatturaCollegata) {
+            $callback($datoFatturaCollegata);
+        }
+
+        return $this;
+    }
+
+    /**
      * @translation-german Angaben SAL
      *
      * @return null|array<DatiSAL>
@@ -876,6 +956,22 @@ final class DatiGenerali
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DatiSAL): mixed $callback
+     * @return static
+     */
+    public function forEachDatiSAL(
+        callable $callback
+    ): static {
+        foreach ($this->datiSAL ?? [] as $datoSAL) {
+            $callback($datoSAL);
+        }
+
+        return $this;
+    }
+
+    /**
      * @translation-german Angaben DDT
      *
      * @return null|array<DatiDDT>
@@ -987,6 +1083,22 @@ final class DatiGenerali
         }
 
         return $this->datiDDT[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DatiDDT): mixed $callback
+     * @return static
+     */
+    public function forEachDatiDDT(
+        callable $callback
+    ): static {
+        foreach ($this->datiDDT ?? [] as $datoDDT) {
+            $callback($datoDDT);
+        }
+
+        return $this;
     }
 
     /**

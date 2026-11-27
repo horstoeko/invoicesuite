@@ -425,6 +425,22 @@ class AllowanceChargeType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AllowanceChargeReason): mixed $callback
+     * @return static
+     */
+    public function forEachAllowanceChargeReason(
+        callable $callback
+    ): static {
+        foreach ($this->allowanceChargeReason ?? [] as $allowanceChargeReason) {
+            $callback($allowanceChargeReason);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|MultiplierFactorNumeric
      */
     public function getMultiplierFactorNumeric(): ?MultiplierFactorNumeric
@@ -859,6 +875,22 @@ class AllowanceChargeType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TaxCategory): mixed $callback
+     * @return static
+     */
+    public function forEachTaxCategory(
+        callable $callback
+    ): static {
+        foreach ($this->taxCategory ?? [] as $taxCategory) {
+            $callback($taxCategory);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|TaxTotal
      */
     public function getTaxTotal(): ?TaxTotal
@@ -1020,5 +1052,21 @@ class AllowanceChargeType
         }
 
         return $this->paymentMeans[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PaymentMeans): mixed $callback
+     * @return static
+     */
+    public function forEachPaymentMeans(
+        callable $callback
+    ): static {
+        foreach ($this->paymentMeans ?? [] as $paymentMean) {
+            $callback($paymentMean);
+        }
+
+        return $this;
     }
 }

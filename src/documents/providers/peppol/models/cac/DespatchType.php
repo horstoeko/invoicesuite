@@ -672,6 +672,22 @@ class DespatchType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Instructions): mixed $callback
+     * @return static
+     */
+    public function forEachInstructions(
+        callable $callback
+    ): static {
+        foreach ($this->instructions ?? [] as $instruction) {
+            $callback($instruction);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|DespatchAddress
      */
     public function getDespatchAddress(): ?DespatchAddress
@@ -953,6 +969,22 @@ class DespatchType
         }
 
         return $this->notifyParty[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(NotifyParty): mixed $callback
+     * @return static
+     */
+    public function forEachNotifyParty(
+        callable $callback
+    ): static {
+        foreach ($this->notifyParty ?? [] as $notifyParty) {
+            $callback($notifyParty);
+        }
+
+        return $this;
     }
 
     /**

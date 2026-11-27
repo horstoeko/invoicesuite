@@ -288,6 +288,22 @@ class CatalogueRequestLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|LineValidityPeriod
      */
     public function getLineValidityPeriod(): ?LineValidityPeriod
@@ -449,6 +465,22 @@ class CatalogueRequestLineType
         }
 
         return $this->requiredItemLocationQuantity[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(RequiredItemLocationQuantity): mixed $callback
+     * @return static
+     */
+    public function forEachRequiredItemLocationQuantity(
+        callable $callback
+    ): static {
+        foreach ($this->requiredItemLocationQuantity ?? [] as $requiredItemLocationQuantity) {
+            $callback($requiredItemLocationQuantity);
+        }
+
+        return $this;
     }
 
     /**

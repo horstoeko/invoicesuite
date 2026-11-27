@@ -369,6 +369,22 @@ class ItemInformationRequestLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Period): mixed $callback
+     * @return static
+     */
+    public function forEachPeriod(
+        callable $callback
+    ): static {
+        foreach ($this->period ?? [] as $period) {
+            $callback($period);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<SalesItem>
      */
     public function getSalesItem(): ?array
@@ -490,5 +506,21 @@ class ItemInformationRequestLineType
         }
 
         return $this->salesItem[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SalesItem): mixed $callback
+     * @return static
+     */
+    public function forEachSalesItem(
+        callable $callback
+    ): static {
+        foreach ($this->salesItem ?? [] as $salesItem) {
+            $callback($salesItem);
+        }
+
+        return $this;
     }
 }

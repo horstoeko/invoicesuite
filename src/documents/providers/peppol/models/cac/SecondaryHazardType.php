@@ -356,4 +356,20 @@ class SecondaryHazardType
 
         return $this->extension[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Extension): mixed $callback
+     * @return static
+     */
+    public function forEachExtension(
+        callable $callback
+    ): static {
+        foreach ($this->extension ?? [] as $extension) {
+            $callback($extension);
+        }
+
+        return $this;
+    }
 }

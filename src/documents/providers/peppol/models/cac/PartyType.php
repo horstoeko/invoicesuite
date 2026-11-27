@@ -577,6 +577,22 @@ class PartyType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PartyIdentification): mixed $callback
+     * @return static
+     */
+    public function forEachPartyIdentification(
+        callable $callback
+    ): static {
+        foreach ($this->partyIdentification ?? [] as $partyIdentification) {
+            $callback($partyIdentification);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<PartyName>
      */
     public function getPartyName(): ?array
@@ -698,6 +714,22 @@ class PartyType
         }
 
         return $this->partyName[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PartyName): mixed $callback
+     * @return static
+     */
+    public function forEachPartyName(
+        callable $callback
+    ): static {
+        foreach ($this->partyName ?? [] as $partyName) {
+            $callback($partyName);
+        }
+
+        return $this;
     }
 
     /**
@@ -945,6 +977,22 @@ class PartyType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PartyTaxScheme): mixed $callback
+     * @return static
+     */
+    public function forEachPartyTaxScheme(
+        callable $callback
+    ): static {
+        foreach ($this->partyTaxScheme ?? [] as $partyTaxScheme) {
+            $callback($partyTaxScheme);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<PartyLegalEntity>
      */
     public function getPartyLegalEntity(): ?array
@@ -1066,6 +1114,22 @@ class PartyType
         }
 
         return $this->partyLegalEntity[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PartyLegalEntity): mixed $callback
+     * @return static
+     */
+    public function forEachPartyLegalEntity(
+        callable $callback
+    ): static {
+        foreach ($this->partyLegalEntity ?? [] as $partyLegalEntity) {
+            $callback($partyLegalEntity);
+        }
+
+        return $this;
     }
 
     /**
@@ -1233,6 +1297,22 @@ class PartyType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Person): mixed $callback
+     * @return static
+     */
+    public function forEachPerson(
+        callable $callback
+    ): static {
+        foreach ($this->person ?? [] as $person) {
+            $callback($person);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|AgentParty
      */
     public function getAgentParty(): ?AgentParty
@@ -1397,6 +1477,22 @@ class PartyType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ServiceProviderParty): mixed $callback
+     * @return static
+     */
+    public function forEachServiceProviderParty(
+        callable $callback
+    ): static {
+        foreach ($this->serviceProviderParty ?? [] as $serviceProviderParty) {
+            $callback($serviceProviderParty);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<PowerOfAttorney>
      */
     public function getPowerOfAttorney(): ?array
@@ -1518,6 +1614,22 @@ class PartyType
         }
 
         return $this->powerOfAttorney[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PowerOfAttorney): mixed $callback
+     * @return static
+     */
+    public function forEachPowerOfAttorney(
+        callable $callback
+    ): static {
+        foreach ($this->powerOfAttorney ?? [] as $powerOfAttorney) {
+            $callback($powerOfAttorney);
+        }
+
+        return $this;
     }
 
     /**

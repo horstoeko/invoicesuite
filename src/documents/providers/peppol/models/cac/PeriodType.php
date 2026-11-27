@@ -380,6 +380,22 @@ class PeriodType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DescriptionCode): mixed $callback
+     * @return static
+     */
+    public function forEachDescriptionCode(
+        callable $callback
+    ): static {
+        foreach ($this->descriptionCode ?? [] as $descriptionCode) {
+            $callback($descriptionCode);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Description>
      */
     public function getDescription(): ?array
@@ -501,5 +517,21 @@ class PeriodType
         }
 
         return $this->description[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
     }
 }

@@ -153,6 +153,22 @@ class SignaturePropertiesType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SignaturePropertyType): mixed $callback
+     * @return static
+     */
+    public function forEachSignatureProperty(
+        callable $callback
+    ): static {
+        foreach ($this->signatureProperty ?? [] as $signatureProperty) {
+            $callback($signatureProperty);
+        }
+
+        return $this;
+    }
+
+    /**
      * @translation-german-untranslated
      *
      * @return null|string

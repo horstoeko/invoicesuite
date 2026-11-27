@@ -423,6 +423,22 @@ class RequestedTenderTotalType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(MonetaryScope): mixed $callback
+     * @return static
+     */
+    public function forEachMonetaryScope(
+        callable $callback
+    ): static {
+        foreach ($this->monetaryScope ?? [] as $monetaryScope) {
+            $callback($monetaryScope);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|AverageSubsequentContractAmount
      */
     public function getAverageSubsequentContractAmount(): ?AverageSubsequentContractAmount
@@ -584,5 +600,21 @@ class RequestedTenderTotalType
         }
 
         return $this->applicableTaxCategory[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ApplicableTaxCategory): mixed $callback
+     * @return static
+     */
+    public function forEachApplicableTaxCategory(
+        callable $callback
+    ): static {
+        foreach ($this->applicableTaxCategory ?? [] as $applicableTaxCategory) {
+            $callback($applicableTaxCategory);
+        }
+
+        return $this;
     }
 }

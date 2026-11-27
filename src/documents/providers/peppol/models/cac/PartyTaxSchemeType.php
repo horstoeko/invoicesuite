@@ -380,6 +380,22 @@ class PartyTaxSchemeType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ExemptionReason): mixed $callback
+     * @return static
+     */
+    public function forEachExemptionReason(
+        callable $callback
+    ): static {
+        foreach ($this->exemptionReason ?? [] as $exemptionReason) {
+            $callback($exemptionReason);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|RegistrationAddress
      */
     public function getRegistrationAddress(): ?RegistrationAddress

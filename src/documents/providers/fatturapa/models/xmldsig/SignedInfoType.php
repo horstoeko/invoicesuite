@@ -275,6 +275,22 @@ class SignedInfoType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ReferenceType): mixed $callback
+     * @return static
+     */
+    public function forEachReference(
+        callable $callback
+    ): static {
+        foreach ($this->reference ?? [] as $reference) {
+            $callback($reference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @translation-german-untranslated
      *
      * @return null|string

@@ -446,6 +446,22 @@ class ClassificationSchemeType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|Name
      */
     public function getName(): ?Name
@@ -607,6 +623,22 @@ class ClassificationSchemeType
         }
 
         return $this->description[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
     }
 
     /**
@@ -971,5 +1003,21 @@ class ClassificationSchemeType
         }
 
         return $this->classificationCategory[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ClassificationCategory): mixed $callback
+     * @return static
+     */
+    public function forEachClassificationCategory(
+        callable $callback
+    ): static {
+        foreach ($this->classificationCategory ?? [] as $classificationCategory) {
+            $callback($classificationCategory);
+        }
+
+        return $this;
     }
 }

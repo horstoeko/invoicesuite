@@ -365,6 +365,22 @@ class TenderResultType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|AdvertisementAmount
      */
     public function getAdvertisementAmount(): ?AdvertisementAmount
@@ -939,6 +955,22 @@ class TenderResultType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SubcontractTerms): mixed $callback
+     * @return static
+     */
+    public function forEachSubcontractTerms(
+        callable $callback
+    ): static {
+        foreach ($this->subcontractTerms ?? [] as $subcontractTerm) {
+            $callback($subcontractTerm);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<WinningParty>
      */
     public function getWinningParty(): ?array
@@ -1060,5 +1092,21 @@ class TenderResultType
         }
 
         return $this->winningParty[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(WinningParty): mixed $callback
+     * @return static
+     */
+    public function forEachWinningParty(
+        callable $callback
+    ): static {
+        foreach ($this->winningParty ?? [] as $winningParty) {
+            $callback($winningParty);
+        }
+
+        return $this;
     }
 }

@@ -308,6 +308,22 @@ class QuotationLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|Quantity
      */
     public function getQuantity(): ?Quantity
@@ -592,6 +608,22 @@ class QuotationLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->documentReference ?? [] as $documentReference) {
+            $callback($documentReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|LineItem
      */
     public function getLineItem(): ?LineItem
@@ -756,6 +788,22 @@ class QuotationLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SellerProposedSubstituteLineItem): mixed $callback
+     * @return static
+     */
+    public function forEachSellerProposedSubstituteLineItem(
+        callable $callback
+    ): static {
+        foreach ($this->sellerProposedSubstituteLineItem ?? [] as $sellerProposedSubstituteLineItem) {
+            $callback($sellerProposedSubstituteLineItem);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<AlternativeLineItem>
      */
     public function getAlternativeLineItem(): ?array
@@ -877,6 +925,22 @@ class QuotationLineType
         }
 
         return $this->alternativeLineItem[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AlternativeLineItem): mixed $callback
+     * @return static
+     */
+    public function forEachAlternativeLineItem(
+        callable $callback
+    ): static {
+        foreach ($this->alternativeLineItem ?? [] as $alternativeLineItem) {
+            $callback($alternativeLineItem);
+        }
+
+        return $this;
     }
 
     /**

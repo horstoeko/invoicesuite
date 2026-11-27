@@ -404,4 +404,20 @@ class TransportationSegmentType
 
         return $this->shipmentStage[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ShipmentStage): mixed $callback
+     * @return static
+     */
+    public function forEachShipmentStage(
+        callable $callback
+    ): static {
+        foreach ($this->shipmentStage ?? [] as $shipmentStage) {
+            $callback($shipmentStage);
+        }
+
+        return $this;
+    }
 }

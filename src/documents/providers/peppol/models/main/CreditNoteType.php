@@ -769,6 +769,22 @@ class CreditNoteType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(UBLExtension): mixed $callback
+     * @return static
+     */
+    public function forEachUBLExtensions(
+        callable $callback
+    ): static {
+        foreach ($this->uBLExtensions ?? [] as $uBLExtension) {
+            $callback($uBLExtension);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|UBLVersionID
      */
     public function getUBLVersionID(): ?UBLVersionID
@@ -1293,6 +1309,22 @@ class CreditNoteType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|DocumentCurrencyCode
      */
     public function getDocumentCurrencyCode(): ?DocumentCurrencyCode
@@ -1777,6 +1809,22 @@ class CreditNoteType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(InvoicePeriod): mixed $callback
+     * @return static
+     */
+    public function forEachInvoicePeriod(
+        callable $callback
+    ): static {
+        foreach ($this->invoicePeriod ?? [] as $invoicePeriod) {
+            $callback($invoicePeriod);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<DiscrepancyResponse>
      */
     public function getDiscrepancyResponse(): ?array
@@ -1898,6 +1946,22 @@ class CreditNoteType
         }
 
         return $this->discrepancyResponse[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DiscrepancyResponse): mixed $callback
+     * @return static
+     */
+    public function forEachDiscrepancyResponse(
+        callable $callback
+    ): static {
+        foreach ($this->discrepancyResponse ?? [] as $discrepancyResponse) {
+            $callback($discrepancyResponse);
+        }
+
+        return $this;
     }
 
     /**
@@ -2065,6 +2129,22 @@ class CreditNoteType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(BillingReference): mixed $callback
+     * @return static
+     */
+    public function forEachBillingReference(
+        callable $callback
+    ): static {
+        foreach ($this->billingReference ?? [] as $billingReference) {
+            $callback($billingReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<DespatchDocumentReference>
      */
     public function getDespatchDocumentReference(): ?array
@@ -2186,6 +2266,22 @@ class CreditNoteType
         }
 
         return $this->despatchDocumentReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DespatchDocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachDespatchDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->despatchDocumentReference ?? [] as $despatchDocumentReference) {
+            $callback($despatchDocumentReference);
+        }
+
+        return $this;
     }
 
     /**
@@ -2313,6 +2409,22 @@ class CreditNoteType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ReceiptDocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachReceiptDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->receiptDocumentReference ?? [] as $receiptDocumentReference) {
+            $callback($receiptDocumentReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ContractDocumentReference>
      */
     public function getContractDocumentReference(): ?array
@@ -2434,6 +2546,22 @@ class CreditNoteType
         }
 
         return $this->contractDocumentReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ContractDocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachContractDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->contractDocumentReference ?? [] as $contractDocumentReference) {
+            $callback($contractDocumentReference);
+        }
+
+        return $this;
     }
 
     /**
@@ -2561,6 +2689,22 @@ class CreditNoteType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AdditionalDocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachAdditionalDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->additionalDocumentReference ?? [] as $additionalDocumentReference) {
+            $callback($additionalDocumentReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<StatementDocumentReference>
      */
     public function getStatementDocumentReference(): ?array
@@ -2682,6 +2826,22 @@ class CreditNoteType
         }
 
         return $this->statementDocumentReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(StatementDocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachStatementDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->statementDocumentReference ?? [] as $statementDocumentReference) {
+            $callback($statementDocumentReference);
+        }
+
+        return $this;
     }
 
     /**
@@ -2809,6 +2969,22 @@ class CreditNoteType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(OriginatorDocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachOriginatorDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->originatorDocumentReference ?? [] as $originatorDocumentReference) {
+            $callback($originatorDocumentReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Signature>
      */
     public function getSignature(): ?array
@@ -2930,6 +3106,22 @@ class CreditNoteType
         }
 
         return $this->signature[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Signature): mixed $callback
+     * @return static
+     */
+    public function forEachSignature(
+        callable $callback
+    ): static {
+        foreach ($this->signature ?? [] as $signature) {
+            $callback($signature);
+        }
+
+        return $this;
     }
 
     /**
@@ -3297,6 +3489,22 @@ class CreditNoteType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Delivery): mixed $callback
+     * @return static
+     */
+    public function forEachDelivery(
+        callable $callback
+    ): static {
+        foreach ($this->delivery ?? [] as $delivery) {
+            $callback($delivery);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<DeliveryTerms>
      */
     public function getDeliveryTerms(): ?array
@@ -3418,6 +3626,22 @@ class CreditNoteType
         }
 
         return $this->deliveryTerms[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DeliveryTerms): mixed $callback
+     * @return static
+     */
+    public function forEachDeliveryTerms(
+        callable $callback
+    ): static {
+        foreach ($this->deliveryTerms ?? [] as $deliveryTerm) {
+            $callback($deliveryTerm);
+        }
+
+        return $this;
     }
 
     /**
@@ -3560,6 +3784,22 @@ class CreditNoteType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PaymentMeans): mixed $callback
+     * @return static
+     */
+    public function forEachPaymentMeans(
+        callable $callback
+    ): static {
+        foreach ($this->paymentMeans ?? [] as $paymentMean) {
+            $callback($paymentMean);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<PaymentTerms>
      */
     public function getPaymentTerms(): ?array
@@ -3681,6 +3921,22 @@ class CreditNoteType
         }
 
         return $this->paymentTerms[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PaymentTerms): mixed $callback
+     * @return static
+     */
+    public function forEachPaymentTerms(
+        callable $callback
+    ): static {
+        foreach ($this->paymentTerms ?? [] as $paymentTerm) {
+            $callback($paymentTerm);
+        }
+
+        return $this;
     }
 
     /**
@@ -3968,6 +4224,22 @@ class CreditNoteType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AllowanceCharge): mixed $callback
+     * @return static
+     */
+    public function forEachAllowanceCharge(
+        callable $callback
+    ): static {
+        foreach ($this->allowanceCharge ?? [] as $allowanceCharge) {
+            $callback($allowanceCharge);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TaxTotal>
      */
     public function getTaxTotal(): ?array
@@ -4145,6 +4417,22 @@ class CreditNoteType
         }
 
         return $this->taxTotal[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TaxTotal): mixed $callback
+     * @return static
+     */
+    public function forEachTaxTotal(
+        callable $callback
+    ): static {
+        foreach ($this->taxTotal ?? [] as $taxTotal) {
+            $callback($taxTotal);
+        }
+
+        return $this;
     }
 
     /**
@@ -4336,5 +4624,21 @@ class CreditNoteType
         }
 
         return $creditNoteLine;
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(CreditNoteLine): mixed $callback
+     * @return static
+     */
+    public function forEachCreditNoteLine(
+        callable $callback
+    ): static {
+        foreach ($this->creditNoteLine ?? [] as $creditNoteLine) {
+            $callback($creditNoteLine);
+        }
+
+        return $this;
     }
 }

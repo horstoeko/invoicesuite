@@ -458,6 +458,22 @@ class ReceiptLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|ReceivedQuantity
      */
     public function getReceivedQuantity(): ?ReceivedQuantity
@@ -779,6 +795,22 @@ class ReceiptLineType
         }
 
         return $this->rejectReason[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(RejectReason): mixed $callback
+     * @return static
+     */
+    public function forEachRejectReason(
+        callable $callback
+    ): static {
+        foreach ($this->rejectReason ?? [] as $rejectReason) {
+            $callback($rejectReason);
+        }
+
+        return $this;
     }
 
     /**
@@ -1176,6 +1208,22 @@ class ReceiptLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DespatchLineReference): mixed $callback
+     * @return static
+     */
+    public function forEachDespatchLineReference(
+        callable $callback
+    ): static {
+        foreach ($this->despatchLineReference ?? [] as $despatchLineReference) {
+            $callback($despatchLineReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<DocumentReference>
      */
     public function getDocumentReference(): ?array
@@ -1297,6 +1345,22 @@ class ReceiptLineType
         }
 
         return $this->documentReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->documentReference ?? [] as $documentReference) {
+            $callback($documentReference);
+        }
+
+        return $this;
     }
 
     /**
@@ -1424,6 +1488,22 @@ class ReceiptLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Item): mixed $callback
+     * @return static
+     */
+    public function forEachItem(
+        callable $callback
+    ): static {
+        foreach ($this->item ?? [] as $item) {
+            $callback($item);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Shipment>
      */
     public function getShipment(): ?array
@@ -1545,5 +1625,21 @@ class ReceiptLineType
         }
 
         return $this->shipment[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Shipment): mixed $callback
+     * @return static
+     */
+    public function forEachShipment(
+        callable $callback
+    ): static {
+        foreach ($this->shipment ?? [] as $shipment) {
+            $callback($shipment);
+        }
+
+        return $this;
     }
 }

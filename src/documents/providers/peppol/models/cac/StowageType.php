@@ -214,6 +214,22 @@ class StowageType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Location): mixed $callback
+     * @return static
+     */
+    public function forEachLocation(
+        callable $callback
+    ): static {
+        foreach ($this->location ?? [] as $location) {
+            $callback($location);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<MeasurementDimension>
      */
     public function getMeasurementDimension(): ?array
@@ -335,5 +351,21 @@ class StowageType
         }
 
         return $this->measurementDimension[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(MeasurementDimension): mixed $callback
+     * @return static
+     */
+    public function forEachMeasurementDimension(
+        callable $callback
+    ): static {
+        foreach ($this->measurementDimension ?? [] as $measurementDimension) {
+            $callback($measurementDimension);
+        }
+
+        return $this;
     }
 }

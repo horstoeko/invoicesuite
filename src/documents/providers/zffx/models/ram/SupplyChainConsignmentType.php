@@ -117,4 +117,20 @@ class SupplyChainConsignmentType
 
         return $this->specifiedLogisticsTransportMovement[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(LogisticsTransportMovementType): mixed $callback
+     * @return static
+     */
+    public function forEachSpecifiedLogisticsTransportMovement(
+        callable $callback
+    ): static {
+        foreach ($this->specifiedLogisticsTransportMovement ?? [] as $specifiedLogisticsTransportMovement) {
+            $callback($specifiedLogisticsTransportMovement);
+        }
+
+        return $this;
+    }
 }

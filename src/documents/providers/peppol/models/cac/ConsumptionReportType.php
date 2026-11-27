@@ -471,6 +471,22 @@ class ConsumptionReportType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|TotalConsumedQuantity
      */
     public function getTotalConsumedQuantity(): ?TotalConsumedQuantity
@@ -1075,6 +1091,22 @@ class ConsumptionReportType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ConsumptionReportReference): mixed $callback
+     * @return static
+     */
+    public function forEachConsumptionReportReference(
+        callable $callback
+    ): static {
+        foreach ($this->consumptionReportReference ?? [] as $consumptionReportReference) {
+            $callback($consumptionReportReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ConsumptionHistory>
      */
     public function getConsumptionHistory(): ?array
@@ -1196,5 +1228,21 @@ class ConsumptionReportType
         }
 
         return $this->consumptionHistory[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ConsumptionHistory): mixed $callback
+     * @return static
+     */
+    public function forEachConsumptionHistory(
+        callable $callback
+    ): static {
+        foreach ($this->consumptionHistory ?? [] as $consumptionHistory) {
+            $callback($consumptionHistory);
+        }
+
+        return $this;
     }
 }

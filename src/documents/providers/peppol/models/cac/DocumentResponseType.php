@@ -234,6 +234,22 @@ class DocumentResponseType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->documentReference ?? [] as $documentReference) {
+            $callback($documentReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|IssuerParty
      */
     public function getIssuerParty(): ?IssuerParty
@@ -435,5 +451,21 @@ class DocumentResponseType
         }
 
         return $this->lineResponse[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(LineResponse): mixed $callback
+     * @return static
+     */
+    public function forEachLineResponse(
+        callable $callback
+    ): static {
+        foreach ($this->lineResponse ?? [] as $lineResponse) {
+            $callback($lineResponse);
+        }
+
+        return $this;
     }
 }

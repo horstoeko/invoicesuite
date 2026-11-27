@@ -172,6 +172,22 @@ class TendererPartyQualificationType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(InterestedProcurementProjectLot): mixed $callback
+     * @return static
+     */
+    public function forEachInterestedProcurementProjectLot(
+        callable $callback
+    ): static {
+        foreach ($this->interestedProcurementProjectLot ?? [] as $interestedProcurementProjectLot) {
+            $callback($interestedProcurementProjectLot);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|MainQualifyingParty
      */
     public function getMainQualifyingParty(): ?MainQualifyingParty
@@ -333,5 +349,21 @@ class TendererPartyQualificationType
         }
 
         return $this->additionalQualifyingParty[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AdditionalQualifyingParty): mixed $callback
+     * @return static
+     */
+    public function forEachAdditionalQualifyingParty(
+        callable $callback
+    ): static {
+        foreach ($this->additionalQualifyingParty ?? [] as $additionalQualifyingParty) {
+            $callback($additionalQualifyingParty);
+        }
+
+        return $this;
     }
 }

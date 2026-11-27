@@ -320,6 +320,22 @@ class FatturaElettronicaType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(FatturaElettronicaBody): mixed $callback
+     * @return static
+     */
+    public function forEachFatturaElettronicaBody(
+        callable $callback
+    ): static {
+        foreach ($this->fatturaElettronicaBody ?? [] as $fatturaElettronicaBody) {
+            $callback($fatturaElettronicaBody);
+        }
+
+        return $this;
+    }
+
+    /**
      * @translation-german-untranslated
      *
      * @return null|Signature

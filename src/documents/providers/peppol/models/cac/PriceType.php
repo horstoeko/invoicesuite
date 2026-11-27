@@ -336,6 +336,22 @@ class PriceType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PriceChangeReason): mixed $callback
+     * @return static
+     */
+    public function forEachPriceChangeReason(
+        callable $callback
+    ): static {
+        foreach ($this->priceChangeReason ?? [] as $priceChangeReason) {
+            $callback($priceChangeReason);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|PriceTypeCode
      */
     public function getPriceTypeCode(): ?PriceTypeCode
@@ -580,6 +596,22 @@ class PriceType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ValidityPeriod): mixed $callback
+     * @return static
+     */
+    public function forEachValidityPeriod(
+        callable $callback
+    ): static {
+        foreach ($this->validityPeriod ?? [] as $validityPeriod) {
+            $callback($validityPeriod);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|PriceList
      */
     public function getPriceList(): ?PriceList
@@ -741,6 +773,22 @@ class PriceType
         }
 
         return $this->allowanceCharge[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AllowanceCharge): mixed $callback
+     * @return static
+     */
+    public function forEachAllowanceCharge(
+        callable $callback
+    ): static {
+        foreach ($this->allowanceCharge ?? [] as $allowanceCharge) {
+            $callback($allowanceCharge);
+        }
+
+        return $this;
     }
 
     /**

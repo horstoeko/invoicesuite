@@ -199,4 +199,20 @@ class MiscellaneousEventType
 
         return $this->eventLineItem[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(EventLineItem): mixed $callback
+     * @return static
+     */
+    public function forEachEventLineItem(
+        callable $callback
+    ): static {
+        foreach ($this->eventLineItem ?? [] as $eventLineItem) {
+            $callback($eventLineItem);
+        }
+
+        return $this;
+    }
 }

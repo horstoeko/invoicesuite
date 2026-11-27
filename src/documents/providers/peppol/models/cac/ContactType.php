@@ -422,6 +422,22 @@ class ContactType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<OtherCommunication>
      */
     public function getOtherCommunication(): ?array
@@ -543,5 +559,21 @@ class ContactType
         }
 
         return $this->otherCommunication[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(OtherCommunication): mixed $callback
+     * @return static
+     */
+    public function forEachOtherCommunication(
+        callable $callback
+    ): static {
+        foreach ($this->otherCommunication ?? [] as $otherCommunication) {
+            $callback($otherCommunication);
+        }
+
+        return $this;
     }
 }

@@ -1250,6 +1250,22 @@ class ShipmentStageType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Instructions): mixed $callback
+     * @return static
+     */
+    public function forEachInstructions(
+        callable $callback
+    ): static {
+        foreach ($this->instructions ?? [] as $instruction) {
+            $callback($instruction);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<DemurrageInstructions>
      */
     public function getDemurrageInstructions(): ?array
@@ -1371,6 +1387,22 @@ class ShipmentStageType
         }
 
         return $this->demurrageInstructions[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DemurrageInstructions): mixed $callback
+     * @return static
+     */
+    public function forEachDemurrageInstructions(
+        callable $callback
+    ): static {
+        foreach ($this->demurrageInstructions ?? [] as $demurrageInstruction) {
+            $callback($demurrageInstruction);
+        }
+
+        return $this;
     }
 
     /**
@@ -1615,6 +1647,22 @@ class ShipmentStageType
         }
 
         return $this->carrierParty[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(CarrierParty): mixed $callback
+     * @return static
+     */
+    public function forEachCarrierParty(
+        callable $callback
+    ): static {
+        foreach ($this->carrierParty ?? [] as $carrierParty) {
+            $callback($carrierParty);
+        }
+
+        return $this;
     }
 
     /**
@@ -2582,6 +2630,22 @@ class ShipmentStageType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(FreightAllowanceCharge): mixed $callback
+     * @return static
+     */
+    public function forEachFreightAllowanceCharge(
+        callable $callback
+    ): static {
+        foreach ($this->freightAllowanceCharge ?? [] as $freightAllowanceCharge) {
+            $callback($freightAllowanceCharge);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|FreightChargeLocation
      */
     public function getFreightChargeLocation(): ?FreightChargeLocation
@@ -2743,6 +2807,22 @@ class ShipmentStageType
         }
 
         return $this->detentionTransportEvent[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DetentionTransportEvent): mixed $callback
+     * @return static
+     */
+    public function forEachDetentionTransportEvent(
+        callable $callback
+    ): static {
+        foreach ($this->detentionTransportEvent ?? [] as $detentionTransportEvent) {
+            $callback($detentionTransportEvent);
+        }
+
+        return $this;
     }
 
     /**
@@ -2950,6 +3030,22 @@ class ShipmentStageType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(RequestedWaypointTransportEvent): mixed $callback
+     * @return static
+     */
+    public function forEachRequestedWaypointTransportEvent(
+        callable $callback
+    ): static {
+        foreach ($this->requestedWaypointTransportEvent ?? [] as $requestedWaypointTransportEvent) {
+            $callback($requestedWaypointTransportEvent);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|PlannedDepartureTransportEvent
      */
     public function getPlannedDepartureTransportEvent(): ?PlannedDepartureTransportEvent
@@ -3151,6 +3247,22 @@ class ShipmentStageType
         }
 
         return $this->plannedWaypointTransportEvent[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PlannedWaypointTransportEvent): mixed $callback
+     * @return static
+     */
+    public function forEachPlannedWaypointTransportEvent(
+        callable $callback
+    ): static {
+        foreach ($this->plannedWaypointTransportEvent ?? [] as $plannedWaypointTransportEvent) {
+            $callback($plannedWaypointTransportEvent);
+        }
+
+        return $this;
     }
 
     /**
@@ -3398,6 +3510,22 @@ class ShipmentStageType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TransportEvent): mixed $callback
+     * @return static
+     */
+    public function forEachTransportEvent(
+        callable $callback
+    ): static {
+        foreach ($this->transportEvent ?? [] as $transportEvent) {
+            $callback($transportEvent);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|EstimatedDepartureTransportEvent
      */
     public function getEstimatedDepartureTransportEvent(): ?EstimatedDepartureTransportEvent
@@ -3602,6 +3730,22 @@ class ShipmentStageType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PassengerPerson): mixed $callback
+     * @return static
+     */
+    public function forEachPassengerPerson(
+        callable $callback
+    ): static {
+        foreach ($this->passengerPerson ?? [] as $passengerPerson) {
+            $callback($passengerPerson);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<DriverPerson>
      */
     public function getDriverPerson(): ?array
@@ -3723,6 +3867,22 @@ class ShipmentStageType
         }
 
         return $this->driverPerson[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DriverPerson): mixed $callback
+     * @return static
+     */
+    public function forEachDriverPerson(
+        callable $callback
+    ): static {
+        foreach ($this->driverPerson ?? [] as $driverPerson) {
+            $callback($driverPerson);
+        }
+
+        return $this;
     }
 
     /**
@@ -3887,6 +4047,22 @@ class ShipmentStageType
         }
 
         return $this->crewMemberPerson[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(CrewMemberPerson): mixed $callback
+     * @return static
+     */
+    public function forEachCrewMemberPerson(
+        callable $callback
+    ): static {
+        foreach ($this->crewMemberPerson ?? [] as $crewMemberPerson) {
+            $callback($crewMemberPerson);
+        }
+
+        return $this;
     }
 
     /**

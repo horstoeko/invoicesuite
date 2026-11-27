@@ -290,6 +290,22 @@ class TenderPreparationType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|OpenTenderID
      */
     public function getOpenTenderID(): ?OpenTenderID
@@ -454,6 +470,22 @@ class TenderPreparationType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ProcurementProjectLot): mixed $callback
+     * @return static
+     */
+    public function forEachProcurementProjectLot(
+        callable $callback
+    ): static {
+        foreach ($this->procurementProjectLot ?? [] as $procurementProjectLot) {
+            $callback($procurementProjectLot);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<DocumentTenderRequirement>
      */
     public function getDocumentTenderRequirement(): ?array
@@ -575,5 +607,21 @@ class TenderPreparationType
         }
 
         return $this->documentTenderRequirement[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DocumentTenderRequirement): mixed $callback
+     * @return static
+     */
+    public function forEachDocumentTenderRequirement(
+        callable $callback
+    ): static {
+        foreach ($this->documentTenderRequirement ?? [] as $documentTenderRequirement) {
+            $callback($documentTenderRequirement);
+        }
+
+        return $this;
     }
 }

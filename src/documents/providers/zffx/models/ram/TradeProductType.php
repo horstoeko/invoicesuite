@@ -621,6 +621,22 @@ class TradeProductType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(IDType): mixed $callback
+     * @return static
+     */
+    public function forEachBatchID(
+        callable $callback
+    ): static {
+        foreach ($this->batchID ?? [] as $batchID) {
+            $callback($batchID);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|TextType
      */
     public function getBrandName(): ?TextType
@@ -795,6 +811,22 @@ class TradeProductType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ProductCharacteristicType): mixed $callback
+     * @return static
+     */
+    public function forEachApplicableProductCharacteristic(
+        callable $callback
+    ): static {
+        foreach ($this->applicableProductCharacteristic ?? [] as $applicableProductCharacteristic) {
+            $callback($applicableProductCharacteristic);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ProductClassificationType>
      */
     public function getDesignatedProductClassification(): ?array
@@ -889,6 +921,22 @@ class TradeProductType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ProductClassificationType): mixed $callback
+     * @return static
+     */
+    public function forEachDesignatedProductClassification(
+        callable $callback
+    ): static {
+        foreach ($this->designatedProductClassification ?? [] as $designatedProductClassification) {
+            $callback($designatedProductClassification);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TradeProductInstanceType>
      */
     public function getIndividualTradeProductInstance(): ?array
@@ -980,6 +1028,22 @@ class TradeProductType
         }
 
         return $this->individualTradeProductInstance[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TradeProductInstanceType): mixed $callback
+     * @return static
+     */
+    public function forEachIndividualTradeProductInstance(
+        callable $callback
+    ): static {
+        foreach ($this->individualTradeProductInstance ?? [] as $individualTradeProductInstance) {
+            $callback($individualTradeProductInstance);
+        }
+
+        return $this;
     }
 
     /**
@@ -1154,5 +1218,21 @@ class TradeProductType
         }
 
         return $this->includedReferencedProduct[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ReferencedProductType): mixed $callback
+     * @return static
+     */
+    public function forEachIncludedReferencedProduct(
+        callable $callback
+    ): static {
+        foreach ($this->includedReferencedProduct ?? [] as $includedReferencedProduct) {
+            $callback($includedReferencedProduct);
+        }
+
+        return $this;
     }
 }

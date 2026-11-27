@@ -368,6 +368,22 @@ class TransportMeansType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(RegistrationNationality): mixed $callback
+     * @return static
+     */
+    public function forEachRegistrationNationality(
+        callable $callback
+    ): static {
+        foreach ($this->registrationNationality ?? [] as $registrationNationality) {
+            $callback($registrationNationality);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|DirectionCode
      */
     public function getDirectionCode(): ?DirectionCode
@@ -849,5 +865,21 @@ class TransportMeansType
         }
 
         return $this->measurementDimension[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(MeasurementDimension): mixed $callback
+     * @return static
+     */
+    public function forEachMeasurementDimension(
+        callable $callback
+    ): static {
+        foreach ($this->measurementDimension ?? [] as $measurementDimension) {
+            $callback($measurementDimension);
+        }
+
+        return $this;
     }
 }

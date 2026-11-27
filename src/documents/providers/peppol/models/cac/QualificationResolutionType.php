@@ -249,6 +249,22 @@ class QualificationResolutionType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ExclusionReason): mixed $callback
+     * @return static
+     */
+    public function forEachExclusionReason(
+        callable $callback
+    ): static {
+        foreach ($this->exclusionReason ?? [] as $exclusionReason) {
+            $callback($exclusionReason);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Resolution>
      */
     public function getResolution(): ?array
@@ -370,6 +386,22 @@ class QualificationResolutionType
         }
 
         return $this->resolution[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Resolution): mixed $callback
+     * @return static
+     */
+    public function forEachResolution(
+        callable $callback
+    ): static {
+        foreach ($this->resolution ?? [] as $resolution) {
+            $callback($resolution);
+        }
+
+        return $this;
     }
 
     /**

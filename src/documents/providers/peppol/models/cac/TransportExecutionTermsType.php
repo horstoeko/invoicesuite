@@ -268,6 +268,22 @@ class TransportExecutionTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TransportUserSpecialTerms): mixed $callback
+     * @return static
+     */
+    public function forEachTransportUserSpecialTerms(
+        callable $callback
+    ): static {
+        foreach ($this->transportUserSpecialTerms ?? [] as $transportUserSpecialTerm) {
+            $callback($transportUserSpecialTerm);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TransportServiceProviderSpecialTerms>
      */
     public function getTransportServiceProviderSpecialTerms(): ?array
@@ -389,6 +405,22 @@ class TransportExecutionTermsType
         }
 
         return $this->transportServiceProviderSpecialTerms[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TransportServiceProviderSpecialTerms): mixed $callback
+     * @return static
+     */
+    public function forEachTransportServiceProviderSpecialTerms(
+        callable $callback
+    ): static {
+        foreach ($this->transportServiceProviderSpecialTerms ?? [] as $transportServiceProviderSpecialTerm) {
+            $callback($transportServiceProviderSpecialTerm);
+        }
+
+        return $this;
     }
 
     /**
@@ -516,6 +548,22 @@ class TransportExecutionTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ChangeConditions): mixed $callback
+     * @return static
+     */
+    public function forEachChangeConditions(
+        callable $callback
+    ): static {
+        foreach ($this->changeConditions ?? [] as $changeCondition) {
+            $callback($changeCondition);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<PaymentTerms>
      */
     public function getPaymentTerms(): ?array
@@ -640,6 +688,22 @@ class TransportExecutionTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PaymentTerms): mixed $callback
+     * @return static
+     */
+    public function forEachPaymentTerms(
+        callable $callback
+    ): static {
+        foreach ($this->paymentTerms ?? [] as $paymentTerm) {
+            $callback($paymentTerm);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<DeliveryTerms>
      */
     public function getDeliveryTerms(): ?array
@@ -761,6 +825,22 @@ class TransportExecutionTermsType
         }
 
         return $this->deliveryTerms[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DeliveryTerms): mixed $callback
+     * @return static
+     */
+    public function forEachDeliveryTerms(
+        callable $callback
+    ): static {
+        foreach ($this->deliveryTerms ?? [] as $deliveryTerm) {
+            $callback($deliveryTerm);
+        }
+
+        return $this;
     }
 
     /**
@@ -1008,6 +1088,22 @@ class TransportExecutionTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(EnvironmentalEmission): mixed $callback
+     * @return static
+     */
+    public function forEachEnvironmentalEmission(
+        callable $callback
+    ): static {
+        foreach ($this->environmentalEmission ?? [] as $environmentalEmission) {
+            $callback($environmentalEmission);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<NotificationRequirement>
      */
     public function getNotificationRequirement(): ?array
@@ -1129,6 +1225,22 @@ class TransportExecutionTermsType
         }
 
         return $this->notificationRequirement[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(NotificationRequirement): mixed $callback
+     * @return static
+     */
+    public function forEachNotificationRequirement(
+        callable $callback
+    ): static {
+        foreach ($this->notificationRequirement ?? [] as $notificationRequirement) {
+            $callback($notificationRequirement);
+        }
+
+        return $this;
     }
 
     /**

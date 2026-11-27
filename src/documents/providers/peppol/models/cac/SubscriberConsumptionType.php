@@ -323,6 +323,22 @@ class SubscriberConsumptionType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|TotalMeteredQuantity
      */
     public function getTotalMeteredQuantity(): ?TotalMeteredQuantity
@@ -567,6 +583,22 @@ class SubscriberConsumptionType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(OnAccountPayment): mixed $callback
+     * @return static
+     */
+    public function forEachOnAccountPayment(
+        callable $callback
+    ): static {
+        foreach ($this->onAccountPayment ?? [] as $onAccountPayment) {
+            $callback($onAccountPayment);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|Consumption
      */
     public function getConsumption(): ?Consumption
@@ -728,5 +760,21 @@ class SubscriberConsumptionType
         }
 
         return $this->supplierConsumption[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SupplierConsumption): mixed $callback
+     * @return static
+     */
+    public function forEachSupplierConsumption(
+        callable $callback
+    ): static {
+        foreach ($this->supplierConsumption ?? [] as $supplierConsumption) {
+            $callback($supplierConsumption);
+        }
+
+        return $this;
     }
 }

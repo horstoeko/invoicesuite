@@ -383,6 +383,22 @@ class EventType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|bool
      */
     public function getCompletionIndicator(): ?bool
@@ -537,6 +553,22 @@ class EventType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(CurrentStatus): mixed $callback
+     * @return static
+     */
+    public function forEachCurrentStatus(
+        callable $callback
+    ): static {
+        foreach ($this->currentStatus ?? [] as $currentStatus) {
+            $callback($currentStatus);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Contact>
      */
     public function getContact(): ?array
@@ -658,6 +690,22 @@ class EventType
         }
 
         return $this->contact[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Contact): mixed $callback
+     * @return static
+     */
+    public function forEachContact(
+        callable $callback
+    ): static {
+        foreach ($this->contact ?? [] as $contact) {
+            $callback($contact);
+        }
+
+        return $this;
     }
 
     /**

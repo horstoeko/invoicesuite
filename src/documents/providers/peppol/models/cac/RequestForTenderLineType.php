@@ -407,6 +407,22 @@ class RequestForTenderLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|Quantity
      */
     public function getQuantity(): ?Quantity
@@ -801,6 +817,22 @@ class RequestForTenderLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->documentReference ?? [] as $documentReference) {
+            $callback($documentReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<DeliveryPeriod>
      */
     public function getDeliveryPeriod(): ?array
@@ -925,6 +957,22 @@ class RequestForTenderLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DeliveryPeriod): mixed $callback
+     * @return static
+     */
+    public function forEachDeliveryPeriod(
+        callable $callback
+    ): static {
+        foreach ($this->deliveryPeriod ?? [] as $deliveryPeriod) {
+            $callback($deliveryPeriod);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<RequiredItemLocationQuantity>
      */
     public function getRequiredItemLocationQuantity(): ?array
@@ -1046,6 +1094,22 @@ class RequestForTenderLineType
         }
 
         return $this->requiredItemLocationQuantity[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(RequiredItemLocationQuantity): mixed $callback
+     * @return static
+     */
+    public function forEachRequiredItemLocationQuantity(
+        callable $callback
+    ): static {
+        foreach ($this->requiredItemLocationQuantity ?? [] as $requiredItemLocationQuantity) {
+            $callback($requiredItemLocationQuantity);
+        }
+
+        return $this;
     }
 
     /**
@@ -1250,5 +1314,21 @@ class RequestForTenderLineType
         }
 
         return $this->subRequestForTenderLine[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SubRequestForTenderLine): mixed $callback
+     * @return static
+     */
+    public function forEachSubRequestForTenderLine(
+        callable $callback
+    ): static {
+        foreach ($this->subRequestForTenderLine ?? [] as $subRequestForTenderLine) {
+            $callback($subRequestForTenderLine);
+        }
+
+        return $this;
     }
 }

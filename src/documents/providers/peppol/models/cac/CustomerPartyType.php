@@ -298,6 +298,22 @@ class CustomerPartyType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AdditionalAccountID): mixed $callback
+     * @return static
+     */
+    public function forEachAdditionalAccountID(
+        callable $callback
+    ): static {
+        foreach ($this->additionalAccountID ?? [] as $additionalAccountID) {
+            $callback($additionalAccountID);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|Party
      */
     public function getParty(): ?Party

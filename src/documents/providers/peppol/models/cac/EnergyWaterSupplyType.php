@@ -185,6 +185,22 @@ class EnergyWaterSupplyType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ConsumptionReport): mixed $callback
+     * @return static
+     */
+    public function forEachConsumptionReport(
+        callable $callback
+    ): static {
+        foreach ($this->consumptionReport ?? [] as $consumptionReport) {
+            $callback($consumptionReport);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<EnergyTaxReport>
      */
     public function getEnergyTaxReport(): ?array
@@ -306,6 +322,22 @@ class EnergyWaterSupplyType
         }
 
         return $this->energyTaxReport[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(EnergyTaxReport): mixed $callback
+     * @return static
+     */
+    public function forEachEnergyTaxReport(
+        callable $callback
+    ): static {
+        foreach ($this->energyTaxReport ?? [] as $energyTaxReport) {
+            $callback($energyTaxReport);
+        }
+
+        return $this;
     }
 
     /**
@@ -433,6 +465,22 @@ class EnergyWaterSupplyType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ConsumptionAverage): mixed $callback
+     * @return static
+     */
+    public function forEachConsumptionAverage(
+        callable $callback
+    ): static {
+        foreach ($this->consumptionAverage ?? [] as $consumptionAverage) {
+            $callback($consumptionAverage);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<EnergyWaterConsumptionCorrection>
      */
     public function getEnergyWaterConsumptionCorrection(): ?array
@@ -554,5 +602,21 @@ class EnergyWaterSupplyType
         }
 
         return $this->energyWaterConsumptionCorrection[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(EnergyWaterConsumptionCorrection): mixed $callback
+     * @return static
+     */
+    public function forEachEnergyWaterConsumptionCorrection(
+        callable $callback
+    ): static {
+        foreach ($this->energyWaterConsumptionCorrection ?? [] as $energyWaterConsumptionCorrection) {
+            $callback($energyWaterConsumptionCorrection);
+        }
+
+        return $this;
     }
 }

@@ -547,6 +547,22 @@ class InvoiceLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|InvoicedQuantity
      */
     public function getInvoicedQuantity(): ?InvoicedQuantity
@@ -931,6 +947,22 @@ class InvoiceLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(InvoicePeriod): mixed $callback
+     * @return static
+     */
+    public function forEachInvoicePeriod(
+        callable $callback
+    ): static {
+        foreach ($this->invoicePeriod ?? [] as $invoicePeriod) {
+            $callback($invoicePeriod);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<OrderLineReference>
      */
     public function getOrderLineReference(): ?array
@@ -1052,6 +1084,22 @@ class InvoiceLineType
         }
 
         return $this->orderLineReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(OrderLineReference): mixed $callback
+     * @return static
+     */
+    public function forEachOrderLineReference(
+        callable $callback
+    ): static {
+        foreach ($this->orderLineReference ?? [] as $orderLineReference) {
+            $callback($orderLineReference);
+        }
+
+        return $this;
     }
 
     /**
@@ -1179,6 +1227,22 @@ class InvoiceLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DespatchLineReference): mixed $callback
+     * @return static
+     */
+    public function forEachDespatchLineReference(
+        callable $callback
+    ): static {
+        foreach ($this->despatchLineReference ?? [] as $despatchLineReference) {
+            $callback($despatchLineReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ReceiptLineReference>
      */
     public function getReceiptLineReference(): ?array
@@ -1300,6 +1364,22 @@ class InvoiceLineType
         }
 
         return $this->receiptLineReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ReceiptLineReference): mixed $callback
+     * @return static
+     */
+    public function forEachReceiptLineReference(
+        callable $callback
+    ): static {
+        foreach ($this->receiptLineReference ?? [] as $receiptLineReference) {
+            $callback($receiptLineReference);
+        }
+
+        return $this;
     }
 
     /**
@@ -1427,6 +1507,22 @@ class InvoiceLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(BillingReference): mixed $callback
+     * @return static
+     */
+    public function forEachBillingReference(
+        callable $callback
+    ): static {
+        foreach ($this->billingReference ?? [] as $billingReference) {
+            $callback($billingReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<DocumentReference>
      */
     public function getDocumentReference(): ?array
@@ -1548,6 +1644,22 @@ class InvoiceLineType
         }
 
         return $this->documentReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->documentReference ?? [] as $documentReference) {
+            $callback($documentReference);
+        }
+
+        return $this;
     }
 
     /**
@@ -1755,6 +1867,22 @@ class InvoiceLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Delivery): mixed $callback
+     * @return static
+     */
+    public function forEachDelivery(
+        callable $callback
+    ): static {
+        foreach ($this->delivery ?? [] as $delivery) {
+            $callback($delivery);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<PaymentTerms>
      */
     public function getPaymentTerms(): ?array
@@ -1876,6 +2004,22 @@ class InvoiceLineType
         }
 
         return $this->paymentTerms[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PaymentTerms): mixed $callback
+     * @return static
+     */
+    public function forEachPaymentTerms(
+        callable $callback
+    ): static {
+        foreach ($this->paymentTerms ?? [] as $paymentTerm) {
+            $callback($paymentTerm);
+        }
+
+        return $this;
     }
 
     /**
@@ -2003,6 +2147,22 @@ class InvoiceLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AllowanceCharge): mixed $callback
+     * @return static
+     */
+    public function forEachAllowanceCharge(
+        callable $callback
+    ): static {
+        foreach ($this->allowanceCharge ?? [] as $allowanceCharge) {
+            $callback($allowanceCharge);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TaxTotal>
      */
     public function getTaxTotal(): ?array
@@ -2127,6 +2287,22 @@ class InvoiceLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TaxTotal): mixed $callback
+     * @return static
+     */
+    public function forEachTaxTotal(
+        callable $callback
+    ): static {
+        foreach ($this->taxTotal ?? [] as $taxTotal) {
+            $callback($taxTotal);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<WithholdingTaxTotal>
      */
     public function getWithholdingTaxTotal(): ?array
@@ -2248,6 +2424,22 @@ class InvoiceLineType
         }
 
         return $this->withholdingTaxTotal[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(WithholdingTaxTotal): mixed $callback
+     * @return static
+     */
+    public function forEachWithholdingTaxTotal(
+        callable $callback
+    ): static {
+        foreach ($this->withholdingTaxTotal ?? [] as $withholdingTaxTotal) {
+            $callback($withholdingTaxTotal);
+        }
+
+        return $this;
     }
 
     /**
@@ -2492,6 +2684,22 @@ class InvoiceLineType
         }
 
         return $this->subInvoiceLine[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SubInvoiceLine): mixed $callback
+     * @return static
+     */
+    public function forEachSubInvoiceLine(
+        callable $callback
+    ): static {
+        foreach ($this->subInvoiceLine ?? [] as $subInvoiceLine) {
+            $callback($subInvoiceLine);
+        }
+
+        return $this;
     }
 
     /**

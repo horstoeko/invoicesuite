@@ -928,6 +928,22 @@ class PersonType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(IdentityDocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachIdentityDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->identityDocumentReference ?? [] as $identityDocumentReference) {
+            $callback($identityDocumentReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|ResidenceAddress
      */
     public function getResidenceAddress(): ?ResidenceAddress

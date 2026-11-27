@@ -532,6 +532,22 @@ class ItemPropertyType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ValueQualifier): mixed $callback
+     * @return static
+     */
+    public function forEachValueQualifier(
+        callable $callback
+    ): static {
+        foreach ($this->valueQualifier ?? [] as $valueQualifier) {
+            $callback($valueQualifier);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|ImportanceCode
      */
     public function getImportanceCode(): ?ImportanceCode
@@ -696,6 +712,22 @@ class ItemPropertyType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ListValue): mixed $callback
+     * @return static
+     */
+    public function forEachListValue(
+        callable $callback
+    ): static {
+        foreach ($this->listValue ?? [] as $listValue) {
+            $callback($listValue);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|UsabilityPeriod
      */
     public function getUsabilityPeriod(): ?UsabilityPeriod
@@ -857,6 +889,22 @@ class ItemPropertyType
         }
 
         return $this->itemPropertyGroup[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ItemPropertyGroup): mixed $callback
+     * @return static
+     */
+    public function forEachItemPropertyGroup(
+        callable $callback
+    ): static {
+        foreach ($this->itemPropertyGroup ?? [] as $itemPropertyGroup) {
+            $callback($itemPropertyGroup);
+        }
+
+        return $this;
     }
 
     /**

@@ -356,4 +356,20 @@ class MeterPropertyType
 
         return $this->valueQualifier[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ValueQualifier): mixed $callback
+     * @return static
+     */
+    public function forEachValueQualifier(
+        callable $callback
+    ): static {
+        foreach ($this->valueQualifier ?? [] as $valueQualifier) {
+            $callback($valueQualifier);
+        }
+
+        return $this;
+    }
 }

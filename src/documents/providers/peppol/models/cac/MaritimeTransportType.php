@@ -352,6 +352,22 @@ class MaritimeTransportType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ShipsRequirements): mixed $callback
+     * @return static
+     */
+    public function forEachShipsRequirements(
+        callable $callback
+    ): static {
+        foreach ($this->shipsRequirements ?? [] as $shipsRequirement) {
+            $callback($shipsRequirement);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|GrossTonnageMeasure
      */
     public function getGrossTonnageMeasure(): ?GrossTonnageMeasure

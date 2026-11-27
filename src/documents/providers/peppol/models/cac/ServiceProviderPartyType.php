@@ -276,6 +276,22 @@ class ServiceProviderPartyType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ServiceType): mixed $callback
+     * @return static
+     */
+    public function forEachServiceType(
+        callable $callback
+    ): static {
+        foreach ($this->serviceType ?? [] as $serviceType) {
+            $callback($serviceType);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|Party
      */
     public function getParty(): ?Party

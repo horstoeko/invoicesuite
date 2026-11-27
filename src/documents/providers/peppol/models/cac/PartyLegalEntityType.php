@@ -777,4 +777,20 @@ class PartyLegalEntityType
 
         return $this->shareholderParty[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ShareholderParty): mixed $callback
+     * @return static
+     */
+    public function forEachShareholderParty(
+        callable $callback
+    ): static {
+        foreach ($this->shareholderParty ?? [] as $shareholderParty) {
+            $callback($shareholderParty);
+        }
+
+        return $this;
+    }
 }

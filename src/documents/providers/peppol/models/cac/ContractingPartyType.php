@@ -225,6 +225,22 @@ class ContractingPartyType extends ContractingPartyTypeType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ContractingPartyType1): mixed $callback
+     * @return static
+     */
+    public function forEachContractingPartyType(
+        callable $callback
+    ): static {
+        foreach ($this->contractingPartyType ?? [] as $contractingPartyType) {
+            $callback($contractingPartyType);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ContractingActivity>
      */
     public function getContractingActivity(): ?array
@@ -346,6 +362,22 @@ class ContractingPartyType extends ContractingPartyTypeType
         }
 
         return $this->contractingActivity[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ContractingActivity): mixed $callback
+     * @return static
+     */
+    public function forEachContractingActivity(
+        callable $callback
+    ): static {
+        foreach ($this->contractingActivity ?? [] as $contractingActivity) {
+            $callback($contractingActivity);
+        }
+
+        return $this;
     }
 
     /**

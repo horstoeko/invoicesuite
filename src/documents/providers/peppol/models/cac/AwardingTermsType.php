@@ -311,6 +311,22 @@ class AwardingTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TechnicalCommitteeDescription>
      */
     public function getTechnicalCommitteeDescription(): ?array
@@ -435,6 +451,22 @@ class AwardingTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TechnicalCommitteeDescription): mixed $callback
+     * @return static
+     */
+    public function forEachTechnicalCommitteeDescription(
+        callable $callback
+    ): static {
+        foreach ($this->technicalCommitteeDescription ?? [] as $technicalCommitteeDescription) {
+            $callback($technicalCommitteeDescription);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<LowTendersDescription>
      */
     public function getLowTendersDescription(): ?array
@@ -556,6 +588,22 @@ class AwardingTermsType
         }
 
         return $this->lowTendersDescription[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(LowTendersDescription): mixed $callback
+     * @return static
+     */
+    public function forEachLowTendersDescription(
+        callable $callback
+    ): static {
+        foreach ($this->lowTendersDescription ?? [] as $lowTendersDescription) {
+            $callback($lowTendersDescription);
+        }
+
+        return $this;
     }
 
     /**
@@ -713,6 +761,22 @@ class AwardingTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PrizeDescription): mixed $callback
+     * @return static
+     */
+    public function forEachPrizeDescription(
+        callable $callback
+    ): static {
+        foreach ($this->prizeDescription ?? [] as $prizeDescription) {
+            $callback($prizeDescription);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<PaymentDescription>
      */
     public function getPaymentDescription(): ?array
@@ -834,6 +898,22 @@ class AwardingTermsType
         }
 
         return $this->paymentDescription[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PaymentDescription): mixed $callback
+     * @return static
+     */
+    public function forEachPaymentDescription(
+        callable $callback
+    ): static {
+        foreach ($this->paymentDescription ?? [] as $paymentDescription) {
+            $callback($paymentDescription);
+        }
+
+        return $this;
     }
 
     /**
@@ -1021,6 +1101,22 @@ class AwardingTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AwardingCriterion): mixed $callback
+     * @return static
+     */
+    public function forEachAwardingCriterion(
+        callable $callback
+    ): static {
+        foreach ($this->awardingCriterion ?? [] as $awardingCriterion) {
+            $callback($awardingCriterion);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TechnicalCommitteePerson>
      */
     public function getTechnicalCommitteePerson(): ?array
@@ -1142,5 +1238,21 @@ class AwardingTermsType
         }
 
         return $this->technicalCommitteePerson[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TechnicalCommitteePerson): mixed $callback
+     * @return static
+     */
+    public function forEachTechnicalCommitteePerson(
+        callable $callback
+    ): static {
+        foreach ($this->technicalCommitteePerson ?? [] as $technicalCommitteePerson) {
+            $callback($technicalCommitteePerson);
+        }
+
+        return $this;
     }
 }

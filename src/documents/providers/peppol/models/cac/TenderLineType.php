@@ -426,6 +426,22 @@ class TenderLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|Quantity
      */
     public function getQuantity(): ?Quantity
@@ -870,6 +886,22 @@ class TenderLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(WarrantyInformation): mixed $callback
+     * @return static
+     */
+    public function forEachWarrantyInformation(
+        callable $callback
+    ): static {
+        foreach ($this->warrantyInformation ?? [] as $warrantyInformation) {
+            $callback($warrantyInformation);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|PackLevelCode
      */
     public function getPackLevelCode(): ?PackLevelCode
@@ -1031,6 +1063,22 @@ class TenderLineType
         }
 
         return $this->documentReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->documentReference ?? [] as $documentReference) {
+            $callback($documentReference);
+        }
+
+        return $this;
     }
 
     /**
@@ -1198,6 +1246,22 @@ class TenderLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(OfferedItemLocationQuantity): mixed $callback
+     * @return static
+     */
+    public function forEachOfferedItemLocationQuantity(
+        callable $callback
+    ): static {
+        foreach ($this->offeredItemLocationQuantity ?? [] as $offeredItemLocationQuantity) {
+            $callback($offeredItemLocationQuantity);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ReplacementRelatedItem>
      */
     public function getReplacementRelatedItem(): ?array
@@ -1319,6 +1383,22 @@ class TenderLineType
         }
 
         return $this->replacementRelatedItem[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ReplacementRelatedItem): mixed $callback
+     * @return static
+     */
+    public function forEachReplacementRelatedItem(
+        callable $callback
+    ): static {
+        foreach ($this->replacementRelatedItem ?? [] as $replacementRelatedItem) {
+            $callback($replacementRelatedItem);
+        }
+
+        return $this;
     }
 
     /**
@@ -1523,6 +1603,22 @@ class TenderLineType
         }
 
         return $this->subTenderLine[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SubTenderLine): mixed $callback
+     * @return static
+     */
+    public function forEachSubTenderLine(
+        callable $callback
+    ): static {
+        foreach ($this->subTenderLine ?? [] as $subTenderLine) {
+            $callback($subTenderLine);
+        }
+
+        return $this;
     }
 
     /**

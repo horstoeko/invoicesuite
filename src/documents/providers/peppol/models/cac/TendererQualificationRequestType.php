@@ -351,6 +351,22 @@ class TendererQualificationRequestType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PersonalSituation): mixed $callback
+     * @return static
+     */
+    public function forEachPersonalSituation(
+        callable $callback
+    ): static {
+        foreach ($this->personalSituation ?? [] as $personalSituation) {
+            $callback($personalSituation);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|OperatingYearsQuantity
      */
     public function getOperatingYearsQuantity(): ?OperatingYearsQuantity
@@ -555,6 +571,22 @@ class TendererQualificationRequestType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<RequiredBusinessClassificationScheme>
      */
     public function getRequiredBusinessClassificationScheme(): ?array
@@ -676,6 +708,22 @@ class TendererQualificationRequestType
         }
 
         return $this->requiredBusinessClassificationScheme[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(RequiredBusinessClassificationScheme): mixed $callback
+     * @return static
+     */
+    public function forEachRequiredBusinessClassificationScheme(
+        callable $callback
+    ): static {
+        foreach ($this->requiredBusinessClassificationScheme ?? [] as $requiredBusinessClassificationScheme) {
+            $callback($requiredBusinessClassificationScheme);
+        }
+
+        return $this;
     }
 
     /**
@@ -803,6 +851,22 @@ class TendererQualificationRequestType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TechnicalEvaluationCriterion): mixed $callback
+     * @return static
+     */
+    public function forEachTechnicalEvaluationCriterion(
+        callable $callback
+    ): static {
+        foreach ($this->technicalEvaluationCriterion ?? [] as $technicalEvaluationCriterion) {
+            $callback($technicalEvaluationCriterion);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<FinancialEvaluationCriterion>
      */
     public function getFinancialEvaluationCriterion(): ?array
@@ -924,6 +988,22 @@ class TendererQualificationRequestType
         }
 
         return $this->financialEvaluationCriterion[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(FinancialEvaluationCriterion): mixed $callback
+     * @return static
+     */
+    public function forEachFinancialEvaluationCriterion(
+        callable $callback
+    ): static {
+        foreach ($this->financialEvaluationCriterion ?? [] as $financialEvaluationCriterion) {
+            $callback($financialEvaluationCriterion);
+        }
+
+        return $this;
     }
 
     /**
@@ -1051,6 +1131,22 @@ class TendererQualificationRequestType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SpecificTendererRequirement): mixed $callback
+     * @return static
+     */
+    public function forEachSpecificTendererRequirement(
+        callable $callback
+    ): static {
+        foreach ($this->specificTendererRequirement ?? [] as $specificTendererRequirement) {
+            $callback($specificTendererRequirement);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<EconomicOperatorRole>
      */
     public function getEconomicOperatorRole(): ?array
@@ -1172,5 +1268,21 @@ class TendererQualificationRequestType
         }
 
         return $this->economicOperatorRole[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(EconomicOperatorRole): mixed $callback
+     * @return static
+     */
+    public function forEachEconomicOperatorRole(
+        callable $callback
+    ): static {
+        foreach ($this->economicOperatorRole ?? [] as $economicOperatorRole) {
+            $callback($economicOperatorRole);
+        }
+
+        return $this;
     }
 }

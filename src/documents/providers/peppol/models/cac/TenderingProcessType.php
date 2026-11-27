@@ -486,6 +486,22 @@ class TenderingProcessType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<NegotiationDescription>
      */
     public function getNegotiationDescription(): ?array
@@ -607,6 +623,22 @@ class TenderingProcessType
         }
 
         return $this->negotiationDescription[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(NegotiationDescription): mixed $callback
+     * @return static
+     */
+    public function forEachNegotiationDescription(
+        callable $callback
+    ): static {
+        foreach ($this->negotiationDescription ?? [] as $negotiationDescription) {
+            $callback($negotiationDescription);
+        }
+
+        return $this;
     }
 
     /**
@@ -1194,6 +1226,22 @@ class TenderingProcessType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(NoticeDocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachNoticeDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->noticeDocumentReference ?? [] as $noticeDocumentReference) {
+            $callback($noticeDocumentReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<AdditionalDocumentReference>
      */
     public function getAdditionalDocumentReference(): ?array
@@ -1318,6 +1366,22 @@ class TenderingProcessType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AdditionalDocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachAdditionalDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->additionalDocumentReference ?? [] as $additionalDocumentReference) {
+            $callback($additionalDocumentReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ProcessJustification>
      */
     public function getProcessJustification(): ?array
@@ -1439,6 +1503,22 @@ class TenderingProcessType
         }
 
         return $this->processJustification[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ProcessJustification): mixed $callback
+     * @return static
+     */
+    public function forEachProcessJustification(
+        callable $callback
+    ): static {
+        foreach ($this->processJustification ?? [] as $processJustification) {
+            $callback($processJustification);
+        }
+
+        return $this;
     }
 
     /**
@@ -1603,6 +1683,22 @@ class TenderingProcessType
         }
 
         return $this->openTenderEvent[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(OpenTenderEvent): mixed $callback
+     * @return static
+     */
+    public function forEachOpenTenderEvent(
+        callable $callback
+    ): static {
+        foreach ($this->openTenderEvent ?? [] as $openTenderEvent) {
+            $callback($openTenderEvent);
+        }
+
+        return $this;
     }
 
     /**

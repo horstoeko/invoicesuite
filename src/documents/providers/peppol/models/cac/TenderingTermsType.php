@@ -790,6 +790,22 @@ class TenderingTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AcceptedVariantsDescription): mixed $callback
+     * @return static
+     */
+    public function forEachAcceptedVariantsDescription(
+        callable $callback
+    ): static {
+        foreach ($this->acceptedVariantsDescription ?? [] as $acceptedVariantsDescription) {
+            $callback($acceptedVariantsDescription);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<PriceRevisionFormulaDescription>
      */
     public function getPriceRevisionFormulaDescription(): ?array
@@ -911,6 +927,22 @@ class TenderingTermsType
         }
 
         return $this->priceRevisionFormulaDescription[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PriceRevisionFormulaDescription): mixed $callback
+     * @return static
+     */
+    public function forEachPriceRevisionFormulaDescription(
+        callable $callback
+    ): static {
+        foreach ($this->priceRevisionFormulaDescription ?? [] as $priceRevisionFormulaDescription) {
+            $callback($priceRevisionFormulaDescription);
+        }
+
+        return $this;
     }
 
     /**
@@ -1078,6 +1110,22 @@ class TenderingTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(FundingProgram): mixed $callback
+     * @return static
+     */
+    public function forEachFundingProgram(
+        callable $callback
+    ): static {
+        foreach ($this->fundingProgram ?? [] as $fundingProgram) {
+            $callback($fundingProgram);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|MaximumAdvertisementAmount
      */
     public function getMaximumAdvertisementAmount(): ?MaximumAdvertisementAmount
@@ -1239,6 +1287,22 @@ class TenderingTermsType
         }
 
         return $this->note[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
     }
 
     /**
@@ -1506,6 +1570,22 @@ class TenderingTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AdditionalConditions): mixed $callback
+     * @return static
+     */
+    public function forEachAdditionalConditions(
+        callable $callback
+    ): static {
+        foreach ($this->additionalConditions ?? [] as $additionalCondition) {
+            $callback($additionalCondition);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|DateTimeInterface
      */
     public function getLatestSecurityClearanceDate(): ?DateTimeInterface
@@ -1700,6 +1780,22 @@ class TenderingTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PenaltyClause): mixed $callback
+     * @return static
+     */
+    public function forEachPenaltyClause(
+        callable $callback
+    ): static {
+        foreach ($this->penaltyClause ?? [] as $penaltyClause) {
+            $callback($penaltyClause);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<RequiredFinancialGuarantee>
      */
     public function getRequiredFinancialGuarantee(): ?array
@@ -1821,6 +1917,22 @@ class TenderingTermsType
         }
 
         return $this->requiredFinancialGuarantee[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(RequiredFinancialGuarantee): mixed $callback
+     * @return static
+     */
+    public function forEachRequiredFinancialGuarantee(
+        callable $callback
+    ): static {
+        foreach ($this->requiredFinancialGuarantee ?? [] as $requiredFinancialGuarantee) {
+            $callback($requiredFinancialGuarantee);
+        }
+
+        return $this;
     }
 
     /**
@@ -2108,6 +2220,22 @@ class TenderingTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ContractualDocumentReference): mixed $callback
+     * @return static
+     */
+    public function forEachContractualDocumentReference(
+        callable $callback
+    ): static {
+        foreach ($this->contractualDocumentReference ?? [] as $contractualDocumentReference) {
+            $callback($contractualDocumentReference);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|CallForTendersDocumentReference
      */
     public function getCallForTendersDocumentReference(): ?CallForTendersDocumentReference
@@ -2312,6 +2440,22 @@ class TenderingTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PaymentTerms): mixed $callback
+     * @return static
+     */
+    public function forEachPaymentTerms(
+        callable $callback
+    ): static {
+        foreach ($this->paymentTerms ?? [] as $paymentTerm) {
+            $callback($paymentTerm);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TendererQualificationRequest>
      */
     public function getTendererQualificationRequest(): ?array
@@ -2433,6 +2577,22 @@ class TenderingTermsType
         }
 
         return $this->tendererQualificationRequest[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TendererQualificationRequest): mixed $callback
+     * @return static
+     */
+    public function forEachTendererQualificationRequest(
+        callable $callback
+    ): static {
+        foreach ($this->tendererQualificationRequest ?? [] as $tendererQualificationRequest) {
+            $callback($tendererQualificationRequest);
+        }
+
+        return $this;
     }
 
     /**
@@ -2560,6 +2720,22 @@ class TenderingTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AllowedSubcontractTerms): mixed $callback
+     * @return static
+     */
+    public function forEachAllowedSubcontractTerms(
+        callable $callback
+    ): static {
+        foreach ($this->allowedSubcontractTerms ?? [] as $allowedSubcontractTerm) {
+            $callback($allowedSubcontractTerm);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TenderPreparation>
      */
     public function getTenderPreparation(): ?array
@@ -2684,6 +2860,22 @@ class TenderingTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TenderPreparation): mixed $callback
+     * @return static
+     */
+    public function forEachTenderPreparation(
+        callable $callback
+    ): static {
+        foreach ($this->tenderPreparation ?? [] as $tenderPreparation) {
+            $callback($tenderPreparation);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<ContractExecutionRequirement>
      */
     public function getContractExecutionRequirement(): ?array
@@ -2805,6 +2997,22 @@ class TenderingTermsType
         }
 
         return $this->contractExecutionRequirement[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ContractExecutionRequirement): mixed $callback
+     * @return static
+     */
+    public function forEachContractExecutionRequirement(
+        callable $callback
+    ): static {
+        foreach ($this->contractExecutionRequirement ?? [] as $contractExecutionRequirement) {
+            $callback($contractExecutionRequirement);
+        }
+
+        return $this;
     }
 
     /**
@@ -3132,6 +3340,22 @@ class TenderingTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TenderEvaluationParty): mixed $callback
+     * @return static
+     */
+    public function forEachTenderEvaluationParty(
+        callable $callback
+    ): static {
+        foreach ($this->tenderEvaluationParty ?? [] as $tenderEvaluationParty) {
+            $callback($tenderEvaluationParty);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|TenderValidityPeriod
      */
     public function getTenderValidityPeriod(): ?TenderValidityPeriod
@@ -3376,6 +3600,22 @@ class TenderingTermsType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Language): mixed $callback
+     * @return static
+     */
+    public function forEachLanguage(
+        callable $callback
+    ): static {
+        foreach ($this->language ?? [] as $language) {
+            $callback($language);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<BudgetAccountLine>
      */
     public function getBudgetAccountLine(): ?array
@@ -3497,6 +3737,22 @@ class TenderingTermsType
         }
 
         return $this->budgetAccountLine[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(BudgetAccountLine): mixed $callback
+     * @return static
+     */
+    public function forEachBudgetAccountLine(
+        callable $callback
+    ): static {
+        foreach ($this->budgetAccountLine ?? [] as $budgetAccountLine) {
+            $callback($budgetAccountLine);
+        }
+
+        return $this;
     }
 
     /**

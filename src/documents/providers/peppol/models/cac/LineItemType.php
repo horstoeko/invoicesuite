@@ -633,6 +633,22 @@ class LineItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|LineStatusCode
      */
     public function getLineStatusCode(): ?LineStatusCode
@@ -1257,6 +1273,22 @@ class LineItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(WarrantyInformation): mixed $callback
+     * @return static
+     */
+    public function forEachWarrantyInformation(
+        callable $callback
+    ): static {
+        foreach ($this->warrantyInformation ?? [] as $warrantyInformation) {
+            $callback($warrantyInformation);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Delivery>
      */
     public function getDelivery(): ?array
@@ -1378,6 +1410,22 @@ class LineItemType
         }
 
         return $this->delivery[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Delivery): mixed $callback
+     * @return static
+     */
+    public function forEachDelivery(
+        callable $callback
+    ): static {
+        foreach ($this->delivery ?? [] as $delivery) {
+            $callback($delivery);
+        }
+
+        return $this;
     }
 
     /**
@@ -1585,6 +1633,22 @@ class LineItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(OrderedShipment): mixed $callback
+     * @return static
+     */
+    public function forEachOrderedShipment(
+        callable $callback
+    ): static {
+        foreach ($this->orderedShipment ?? [] as $orderedShipment) {
+            $callback($orderedShipment);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|PricingReference
      */
     public function getPricingReference(): ?PricingReference
@@ -1746,6 +1810,22 @@ class LineItemType
         }
 
         return $this->allowanceCharge[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(AllowanceCharge): mixed $callback
+     * @return static
+     */
+    public function forEachAllowanceCharge(
+        callable $callback
+    ): static {
+        foreach ($this->allowanceCharge ?? [] as $allowanceCharge) {
+            $callback($allowanceCharge);
+        }
+
+        return $this;
     }
 
     /**
@@ -1953,6 +2033,22 @@ class LineItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SubLineItem): mixed $callback
+     * @return static
+     */
+    public function forEachSubLineItem(
+        callable $callback
+    ): static {
+        foreach ($this->subLineItem ?? [] as $subLineItem) {
+            $callback($subLineItem);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|WarrantyValidityPeriod
      */
     public function getWarrantyValidityPeriod(): ?WarrantyValidityPeriod
@@ -2157,6 +2253,22 @@ class LineItemType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TaxTotal): mixed $callback
+     * @return static
+     */
+    public function forEachTaxTotal(
+        callable $callback
+    ): static {
+        foreach ($this->taxTotal ?? [] as $taxTotal) {
+            $callback($taxTotal);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|ItemPriceExtension
      */
     public function getItemPriceExtension(): ?ItemPriceExtension
@@ -2318,5 +2430,21 @@ class LineItemType
         }
 
         return $this->lineReference[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(LineReference): mixed $callback
+     * @return static
+     */
+    public function forEachLineReference(
+        callable $callback
+    ): static {
+        foreach ($this->lineReference ?? [] as $lineReference) {
+            $callback($lineReference);
+        }
+
+        return $this;
     }
 }

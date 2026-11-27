@@ -1090,6 +1090,22 @@ class DeliveryType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(NotifyParty): mixed $callback
+     * @return static
+     */
+    public function forEachNotifyParty(
+        callable $callback
+    ): static {
+        foreach ($this->notifyParty ?? [] as $notifyParty) {
+            $callback($notifyParty);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|Despatch
      */
     public function getDespatch(): ?Despatch
@@ -1251,6 +1267,22 @@ class DeliveryType
         }
 
         return $this->deliveryTerms[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DeliveryTerms): mixed $callback
+     * @return static
+     */
+    public function forEachDeliveryTerms(
+        callable $callback
+    ): static {
+        foreach ($this->deliveryTerms ?? [] as $deliveryTerm) {
+            $callback($deliveryTerm);
+        }
+
+        return $this;
     }
 
     /**

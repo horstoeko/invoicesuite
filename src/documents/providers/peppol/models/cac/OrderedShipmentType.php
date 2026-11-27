@@ -198,4 +198,20 @@ class OrderedShipmentType
 
         return $this->package[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Package): mixed $callback
+     * @return static
+     */
+    public function forEachPackage(
+        callable $callback
+    ): static {
+        foreach ($this->package ?? [] as $package) {
+            $callback($package);
+        }
+
+        return $this;
+    }
 }

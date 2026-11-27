@@ -182,6 +182,22 @@ final class DatiBeniServizi
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DettaglioLinee): mixed $callback
+     * @return static
+     */
+    public function forEachDettaglioLinee(
+        callable $callback
+    ): static {
+        foreach ($this->dettaglioLinee ?? [] as $dettaglioLinea) {
+            $callback($dettaglioLinea);
+        }
+
+        return $this;
+    }
+
+    /**
      * @translation-german Angaben Zusammenfassung
      *
      * @return null|array<DatiRiepilogo>
@@ -293,5 +309,21 @@ final class DatiBeniServizi
         }
 
         return $this->datiRiepilogo[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DatiRiepilogo): mixed $callback
+     * @return static
+     */
+    public function forEachDatiRiepilogo(
+        callable $callback
+    ): static {
+        foreach ($this->datiRiepilogo ?? [] as $datoRiepilogo) {
+            $callback($datoRiepilogo);
+        }
+
+        return $this;
     }
 }

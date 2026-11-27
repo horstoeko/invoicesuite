@@ -248,6 +248,22 @@ class PerformanceDataLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|PerformanceValueQuantity
      */
     public function getPerformanceValueQuantity(): ?PerformanceValueQuantity

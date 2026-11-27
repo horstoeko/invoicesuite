@@ -293,4 +293,20 @@ class ProjectReferenceType
 
         return $this->workPhaseReference[0];
     }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(WorkPhaseReference): mixed $callback
+     * @return static
+     */
+    public function forEachWorkPhaseReference(
+        callable $callback
+    ): static {
+        foreach ($this->workPhaseReference ?? [] as $workPhaseReference) {
+            $callback($workPhaseReference);
+        }
+
+        return $this;
+    }
 }

@@ -419,6 +419,22 @@ final class DatiGeneraliDocumento
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DatiRitenuta): mixed $callback
+     * @return static
+     */
+    public function forEachDatiRitenuta(
+        callable $callback
+    ): static {
+        foreach ($this->datiRitenuta ?? [] as $datoRitenuta) {
+            $callback($datoRitenuta);
+        }
+
+        return $this;
+    }
+
+    /**
      * @translation-german Stempelsteuerdaten
      *
      * @return null|DatiBollo
@@ -581,6 +597,22 @@ final class DatiGeneraliDocumento
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(DatiCassaPrevidenziale): mixed $callback
+     * @return static
+     */
+    public function forEachDatiCassaPrevidenziale(
+        callable $callback
+    ): static {
+        foreach ($this->datiCassaPrevidenziale ?? [] as $datoCassaPrevidenziale) {
+            $callback($datoCassaPrevidenziale);
+        }
+
+        return $this;
+    }
+
+    /**
      * @translation-german-untranslated
      *
      * @return null|array<ScontoMaggiorazione>
@@ -692,6 +724,22 @@ final class DatiGeneraliDocumento
         }
 
         return $this->scontoMaggiorazione[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ScontoMaggiorazione): mixed $callback
+     * @return static
+     */
+    public function forEachScontoMaggiorazione(
+        callable $callback
+    ): static {
+        foreach ($this->scontoMaggiorazione ?? [] as $scontoMaggiorazione) {
+            $callback($scontoMaggiorazione);
+        }
+
+        return $this;
     }
 
     /**
@@ -846,6 +894,22 @@ final class DatiGeneraliDocumento
         }
 
         $this->causale[0] = $causale;
+
+        return $this;
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(string): mixed $callback
+     * @return static
+     */
+    public function forEachCausale(
+        callable $callback
+    ): static {
+        foreach ($this->causale ?? [] as $causale) {
+            $callback($causale);
+        }
 
         return $this;
     }

@@ -414,6 +414,22 @@ class TransportScheduleType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Remarks): mixed $callback
+     * @return static
+     */
+    public function forEachRemarks(
+        callable $callback
+    ): static {
+        foreach ($this->remarks ?? [] as $remark) {
+            $callback($remark);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|StatusLocation
      */
     public function getStatusLocation(): ?StatusLocation

@@ -266,6 +266,22 @@ class EnvironmentalEmissionType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Description): mixed $callback
+     * @return static
+     */
+    public function forEachDescription(
+        callable $callback
+    ): static {
+        foreach ($this->description ?? [] as $description) {
+            $callback($description);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<EmissionCalculationMethod>
      */
     public function getEmissionCalculationMethod(): ?array
@@ -387,5 +403,21 @@ class EnvironmentalEmissionType
         }
 
         return $this->emissionCalculationMethod[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(EmissionCalculationMethod): mixed $callback
+     * @return static
+     */
+    public function forEachEmissionCalculationMethod(
+        callable $callback
+    ): static {
+        foreach ($this->emissionCalculationMethod ?? [] as $emissionCalculationMethod) {
+            $callback($emissionCalculationMethod);
+        }
+
+        return $this;
     }
 }

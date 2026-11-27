@@ -188,6 +188,22 @@ class LineTradeSettlementType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TradeTaxType): mixed $callback
+     * @return static
+     */
+    public function forEachApplicableTradeTax(
+        callable $callback
+    ): static {
+        foreach ($this->applicableTradeTax ?? [] as $applicableTradeTax) {
+            $callback($applicableTradeTax);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|SpecifiedPeriodType
      */
     public function getBillingSpecifiedPeriod(): ?SpecifiedPeriodType
@@ -319,6 +335,22 @@ class LineTradeSettlementType
         }
 
         return $this->specifiedTradeAllowanceCharge[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TradeAllowanceChargeType): mixed $callback
+     * @return static
+     */
+    public function forEachSpecifiedTradeAllowanceCharge(
+        callable $callback
+    ): static {
+        foreach ($this->specifiedTradeAllowanceCharge ?? [] as $specifiedTradeAllowanceCharge) {
+            $callback($specifiedTradeAllowanceCharge);
+        }
+
+        return $this;
     }
 
     /**
@@ -496,6 +528,22 @@ class LineTradeSettlementType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(ReferencedDocumentType): mixed $callback
+     * @return static
+     */
+    public function forEachAdditionalReferencedDocument(
+        callable $callback
+    ): static {
+        foreach ($this->additionalReferencedDocument ?? [] as $additionalReferencedDocument) {
+            $callback($additionalReferencedDocument);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<TradeAccountingAccountType>
      */
     public function getReceivableSpecifiedTradeAccountingAccount(): ?array
@@ -587,5 +635,21 @@ class LineTradeSettlementType
         }
 
         return $this->receivableSpecifiedTradeAccountingAccount[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TradeAccountingAccountType): mixed $callback
+     * @return static
+     */
+    public function forEachReceivableSpecifiedTradeAccountingAccount(
+        callable $callback
+    ): static {
+        foreach ($this->receivableSpecifiedTradeAccountingAccount ?? [] as $receivableSpecifiedTradeAccountingAccount) {
+            $callback($receivableSpecifiedTradeAccountingAccount);
+        }
+
+        return $this;
     }
 }

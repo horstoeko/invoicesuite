@@ -343,6 +343,22 @@ class QualifyingPartyType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(PersonalSituation): mixed $callback
+     * @return static
+     */
+    public function forEachPersonalSituation(
+        callable $callback
+    ): static {
+        foreach ($this->personalSituation ?? [] as $personalSituation) {
+            $callback($personalSituation);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|OperatingYearsQuantity
      */
     public function getOperatingYearsQuantity(): ?OperatingYearsQuantity
@@ -707,6 +723,22 @@ class QualifyingPartyType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(TechnicalCapability): mixed $callback
+     * @return static
+     */
+    public function forEachTechnicalCapability(
+        callable $callback
+    ): static {
+        foreach ($this->technicalCapability ?? [] as $technicalCapability) {
+            $callback($technicalCapability);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<FinancialCapability>
      */
     public function getFinancialCapability(): ?array
@@ -828,6 +860,22 @@ class QualifyingPartyType
         }
 
         return $this->financialCapability[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(FinancialCapability): mixed $callback
+     * @return static
+     */
+    public function forEachFinancialCapability(
+        callable $callback
+    ): static {
+        foreach ($this->financialCapability ?? [] as $financialCapability) {
+            $callback($financialCapability);
+        }
+
+        return $this;
     }
 
     /**
@@ -955,6 +1003,22 @@ class QualifyingPartyType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(CompletedTask): mixed $callback
+     * @return static
+     */
+    public function forEachCompletedTask(
+        callable $callback
+    ): static {
+        foreach ($this->completedTask ?? [] as $completedTask) {
+            $callback($completedTask);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|array<Declaration>
      */
     public function getDeclaration(): ?array
@@ -1076,6 +1140,22 @@ class QualifyingPartyType
         }
 
         return $this->declaration[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Declaration): mixed $callback
+     * @return static
+     */
+    public function forEachDeclaration(
+        callable $callback
+    ): static {
+        foreach ($this->declaration ?? [] as $declaration) {
+            $callback($declaration);
+        }
+
+        return $this;
     }
 
     /**

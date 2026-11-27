@@ -320,6 +320,22 @@ class ExceptionCriteriaLineType
     }
 
     /**
+     * Execute a callback for each item
+     *
+     * @param  callable(Note): mixed $callback
+     * @return static
+     */
+    public function forEachNote(
+        callable $callback
+    ): static {
+        foreach ($this->note ?? [] as $note) {
+            $callback($note);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return null|ThresholdValueComparisonCode
      */
     public function getThresholdValueComparisonCode(): ?ThresholdValueComparisonCode
@@ -761,6 +777,22 @@ class ExceptionCriteriaLineType
         }
 
         return $this->supplyItem[0];
+    }
+
+    /**
+     * Execute a callback for each item
+     *
+     * @param  callable(SupplyItem): mixed $callback
+     * @return static
+     */
+    public function forEachSupplyItem(
+        callable $callback
+    ): static {
+        foreach ($this->supplyItem ?? [] as $supplyItem) {
+            $callback($supplyItem);
+        }
+
+        return $this;
     }
 
     /**
