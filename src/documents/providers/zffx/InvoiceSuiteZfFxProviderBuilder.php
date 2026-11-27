@@ -14214,6 +14214,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     /**
      * Set Payment mean
      *
+     * Replaces the payment means and clears the remembered mandate and mandate references
+     * inherited from payment means. Mandates supplied directly with payment terms are preserved.
+     *
      * @param  null|string $newTypeCode            __BT-81, From BASIC WL__ Expected or used means of payment expressed as a code
      * @param  null|string $newName                __BT-82, From EN 16931__ Expected or used means of payment expressed in text form
      * @param  null|string $newFinancialCardId     __BT-87, From EN 16931__ Primary account number (PAN) of the payment card
@@ -14250,6 +14253,20 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ?->getApplicableHeaderTradeSettlement()
             ?->unsetSpecifiedTradeSettlementPaymentMeans();
 
+        $paymentTerms = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getSpecifiedTradePaymentTerms() ?? [];
+
+        foreach ($paymentTerms as $paymentTerm) {
+            if ($paymentTerm->getDirectDebitMandateID()?->hasObjectFlag('paymentmeanmandate')) {
+                $paymentTerm->unsetDirectDebitMandateID();
+            }
+        }
+
+        $this->removeKeyValuePair('mandantefrompaymentmean');
+
         if ($this->supportsNotAtLeastBasicWlWithTrace(__METHOD__)) {
             return $this;
         }
@@ -14280,6 +14297,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
     /**
      * Add Payment mean
+     *
+     * A supplied mandate replaces the remembered mandate and updates inherited payment term
+     * mandates. Without a mandate, the remembered value is retained.
      *
      * @param  null|string $newTypeCode            __BT-81, From BASIC WL__ Expected or used means of payment expressed as a code
      * @param  null|string $newName                __BT-82, From EN 16931__ Expected or used means of payment expressed in text form
@@ -14317,6 +14337,22 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTypeCode)) {
             return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTypeCode)');
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newMandate)) {
+            $paymentTerms = $this
+                ->getCrossIndustryRootObject()
+                ->getSupplyChainTradeTransaction()
+                ?->getApplicableHeaderTradeSettlement()
+                ?->getSpecifiedTradePaymentTerms() ?? [];
+
+            foreach ($paymentTerms as $paymentTerm) {
+                if ($paymentTerm->getDirectDebitMandateID()?->hasObjectFlag('paymentmeanmandate')) {
+                    $paymentTerm->unsetDirectDebitMandateID();
+                }
+            }
+
+            $this->removeKeyValuePair('mandantefrompaymentmean');
         }
 
         $paymentMean = $this
@@ -20201,13 +20237,15 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
-     * Update Direct Debit Mandate
+     * Apply the remembered payment means mandate to payment terms without a mandate
      *
      * @return static
      */
     private function updateMandates(): static
     {
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->getKeyValuePair('mandantefrompaymentmean', ''))) {
+        $newMandate = $this->getKeyValuePair('mandantefrompaymentmean', '');
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newMandate)) {
             return $this;
         }
 
@@ -20227,7 +20265,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         foreach ($paymentTerms as $paymentTerm) {
             $paymentTerm
                 ->getDirectDebitMandateIDWithCreate()
-                ->setValue($this->getKeyValuePair('mandantefrompaymentmean', ''));
+                ->addToObjectFlags('paymentmeanmandate')
+                ->setValue($newMandate);
         }
 
         return $this;
