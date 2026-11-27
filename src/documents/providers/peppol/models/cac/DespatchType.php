@@ -688,6 +688,18 @@ class DespatchType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Instructions): mixed  $callback
+     * @return array<array-key, Instructions>
+     */
+    public function filterInstructions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->instructions ?? [], $callback);
+    }
+
+    /**
      * @return null|DespatchAddress
      */
     public function getDespatchAddress(): ?DespatchAddress
@@ -985,6 +997,18 @@ class DespatchType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(NotifyParty): mixed  $callback
+     * @return array<array-key, NotifyParty>
+     */
+    public function filterNotifyParties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->notifyParty ?? [], $callback);
     }
 
     /**

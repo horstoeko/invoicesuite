@@ -203,4 +203,16 @@ final class DatiPagamento
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DettaglioPagamento): mixed  $callback
+     * @return array<array-key, DettaglioPagamento>
+     */
+    public function filterDettagliPagamento(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->dettaglioPagamento ?? [], $callback);
+    }
 }

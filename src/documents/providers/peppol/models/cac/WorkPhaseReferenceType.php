@@ -317,6 +317,18 @@ class WorkPhaseReferenceType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(WorkPhase): mixed  $callback
+     * @return array<array-key, WorkPhase>
+     */
+    public function filterWorkPhases(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->workPhase ?? [], $callback);
+    }
+
+    /**
      * @return null|ProgressPercent
      */
     public function getProgressPercent(): ?ProgressPercent
@@ -554,5 +566,17 @@ class WorkPhaseReferenceType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(WorkOrderDocumentReference): mixed  $callback
+     * @return array<array-key, WorkOrderDocumentReference>
+     */
+    public function filterWorkOrderDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->workOrderDocumentReference ?? [], $callback);
     }
 }

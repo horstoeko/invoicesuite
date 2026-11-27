@@ -336,6 +336,18 @@ class ExceptionCriteriaLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
+    }
+
+    /**
      * @return null|ThresholdValueComparisonCode
      */
     public function getThresholdValueComparisonCode(): ?ThresholdValueComparisonCode
@@ -793,6 +805,18 @@ class ExceptionCriteriaLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(SupplyItem): mixed  $callback
+     * @return array<array-key, SupplyItem>
+     */
+    public function filterSupplyItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->supplyItem ?? [], $callback);
     }
 
     /**

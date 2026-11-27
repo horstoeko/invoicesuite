@@ -201,6 +201,18 @@ class EnergyWaterSupplyType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ConsumptionReport): mixed  $callback
+     * @return array<array-key, ConsumptionReport>
+     */
+    public function filterConsumptionReports(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->consumptionReport ?? [], $callback);
+    }
+
+    /**
      * @return null|array<EnergyTaxReport>
      */
     public function getEnergyTaxReport(): ?array
@@ -338,6 +350,18 @@ class EnergyWaterSupplyType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(EnergyTaxReport): mixed  $callback
+     * @return array<array-key, EnergyTaxReport>
+     */
+    public function filterEnergyTaxReports(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->energyTaxReport ?? [], $callback);
     }
 
     /**
@@ -481,6 +505,18 @@ class EnergyWaterSupplyType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ConsumptionAverage): mixed  $callback
+     * @return array<array-key, ConsumptionAverage>
+     */
+    public function filterConsumptionAverages(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->consumptionAverage ?? [], $callback);
+    }
+
+    /**
      * @return null|array<EnergyWaterConsumptionCorrection>
      */
     public function getEnergyWaterConsumptionCorrection(): ?array
@@ -618,5 +654,17 @@ class EnergyWaterSupplyType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(EnergyWaterConsumptionCorrection): mixed  $callback
+     * @return array<array-key, EnergyWaterConsumptionCorrection>
+     */
+    public function filterEnergyWaterConsumptionCorrections(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->energyWaterConsumptionCorrection ?? [], $callback);
     }
 }

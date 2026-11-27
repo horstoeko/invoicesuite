@@ -520,4 +520,16 @@ class BillingReferenceType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(BillingReferenceLine): mixed  $callback
+     * @return array<array-key, BillingReferenceLine>
+     */
+    public function filterBillingReferenceLines(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->billingReferenceLine ?? [], $callback);
+    }
 }

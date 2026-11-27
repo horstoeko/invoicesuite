@@ -457,6 +457,18 @@ class ExchangedDocumentType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(NoteType): mixed  $callback
+     * @return array<array-key, NoteType>
+     */
+    public function filterIncludedNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->includedNote ?? [], $callback);
+    }
+
+    /**
      * @return null|SpecifiedPeriodType
      */
     public function getEffectiveSpecifiedPeriod(): ?SpecifiedPeriodType

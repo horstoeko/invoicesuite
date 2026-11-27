@@ -782,6 +782,18 @@ class HeaderTradeAgreementType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ReferencedDocumentType): mixed  $callback
+     * @return array<array-key, ReferencedDocumentType>
+     */
+    public function filterAdditionalReferencedDocuments(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->additionalReferencedDocument ?? [], $callback);
+    }
+
+    /**
      * @return null|TradePartyType
      */
     public function getBuyerAgentTradeParty(): ?TradePartyType
@@ -969,5 +981,17 @@ class HeaderTradeAgreementType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ReferencedDocumentType): mixed  $callback
+     * @return array<array-key, ReferencedDocumentType>
+     */
+    public function filterUltimateCustomerOrderReferencedDocuments(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->ultimateCustomerOrderReferencedDocument ?? [], $callback);
     }
 }

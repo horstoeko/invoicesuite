@@ -654,6 +654,18 @@ class ShipmentType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(HandlingInstructions): mixed  $callback
+     * @return array<array-key, HandlingInstructions>
+     */
+    public function filterHandlingInstructions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->handlingInstructions ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Information>
      */
     public function getInformation(): ?array
@@ -791,6 +803,18 @@ class ShipmentType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Information): mixed  $callback
+     * @return array<array-key, Information>
+     */
+    public function filterInformation(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->information ?? [], $callback);
     }
 
     /**
@@ -1414,6 +1438,18 @@ class ShipmentType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(SpecialInstructions): mixed  $callback
+     * @return array<array-key, SpecialInstructions>
+     */
+    public function filterSpecialInstructions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->specialInstructions ?? [], $callback);
+    }
+
+    /**
      * @return null|array<DeliveryInstructions>
      */
     public function getDeliveryInstructions(): ?array
@@ -1551,6 +1587,18 @@ class ShipmentType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DeliveryInstructions): mixed  $callback
+     * @return array<array-key, DeliveryInstructions>
+     */
+    public function filterDeliveryInstructions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->deliveryInstructions ?? [], $callback);
     }
 
     /**
@@ -1764,6 +1812,18 @@ class ShipmentType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Consignment): mixed  $callback
+     * @return array<array-key, Consignment>
+     */
+    public function filterConsignments(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->consignment ?? [], $callback);
+    }
+
+    /**
      * @return null|array<GoodsItem>
      */
     public function getGoodsItem(): ?array
@@ -1904,6 +1964,18 @@ class ShipmentType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(GoodsItem): mixed  $callback
+     * @return array<array-key, GoodsItem>
+     */
+    public function filterGoodsItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->goodsItem ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ShipmentStage>
      */
     public function getShipmentStage(): ?array
@@ -2041,6 +2113,18 @@ class ShipmentType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ShipmentStage): mixed  $callback
+     * @return array<array-key, ShipmentStage>
+     */
+    public function filterShipmentStages(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->shipmentStage ?? [], $callback);
     }
 
     /**
@@ -2221,6 +2305,18 @@ class ShipmentType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TransportHandlingUnit): mixed  $callback
+     * @return array<array-key, TransportHandlingUnit>
+     */
+    public function filterTransportHandlingUnits(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->transportHandlingUnit ?? [], $callback);
     }
 
     /**
@@ -2561,5 +2657,17 @@ class ShipmentType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(FreightAllowanceCharge): mixed  $callback
+     * @return array<array-key, FreightAllowanceCharge>
+     */
+    public function filterFreightAllowanceCharges(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->freightAllowanceCharge ?? [], $callback);
     }
 }

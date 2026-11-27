@@ -352,6 +352,18 @@ class SignatureType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ObjectType): mixed  $callback
+     * @return array<array-key, ObjectType>
+     */
+    public function filterObjects(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->object ?? [], $callback);
+    }
+
+    /**
      * @translation-german-untranslated
      *
      * @return null|string

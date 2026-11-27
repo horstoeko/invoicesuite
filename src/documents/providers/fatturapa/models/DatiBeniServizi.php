@@ -198,6 +198,18 @@ final class DatiBeniServizi
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DettaglioLinee): mixed  $callback
+     * @return array<array-key, DettaglioLinee>
+     */
+    public function filterDettagliLinee(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->dettaglioLinee ?? [], $callback);
+    }
+
+    /**
      * @translation-german Angaben Zusammenfassung
      *
      * @return null|array<DatiRiepilogo>
@@ -325,5 +337,17 @@ final class DatiBeniServizi
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DatiRiepilogo): mixed  $callback
+     * @return array<array-key, DatiRiepilogo>
+     */
+    public function filterDatiRiepilogo(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->datiRiepilogo ?? [], $callback);
     }
 }

@@ -216,4 +216,16 @@ class EconomicOperatorRoleType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(RoleDescription): mixed  $callback
+     * @return array<array-key, RoleDescription>
+     */
+    public function filterRoleDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->roleDescription ?? [], $callback);
+    }
 }

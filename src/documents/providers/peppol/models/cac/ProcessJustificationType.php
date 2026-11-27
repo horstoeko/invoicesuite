@@ -283,6 +283,18 @@ class ProcessJustificationType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ProcessReason): mixed  $callback
+     * @return array<array-key, ProcessReason>
+     */
+    public function filterProcessReasons(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->processReason ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Description>
      */
     public function getDescription(): ?array
@@ -420,5 +432,17 @@ class ProcessJustificationType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
     }
 }

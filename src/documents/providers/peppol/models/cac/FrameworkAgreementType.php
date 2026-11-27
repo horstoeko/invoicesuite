@@ -306,6 +306,18 @@ class FrameworkAgreementType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Justification): mixed  $callback
+     * @return array<array-key, Justification>
+     */
+    public function filterJustifications(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->justification ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Frequency>
      */
     public function getFrequency(): ?array
@@ -443,6 +455,18 @@ class FrameworkAgreementType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Frequency): mixed  $callback
+     * @return array<array-key, Frequency>
+     */
+    public function filterFrequencies(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->frequency ?? [], $callback);
     }
 
     /**
@@ -623,5 +647,17 @@ class FrameworkAgreementType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(SubsequentProcessTenderRequirement): mixed  $callback
+     * @return array<array-key, SubsequentProcessTenderRequirement>
+     */
+    public function filterSubsequentProcessTenderRequirements(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->subsequentProcessTenderRequirement ?? [], $callback);
     }
 }

@@ -230,6 +230,18 @@ class StowageType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Location): mixed  $callback
+     * @return array<array-key, Location>
+     */
+    public function filterLocations(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->location ?? [], $callback);
+    }
+
+    /**
      * @return null|array<MeasurementDimension>
      */
     public function getMeasurementDimension(): ?array
@@ -367,5 +379,17 @@ class StowageType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(MeasurementDimension): mixed  $callback
+     * @return array<array-key, MeasurementDimension>
+     */
+    public function filterMeasurementDimensions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->measurementDimension ?? [], $callback);
     }
 }

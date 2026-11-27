@@ -279,6 +279,18 @@ class EventLineItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(RetailPlannedImpact): mixed  $callback
+     * @return array<array-key, RetailPlannedImpact>
+     */
+    public function filterRetailPlannedImpacts(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->retailPlannedImpact ?? [], $callback);
+    }
+
+    /**
      * @return null|SupplyItem
      */
     public function getSupplyItem(): ?SupplyItem

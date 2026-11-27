@@ -405,6 +405,18 @@ final class DettaglioLinee
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(CodiceArticolo): mixed  $callback
+     * @return array<array-key, CodiceArticolo>
+     */
+    public function filterCodiciArticolo(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->codiceArticolo ?? [], $callback);
+    }
+
+    /**
      * @translation-german Beschreibung
      *
      * @return null|string
@@ -751,6 +763,18 @@ final class DettaglioLinee
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ScontoMaggiorazione): mixed  $callback
+     * @return array<array-key, ScontoMaggiorazione>
+     */
+    public function filterScontiMaggiorazioni(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->scontoMaggiorazione ?? [], $callback);
+    }
+
+    /**
      * @translation-german Prezzo Gesamt
      *
      * @return null|float
@@ -1058,5 +1082,17 @@ final class DettaglioLinee
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(AltriDatiGestionali): mixed  $callback
+     * @return array<array-key, AltriDatiGestionali>
+     */
+    public function filterAltriDatiGestionali(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->altriDatiGestionali ?? [], $callback);
     }
 }

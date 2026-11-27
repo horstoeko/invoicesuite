@@ -384,6 +384,18 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(AmountType): mixed  $callback
+     * @return array<array-key, AmountType>
+     */
+    public function filterTaxTotalAmounts(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->taxTotalAmount ?? [], $callback);
+    }
+
+    /**
      * @return null|AmountType
      */
     public function getRoundingAmount(): ?AmountType

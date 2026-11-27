@@ -578,6 +578,18 @@ class ConsumptionCorrectionType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|CorrectionUnitAmount
      */
     public function getCorrectionUnitAmount(): ?CorrectionUnitAmount

@@ -347,6 +347,18 @@ class PowerOfAttorneyType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|NotaryParty
      */
     public function getNotaryParty(): ?NotaryParty
@@ -567,6 +579,18 @@ class PowerOfAttorneyType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(WitnessParty): mixed  $callback
+     * @return array<array-key, WitnessParty>
+     */
+    public function filterWitnessParties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->witnessParty ?? [], $callback);
+    }
+
+    /**
      * @return null|array<MandateDocumentReference>
      */
     public function getMandateDocumentReference(): ?array
@@ -704,5 +728,17 @@ class PowerOfAttorneyType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(MandateDocumentReference): mixed  $callback
+     * @return array<array-key, MandateDocumentReference>
+     */
+    public function filterMandateDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->mandateDocumentReference ?? [], $callback);
     }
 }

@@ -438,6 +438,18 @@ class ContactType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
+    }
+
+    /**
      * @return null|array<OtherCommunication>
      */
     public function getOtherCommunication(): ?array
@@ -575,5 +587,17 @@ class ContactType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(OtherCommunication): mixed  $callback
+     * @return array<array-key, OtherCommunication>
+     */
+    public function filterOtherCommunications(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->otherCommunication ?? [], $callback);
     }
 }

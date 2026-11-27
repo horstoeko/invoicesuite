@@ -420,4 +420,16 @@ class TransportationSegmentType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ShipmentStage): mixed  $callback
+     * @return array<array-key, ShipmentStage>
+     */
+    public function filterShipmentStages(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->shipmentStage ?? [], $callback);
+    }
 }

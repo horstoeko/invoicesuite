@@ -282,6 +282,18 @@ class ClassificationCategoryType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|array<CategorizesClassificationCategory>
      */
     public function getCategorizesClassificationCategory(): ?array
@@ -419,5 +431,17 @@ class ClassificationCategoryType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(CategorizesClassificationCategory): mixed  $callback
+     * @return array<array-key, CategorizesClassificationCategory>
+     */
+    public function filterCategorizesClassificationCategories(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->categorizesClassificationCategory ?? [], $callback);
     }
 }

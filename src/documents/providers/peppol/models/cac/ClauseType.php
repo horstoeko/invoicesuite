@@ -216,4 +216,16 @@ class ClauseType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Content): mixed  $callback
+     * @return array<array-key, Content>
+     */
+    public function filterContents(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->content ?? [], $callback);
+    }
 }

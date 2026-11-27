@@ -215,6 +215,18 @@ class TendererRequirementType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Name): mixed  $callback
+     * @return array<array-key, Name>
+     */
+    public function filterNames(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->name ?? [], $callback);
+    }
+
+    /**
      * @return null|TendererRequirementTypeCode
      */
     public function getTendererRequirementTypeCode(): ?TendererRequirementTypeCode
@@ -395,6 +407,18 @@ class TendererRequirementType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|LegalReference
      */
     public function getLegalReference(): ?LegalReference
@@ -572,5 +596,17 @@ class TendererRequirementType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(SuggestedEvidence): mixed  $callback
+     * @return array<array-key, SuggestedEvidence>
+     */
+    public function filterSuggestedEvidence(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->suggestedEvidence ?? [], $callback);
     }
 }

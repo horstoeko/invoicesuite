@@ -319,6 +319,18 @@ class AwardingCriterionResponseType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(AwardingCriterionDescription): mixed  $callback
+     * @return array<array-key, AwardingCriterionDescription>
+     */
+    public function filterAwardingCriterionDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->awardingCriterionDescription ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Description>
      */
     public function getDescription(): ?array
@@ -456,6 +468,18 @@ class AwardingCriterionResponseType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
     }
 
     /**
@@ -676,5 +700,17 @@ class AwardingCriterionResponseType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(SubordinateAwardingCriterionResponse): mixed  $callback
+     * @return array<array-key, SubordinateAwardingCriterionResponse>
+     */
+    public function filterSubordinateAwardingCriterionResponses(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->subordinateAwardingCriterionResponse ?? [], $callback);
     }
 }

@@ -265,6 +265,18 @@ class QualificationResolutionType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ExclusionReason): mixed  $callback
+     * @return array<array-key, ExclusionReason>
+     */
+    public function filterExclusionReasons(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->exclusionReason ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Resolution>
      */
     public function getResolution(): ?array
@@ -402,6 +414,18 @@ class QualificationResolutionType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Resolution): mixed  $callback
+     * @return array<array-key, Resolution>
+     */
+    public function filterResolutions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->resolution ?? [], $callback);
     }
 
     /**

@@ -364,6 +364,18 @@ class TenderedProjectType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(FeeDescription): mixed  $callback
+     * @return array<array-key, FeeDescription>
+     */
+    public function filterFeeDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->feeDescription ?? [], $callback);
+    }
+
+    /**
      * @return null|TenderEnvelopeID
      */
     public function getTenderEnvelopeID(): ?TenderEnvelopeID
@@ -624,6 +636,18 @@ class TenderedProjectType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(EvidenceDocumentReference): mixed  $callback
+     * @return array<array-key, EvidenceDocumentReference>
+     */
+    public function filterEvidenceDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->evidenceDocumentReference ?? [], $callback);
+    }
+
+    /**
      * @return null|array<TaxTotal>
      */
     public function getTaxTotal(): ?array
@@ -761,6 +785,18 @@ class TenderedProjectType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TaxTotal): mixed  $callback
+     * @return array<array-key, TaxTotal>
+     */
+    public function filterTaxTotals(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->taxTotal ?? [], $callback);
     }
 
     /**
@@ -944,6 +980,18 @@ class TenderedProjectType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TenderLine): mixed  $callback
+     * @return array<array-key, TenderLine>
+     */
+    public function filterTenderLines(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->tenderLine ?? [], $callback);
+    }
+
+    /**
      * @return null|array<AwardingCriterionResponse>
      */
     public function getAwardingCriterionResponse(): ?array
@@ -1081,5 +1129,17 @@ class TenderedProjectType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(AwardingCriterionResponse): mixed  $callback
+     * @return array<array-key, AwardingCriterionResponse>
+     */
+    public function filterAwardingCriterionResponses(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->awardingCriterionResponse ?? [], $callback);
     }
 }

@@ -393,6 +393,18 @@ class AwardingCriterionType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|WeightNumeric
      */
     public function getWeightNumeric(): ?WeightNumeric
@@ -573,6 +585,18 @@ class AwardingCriterionType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Weight): mixed  $callback
+     * @return array<array-key, Weight>
+     */
+    public function filterWeights(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->weight ?? [], $callback);
+    }
+
+    /**
      * @return null|array<CalculationExpression>
      */
     public function getCalculationExpression(): ?array
@@ -710,6 +734,18 @@ class AwardingCriterionType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(CalculationExpression): mixed  $callback
+     * @return array<array-key, CalculationExpression>
+     */
+    public function filterCalculationExpressions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->calculationExpression ?? [], $callback);
     }
 
     /**
@@ -1053,6 +1089,18 @@ class AwardingCriterionType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(MinimumImprovementBid): mixed  $callback
+     * @return array<array-key, MinimumImprovementBid>
+     */
+    public function filterMinimumImprovementBids(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->minimumImprovementBid ?? [], $callback);
+    }
+
+    /**
      * @return null|array<SubordinateAwardingCriterion>
      */
     public function getSubordinateAwardingCriterion(): ?array
@@ -1190,5 +1238,17 @@ class AwardingCriterionType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(SubordinateAwardingCriterion): mixed  $callback
+     * @return array<array-key, SubordinateAwardingCriterion>
+     */
+    public function filterSubordinateAwardingCriteria(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->subordinateAwardingCriterion ?? [], $callback);
     }
 }

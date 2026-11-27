@@ -304,6 +304,18 @@ class CatalogueRequestLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
+    }
+
+    /**
      * @return null|LineValidityPeriod
      */
     public function getLineValidityPeriod(): ?LineValidityPeriod
@@ -481,6 +493,18 @@ class CatalogueRequestLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(RequiredItemLocationQuantity): mixed  $callback
+     * @return array<array-key, RequiredItemLocationQuantity>
+     */
+    public function filterRequiredItemLocationQuantities(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->requiredItemLocationQuantity ?? [], $callback);
     }
 
     /**

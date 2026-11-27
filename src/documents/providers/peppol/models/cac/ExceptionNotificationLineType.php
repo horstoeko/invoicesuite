@@ -372,6 +372,18 @@ class ExceptionNotificationLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Description>
      */
     public function getDescription(): ?array
@@ -509,6 +521,18 @@ class ExceptionNotificationLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
     }
 
     /**
@@ -1009,6 +1033,18 @@ class ExceptionNotificationLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DocumentReference): mixed  $callback
+     * @return array<array-key, DocumentReference>
+     */
+    public function filterDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->documentReference ?? [], $callback);
     }
 
     /**

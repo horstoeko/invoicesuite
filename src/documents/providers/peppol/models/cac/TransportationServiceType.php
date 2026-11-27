@@ -586,6 +586,18 @@ class TransportationServiceType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TransportationServiceDescription): mixed  $callback
+     * @return array<array-key, TransportationServiceDescription>
+     */
+    public function filterTransportationServiceDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->transportationServiceDescription ?? [], $callback);
+    }
+
+    /**
      * @return null|TransportationServiceDetailsURI
      */
     public function getTransportationServiceDetailsURI(): ?TransportationServiceDetailsURI
@@ -906,6 +918,18 @@ class TransportationServiceType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TransportEquipment): mixed  $callback
+     * @return array<array-key, TransportEquipment>
+     */
+    public function filterTransportEquipment(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->transportEquipment ?? [], $callback);
+    }
+
+    /**
      * @return null|array<SupportedTransportEquipment>
      */
     public function getSupportedTransportEquipment(): ?array
@@ -1043,6 +1067,18 @@ class TransportationServiceType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(SupportedTransportEquipment): mixed  $callback
+     * @return array<array-key, SupportedTransportEquipment>
+     */
+    public function filterSupportedTransportEquipment(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->supportedTransportEquipment ?? [], $callback);
     }
 
     /**
@@ -1186,6 +1222,18 @@ class TransportationServiceType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(UnsupportedTransportEquipment): mixed  $callback
+     * @return array<array-key, UnsupportedTransportEquipment>
+     */
+    public function filterUnsupportedTransportEquipment(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->unsupportedTransportEquipment ?? [], $callback);
+    }
+
+    /**
      * @return null|array<CommodityClassification>
      */
     public function getCommodityClassification(): ?array
@@ -1323,6 +1371,18 @@ class TransportationServiceType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(CommodityClassification): mixed  $callback
+     * @return array<array-key, CommodityClassification>
+     */
+    public function filterCommodityClassifications(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->commodityClassification ?? [], $callback);
     }
 
     /**
@@ -1466,6 +1526,18 @@ class TransportationServiceType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(SupportedCommodityClassification): mixed  $callback
+     * @return array<array-key, SupportedCommodityClassification>
+     */
+    public function filterSupportedCommodityClassifications(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->supportedCommodityClassification ?? [], $callback);
+    }
+
+    /**
      * @return null|array<UnsupportedCommodityClassification>
      */
     public function getUnsupportedCommodityClassification(): ?array
@@ -1603,6 +1675,18 @@ class TransportationServiceType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(UnsupportedCommodityClassification): mixed  $callback
+     * @return array<array-key, UnsupportedCommodityClassification>
+     */
+    public function filterUnsupportedCommodityClassifications(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->unsupportedCommodityClassification ?? [], $callback);
     }
 
     /**
@@ -1786,6 +1870,18 @@ class TransportationServiceType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ShipmentStage): mixed  $callback
+     * @return array<array-key, ShipmentStage>
+     */
+    public function filterShipmentStages(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->shipmentStage ?? [], $callback);
+    }
+
+    /**
      * @return null|array<TransportEvent>
      */
     public function getTransportEvent(): ?array
@@ -1923,6 +2019,18 @@ class TransportationServiceType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TransportEvent): mixed  $callback
+     * @return array<array-key, TransportEvent>
+     */
+    public function filterTransportEvents(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->transportEvent ?? [], $callback);
     }
 
     /**
@@ -2106,6 +2214,18 @@ class TransportationServiceType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(EnvironmentalEmission): mixed  $callback
+     * @return array<array-key, EnvironmentalEmission>
+     */
+    public function filterEnvironmentalEmissions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->environmentalEmission ?? [], $callback);
+    }
+
+    /**
      * @return null|EstimatedDurationPeriod
      */
     public function getEstimatedDurationPeriod(): ?EstimatedDurationPeriod
@@ -2283,5 +2403,17 @@ class TransportationServiceType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ScheduledServiceFrequency): mixed  $callback
+     * @return array<array-key, ScheduledServiceFrequency>
+     */
+    public function filterScheduledServiceFrequencies(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->scheduledServiceFrequency ?? [], $callback);
     }
 }

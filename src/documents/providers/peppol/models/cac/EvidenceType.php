@@ -316,6 +316,18 @@ class EvidenceType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|array<CandidateStatement>
      */
     public function getCandidateStatement(): ?array
@@ -453,6 +465,18 @@ class EvidenceType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(CandidateStatement): mixed  $callback
+     * @return array<array-key, CandidateStatement>
+     */
+    public function filterCandidateStatements(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->candidateStatement ?? [], $callback);
     }
 
     /**

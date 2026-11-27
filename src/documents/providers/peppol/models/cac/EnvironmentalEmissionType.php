@@ -282,6 +282,18 @@ class EnvironmentalEmissionType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|array<EmissionCalculationMethod>
      */
     public function getEmissionCalculationMethod(): ?array
@@ -419,5 +431,17 @@ class EnvironmentalEmissionType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(EmissionCalculationMethod): mixed  $callback
+     * @return array<array-key, EmissionCalculationMethod>
+     */
+    public function filterEmissionCalculationMethods(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->emissionCalculationMethod ?? [], $callback);
     }
 }

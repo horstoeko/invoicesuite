@@ -339,4 +339,16 @@ class PromotionalEventType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(PromotionalSpecification): mixed  $callback
+     * @return array<array-key, PromotionalSpecification>
+     */
+    public function filterPromotionalSpecifications(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->promotionalSpecification ?? [], $callback);
+    }
 }

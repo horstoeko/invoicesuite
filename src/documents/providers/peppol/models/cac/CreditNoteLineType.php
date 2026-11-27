@@ -564,6 +564,18 @@ class CreditNoteLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
+    }
+
+    /**
      * @return null|CreditedQuantity
      */
     public function getCreditedQuantity(): ?CreditedQuantity
@@ -964,6 +976,18 @@ class CreditNoteLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(InvoicePeriod): mixed  $callback
+     * @return array<array-key, InvoicePeriod>
+     */
+    public function filterInvoicePeriods(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->invoicePeriod ?? [], $callback);
+    }
+
+    /**
      * @return null|array<OrderLineReference>
      */
     public function getOrderLineReference(): ?array
@@ -1101,6 +1125,18 @@ class CreditNoteLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(OrderLineReference): mixed  $callback
+     * @return array<array-key, OrderLineReference>
+     */
+    public function filterOrderLineReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->orderLineReference ?? [], $callback);
     }
 
     /**
@@ -1244,6 +1280,18 @@ class CreditNoteLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DiscrepancyResponse): mixed  $callback
+     * @return array<array-key, DiscrepancyResponse>
+     */
+    public function filterDiscrepancyResponses(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->discrepancyResponse ?? [], $callback);
+    }
+
+    /**
      * @return null|array<DespatchLineReference>
      */
     public function getDespatchLineReference(): ?array
@@ -1381,6 +1429,18 @@ class CreditNoteLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DespatchLineReference): mixed  $callback
+     * @return array<array-key, DespatchLineReference>
+     */
+    public function filterDespatchLineReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->despatchLineReference ?? [], $callback);
     }
 
     /**
@@ -1524,6 +1584,18 @@ class CreditNoteLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ReceiptLineReference): mixed  $callback
+     * @return array<array-key, ReceiptLineReference>
+     */
+    public function filterReceiptLineReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->receiptLineReference ?? [], $callback);
+    }
+
+    /**
      * @return null|array<BillingReference>
      */
     public function getBillingReference(): ?array
@@ -1664,6 +1736,18 @@ class CreditNoteLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(BillingReference): mixed  $callback
+     * @return array<array-key, BillingReference>
+     */
+    public function filterBillingReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->billingReference ?? [], $callback);
+    }
+
+    /**
      * @return null|array<DocumentReference>
      */
     public function getDocumentReference(): ?array
@@ -1801,6 +1885,18 @@ class CreditNoteLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DocumentReference): mixed  $callback
+     * @return array<array-key, DocumentReference>
+     */
+    public function filterDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->documentReference ?? [], $callback);
     }
 
     /**
@@ -2024,6 +2120,18 @@ class CreditNoteLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Delivery): mixed  $callback
+     * @return array<array-key, Delivery>
+     */
+    public function filterDeliveries(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->delivery ?? [], $callback);
+    }
+
+    /**
      * @return null|array<PaymentTerms>
      */
     public function getPaymentTerms(): ?array
@@ -2161,6 +2269,18 @@ class CreditNoteLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(PaymentTerms): mixed  $callback
+     * @return array<array-key, PaymentTerms>
+     */
+    public function filterPaymentTerms(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->paymentTerms ?? [], $callback);
     }
 
     /**
@@ -2304,6 +2424,18 @@ class CreditNoteLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TaxTotal): mixed  $callback
+     * @return array<array-key, TaxTotal>
+     */
+    public function filterTaxTotals(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->taxTotal ?? [], $callback);
+    }
+
+    /**
      * @return null|array<AllowanceCharge>
      */
     public function getAllowanceCharge(): ?array
@@ -2441,6 +2573,18 @@ class CreditNoteLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(AllowanceCharge): mixed  $callback
+     * @return array<array-key, AllowanceCharge>
+     */
+    public function filterAllowanceCharges(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->allowanceCharge ?? [], $callback);
     }
 
     /**
@@ -2664,6 +2808,18 @@ class CreditNoteLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DeliveryTerms): mixed  $callback
+     * @return array<array-key, DeliveryTerms>
+     */
+    public function filterDeliveryTerms(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->deliveryTerms ?? [], $callback);
+    }
+
+    /**
      * @return null|array<SubCreditNoteLine>
      */
     public function getSubCreditNoteLine(): ?array
@@ -2801,6 +2957,18 @@ class CreditNoteLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(SubCreditNoteLine): mixed  $callback
+     * @return array<array-key, SubCreditNoteLine>
+     */
+    public function filterSubCreditNoteLines(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->subCreditNoteLine ?? [], $callback);
     }
 
     /**

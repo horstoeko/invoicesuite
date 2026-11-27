@@ -280,6 +280,18 @@ class PriceListType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ValidityPeriod): mixed  $callback
+     * @return array<array-key, ValidityPeriod>
+     */
+    public function filterValidityPeriods(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->validityPeriod ?? [], $callback);
+    }
+
+    /**
      * @return null|PreviousPriceList
      */
     public function getPreviousPriceList(): ?PreviousPriceList

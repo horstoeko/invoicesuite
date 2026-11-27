@@ -442,6 +442,18 @@ class TenderLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
+    }
+
+    /**
      * @return null|Quantity
      */
     public function getQuantity(): ?Quantity
@@ -902,6 +914,18 @@ class TenderLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(WarrantyInformation): mixed  $callback
+     * @return array<array-key, WarrantyInformation>
+     */
+    public function filterWarrantyInformation(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->warrantyInformation ?? [], $callback);
+    }
+
+    /**
      * @return null|PackLevelCode
      */
     public function getPackLevelCode(): ?PackLevelCode
@@ -1079,6 +1103,18 @@ class TenderLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DocumentReference): mixed  $callback
+     * @return array<array-key, DocumentReference>
+     */
+    public function filterDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->documentReference ?? [], $callback);
     }
 
     /**
@@ -1262,6 +1298,18 @@ class TenderLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(OfferedItemLocationQuantity): mixed  $callback
+     * @return array<array-key, OfferedItemLocationQuantity>
+     */
+    public function filterOfferedItemLocationQuantities(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->offeredItemLocationQuantity ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ReplacementRelatedItem>
      */
     public function getReplacementRelatedItem(): ?array
@@ -1399,6 +1447,18 @@ class TenderLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ReplacementRelatedItem): mixed  $callback
+     * @return array<array-key, ReplacementRelatedItem>
+     */
+    public function filterReplacementRelatedItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->replacementRelatedItem ?? [], $callback);
     }
 
     /**
@@ -1619,6 +1679,18 @@ class TenderLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(SubTenderLine): mixed  $callback
+     * @return array<array-key, SubTenderLine>
+     */
+    public function filterSubTenderLines(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->subTenderLine ?? [], $callback);
     }
 
     /**

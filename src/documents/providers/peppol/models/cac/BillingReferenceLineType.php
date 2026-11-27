@@ -267,4 +267,16 @@ class BillingReferenceLineType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(AllowanceCharge): mixed  $callback
+     * @return array<array-key, AllowanceCharge>
+     */
+    public function filterAllowanceCharges(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->allowanceCharge ?? [], $callback);
+    }
 }

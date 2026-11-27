@@ -311,6 +311,18 @@ class OrderLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
+    }
+
+    /**
      * @return null|LineItem
      */
     public function getLineItem(): ?LineItem
@@ -491,6 +503,18 @@ class OrderLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(SellerProposedSubstituteLineItem): mixed  $callback
+     * @return array<array-key, SellerProposedSubstituteLineItem>
+     */
+    public function filterSellerProposedSubstituteLineItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->sellerProposedSubstituteLineItem ?? [], $callback);
+    }
+
+    /**
      * @return null|array<SellerSubstitutedLineItem>
      */
     public function getSellerSubstitutedLineItem(): ?array
@@ -631,6 +655,18 @@ class OrderLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(SellerSubstitutedLineItem): mixed  $callback
+     * @return array<array-key, SellerSubstitutedLineItem>
+     */
+    public function filterSellerSubstitutedLineItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->sellerSubstitutedLineItem ?? [], $callback);
+    }
+
+    /**
      * @return null|array<BuyerProposedSubstituteLineItem>
      */
     public function getBuyerProposedSubstituteLineItem(): ?array
@@ -768,6 +804,18 @@ class OrderLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(BuyerProposedSubstituteLineItem): mixed  $callback
+     * @return array<array-key, BuyerProposedSubstituteLineItem>
+     */
+    public function filterBuyerProposedSubstituteLineItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->buyerProposedSubstituteLineItem ?? [], $callback);
     }
 
     /**
@@ -991,6 +1039,18 @@ class OrderLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(OrderLineReference): mixed  $callback
+     * @return array<array-key, OrderLineReference>
+     */
+    public function filterOrderLineReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->orderLineReference ?? [], $callback);
+    }
+
+    /**
      * @return null|array<DocumentReference>
      */
     public function getDocumentReference(): ?array
@@ -1128,5 +1188,17 @@ class OrderLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DocumentReference): mixed  $callback
+     * @return array<array-key, DocumentReference>
+     */
+    public function filterDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->documentReference ?? [], $callback);
     }
 }

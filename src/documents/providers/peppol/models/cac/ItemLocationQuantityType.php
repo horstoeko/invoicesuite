@@ -444,6 +444,18 @@ class ItemLocationQuantityType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TradingRestrictions): mixed  $callback
+     * @return array<array-key, TradingRestrictions>
+     */
+    public function filterTradingRestrictions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->tradingRestrictions ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ApplicableTerritoryAddress>
      */
     public function getApplicableTerritoryAddress(): ?array
@@ -581,6 +593,18 @@ class ItemLocationQuantityType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ApplicableTerritoryAddress): mixed  $callback
+     * @return array<array-key, ApplicableTerritoryAddress>
+     */
+    public function filterApplicableTerritoryAddress(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->applicableTerritoryAddress ?? [], $callback);
     }
 
     /**
@@ -764,6 +788,18 @@ class ItemLocationQuantityType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DeliveryUnit): mixed  $callback
+     * @return array<array-key, DeliveryUnit>
+     */
+    public function filterDeliveryUnits(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->deliveryUnit ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ApplicableTaxCategory>
      */
     public function getApplicableTaxCategory(): ?array
@@ -901,6 +937,18 @@ class ItemLocationQuantityType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ApplicableTaxCategory): mixed  $callback
+     * @return array<array-key, ApplicableTaxCategory>
+     */
+    public function filterApplicableTaxCategories(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->applicableTaxCategory ?? [], $callback);
     }
 
     /**
@@ -1081,6 +1129,18 @@ class ItemLocationQuantityType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(AllowanceCharge): mixed  $callback
+     * @return array<array-key, AllowanceCharge>
+     */
+    public function filterAllowanceCharges(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->allowanceCharge ?? [], $callback);
     }
 
     /**

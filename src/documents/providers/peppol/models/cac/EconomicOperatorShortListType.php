@@ -214,6 +214,18 @@ class EconomicOperatorShortListType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(LimitationDescription): mixed  $callback
+     * @return array<array-key, LimitationDescription>
+     */
+    public function filterLimitationDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->limitationDescription ?? [], $callback);
+    }
+
+    /**
      * @return null|ExpectedQuantity
      */
     public function getExpectedQuantity(): ?ExpectedQuantity
@@ -471,5 +483,17 @@ class EconomicOperatorShortListType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(PreSelectedParty): mixed  $callback
+     * @return array<array-key, PreSelectedParty>
+     */
+    public function filterPreSelectedParties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->preSelectedParty ?? [], $callback);
     }
 }

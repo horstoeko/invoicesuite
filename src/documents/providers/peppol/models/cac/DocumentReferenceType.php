@@ -603,6 +603,18 @@ class DocumentReferenceType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(XPath): mixed  $callback
+     * @return array<array-key, XPath>
+     */
+    public function filterXPaths(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->xPath ?? [], $callback);
+    }
+
+    /**
      * @return null|LanguageID
      */
     public function getLanguageID(): ?LanguageID
@@ -900,6 +912,18 @@ class DocumentReferenceType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DocumentDescription): mixed  $callback
+     * @return array<array-key, DocumentDescription>
+     */
+    public function filterDocumentDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->documentDescription ?? [], $callback);
     }
 
     /**

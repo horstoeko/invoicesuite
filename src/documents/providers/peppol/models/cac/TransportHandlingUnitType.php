@@ -595,6 +595,18 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(HandlingInstructions): mixed  $callback
+     * @return array<array-key, HandlingInstructions>
+     */
+    public function filterHandlingInstructions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->handlingInstructions ?? [], $callback);
+    }
+
+    /**
      * @return null|bool
      */
     public function getHazardousRiskIndicator(): ?bool
@@ -845,6 +857,18 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DamageRemarks): mixed  $callback
+     * @return array<array-key, DamageRemarks>
+     */
+    public function filterDamageRemarks(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->damageRemarks ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ShippingMarks>
      */
     public function getShippingMarks(): ?array
@@ -982,6 +1006,18 @@ class TransportHandlingUnitType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ShippingMarks): mixed  $callback
+     * @return array<array-key, ShippingMarks>
+     */
+    public function filterShippingMarks(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->shippingMarks ?? [], $callback);
     }
 
     /**
@@ -1165,6 +1201,18 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(HandlingUnitDespatchLine): mixed  $callback
+     * @return array<array-key, HandlingUnitDespatchLine>
+     */
+    public function filterHandlingUnitDespatchLines(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->handlingUnitDespatchLine ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ActualPackage>
      */
     public function getActualPackage(): ?array
@@ -1302,6 +1350,18 @@ class TransportHandlingUnitType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ActualPackage): mixed  $callback
+     * @return array<array-key, ActualPackage>
+     */
+    public function filterActualPackages(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->actualPackage ?? [], $callback);
     }
 
     /**
@@ -1445,6 +1505,18 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ReceivedHandlingUnitReceiptLine): mixed  $callback
+     * @return array<array-key, ReceivedHandlingUnitReceiptLine>
+     */
+    public function filterReceivedHandlingUnitReceiptLines(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->receivedHandlingUnitReceiptLine ?? [], $callback);
+    }
+
+    /**
      * @return null|array<TransportEquipment>
      */
     public function getTransportEquipment(): ?array
@@ -1582,6 +1654,18 @@ class TransportHandlingUnitType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TransportEquipment): mixed  $callback
+     * @return array<array-key, TransportEquipment>
+     */
+    public function filterTransportEquipment(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->transportEquipment ?? [], $callback);
     }
 
     /**
@@ -1725,6 +1809,18 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TransportMeans): mixed  $callback
+     * @return array<array-key, TransportMeans>
+     */
+    public function filterTransportMeans(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->transportMeans ?? [], $callback);
+    }
+
+    /**
      * @return null|array<HazardousGoodsTransit>
      */
     public function getHazardousGoodsTransit(): ?array
@@ -1865,6 +1961,18 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(HazardousGoodsTransit): mixed  $callback
+     * @return array<array-key, HazardousGoodsTransit>
+     */
+    public function filterHazardousGoodsTransits(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->hazardousGoodsTransit ?? [], $callback);
+    }
+
+    /**
      * @return null|array<MeasurementDimension>
      */
     public function getMeasurementDimension(): ?array
@@ -2002,6 +2110,18 @@ class TransportHandlingUnitType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(MeasurementDimension): mixed  $callback
+     * @return array<array-key, MeasurementDimension>
+     */
+    public function filterMeasurementDimensions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->measurementDimension ?? [], $callback);
     }
 
     /**
@@ -2225,6 +2345,18 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(GoodsItem): mixed  $callback
+     * @return array<array-key, GoodsItem>
+     */
+    public function filterGoodsItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->goodsItem ?? [], $callback);
+    }
+
+    /**
      * @return null|FloorSpaceMeasurementDimension
      */
     public function getFloorSpaceMeasurementDimension(): ?FloorSpaceMeasurementDimension
@@ -2445,6 +2577,18 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ShipmentDocumentReference): mixed  $callback
+     * @return array<array-key, ShipmentDocumentReference>
+     */
+    public function filterShipmentDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->shipmentDocumentReference ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Status>
      */
     public function getStatus(): ?array
@@ -2582,6 +2726,18 @@ class TransportHandlingUnitType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Status): mixed  $callback
+     * @return array<array-key, Status>
+     */
+    public function filterStatuses(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->status ?? [], $callback);
     }
 
     /**
@@ -2725,6 +2881,18 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(CustomsDeclaration): mixed  $callback
+     * @return array<array-key, CustomsDeclaration>
+     */
+    public function filterCustomsDeclarations(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->customsDeclaration ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ReferencedShipment>
      */
     public function getReferencedShipment(): ?array
@@ -2865,6 +3033,18 @@ class TransportHandlingUnitType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ReferencedShipment): mixed  $callback
+     * @return array<array-key, ReferencedShipment>
+     */
+    public function filterReferencedShipments(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->referencedShipment ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Package>
      */
     public function getPackage(): ?array
@@ -3002,5 +3182,17 @@ class TransportHandlingUnitType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Package): mixed  $callback
+     * @return array<array-key, Package>
+     */
+    public function filterPackages(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->package ?? [], $callback);
     }
 }

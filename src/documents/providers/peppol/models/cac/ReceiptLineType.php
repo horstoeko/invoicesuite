@@ -474,6 +474,18 @@ class ReceiptLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
+    }
+
+    /**
      * @return null|ReceivedQuantity
      */
     public function getReceivedQuantity(): ?ReceivedQuantity
@@ -811,6 +823,18 @@ class ReceiptLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(RejectReason): mixed  $callback
+     * @return array<array-key, RejectReason>
+     */
+    public function filterRejectReasons(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->rejectReason ?? [], $callback);
     }
 
     /**
@@ -1224,6 +1248,18 @@ class ReceiptLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DespatchLineReference): mixed  $callback
+     * @return array<array-key, DespatchLineReference>
+     */
+    public function filterDespatchLineReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->despatchLineReference ?? [], $callback);
+    }
+
+    /**
      * @return null|array<DocumentReference>
      */
     public function getDocumentReference(): ?array
@@ -1361,6 +1397,18 @@ class ReceiptLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DocumentReference): mixed  $callback
+     * @return array<array-key, DocumentReference>
+     */
+    public function filterDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->documentReference ?? [], $callback);
     }
 
     /**
@@ -1504,6 +1552,18 @@ class ReceiptLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Item): mixed  $callback
+     * @return array<array-key, Item>
+     */
+    public function filterItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->item ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Shipment>
      */
     public function getShipment(): ?array
@@ -1641,5 +1701,17 @@ class ReceiptLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Shipment): mixed  $callback
+     * @return array<array-key, Shipment>
+     */
+    public function filterShipments(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->shipment ?? [], $callback);
     }
 }

@@ -384,6 +384,18 @@ class TransportMeansType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(RegistrationNationality): mixed  $callback
+     * @return array<array-key, RegistrationNationality>
+     */
+    public function filterRegistrationNationalities(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->registrationNationality ?? [], $callback);
+    }
+
+    /**
      * @return null|DirectionCode
      */
     public function getDirectionCode(): ?DirectionCode
@@ -881,5 +893,17 @@ class TransportMeansType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(MeasurementDimension): mixed  $callback
+     * @return array<array-key, MeasurementDimension>
+     */
+    public function filterMeasurementDimensions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->measurementDimension ?? [], $callback);
     }
 }

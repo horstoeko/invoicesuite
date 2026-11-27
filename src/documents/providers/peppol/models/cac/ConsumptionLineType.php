@@ -481,6 +481,18 @@ class ConsumptionLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Delivery): mixed  $callback
+     * @return array<array-key, Delivery>
+     */
+    public function filterDeliveries(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->delivery ?? [], $callback);
+    }
+
+    /**
      * @return null|array<AllowanceCharge>
      */
     public function getAllowanceCharge(): ?array
@@ -621,6 +633,18 @@ class ConsumptionLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(AllowanceCharge): mixed  $callback
+     * @return array<array-key, AllowanceCharge>
+     */
+    public function filterAllowanceCharges(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->allowanceCharge ?? [], $callback);
+    }
+
+    /**
      * @return null|array<TaxTotal>
      */
     public function getTaxTotal(): ?array
@@ -758,6 +782,18 @@ class ConsumptionLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TaxTotal): mixed  $callback
+     * @return array<array-key, TaxTotal>
+     */
+    public function filterTaxTotals(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->taxTotal ?? [], $callback);
     }
 
     /**

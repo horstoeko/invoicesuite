@@ -409,6 +409,18 @@ class ProcurementProjectType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Name): mixed  $callback
+     * @return array<array-key, Name>
+     */
+    public function filterNames(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->name ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Description>
      */
     public function getDescription(): ?array
@@ -546,6 +558,18 @@ class ProcurementProjectType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
     }
 
     /**
@@ -849,6 +873,18 @@ class ProcurementProjectType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(FeeDescription): mixed  $callback
+     * @return array<array-key, FeeDescription>
+     */
+    public function filterFeeDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->feeDescription ?? [], $callback);
+    }
+
+    /**
      * @return null|DateTimeInterface
      */
     public function getRequestedDeliveryDate(): ?DateTimeInterface
@@ -1056,6 +1092,18 @@ class ProcurementProjectType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
     }
 
     /**
@@ -1279,6 +1327,18 @@ class ProcurementProjectType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(AdditionalCommodityClassification): mixed  $callback
+     * @return array<array-key, AdditionalCommodityClassification>
+     */
+    public function filterAdditionalCommodityClassifications(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->additionalCommodityClassification ?? [], $callback);
+    }
+
+    /**
      * @return null|array<RealizedLocation>
      */
     public function getRealizedLocation(): ?array
@@ -1416,6 +1476,18 @@ class ProcurementProjectType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(RealizedLocation): mixed  $callback
+     * @return array<array-key, RealizedLocation>
+     */
+    public function filterRealizedLocations(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->realizedLocation ?? [], $callback);
     }
 
     /**
@@ -1636,5 +1708,17 @@ class ProcurementProjectType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(RequestForTenderLine): mixed  $callback
+     * @return array<array-key, RequestForTenderLine>
+     */
+    public function filterRequestForTenderLines(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->requestForTenderLine ?? [], $callback);
     }
 }

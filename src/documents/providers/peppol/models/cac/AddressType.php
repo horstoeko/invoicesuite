@@ -1436,6 +1436,18 @@ class AddressType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(AddressLine): mixed  $callback
+     * @return array<array-key, AddressLine>
+     */
+    public function filterAddressLines(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->addressLine ?? [], $callback);
+    }
+
+    /**
      * @return null|Country
      */
     public function getCountry(): ?Country
@@ -1613,5 +1625,17 @@ class AddressType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(LocationCoordinate): mixed  $callback
+     * @return array<array-key, LocationCoordinate>
+     */
+    public function filterLocationCoordinates(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->locationCoordinate ?? [], $callback);
     }
 }

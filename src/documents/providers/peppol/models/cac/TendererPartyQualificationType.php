@@ -188,6 +188,18 @@ class TendererPartyQualificationType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(InterestedProcurementProjectLot): mixed  $callback
+     * @return array<array-key, InterestedProcurementProjectLot>
+     */
+    public function filterInterestedProcurementProjectLots(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->interestedProcurementProjectLot ?? [], $callback);
+    }
+
+    /**
      * @return null|MainQualifyingParty
      */
     public function getMainQualifyingParty(): ?MainQualifyingParty
@@ -365,5 +377,17 @@ class TendererPartyQualificationType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(AdditionalQualifyingParty): mixed  $callback
+     * @return array<array-key, AdditionalQualifyingParty>
+     */
+    public function filterAdditionalQualifyingParties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->additionalQualifyingParty ?? [], $callback);
     }
 }

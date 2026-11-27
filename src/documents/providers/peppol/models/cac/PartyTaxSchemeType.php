@@ -396,6 +396,18 @@ class PartyTaxSchemeType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ExemptionReason): mixed  $callback
+     * @return array<array-key, ExemptionReason>
+     */
+    public function filterExemptionReasons(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->exemptionReason ?? [], $callback);
+    }
+
+    /**
      * @return null|RegistrationAddress
      */
     public function getRegistrationAddress(): ?RegistrationAddress

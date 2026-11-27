@@ -344,6 +344,18 @@ class ItemIdentificationType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(PhysicalAttribute): mixed  $callback
+     * @return array<array-key, PhysicalAttribute>
+     */
+    public function filterPhysicalAttributes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->physicalAttribute ?? [], $callback);
+    }
+
+    /**
      * @return null|array<MeasurementDimension>
      */
     public function getMeasurementDimension(): ?array
@@ -481,6 +493,18 @@ class ItemIdentificationType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(MeasurementDimension): mixed  $callback
+     * @return array<array-key, MeasurementDimension>
+     */
+    public function filterMeasurementDimensions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->measurementDimension ?? [], $callback);
     }
 
     /**

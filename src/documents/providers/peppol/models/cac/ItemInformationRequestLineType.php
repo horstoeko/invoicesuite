@@ -385,6 +385,18 @@ class ItemInformationRequestLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Period): mixed  $callback
+     * @return array<array-key, Period>
+     */
+    public function filterPeriods(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->period ?? [], $callback);
+    }
+
+    /**
      * @return null|array<SalesItem>
      */
     public function getSalesItem(): ?array
@@ -522,5 +534,17 @@ class ItemInformationRequestLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(SalesItem): mixed  $callback
+     * @return array<array-key, SalesItem>
+     */
+    public function filterSalesItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->salesItem ?? [], $callback);
     }
 }

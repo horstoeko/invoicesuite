@@ -345,6 +345,18 @@ class NotificationRequirementType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(NotifyParty): mixed  $callback
+     * @return array<array-key, NotifyParty>
+     */
+    public function filterNotifyParties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->notifyParty ?? [], $callback);
+    }
+
+    /**
      * @return null|array<NotificationPeriod>
      */
     public function getNotificationPeriod(): ?array
@@ -485,6 +497,18 @@ class NotificationRequirementType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(NotificationPeriod): mixed  $callback
+     * @return array<array-key, NotificationPeriod>
+     */
+    public function filterNotificationPeriods(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->notificationPeriod ?? [], $callback);
+    }
+
+    /**
      * @return null|array<NotificationLocation>
      */
     public function getNotificationLocation(): ?array
@@ -622,5 +646,17 @@ class NotificationRequirementType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(NotificationLocation): mixed  $callback
+     * @return array<array-key, NotificationLocation>
+     */
+    public function filterNotificationLocations(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->notificationLocation ?? [], $callback);
     }
 }

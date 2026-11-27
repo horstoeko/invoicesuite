@@ -169,6 +169,18 @@ class ManifestType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ReferenceType): mixed  $callback
+     * @return array<array-key, ReferenceType>
+     */
+    public function filterReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->reference ?? [], $callback);
+    }
+
+    /**
      * @translation-german-untranslated
      *
      * @return null|string

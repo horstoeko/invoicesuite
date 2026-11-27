@@ -500,6 +500,18 @@ class FinancialAccountType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(PaymentNote): mixed  $callback
+     * @return array<array-key, PaymentNote>
+     */
+    public function filterPaymentNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->paymentNote ?? [], $callback);
+    }
+
+    /**
      * @return null|FinancialInstitutionBranch
      */
     public function getFinancialInstitutionBranch(): ?FinancialInstitutionBranch

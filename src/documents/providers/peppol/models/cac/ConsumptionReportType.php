@@ -487,6 +487,18 @@ class ConsumptionReportType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|TotalConsumedQuantity
      */
     public function getTotalConsumedQuantity(): ?TotalConsumedQuantity
@@ -1107,6 +1119,18 @@ class ConsumptionReportType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ConsumptionReportReference): mixed  $callback
+     * @return array<array-key, ConsumptionReportReference>
+     */
+    public function filterConsumptionReportReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->consumptionReportReference ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ConsumptionHistory>
      */
     public function getConsumptionHistory(): ?array
@@ -1244,5 +1268,17 @@ class ConsumptionReportType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ConsumptionHistory): mixed  $callback
+     * @return array<array-key, ConsumptionHistory>
+     */
+    public function filterConsumptionHistories(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->consumptionHistory ?? [], $callback);
     }
 }

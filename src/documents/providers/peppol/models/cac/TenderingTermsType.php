@@ -806,6 +806,18 @@ class TenderingTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(AcceptedVariantsDescription): mixed  $callback
+     * @return array<array-key, AcceptedVariantsDescription>
+     */
+    public function filterAcceptedVariantsDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->acceptedVariantsDescription ?? [], $callback);
+    }
+
+    /**
      * @return null|array<PriceRevisionFormulaDescription>
      */
     public function getPriceRevisionFormulaDescription(): ?array
@@ -943,6 +955,18 @@ class TenderingTermsType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(PriceRevisionFormulaDescription): mixed  $callback
+     * @return array<array-key, PriceRevisionFormulaDescription>
+     */
+    public function filterPriceRevisionFormulaDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->priceRevisionFormulaDescription ?? [], $callback);
     }
 
     /**
@@ -1126,6 +1150,18 @@ class TenderingTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(FundingProgram): mixed  $callback
+     * @return array<array-key, FundingProgram>
+     */
+    public function filterFundingPrograms(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->fundingProgram ?? [], $callback);
+    }
+
+    /**
      * @return null|MaximumAdvertisementAmount
      */
     public function getMaximumAdvertisementAmount(): ?MaximumAdvertisementAmount
@@ -1303,6 +1339,18 @@ class TenderingTermsType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
     }
 
     /**
@@ -1586,6 +1634,18 @@ class TenderingTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(AdditionalConditions): mixed  $callback
+     * @return array<array-key, AdditionalConditions>
+     */
+    public function filterAdditionalConditions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->additionalConditions ?? [], $callback);
+    }
+
+    /**
      * @return null|DateTimeInterface
      */
     public function getLatestSecurityClearanceDate(): ?DateTimeInterface
@@ -1796,6 +1856,18 @@ class TenderingTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(PenaltyClause): mixed  $callback
+     * @return array<array-key, PenaltyClause>
+     */
+    public function filterPenaltyClauses(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->penaltyClause ?? [], $callback);
+    }
+
+    /**
      * @return null|array<RequiredFinancialGuarantee>
      */
     public function getRequiredFinancialGuarantee(): ?array
@@ -1933,6 +2005,18 @@ class TenderingTermsType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(RequiredFinancialGuarantee): mixed  $callback
+     * @return array<array-key, RequiredFinancialGuarantee>
+     */
+    public function filterRequiredFinancialGuarantees(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->requiredFinancialGuarantee ?? [], $callback);
     }
 
     /**
@@ -2236,6 +2320,18 @@ class TenderingTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ContractualDocumentReference): mixed  $callback
+     * @return array<array-key, ContractualDocumentReference>
+     */
+    public function filterContractualDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->contractualDocumentReference ?? [], $callback);
+    }
+
+    /**
      * @return null|CallForTendersDocumentReference
      */
     public function getCallForTendersDocumentReference(): ?CallForTendersDocumentReference
@@ -2456,6 +2552,18 @@ class TenderingTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(PaymentTerms): mixed  $callback
+     * @return array<array-key, PaymentTerms>
+     */
+    public function filterPaymentTerms(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->paymentTerms ?? [], $callback);
+    }
+
+    /**
      * @return null|array<TendererQualificationRequest>
      */
     public function getTendererQualificationRequest(): ?array
@@ -2593,6 +2701,18 @@ class TenderingTermsType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TendererQualificationRequest): mixed  $callback
+     * @return array<array-key, TendererQualificationRequest>
+     */
+    public function filterTendererQualificationRequests(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->tendererQualificationRequest ?? [], $callback);
     }
 
     /**
@@ -2736,6 +2856,18 @@ class TenderingTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(AllowedSubcontractTerms): mixed  $callback
+     * @return array<array-key, AllowedSubcontractTerms>
+     */
+    public function filterAllowedSubcontractTerms(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->allowedSubcontractTerms ?? [], $callback);
+    }
+
+    /**
      * @return null|array<TenderPreparation>
      */
     public function getTenderPreparation(): ?array
@@ -2876,6 +3008,18 @@ class TenderingTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TenderPreparation): mixed  $callback
+     * @return array<array-key, TenderPreparation>
+     */
+    public function filterTenderPreparations(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->tenderPreparation ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ContractExecutionRequirement>
      */
     public function getContractExecutionRequirement(): ?array
@@ -3013,6 +3157,18 @@ class TenderingTermsType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ContractExecutionRequirement): mixed  $callback
+     * @return array<array-key, ContractExecutionRequirement>
+     */
+    public function filterContractExecutionRequirements(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->contractExecutionRequirement ?? [], $callback);
     }
 
     /**
@@ -3356,6 +3512,18 @@ class TenderingTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TenderEvaluationParty): mixed  $callback
+     * @return array<array-key, TenderEvaluationParty>
+     */
+    public function filterTenderEvaluationParties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->tenderEvaluationParty ?? [], $callback);
+    }
+
+    /**
      * @return null|TenderValidityPeriod
      */
     public function getTenderValidityPeriod(): ?TenderValidityPeriod
@@ -3616,6 +3784,18 @@ class TenderingTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Language): mixed  $callback
+     * @return array<array-key, Language>
+     */
+    public function filterLanguages(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->language ?? [], $callback);
+    }
+
+    /**
      * @return null|array<BudgetAccountLine>
      */
     public function getBudgetAccountLine(): ?array
@@ -3753,6 +3933,18 @@ class TenderingTermsType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(BudgetAccountLine): mixed  $callback
+     * @return array<array-key, BudgetAccountLine>
+     */
+    public function filterBudgetAccountLines(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->budgetAccountLine ?? [], $callback);
     }
 
     /**

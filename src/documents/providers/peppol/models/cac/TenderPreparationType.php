@@ -306,6 +306,18 @@ class TenderPreparationType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|OpenTenderID
      */
     public function getOpenTenderID(): ?OpenTenderID
@@ -486,6 +498,18 @@ class TenderPreparationType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ProcurementProjectLot): mixed  $callback
+     * @return array<array-key, ProcurementProjectLot>
+     */
+    public function filterProcurementProjectLots(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->procurementProjectLot ?? [], $callback);
+    }
+
+    /**
      * @return null|array<DocumentTenderRequirement>
      */
     public function getDocumentTenderRequirement(): ?array
@@ -623,5 +647,17 @@ class TenderPreparationType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DocumentTenderRequirement): mixed  $callback
+     * @return array<array-key, DocumentTenderRequirement>
+     */
+    public function filterDocumentTenderRequirements(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->documentTenderRequirement ?? [], $callback);
     }
 }

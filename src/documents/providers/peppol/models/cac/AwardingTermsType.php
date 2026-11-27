@@ -327,6 +327,18 @@ class AwardingTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|array<TechnicalCommitteeDescription>
      */
     public function getTechnicalCommitteeDescription(): ?array
@@ -467,6 +479,18 @@ class AwardingTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TechnicalCommitteeDescription): mixed  $callback
+     * @return array<array-key, TechnicalCommitteeDescription>
+     */
+    public function filterTechnicalCommitteeDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->technicalCommitteeDescription ?? [], $callback);
+    }
+
+    /**
      * @return null|array<LowTendersDescription>
      */
     public function getLowTendersDescription(): ?array
@@ -604,6 +628,18 @@ class AwardingTermsType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(LowTendersDescription): mixed  $callback
+     * @return array<array-key, LowTendersDescription>
+     */
+    public function filterLowTendersDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->lowTendersDescription ?? [], $callback);
     }
 
     /**
@@ -777,6 +813,18 @@ class AwardingTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(PrizeDescription): mixed  $callback
+     * @return array<array-key, PrizeDescription>
+     */
+    public function filterPrizeDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->prizeDescription ?? [], $callback);
+    }
+
+    /**
      * @return null|array<PaymentDescription>
      */
     public function getPaymentDescription(): ?array
@@ -914,6 +962,18 @@ class AwardingTermsType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(PaymentDescription): mixed  $callback
+     * @return array<array-key, PaymentDescription>
+     */
+    public function filterPaymentDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->paymentDescription ?? [], $callback);
     }
 
     /**
@@ -1117,6 +1177,18 @@ class AwardingTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(AwardingCriterion): mixed  $callback
+     * @return array<array-key, AwardingCriterion>
+     */
+    public function filterAwardingCriteria(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->awardingCriterion ?? [], $callback);
+    }
+
+    /**
      * @return null|array<TechnicalCommitteePerson>
      */
     public function getTechnicalCommitteePerson(): ?array
@@ -1254,5 +1326,17 @@ class AwardingTermsType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TechnicalCommitteePerson): mixed  $callback
+     * @return array<array-key, TechnicalCommitteePerson>
+     */
+    public function filterTechnicalCommitteePersons(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->technicalCommitteePerson ?? [], $callback);
     }
 }

@@ -212,6 +212,18 @@ class HeaderTradeDeliveryType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(LogisticsTransportMovementType): mixed  $callback
+     * @return array<array-key, LogisticsTransportMovementType>
+     */
+    public function filterRelatedSupplyChainConsignments(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->relatedSupplyChainConsignment ?? [], $callback);
+    }
+
+    /**
      * @return null|TradePartyType
      */
     public function getShipToTradeParty(): ?TradePartyType

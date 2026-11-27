@@ -430,6 +430,18 @@ class TransportScheduleType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Remarks): mixed  $callback
+     * @return array<array-key, Remarks>
+     */
+    public function filterRemarks(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->remarks ?? [], $callback);
+    }
+
+    /**
      * @return null|StatusLocation
      */
     public function getStatusLocation(): ?StatusLocation

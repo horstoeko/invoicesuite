@@ -214,4 +214,16 @@ class LineResponseType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Response): mixed  $callback
+     * @return array<array-key, Response>
+     */
+    public function filterResponses(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->response ?? [], $callback);
+    }
 }

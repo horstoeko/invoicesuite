@@ -1106,6 +1106,18 @@ class DeliveryType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(NotifyParty): mixed  $callback
+     * @return array<array-key, NotifyParty>
+     */
+    public function filterNotifyParties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->notifyParty ?? [], $callback);
+    }
+
+    /**
      * @return null|Despatch
      */
     public function getDespatch(): ?Despatch
@@ -1283,6 +1295,18 @@ class DeliveryType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DeliveryTerms): mixed  $callback
+     * @return array<array-key, DeliveryTerms>
+     */
+    public function filterDeliveryTerms(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->deliveryTerms ?? [], $callback);
     }
 
     /**

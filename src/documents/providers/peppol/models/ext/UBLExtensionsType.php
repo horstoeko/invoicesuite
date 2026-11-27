@@ -163,4 +163,16 @@ class UBLExtensionsType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(UBLExtension): mixed  $callback
+     * @return array<array-key, UBLExtension>
+     */
+    public function filterUBLExtensions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->uBLExtension ?? [], $callback);
+    }
 }

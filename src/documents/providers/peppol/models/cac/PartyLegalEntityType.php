@@ -793,4 +793,16 @@ class PartyLegalEntityType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ShareholderParty): mixed  $callback
+     * @return array<array-key, ShareholderParty>
+     */
+    public function filterShareholderParties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->shareholderParty ?? [], $callback);
+    }
 }

@@ -189,6 +189,18 @@ class TradingTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Information): mixed  $callback
+     * @return array<array-key, Information>
+     */
+    public function filterInformation(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->information ?? [], $callback);
+    }
+
+    /**
      * @return null|Reference
      */
     public function getReference(): ?Reference

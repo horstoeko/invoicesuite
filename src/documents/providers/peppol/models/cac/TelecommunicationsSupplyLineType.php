@@ -330,6 +330,18 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|LineExtensionAmount
      */
     public function getLineExtensionAmount(): ?LineExtensionAmount
@@ -510,6 +522,18 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ExchangeRate): mixed  $callback
+     * @return array<array-key, ExchangeRate>
+     */
+    public function filterExchangeRates(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->exchangeRate ?? [], $callback);
+    }
+
+    /**
      * @return null|array<AllowanceCharge>
      */
     public function getAllowanceCharge(): ?array
@@ -647,6 +671,18 @@ class TelecommunicationsSupplyLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(AllowanceCharge): mixed  $callback
+     * @return array<array-key, AllowanceCharge>
+     */
+    public function filterAllowanceCharges(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->allowanceCharge ?? [], $callback);
     }
 
     /**
@@ -790,6 +826,18 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TaxTotal): mixed  $callback
+     * @return array<array-key, TaxTotal>
+     */
+    public function filterTaxTotals(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->taxTotal ?? [], $callback);
+    }
+
+    /**
      * @return null|array<TelecommunicationsService>
      */
     public function getTelecommunicationsService(): ?array
@@ -927,5 +975,17 @@ class TelecommunicationsSupplyLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TelecommunicationsService): mixed  $callback
+     * @return array<array-key, TelecommunicationsService>
+     */
+    public function filterTelecommunicationsServices(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->telecommunicationsService ?? [], $callback);
     }
 }

@@ -317,4 +317,16 @@ class CataloguePricingUpdateLineType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(RequiredItemLocationQuantity): mixed  $callback
+     * @return array<array-key, RequiredItemLocationQuantity>
+     */
+    public function filterRequiredItemLocationQuantities(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->requiredItemLocationQuantity ?? [], $callback);
+    }
 }

@@ -309,4 +309,16 @@ class ProjectReferenceType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(WorkPhaseReference): mixed  $callback
+     * @return array<array-key, WorkPhaseReference>
+     */
+    public function filterWorkPhaseReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->workPhaseReference ?? [], $callback);
+    }
 }

@@ -360,6 +360,18 @@ class ReminderLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
+    }
+
+    /**
      * @return null|UUID
      */
     public function getUUID(): ?UUID
@@ -850,6 +862,18 @@ class ReminderLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ReminderPeriod): mixed  $callback
+     * @return array<array-key, ReminderPeriod>
+     */
+    public function filterReminderPeriods(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->reminderPeriod ?? [], $callback);
+    }
+
+    /**
      * @return null|array<BillingReference>
      */
     public function getBillingReference(): ?array
@@ -987,6 +1011,18 @@ class ReminderLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(BillingReference): mixed  $callback
+     * @return array<array-key, BillingReference>
+     */
+    public function filterBillingReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->billingReference ?? [], $callback);
     }
 
     /**

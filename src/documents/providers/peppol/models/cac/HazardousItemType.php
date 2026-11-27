@@ -547,6 +547,18 @@ class HazardousItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(AdditionalInformation): mixed  $callback
+     * @return array<array-key, AdditionalInformation>
+     */
+    public function filterAdditionalInformation(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->additionalInformation ?? [], $callback);
+    }
+
+    /**
      * @return null|UNDGCode
      */
     public function getUNDGCode(): ?UNDGCode
@@ -1247,6 +1259,18 @@ class HazardousItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(SecondaryHazard): mixed  $callback
+     * @return array<array-key, SecondaryHazard>
+     */
+    public function filterSecondaryHazards(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->secondaryHazard ?? [], $callback);
+    }
+
+    /**
      * @return null|array<HazardousGoodsTransit>
      */
     public function getHazardousGoodsTransit(): ?array
@@ -1384,6 +1408,18 @@ class HazardousItemType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(HazardousGoodsTransit): mixed  $callback
+     * @return array<array-key, HazardousGoodsTransit>
+     */
+    public function filterHazardousGoodsTransits(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->hazardousGoodsTransit ?? [], $callback);
     }
 
     /**
@@ -1604,5 +1640,17 @@ class HazardousItemType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(AdditionalTemperature): mixed  $callback
+     * @return array<array-key, AdditionalTemperature>
+     */
+    public function filterAdditionalTemperatures(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->additionalTemperature ?? [], $callback);
     }
 }

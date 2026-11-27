@@ -352,6 +352,18 @@ class PriceType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(PriceChangeReason): mixed  $callback
+     * @return array<array-key, PriceChangeReason>
+     */
+    public function filterPriceChangeReasons(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->priceChangeReason ?? [], $callback);
+    }
+
+    /**
      * @return null|PriceTypeCode
      */
     public function getPriceTypeCode(): ?PriceTypeCode
@@ -612,6 +624,18 @@ class PriceType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ValidityPeriod): mixed  $callback
+     * @return array<array-key, ValidityPeriod>
+     */
+    public function filterValidityPeriods(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->validityPeriod ?? [], $callback);
+    }
+
+    /**
      * @return null|PriceList
      */
     public function getPriceList(): ?PriceList
@@ -789,6 +813,18 @@ class PriceType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(AllowanceCharge): mixed  $callback
+     * @return array<array-key, AllowanceCharge>
+     */
+    public function filterAllowanceCharges(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->allowanceCharge ?? [], $callback);
     }
 
     /**

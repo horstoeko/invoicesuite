@@ -502,6 +502,18 @@ class TenderingProcessType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|array<NegotiationDescription>
      */
     public function getNegotiationDescription(): ?array
@@ -639,6 +651,18 @@ class TenderingProcessType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(NegotiationDescription): mixed  $callback
+     * @return array<array-key, NegotiationDescription>
+     */
+    public function filterNegotiationDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->negotiationDescription ?? [], $callback);
     }
 
     /**
@@ -1242,6 +1266,18 @@ class TenderingProcessType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(NoticeDocumentReference): mixed  $callback
+     * @return array<array-key, NoticeDocumentReference>
+     */
+    public function filterNoticeDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->noticeDocumentReference ?? [], $callback);
+    }
+
+    /**
      * @return null|array<AdditionalDocumentReference>
      */
     public function getAdditionalDocumentReference(): ?array
@@ -1382,6 +1418,18 @@ class TenderingProcessType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(AdditionalDocumentReference): mixed  $callback
+     * @return array<array-key, AdditionalDocumentReference>
+     */
+    public function filterAdditionalDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->additionalDocumentReference ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ProcessJustification>
      */
     public function getProcessJustification(): ?array
@@ -1519,6 +1567,18 @@ class TenderingProcessType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ProcessJustification): mixed  $callback
+     * @return array<array-key, ProcessJustification>
+     */
+    public function filterProcessJustifications(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->processJustification ?? [], $callback);
     }
 
     /**
@@ -1699,6 +1759,18 @@ class TenderingProcessType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(OpenTenderEvent): mixed  $callback
+     * @return array<array-key, OpenTenderEvent>
+     */
+    public function filterOpenTenderEvents(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->openTenderEvent ?? [], $callback);
     }
 
     /**

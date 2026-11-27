@@ -237,4 +237,16 @@ class LogisticsServiceChargeType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TradeTaxType): mixed  $callback
+     * @return array<array-key, TradeTaxType>
+     */
+    public function filterAppliedTradeTaxes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->appliedTradeTax ?? [], $callback);
+    }
 }

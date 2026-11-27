@@ -267,4 +267,16 @@ class BudgetAccountLineType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(BudgetAccount): mixed  $callback
+     * @return array<array-key, BudgetAccount>
+     */
+    public function filterBudgetAccounts(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->budgetAccount ?? [], $callback);
+    }
 }

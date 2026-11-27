@@ -154,4 +154,16 @@ class TransformsType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TransformType): mixed  $callback
+     * @return array<array-key, TransformType>
+     */
+    public function filterTransforms(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->transform ?? [], $callback);
+    }
 }

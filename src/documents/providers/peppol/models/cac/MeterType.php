@@ -437,6 +437,18 @@ class MeterType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(MeterReading): mixed  $callback
+     * @return array<array-key, MeterReading>
+     */
+    public function filterMeterReadings(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->meterReading ?? [], $callback);
+    }
+
+    /**
      * @return null|array<MeterProperty>
      */
     public function getMeterProperty(): ?array
@@ -574,5 +586,17 @@ class MeterType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(MeterProperty): mixed  $callback
+     * @return array<array-key, MeterProperty>
+     */
+    public function filterMeterProperties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->meterProperty ?? [], $callback);
     }
 }

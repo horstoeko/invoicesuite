@@ -678,6 +678,18 @@ class CatalogueLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
+    }
+
+    /**
      * @return null|bool
      */
     public function getOrderableIndicator(): ?bool
@@ -1045,6 +1057,18 @@ class CatalogueLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(WarrantyInformation): mixed  $callback
+     * @return array<array-key, WarrantyInformation>
+     */
+    public function filterWarrantyInformation(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->warrantyInformation ?? [], $callback);
     }
 
     /**
@@ -1428,6 +1452,18 @@ class CatalogueLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ItemComparison): mixed  $callback
+     * @return array<array-key, ItemComparison>
+     */
+    public function filterItemComparisons(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->itemComparison ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ComponentRelatedItem>
      */
     public function getComponentRelatedItem(): ?array
@@ -1565,6 +1601,18 @@ class CatalogueLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ComponentRelatedItem): mixed  $callback
+     * @return array<array-key, ComponentRelatedItem>
+     */
+    public function filterComponentRelatedItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->componentRelatedItem ?? [], $callback);
     }
 
     /**
@@ -1708,6 +1756,18 @@ class CatalogueLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(AccessoryRelatedItem): mixed  $callback
+     * @return array<array-key, AccessoryRelatedItem>
+     */
+    public function filterAccessoryRelatedItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->accessoryRelatedItem ?? [], $callback);
+    }
+
+    /**
      * @return null|array<RequiredRelatedItem>
      */
     public function getRequiredRelatedItem(): ?array
@@ -1845,6 +1905,18 @@ class CatalogueLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(RequiredRelatedItem): mixed  $callback
+     * @return array<array-key, RequiredRelatedItem>
+     */
+    public function filterRequiredRelatedItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->requiredRelatedItem ?? [], $callback);
     }
 
     /**
@@ -1988,6 +2060,18 @@ class CatalogueLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ReplacementRelatedItem): mixed  $callback
+     * @return array<array-key, ReplacementRelatedItem>
+     */
+    public function filterReplacementRelatedItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->replacementRelatedItem ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ComplementaryRelatedItem>
      */
     public function getComplementaryRelatedItem(): ?array
@@ -2125,6 +2209,18 @@ class CatalogueLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ComplementaryRelatedItem): mixed  $callback
+     * @return array<array-key, ComplementaryRelatedItem>
+     */
+    public function filterComplementaryRelatedItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->complementaryRelatedItem ?? [], $callback);
     }
 
     /**
@@ -2268,6 +2364,18 @@ class CatalogueLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ReplacedRelatedItem): mixed  $callback
+     * @return array<array-key, ReplacedRelatedItem>
+     */
+    public function filterReplacedRelatedItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->replacedRelatedItem ?? [], $callback);
+    }
+
+    /**
      * @return null|array<RequiredItemLocationQuantity>
      */
     public function getRequiredItemLocationQuantity(): ?array
@@ -2408,6 +2516,18 @@ class CatalogueLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(RequiredItemLocationQuantity): mixed  $callback
+     * @return array<array-key, RequiredItemLocationQuantity>
+     */
+    public function filterRequiredItemLocationQuantities(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->requiredItemLocationQuantity ?? [], $callback);
+    }
+
+    /**
      * @return null|array<DocumentReference>
      */
     public function getDocumentReference(): ?array
@@ -2545,6 +2665,18 @@ class CatalogueLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DocumentReference): mixed  $callback
+     * @return array<array-key, DocumentReference>
+     */
+    public function filterDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->documentReference ?? [], $callback);
     }
 
     /**
@@ -2725,6 +2857,18 @@ class CatalogueLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(KeywordItemProperty): mixed  $callback
+     * @return array<array-key, KeywordItemProperty>
+     */
+    public function filterKeywordItemProperties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->keywordItemProperty ?? [], $callback);
     }
 
     /**

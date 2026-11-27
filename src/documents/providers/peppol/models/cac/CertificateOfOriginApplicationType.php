@@ -540,6 +540,18 @@ class CertificateOfOriginApplicationType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Remarks): mixed  $callback
+     * @return array<array-key, Remarks>
+     */
+    public function filterRemarks(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->remarks ?? [], $callback);
+    }
+
+    /**
      * @return null|Shipment
      */
     public function getShipment(): ?Shipment
@@ -717,6 +729,18 @@ class CertificateOfOriginApplicationType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(EndorserParty): mixed  $callback
+     * @return array<array-key, EndorserParty>
+     */
+    public function filterEndorserParties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->endorserParty ?? [], $callback);
     }
 
     /**
@@ -1060,6 +1084,18 @@ class CertificateOfOriginApplicationType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DocumentDistribution): mixed  $callback
+     * @return array<array-key, DocumentDistribution>
+     */
+    public function filterDocumentDistributions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->documentDistribution ?? [], $callback);
+    }
+
+    /**
      * @return null|array<SupportingDocumentReference>
      */
     public function getSupportingDocumentReference(): ?array
@@ -1200,6 +1236,18 @@ class CertificateOfOriginApplicationType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(SupportingDocumentReference): mixed  $callback
+     * @return array<array-key, SupportingDocumentReference>
+     */
+    public function filterSupportingDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->supportingDocumentReference ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Signature>
      */
     public function getSignature(): ?array
@@ -1337,5 +1385,17 @@ class CertificateOfOriginApplicationType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Signature): mixed  $callback
+     * @return array<array-key, Signature>
+     */
+    public function filterSignatures(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->signature ?? [], $callback);
     }
 }

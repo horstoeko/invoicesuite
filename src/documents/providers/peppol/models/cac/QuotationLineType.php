@@ -324,6 +324,18 @@ class QuotationLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
+    }
+
+    /**
      * @return null|Quantity
      */
     public function getQuantity(): ?Quantity
@@ -624,6 +636,18 @@ class QuotationLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DocumentReference): mixed  $callback
+     * @return array<array-key, DocumentReference>
+     */
+    public function filterDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->documentReference ?? [], $callback);
+    }
+
+    /**
      * @return null|LineItem
      */
     public function getLineItem(): ?LineItem
@@ -804,6 +828,18 @@ class QuotationLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(SellerProposedSubstituteLineItem): mixed  $callback
+     * @return array<array-key, SellerProposedSubstituteLineItem>
+     */
+    public function filterSellerProposedSubstituteLineItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->sellerProposedSubstituteLineItem ?? [], $callback);
+    }
+
+    /**
      * @return null|array<AlternativeLineItem>
      */
     public function getAlternativeLineItem(): ?array
@@ -941,6 +977,18 @@ class QuotationLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(AlternativeLineItem): mixed  $callback
+     * @return array<array-key, AlternativeLineItem>
+     */
+    public function filterAlternativeLineItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->alternativeLineItem ?? [], $callback);
     }
 
     /**

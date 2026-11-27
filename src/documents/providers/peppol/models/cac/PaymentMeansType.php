@@ -495,6 +495,18 @@ class PaymentMeansType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(InstructionNote): mixed  $callback
+     * @return array<array-key, InstructionNote>
+     */
+    public function filterInstructionNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->instructionNote ?? [], $callback);
+    }
+
+    /**
      * @return null|array<PaymentID>
      */
     public function getPaymentID(): ?array
@@ -632,6 +644,18 @@ class PaymentMeansType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(PaymentID): mixed  $callback
+     * @return array<array-key, PaymentID>
+     */
+    public function filterPaymentIDs(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->paymentID ?? [], $callback);
     }
 
     /**

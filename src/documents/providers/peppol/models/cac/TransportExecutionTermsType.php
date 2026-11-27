@@ -284,6 +284,18 @@ class TransportExecutionTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TransportUserSpecialTerms): mixed  $callback
+     * @return array<array-key, TransportUserSpecialTerms>
+     */
+    public function filterTransportUserSpecialTerms(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->transportUserSpecialTerms ?? [], $callback);
+    }
+
+    /**
      * @return null|array<TransportServiceProviderSpecialTerms>
      */
     public function getTransportServiceProviderSpecialTerms(): ?array
@@ -421,6 +433,18 @@ class TransportExecutionTermsType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TransportServiceProviderSpecialTerms): mixed  $callback
+     * @return array<array-key, TransportServiceProviderSpecialTerms>
+     */
+    public function filterTransportServiceProviderSpecialTerms(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->transportServiceProviderSpecialTerms ?? [], $callback);
     }
 
     /**
@@ -564,6 +588,18 @@ class TransportExecutionTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ChangeConditions): mixed  $callback
+     * @return array<array-key, ChangeConditions>
+     */
+    public function filterChangeConditions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->changeConditions ?? [], $callback);
+    }
+
+    /**
      * @return null|array<PaymentTerms>
      */
     public function getPaymentTerms(): ?array
@@ -704,6 +740,18 @@ class TransportExecutionTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(PaymentTerms): mixed  $callback
+     * @return array<array-key, PaymentTerms>
+     */
+    public function filterPaymentTerms(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->paymentTerms ?? [], $callback);
+    }
+
+    /**
      * @return null|array<DeliveryTerms>
      */
     public function getDeliveryTerms(): ?array
@@ -841,6 +889,18 @@ class TransportExecutionTermsType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DeliveryTerms): mixed  $callback
+     * @return array<array-key, DeliveryTerms>
+     */
+    public function filterDeliveryTerms(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->deliveryTerms ?? [], $callback);
     }
 
     /**
@@ -1104,6 +1164,18 @@ class TransportExecutionTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(EnvironmentalEmission): mixed  $callback
+     * @return array<array-key, EnvironmentalEmission>
+     */
+    public function filterEnvironmentalEmissions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->environmentalEmission ?? [], $callback);
+    }
+
+    /**
      * @return null|array<NotificationRequirement>
      */
     public function getNotificationRequirement(): ?array
@@ -1241,6 +1313,18 @@ class TransportExecutionTermsType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(NotificationRequirement): mixed  $callback
+     * @return array<array-key, NotificationRequirement>
+     */
+    public function filterNotificationRequirements(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->notificationRequirement ?? [], $callback);
     }
 
     /**

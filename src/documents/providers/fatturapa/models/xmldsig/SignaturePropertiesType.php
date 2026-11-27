@@ -169,6 +169,18 @@ class SignaturePropertiesType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(SignaturePropertyType): mixed  $callback
+     * @return array<array-key, SignaturePropertyType>
+     */
+    public function filterSignatureProperties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->signatureProperty ?? [], $callback);
+    }
+
+    /**
      * @translation-german-untranslated
      *
      * @return null|string

@@ -509,6 +509,18 @@ class ItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|PackQuantity
      */
     public function getPackQuantity(): ?PackQuantity
@@ -829,6 +841,18 @@ class ItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(AdditionalInformation): mixed  $callback
+     * @return array<array-key, AdditionalInformation>
+     */
+    public function filterAdditionalInformation(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->additionalInformation ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Keyword>
      */
     public function getKeyword(): ?array
@@ -966,6 +990,18 @@ class ItemType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Keyword): mixed  $callback
+     * @return array<array-key, Keyword>
+     */
+    public function filterKeywords(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->keyword ?? [], $callback);
     }
 
     /**
@@ -1109,6 +1145,18 @@ class ItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(BrandName): mixed  $callback
+     * @return array<array-key, BrandName>
+     */
+    public function filterBrandNames(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->brandName ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ModelName>
      */
     public function getModelName(): ?array
@@ -1246,6 +1294,18 @@ class ItemType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ModelName): mixed  $callback
+     * @return array<array-key, ModelName>
+     */
+    public function filterModelNames(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->modelName ?? [], $callback);
     }
 
     /**
@@ -1469,6 +1529,18 @@ class ItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ManufacturersItemIdentification): mixed  $callback
+     * @return array<array-key, ManufacturersItemIdentification>
+     */
+    public function filterManufacturersItemIdentifications(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->manufacturersItemIdentification ?? [], $callback);
+    }
+
+    /**
      * @return null|StandardItemIdentification
      */
     public function getStandardItemIdentification(): ?StandardItemIdentification
@@ -1689,6 +1761,18 @@ class ItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(AdditionalItemIdentification): mixed  $callback
+     * @return array<array-key, AdditionalItemIdentification>
+     */
+    public function filterAdditionalItemIdentifications(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->additionalItemIdentification ?? [], $callback);
+    }
+
+    /**
      * @return null|CatalogueDocumentReference
      */
     public function getCatalogueDocumentReference(): ?CatalogueDocumentReference
@@ -1866,6 +1950,18 @@ class ItemType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ItemSpecificationDocumentReference): mixed  $callback
+     * @return array<array-key, ItemSpecificationDocumentReference>
+     */
+    public function filterItemSpecificationDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->itemSpecificationDocumentReference ?? [], $callback);
     }
 
     /**
@@ -2049,6 +2145,18 @@ class ItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(CommodityClassification): mixed  $callback
+     * @return array<array-key, CommodityClassification>
+     */
+    public function filterCommodityClassifications(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->commodityClassification ?? [], $callback);
+    }
+
+    /**
      * @return null|array<TransactionConditions>
      */
     public function getTransactionConditions(): ?array
@@ -2186,6 +2294,18 @@ class ItemType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TransactionConditions): mixed  $callback
+     * @return array<array-key, TransactionConditions>
+     */
+    public function filterTransactionConditions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->transactionConditions ?? [], $callback);
     }
 
     /**
@@ -2329,6 +2449,18 @@ class ItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(HazardousItem): mixed  $callback
+     * @return array<array-key, HazardousItem>
+     */
+    public function filterHazardousItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->hazardousItem ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ClassifiedTaxCategory>
      */
     public function getClassifiedTaxCategory(): ?array
@@ -2466,6 +2598,18 @@ class ItemType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ClassifiedTaxCategory): mixed  $callback
+     * @return array<array-key, ClassifiedTaxCategory>
+     */
+    public function filterClassifiedTaxCategories(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->classifiedTaxCategory ?? [], $callback);
     }
 
     /**
@@ -2609,6 +2753,18 @@ class ItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(AdditionalItemProperty): mixed  $callback
+     * @return array<array-key, AdditionalItemProperty>
+     */
+    public function filterAdditionalItemProperties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->additionalItemProperty ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ManufacturerParty>
      */
     public function getManufacturerParty(): ?array
@@ -2746,6 +2902,18 @@ class ItemType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ManufacturerParty): mixed  $callback
+     * @return array<array-key, ManufacturerParty>
+     */
+    public function filterManufacturerParties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->manufacturerParty ?? [], $callback);
     }
 
     /**
@@ -2929,6 +3097,18 @@ class ItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(OriginAddress): mixed  $callback
+     * @return array<array-key, OriginAddress>
+     */
+    public function filterOriginAddress(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->originAddress ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ItemInstance>
      */
     public function getItemInstance(): ?array
@@ -3066,6 +3246,18 @@ class ItemType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ItemInstance): mixed  $callback
+     * @return array<array-key, ItemInstance>
+     */
+    public function filterItemInstances(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->itemInstance ?? [], $callback);
     }
 
     /**
@@ -3209,6 +3401,18 @@ class ItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Certificate): mixed  $callback
+     * @return array<array-key, Certificate>
+     */
+    public function filterCertificates(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->certificate ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Dimension>
      */
     public function getDimension(): ?array
@@ -3346,5 +3550,17 @@ class ItemType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Dimension): mixed  $callback
+     * @return array<array-key, Dimension>
+     */
+    public function filterDimensions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->dimension ?? [], $callback);
     }
 }

@@ -271,6 +271,18 @@ class AuctionTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(JustificationDescription): mixed  $callback
+     * @return array<array-key, JustificationDescription>
+     */
+    public function filterJustificationDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->justificationDescription ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Description>
      */
     public function getDescription(): ?array
@@ -408,6 +420,18 @@ class AuctionTermsType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
     }
 
     /**
@@ -551,6 +575,18 @@ class AuctionTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ProcessDescription): mixed  $callback
+     * @return array<array-key, ProcessDescription>
+     */
+    public function filterProcessDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->processDescription ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ConditionsDescription>
      */
     public function getConditionsDescription(): ?array
@@ -691,6 +727,18 @@ class AuctionTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ConditionsDescription): mixed  $callback
+     * @return array<array-key, ConditionsDescription>
+     */
+    public function filterConditionsDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->conditionsDescription ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ElectronicDeviceDescription>
      */
     public function getElectronicDeviceDescription(): ?array
@@ -828,6 +876,18 @@ class AuctionTermsType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ElectronicDeviceDescription): mixed  $callback
+     * @return array<array-key, ElectronicDeviceDescription>
+     */
+    public function filterElectronicDeviceDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->electronicDeviceDescription ?? [], $callback);
     }
 
     /**

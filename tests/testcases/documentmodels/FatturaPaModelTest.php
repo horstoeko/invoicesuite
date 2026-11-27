@@ -42,73 +42,139 @@ final class FatturaPaModelTest extends TestCase
     {
         $model = new DatiBeniServizi();
 
-        // Property DettaglioLinee
+        // (1) Property DettaglioLinee - ForEach
 
-        $itemsBeforeForEach = $model->getDettaglioLinee();
+        $dettagliLinee = [new DettaglioLinee(), new DettaglioLinee()];
+        $model->setDettaglioLinee($dettagliLinee);
 
-        $this->assertSame($model, $model->forEachDettaglioLinee(
-            static function (DettaglioLinee $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        $visitedDettagliLinee = [];
 
-        $this->assertSame($itemsBeforeForEach, $model->getDettaglioLinee());
+        $collectDettaglioLinea = static function (DettaglioLinee $dettaglioLinea) use (&$visitedDettagliLinee): void {
+            $visitedDettagliLinee[] = $dettaglioLinea;
+        };
 
-        $model->setDettaglioLinee([new DettaglioLinee(), new DettaglioLinee()]);
-
-        $itemsBeforeForEach = $model->getDettaglioLinee();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachDettaglioLinee(
-            static function (DettaglioLinee $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getDettaglioLinee());
+        $this->assertSame($model, $model->forEachDettaglioLinee($collectDettaglioLinea));
+        $this->assertSame($dettagliLinee, $visitedDettagliLinee);
+        $this->assertSame($dettagliLinee, $model->getDettaglioLinee());
 
         $model->clearDettaglioLinee();
+        $visitedDettagliLinee = [];
 
-        $this->assertSame($model, $model->forEachDettaglioLinee(
-            static function (DettaglioLinee $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachDettaglioLinee($collectDettaglioLinea));
+        $this->assertSame([], $visitedDettagliLinee);
 
-        // Property DatiRiepilogo
+        $model->unsetDettaglioLinee();
+        $visitedDettagliLinee = [];
 
-        $itemsBeforeForEach = $model->getDatiRiepilogo();
+        $this->assertSame($model, $model->forEachDettaglioLinee($collectDettaglioLinea));
+        $this->assertSame([], $visitedDettagliLinee);
 
-        $this->assertSame($model, $model->forEachDatiRiepilogo(
-            static function (DatiRiepilogo $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        // (1) Property DatiRiepilogo - ForEach
 
-        $this->assertSame($itemsBeforeForEach, $model->getDatiRiepilogo());
+        $datiRiepilogo = [new DatiRiepilogo(), new DatiRiepilogo()];
+        $model->setDatiRiepilogo($datiRiepilogo);
 
-        $model->setDatiRiepilogo([new DatiRiepilogo(), new DatiRiepilogo()]);
+        $visitedDatiRiepilogo = [];
 
-        $itemsBeforeForEach = $model->getDatiRiepilogo();
-        $itemsFromForEach = [];
+        $collectDatoRiepilogo = static function (DatiRiepilogo $datoRiepilogo) use (&$visitedDatiRiepilogo): void {
+            $visitedDatiRiepilogo[] = $datoRiepilogo;
+        };
 
-        $this->assertSame($model, $model->forEachDatiRiepilogo(
-            static function (DatiRiepilogo $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getDatiRiepilogo());
+        $this->assertSame($model, $model->forEachDatiRiepilogo($collectDatoRiepilogo));
+        $this->assertSame($datiRiepilogo, $visitedDatiRiepilogo);
+        $this->assertSame($datiRiepilogo, $model->getDatiRiepilogo());
 
         $model->clearDatiRiepilogo();
+        $visitedDatiRiepilogo = [];
 
-        $this->assertSame($model, $model->forEachDatiRiepilogo(
-            static function (DatiRiepilogo $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachDatiRiepilogo($collectDatoRiepilogo));
+        $this->assertSame([], $visitedDatiRiepilogo);
+
+        $model->unsetDatiRiepilogo();
+        $visitedDatiRiepilogo = [];
+
+        $this->assertSame($model, $model->forEachDatiRiepilogo($collectDatoRiepilogo));
+        $this->assertSame([], $visitedDatiRiepilogo);
+
+        // (2) Property DettaglioLinee - Filter
+
+        $model->setDettaglioLinee($dettagliLinee);
+
+        $dettaglioLineaToKeep = $dettagliLinee[1];
+        $visitedDettagliLinee = [];
+
+        $selectDettaglioLinea = static function (
+            DettaglioLinee $dettaglioLinea
+        ) use (
+            $dettaglioLineaToKeep,
+            &$visitedDettagliLinee
+        ): bool {
+            $visitedDettagliLinee[] = $dettaglioLinea;
+
+            return $dettaglioLinea === $dettaglioLineaToKeep;
+        };
+
+        $filteredDettagliLinee = $model->filterDettagliLinee($selectDettaglioLinea);
+
+        $this->assertSame([1 => $dettaglioLineaToKeep], $filteredDettagliLinee);
+        $this->assertSame($dettagliLinee, $visitedDettagliLinee);
+        $this->assertSame($dettagliLinee, $model->getDettaglioLinee());
+
+        $model->clearDettaglioLinee();
+        $visitedDettagliLinee = [];
+
+        $filteredDettagliLinee = $model->filterDettagliLinee($selectDettaglioLinea);
+
+        $this->assertSame([], $filteredDettagliLinee);
+        $this->assertSame([], $visitedDettagliLinee);
+
+        $model->unsetDettaglioLinee();
+        $visitedDettagliLinee = [];
+
+        $filteredDettagliLinee = $model->filterDettagliLinee($selectDettaglioLinea);
+
+        $this->assertSame([], $filteredDettagliLinee);
+        $this->assertSame([], $visitedDettagliLinee);
+
+        // (2) Property DatiRiepilogo - Filter
+
+        $model->setDatiRiepilogo($datiRiepilogo);
+
+        $datoRiepilogoToKeep = $datiRiepilogo[1];
+        $visitedDatiRiepilogo = [];
+
+        $selectDatoRiepilogo = static function (
+            DatiRiepilogo $datoRiepilogo
+        ) use (
+            $datoRiepilogoToKeep,
+            &$visitedDatiRiepilogo
+        ): bool {
+            $visitedDatiRiepilogo[] = $datoRiepilogo;
+
+            return $datoRiepilogo === $datoRiepilogoToKeep;
+        };
+
+        $filteredDatiRiepilogo = $model->filterDatiRiepilogo($selectDatoRiepilogo);
+
+        $this->assertSame([1 => $datoRiepilogoToKeep], $filteredDatiRiepilogo);
+        $this->assertSame($datiRiepilogo, $visitedDatiRiepilogo);
+        $this->assertSame($datiRiepilogo, $model->getDatiRiepilogo());
+
+        $model->clearDatiRiepilogo();
+        $visitedDatiRiepilogo = [];
+
+        $filteredDatiRiepilogo = $model->filterDatiRiepilogo($selectDatoRiepilogo);
+
+        $this->assertSame([], $filteredDatiRiepilogo);
+        $this->assertSame([], $visitedDatiRiepilogo);
+
+        $model->unsetDatiRiepilogo();
+        $visitedDatiRiepilogo = [];
+
+        $filteredDatiRiepilogo = $model->filterDatiRiepilogo($selectDatoRiepilogo);
+
+        $this->assertSame([], $filteredDatiRiepilogo);
+        $this->assertSame([], $visitedDatiRiepilogo);
     }
 
     /**
@@ -118,39 +184,76 @@ final class FatturaPaModelTest extends TestCase
     {
         $model = new DatiDDT();
 
-        // Property RiferimentoNumeroLinea
+        // (1) Property RiferimentoNumeroLinea - ForEach
 
-        $itemsBeforeForEach = $model->getRiferimentoNumeroLinea();
+        $riferimentiNumeroLinea = [0, 12];
+        $model->setRiferimentoNumeroLinea($riferimentiNumeroLinea);
 
-        $this->assertSame($model, $model->forEachRiferimentoNumeroLinea(
-            static function (int $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        $visitedRiferimentiNumeroLinea = [];
 
-        $this->assertSame($itemsBeforeForEach, $model->getRiferimentoNumeroLinea());
+        $collectRiferimentoNumeroLinea = static function (
+            int $riferimentoNumeroLinea
+        ) use (
+            &$visitedRiferimentiNumeroLinea
+        ): void {
+            $visitedRiferimentiNumeroLinea[] = $riferimentoNumeroLinea;
+        };
 
-        $model->setRiferimentoNumeroLinea([0, 12]);
-
-        $itemsBeforeForEach = $model->getRiferimentoNumeroLinea();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachRiferimentoNumeroLinea(
-            static function (int $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getRiferimentoNumeroLinea());
+        $this->assertSame($model, $model->forEachRiferimentoNumeroLinea($collectRiferimentoNumeroLinea));
+        $this->assertSame($riferimentiNumeroLinea, $visitedRiferimentiNumeroLinea);
+        $this->assertSame($riferimentiNumeroLinea, $model->getRiferimentoNumeroLinea());
 
         $model->clearRiferimentoNumeroLinea();
+        $visitedRiferimentiNumeroLinea = [];
 
-        $this->assertSame($model, $model->forEachRiferimentoNumeroLinea(
-            static function (int $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachRiferimentoNumeroLinea($collectRiferimentoNumeroLinea));
+        $this->assertSame([], $visitedRiferimentiNumeroLinea);
+
+        $model->unsetRiferimentoNumeroLinea();
+        $visitedRiferimentiNumeroLinea = [];
+
+        $this->assertSame($model, $model->forEachRiferimentoNumeroLinea($collectRiferimentoNumeroLinea));
+        $this->assertSame([], $visitedRiferimentiNumeroLinea);
+
+        // (2) Property RiferimentoNumeroLinea - Filter
+
+        $model->setRiferimentoNumeroLinea($riferimentiNumeroLinea);
+
+        $riferimentoNumeroLineaToKeep = $riferimentiNumeroLinea[1];
+        $visitedRiferimentiNumeroLinea = [];
+
+        $selectRiferimentoNumeroLinea = static function (
+            int $riferimentoNumeroLinea
+        ) use (
+            $riferimentoNumeroLineaToKeep,
+            &$visitedRiferimentiNumeroLinea
+        ): bool {
+            $visitedRiferimentiNumeroLinea[] = $riferimentoNumeroLinea;
+
+            return $riferimentoNumeroLinea === $riferimentoNumeroLineaToKeep;
+        };
+
+        $filteredRiferimentiNumeroLinea = $model->filterRiferimentiNumeroLinea($selectRiferimentoNumeroLinea);
+
+        $this->assertSame([1 => $riferimentoNumeroLineaToKeep], $filteredRiferimentiNumeroLinea);
+        $this->assertSame($riferimentiNumeroLinea, $visitedRiferimentiNumeroLinea);
+        $this->assertSame($riferimentiNumeroLinea, $model->getRiferimentoNumeroLinea());
+
+        $model->clearRiferimentoNumeroLinea();
+        $visitedRiferimentiNumeroLinea = [];
+
+        $filteredRiferimentiNumeroLinea = $model->filterRiferimentiNumeroLinea($selectRiferimentoNumeroLinea);
+
+        $this->assertSame([], $filteredRiferimentiNumeroLinea);
+        $this->assertSame([], $visitedRiferimentiNumeroLinea);
+
+        $model->unsetRiferimentoNumeroLinea();
+        $visitedRiferimentiNumeroLinea = [];
+
+        $filteredRiferimentiNumeroLinea = $model->filterRiferimentiNumeroLinea($selectRiferimentoNumeroLinea);
+
+        $this->assertSame([], $filteredRiferimentiNumeroLinea);
+        $this->assertSame([], $visitedRiferimentiNumeroLinea);
     }
 
     /**
@@ -160,39 +263,76 @@ final class FatturaPaModelTest extends TestCase
     {
         $model = new DatiDocumentiCorrelati();
 
-        // Property RiferimentoNumeroLinea
+        // (1) Property RiferimentoNumeroLinea - ForEach
 
-        $itemsBeforeForEach = $model->getRiferimentoNumeroLinea();
+        $riferimentiNumeroLinea = [0, 12];
+        $model->setRiferimentoNumeroLinea($riferimentiNumeroLinea);
 
-        $this->assertSame($model, $model->forEachRiferimentoNumeroLinea(
-            static function (int $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        $visitedRiferimentiNumeroLinea = [];
 
-        $this->assertSame($itemsBeforeForEach, $model->getRiferimentoNumeroLinea());
+        $collectRiferimentoNumeroLinea = static function (
+            int $riferimentoNumeroLinea
+        ) use (
+            &$visitedRiferimentiNumeroLinea
+        ): void {
+            $visitedRiferimentiNumeroLinea[] = $riferimentoNumeroLinea;
+        };
 
-        $model->setRiferimentoNumeroLinea([0, 12]);
-
-        $itemsBeforeForEach = $model->getRiferimentoNumeroLinea();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachRiferimentoNumeroLinea(
-            static function (int $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getRiferimentoNumeroLinea());
+        $this->assertSame($model, $model->forEachRiferimentoNumeroLinea($collectRiferimentoNumeroLinea));
+        $this->assertSame($riferimentiNumeroLinea, $visitedRiferimentiNumeroLinea);
+        $this->assertSame($riferimentiNumeroLinea, $model->getRiferimentoNumeroLinea());
 
         $model->clearRiferimentoNumeroLinea();
+        $visitedRiferimentiNumeroLinea = [];
 
-        $this->assertSame($model, $model->forEachRiferimentoNumeroLinea(
-            static function (int $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachRiferimentoNumeroLinea($collectRiferimentoNumeroLinea));
+        $this->assertSame([], $visitedRiferimentiNumeroLinea);
+
+        $model->unsetRiferimentoNumeroLinea();
+        $visitedRiferimentiNumeroLinea = [];
+
+        $this->assertSame($model, $model->forEachRiferimentoNumeroLinea($collectRiferimentoNumeroLinea));
+        $this->assertSame([], $visitedRiferimentiNumeroLinea);
+
+        // (2) Property RiferimentoNumeroLinea - Filter
+
+        $model->setRiferimentoNumeroLinea($riferimentiNumeroLinea);
+
+        $riferimentoNumeroLineaToKeep = $riferimentiNumeroLinea[1];
+        $visitedRiferimentiNumeroLinea = [];
+
+        $selectRiferimentoNumeroLinea = static function (
+            int $riferimentoNumeroLinea
+        ) use (
+            $riferimentoNumeroLineaToKeep,
+            &$visitedRiferimentiNumeroLinea
+        ): bool {
+            $visitedRiferimentiNumeroLinea[] = $riferimentoNumeroLinea;
+
+            return $riferimentoNumeroLinea === $riferimentoNumeroLineaToKeep;
+        };
+
+        $filteredRiferimentiNumeroLinea = $model->filterRiferimentiNumeroLinea($selectRiferimentoNumeroLinea);
+
+        $this->assertSame([1 => $riferimentoNumeroLineaToKeep], $filteredRiferimentiNumeroLinea);
+        $this->assertSame($riferimentiNumeroLinea, $visitedRiferimentiNumeroLinea);
+        $this->assertSame($riferimentiNumeroLinea, $model->getRiferimentoNumeroLinea());
+
+        $model->clearRiferimentoNumeroLinea();
+        $visitedRiferimentiNumeroLinea = [];
+
+        $filteredRiferimentiNumeroLinea = $model->filterRiferimentiNumeroLinea($selectRiferimentoNumeroLinea);
+
+        $this->assertSame([], $filteredRiferimentiNumeroLinea);
+        $this->assertSame([], $visitedRiferimentiNumeroLinea);
+
+        $model->unsetRiferimentoNumeroLinea();
+        $visitedRiferimentiNumeroLinea = [];
+
+        $filteredRiferimentiNumeroLinea = $model->filterRiferimentiNumeroLinea($selectRiferimentoNumeroLinea);
+
+        $this->assertSame([], $filteredRiferimentiNumeroLinea);
+        $this->assertSame([], $visitedRiferimentiNumeroLinea);
     }
 
     /**
@@ -202,243 +342,484 @@ final class FatturaPaModelTest extends TestCase
     {
         $model = new DatiGenerali();
 
-        // Property DatiOrdineAcquisto
+        // (1) Property DatiOrdineAcquisto - ForEach
 
-        $itemsBeforeForEach = $model->getDatiOrdineAcquisto();
+        $datiOrdineAcquisto = [new DatiDocumentiCorrelati(), new DatiDocumentiCorrelati()];
+        $model->setDatiOrdineAcquisto($datiOrdineAcquisto);
 
-        $this->assertSame($model, $model->forEachDatiOrdineAcquisto(
-            static function (DatiDocumentiCorrelati $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        $visitedDatiOrdineAcquisto = [];
 
-        $this->assertSame($itemsBeforeForEach, $model->getDatiOrdineAcquisto());
+        $collectDatoOrdineAcquisto = static function (
+            DatiDocumentiCorrelati $datoOrdineAcquisto
+        ) use (
+            &$visitedDatiOrdineAcquisto
+        ): void {
+            $visitedDatiOrdineAcquisto[] = $datoOrdineAcquisto;
+        };
 
-        $model->setDatiOrdineAcquisto([new DatiDocumentiCorrelati(), new DatiDocumentiCorrelati()]);
-
-        $itemsBeforeForEach = $model->getDatiOrdineAcquisto();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachDatiOrdineAcquisto(
-            static function (DatiDocumentiCorrelati $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getDatiOrdineAcquisto());
+        $this->assertSame($model, $model->forEachDatiOrdineAcquisto($collectDatoOrdineAcquisto));
+        $this->assertSame($datiOrdineAcquisto, $visitedDatiOrdineAcquisto);
+        $this->assertSame($datiOrdineAcquisto, $model->getDatiOrdineAcquisto());
 
         $model->clearDatiOrdineAcquisto();
+        $visitedDatiOrdineAcquisto = [];
 
-        $this->assertSame($model, $model->forEachDatiOrdineAcquisto(
-            static function (DatiDocumentiCorrelati $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachDatiOrdineAcquisto($collectDatoOrdineAcquisto));
+        $this->assertSame([], $visitedDatiOrdineAcquisto);
 
-        // Property DatiContratto
+        $model->unsetDatiOrdineAcquisto();
+        $visitedDatiOrdineAcquisto = [];
 
-        $itemsBeforeForEach = $model->getDatiContratto();
+        $this->assertSame($model, $model->forEachDatiOrdineAcquisto($collectDatoOrdineAcquisto));
+        $this->assertSame([], $visitedDatiOrdineAcquisto);
 
-        $this->assertSame($model, $model->forEachDatiContratto(
-            static function (DatiDocumentiCorrelati $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        // (1) Property DatiContratto - ForEach
 
-        $this->assertSame($itemsBeforeForEach, $model->getDatiContratto());
+        $datiContratto = [new DatiDocumentiCorrelati(), new DatiDocumentiCorrelati()];
+        $model->setDatiContratto($datiContratto);
 
-        $model->setDatiContratto([new DatiDocumentiCorrelati(), new DatiDocumentiCorrelati()]);
+        $visitedDatiContratto = [];
 
-        $itemsBeforeForEach = $model->getDatiContratto();
-        $itemsFromForEach = [];
+        $collectDatoContratto = static function (
+            DatiDocumentiCorrelati $datoContratto
+        ) use (
+            &$visitedDatiContratto
+        ): void {
+            $visitedDatiContratto[] = $datoContratto;
+        };
 
-        $this->assertSame($model, $model->forEachDatiContratto(
-            static function (DatiDocumentiCorrelati $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getDatiContratto());
+        $this->assertSame($model, $model->forEachDatiContratto($collectDatoContratto));
+        $this->assertSame($datiContratto, $visitedDatiContratto);
+        $this->assertSame($datiContratto, $model->getDatiContratto());
 
         $model->clearDatiContratto();
+        $visitedDatiContratto = [];
 
-        $this->assertSame($model, $model->forEachDatiContratto(
-            static function (DatiDocumentiCorrelati $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachDatiContratto($collectDatoContratto));
+        $this->assertSame([], $visitedDatiContratto);
 
-        // Property DatiConvenzione
+        $model->unsetDatiContratto();
+        $visitedDatiContratto = [];
 
-        $itemsBeforeForEach = $model->getDatiConvenzione();
+        $this->assertSame($model, $model->forEachDatiContratto($collectDatoContratto));
+        $this->assertSame([], $visitedDatiContratto);
 
-        $this->assertSame($model, $model->forEachDatiConvenzione(
-            static function (DatiDocumentiCorrelati $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        // (1) Property DatiConvenzione - ForEach
 
-        $this->assertSame($itemsBeforeForEach, $model->getDatiConvenzione());
+        $datiConvenzione = [new DatiDocumentiCorrelati(), new DatiDocumentiCorrelati()];
+        $model->setDatiConvenzione($datiConvenzione);
 
-        $model->setDatiConvenzione([new DatiDocumentiCorrelati(), new DatiDocumentiCorrelati()]);
+        $visitedDatiConvenzione = [];
 
-        $itemsBeforeForEach = $model->getDatiConvenzione();
-        $itemsFromForEach = [];
+        $collectDatoConvenzione = static function (
+            DatiDocumentiCorrelati $datoConvenzione
+        ) use (
+            &$visitedDatiConvenzione
+        ): void {
+            $visitedDatiConvenzione[] = $datoConvenzione;
+        };
 
-        $this->assertSame($model, $model->forEachDatiConvenzione(
-            static function (DatiDocumentiCorrelati $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getDatiConvenzione());
+        $this->assertSame($model, $model->forEachDatiConvenzione($collectDatoConvenzione));
+        $this->assertSame($datiConvenzione, $visitedDatiConvenzione);
+        $this->assertSame($datiConvenzione, $model->getDatiConvenzione());
 
         $model->clearDatiConvenzione();
+        $visitedDatiConvenzione = [];
 
-        $this->assertSame($model, $model->forEachDatiConvenzione(
-            static function (DatiDocumentiCorrelati $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachDatiConvenzione($collectDatoConvenzione));
+        $this->assertSame([], $visitedDatiConvenzione);
 
-        // Property DatiRicezione
+        $model->unsetDatiConvenzione();
+        $visitedDatiConvenzione = [];
 
-        $itemsBeforeForEach = $model->getDatiRicezione();
+        $this->assertSame($model, $model->forEachDatiConvenzione($collectDatoConvenzione));
+        $this->assertSame([], $visitedDatiConvenzione);
 
-        $this->assertSame($model, $model->forEachDatiRicezione(
-            static function (DatiDocumentiCorrelati $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        // (1) Property DatiRicezione - ForEach
 
-        $this->assertSame($itemsBeforeForEach, $model->getDatiRicezione());
+        $datiRicezione = [new DatiDocumentiCorrelati(), new DatiDocumentiCorrelati()];
+        $model->setDatiRicezione($datiRicezione);
 
-        $model->setDatiRicezione([new DatiDocumentiCorrelati(), new DatiDocumentiCorrelati()]);
+        $visitedDatiRicezione = [];
 
-        $itemsBeforeForEach = $model->getDatiRicezione();
-        $itemsFromForEach = [];
+        $collectDatoRicezione = static function (
+            DatiDocumentiCorrelati $datoRicezione
+        ) use (
+            &$visitedDatiRicezione
+        ): void {
+            $visitedDatiRicezione[] = $datoRicezione;
+        };
 
-        $this->assertSame($model, $model->forEachDatiRicezione(
-            static function (DatiDocumentiCorrelati $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getDatiRicezione());
+        $this->assertSame($model, $model->forEachDatiRicezione($collectDatoRicezione));
+        $this->assertSame($datiRicezione, $visitedDatiRicezione);
+        $this->assertSame($datiRicezione, $model->getDatiRicezione());
 
         $model->clearDatiRicezione();
+        $visitedDatiRicezione = [];
 
-        $this->assertSame($model, $model->forEachDatiRicezione(
-            static function (DatiDocumentiCorrelati $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachDatiRicezione($collectDatoRicezione));
+        $this->assertSame([], $visitedDatiRicezione);
 
-        // Property DatiFattureCollegate
+        $model->unsetDatiRicezione();
+        $visitedDatiRicezione = [];
 
-        $itemsBeforeForEach = $model->getDatiFattureCollegate();
+        $this->assertSame($model, $model->forEachDatiRicezione($collectDatoRicezione));
+        $this->assertSame([], $visitedDatiRicezione);
 
-        $this->assertSame($model, $model->forEachDatiFattureCollegate(
-            static function (DatiDocumentiCorrelati $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        // (1) Property DatiFattureCollegate - ForEach
 
-        $this->assertSame($itemsBeforeForEach, $model->getDatiFattureCollegate());
+        $datiFattureCollegate = [new DatiDocumentiCorrelati(), new DatiDocumentiCorrelati()];
+        $model->setDatiFattureCollegate($datiFattureCollegate);
 
-        $model->setDatiFattureCollegate([new DatiDocumentiCorrelati(), new DatiDocumentiCorrelati()]);
+        $visitedDatiFattureCollegate = [];
 
-        $itemsBeforeForEach = $model->getDatiFattureCollegate();
-        $itemsFromForEach = [];
+        $collectDatoFatturaCollegata = static function (
+            DatiDocumentiCorrelati $datoFatturaCollegata
+        ) use (
+            &$visitedDatiFattureCollegate
+        ): void {
+            $visitedDatiFattureCollegate[] = $datoFatturaCollegata;
+        };
 
-        $this->assertSame($model, $model->forEachDatiFattureCollegate(
-            static function (DatiDocumentiCorrelati $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getDatiFattureCollegate());
+        $this->assertSame($model, $model->forEachDatiFattureCollegate($collectDatoFatturaCollegata));
+        $this->assertSame($datiFattureCollegate, $visitedDatiFattureCollegate);
+        $this->assertSame($datiFattureCollegate, $model->getDatiFattureCollegate());
 
         $model->clearDatiFattureCollegate();
+        $visitedDatiFattureCollegate = [];
 
-        $this->assertSame($model, $model->forEachDatiFattureCollegate(
-            static function (DatiDocumentiCorrelati $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachDatiFattureCollegate($collectDatoFatturaCollegata));
+        $this->assertSame([], $visitedDatiFattureCollegate);
 
-        // Property DatiSAL
+        $model->unsetDatiFattureCollegate();
+        $visitedDatiFattureCollegate = [];
 
-        $itemsBeforeForEach = $model->getDatiSAL();
+        $this->assertSame($model, $model->forEachDatiFattureCollegate($collectDatoFatturaCollegata));
+        $this->assertSame([], $visitedDatiFattureCollegate);
 
-        $this->assertSame($model, $model->forEachDatiSAL(
-            static function (DatiSAL $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        // (1) Property DatiSAL - ForEach
 
-        $this->assertSame($itemsBeforeForEach, $model->getDatiSAL());
+        $datiSAL = [new DatiSAL(), new DatiSAL()];
+        $model->setDatiSAL($datiSAL);
 
-        $model->setDatiSAL([new DatiSAL(), new DatiSAL()]);
+        $visitedDatiSAL = [];
 
-        $itemsBeforeForEach = $model->getDatiSAL();
-        $itemsFromForEach = [];
+        $collectDatoSAL = static function (DatiSAL $datoSAL) use (&$visitedDatiSAL): void {
+            $visitedDatiSAL[] = $datoSAL;
+        };
 
-        $this->assertSame($model, $model->forEachDatiSAL(
-            static function (DatiSAL $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getDatiSAL());
+        $this->assertSame($model, $model->forEachDatiSAL($collectDatoSAL));
+        $this->assertSame($datiSAL, $visitedDatiSAL);
+        $this->assertSame($datiSAL, $model->getDatiSAL());
 
         $model->clearDatiSAL();
+        $visitedDatiSAL = [];
 
-        $this->assertSame($model, $model->forEachDatiSAL(
-            static function (DatiSAL $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachDatiSAL($collectDatoSAL));
+        $this->assertSame([], $visitedDatiSAL);
 
-        // Property DatiDDT
+        $model->unsetDatiSAL();
+        $visitedDatiSAL = [];
 
-        $itemsBeforeForEach = $model->getDatiDDT();
+        $this->assertSame($model, $model->forEachDatiSAL($collectDatoSAL));
+        $this->assertSame([], $visitedDatiSAL);
 
-        $this->assertSame($model, $model->forEachDatiDDT(
-            static function (DatiDDT $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        // (1) Property DatiDDT - ForEach
 
-        $this->assertSame($itemsBeforeForEach, $model->getDatiDDT());
+        $datiDDT = [new DatiDDT(), new DatiDDT()];
+        $model->setDatiDDT($datiDDT);
 
-        $model->setDatiDDT([new DatiDDT(), new DatiDDT()]);
+        $visitedDatiDDT = [];
 
-        $itemsBeforeForEach = $model->getDatiDDT();
-        $itemsFromForEach = [];
+        $collectDatoDDT = static function (DatiDDT $datoDDT) use (&$visitedDatiDDT): void {
+            $visitedDatiDDT[] = $datoDDT;
+        };
 
-        $this->assertSame($model, $model->forEachDatiDDT(
-            static function (DatiDDT $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getDatiDDT());
+        $this->assertSame($model, $model->forEachDatiDDT($collectDatoDDT));
+        $this->assertSame($datiDDT, $visitedDatiDDT);
+        $this->assertSame($datiDDT, $model->getDatiDDT());
 
         $model->clearDatiDDT();
+        $visitedDatiDDT = [];
 
-        $this->assertSame($model, $model->forEachDatiDDT(
-            static function (DatiDDT $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachDatiDDT($collectDatoDDT));
+        $this->assertSame([], $visitedDatiDDT);
+
+        $model->unsetDatiDDT();
+        $visitedDatiDDT = [];
+
+        $this->assertSame($model, $model->forEachDatiDDT($collectDatoDDT));
+        $this->assertSame([], $visitedDatiDDT);
+
+        // (2) Property DatiOrdineAcquisto - Filter
+
+        $model->setDatiOrdineAcquisto($datiOrdineAcquisto);
+
+        $datoOrdineAcquistoToKeep = $datiOrdineAcquisto[1];
+        $visitedDatiOrdineAcquisto = [];
+
+        $selectDatoOrdineAcquisto = static function (
+            DatiDocumentiCorrelati $datoOrdineAcquisto
+        ) use (
+            $datoOrdineAcquistoToKeep,
+            &$visitedDatiOrdineAcquisto
+        ): bool {
+            $visitedDatiOrdineAcquisto[] = $datoOrdineAcquisto;
+
+            return $datoOrdineAcquisto === $datoOrdineAcquistoToKeep;
+        };
+
+        $filteredDatiOrdineAcquisto = $model->filterDatiOrdineAcquisto($selectDatoOrdineAcquisto);
+
+        $this->assertSame([1 => $datoOrdineAcquistoToKeep], $filteredDatiOrdineAcquisto);
+        $this->assertSame($datiOrdineAcquisto, $visitedDatiOrdineAcquisto);
+        $this->assertSame($datiOrdineAcquisto, $model->getDatiOrdineAcquisto());
+
+        $model->clearDatiOrdineAcquisto();
+        $visitedDatiOrdineAcquisto = [];
+
+        $filteredDatiOrdineAcquisto = $model->filterDatiOrdineAcquisto($selectDatoOrdineAcquisto);
+
+        $this->assertSame([], $filteredDatiOrdineAcquisto);
+        $this->assertSame([], $visitedDatiOrdineAcquisto);
+
+        $model->unsetDatiOrdineAcquisto();
+        $visitedDatiOrdineAcquisto = [];
+
+        $filteredDatiOrdineAcquisto = $model->filterDatiOrdineAcquisto($selectDatoOrdineAcquisto);
+
+        $this->assertSame([], $filteredDatiOrdineAcquisto);
+        $this->assertSame([], $visitedDatiOrdineAcquisto);
+
+        // (2) Property DatiContratto - Filter
+
+        $model->setDatiContratto($datiContratto);
+
+        $datoContrattoToKeep = $datiContratto[1];
+        $visitedDatiContratto = [];
+
+        $selectDatoContratto = static function (
+            DatiDocumentiCorrelati $datoContratto
+        ) use (
+            $datoContrattoToKeep,
+            &$visitedDatiContratto
+        ): bool {
+            $visitedDatiContratto[] = $datoContratto;
+
+            return $datoContratto === $datoContrattoToKeep;
+        };
+
+        $filteredDatiContratto = $model->filterDatiContratto($selectDatoContratto);
+
+        $this->assertSame([1 => $datoContrattoToKeep], $filteredDatiContratto);
+        $this->assertSame($datiContratto, $visitedDatiContratto);
+        $this->assertSame($datiContratto, $model->getDatiContratto());
+
+        $model->clearDatiContratto();
+        $visitedDatiContratto = [];
+
+        $filteredDatiContratto = $model->filterDatiContratto($selectDatoContratto);
+
+        $this->assertSame([], $filteredDatiContratto);
+        $this->assertSame([], $visitedDatiContratto);
+
+        $model->unsetDatiContratto();
+        $visitedDatiContratto = [];
+
+        $filteredDatiContratto = $model->filterDatiContratto($selectDatoContratto);
+
+        $this->assertSame([], $filteredDatiContratto);
+        $this->assertSame([], $visitedDatiContratto);
+
+        // (2) Property DatiConvenzione - Filter
+
+        $model->setDatiConvenzione($datiConvenzione);
+
+        $datoConvenzioneToKeep = $datiConvenzione[1];
+        $visitedDatiConvenzione = [];
+
+        $selectDatoConvenzione = static function (
+            DatiDocumentiCorrelati $datoConvenzione
+        ) use (
+            $datoConvenzioneToKeep,
+            &$visitedDatiConvenzione
+        ): bool {
+            $visitedDatiConvenzione[] = $datoConvenzione;
+
+            return $datoConvenzione === $datoConvenzioneToKeep;
+        };
+
+        $filteredDatiConvenzione = $model->filterDatiConvenzione($selectDatoConvenzione);
+
+        $this->assertSame([1 => $datoConvenzioneToKeep], $filteredDatiConvenzione);
+        $this->assertSame($datiConvenzione, $visitedDatiConvenzione);
+        $this->assertSame($datiConvenzione, $model->getDatiConvenzione());
+
+        $model->clearDatiConvenzione();
+        $visitedDatiConvenzione = [];
+
+        $filteredDatiConvenzione = $model->filterDatiConvenzione($selectDatoConvenzione);
+
+        $this->assertSame([], $filteredDatiConvenzione);
+        $this->assertSame([], $visitedDatiConvenzione);
+
+        $model->unsetDatiConvenzione();
+        $visitedDatiConvenzione = [];
+
+        $filteredDatiConvenzione = $model->filterDatiConvenzione($selectDatoConvenzione);
+
+        $this->assertSame([], $filteredDatiConvenzione);
+        $this->assertSame([], $visitedDatiConvenzione);
+
+        // (2) Property DatiRicezione - Filter
+
+        $model->setDatiRicezione($datiRicezione);
+
+        $datoRicezioneToKeep = $datiRicezione[1];
+        $visitedDatiRicezione = [];
+
+        $selectDatoRicezione = static function (
+            DatiDocumentiCorrelati $datoRicezione
+        ) use (
+            $datoRicezioneToKeep,
+            &$visitedDatiRicezione
+        ): bool {
+            $visitedDatiRicezione[] = $datoRicezione;
+
+            return $datoRicezione === $datoRicezioneToKeep;
+        };
+
+        $filteredDatiRicezione = $model->filterDatiRicezione($selectDatoRicezione);
+
+        $this->assertSame([1 => $datoRicezioneToKeep], $filteredDatiRicezione);
+        $this->assertSame($datiRicezione, $visitedDatiRicezione);
+        $this->assertSame($datiRicezione, $model->getDatiRicezione());
+
+        $model->clearDatiRicezione();
+        $visitedDatiRicezione = [];
+
+        $filteredDatiRicezione = $model->filterDatiRicezione($selectDatoRicezione);
+
+        $this->assertSame([], $filteredDatiRicezione);
+        $this->assertSame([], $visitedDatiRicezione);
+
+        $model->unsetDatiRicezione();
+        $visitedDatiRicezione = [];
+
+        $filteredDatiRicezione = $model->filterDatiRicezione($selectDatoRicezione);
+
+        $this->assertSame([], $filteredDatiRicezione);
+        $this->assertSame([], $visitedDatiRicezione);
+
+        // (2) Property DatiFattureCollegate - Filter
+
+        $model->setDatiFattureCollegate($datiFattureCollegate);
+
+        $datoFatturaCollegataToKeep = $datiFattureCollegate[1];
+        $visitedDatiFattureCollegate = [];
+
+        $selectDatoFatturaCollegata = static function (
+            DatiDocumentiCorrelati $datoFatturaCollegata
+        ) use (
+            $datoFatturaCollegataToKeep,
+            &$visitedDatiFattureCollegate
+        ): bool {
+            $visitedDatiFattureCollegate[] = $datoFatturaCollegata;
+
+            return $datoFatturaCollegata === $datoFatturaCollegataToKeep;
+        };
+
+        $filteredDatiFattureCollegate = $model->filterDatiFattureCollegate($selectDatoFatturaCollegata);
+
+        $this->assertSame([1 => $datoFatturaCollegataToKeep], $filteredDatiFattureCollegate);
+        $this->assertSame($datiFattureCollegate, $visitedDatiFattureCollegate);
+        $this->assertSame($datiFattureCollegate, $model->getDatiFattureCollegate());
+
+        $model->clearDatiFattureCollegate();
+        $visitedDatiFattureCollegate = [];
+
+        $filteredDatiFattureCollegate = $model->filterDatiFattureCollegate($selectDatoFatturaCollegata);
+
+        $this->assertSame([], $filteredDatiFattureCollegate);
+        $this->assertSame([], $visitedDatiFattureCollegate);
+
+        $model->unsetDatiFattureCollegate();
+        $visitedDatiFattureCollegate = [];
+
+        $filteredDatiFattureCollegate = $model->filterDatiFattureCollegate($selectDatoFatturaCollegata);
+
+        $this->assertSame([], $filteredDatiFattureCollegate);
+        $this->assertSame([], $visitedDatiFattureCollegate);
+
+        // (2) Property DatiSAL - Filter
+
+        $model->setDatiSAL($datiSAL);
+
+        $datoSALToKeep = $datiSAL[1];
+        $visitedDatiSAL = [];
+
+        $selectDatoSAL = static function (DatiSAL $datoSAL) use ($datoSALToKeep, &$visitedDatiSAL): bool {
+            $visitedDatiSAL[] = $datoSAL;
+
+            return $datoSAL === $datoSALToKeep;
+        };
+
+        $filteredDatiSAL = $model->filterDatiSAL($selectDatoSAL);
+
+        $this->assertSame([1 => $datoSALToKeep], $filteredDatiSAL);
+        $this->assertSame($datiSAL, $visitedDatiSAL);
+        $this->assertSame($datiSAL, $model->getDatiSAL());
+
+        $model->clearDatiSAL();
+        $visitedDatiSAL = [];
+
+        $filteredDatiSAL = $model->filterDatiSAL($selectDatoSAL);
+
+        $this->assertSame([], $filteredDatiSAL);
+        $this->assertSame([], $visitedDatiSAL);
+
+        $model->unsetDatiSAL();
+        $visitedDatiSAL = [];
+
+        $filteredDatiSAL = $model->filterDatiSAL($selectDatoSAL);
+
+        $this->assertSame([], $filteredDatiSAL);
+        $this->assertSame([], $visitedDatiSAL);
+
+        // (2) Property DatiDDT - Filter
+
+        $model->setDatiDDT($datiDDT);
+
+        $datoDDTToKeep = $datiDDT[1];
+        $visitedDatiDDT = [];
+
+        $selectDatoDDT = static function (DatiDDT $datoDDT) use ($datoDDTToKeep, &$visitedDatiDDT): bool {
+            $visitedDatiDDT[] = $datoDDT;
+
+            return $datoDDT === $datoDDTToKeep;
+        };
+
+        $filteredDatiDDT = $model->filterDatiDDT($selectDatoDDT);
+
+        $this->assertSame([1 => $datoDDTToKeep], $filteredDatiDDT);
+        $this->assertSame($datiDDT, $visitedDatiDDT);
+        $this->assertSame($datiDDT, $model->getDatiDDT());
+
+        $model->clearDatiDDT();
+        $visitedDatiDDT = [];
+
+        $filteredDatiDDT = $model->filterDatiDDT($selectDatoDDT);
+
+        $this->assertSame([], $filteredDatiDDT);
+        $this->assertSame([], $visitedDatiDDT);
+
+        $model->unsetDatiDDT();
+        $visitedDatiDDT = [];
+
+        $filteredDatiDDT = $model->filterDatiDDT($selectDatoDDT);
+
+        $this->assertSame([], $filteredDatiDDT);
+        $this->assertSame([], $visitedDatiDDT);
     }
 
     /**
@@ -448,141 +829,276 @@ final class FatturaPaModelTest extends TestCase
     {
         $model = new DatiGeneraliDocumento();
 
-        // Property DatiRitenuta
+        // (1) Property DatiRitenuta - ForEach
 
-        $itemsBeforeForEach = $model->getDatiRitenuta();
+        $datiRitenuta = [new DatiRitenuta(), new DatiRitenuta()];
+        $model->setDatiRitenuta($datiRitenuta);
 
-        $this->assertSame($model, $model->forEachDatiRitenuta(
-            static function (DatiRitenuta $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        $visitedDatiRitenuta = [];
 
-        $this->assertSame($itemsBeforeForEach, $model->getDatiRitenuta());
+        $collectDatoRitenuta = static function (DatiRitenuta $datoRitenuta) use (&$visitedDatiRitenuta): void {
+            $visitedDatiRitenuta[] = $datoRitenuta;
+        };
 
-        $model->setDatiRitenuta([new DatiRitenuta(), new DatiRitenuta()]);
-
-        $itemsBeforeForEach = $model->getDatiRitenuta();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachDatiRitenuta(
-            static function (DatiRitenuta $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getDatiRitenuta());
+        $this->assertSame($model, $model->forEachDatiRitenuta($collectDatoRitenuta));
+        $this->assertSame($datiRitenuta, $visitedDatiRitenuta);
+        $this->assertSame($datiRitenuta, $model->getDatiRitenuta());
 
         $model->clearDatiRitenuta();
+        $visitedDatiRitenuta = [];
 
-        $this->assertSame($model, $model->forEachDatiRitenuta(
-            static function (DatiRitenuta $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachDatiRitenuta($collectDatoRitenuta));
+        $this->assertSame([], $visitedDatiRitenuta);
 
-        // Property DatiCassaPrevidenziale
+        $model->unsetDatiRitenuta();
+        $visitedDatiRitenuta = [];
 
-        $itemsBeforeForEach = $model->getDatiCassaPrevidenziale();
+        $this->assertSame($model, $model->forEachDatiRitenuta($collectDatoRitenuta));
+        $this->assertSame([], $visitedDatiRitenuta);
 
-        $this->assertSame($model, $model->forEachDatiCassaPrevidenziale(
-            static function (DatiCassaPrevidenziale $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        // (1) Property DatiCassaPrevidenziale - ForEach
 
-        $this->assertSame($itemsBeforeForEach, $model->getDatiCassaPrevidenziale());
+        $datiCassaPrevidenziale = [new DatiCassaPrevidenziale(), new DatiCassaPrevidenziale()];
+        $model->setDatiCassaPrevidenziale($datiCassaPrevidenziale);
 
-        $model->setDatiCassaPrevidenziale([new DatiCassaPrevidenziale(), new DatiCassaPrevidenziale()]);
+        $visitedDatiCassaPrevidenziale = [];
 
-        $itemsBeforeForEach = $model->getDatiCassaPrevidenziale();
-        $itemsFromForEach = [];
+        $collectDatoCassaPrevidenziale = static function (
+            DatiCassaPrevidenziale $datoCassaPrevidenziale
+        ) use (
+            &$visitedDatiCassaPrevidenziale
+        ): void {
+            $visitedDatiCassaPrevidenziale[] = $datoCassaPrevidenziale;
+        };
 
-        $this->assertSame($model, $model->forEachDatiCassaPrevidenziale(
-            static function (DatiCassaPrevidenziale $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getDatiCassaPrevidenziale());
+        $this->assertSame($model, $model->forEachDatiCassaPrevidenziale($collectDatoCassaPrevidenziale));
+        $this->assertSame($datiCassaPrevidenziale, $visitedDatiCassaPrevidenziale);
+        $this->assertSame($datiCassaPrevidenziale, $model->getDatiCassaPrevidenziale());
 
         $model->clearDatiCassaPrevidenziale();
+        $visitedDatiCassaPrevidenziale = [];
 
-        $this->assertSame($model, $model->forEachDatiCassaPrevidenziale(
-            static function (DatiCassaPrevidenziale $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachDatiCassaPrevidenziale($collectDatoCassaPrevidenziale));
+        $this->assertSame([], $visitedDatiCassaPrevidenziale);
 
-        // Property ScontoMaggiorazione
+        $model->unsetDatiCassaPrevidenziale();
+        $visitedDatiCassaPrevidenziale = [];
 
-        $itemsBeforeForEach = $model->getScontoMaggiorazione();
+        $this->assertSame($model, $model->forEachDatiCassaPrevidenziale($collectDatoCassaPrevidenziale));
+        $this->assertSame([], $visitedDatiCassaPrevidenziale);
 
-        $this->assertSame($model, $model->forEachScontoMaggiorazione(
-            static function (ScontoMaggiorazione $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        // (1) Property ScontoMaggiorazione - ForEach
 
-        $this->assertSame($itemsBeforeForEach, $model->getScontoMaggiorazione());
+        $scontiMaggiorazioni = [new ScontoMaggiorazione(), new ScontoMaggiorazione()];
+        $model->setScontoMaggiorazione($scontiMaggiorazioni);
 
-        $model->setScontoMaggiorazione([new ScontoMaggiorazione(), new ScontoMaggiorazione()]);
+        $visitedScontiMaggiorazioni = [];
 
-        $itemsBeforeForEach = $model->getScontoMaggiorazione();
-        $itemsFromForEach = [];
+        $collectScontoMaggiorazione = static function (
+            ScontoMaggiorazione $scontoMaggiorazione
+        ) use (
+            &$visitedScontiMaggiorazioni
+        ): void {
+            $visitedScontiMaggiorazioni[] = $scontoMaggiorazione;
+        };
 
-        $this->assertSame($model, $model->forEachScontoMaggiorazione(
-            static function (ScontoMaggiorazione $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getScontoMaggiorazione());
+        $this->assertSame($model, $model->forEachScontoMaggiorazione($collectScontoMaggiorazione));
+        $this->assertSame($scontiMaggiorazioni, $visitedScontiMaggiorazioni);
+        $this->assertSame($scontiMaggiorazioni, $model->getScontoMaggiorazione());
 
         $model->clearScontoMaggiorazione();
+        $visitedScontiMaggiorazioni = [];
 
-        $this->assertSame($model, $model->forEachScontoMaggiorazione(
-            static function (ScontoMaggiorazione $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachScontoMaggiorazione($collectScontoMaggiorazione));
+        $this->assertSame([], $visitedScontiMaggiorazioni);
 
-        // Property Causale
+        $model->unsetScontoMaggiorazione();
+        $visitedScontiMaggiorazioni = [];
 
-        $itemsBeforeForEach = $model->getCausale();
+        $this->assertSame($model, $model->forEachScontoMaggiorazione($collectScontoMaggiorazione));
+        $this->assertSame([], $visitedScontiMaggiorazioni);
 
-        $this->assertSame($model, $model->forEachCausale(
-            static function (string $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        // (1) Property Causale - ForEach
 
-        $this->assertSame($itemsBeforeForEach, $model->getCausale());
+        $causali = ['', 'second'];
+        $model->setCausale($causali);
 
-        $model->setCausale(['', 'second']);
+        $visitedCausali = [];
 
-        $itemsBeforeForEach = $model->getCausale();
-        $itemsFromForEach = [];
+        $collectCausale = static function (string $causale) use (&$visitedCausali): void {
+            $visitedCausali[] = $causale;
+        };
 
-        $this->assertSame($model, $model->forEachCausale(
-            static function (string $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getCausale());
+        $this->assertSame($model, $model->forEachCausale($collectCausale));
+        $this->assertSame($causali, $visitedCausali);
+        $this->assertSame($causali, $model->getCausale());
 
         $model->clearCausale();
+        $visitedCausali = [];
 
-        $this->assertSame($model, $model->forEachCausale(
-            static function (string $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachCausale($collectCausale));
+        $this->assertSame([], $visitedCausali);
+
+        $model->unsetCausale();
+        $visitedCausali = [];
+
+        $this->assertSame($model, $model->forEachCausale($collectCausale));
+        $this->assertSame([], $visitedCausali);
+
+        // (2) Property DatiRitenuta - Filter
+
+        $model->setDatiRitenuta($datiRitenuta);
+
+        $datoRitenutaToKeep = $datiRitenuta[1];
+        $visitedDatiRitenuta = [];
+
+        $selectDatoRitenuta = static function (
+            DatiRitenuta $datoRitenuta
+        ) use (
+            $datoRitenutaToKeep,
+            &$visitedDatiRitenuta
+        ): bool {
+            $visitedDatiRitenuta[] = $datoRitenuta;
+
+            return $datoRitenuta === $datoRitenutaToKeep;
+        };
+
+        $filteredDatiRitenuta = $model->filterDatiRitenuta($selectDatoRitenuta);
+
+        $this->assertSame([1 => $datoRitenutaToKeep], $filteredDatiRitenuta);
+        $this->assertSame($datiRitenuta, $visitedDatiRitenuta);
+        $this->assertSame($datiRitenuta, $model->getDatiRitenuta());
+
+        $model->clearDatiRitenuta();
+        $visitedDatiRitenuta = [];
+
+        $filteredDatiRitenuta = $model->filterDatiRitenuta($selectDatoRitenuta);
+
+        $this->assertSame([], $filteredDatiRitenuta);
+        $this->assertSame([], $visitedDatiRitenuta);
+
+        $model->unsetDatiRitenuta();
+        $visitedDatiRitenuta = [];
+
+        $filteredDatiRitenuta = $model->filterDatiRitenuta($selectDatoRitenuta);
+
+        $this->assertSame([], $filteredDatiRitenuta);
+        $this->assertSame([], $visitedDatiRitenuta);
+
+        // (2) Property DatiCassaPrevidenziale - Filter
+
+        $model->setDatiCassaPrevidenziale($datiCassaPrevidenziale);
+
+        $datoCassaPrevidenzialeToKeep = $datiCassaPrevidenziale[1];
+        $visitedDatiCassaPrevidenziale = [];
+
+        $selectDatoCassaPrevidenziale = static function (
+            DatiCassaPrevidenziale $datoCassaPrevidenziale
+        ) use (
+            $datoCassaPrevidenzialeToKeep,
+            &$visitedDatiCassaPrevidenziale
+        ): bool {
+            $visitedDatiCassaPrevidenziale[] = $datoCassaPrevidenziale;
+
+            return $datoCassaPrevidenziale === $datoCassaPrevidenzialeToKeep;
+        };
+
+        $filteredDatiCassaPrevidenziale = $model->filterDatiCassaPrevidenziale($selectDatoCassaPrevidenziale);
+
+        $this->assertSame([1 => $datoCassaPrevidenzialeToKeep], $filteredDatiCassaPrevidenziale);
+        $this->assertSame($datiCassaPrevidenziale, $visitedDatiCassaPrevidenziale);
+        $this->assertSame($datiCassaPrevidenziale, $model->getDatiCassaPrevidenziale());
+
+        $model->clearDatiCassaPrevidenziale();
+        $visitedDatiCassaPrevidenziale = [];
+
+        $filteredDatiCassaPrevidenziale = $model->filterDatiCassaPrevidenziale($selectDatoCassaPrevidenziale);
+
+        $this->assertSame([], $filteredDatiCassaPrevidenziale);
+        $this->assertSame([], $visitedDatiCassaPrevidenziale);
+
+        $model->unsetDatiCassaPrevidenziale();
+        $visitedDatiCassaPrevidenziale = [];
+
+        $filteredDatiCassaPrevidenziale = $model->filterDatiCassaPrevidenziale($selectDatoCassaPrevidenziale);
+
+        $this->assertSame([], $filteredDatiCassaPrevidenziale);
+        $this->assertSame([], $visitedDatiCassaPrevidenziale);
+
+        // (2) Property ScontoMaggiorazione - Filter
+
+        $model->setScontoMaggiorazione($scontiMaggiorazioni);
+
+        $scontoMaggiorazioneToKeep = $scontiMaggiorazioni[1];
+        $visitedScontiMaggiorazioni = [];
+
+        $selectScontoMaggiorazione = static function (
+            ScontoMaggiorazione $scontoMaggiorazione
+        ) use (
+            $scontoMaggiorazioneToKeep,
+            &$visitedScontiMaggiorazioni
+        ): bool {
+            $visitedScontiMaggiorazioni[] = $scontoMaggiorazione;
+
+            return $scontoMaggiorazione === $scontoMaggiorazioneToKeep;
+        };
+
+        $filteredScontiMaggiorazioni = $model->filterScontiMaggiorazioni($selectScontoMaggiorazione);
+
+        $this->assertSame([1 => $scontoMaggiorazioneToKeep], $filteredScontiMaggiorazioni);
+        $this->assertSame($scontiMaggiorazioni, $visitedScontiMaggiorazioni);
+        $this->assertSame($scontiMaggiorazioni, $model->getScontoMaggiorazione());
+
+        $model->clearScontoMaggiorazione();
+        $visitedScontiMaggiorazioni = [];
+
+        $filteredScontiMaggiorazioni = $model->filterScontiMaggiorazioni($selectScontoMaggiorazione);
+
+        $this->assertSame([], $filteredScontiMaggiorazioni);
+        $this->assertSame([], $visitedScontiMaggiorazioni);
+
+        $model->unsetScontoMaggiorazione();
+        $visitedScontiMaggiorazioni = [];
+
+        $filteredScontiMaggiorazioni = $model->filterScontiMaggiorazioni($selectScontoMaggiorazione);
+
+        $this->assertSame([], $filteredScontiMaggiorazioni);
+        $this->assertSame([], $visitedScontiMaggiorazioni);
+
+        // (2) Property Causale - Filter
+
+        $model->setCausale($causali);
+
+        $causaleToKeep = $causali[1];
+        $visitedCausali = [];
+
+        $selectCausale = static function (string $causale) use ($causaleToKeep, &$visitedCausali): bool {
+            $visitedCausali[] = $causale;
+
+            return $causale === $causaleToKeep;
+        };
+
+        $filteredCausali = $model->filterCausali($selectCausale);
+
+        $this->assertSame([1 => $causaleToKeep], $filteredCausali);
+        $this->assertSame($causali, $visitedCausali);
+        $this->assertSame($causali, $model->getCausale());
+
+        $model->clearCausale();
+        $visitedCausali = [];
+
+        $filteredCausali = $model->filterCausali($selectCausale);
+
+        $this->assertSame([], $filteredCausali);
+        $this->assertSame([], $visitedCausali);
+
+        $model->unsetCausale();
+        $visitedCausali = [];
+
+        $filteredCausali = $model->filterCausali($selectCausale);
+
+        $this->assertSame([], $filteredCausali);
+        $this->assertSame([], $visitedCausali);
     }
 
     /**
@@ -592,39 +1108,76 @@ final class FatturaPaModelTest extends TestCase
     {
         $model = new DatiPagamento();
 
-        // Property DettaglioPagamento
+        // (1) Property DettaglioPagamento - ForEach
 
-        $itemsBeforeForEach = $model->getDettaglioPagamento();
+        $dettagliPagamento = [new DettaglioPagamento(), new DettaglioPagamento()];
+        $model->setDettaglioPagamento($dettagliPagamento);
 
-        $this->assertSame($model, $model->forEachDettaglioPagamento(
-            static function (DettaglioPagamento $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        $visitedDettagliPagamento = [];
 
-        $this->assertSame($itemsBeforeForEach, $model->getDettaglioPagamento());
+        $collectDettaglioPagamento = static function (
+            DettaglioPagamento $dettaglioPagamento
+        ) use (
+            &$visitedDettagliPagamento
+        ): void {
+            $visitedDettagliPagamento[] = $dettaglioPagamento;
+        };
 
-        $model->setDettaglioPagamento([new DettaglioPagamento(), new DettaglioPagamento()]);
-
-        $itemsBeforeForEach = $model->getDettaglioPagamento();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachDettaglioPagamento(
-            static function (DettaglioPagamento $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getDettaglioPagamento());
+        $this->assertSame($model, $model->forEachDettaglioPagamento($collectDettaglioPagamento));
+        $this->assertSame($dettagliPagamento, $visitedDettagliPagamento);
+        $this->assertSame($dettagliPagamento, $model->getDettaglioPagamento());
 
         $model->clearDettaglioPagamento();
+        $visitedDettagliPagamento = [];
 
-        $this->assertSame($model, $model->forEachDettaglioPagamento(
-            static function (DettaglioPagamento $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachDettaglioPagamento($collectDettaglioPagamento));
+        $this->assertSame([], $visitedDettagliPagamento);
+
+        $model->unsetDettaglioPagamento();
+        $visitedDettagliPagamento = [];
+
+        $this->assertSame($model, $model->forEachDettaglioPagamento($collectDettaglioPagamento));
+        $this->assertSame([], $visitedDettagliPagamento);
+
+        // (2) Property DettaglioPagamento - Filter
+
+        $model->setDettaglioPagamento($dettagliPagamento);
+
+        $dettaglioPagamentoToKeep = $dettagliPagamento[1];
+        $visitedDettagliPagamento = [];
+
+        $selectDettaglioPagamento = static function (
+            DettaglioPagamento $dettaglioPagamento
+        ) use (
+            $dettaglioPagamentoToKeep,
+            &$visitedDettagliPagamento
+        ): bool {
+            $visitedDettagliPagamento[] = $dettaglioPagamento;
+
+            return $dettaglioPagamento === $dettaglioPagamentoToKeep;
+        };
+
+        $filteredDettagliPagamento = $model->filterDettagliPagamento($selectDettaglioPagamento);
+
+        $this->assertSame([1 => $dettaglioPagamentoToKeep], $filteredDettagliPagamento);
+        $this->assertSame($dettagliPagamento, $visitedDettagliPagamento);
+        $this->assertSame($dettagliPagamento, $model->getDettaglioPagamento());
+
+        $model->clearDettaglioPagamento();
+        $visitedDettagliPagamento = [];
+
+        $filteredDettagliPagamento = $model->filterDettagliPagamento($selectDettaglioPagamento);
+
+        $this->assertSame([], $filteredDettagliPagamento);
+        $this->assertSame([], $visitedDettagliPagamento);
+
+        $model->unsetDettaglioPagamento();
+        $visitedDettagliPagamento = [];
+
+        $filteredDettagliPagamento = $model->filterDettagliPagamento($selectDettaglioPagamento);
+
+        $this->assertSame([], $filteredDettagliPagamento);
+        $this->assertSame([], $visitedDettagliPagamento);
     }
 
     /**
@@ -634,107 +1187,214 @@ final class FatturaPaModelTest extends TestCase
     {
         $model = new DettaglioLinee();
 
-        // Property CodiceArticolo
+        // (1) Property CodiceArticolo - ForEach
 
-        $itemsBeforeForEach = $model->getCodiceArticolo();
+        $codiciArticolo = [new CodiceArticolo(), new CodiceArticolo()];
+        $model->setCodiceArticolo($codiciArticolo);
 
-        $this->assertSame($model, $model->forEachCodiceArticolo(
-            static function (CodiceArticolo $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        $visitedCodiciArticolo = [];
 
-        $this->assertSame($itemsBeforeForEach, $model->getCodiceArticolo());
+        $collectCodiceArticolo = static function (CodiceArticolo $codiceArticolo) use (&$visitedCodiciArticolo): void {
+            $visitedCodiciArticolo[] = $codiceArticolo;
+        };
 
-        $model->setCodiceArticolo([new CodiceArticolo(), new CodiceArticolo()]);
-
-        $itemsBeforeForEach = $model->getCodiceArticolo();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachCodiceArticolo(
-            static function (CodiceArticolo $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getCodiceArticolo());
+        $this->assertSame($model, $model->forEachCodiceArticolo($collectCodiceArticolo));
+        $this->assertSame($codiciArticolo, $visitedCodiciArticolo);
+        $this->assertSame($codiciArticolo, $model->getCodiceArticolo());
 
         $model->clearCodiceArticolo();
+        $visitedCodiciArticolo = [];
 
-        $this->assertSame($model, $model->forEachCodiceArticolo(
-            static function (CodiceArticolo $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachCodiceArticolo($collectCodiceArticolo));
+        $this->assertSame([], $visitedCodiciArticolo);
 
-        // Property ScontoMaggiorazione
+        $model->unsetCodiceArticolo();
+        $visitedCodiciArticolo = [];
 
-        $itemsBeforeForEach = $model->getScontoMaggiorazione();
+        $this->assertSame($model, $model->forEachCodiceArticolo($collectCodiceArticolo));
+        $this->assertSame([], $visitedCodiciArticolo);
 
-        $this->assertSame($model, $model->forEachScontoMaggiorazione(
-            static function (ScontoMaggiorazione $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        // (1) Property ScontoMaggiorazione - ForEach
 
-        $this->assertSame($itemsBeforeForEach, $model->getScontoMaggiorazione());
+        $scontiMaggiorazioni = [new ScontoMaggiorazione(), new ScontoMaggiorazione()];
+        $model->setScontoMaggiorazione($scontiMaggiorazioni);
 
-        $model->setScontoMaggiorazione([new ScontoMaggiorazione(), new ScontoMaggiorazione()]);
+        $visitedScontiMaggiorazioni = [];
 
-        $itemsBeforeForEach = $model->getScontoMaggiorazione();
-        $itemsFromForEach = [];
+        $collectScontoMaggiorazione = static function (
+            ScontoMaggiorazione $scontoMaggiorazione
+        ) use (
+            &$visitedScontiMaggiorazioni
+        ): void {
+            $visitedScontiMaggiorazioni[] = $scontoMaggiorazione;
+        };
 
-        $this->assertSame($model, $model->forEachScontoMaggiorazione(
-            static function (ScontoMaggiorazione $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getScontoMaggiorazione());
+        $this->assertSame($model, $model->forEachScontoMaggiorazione($collectScontoMaggiorazione));
+        $this->assertSame($scontiMaggiorazioni, $visitedScontiMaggiorazioni);
+        $this->assertSame($scontiMaggiorazioni, $model->getScontoMaggiorazione());
 
         $model->clearScontoMaggiorazione();
+        $visitedScontiMaggiorazioni = [];
 
-        $this->assertSame($model, $model->forEachScontoMaggiorazione(
-            static function (ScontoMaggiorazione $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachScontoMaggiorazione($collectScontoMaggiorazione));
+        $this->assertSame([], $visitedScontiMaggiorazioni);
 
-        // Property AltriDatiGestionali
+        $model->unsetScontoMaggiorazione();
+        $visitedScontiMaggiorazioni = [];
 
-        $itemsBeforeForEach = $model->getAltriDatiGestionali();
+        $this->assertSame($model, $model->forEachScontoMaggiorazione($collectScontoMaggiorazione));
+        $this->assertSame([], $visitedScontiMaggiorazioni);
 
-        $this->assertSame($model, $model->forEachAltriDatiGestionali(
-            static function (AltriDatiGestionali $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        // (1) Property AltriDatiGestionali - ForEach
 
-        $this->assertSame($itemsBeforeForEach, $model->getAltriDatiGestionali());
+        $altriDatiGestionali = [new AltriDatiGestionali(), new AltriDatiGestionali()];
+        $model->setAltriDatiGestionali($altriDatiGestionali);
 
-        $model->setAltriDatiGestionali([new AltriDatiGestionali(), new AltriDatiGestionali()]);
+        $visitedAltriDatiGestionali = [];
 
-        $itemsBeforeForEach = $model->getAltriDatiGestionali();
-        $itemsFromForEach = [];
+        $collectAltroDatoGestionale = static function (
+            AltriDatiGestionali $altroDatoGestionale
+        ) use (
+            &$visitedAltriDatiGestionali
+        ): void {
+            $visitedAltriDatiGestionali[] = $altroDatoGestionale;
+        };
 
-        $this->assertSame($model, $model->forEachAltriDatiGestionali(
-            static function (AltriDatiGestionali $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getAltriDatiGestionali());
+        $this->assertSame($model, $model->forEachAltriDatiGestionali($collectAltroDatoGestionale));
+        $this->assertSame($altriDatiGestionali, $visitedAltriDatiGestionali);
+        $this->assertSame($altriDatiGestionali, $model->getAltriDatiGestionali());
 
         $model->clearAltriDatiGestionali();
+        $visitedAltriDatiGestionali = [];
 
-        $this->assertSame($model, $model->forEachAltriDatiGestionali(
-            static function (AltriDatiGestionali $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachAltriDatiGestionali($collectAltroDatoGestionale));
+        $this->assertSame([], $visitedAltriDatiGestionali);
+
+        $model->unsetAltriDatiGestionali();
+        $visitedAltriDatiGestionali = [];
+
+        $this->assertSame($model, $model->forEachAltriDatiGestionali($collectAltroDatoGestionale));
+        $this->assertSame([], $visitedAltriDatiGestionali);
+
+        // (2) Property CodiceArticolo - Filter
+
+        $model->setCodiceArticolo($codiciArticolo);
+
+        $codiceArticoloToKeep = $codiciArticolo[1];
+        $visitedCodiciArticolo = [];
+
+        $selectCodiceArticolo = static function (
+            CodiceArticolo $codiceArticolo
+        ) use (
+            $codiceArticoloToKeep,
+            &$visitedCodiciArticolo
+        ): bool {
+            $visitedCodiciArticolo[] = $codiceArticolo;
+
+            return $codiceArticolo === $codiceArticoloToKeep;
+        };
+
+        $filteredCodiciArticolo = $model->filterCodiciArticolo($selectCodiceArticolo);
+
+        $this->assertSame([1 => $codiceArticoloToKeep], $filteredCodiciArticolo);
+        $this->assertSame($codiciArticolo, $visitedCodiciArticolo);
+        $this->assertSame($codiciArticolo, $model->getCodiceArticolo());
+
+        $model->clearCodiceArticolo();
+        $visitedCodiciArticolo = [];
+
+        $filteredCodiciArticolo = $model->filterCodiciArticolo($selectCodiceArticolo);
+
+        $this->assertSame([], $filteredCodiciArticolo);
+        $this->assertSame([], $visitedCodiciArticolo);
+
+        $model->unsetCodiceArticolo();
+        $visitedCodiciArticolo = [];
+
+        $filteredCodiciArticolo = $model->filterCodiciArticolo($selectCodiceArticolo);
+
+        $this->assertSame([], $filteredCodiciArticolo);
+        $this->assertSame([], $visitedCodiciArticolo);
+
+        // (2) Property ScontoMaggiorazione - Filter
+
+        $model->setScontoMaggiorazione($scontiMaggiorazioni);
+
+        $scontoMaggiorazioneToKeep = $scontiMaggiorazioni[1];
+        $visitedScontiMaggiorazioni = [];
+
+        $selectScontoMaggiorazione = static function (
+            ScontoMaggiorazione $scontoMaggiorazione
+        ) use (
+            $scontoMaggiorazioneToKeep,
+            &$visitedScontiMaggiorazioni
+        ): bool {
+            $visitedScontiMaggiorazioni[] = $scontoMaggiorazione;
+
+            return $scontoMaggiorazione === $scontoMaggiorazioneToKeep;
+        };
+
+        $filteredScontiMaggiorazioni = $model->filterScontiMaggiorazioni($selectScontoMaggiorazione);
+
+        $this->assertSame([1 => $scontoMaggiorazioneToKeep], $filteredScontiMaggiorazioni);
+        $this->assertSame($scontiMaggiorazioni, $visitedScontiMaggiorazioni);
+        $this->assertSame($scontiMaggiorazioni, $model->getScontoMaggiorazione());
+
+        $model->clearScontoMaggiorazione();
+        $visitedScontiMaggiorazioni = [];
+
+        $filteredScontiMaggiorazioni = $model->filterScontiMaggiorazioni($selectScontoMaggiorazione);
+
+        $this->assertSame([], $filteredScontiMaggiorazioni);
+        $this->assertSame([], $visitedScontiMaggiorazioni);
+
+        $model->unsetScontoMaggiorazione();
+        $visitedScontiMaggiorazioni = [];
+
+        $filteredScontiMaggiorazioni = $model->filterScontiMaggiorazioni($selectScontoMaggiorazione);
+
+        $this->assertSame([], $filteredScontiMaggiorazioni);
+        $this->assertSame([], $visitedScontiMaggiorazioni);
+
+        // (2) Property AltriDatiGestionali - Filter
+
+        $model->setAltriDatiGestionali($altriDatiGestionali);
+
+        $altroDatoGestionaleToKeep = $altriDatiGestionali[1];
+        $visitedAltriDatiGestionali = [];
+
+        $selectAltroDatoGestionale = static function (
+            AltriDatiGestionali $altroDatoGestionale
+        ) use (
+            $altroDatoGestionaleToKeep,
+            &$visitedAltriDatiGestionali
+        ): bool {
+            $visitedAltriDatiGestionali[] = $altroDatoGestionale;
+
+            return $altroDatoGestionale === $altroDatoGestionaleToKeep;
+        };
+
+        $filteredAltriDatiGestionali = $model->filterAltriDatiGestionali($selectAltroDatoGestionale);
+
+        $this->assertSame([1 => $altroDatoGestionaleToKeep], $filteredAltriDatiGestionali);
+        $this->assertSame($altriDatiGestionali, $visitedAltriDatiGestionali);
+        $this->assertSame($altriDatiGestionali, $model->getAltriDatiGestionali());
+
+        $model->clearAltriDatiGestionali();
+        $visitedAltriDatiGestionali = [];
+
+        $filteredAltriDatiGestionali = $model->filterAltriDatiGestionali($selectAltroDatoGestionale);
+
+        $this->assertSame([], $filteredAltriDatiGestionali);
+        $this->assertSame([], $visitedAltriDatiGestionali);
+
+        $model->unsetAltriDatiGestionali();
+        $visitedAltriDatiGestionali = [];
+
+        $filteredAltriDatiGestionali = $model->filterAltriDatiGestionali($selectAltroDatoGestionale);
+
+        $this->assertSame([], $filteredAltriDatiGestionali);
+        $this->assertSame([], $visitedAltriDatiGestionali);
     }
 
     /**
@@ -744,73 +1404,134 @@ final class FatturaPaModelTest extends TestCase
     {
         $model = new FatturaElettronicaBody();
 
-        // Property DatiPagamento
+        // (1) Property DatiPagamento - ForEach
 
-        $itemsBeforeForEach = $model->getDatiPagamento();
+        $datiPagamento = [new DatiPagamento(), new DatiPagamento()];
+        $model->setDatiPagamento($datiPagamento);
 
-        $this->assertSame($model, $model->forEachDatiPagamento(
-            static function (DatiPagamento $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        $visitedDatiPagamento = [];
 
-        $this->assertSame($itemsBeforeForEach, $model->getDatiPagamento());
+        $collectDatoPagamento = static function (DatiPagamento $datoPagamento) use (&$visitedDatiPagamento): void {
+            $visitedDatiPagamento[] = $datoPagamento;
+        };
 
-        $model->setDatiPagamento([new DatiPagamento(), new DatiPagamento()]);
-
-        $itemsBeforeForEach = $model->getDatiPagamento();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachDatiPagamento(
-            static function (DatiPagamento $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getDatiPagamento());
+        $this->assertSame($model, $model->forEachDatiPagamento($collectDatoPagamento));
+        $this->assertSame($datiPagamento, $visitedDatiPagamento);
+        $this->assertSame($datiPagamento, $model->getDatiPagamento());
 
         $model->clearDatiPagamento();
+        $visitedDatiPagamento = [];
 
-        $this->assertSame($model, $model->forEachDatiPagamento(
-            static function (DatiPagamento $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachDatiPagamento($collectDatoPagamento));
+        $this->assertSame([], $visitedDatiPagamento);
 
-        // Property Allegati
+        $model->unsetDatiPagamento();
+        $visitedDatiPagamento = [];
 
-        $itemsBeforeForEach = $model->getAllegati();
+        $this->assertSame($model, $model->forEachDatiPagamento($collectDatoPagamento));
+        $this->assertSame([], $visitedDatiPagamento);
 
-        $this->assertSame($model, $model->forEachAllegati(
-            static function (Allegati $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        // (1) Property Allegati - ForEach
 
-        $this->assertSame($itemsBeforeForEach, $model->getAllegati());
+        $allegati = [new Allegati(), new Allegati()];
+        $model->setAllegati($allegati);
 
-        $model->setAllegati([new Allegati(), new Allegati()]);
+        $visitedAllegati = [];
 
-        $itemsBeforeForEach = $model->getAllegati();
-        $itemsFromForEach = [];
+        $collectAllegato = static function (Allegati $allegato) use (&$visitedAllegati): void {
+            $visitedAllegati[] = $allegato;
+        };
 
-        $this->assertSame($model, $model->forEachAllegati(
-            static function (Allegati $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getAllegati());
+        $this->assertSame($model, $model->forEachAllegati($collectAllegato));
+        $this->assertSame($allegati, $visitedAllegati);
+        $this->assertSame($allegati, $model->getAllegati());
 
         $model->clearAllegati();
+        $visitedAllegati = [];
 
-        $this->assertSame($model, $model->forEachAllegati(
-            static function (Allegati $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachAllegati($collectAllegato));
+        $this->assertSame([], $visitedAllegati);
+
+        $model->unsetAllegati();
+        $visitedAllegati = [];
+
+        $this->assertSame($model, $model->forEachAllegati($collectAllegato));
+        $this->assertSame([], $visitedAllegati);
+
+        // (2) Property DatiPagamento - Filter
+
+        $model->setDatiPagamento($datiPagamento);
+
+        $datoPagamentoToKeep = $datiPagamento[1];
+        $visitedDatiPagamento = [];
+
+        $selectDatoPagamento = static function (
+            DatiPagamento $datoPagamento
+        ) use (
+            $datoPagamentoToKeep,
+            &$visitedDatiPagamento
+        ): bool {
+            $visitedDatiPagamento[] = $datoPagamento;
+
+            return $datoPagamento === $datoPagamentoToKeep;
+        };
+
+        $filteredDatiPagamento = $model->filterDatiPagamento($selectDatoPagamento);
+
+        $this->assertSame([1 => $datoPagamentoToKeep], $filteredDatiPagamento);
+        $this->assertSame($datiPagamento, $visitedDatiPagamento);
+        $this->assertSame($datiPagamento, $model->getDatiPagamento());
+
+        $model->clearDatiPagamento();
+        $visitedDatiPagamento = [];
+
+        $filteredDatiPagamento = $model->filterDatiPagamento($selectDatoPagamento);
+
+        $this->assertSame([], $filteredDatiPagamento);
+        $this->assertSame([], $visitedDatiPagamento);
+
+        $model->unsetDatiPagamento();
+        $visitedDatiPagamento = [];
+
+        $filteredDatiPagamento = $model->filterDatiPagamento($selectDatoPagamento);
+
+        $this->assertSame([], $filteredDatiPagamento);
+        $this->assertSame([], $visitedDatiPagamento);
+
+        // (2) Property Allegati - Filter
+
+        $model->setAllegati($allegati);
+
+        $allegatoToKeep = $allegati[1];
+        $visitedAllegati = [];
+
+        $selectAllegato = static function (Allegati $allegato) use ($allegatoToKeep, &$visitedAllegati): bool {
+            $visitedAllegati[] = $allegato;
+
+            return $allegato === $allegatoToKeep;
+        };
+
+        $filteredAllegati = $model->filterAllegati($selectAllegato);
+
+        $this->assertSame([1 => $allegatoToKeep], $filteredAllegati);
+        $this->assertSame($allegati, $visitedAllegati);
+        $this->assertSame($allegati, $model->getAllegati());
+
+        $model->clearAllegati();
+        $visitedAllegati = [];
+
+        $filteredAllegati = $model->filterAllegati($selectAllegato);
+
+        $this->assertSame([], $filteredAllegati);
+        $this->assertSame([], $visitedAllegati);
+
+        $model->unsetAllegati();
+        $visitedAllegati = [];
+
+        $filteredAllegati = $model->filterAllegati($selectAllegato);
+
+        $this->assertSame([], $filteredAllegati);
+        $this->assertSame([], $visitedAllegati);
     }
 
     /**
@@ -820,39 +1541,76 @@ final class FatturaPaModelTest extends TestCase
     {
         $model = new FatturaElettronicaType();
 
-        // Property FatturaElettronicaBody
+        // (1) Property FatturaElettronicaBody - ForEach
 
-        $itemsBeforeForEach = $model->getFatturaElettronicaBody();
+        $fattureElettronicheBody = [new FatturaElettronicaBody(), new FatturaElettronicaBody()];
+        $model->setFatturaElettronicaBody($fattureElettronicheBody);
 
-        $this->assertSame($model, $model->forEachFatturaElettronicaBody(
-            static function (FatturaElettronicaBody $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        $visitedFattureElettronicheBody = [];
 
-        $this->assertSame($itemsBeforeForEach, $model->getFatturaElettronicaBody());
+        $collectFatturaElettronicaBody = static function (
+            FatturaElettronicaBody $fatturaElettronicaBody
+        ) use (
+            &$visitedFattureElettronicheBody
+        ): void {
+            $visitedFattureElettronicheBody[] = $fatturaElettronicaBody;
+        };
 
-        $model->setFatturaElettronicaBody([new FatturaElettronicaBody(), new FatturaElettronicaBody()]);
-
-        $itemsBeforeForEach = $model->getFatturaElettronicaBody();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachFatturaElettronicaBody(
-            static function (FatturaElettronicaBody $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getFatturaElettronicaBody());
+        $this->assertSame($model, $model->forEachFatturaElettronicaBody($collectFatturaElettronicaBody));
+        $this->assertSame($fattureElettronicheBody, $visitedFattureElettronicheBody);
+        $this->assertSame($fattureElettronicheBody, $model->getFatturaElettronicaBody());
 
         $model->clearFatturaElettronicaBody();
+        $visitedFattureElettronicheBody = [];
 
-        $this->assertSame($model, $model->forEachFatturaElettronicaBody(
-            static function (FatturaElettronicaBody $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachFatturaElettronicaBody($collectFatturaElettronicaBody));
+        $this->assertSame([], $visitedFattureElettronicheBody);
+
+        $model->unsetFatturaElettronicaBody();
+        $visitedFattureElettronicheBody = [];
+
+        $this->assertSame($model, $model->forEachFatturaElettronicaBody($collectFatturaElettronicaBody));
+        $this->assertSame([], $visitedFattureElettronicheBody);
+
+        // (2) Property FatturaElettronicaBody - Filter
+
+        $model->setFatturaElettronicaBody($fattureElettronicheBody);
+
+        $fatturaElettronicaBodyToKeep = $fattureElettronicheBody[1];
+        $visitedFattureElettronicheBody = [];
+
+        $selectFatturaElettronicaBody = static function (
+            FatturaElettronicaBody $fatturaElettronicaBody
+        ) use (
+            $fatturaElettronicaBodyToKeep,
+            &$visitedFattureElettronicheBody
+        ): bool {
+            $visitedFattureElettronicheBody[] = $fatturaElettronicaBody;
+
+            return $fatturaElettronicaBody === $fatturaElettronicaBodyToKeep;
+        };
+
+        $filteredFattureElettronicheBody = $model->filterFattureElettronicheBody($selectFatturaElettronicaBody);
+
+        $this->assertSame([1 => $fatturaElettronicaBodyToKeep], $filteredFattureElettronicheBody);
+        $this->assertSame($fattureElettronicheBody, $visitedFattureElettronicheBody);
+        $this->assertSame($fattureElettronicheBody, $model->getFatturaElettronicaBody());
+
+        $model->clearFatturaElettronicaBody();
+        $visitedFattureElettronicheBody = [];
+
+        $filteredFattureElettronicheBody = $model->filterFattureElettronicheBody($selectFatturaElettronicaBody);
+
+        $this->assertSame([], $filteredFattureElettronicheBody);
+        $this->assertSame([], $visitedFattureElettronicheBody);
+
+        $model->unsetFatturaElettronicaBody();
+        $visitedFattureElettronicheBody = [];
+
+        $filteredFattureElettronicheBody = $model->filterFattureElettronicheBody($selectFatturaElettronicaBody);
+
+        $this->assertSame([], $filteredFattureElettronicheBody);
+        $this->assertSame([], $visitedFattureElettronicheBody);
     }
 
     /**
@@ -862,39 +1620,72 @@ final class FatturaPaModelTest extends TestCase
     {
         $model = new ManifestType();
 
-        // Property Reference
+        // (1) Property Reference - ForEach
 
-        $itemsBeforeForEach = $model->getReference();
+        $references = [new ReferenceType(), new ReferenceType()];
+        $model->setReference($references);
 
-        $this->assertSame($model, $model->forEachReference(
-            static function (ReferenceType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        $visitedReferences = [];
 
-        $this->assertSame($itemsBeforeForEach, $model->getReference());
+        $collectReference = static function (ReferenceType $reference) use (&$visitedReferences): void {
+            $visitedReferences[] = $reference;
+        };
 
-        $model->setReference([new ReferenceType(), new ReferenceType()]);
-
-        $itemsBeforeForEach = $model->getReference();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachReference(
-            static function (ReferenceType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getReference());
+        $this->assertSame($model, $model->forEachReference($collectReference));
+        $this->assertSame($references, $visitedReferences);
+        $this->assertSame($references, $model->getReference());
 
         $model->clearReference();
+        $visitedReferences = [];
 
-        $this->assertSame($model, $model->forEachReference(
-            static function (ReferenceType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachReference($collectReference));
+        $this->assertSame([], $visitedReferences);
+
+        $model->unsetReference();
+        $visitedReferences = [];
+
+        $this->assertSame($model, $model->forEachReference($collectReference));
+        $this->assertSame([], $visitedReferences);
+
+        // (2) Property Reference - Filter
+
+        $model->setReference($references);
+
+        $referenceToKeep = $references[1];
+        $visitedReferences = [];
+
+        $selectReference = static function (
+            ReferenceType $reference
+        ) use (
+            $referenceToKeep,
+            &$visitedReferences
+        ): bool {
+            $visitedReferences[] = $reference;
+
+            return $reference === $referenceToKeep;
+        };
+
+        $filteredReferences = $model->filterReferences($selectReference);
+
+        $this->assertSame([1 => $referenceToKeep], $filteredReferences);
+        $this->assertSame($references, $visitedReferences);
+        $this->assertSame($references, $model->getReference());
+
+        $model->clearReference();
+        $visitedReferences = [];
+
+        $filteredReferences = $model->filterReferences($selectReference);
+
+        $this->assertSame([], $filteredReferences);
+        $this->assertSame([], $visitedReferences);
+
+        $model->unsetReference();
+        $visitedReferences = [];
+
+        $filteredReferences = $model->filterReferences($selectReference);
+
+        $this->assertSame([], $filteredReferences);
+        $this->assertSame([], $visitedReferences);
     }
 
     /**
@@ -904,39 +1695,76 @@ final class FatturaPaModelTest extends TestCase
     {
         $model = new SignaturePropertiesType();
 
-        // Property SignatureProperty
+        // (1) Property SignatureProperty - ForEach
 
-        $itemsBeforeForEach = $model->getSignatureProperty();
+        $signatureProperties = [new SignaturePropertyType(), new SignaturePropertyType()];
+        $model->setSignatureProperty($signatureProperties);
 
-        $this->assertSame($model, $model->forEachSignatureProperty(
-            static function (SignaturePropertyType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        $visitedSignatureProperties = [];
 
-        $this->assertSame($itemsBeforeForEach, $model->getSignatureProperty());
+        $collectSignatureProperty = static function (
+            SignaturePropertyType $signatureProperty
+        ) use (
+            &$visitedSignatureProperties
+        ): void {
+            $visitedSignatureProperties[] = $signatureProperty;
+        };
 
-        $model->setSignatureProperty([new SignaturePropertyType(), new SignaturePropertyType()]);
-
-        $itemsBeforeForEach = $model->getSignatureProperty();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachSignatureProperty(
-            static function (SignaturePropertyType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getSignatureProperty());
+        $this->assertSame($model, $model->forEachSignatureProperty($collectSignatureProperty));
+        $this->assertSame($signatureProperties, $visitedSignatureProperties);
+        $this->assertSame($signatureProperties, $model->getSignatureProperty());
 
         $model->clearSignatureProperty();
+        $visitedSignatureProperties = [];
 
-        $this->assertSame($model, $model->forEachSignatureProperty(
-            static function (SignaturePropertyType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachSignatureProperty($collectSignatureProperty));
+        $this->assertSame([], $visitedSignatureProperties);
+
+        $model->unsetSignatureProperty();
+        $visitedSignatureProperties = [];
+
+        $this->assertSame($model, $model->forEachSignatureProperty($collectSignatureProperty));
+        $this->assertSame([], $visitedSignatureProperties);
+
+        // (2) Property SignatureProperty - Filter
+
+        $model->setSignatureProperty($signatureProperties);
+
+        $signaturePropertyToKeep = $signatureProperties[1];
+        $visitedSignatureProperties = [];
+
+        $selectSignatureProperty = static function (
+            SignaturePropertyType $signatureProperty
+        ) use (
+            $signaturePropertyToKeep,
+            &$visitedSignatureProperties
+        ): bool {
+            $visitedSignatureProperties[] = $signatureProperty;
+
+            return $signatureProperty === $signaturePropertyToKeep;
+        };
+
+        $filteredSignatureProperties = $model->filterSignatureProperties($selectSignatureProperty);
+
+        $this->assertSame([1 => $signaturePropertyToKeep], $filteredSignatureProperties);
+        $this->assertSame($signatureProperties, $visitedSignatureProperties);
+        $this->assertSame($signatureProperties, $model->getSignatureProperty());
+
+        $model->clearSignatureProperty();
+        $visitedSignatureProperties = [];
+
+        $filteredSignatureProperties = $model->filterSignatureProperties($selectSignatureProperty);
+
+        $this->assertSame([], $filteredSignatureProperties);
+        $this->assertSame([], $visitedSignatureProperties);
+
+        $model->unsetSignatureProperty();
+        $visitedSignatureProperties = [];
+
+        $filteredSignatureProperties = $model->filterSignatureProperties($selectSignatureProperty);
+
+        $this->assertSame([], $filteredSignatureProperties);
+        $this->assertSame([], $visitedSignatureProperties);
     }
 
     /**
@@ -946,39 +1774,67 @@ final class FatturaPaModelTest extends TestCase
     {
         $model = new SignatureType();
 
-        // Property Object
+        // (1) Property Object - ForEach
 
-        $itemsBeforeForEach = $model->getObject();
+        $objects = [new ObjectType(), new ObjectType()];
+        $model->setObject($objects);
 
-        $this->assertSame($model, $model->forEachObject(
-            static function (ObjectType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        $visitedObjects = [];
 
-        $this->assertSame($itemsBeforeForEach, $model->getObject());
+        $collectObject = static function (ObjectType $object) use (&$visitedObjects): void {
+            $visitedObjects[] = $object;
+        };
 
-        $model->setObject([new ObjectType(), new ObjectType()]);
-
-        $itemsBeforeForEach = $model->getObject();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachObject(
-            static function (ObjectType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getObject());
+        $this->assertSame($model, $model->forEachObject($collectObject));
+        $this->assertSame($objects, $visitedObjects);
+        $this->assertSame($objects, $model->getObject());
 
         $model->clearObject();
+        $visitedObjects = [];
 
-        $this->assertSame($model, $model->forEachObject(
-            static function (ObjectType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachObject($collectObject));
+        $this->assertSame([], $visitedObjects);
+
+        $model->unsetObject();
+        $visitedObjects = [];
+
+        $this->assertSame($model, $model->forEachObject($collectObject));
+        $this->assertSame([], $visitedObjects);
+
+        // (2) Property Object - Filter
+
+        $model->setObject($objects);
+
+        $objectToKeep = $objects[1];
+        $visitedObjects = [];
+
+        $selectObject = static function (ObjectType $object) use ($objectToKeep, &$visitedObjects): bool {
+            $visitedObjects[] = $object;
+
+            return $object === $objectToKeep;
+        };
+
+        $filteredObjects = $model->filterObjects($selectObject);
+
+        $this->assertSame([1 => $objectToKeep], $filteredObjects);
+        $this->assertSame($objects, $visitedObjects);
+        $this->assertSame($objects, $model->getObject());
+
+        $model->clearObject();
+        $visitedObjects = [];
+
+        $filteredObjects = $model->filterObjects($selectObject);
+
+        $this->assertSame([], $filteredObjects);
+        $this->assertSame([], $visitedObjects);
+
+        $model->unsetObject();
+        $visitedObjects = [];
+
+        $filteredObjects = $model->filterObjects($selectObject);
+
+        $this->assertSame([], $filteredObjects);
+        $this->assertSame([], $visitedObjects);
     }
 
     /**
@@ -988,39 +1844,72 @@ final class FatturaPaModelTest extends TestCase
     {
         $model = new SignedInfoType();
 
-        // Property Reference
+        // (1) Property Reference - ForEach
 
-        $itemsBeforeForEach = $model->getReference();
+        $references = [new ReferenceType(), new ReferenceType()];
+        $model->setReference($references);
 
-        $this->assertSame($model, $model->forEachReference(
-            static function (ReferenceType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        $visitedReferences = [];
 
-        $this->assertSame($itemsBeforeForEach, $model->getReference());
+        $collectReference = static function (ReferenceType $reference) use (&$visitedReferences): void {
+            $visitedReferences[] = $reference;
+        };
 
-        $model->setReference([new ReferenceType(), new ReferenceType()]);
-
-        $itemsBeforeForEach = $model->getReference();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachReference(
-            static function (ReferenceType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getReference());
+        $this->assertSame($model, $model->forEachReference($collectReference));
+        $this->assertSame($references, $visitedReferences);
+        $this->assertSame($references, $model->getReference());
 
         $model->clearReference();
+        $visitedReferences = [];
 
-        $this->assertSame($model, $model->forEachReference(
-            static function (ReferenceType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachReference($collectReference));
+        $this->assertSame([], $visitedReferences);
+
+        $model->unsetReference();
+        $visitedReferences = [];
+
+        $this->assertSame($model, $model->forEachReference($collectReference));
+        $this->assertSame([], $visitedReferences);
+
+        // (2) Property Reference - Filter
+
+        $model->setReference($references);
+
+        $referenceToKeep = $references[1];
+        $visitedReferences = [];
+
+        $selectReference = static function (
+            ReferenceType $reference
+        ) use (
+            $referenceToKeep,
+            &$visitedReferences
+        ): bool {
+            $visitedReferences[] = $reference;
+
+            return $reference === $referenceToKeep;
+        };
+
+        $filteredReferences = $model->filterReferences($selectReference);
+
+        $this->assertSame([1 => $referenceToKeep], $filteredReferences);
+        $this->assertSame($references, $visitedReferences);
+        $this->assertSame($references, $model->getReference());
+
+        $model->clearReference();
+        $visitedReferences = [];
+
+        $filteredReferences = $model->filterReferences($selectReference);
+
+        $this->assertSame([], $filteredReferences);
+        $this->assertSame([], $visitedReferences);
+
+        $model->unsetReference();
+        $visitedReferences = [];
+
+        $filteredReferences = $model->filterReferences($selectReference);
+
+        $this->assertSame([], $filteredReferences);
+        $this->assertSame([], $visitedReferences);
     }
 
     /**
@@ -1030,38 +1919,71 @@ final class FatturaPaModelTest extends TestCase
     {
         $model = new TransformsType();
 
-        // Property Transform
+        // (1) Property Transform - ForEach
 
-        $itemsBeforeForEach = $model->getTransform();
+        $transforms = [new TransformType(), new TransformType()];
+        $model->setTransform($transforms);
 
-        $this->assertSame($model, $model->forEachTransform(
-            static function (TransformType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
+        $visitedTransforms = [];
 
-        $this->assertSame($itemsBeforeForEach, $model->getTransform());
+        $collectTransform = static function (TransformType $transform) use (&$visitedTransforms): void {
+            $visitedTransforms[] = $transform;
+        };
 
-        $model->setTransform([new TransformType(), new TransformType()]);
-
-        $itemsBeforeForEach = $model->getTransform();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachTransform(
-            static function (TransformType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getTransform());
+        $this->assertSame($model, $model->forEachTransform($collectTransform));
+        $this->assertSame($transforms, $visitedTransforms);
+        $this->assertSame($transforms, $model->getTransform());
 
         $model->clearTransform();
+        $visitedTransforms = [];
 
-        $this->assertSame($model, $model->forEachTransform(
-            static function (TransformType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        $this->assertSame($model, $model->forEachTransform($collectTransform));
+        $this->assertSame([], $visitedTransforms);
+
+        $model->unsetTransform();
+        $visitedTransforms = [];
+
+        $this->assertSame($model, $model->forEachTransform($collectTransform));
+        $this->assertSame([], $visitedTransforms);
+
+        // (2) Property Transform - Filter
+
+        $model->setTransform($transforms);
+
+        $transformToKeep = $transforms[1];
+        $visitedTransforms = [];
+
+        $selectTransform = static function (
+            TransformType $transform
+        ) use (
+            $transformToKeep,
+            &$visitedTransforms
+        ): bool {
+            $visitedTransforms[] = $transform;
+
+            return $transform === $transformToKeep;
+        };
+
+        $filteredTransforms = $model->filterTransforms($selectTransform);
+
+        $this->assertSame([1 => $transformToKeep], $filteredTransforms);
+        $this->assertSame($transforms, $visitedTransforms);
+        $this->assertSame($transforms, $model->getTransform());
+
+        $model->clearTransform();
+        $visitedTransforms = [];
+
+        $filteredTransforms = $model->filterTransforms($selectTransform);
+
+        $this->assertSame([], $filteredTransforms);
+        $this->assertSame([], $visitedTransforms);
+
+        $model->unsetTransform();
+        $visitedTransforms = [];
+
+        $filteredTransforms = $model->filterTransforms($selectTransform);
+
+        $this->assertSame([], $filteredTransforms);
+        $this->assertSame([], $visitedTransforms);
     }
 }

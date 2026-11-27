@@ -277,6 +277,18 @@ class DeliveryTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(SpecialTerms): mixed  $callback
+     * @return array<array-key, SpecialTerms>
+     */
+    public function filterSpecialTerms(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->specialTerms ?? [], $callback);
+    }
+
+    /**
      * @return null|LossRiskResponsibilityCode
      */
     public function getLossRiskResponsibilityCode(): ?LossRiskResponsibilityCode
@@ -454,6 +466,18 @@ class DeliveryTermsType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(LossRisk): mixed  $callback
+     * @return array<array-key, LossRisk>
+     */
+    public function filterLossRisks(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->lossRisk ?? [], $callback);
     }
 
     /**

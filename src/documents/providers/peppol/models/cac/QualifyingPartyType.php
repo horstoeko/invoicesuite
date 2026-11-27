@@ -359,6 +359,18 @@ class QualifyingPartyType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(PersonalSituation): mixed  $callback
+     * @return array<array-key, PersonalSituation>
+     */
+    public function filterPersonalSituations(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->personalSituation ?? [], $callback);
+    }
+
+    /**
      * @return null|OperatingYearsQuantity
      */
     public function getOperatingYearsQuantity(): ?OperatingYearsQuantity
@@ -739,6 +751,18 @@ class QualifyingPartyType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TechnicalCapability): mixed  $callback
+     * @return array<array-key, TechnicalCapability>
+     */
+    public function filterTechnicalCapabilities(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->technicalCapability ?? [], $callback);
+    }
+
+    /**
      * @return null|array<FinancialCapability>
      */
     public function getFinancialCapability(): ?array
@@ -876,6 +900,18 @@ class QualifyingPartyType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(FinancialCapability): mixed  $callback
+     * @return array<array-key, FinancialCapability>
+     */
+    public function filterFinancialCapabilities(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->financialCapability ?? [], $callback);
     }
 
     /**
@@ -1019,6 +1055,18 @@ class QualifyingPartyType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(CompletedTask): mixed  $callback
+     * @return array<array-key, CompletedTask>
+     */
+    public function filterCompletedTasks(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->completedTask ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Declaration>
      */
     public function getDeclaration(): ?array
@@ -1156,6 +1204,18 @@ class QualifyingPartyType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Declaration): mixed  $callback
+     * @return array<array-key, Declaration>
+     */
+    public function filterDeclarations(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->declaration ?? [], $callback);
     }
 
     /**

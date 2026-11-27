@@ -214,4 +214,16 @@ class OrderedShipmentType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Package): mixed  $callback
+     * @return array<array-key, Package>
+     */
+    public function filterPackages(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->package ?? [], $callback);
+    }
 }

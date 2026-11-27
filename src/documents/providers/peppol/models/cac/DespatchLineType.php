@@ -403,6 +403,18 @@ class DespatchLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
+    }
+
+    /**
      * @return null|LineStatusCode
      */
     public function getLineStatusCode(): ?LineStatusCode
@@ -663,6 +675,18 @@ class DespatchLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(BackorderReason): mixed  $callback
+     * @return array<array-key, BackorderReason>
+     */
+    public function filterBackorderReasons(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->backorderReason ?? [], $callback);
+    }
+
+    /**
      * @return null|OutstandingQuantity
      */
     public function getOutstandingQuantity(): ?OutstandingQuantity
@@ -840,6 +864,18 @@ class DespatchLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(OutstandingReason): mixed  $callback
+     * @return array<array-key, OutstandingReason>
+     */
+    public function filterOutstandingReasons(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->outstandingReason ?? [], $callback);
     }
 
     /**
@@ -1023,6 +1059,18 @@ class DespatchLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(OrderLineReference): mixed  $callback
+     * @return array<array-key, OrderLineReference>
+     */
+    public function filterOrderLineReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->orderLineReference ?? [], $callback);
+    }
+
+    /**
      * @return null|array<DocumentReference>
      */
     public function getDocumentReference(): ?array
@@ -1160,6 +1208,18 @@ class DespatchLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DocumentReference): mixed  $callback
+     * @return array<array-key, DocumentReference>
+     */
+    public function filterDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->documentReference ?? [], $callback);
     }
 
     /**
@@ -1340,5 +1400,17 @@ class DespatchLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Shipment): mixed  $callback
+     * @return array<array-key, Shipment>
+     */
+    public function filterShipments(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->shipment ?? [], $callback);
     }
 }

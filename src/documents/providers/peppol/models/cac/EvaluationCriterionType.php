@@ -290,6 +290,18 @@ class EvaluationCriterionType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|ThresholdAmount
      */
     public function getThresholdAmount(): ?ThresholdAmount
@@ -550,6 +562,18 @@ class EvaluationCriterionType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Expression): mixed  $callback
+     * @return array<array-key, Expression>
+     */
+    public function filterExpressions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->expression ?? [], $callback);
+    }
+
+    /**
      * @return null|DurationPeriod
      */
     public function getDurationPeriod(): ?DurationPeriod
@@ -727,5 +751,17 @@ class EvaluationCriterionType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(SuggestedEvidence): mixed  $callback
+     * @return array<array-key, SuggestedEvidence>
+     */
+    public function filterSuggestedEvidence(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->suggestedEvidence ?? [], $callback);
     }
 }

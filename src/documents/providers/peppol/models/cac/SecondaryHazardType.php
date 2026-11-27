@@ -372,4 +372,16 @@ class SecondaryHazardType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Extension): mixed  $callback
+     * @return array<array-key, Extension>
+     */
+    public function filterExtensions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->extension ?? [], $callback);
+    }
 }

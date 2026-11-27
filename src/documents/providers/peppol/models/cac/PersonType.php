@@ -944,6 +944,18 @@ class PersonType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(IdentityDocumentReference): mixed  $callback
+     * @return array<array-key, IdentityDocumentReference>
+     */
+    public function filterIdentityDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->identityDocumentReference ?? [], $callback);
+    }
+
+    /**
      * @return null|ResidenceAddress
      */
     public function getResidenceAddress(): ?ResidenceAddress

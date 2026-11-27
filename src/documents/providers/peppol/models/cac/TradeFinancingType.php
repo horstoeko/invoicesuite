@@ -354,6 +354,18 @@ class TradeFinancingType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DocumentReference): mixed  $callback
+     * @return array<array-key, DocumentReference>
+     */
+    public function filterDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->documentReference ?? [], $callback);
+    }
+
+    /**
      * @return null|FinancingParty
      */
     public function getFinancingParty(): ?FinancingParty
@@ -571,5 +583,17 @@ class TradeFinancingType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Clause): mixed  $callback
+     * @return array<array-key, Clause>
+     */
+    public function filterClauses(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->clause ?? [], $callback);
     }
 }

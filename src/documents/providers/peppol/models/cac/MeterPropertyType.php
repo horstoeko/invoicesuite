@@ -372,4 +372,16 @@ class MeterPropertyType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ValueQualifier): mixed  $callback
+     * @return array<array-key, ValueQualifier>
+     */
+    public function filterValueQualifiers(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->valueQualifier ?? [], $callback);
+    }
 }

@@ -336,6 +336,18 @@ class FatturaElettronicaType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(FatturaElettronicaBody): mixed  $callback
+     * @return array<array-key, FatturaElettronicaBody>
+     */
+    public function filterFattureElettronicheBody(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->fatturaElettronicaBody ?? [], $callback);
+    }
+
+    /**
      * @translation-german-untranslated
      *
      * @return null|Signature

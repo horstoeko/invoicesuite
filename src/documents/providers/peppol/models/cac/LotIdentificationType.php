@@ -257,4 +257,16 @@ class LotIdentificationType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(AdditionalItemProperty): mixed  $callback
+     * @return array<array-key, AdditionalItemProperty>
+     */
+    public function filterAdditionalItemProperties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->additionalItemProperty ?? [], $callback);
+    }
 }

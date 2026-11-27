@@ -241,6 +241,18 @@ class ContractingPartyType extends ContractingPartyTypeType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ContractingPartyType1): mixed  $callback
+     * @return array<array-key, ContractingPartyType1>
+     */
+    public function filterContractingPartyTypes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->contractingPartyType ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ContractingActivity>
      */
     public function getContractingActivity(): ?array
@@ -378,6 +390,18 @@ class ContractingPartyType extends ContractingPartyTypeType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ContractingActivity): mixed  $callback
+     * @return array<array-key, ContractingActivity>
+     */
+    public function filterContractingActivities(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->contractingActivity ?? [], $callback);
     }
 
     /**

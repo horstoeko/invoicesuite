@@ -204,6 +204,18 @@ class LineTradeSettlementType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TradeTaxType): mixed  $callback
+     * @return array<array-key, TradeTaxType>
+     */
+    public function filterApplicableTradeTaxes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->applicableTradeTax ?? [], $callback);
+    }
+
+    /**
      * @return null|SpecifiedPeriodType
      */
     public function getBillingSpecifiedPeriod(): ?SpecifiedPeriodType
@@ -351,6 +363,18 @@ class LineTradeSettlementType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TradeAllowanceChargeType): mixed  $callback
+     * @return array<array-key, TradeAllowanceChargeType>
+     */
+    public function filterSpecifiedTradeAllowanceCharges(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->specifiedTradeAllowanceCharge ?? [], $callback);
     }
 
     /**
@@ -544,6 +568,18 @@ class LineTradeSettlementType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ReferencedDocumentType): mixed  $callback
+     * @return array<array-key, ReferencedDocumentType>
+     */
+    public function filterAdditionalReferencedDocuments(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->additionalReferencedDocument ?? [], $callback);
+    }
+
+    /**
      * @return null|array<TradeAccountingAccountType>
      */
     public function getReceivableSpecifiedTradeAccountingAccount(): ?array
@@ -651,5 +687,17 @@ class LineTradeSettlementType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TradeAccountingAccountType): mixed  $callback
+     * @return array<array-key, TradeAccountingAccountType>
+     */
+    public function filterReceivableSpecifiedTradeAccountingAccounts(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->receivableSpecifiedTradeAccountingAccount ?? [], $callback);
     }
 }

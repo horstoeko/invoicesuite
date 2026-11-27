@@ -349,4 +349,16 @@ class TaxTotalType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TaxSubtotal): mixed  $callback
+     * @return array<array-key, TaxSubtotal>
+     */
+    public function filterTaxSubtotals(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->taxSubtotal ?? [], $callback);
+    }
 }

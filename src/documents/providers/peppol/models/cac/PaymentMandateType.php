@@ -627,4 +627,16 @@ class PaymentMandateType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Clause): mixed  $callback
+     * @return array<array-key, Clause>
+     */
+    public function filterClauses(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->clause ?? [], $callback);
+    }
 }

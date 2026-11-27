@@ -398,6 +398,18 @@ class StatusType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|StatusReasonCode
      */
     public function getStatusReasonCode(): ?StatusReasonCode
@@ -578,6 +590,18 @@ class StatusType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(StatusReason): mixed  $callback
+     * @return array<array-key, StatusReason>
+     */
+    public function filterStatusReasons(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->statusReason ?? [], $callback);
+    }
+
+    /**
      * @return null|SequenceID
      */
     public function getSequenceID(): ?SequenceID
@@ -755,6 +779,18 @@ class StatusType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Text): mixed  $callback
+     * @return array<array-key, Text>
+     */
+    public function filterTexts(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->text ?? [], $callback);
     }
 
     /**
@@ -1005,5 +1041,17 @@ class StatusType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Condition): mixed  $callback
+     * @return array<array-key, Condition>
+     */
+    public function filterConditions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->condition ?? [], $callback);
     }
 }

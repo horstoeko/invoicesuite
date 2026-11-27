@@ -423,6 +423,18 @@ class RequestForTenderLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
+    }
+
+    /**
      * @return null|Quantity
      */
     public function getQuantity(): ?Quantity
@@ -833,6 +845,18 @@ class RequestForTenderLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DocumentReference): mixed  $callback
+     * @return array<array-key, DocumentReference>
+     */
+    public function filterDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->documentReference ?? [], $callback);
+    }
+
+    /**
      * @return null|array<DeliveryPeriod>
      */
     public function getDeliveryPeriod(): ?array
@@ -973,6 +997,18 @@ class RequestForTenderLineType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DeliveryPeriod): mixed  $callback
+     * @return array<array-key, DeliveryPeriod>
+     */
+    public function filterDeliveryPeriods(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->deliveryPeriod ?? [], $callback);
+    }
+
+    /**
      * @return null|array<RequiredItemLocationQuantity>
      */
     public function getRequiredItemLocationQuantity(): ?array
@@ -1110,6 +1146,18 @@ class RequestForTenderLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(RequiredItemLocationQuantity): mixed  $callback
+     * @return array<array-key, RequiredItemLocationQuantity>
+     */
+    public function filterRequiredItemLocationQuantities(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->requiredItemLocationQuantity ?? [], $callback);
     }
 
     /**
@@ -1330,5 +1378,17 @@ class RequestForTenderLineType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(SubRequestForTenderLine): mixed  $callback
+     * @return array<array-key, SubRequestForTenderLine>
+     */
+    public function filterSubRequestForTenderLines(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->subRequestForTenderLine ?? [], $callback);
     }
 }

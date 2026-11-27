@@ -435,6 +435,18 @@ class LineTradeAgreementType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ReferencedDocumentType): mixed  $callback
+     * @return array<array-key, ReferencedDocumentType>
+     */
+    public function filterAdditionalReferencedDocuments(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->additionalReferencedDocument ?? [], $callback);
+    }
+
+    /**
      * @return null|TradePriceType
      */
     public function getGrossPriceProductTradePrice(): ?TradePriceType
@@ -662,5 +674,17 @@ class LineTradeAgreementType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ReferencedDocumentType): mixed  $callback
+     * @return array<array-key, ReferencedDocumentType>
+     */
+    public function filterUltimateCustomerOrderReferencedDocuments(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->ultimateCustomerOrderReferencedDocument ?? [], $callback);
     }
 }

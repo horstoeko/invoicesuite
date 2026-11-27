@@ -766,6 +766,18 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TradeSettlementPaymentMeansType): mixed  $callback
+     * @return array<array-key, TradeSettlementPaymentMeansType>
+     */
+    public function filterSpecifiedTradeSettlementPaymentMeans(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->specifiedTradeSettlementPaymentMeans ?? [], $callback);
+    }
+
+    /**
      * @return null|array<TradeTaxType>
      */
     public function getApplicableTradeTax(): ?array
@@ -873,6 +885,18 @@ class HeaderTradeSettlementType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TradeTaxType): mixed  $callback
+     * @return array<array-key, TradeTaxType>
+     */
+    public function filterApplicableTradeTaxes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->applicableTradeTax ?? [], $callback);
     }
 
     /**
@@ -1026,6 +1050,18 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TradeAllowanceChargeType): mixed  $callback
+     * @return array<array-key, TradeAllowanceChargeType>
+     */
+    public function filterSpecifiedTradeAllowanceCharges(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->specifiedTradeAllowanceCharge ?? [], $callback);
+    }
+
+    /**
      * @return null|array<LogisticsServiceChargeType>
      */
     public function getSpecifiedLogisticsServiceCharge(): ?array
@@ -1136,6 +1172,18 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(LogisticsServiceChargeType): mixed  $callback
+     * @return array<array-key, LogisticsServiceChargeType>
+     */
+    public function filterSpecifiedLogisticsServiceCharges(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->specifiedLogisticsServiceCharge ?? [], $callback);
+    }
+
+    /**
      * @return null|array<TradePaymentTermsType>
      */
     public function getSpecifiedTradePaymentTerms(): ?array
@@ -1243,6 +1291,18 @@ class HeaderTradeSettlementType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TradePaymentTermsType): mixed  $callback
+     * @return array<array-key, TradePaymentTermsType>
+     */
+    public function filterSpecifiedTradePaymentTerms(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->specifiedTradePaymentTerms ?? [], $callback);
     }
 
     /**
@@ -1396,6 +1456,18 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(FinancialAdjustmentType): mixed  $callback
+     * @return array<array-key, FinancialAdjustmentType>
+     */
+    public function filterSpecifiedFinancialAdjustments(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->specifiedFinancialAdjustment ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ReferencedDocumentType>
      */
     public function getInvoiceReferencedDocument(): ?array
@@ -1503,6 +1575,18 @@ class HeaderTradeSettlementType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ReferencedDocumentType): mixed  $callback
+     * @return array<array-key, ReferencedDocumentType>
+     */
+    public function filterInvoiceReferencedDocuments(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->invoiceReferencedDocument ?? [], $callback);
     }
 
     /**
@@ -1616,6 +1700,18 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TradeAccountingAccountType): mixed  $callback
+     * @return array<array-key, TradeAccountingAccountType>
+     */
+    public function filterReceivableSpecifiedTradeAccountingAccounts(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->receivableSpecifiedTradeAccountingAccount ?? [], $callback);
+    }
+
+    /**
      * @return null|array<AdvancePaymentType>
      */
     public function getSpecifiedAdvancePayment(): ?array
@@ -1723,5 +1819,17 @@ class HeaderTradeSettlementType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(AdvancePaymentType): mixed  $callback
+     * @return array<array-key, AdvancePaymentType>
+     */
+    public function filterSpecifiedAdvancePayments(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->specifiedAdvancePayment ?? [], $callback);
     }
 }

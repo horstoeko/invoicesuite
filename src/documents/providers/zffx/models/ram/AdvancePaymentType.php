@@ -250,6 +250,18 @@ class AdvancePaymentType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TradeTaxType): mixed  $callback
+     * @return array<array-key, TradeTaxType>
+     */
+    public function filterIncludedTradeTaxes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->includedTradeTax ?? [], $callback);
+    }
+
+    /**
      * @return null|ReferencedDocumentType
      */
     public function getInvoiceSpecifiedReferencedDocument(): ?ReferencedDocumentType

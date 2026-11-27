@@ -357,6 +357,18 @@ class CertificateType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Remarks): mixed  $callback
+     * @return array<array-key, Remarks>
+     */
+    public function filterRemarks(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->remarks ?? [], $callback);
+    }
+
+    /**
      * @return null|IssuerParty
      */
     public function getIssuerParty(): ?IssuerParty
@@ -537,6 +549,18 @@ class CertificateType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DocumentReference): mixed  $callback
+     * @return array<array-key, DocumentReference>
+     */
+    public function filterDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->documentReference ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Signature>
      */
     public function getSignature(): ?array
@@ -674,5 +698,17 @@ class CertificateType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Signature): mixed  $callback
+     * @return array<array-key, Signature>
+     */
+    public function filterSignatures(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->signature ?? [], $callback);
     }
 }

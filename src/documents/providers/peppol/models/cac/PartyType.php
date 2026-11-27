@@ -593,6 +593,18 @@ class PartyType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(PartyIdentification): mixed  $callback
+     * @return array<array-key, PartyIdentification>
+     */
+    public function filterPartyIdentifications(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->partyIdentification ?? [], $callback);
+    }
+
+    /**
      * @return null|array<PartyName>
      */
     public function getPartyName(): ?array
@@ -730,6 +742,18 @@ class PartyType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(PartyName): mixed  $callback
+     * @return array<array-key, PartyName>
+     */
+    public function filterPartyNames(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->partyName ?? [], $callback);
     }
 
     /**
@@ -993,6 +1017,18 @@ class PartyType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(PartyTaxScheme): mixed  $callback
+     * @return array<array-key, PartyTaxScheme>
+     */
+    public function filterPartyTaxSchemes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->partyTaxScheme ?? [], $callback);
+    }
+
+    /**
      * @return null|array<PartyLegalEntity>
      */
     public function getPartyLegalEntity(): ?array
@@ -1130,6 +1166,18 @@ class PartyType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(PartyLegalEntity): mixed  $callback
+     * @return array<array-key, PartyLegalEntity>
+     */
+    public function filterPartyLegalEntities(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->partyLegalEntity ?? [], $callback);
     }
 
     /**
@@ -1313,6 +1361,18 @@ class PartyType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Person): mixed  $callback
+     * @return array<array-key, Person>
+     */
+    public function filterPersons(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->person ?? [], $callback);
+    }
+
+    /**
      * @return null|AgentParty
      */
     public function getAgentParty(): ?AgentParty
@@ -1493,6 +1553,18 @@ class PartyType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ServiceProviderParty): mixed  $callback
+     * @return array<array-key, ServiceProviderParty>
+     */
+    public function filterServiceProviderParties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->serviceProviderParty ?? [], $callback);
+    }
+
+    /**
      * @return null|array<PowerOfAttorney>
      */
     public function getPowerOfAttorney(): ?array
@@ -1630,6 +1702,18 @@ class PartyType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(PowerOfAttorney): mixed  $callback
+     * @return array<array-key, PowerOfAttorney>
+     */
+    public function filterPowersOfAttorney(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->powerOfAttorney ?? [], $callback);
     }
 
     /**

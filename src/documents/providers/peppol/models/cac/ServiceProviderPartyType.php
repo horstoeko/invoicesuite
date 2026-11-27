@@ -292,6 +292,18 @@ class ServiceProviderPartyType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ServiceType): mixed  $callback
+     * @return array<array-key, ServiceType>
+     */
+    public function filterServiceTypes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->serviceType ?? [], $callback);
+    }
+
+    /**
      * @return null|Party
      */
     public function getParty(): ?Party

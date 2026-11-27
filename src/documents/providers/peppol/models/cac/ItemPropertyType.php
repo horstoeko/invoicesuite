@@ -548,6 +548,18 @@ class ItemPropertyType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ValueQualifier): mixed  $callback
+     * @return array<array-key, ValueQualifier>
+     */
+    public function filterValueQualifiers(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->valueQualifier ?? [], $callback);
+    }
+
+    /**
      * @return null|ImportanceCode
      */
     public function getImportanceCode(): ?ImportanceCode
@@ -728,6 +740,18 @@ class ItemPropertyType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ListValue): mixed  $callback
+     * @return array<array-key, ListValue>
+     */
+    public function filterListValues(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->listValue ?? [], $callback);
+    }
+
+    /**
      * @return null|UsabilityPeriod
      */
     public function getUsabilityPeriod(): ?UsabilityPeriod
@@ -905,6 +929,18 @@ class ItemPropertyType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ItemPropertyGroup): mixed  $callback
+     * @return array<array-key, ItemPropertyGroup>
+     */
+    public function filterItemPropertyGroups(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->itemPropertyGroup ?? [], $callback);
     }
 
     /**

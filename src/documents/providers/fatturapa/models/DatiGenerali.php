@@ -322,6 +322,18 @@ final class DatiGenerali
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DatiDocumentiCorrelati): mixed  $callback
+     * @return array<array-key, DatiDocumentiCorrelati>
+     */
+    public function filterDatiOrdineAcquisto(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->datiOrdineAcquisto ?? [], $callback);
+    }
+
+    /**
      * @translation-german Vertragsdaten
      *
      * @return null|array<DatiDocumentiCorrelati>
@@ -449,6 +461,18 @@ final class DatiGenerali
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DatiDocumentiCorrelati): mixed  $callback
+     * @return array<array-key, DatiDocumentiCorrelati>
+     */
+    public function filterDatiContratto(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->datiContratto ?? [], $callback);
     }
 
     /**
@@ -582,6 +606,18 @@ final class DatiGenerali
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DatiDocumentiCorrelati): mixed  $callback
+     * @return array<array-key, DatiDocumentiCorrelati>
+     */
+    public function filterDatiConvenzione(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->datiConvenzione ?? [], $callback);
+    }
+
+    /**
      * @translation-german Empfangsdaten
      *
      * @return null|array<DatiDocumentiCorrelati>
@@ -709,6 +745,18 @@ final class DatiGenerali
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DatiDocumentiCorrelati): mixed  $callback
+     * @return array<array-key, DatiDocumentiCorrelati>
+     */
+    public function filterDatiRicezione(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->datiRicezione ?? [], $callback);
     }
 
     /**
@@ -842,6 +890,18 @@ final class DatiGenerali
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DatiDocumentiCorrelati): mixed  $callback
+     * @return array<array-key, DatiDocumentiCorrelati>
+     */
+    public function filterDatiFattureCollegate(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->datiFattureCollegate ?? [], $callback);
+    }
+
+    /**
      * @translation-german Angaben SAL
      *
      * @return null|array<DatiSAL>
@@ -972,6 +1032,18 @@ final class DatiGenerali
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DatiSAL): mixed  $callback
+     * @return array<array-key, DatiSAL>
+     */
+    public function filterDatiSAL(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->datiSAL ?? [], $callback);
+    }
+
+    /**
      * @translation-german Angaben DDT
      *
      * @return null|array<DatiDDT>
@@ -1099,6 +1171,18 @@ final class DatiGenerali
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DatiDDT): mixed  $callback
+     * @return array<array-key, DatiDDT>
+     */
+    public function filterDatiDDT(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->datiDDT ?? [], $callback);
     }
 
     /**

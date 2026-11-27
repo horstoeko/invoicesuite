@@ -441,6 +441,18 @@ class AllowanceChargeType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(AllowanceChargeReason): mixed  $callback
+     * @return array<array-key, AllowanceChargeReason>
+     */
+    public function filterAllowanceChargeReasons(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->allowanceChargeReason ?? [], $callback);
+    }
+
+    /**
      * @return null|MultiplierFactorNumeric
      */
     public function getMultiplierFactorNumeric(): ?MultiplierFactorNumeric
@@ -891,6 +903,18 @@ class AllowanceChargeType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TaxCategory): mixed  $callback
+     * @return array<array-key, TaxCategory>
+     */
+    public function filterTaxCategories(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->taxCategory ?? [], $callback);
+    }
+
+    /**
      * @return null|TaxTotal
      */
     public function getTaxTotal(): ?TaxTotal
@@ -1068,5 +1092,17 @@ class AllowanceChargeType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(PaymentMeans): mixed  $callback
+     * @return array<array-key, PaymentMeans>
+     */
+    public function filterPaymentMeans(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->paymentMeans ?? [], $callback);
     }
 }

@@ -439,6 +439,18 @@ class RequestedTenderTotalType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(MonetaryScope): mixed  $callback
+     * @return array<array-key, MonetaryScope>
+     */
+    public function filterMonetaryScopes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->monetaryScope ?? [], $callback);
+    }
+
+    /**
      * @return null|AverageSubsequentContractAmount
      */
     public function getAverageSubsequentContractAmount(): ?AverageSubsequentContractAmount
@@ -616,5 +628,17 @@ class RequestedTenderTotalType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ApplicableTaxCategory): mixed  $callback
+     * @return array<array-key, ApplicableTaxCategory>
+     */
+    public function filterApplicableTaxCategories(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->applicableTaxCategory ?? [], $callback);
     }
 }

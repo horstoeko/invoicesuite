@@ -1022,6 +1022,18 @@ class TelecommunicationsServiceType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ExchangeRate): mixed  $callback
+     * @return array<array-key, ExchangeRate>
+     */
+    public function filterExchangeRates(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->exchangeRate ?? [], $callback);
+    }
+
+    /**
      * @return null|array<AllowanceCharge>
      */
     public function getAllowanceCharge(): ?array
@@ -1159,6 +1171,18 @@ class TelecommunicationsServiceType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(AllowanceCharge): mixed  $callback
+     * @return array<array-key, AllowanceCharge>
+     */
+    public function filterAllowanceCharges(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->allowanceCharge ?? [], $callback);
     }
 
     /**
@@ -1302,6 +1326,18 @@ class TelecommunicationsServiceType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TaxTotal): mixed  $callback
+     * @return array<array-key, TaxTotal>
+     */
+    public function filterTaxTotals(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->taxTotal ?? [], $callback);
+    }
+
+    /**
      * @return null|array<CallDuty>
      */
     public function getCallDuty(): ?array
@@ -1442,6 +1478,18 @@ class TelecommunicationsServiceType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(CallDuty): mixed  $callback
+     * @return array<array-key, CallDuty>
+     */
+    public function filterCallDuties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->callDuty ?? [], $callback);
+    }
+
+    /**
      * @return null|array<TimeDuty>
      */
     public function getTimeDuty(): ?array
@@ -1579,5 +1627,17 @@ class TelecommunicationsServiceType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TimeDuty): mixed  $callback
+     * @return array<array-key, TimeDuty>
+     */
+    public function filterTimeDuties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->timeDuty ?? [], $callback);
     }
 }

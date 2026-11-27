@@ -250,6 +250,18 @@ class DocumentResponseType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DocumentReference): mixed  $callback
+     * @return array<array-key, DocumentReference>
+     */
+    public function filterDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->documentReference ?? [], $callback);
+    }
+
+    /**
      * @return null|IssuerParty
      */
     public function getIssuerParty(): ?IssuerParty
@@ -467,5 +479,17 @@ class DocumentResponseType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(LineResponse): mixed  $callback
+     * @return array<array-key, LineResponse>
+     */
+    public function filterLineResponses(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->lineResponse ?? [], $callback);
     }
 }

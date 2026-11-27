@@ -396,6 +396,18 @@ class PeriodType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DescriptionCode): mixed  $callback
+     * @return array<array-key, DescriptionCode>
+     */
+    public function filterDescriptionCodes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->descriptionCode ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Description>
      */
     public function getDescription(): ?array
@@ -533,5 +545,17 @@ class PeriodType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
     }
 }

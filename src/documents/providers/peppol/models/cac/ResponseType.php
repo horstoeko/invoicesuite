@@ -305,6 +305,18 @@ class ResponseType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|DateTimeInterface
      */
     public function getEffectiveDate(): ?DateTimeInterface
@@ -502,5 +514,17 @@ class ResponseType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Status): mixed  $callback
+     * @return array<array-key, Status>
+     */
+    public function filterStatuses(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->status ?? [], $callback);
     }
 }

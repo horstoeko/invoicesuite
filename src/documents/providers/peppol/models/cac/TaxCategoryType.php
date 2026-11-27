@@ -513,6 +513,18 @@ class TaxCategoryType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TaxExemptionReason): mixed  $callback
+     * @return array<array-key, TaxExemptionReason>
+     */
+    public function filterTaxExemptionReasons(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->taxExemptionReason ?? [], $callback);
+    }
+
+    /**
      * @return null|TierRange
      */
     public function getTierRange(): ?TierRange

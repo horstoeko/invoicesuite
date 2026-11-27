@@ -314,6 +314,18 @@ class CustomerPartyType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(AdditionalAccountID): mixed  $callback
+     * @return array<array-key, AdditionalAccountID>
+     */
+    public function filterAdditionalAccountIDs(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->additionalAccountID ?? [], $callback);
+    }
+
+    /**
      * @return null|Party
      */
     public function getParty(): ?Party

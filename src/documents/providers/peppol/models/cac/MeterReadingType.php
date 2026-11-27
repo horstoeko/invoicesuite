@@ -729,6 +729,18 @@ class MeterReadingType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(MeterReadingComments): mixed  $callback
+     * @return array<array-key, MeterReadingComments>
+     */
+    public function filterMeterReadingComments(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->meterReadingComments ?? [], $callback);
+    }
+
+    /**
      * @return null|DeliveredQuantity
      */
     public function getDeliveredQuantity(): ?DeliveredQuantity

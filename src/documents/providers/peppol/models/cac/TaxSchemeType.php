@@ -371,4 +371,16 @@ class TaxSchemeType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(JurisdictionRegionAddress): mixed  $callback
+     * @return array<array-key, JurisdictionRegionAddress>
+     */
+    public function filterJurisdictionRegionAddress(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->jurisdictionRegionAddress ?? [], $callback);
+    }
 }

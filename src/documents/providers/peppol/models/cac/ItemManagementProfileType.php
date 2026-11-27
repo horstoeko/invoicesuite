@@ -431,6 +431,18 @@ class ItemManagementProfileType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ReplenishmentOwnerDescription): mixed  $callback
+     * @return array<array-key, ReplenishmentOwnerDescription>
+     */
+    public function filterReplenishmentOwnerDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->replenishmentOwnerDescription ?? [], $callback);
+    }
+
+    /**
      * @return null|TargetServicePercent
      */
     public function getTargetServicePercent(): ?TargetServicePercent

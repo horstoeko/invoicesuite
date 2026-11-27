@@ -649,6 +649,18 @@ class LineItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
+    }
+
+    /**
      * @return null|LineStatusCode
      */
     public function getLineStatusCode(): ?LineStatusCode
@@ -1289,6 +1301,18 @@ class LineItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(WarrantyInformation): mixed  $callback
+     * @return array<array-key, WarrantyInformation>
+     */
+    public function filterWarrantyInformation(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->warrantyInformation ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Delivery>
      */
     public function getDelivery(): ?array
@@ -1426,6 +1450,18 @@ class LineItemType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Delivery): mixed  $callback
+     * @return array<array-key, Delivery>
+     */
+    public function filterDeliveries(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->delivery ?? [], $callback);
     }
 
     /**
@@ -1649,6 +1685,18 @@ class LineItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(OrderedShipment): mixed  $callback
+     * @return array<array-key, OrderedShipment>
+     */
+    public function filterOrderedShipments(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->orderedShipment ?? [], $callback);
+    }
+
+    /**
      * @return null|PricingReference
      */
     public function getPricingReference(): ?PricingReference
@@ -1826,6 +1874,18 @@ class LineItemType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(AllowanceCharge): mixed  $callback
+     * @return array<array-key, AllowanceCharge>
+     */
+    public function filterAllowanceCharges(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->allowanceCharge ?? [], $callback);
     }
 
     /**
@@ -2049,6 +2109,18 @@ class LineItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(SubLineItem): mixed  $callback
+     * @return array<array-key, SubLineItem>
+     */
+    public function filterSubLineItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->subLineItem ?? [], $callback);
+    }
+
+    /**
      * @return null|WarrantyValidityPeriod
      */
     public function getWarrantyValidityPeriod(): ?WarrantyValidityPeriod
@@ -2269,6 +2341,18 @@ class LineItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TaxTotal): mixed  $callback
+     * @return array<array-key, TaxTotal>
+     */
+    public function filterTaxTotals(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->taxTotal ?? [], $callback);
+    }
+
+    /**
      * @return null|ItemPriceExtension
      */
     public function getItemPriceExtension(): ?ItemPriceExtension
@@ -2446,5 +2530,17 @@ class LineItemType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(LineReference): mixed  $callback
+     * @return array<array-key, LineReference>
+     */
+    public function filterLineReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->lineReference ?? [], $callback);
     }
 }

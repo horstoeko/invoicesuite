@@ -221,4 +221,16 @@ final class DatiDDT
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(int): mixed  $callback
+     * @return array<array-key, int>
+     */
+    public function filterRiferimentiNumeroLinea(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->riferimentoNumeroLinea ?? [], $callback);
+    }
 }

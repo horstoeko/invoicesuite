@@ -252,6 +252,18 @@ class SalesItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ActivityProperty): mixed  $callback
+     * @return array<array-key, ActivityProperty>
+     */
+    public function filterActivityProperties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->activityProperty ?? [], $callback);
+    }
+
+    /**
      * @return null|array<TaxExclusivePrice>
      */
     public function getTaxExclusivePrice(): ?array
@@ -392,6 +404,18 @@ class SalesItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TaxExclusivePrice): mixed  $callback
+     * @return array<array-key, TaxExclusivePrice>
+     */
+    public function filterTaxExclusivePrices(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->taxExclusivePrice ?? [], $callback);
+    }
+
+    /**
      * @return null|array<TaxInclusivePrice>
      */
     public function getTaxInclusivePrice(): ?array
@@ -529,6 +553,18 @@ class SalesItemType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TaxInclusivePrice): mixed  $callback
+     * @return array<array-key, TaxInclusivePrice>
+     */
+    public function filterTaxInclusivePrices(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->taxInclusivePrice ?? [], $callback);
     }
 
     /**

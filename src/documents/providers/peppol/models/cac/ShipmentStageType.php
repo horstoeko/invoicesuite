@@ -1266,6 +1266,18 @@ class ShipmentStageType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Instructions): mixed  $callback
+     * @return array<array-key, Instructions>
+     */
+    public function filterInstructions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->instructions ?? [], $callback);
+    }
+
+    /**
      * @return null|array<DemurrageInstructions>
      */
     public function getDemurrageInstructions(): ?array
@@ -1403,6 +1415,18 @@ class ShipmentStageType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DemurrageInstructions): mixed  $callback
+     * @return array<array-key, DemurrageInstructions>
+     */
+    public function filterDemurrageInstructions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->demurrageInstructions ?? [], $callback);
     }
 
     /**
@@ -1663,6 +1687,18 @@ class ShipmentStageType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(CarrierParty): mixed  $callback
+     * @return array<array-key, CarrierParty>
+     */
+    public function filterCarrierParties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->carrierParty ?? [], $callback);
     }
 
     /**
@@ -2646,6 +2682,18 @@ class ShipmentStageType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(FreightAllowanceCharge): mixed  $callback
+     * @return array<array-key, FreightAllowanceCharge>
+     */
+    public function filterFreightAllowanceCharges(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->freightAllowanceCharge ?? [], $callback);
+    }
+
+    /**
      * @return null|FreightChargeLocation
      */
     public function getFreightChargeLocation(): ?FreightChargeLocation
@@ -2823,6 +2871,18 @@ class ShipmentStageType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DetentionTransportEvent): mixed  $callback
+     * @return array<array-key, DetentionTransportEvent>
+     */
+    public function filterDetentionTransportEvents(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->detentionTransportEvent ?? [], $callback);
     }
 
     /**
@@ -3046,6 +3106,18 @@ class ShipmentStageType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(RequestedWaypointTransportEvent): mixed  $callback
+     * @return array<array-key, RequestedWaypointTransportEvent>
+     */
+    public function filterRequestedWaypointTransportEvents(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->requestedWaypointTransportEvent ?? [], $callback);
+    }
+
+    /**
      * @return null|PlannedDepartureTransportEvent
      */
     public function getPlannedDepartureTransportEvent(): ?PlannedDepartureTransportEvent
@@ -3263,6 +3335,18 @@ class ShipmentStageType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(PlannedWaypointTransportEvent): mixed  $callback
+     * @return array<array-key, PlannedWaypointTransportEvent>
+     */
+    public function filterPlannedWaypointTransportEvents(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->plannedWaypointTransportEvent ?? [], $callback);
     }
 
     /**
@@ -3526,6 +3610,18 @@ class ShipmentStageType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TransportEvent): mixed  $callback
+     * @return array<array-key, TransportEvent>
+     */
+    public function filterTransportEvents(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->transportEvent ?? [], $callback);
+    }
+
+    /**
      * @return null|EstimatedDepartureTransportEvent
      */
     public function getEstimatedDepartureTransportEvent(): ?EstimatedDepartureTransportEvent
@@ -3746,6 +3842,18 @@ class ShipmentStageType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(PassengerPerson): mixed  $callback
+     * @return array<array-key, PassengerPerson>
+     */
+    public function filterPassengerPersons(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->passengerPerson ?? [], $callback);
+    }
+
+    /**
      * @return null|array<DriverPerson>
      */
     public function getDriverPerson(): ?array
@@ -3883,6 +3991,18 @@ class ShipmentStageType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(DriverPerson): mixed  $callback
+     * @return array<array-key, DriverPerson>
+     */
+    public function filterDriverPersons(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->driverPerson ?? [], $callback);
     }
 
     /**
@@ -4063,6 +4183,18 @@ class ShipmentStageType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(CrewMemberPerson): mixed  $callback
+     * @return array<array-key, CrewMemberPerson>
+     */
+    public function filterCrewMemberPersons(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->crewMemberPerson ?? [], $callback);
     }
 
     /**

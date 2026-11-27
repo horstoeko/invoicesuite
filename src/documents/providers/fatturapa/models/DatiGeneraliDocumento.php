@@ -435,6 +435,18 @@ final class DatiGeneraliDocumento
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DatiRitenuta): mixed  $callback
+     * @return array<array-key, DatiRitenuta>
+     */
+    public function filterDatiRitenuta(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->datiRitenuta ?? [], $callback);
+    }
+
+    /**
      * @translation-german Stempelsteuerdaten
      *
      * @return null|DatiBollo
@@ -613,6 +625,18 @@ final class DatiGeneraliDocumento
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DatiCassaPrevidenziale): mixed  $callback
+     * @return array<array-key, DatiCassaPrevidenziale>
+     */
+    public function filterDatiCassaPrevidenziale(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->datiCassaPrevidenziale ?? [], $callback);
+    }
+
+    /**
      * @translation-german-untranslated
      *
      * @return null|array<ScontoMaggiorazione>
@@ -740,6 +764,18 @@ final class DatiGeneraliDocumento
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ScontoMaggiorazione): mixed  $callback
+     * @return array<array-key, ScontoMaggiorazione>
+     */
+    public function filterScontiMaggiorazioni(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->scontoMaggiorazione ?? [], $callback);
     }
 
     /**
@@ -912,6 +948,18 @@ final class DatiGeneraliDocumento
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(string): mixed  $callback
+     * @return array<array-key, string>
+     */
+    public function filterCausali(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->causale ?? [], $callback);
     }
 
     /**

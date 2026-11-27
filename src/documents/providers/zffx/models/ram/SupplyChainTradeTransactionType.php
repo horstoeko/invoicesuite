@@ -333,4 +333,16 @@ class SupplyChainTradeTransactionType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(SupplyChainTradeLineItemType): mixed  $callback
+     * @return array<array-key, SupplyChainTradeLineItemType>
+     */
+    public function filterIncludedSupplyChainTradeLineItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->includedSupplyChainTradeLineItem ?? [], $callback);
+    }
 }

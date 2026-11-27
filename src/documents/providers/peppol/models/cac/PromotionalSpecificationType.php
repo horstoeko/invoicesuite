@@ -229,6 +229,18 @@ class PromotionalSpecificationType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(PromotionalEventLineItem): mixed  $callback
+     * @return array<array-key, PromotionalEventLineItem>
+     */
+    public function filterPromotionalEventLineItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->promotionalEventLineItem ?? [], $callback);
+    }
+
+    /**
      * @return null|array<EventTactic>
      */
     public function getEventTactic(): ?array
@@ -366,5 +378,17 @@ class PromotionalSpecificationType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(EventTactic): mixed  $callback
+     * @return array<array-key, EventTactic>
+     */
+    public function filterEventTactics(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->eventTactic ?? [], $callback);
     }
 }

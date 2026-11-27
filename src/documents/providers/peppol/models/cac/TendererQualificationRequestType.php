@@ -367,6 +367,18 @@ class TendererQualificationRequestType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(PersonalSituation): mixed  $callback
+     * @return array<array-key, PersonalSituation>
+     */
+    public function filterPersonalSituations(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->personalSituation ?? [], $callback);
+    }
+
+    /**
      * @return null|OperatingYearsQuantity
      */
     public function getOperatingYearsQuantity(): ?OperatingYearsQuantity
@@ -587,6 +599,18 @@ class TendererQualificationRequestType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|array<RequiredBusinessClassificationScheme>
      */
     public function getRequiredBusinessClassificationScheme(): ?array
@@ -724,6 +748,18 @@ class TendererQualificationRequestType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(RequiredBusinessClassificationScheme): mixed  $callback
+     * @return array<array-key, RequiredBusinessClassificationScheme>
+     */
+    public function filterRequiredBusinessClassificationSchemes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->requiredBusinessClassificationScheme ?? [], $callback);
     }
 
     /**
@@ -867,6 +903,18 @@ class TendererQualificationRequestType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TechnicalEvaluationCriterion): mixed  $callback
+     * @return array<array-key, TechnicalEvaluationCriterion>
+     */
+    public function filterTechnicalEvaluationCriteria(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->technicalEvaluationCriterion ?? [], $callback);
+    }
+
+    /**
      * @return null|array<FinancialEvaluationCriterion>
      */
     public function getFinancialEvaluationCriterion(): ?array
@@ -1004,6 +1052,18 @@ class TendererQualificationRequestType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(FinancialEvaluationCriterion): mixed  $callback
+     * @return array<array-key, FinancialEvaluationCriterion>
+     */
+    public function filterFinancialEvaluationCriteria(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->financialEvaluationCriterion ?? [], $callback);
     }
 
     /**
@@ -1147,6 +1207,18 @@ class TendererQualificationRequestType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(SpecificTendererRequirement): mixed  $callback
+     * @return array<array-key, SpecificTendererRequirement>
+     */
+    public function filterSpecificTendererRequirements(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->specificTendererRequirement ?? [], $callback);
+    }
+
+    /**
      * @return null|array<EconomicOperatorRole>
      */
     public function getEconomicOperatorRole(): ?array
@@ -1284,5 +1356,17 @@ class TendererQualificationRequestType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(EconomicOperatorRole): mixed  $callback
+     * @return array<array-key, EconomicOperatorRole>
+     */
+    public function filterEconomicOperatorRoles(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->economicOperatorRole ?? [], $callback);
     }
 }

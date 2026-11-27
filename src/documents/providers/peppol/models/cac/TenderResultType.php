@@ -381,6 +381,18 @@ class TenderResultType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|AdvertisementAmount
      */
     public function getAdvertisementAmount(): ?AdvertisementAmount
@@ -971,6 +983,18 @@ class TenderResultType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(SubcontractTerms): mixed  $callback
+     * @return array<array-key, SubcontractTerms>
+     */
+    public function filterSubcontractTerms(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->subcontractTerms ?? [], $callback);
+    }
+
+    /**
      * @return null|array<WinningParty>
      */
     public function getWinningParty(): ?array
@@ -1108,5 +1132,17 @@ class TenderResultType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(WinningParty): mixed  $callback
+     * @return array<array-key, WinningParty>
+     */
+    public function filterWinningParties(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->winningParty ?? [], $callback);
     }
 }

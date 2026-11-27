@@ -240,6 +240,18 @@ class TradePartyType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(IDType): mixed  $callback
+     * @return array<array-key, IDType>
+     */
+    public function filterIDs(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->iD ?? [], $callback);
+    }
+
+    /**
      * @return null|array<IDType>
      */
     public function getGlobalID(): ?array
@@ -347,6 +359,18 @@ class TradePartyType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(IDType): mixed  $callback
+     * @return array<array-key, IDType>
+     */
+    public function filterGlobalIDs(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->globalID ?? [], $callback);
     }
 
     /**
@@ -620,6 +644,18 @@ class TradePartyType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TradeContactType): mixed  $callback
+     * @return array<array-key, TradeContactType>
+     */
+    public function filterDefinedTradeContacts(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->definedTradeContact ?? [], $callback);
+    }
+
+    /**
      * @return null|TradeAddressType
      */
     public function getPostalTradeAddress(): ?TradeAddressType
@@ -807,5 +843,17 @@ class TradePartyType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TaxRegistrationType): mixed  $callback
+     * @return array<array-key, TaxRegistrationType>
+     */
+    public function filterSpecifiedTaxRegistrations(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->specifiedTaxRegistration ?? [], $callback);
     }
 }

@@ -557,6 +557,18 @@ class ContractType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
+    }
+
+    /**
      * @return null|VersionID
      */
     public function getVersionID(): ?VersionID
@@ -737,6 +749,18 @@ class ContractType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|ValidityPeriod
      */
     public function getValidityPeriod(): ?ValidityPeriod
@@ -914,6 +938,18 @@ class ContractType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ContractDocumentReference): mixed  $callback
+     * @return array<array-key, ContractDocumentReference>
+     */
+    public function filterContractDocumentReferences(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->contractDocumentReference ?? [], $callback);
     }
 
     /**

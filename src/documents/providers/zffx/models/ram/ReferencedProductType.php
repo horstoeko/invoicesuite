@@ -255,6 +255,18 @@ class ReferencedProductType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(IDType): mixed  $callback
+     * @return array<array-key, IDType>
+     */
+    public function filterGlobalIDs(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->globalID ?? [], $callback);
+    }
+
+    /**
      * @return null|IDType
      */
     public function getSellerAssignedID(): ?IDType

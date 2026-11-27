@@ -267,4 +267,16 @@ class GoodsItemContainerType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TransportEquipment): mixed  $callback
+     * @return array<array-key, TransportEquipment>
+     */
+    public function filterTransportEquipment(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->transportEquipment ?? [], $callback);
+    }
 }

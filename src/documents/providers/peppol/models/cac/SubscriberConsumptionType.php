@@ -339,6 +339,18 @@ class SubscriberConsumptionType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
+    }
+
+    /**
      * @return null|TotalMeteredQuantity
      */
     public function getTotalMeteredQuantity(): ?TotalMeteredQuantity
@@ -599,6 +611,18 @@ class SubscriberConsumptionType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(OnAccountPayment): mixed  $callback
+     * @return array<array-key, OnAccountPayment>
+     */
+    public function filterOnAccountPayments(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->onAccountPayment ?? [], $callback);
+    }
+
+    /**
      * @return null|Consumption
      */
     public function getConsumption(): ?Consumption
@@ -776,5 +800,17 @@ class SubscriberConsumptionType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(SupplierConsumption): mixed  $callback
+     * @return array<array-key, SupplierConsumption>
+     */
+    public function filterSupplierConsumptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->supplierConsumption ?? [], $callback);
     }
 }

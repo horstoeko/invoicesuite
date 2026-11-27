@@ -214,4 +214,16 @@ class PricingReferenceType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(AlternativeConditionPrice): mixed  $callback
+     * @return array<array-key, AlternativeConditionPrice>
+     */
+    public function filterAlternativeConditionPrices(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->alternativeConditionPrice ?? [], $callback);
+    }
 }

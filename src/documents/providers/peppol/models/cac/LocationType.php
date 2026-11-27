@@ -338,6 +338,18 @@ class LocationType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Conditions>
      */
     public function getConditions(): ?array
@@ -475,6 +487,18 @@ class LocationType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Conditions): mixed  $callback
+     * @return array<array-key, Conditions>
+     */
+    public function filterConditions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->conditions ?? [], $callback);
     }
 
     /**
@@ -818,6 +842,18 @@ class LocationType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ValidityPeriod): mixed  $callback
+     * @return array<array-key, ValidityPeriod>
+     */
+    public function filterValidityPeriods(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->validityPeriod ?? [], $callback);
+    }
+
+    /**
      * @return null|Address
      */
     public function getAddress(): ?Address
@@ -998,6 +1034,18 @@ class LocationType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(SubsidiaryLocation): mixed  $callback
+     * @return array<array-key, SubsidiaryLocation>
+     */
+    public function filterSubsidiaryLocations(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->subsidiaryLocation ?? [], $callback);
+    }
+
+    /**
      * @return null|array<LocationCoordinate>
      */
     public function getLocationCoordinate(): ?array
@@ -1135,5 +1183,17 @@ class LocationType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(LocationCoordinate): mixed  $callback
+     * @return array<array-key, LocationCoordinate>
+     */
+    public function filterLocationCoordinates(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->locationCoordinate ?? [], $callback);
     }
 }

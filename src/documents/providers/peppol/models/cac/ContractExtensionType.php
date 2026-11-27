@@ -213,6 +213,18 @@ class ContractExtensionType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(OptionsDescription): mixed  $callback
+     * @return array<array-key, OptionsDescription>
+     */
+    public function filterOptionsDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->optionsDescription ?? [], $callback);
+    }
+
+    /**
      * @return null|MinimumNumberNumeric
      */
     public function getMinimumNumberNumeric(): ?MinimumNumberNumeric
@@ -470,5 +482,17 @@ class ContractExtensionType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Renewal): mixed  $callback
+     * @return array<array-key, Renewal>
+     */
+    public function filterRenewals(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->renewal ?? [], $callback);
     }
 }

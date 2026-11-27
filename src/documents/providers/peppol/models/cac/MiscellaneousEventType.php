@@ -215,4 +215,16 @@ class MiscellaneousEventType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(EventLineItem): mixed  $callback
+     * @return array<array-key, EventLineItem>
+     */
+    public function filterEventLineItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->eventLineItem ?? [], $callback);
+    }
 }

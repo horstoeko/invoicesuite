@@ -368,6 +368,18 @@ class MaritimeTransportType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ShipsRequirements): mixed  $callback
+     * @return array<array-key, ShipsRequirements>
+     */
+    public function filterShipsRequirements(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->shipsRequirements ?? [], $callback);
+    }
+
+    /**
      * @return null|GrossTonnageMeasure
      */
     public function getGrossTonnageMeasure(): ?GrossTonnageMeasure

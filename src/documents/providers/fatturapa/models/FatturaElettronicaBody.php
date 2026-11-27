@@ -348,6 +348,18 @@ final class FatturaElettronicaBody
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(DatiPagamento): mixed  $callback
+     * @return array<array-key, DatiPagamento>
+     */
+    public function filterDatiPagamento(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->datiPagamento ?? [], $callback);
+    }
+
+    /**
      * @translation-german Anhänge
      *
      * @return null|array<Allegati>
@@ -475,5 +487,17 @@ final class FatturaElettronicaBody
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Allegati): mixed  $callback
+     * @return array<array-key, Allegati>
+     */
+    public function filterAllegati(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->allegati ?? [], $callback);
     }
 }

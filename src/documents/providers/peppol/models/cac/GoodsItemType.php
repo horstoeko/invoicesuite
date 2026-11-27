@@ -705,6 +705,18 @@ class GoodsItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|bool
      */
     public function getHazardousRiskIndicator(): ?bool
@@ -1705,6 +1717,18 @@ class GoodsItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Item): mixed  $callback
+     * @return array<array-key, Item>
+     */
+    public function filterItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->item ?? [], $callback);
+    }
+
+    /**
      * @return null|array<GoodsItemContainer>
      */
     public function getGoodsItemContainer(): ?array
@@ -1842,6 +1866,18 @@ class GoodsItemType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(GoodsItemContainer): mixed  $callback
+     * @return array<array-key, GoodsItemContainer>
+     */
+    public function filterGoodsItemContainers(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->goodsItemContainer ?? [], $callback);
     }
 
     /**
@@ -1985,6 +2021,18 @@ class GoodsItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(FreightAllowanceCharge): mixed  $callback
+     * @return array<array-key, FreightAllowanceCharge>
+     */
+    public function filterFreightAllowanceCharges(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->freightAllowanceCharge ?? [], $callback);
+    }
+
+    /**
      * @return null|array<InvoiceLine>
      */
     public function getInvoiceLine(): ?array
@@ -2122,6 +2170,18 @@ class GoodsItemType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(InvoiceLine): mixed  $callback
+     * @return array<array-key, InvoiceLine>
+     */
+    public function filterInvoiceLines(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->invoiceLine ?? [], $callback);
     }
 
     /**
@@ -2265,6 +2325,18 @@ class GoodsItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Temperature): mixed  $callback
+     * @return array<array-key, Temperature>
+     */
+    public function filterTemperatures(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->temperature ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ContainedGoodsItem>
      */
     public function getContainedGoodsItem(): ?array
@@ -2402,6 +2474,18 @@ class GoodsItemType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ContainedGoodsItem): mixed  $callback
+     * @return array<array-key, ContainedGoodsItem>
+     */
+    public function filterContainedGoodsItems(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->containedGoodsItem ?? [], $callback);
     }
 
     /**
@@ -2705,6 +2789,18 @@ class GoodsItemType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(MeasurementDimension): mixed  $callback
+     * @return array<array-key, MeasurementDimension>
+     */
+    public function filterMeasurementDimensions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->measurementDimension ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ContainingPackage>
      */
     public function getContainingPackage(): ?array
@@ -2842,6 +2938,18 @@ class GoodsItemType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ContainingPackage): mixed  $callback
+     * @return array<array-key, ContainingPackage>
+     */
+    public function filterContainingPackages(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->containingPackage ?? [], $callback);
     }
 
     /**

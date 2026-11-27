@@ -250,6 +250,18 @@ class TradePriceType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(TradeAllowanceChargeType): mixed  $callback
+     * @return array<array-key, TradeAllowanceChargeType>
+     */
+    public function filterAppliedTradeAllowanceCharges(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->appliedTradeAllowanceCharge ?? [], $callback);
+    }
+
+    /**
      * @return null|TradeTaxType
      */
     public function getIncludedTradeTax(): ?TradeTaxType

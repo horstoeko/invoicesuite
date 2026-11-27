@@ -399,6 +399,18 @@ class EventType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|bool
      */
     public function getCompletionIndicator(): ?bool
@@ -569,6 +581,18 @@ class EventType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(CurrentStatus): mixed  $callback
+     * @return array<array-key, CurrentStatus>
+     */
+    public function filterCurrentStatuses(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->currentStatus ?? [], $callback);
+    }
+
+    /**
      * @return null|array<Contact>
      */
     public function getContact(): ?array
@@ -706,6 +730,18 @@ class EventType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Contact): mixed  $callback
+     * @return array<array-key, Contact>
+     */
+    public function filterContacts(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->contact ?? [], $callback);
     }
 
     /**

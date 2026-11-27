@@ -222,6 +222,18 @@ class SupplierConsumptionType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(Description): mixed  $callback
+     * @return array<array-key, Description>
+     */
+    public function filterDescriptions(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->description ?? [], $callback);
+    }
+
+    /**
      * @return null|UtilitySupplierParty
      */
     public function getUtilitySupplierParty(): ?UtilitySupplierParty
@@ -519,5 +531,17 @@ class SupplierConsumptionType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ConsumptionLine): mixed  $callback
+     * @return array<array-key, ConsumptionLine>
+     */
+    public function filterConsumptionLines(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->consumptionLine ?? [], $callback);
     }
 }

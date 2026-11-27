@@ -518,16 +518,6 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(FormattedDateTimeType::class, $testValueForFormattedReceivedDateTime);
         $this->assertSame($testValueForFormattedReceivedDateTime, $model->getFormattedReceivedDateTime());
 
-        $itemsBeforeForEach = $model->getIncludedTradeTax();
-
-        $this->assertSame($model, $model->forEachIncludedTradeTax(
-            static function (TradeTaxType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getIncludedTradeTax());
-
         // (1) Property IncludedTradeTax - Test set empty array
 
         $includedTradeTaxItems = [];
@@ -583,18 +573,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstIncludedTradeTaxOnceItem, $secondIncludedTradeTaxOnceItem);
 
-        $itemsBeforeForEach = $model->getIncludedTradeTax();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachIncludedTradeTax(
-            static function (TradeTaxType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getIncludedTradeTax());
-
         // (7) Property IncludedTradeTax - Clesr
 
         $model->clearIncludedTradeTax();
@@ -603,12 +581,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachIncludedTradeTax(
-            static function (TradeTaxType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
 
         // Property InvoiceSpecifiedReferencedDocument
 
@@ -625,6 +597,77 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForInvoiceSpecifiedReferencedDocument);
         $this->assertSame($testValueForInvoiceSpecifiedReferencedDocument, $model->getInvoiceSpecifiedReferencedDocument());
+
+        // (8) Property IncludedTradeTax - ForEach
+
+        $includedTradeTaxes = [$includedTradeTaxItem, $testValueForIncludedTradeTaxItem];
+        $model->setIncludedTradeTax($includedTradeTaxes);
+
+        $visitedIncludedTradeTaxes = [];
+
+        $collectIncludedTradeTax = static function (
+            TradeTaxType $includedTradeTax
+        ) use (
+            &$visitedIncludedTradeTaxes
+        ): void {
+            $visitedIncludedTradeTaxes[] = $includedTradeTax;
+        };
+
+        $this->assertSame($model, $model->forEachIncludedTradeTax($collectIncludedTradeTax));
+        $this->assertSame($includedTradeTaxes, $visitedIncludedTradeTaxes);
+        $this->assertSame($includedTradeTaxes, $model->getIncludedTradeTax());
+
+        $model->clearIncludedTradeTax();
+        $visitedIncludedTradeTaxes = [];
+
+        $this->assertSame($model, $model->forEachIncludedTradeTax($collectIncludedTradeTax));
+        $this->assertSame([], $visitedIncludedTradeTaxes);
+
+        $model->unsetIncludedTradeTax();
+        $visitedIncludedTradeTaxes = [];
+
+        $this->assertSame($model, $model->forEachIncludedTradeTax($collectIncludedTradeTax));
+        $this->assertSame([], $visitedIncludedTradeTaxes);
+
+        // (9) Property IncludedTradeTax - Filter
+
+        $model->setIncludedTradeTax($includedTradeTaxes);
+
+        $includedTradeTaxToKeep = $includedTradeTaxes[1];
+        $visitedIncludedTradeTaxes = [];
+
+        $selectIncludedTradeTax = static function (
+            TradeTaxType $includedTradeTax
+        ) use (
+            $includedTradeTaxToKeep,
+            &$visitedIncludedTradeTaxes
+        ): bool {
+            $visitedIncludedTradeTaxes[] = $includedTradeTax;
+
+            return $includedTradeTax === $includedTradeTaxToKeep;
+        };
+
+        $filteredIncludedTradeTaxes = $model->filterIncludedTradeTaxes($selectIncludedTradeTax);
+
+        $this->assertSame([1 => $includedTradeTaxToKeep], $filteredIncludedTradeTaxes);
+        $this->assertSame($includedTradeTaxes, $visitedIncludedTradeTaxes);
+        $this->assertSame($includedTradeTaxes, $model->getIncludedTradeTax());
+
+        $model->clearIncludedTradeTax();
+        $visitedIncludedTradeTaxes = [];
+
+        $filteredIncludedTradeTaxes = $model->filterIncludedTradeTaxes($selectIncludedTradeTax);
+
+        $this->assertSame([], $filteredIncludedTradeTaxes);
+        $this->assertSame([], $visitedIncludedTradeTaxes);
+
+        $model->unsetIncludedTradeTax();
+        $visitedIncludedTradeTaxes = [];
+
+        $filteredIncludedTradeTaxes = $model->filterIncludedTradeTaxes($selectIncludedTradeTax);
+
+        $this->assertSame([], $filteredIncludedTradeTaxes);
+        $this->assertSame([], $visitedIncludedTradeTaxes);
     }
 
     /**
@@ -878,16 +921,6 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(CodeType::class, $testValueForLineStatusReasonCode);
         $this->assertSame($testValueForLineStatusReasonCode, $model->getLineStatusReasonCode());
 
-        $itemsBeforeForEach = $model->getIncludedNote();
-
-        $this->assertSame($model, $model->forEachIncludedNote(
-            static function (NoteType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getIncludedNote());
-
         // (1) Property IncludedNote - Test set empty array
 
         $includedNoteItems = [];
@@ -943,18 +976,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstIncludedNoteOnceItem, $secondIncludedNoteOnceItem);
 
-        $itemsBeforeForEach = $model->getIncludedNote();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachIncludedNote(
-            static function (NoteType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getIncludedNote());
-
         // (7) Property IncludedNote - Clesr
 
         $model->clearIncludedNote();
@@ -964,11 +985,72 @@ final class ZffxModelTest extends TestCase
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
 
-        $this->assertSame($model, $model->forEachIncludedNote(
-            static function (NoteType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        // (8) Property IncludedNote - ForEach
+
+        $includedNotes = [$includedNoteItem, $testValueForIncludedNoteItem];
+        $model->setIncludedNote($includedNotes);
+
+        $visitedIncludedNotes = [];
+
+        $collectIncludedNote = static function (NoteType $includedNote) use (&$visitedIncludedNotes): void {
+            $visitedIncludedNotes[] = $includedNote;
+        };
+
+        $this->assertSame($model, $model->forEachIncludedNote($collectIncludedNote));
+        $this->assertSame($includedNotes, $visitedIncludedNotes);
+        $this->assertSame($includedNotes, $model->getIncludedNote());
+
+        $model->clearIncludedNote();
+        $visitedIncludedNotes = [];
+
+        $this->assertSame($model, $model->forEachIncludedNote($collectIncludedNote));
+        $this->assertSame([], $visitedIncludedNotes);
+
+        $model->unsetIncludedNote();
+        $visitedIncludedNotes = [];
+
+        $this->assertSame($model, $model->forEachIncludedNote($collectIncludedNote));
+        $this->assertSame([], $visitedIncludedNotes);
+
+        // (9) Property IncludedNote - Filter
+
+        $model->setIncludedNote($includedNotes);
+
+        $includedNoteToKeep = $includedNotes[1];
+        $visitedIncludedNotes = [];
+
+        $selectIncludedNote = static function (
+            NoteType $includedNote
+        ) use (
+            $includedNoteToKeep,
+            &$visitedIncludedNotes
+        ): bool {
+            $visitedIncludedNotes[] = $includedNote;
+
+            return $includedNote === $includedNoteToKeep;
+        };
+
+        $filteredIncludedNotes = $model->filterIncludedNotes($selectIncludedNote);
+
+        $this->assertSame([1 => $includedNoteToKeep], $filteredIncludedNotes);
+        $this->assertSame($includedNotes, $visitedIncludedNotes);
+        $this->assertSame($includedNotes, $model->getIncludedNote());
+
+        $model->clearIncludedNote();
+        $visitedIncludedNotes = [];
+
+        $filteredIncludedNotes = $model->filterIncludedNotes($selectIncludedNote);
+
+        $this->assertSame([], $filteredIncludedNotes);
+        $this->assertSame([], $visitedIncludedNotes);
+
+        $model->unsetIncludedNote();
+        $visitedIncludedNotes = [];
+
+        $filteredIncludedNotes = $model->filterIncludedNotes($selectIncludedNote);
+
+        $this->assertSame([], $filteredIncludedNotes);
+        $this->assertSame([], $visitedIncludedNotes);
     }
 
     /**
@@ -1134,16 +1216,6 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(IDType::class, $testValueForLanguageID);
         $this->assertSame($testValueForLanguageID, $model->getLanguageID());
 
-        $itemsBeforeForEach = $model->getIncludedNote();
-
-        $this->assertSame($model, $model->forEachIncludedNote(
-            static function (NoteType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getIncludedNote());
-
         // (1) Property IncludedNote - Test set empty array
 
         $includedNoteItems = [];
@@ -1199,18 +1271,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstIncludedNoteOnceItem, $secondIncludedNoteOnceItem);
 
-        $itemsBeforeForEach = $model->getIncludedNote();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachIncludedNote(
-            static function (NoteType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getIncludedNote());
-
         // (7) Property IncludedNote - Clesr
 
         $model->clearIncludedNote();
@@ -1219,12 +1279,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachIncludedNote(
-            static function (NoteType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
 
         // Property EffectiveSpecifiedPeriod
 
@@ -1241,6 +1295,73 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(SpecifiedPeriodType::class, $testValueForEffectiveSpecifiedPeriod);
         $this->assertSame($testValueForEffectiveSpecifiedPeriod, $model->getEffectiveSpecifiedPeriod());
+
+        // (8) Property IncludedNote - ForEach
+
+        $includedNotes = [$includedNoteItem, $testValueForIncludedNoteItem];
+        $model->setIncludedNote($includedNotes);
+
+        $visitedIncludedNotes = [];
+
+        $collectIncludedNote = static function (NoteType $includedNote) use (&$visitedIncludedNotes): void {
+            $visitedIncludedNotes[] = $includedNote;
+        };
+
+        $this->assertSame($model, $model->forEachIncludedNote($collectIncludedNote));
+        $this->assertSame($includedNotes, $visitedIncludedNotes);
+        $this->assertSame($includedNotes, $model->getIncludedNote());
+
+        $model->clearIncludedNote();
+        $visitedIncludedNotes = [];
+
+        $this->assertSame($model, $model->forEachIncludedNote($collectIncludedNote));
+        $this->assertSame([], $visitedIncludedNotes);
+
+        $model->unsetIncludedNote();
+        $visitedIncludedNotes = [];
+
+        $this->assertSame($model, $model->forEachIncludedNote($collectIncludedNote));
+        $this->assertSame([], $visitedIncludedNotes);
+
+        // (9) Property IncludedNote - Filter
+
+        $model->setIncludedNote($includedNotes);
+
+        $includedNoteToKeep = $includedNotes[1];
+        $visitedIncludedNotes = [];
+
+        $selectIncludedNote = static function (
+            NoteType $includedNote
+        ) use (
+            $includedNoteToKeep,
+            &$visitedIncludedNotes
+        ): bool {
+            $visitedIncludedNotes[] = $includedNote;
+
+            return $includedNote === $includedNoteToKeep;
+        };
+
+        $filteredIncludedNotes = $model->filterIncludedNotes($selectIncludedNote);
+
+        $this->assertSame([1 => $includedNoteToKeep], $filteredIncludedNotes);
+        $this->assertSame($includedNotes, $visitedIncludedNotes);
+        $this->assertSame($includedNotes, $model->getIncludedNote());
+
+        $model->clearIncludedNote();
+        $visitedIncludedNotes = [];
+
+        $filteredIncludedNotes = $model->filterIncludedNotes($selectIncludedNote);
+
+        $this->assertSame([], $filteredIncludedNotes);
+        $this->assertSame([], $visitedIncludedNotes);
+
+        $model->unsetIncludedNote();
+        $visitedIncludedNotes = [];
+
+        $filteredIncludedNotes = $model->filterIncludedNotes($selectIncludedNote);
+
+        $this->assertSame([], $filteredIncludedNotes);
+        $this->assertSame([], $visitedIncludedNotes);
     }
 
     /**
@@ -1502,16 +1623,6 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForContractReferencedDocument);
         $this->assertSame($testValueForContractReferencedDocument, $model->getContractReferencedDocument());
 
-        $itemsBeforeForEach = $model->getAdditionalReferencedDocument();
-
-        $this->assertSame($model, $model->forEachAdditionalReferencedDocument(
-            static function (ReferencedDocumentType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getAdditionalReferencedDocument());
-
         // (1) Property AdditionalReferencedDocument - Test set empty array
 
         $additionalReferencedDocumentItems = [];
@@ -1567,18 +1678,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstAdditionalReferencedDocumentOnceItem, $secondAdditionalReferencedDocumentOnceItem);
 
-        $itemsBeforeForEach = $model->getAdditionalReferencedDocument();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachAdditionalReferencedDocument(
-            static function (ReferencedDocumentType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getAdditionalReferencedDocument());
-
         // (7) Property AdditionalReferencedDocument - Clesr
 
         $model->clearAdditionalReferencedDocument();
@@ -1587,12 +1686,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachAdditionalReferencedDocument(
-            static function (ReferencedDocumentType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
 
         // Property BuyerAgentTradeParty
 
@@ -1625,16 +1718,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(ProcuringProjectType::class, $testValueForSpecifiedProcuringProject);
         $this->assertSame($testValueForSpecifiedProcuringProject, $model->getSpecifiedProcuringProject());
-
-        $itemsBeforeForEach = $model->getUltimateCustomerOrderReferencedDocument();
-
-        $this->assertSame($model, $model->forEachUltimateCustomerOrderReferencedDocument(
-            static function (ReferencedDocumentType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getUltimateCustomerOrderReferencedDocument());
 
         // (1) Property UltimateCustomerOrderReferencedDocument - Test set empty array
 
@@ -1691,18 +1774,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstUltimateCustomerOrderReferencedDocumentOnceItem, $secondUltimateCustomerOrderReferencedDocumentOnceItem);
 
-        $itemsBeforeForEach = $model->getUltimateCustomerOrderReferencedDocument();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachUltimateCustomerOrderReferencedDocument(
-            static function (ReferencedDocumentType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getUltimateCustomerOrderReferencedDocument());
-
         // (7) Property UltimateCustomerOrderReferencedDocument - Clesr
 
         $model->clearUltimateCustomerOrderReferencedDocument();
@@ -1712,11 +1783,147 @@ final class ZffxModelTest extends TestCase
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
 
-        $this->assertSame($model, $model->forEachUltimateCustomerOrderReferencedDocument(
-            static function (ReferencedDocumentType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        // (8) Property AdditionalReferencedDocument - ForEach
+
+        $additionalReferencedDocuments = [$additionalReferencedDocumentItem, $testValueForAdditionalReferencedDocumentItem];
+        $model->setAdditionalReferencedDocument($additionalReferencedDocuments);
+
+        $visitedAdditionalReferencedDocuments = [];
+
+        $collectAdditionalReferencedDocument = static function (
+            ReferencedDocumentType $additionalReferencedDocument
+        ) use (
+            &$visitedAdditionalReferencedDocuments
+        ): void {
+            $visitedAdditionalReferencedDocuments[] = $additionalReferencedDocument;
+        };
+
+        $this->assertSame($model, $model->forEachAdditionalReferencedDocument($collectAdditionalReferencedDocument));
+        $this->assertSame($additionalReferencedDocuments, $visitedAdditionalReferencedDocuments);
+        $this->assertSame($additionalReferencedDocuments, $model->getAdditionalReferencedDocument());
+
+        $model->clearAdditionalReferencedDocument();
+        $visitedAdditionalReferencedDocuments = [];
+
+        $this->assertSame($model, $model->forEachAdditionalReferencedDocument($collectAdditionalReferencedDocument));
+        $this->assertSame([], $visitedAdditionalReferencedDocuments);
+
+        $model->unsetAdditionalReferencedDocument();
+        $visitedAdditionalReferencedDocuments = [];
+
+        $this->assertSame($model, $model->forEachAdditionalReferencedDocument($collectAdditionalReferencedDocument));
+        $this->assertSame([], $visitedAdditionalReferencedDocuments);
+
+        // (8) Property UltimateCustomerOrderReferencedDocument - ForEach
+
+        $ultimateCustomerOrderReferencedDocuments = [$ultimateCustomerOrderReferencedDocumentItem, $testValueForUltimateCustomerOrderReferencedDocumentItem];
+        $model->setUltimateCustomerOrderReferencedDocument($ultimateCustomerOrderReferencedDocuments);
+
+        $visitedUltimateCustomerOrderReferencedDocuments = [];
+
+        $collectUltimateCustomerOrderReferencedDocument = static function (
+            ReferencedDocumentType $ultimateCustomerOrderReferencedDocument
+        ) use (
+            &$visitedUltimateCustomerOrderReferencedDocuments
+        ): void {
+            $visitedUltimateCustomerOrderReferencedDocuments[] = $ultimateCustomerOrderReferencedDocument;
+        };
+
+        $this->assertSame($model, $model->forEachUltimateCustomerOrderReferencedDocument($collectUltimateCustomerOrderReferencedDocument));
+        $this->assertSame($ultimateCustomerOrderReferencedDocuments, $visitedUltimateCustomerOrderReferencedDocuments);
+        $this->assertSame($ultimateCustomerOrderReferencedDocuments, $model->getUltimateCustomerOrderReferencedDocument());
+
+        $model->clearUltimateCustomerOrderReferencedDocument();
+        $visitedUltimateCustomerOrderReferencedDocuments = [];
+
+        $this->assertSame($model, $model->forEachUltimateCustomerOrderReferencedDocument($collectUltimateCustomerOrderReferencedDocument));
+        $this->assertSame([], $visitedUltimateCustomerOrderReferencedDocuments);
+
+        $model->unsetUltimateCustomerOrderReferencedDocument();
+        $visitedUltimateCustomerOrderReferencedDocuments = [];
+
+        $this->assertSame($model, $model->forEachUltimateCustomerOrderReferencedDocument($collectUltimateCustomerOrderReferencedDocument));
+        $this->assertSame([], $visitedUltimateCustomerOrderReferencedDocuments);
+
+        // (9) Property AdditionalReferencedDocument - Filter
+
+        $model->setAdditionalReferencedDocument($additionalReferencedDocuments);
+
+        $additionalReferencedDocumentToKeep = $additionalReferencedDocuments[1];
+        $visitedAdditionalReferencedDocuments = [];
+
+        $selectAdditionalReferencedDocument = static function (
+            ReferencedDocumentType $additionalReferencedDocument
+        ) use (
+            $additionalReferencedDocumentToKeep,
+            &$visitedAdditionalReferencedDocuments
+        ): bool {
+            $visitedAdditionalReferencedDocuments[] = $additionalReferencedDocument;
+
+            return $additionalReferencedDocument === $additionalReferencedDocumentToKeep;
+        };
+
+        $filteredAdditionalReferencedDocuments = $model->filterAdditionalReferencedDocuments($selectAdditionalReferencedDocument);
+
+        $this->assertSame([1 => $additionalReferencedDocumentToKeep], $filteredAdditionalReferencedDocuments);
+        $this->assertSame($additionalReferencedDocuments, $visitedAdditionalReferencedDocuments);
+        $this->assertSame($additionalReferencedDocuments, $model->getAdditionalReferencedDocument());
+
+        $model->clearAdditionalReferencedDocument();
+        $visitedAdditionalReferencedDocuments = [];
+
+        $filteredAdditionalReferencedDocuments = $model->filterAdditionalReferencedDocuments($selectAdditionalReferencedDocument);
+
+        $this->assertSame([], $filteredAdditionalReferencedDocuments);
+        $this->assertSame([], $visitedAdditionalReferencedDocuments);
+
+        $model->unsetAdditionalReferencedDocument();
+        $visitedAdditionalReferencedDocuments = [];
+
+        $filteredAdditionalReferencedDocuments = $model->filterAdditionalReferencedDocuments($selectAdditionalReferencedDocument);
+
+        $this->assertSame([], $filteredAdditionalReferencedDocuments);
+        $this->assertSame([], $visitedAdditionalReferencedDocuments);
+
+        // (9) Property UltimateCustomerOrderReferencedDocument - Filter
+
+        $model->setUltimateCustomerOrderReferencedDocument($ultimateCustomerOrderReferencedDocuments);
+
+        $ultimateCustomerOrderReferencedDocumentToKeep = $ultimateCustomerOrderReferencedDocuments[1];
+        $visitedUltimateCustomerOrderReferencedDocuments = [];
+
+        $selectUltimateCustomerOrderReferencedDocument = static function (
+            ReferencedDocumentType $ultimateCustomerOrderReferencedDocument
+        ) use (
+            $ultimateCustomerOrderReferencedDocumentToKeep,
+            &$visitedUltimateCustomerOrderReferencedDocuments
+        ): bool {
+            $visitedUltimateCustomerOrderReferencedDocuments[] = $ultimateCustomerOrderReferencedDocument;
+
+            return $ultimateCustomerOrderReferencedDocument === $ultimateCustomerOrderReferencedDocumentToKeep;
+        };
+
+        $filteredUltimateCustomerOrderReferencedDocuments = $model->filterUltimateCustomerOrderReferencedDocuments($selectUltimateCustomerOrderReferencedDocument);
+
+        $this->assertSame([1 => $ultimateCustomerOrderReferencedDocumentToKeep], $filteredUltimateCustomerOrderReferencedDocuments);
+        $this->assertSame($ultimateCustomerOrderReferencedDocuments, $visitedUltimateCustomerOrderReferencedDocuments);
+        $this->assertSame($ultimateCustomerOrderReferencedDocuments, $model->getUltimateCustomerOrderReferencedDocument());
+
+        $model->clearUltimateCustomerOrderReferencedDocument();
+        $visitedUltimateCustomerOrderReferencedDocuments = [];
+
+        $filteredUltimateCustomerOrderReferencedDocuments = $model->filterUltimateCustomerOrderReferencedDocuments($selectUltimateCustomerOrderReferencedDocument);
+
+        $this->assertSame([], $filteredUltimateCustomerOrderReferencedDocuments);
+        $this->assertSame([], $visitedUltimateCustomerOrderReferencedDocuments);
+
+        $model->unsetUltimateCustomerOrderReferencedDocument();
+        $visitedUltimateCustomerOrderReferencedDocuments = [];
+
+        $filteredUltimateCustomerOrderReferencedDocuments = $model->filterUltimateCustomerOrderReferencedDocuments($selectUltimateCustomerOrderReferencedDocument);
+
+        $this->assertSame([], $filteredUltimateCustomerOrderReferencedDocuments);
+        $this->assertSame([], $visitedUltimateCustomerOrderReferencedDocuments);
     }
 
     /**
@@ -1727,16 +1934,6 @@ final class ZffxModelTest extends TestCase
         $model = new HeaderTradeDeliveryType();
 
         $this->assertInstanceOf(HeaderTradeDeliveryType::class, $model);
-
-        $itemsBeforeForEach = $model->getRelatedSupplyChainConsignment();
-
-        $this->assertSame($model, $model->forEachRelatedSupplyChainConsignment(
-            static function (LogisticsTransportMovementType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getRelatedSupplyChainConsignment());
 
         // (1) Property RelatedSupplyChainConsignment - Test set empty array
 
@@ -1793,18 +1990,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstRelatedSupplyChainConsignmentOnceItem, $secondRelatedSupplyChainConsignmentOnceItem);
 
-        $itemsBeforeForEach = $model->getRelatedSupplyChainConsignment();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachRelatedSupplyChainConsignment(
-            static function (LogisticsTransportMovementType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getRelatedSupplyChainConsignment());
-
         // (7) Property RelatedSupplyChainConsignment - Clesr
 
         $model->clearRelatedSupplyChainConsignment();
@@ -1813,12 +1998,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachRelatedSupplyChainConsignment(
-            static function (LogisticsTransportMovementType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
 
         // Property ShipToTradeParty
 
@@ -1931,6 +2110,77 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForDeliveryNoteReferencedDocument);
         $this->assertSame($testValueForDeliveryNoteReferencedDocument, $model->getDeliveryNoteReferencedDocument());
+
+        // (8) Property RelatedSupplyChainConsignment - ForEach
+
+        $relatedSupplyChainConsignments = [$relatedSupplyChainConsignmentItem, $testValueForRelatedSupplyChainConsignmentItem];
+        $model->setRelatedSupplyChainConsignment($relatedSupplyChainConsignments);
+
+        $visitedRelatedSupplyChainConsignments = [];
+
+        $collectRelatedSupplyChainConsignment = static function (
+            LogisticsTransportMovementType $relatedSupplyChainConsignment
+        ) use (
+            &$visitedRelatedSupplyChainConsignments
+        ): void {
+            $visitedRelatedSupplyChainConsignments[] = $relatedSupplyChainConsignment;
+        };
+
+        $this->assertSame($model, $model->forEachRelatedSupplyChainConsignment($collectRelatedSupplyChainConsignment));
+        $this->assertSame($relatedSupplyChainConsignments, $visitedRelatedSupplyChainConsignments);
+        $this->assertSame($relatedSupplyChainConsignments, $model->getRelatedSupplyChainConsignment());
+
+        $model->clearRelatedSupplyChainConsignment();
+        $visitedRelatedSupplyChainConsignments = [];
+
+        $this->assertSame($model, $model->forEachRelatedSupplyChainConsignment($collectRelatedSupplyChainConsignment));
+        $this->assertSame([], $visitedRelatedSupplyChainConsignments);
+
+        $model->unsetRelatedSupplyChainConsignment();
+        $visitedRelatedSupplyChainConsignments = [];
+
+        $this->assertSame($model, $model->forEachRelatedSupplyChainConsignment($collectRelatedSupplyChainConsignment));
+        $this->assertSame([], $visitedRelatedSupplyChainConsignments);
+
+        // (9) Property RelatedSupplyChainConsignment - Filter
+
+        $model->setRelatedSupplyChainConsignment($relatedSupplyChainConsignments);
+
+        $relatedSupplyChainConsignmentToKeep = $relatedSupplyChainConsignments[1];
+        $visitedRelatedSupplyChainConsignments = [];
+
+        $selectRelatedSupplyChainConsignment = static function (
+            LogisticsTransportMovementType $relatedSupplyChainConsignment
+        ) use (
+            $relatedSupplyChainConsignmentToKeep,
+            &$visitedRelatedSupplyChainConsignments
+        ): bool {
+            $visitedRelatedSupplyChainConsignments[] = $relatedSupplyChainConsignment;
+
+            return $relatedSupplyChainConsignment === $relatedSupplyChainConsignmentToKeep;
+        };
+
+        $filteredRelatedSupplyChainConsignments = $model->filterRelatedSupplyChainConsignments($selectRelatedSupplyChainConsignment);
+
+        $this->assertSame([1 => $relatedSupplyChainConsignmentToKeep], $filteredRelatedSupplyChainConsignments);
+        $this->assertSame($relatedSupplyChainConsignments, $visitedRelatedSupplyChainConsignments);
+        $this->assertSame($relatedSupplyChainConsignments, $model->getRelatedSupplyChainConsignment());
+
+        $model->clearRelatedSupplyChainConsignment();
+        $visitedRelatedSupplyChainConsignments = [];
+
+        $filteredRelatedSupplyChainConsignments = $model->filterRelatedSupplyChainConsignments($selectRelatedSupplyChainConsignment);
+
+        $this->assertSame([], $filteredRelatedSupplyChainConsignments);
+        $this->assertSame([], $visitedRelatedSupplyChainConsignments);
+
+        $model->unsetRelatedSupplyChainConsignment();
+        $visitedRelatedSupplyChainConsignments = [];
+
+        $filteredRelatedSupplyChainConsignments = $model->filterRelatedSupplyChainConsignments($selectRelatedSupplyChainConsignment);
+
+        $this->assertSame([], $filteredRelatedSupplyChainConsignments);
+        $this->assertSame([], $visitedRelatedSupplyChainConsignments);
     }
 
     /**
@@ -2102,16 +2352,6 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(TradeCurrencyExchangeType::class, $testValueForTaxApplicableTradeCurrencyExchange);
         $this->assertSame($testValueForTaxApplicableTradeCurrencyExchange, $model->getTaxApplicableTradeCurrencyExchange());
 
-        $itemsBeforeForEach = $model->getSpecifiedTradeSettlementPaymentMeans();
-
-        $this->assertSame($model, $model->forEachSpecifiedTradeSettlementPaymentMeans(
-            static function (TradeSettlementPaymentMeansType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTradeSettlementPaymentMeans());
-
         // (1) Property SpecifiedTradeSettlementPaymentMeans - Test set empty array
 
         $specifiedTradeSettlementPaymentMeansItems = [];
@@ -2167,18 +2407,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstSpecifiedTradeSettlementPaymentMeansOnceItem, $secondSpecifiedTradeSettlementPaymentMeansOnceItem);
 
-        $itemsBeforeForEach = $model->getSpecifiedTradeSettlementPaymentMeans();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachSpecifiedTradeSettlementPaymentMeans(
-            static function (TradeSettlementPaymentMeansType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTradeSettlementPaymentMeans());
-
         // (7) Property SpecifiedTradeSettlementPaymentMeans - Clesr
 
         $model->clearSpecifiedTradeSettlementPaymentMeans();
@@ -2187,22 +2415,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachSpecifiedTradeSettlementPaymentMeans(
-            static function (TradeSettlementPaymentMeansType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
-
-        $itemsBeforeForEach = $model->getApplicableTradeTax();
-
-        $this->assertSame($model, $model->forEachApplicableTradeTax(
-            static function (TradeTaxType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getApplicableTradeTax());
 
         // (1) Property ApplicableTradeTax - Test set empty array
 
@@ -2259,18 +2471,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstApplicableTradeTaxOnceItem, $secondApplicableTradeTaxOnceItem);
 
-        $itemsBeforeForEach = $model->getApplicableTradeTax();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachApplicableTradeTax(
-            static function (TradeTaxType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getApplicableTradeTax());
-
         // (7) Property ApplicableTradeTax - Clesr
 
         $model->clearApplicableTradeTax();
@@ -2279,12 +2479,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachApplicableTradeTax(
-            static function (TradeTaxType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
 
         // Property BillingSpecifiedPeriod
 
@@ -2301,16 +2495,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(SpecifiedPeriodType::class, $testValueForBillingSpecifiedPeriod);
         $this->assertSame($testValueForBillingSpecifiedPeriod, $model->getBillingSpecifiedPeriod());
-
-        $itemsBeforeForEach = $model->getSpecifiedTradeAllowanceCharge();
-
-        $this->assertSame($model, $model->forEachSpecifiedTradeAllowanceCharge(
-            static function (TradeAllowanceChargeType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTradeAllowanceCharge());
 
         // (1) Property SpecifiedTradeAllowanceCharge - Test set empty array
 
@@ -2367,18 +2551,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstSpecifiedTradeAllowanceChargeOnceItem, $secondSpecifiedTradeAllowanceChargeOnceItem);
 
-        $itemsBeforeForEach = $model->getSpecifiedTradeAllowanceCharge();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachSpecifiedTradeAllowanceCharge(
-            static function (TradeAllowanceChargeType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTradeAllowanceCharge());
-
         // (7) Property SpecifiedTradeAllowanceCharge - Clesr
 
         $model->clearSpecifiedTradeAllowanceCharge();
@@ -2387,22 +2559,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachSpecifiedTradeAllowanceCharge(
-            static function (TradeAllowanceChargeType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
-
-        $itemsBeforeForEach = $model->getSpecifiedLogisticsServiceCharge();
-
-        $this->assertSame($model, $model->forEachSpecifiedLogisticsServiceCharge(
-            static function (LogisticsServiceChargeType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedLogisticsServiceCharge());
 
         // (1) Property SpecifiedLogisticsServiceCharge - Test set empty array
 
@@ -2459,18 +2615,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstSpecifiedLogisticsServiceChargeOnceItem, $secondSpecifiedLogisticsServiceChargeOnceItem);
 
-        $itemsBeforeForEach = $model->getSpecifiedLogisticsServiceCharge();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachSpecifiedLogisticsServiceCharge(
-            static function (LogisticsServiceChargeType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedLogisticsServiceCharge());
-
         // (7) Property SpecifiedLogisticsServiceCharge - Clesr
 
         $model->clearSpecifiedLogisticsServiceCharge();
@@ -2479,22 +2623,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachSpecifiedLogisticsServiceCharge(
-            static function (LogisticsServiceChargeType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
-
-        $itemsBeforeForEach = $model->getSpecifiedTradePaymentTerms();
-
-        $this->assertSame($model, $model->forEachSpecifiedTradePaymentTerms(
-            static function (TradePaymentTermsType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTradePaymentTerms());
 
         // (1) Property SpecifiedTradePaymentTerms - Test set empty array
 
@@ -2551,18 +2679,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstSpecifiedTradePaymentTermsOnceItem, $secondSpecifiedTradePaymentTermsOnceItem);
 
-        $itemsBeforeForEach = $model->getSpecifiedTradePaymentTerms();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachSpecifiedTradePaymentTerms(
-            static function (TradePaymentTermsType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTradePaymentTerms());
-
         // (7) Property SpecifiedTradePaymentTerms - Clesr
 
         $model->clearSpecifiedTradePaymentTerms();
@@ -2571,12 +2687,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachSpecifiedTradePaymentTerms(
-            static function (TradePaymentTermsType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
 
         // Property SpecifiedTradeSettlementHeaderMonetarySummation
 
@@ -2593,16 +2703,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(TradeSettlementHeaderMonetarySummationType::class, $testValueForSpecifiedTradeSettlementHeaderMonetarySummation);
         $this->assertSame($testValueForSpecifiedTradeSettlementHeaderMonetarySummation, $model->getSpecifiedTradeSettlementHeaderMonetarySummation());
-
-        $itemsBeforeForEach = $model->getSpecifiedFinancialAdjustment();
-
-        $this->assertSame($model, $model->forEachSpecifiedFinancialAdjustment(
-            static function (FinancialAdjustmentType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedFinancialAdjustment());
 
         // (1) Property SpecifiedFinancialAdjustment - Test set empty array
 
@@ -2659,18 +2759,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstSpecifiedFinancialAdjustmentOnceItem, $secondSpecifiedFinancialAdjustmentOnceItem);
 
-        $itemsBeforeForEach = $model->getSpecifiedFinancialAdjustment();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachSpecifiedFinancialAdjustment(
-            static function (FinancialAdjustmentType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedFinancialAdjustment());
-
         // (7) Property SpecifiedFinancialAdjustment - Clear
 
         $model->clearSpecifiedFinancialAdjustment();
@@ -2679,22 +2767,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachSpecifiedFinancialAdjustment(
-            static function (FinancialAdjustmentType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
-
-        $itemsBeforeForEach = $model->getInvoiceReferencedDocument();
-
-        $this->assertSame($model, $model->forEachInvoiceReferencedDocument(
-            static function (ReferencedDocumentType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getInvoiceReferencedDocument());
 
         // (1) Property InvoiceReferencedDocument - Test set empty array
 
@@ -2751,18 +2823,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstInvoiceReferencedDocumentOnceItem, $secondInvoiceReferencedDocumentOnceItem);
 
-        $itemsBeforeForEach = $model->getInvoiceReferencedDocument();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachInvoiceReferencedDocument(
-            static function (ReferencedDocumentType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getInvoiceReferencedDocument());
-
         // (7) Property InvoiceReferencedDocument - Clesr
 
         $model->clearInvoiceReferencedDocument();
@@ -2771,22 +2831,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachInvoiceReferencedDocument(
-            static function (ReferencedDocumentType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
-
-        $itemsBeforeForEach = $model->getReceivableSpecifiedTradeAccountingAccount();
-
-        $this->assertSame($model, $model->forEachReceivableSpecifiedTradeAccountingAccount(
-            static function (TradeAccountingAccountType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getReceivableSpecifiedTradeAccountingAccount());
 
         // (1) Property ReceivableSpecifiedTradeAccountingAccount - Test set empty array
 
@@ -2843,18 +2887,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstReceivableSpecifiedTradeAccountingAccountOnceItem, $secondReceivableSpecifiedTradeAccountingAccountOnceItem);
 
-        $itemsBeforeForEach = $model->getReceivableSpecifiedTradeAccountingAccount();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachReceivableSpecifiedTradeAccountingAccount(
-            static function (TradeAccountingAccountType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getReceivableSpecifiedTradeAccountingAccount());
-
         // (7) Property ReceivableSpecifiedTradeAccountingAccount - Clesr
 
         $model->clearReceivableSpecifiedTradeAccountingAccount();
@@ -2863,22 +2895,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachReceivableSpecifiedTradeAccountingAccount(
-            static function (TradeAccountingAccountType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
-
-        $itemsBeforeForEach = $model->getSpecifiedAdvancePayment();
-
-        $this->assertSame($model, $model->forEachSpecifiedAdvancePayment(
-            static function (AdvancePaymentType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedAdvancePayment());
 
         // (1) Property SpecifiedAdvancePayment - Test set empty array
 
@@ -2935,18 +2951,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstSpecifiedAdvancePaymentOnceItem, $secondSpecifiedAdvancePaymentOnceItem);
 
-        $itemsBeforeForEach = $model->getSpecifiedAdvancePayment();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachSpecifiedAdvancePayment(
-            static function (AdvancePaymentType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedAdvancePayment());
-
         // (7) Property SpecifiedAdvancePayment - Clesr
 
         $model->clearSpecifiedAdvancePayment();
@@ -2956,11 +2960,644 @@ final class ZffxModelTest extends TestCase
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
 
-        $this->assertSame($model, $model->forEachSpecifiedAdvancePayment(
-            static function (AdvancePaymentType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        // (8) Property SpecifiedTradeSettlementPaymentMeans - ForEach
+
+        $specifiedTradeSettlementPaymentMeans = [$specifiedTradeSettlementPaymentMeansItem, $testValueForSpecifiedTradeSettlementPaymentMeansItem];
+        $model->setSpecifiedTradeSettlementPaymentMeans($specifiedTradeSettlementPaymentMeans);
+
+        $visitedSpecifiedTradeSettlementPaymentMeans = [];
+
+        $collectSpecifiedTradeSettlementPaymentMean = static function (
+            TradeSettlementPaymentMeansType $specifiedTradeSettlementPaymentMean
+        ) use (
+            &$visitedSpecifiedTradeSettlementPaymentMeans
+        ): void {
+            $visitedSpecifiedTradeSettlementPaymentMeans[] = $specifiedTradeSettlementPaymentMean;
+        };
+
+        $this->assertSame($model, $model->forEachSpecifiedTradeSettlementPaymentMeans($collectSpecifiedTradeSettlementPaymentMean));
+        $this->assertSame($specifiedTradeSettlementPaymentMeans, $visitedSpecifiedTradeSettlementPaymentMeans);
+        $this->assertSame($specifiedTradeSettlementPaymentMeans, $model->getSpecifiedTradeSettlementPaymentMeans());
+
+        $model->clearSpecifiedTradeSettlementPaymentMeans();
+        $visitedSpecifiedTradeSettlementPaymentMeans = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedTradeSettlementPaymentMeans($collectSpecifiedTradeSettlementPaymentMean));
+        $this->assertSame([], $visitedSpecifiedTradeSettlementPaymentMeans);
+
+        $model->unsetSpecifiedTradeSettlementPaymentMeans();
+        $visitedSpecifiedTradeSettlementPaymentMeans = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedTradeSettlementPaymentMeans($collectSpecifiedTradeSettlementPaymentMean));
+        $this->assertSame([], $visitedSpecifiedTradeSettlementPaymentMeans);
+
+        // (8) Property ApplicableTradeTax - ForEach
+
+        $applicableTradeTaxes = [$applicableTradeTaxItem, $testValueForApplicableTradeTaxItem];
+        $model->setApplicableTradeTax($applicableTradeTaxes);
+
+        $visitedApplicableTradeTaxes = [];
+
+        $collectApplicableTradeTax = static function (
+            TradeTaxType $applicableTradeTax
+        ) use (
+            &$visitedApplicableTradeTaxes
+        ): void {
+            $visitedApplicableTradeTaxes[] = $applicableTradeTax;
+        };
+
+        $this->assertSame($model, $model->forEachApplicableTradeTax($collectApplicableTradeTax));
+        $this->assertSame($applicableTradeTaxes, $visitedApplicableTradeTaxes);
+        $this->assertSame($applicableTradeTaxes, $model->getApplicableTradeTax());
+
+        $model->clearApplicableTradeTax();
+        $visitedApplicableTradeTaxes = [];
+
+        $this->assertSame($model, $model->forEachApplicableTradeTax($collectApplicableTradeTax));
+        $this->assertSame([], $visitedApplicableTradeTaxes);
+
+        $model->unsetApplicableTradeTax();
+        $visitedApplicableTradeTaxes = [];
+
+        $this->assertSame($model, $model->forEachApplicableTradeTax($collectApplicableTradeTax));
+        $this->assertSame([], $visitedApplicableTradeTaxes);
+
+        // (8) Property SpecifiedTradeAllowanceCharge - ForEach
+
+        $specifiedTradeAllowanceCharges = [$specifiedTradeAllowanceChargeItem, $testValueForSpecifiedTradeAllowanceChargeItem];
+        $model->setSpecifiedTradeAllowanceCharge($specifiedTradeAllowanceCharges);
+
+        $visitedSpecifiedTradeAllowanceCharges = [];
+
+        $collectSpecifiedTradeAllowanceCharge = static function (
+            TradeAllowanceChargeType $specifiedTradeAllowanceCharge
+        ) use (
+            &$visitedSpecifiedTradeAllowanceCharges
+        ): void {
+            $visitedSpecifiedTradeAllowanceCharges[] = $specifiedTradeAllowanceCharge;
+        };
+
+        $this->assertSame($model, $model->forEachSpecifiedTradeAllowanceCharge($collectSpecifiedTradeAllowanceCharge));
+        $this->assertSame($specifiedTradeAllowanceCharges, $visitedSpecifiedTradeAllowanceCharges);
+        $this->assertSame($specifiedTradeAllowanceCharges, $model->getSpecifiedTradeAllowanceCharge());
+
+        $model->clearSpecifiedTradeAllowanceCharge();
+        $visitedSpecifiedTradeAllowanceCharges = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedTradeAllowanceCharge($collectSpecifiedTradeAllowanceCharge));
+        $this->assertSame([], $visitedSpecifiedTradeAllowanceCharges);
+
+        $model->unsetSpecifiedTradeAllowanceCharge();
+        $visitedSpecifiedTradeAllowanceCharges = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedTradeAllowanceCharge($collectSpecifiedTradeAllowanceCharge));
+        $this->assertSame([], $visitedSpecifiedTradeAllowanceCharges);
+
+        // (8) Property SpecifiedLogisticsServiceCharge - ForEach
+
+        $specifiedLogisticsServiceCharges = [$specifiedLogisticsServiceChargeItem, $testValueForSpecifiedLogisticsServiceChargeItem];
+        $model->setSpecifiedLogisticsServiceCharge($specifiedLogisticsServiceCharges);
+
+        $visitedSpecifiedLogisticsServiceCharges = [];
+
+        $collectSpecifiedLogisticsServiceCharge = static function (
+            LogisticsServiceChargeType $specifiedLogisticsServiceCharge
+        ) use (
+            &$visitedSpecifiedLogisticsServiceCharges
+        ): void {
+            $visitedSpecifiedLogisticsServiceCharges[] = $specifiedLogisticsServiceCharge;
+        };
+
+        $this->assertSame($model, $model->forEachSpecifiedLogisticsServiceCharge($collectSpecifiedLogisticsServiceCharge));
+        $this->assertSame($specifiedLogisticsServiceCharges, $visitedSpecifiedLogisticsServiceCharges);
+        $this->assertSame($specifiedLogisticsServiceCharges, $model->getSpecifiedLogisticsServiceCharge());
+
+        $model->clearSpecifiedLogisticsServiceCharge();
+        $visitedSpecifiedLogisticsServiceCharges = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedLogisticsServiceCharge($collectSpecifiedLogisticsServiceCharge));
+        $this->assertSame([], $visitedSpecifiedLogisticsServiceCharges);
+
+        $model->unsetSpecifiedLogisticsServiceCharge();
+        $visitedSpecifiedLogisticsServiceCharges = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedLogisticsServiceCharge($collectSpecifiedLogisticsServiceCharge));
+        $this->assertSame([], $visitedSpecifiedLogisticsServiceCharges);
+
+        // (8) Property SpecifiedTradePaymentTerms - ForEach
+
+        $specifiedTradePaymentTerms = [$specifiedTradePaymentTermsItem, $testValueForSpecifiedTradePaymentTermsItem];
+        $model->setSpecifiedTradePaymentTerms($specifiedTradePaymentTerms);
+
+        $visitedSpecifiedTradePaymentTerms = [];
+
+        $collectSpecifiedTradePaymentTerm = static function (
+            TradePaymentTermsType $specifiedTradePaymentTerm
+        ) use (
+            &$visitedSpecifiedTradePaymentTerms
+        ): void {
+            $visitedSpecifiedTradePaymentTerms[] = $specifiedTradePaymentTerm;
+        };
+
+        $this->assertSame($model, $model->forEachSpecifiedTradePaymentTerms($collectSpecifiedTradePaymentTerm));
+        $this->assertSame($specifiedTradePaymentTerms, $visitedSpecifiedTradePaymentTerms);
+        $this->assertSame($specifiedTradePaymentTerms, $model->getSpecifiedTradePaymentTerms());
+
+        $model->clearSpecifiedTradePaymentTerms();
+        $visitedSpecifiedTradePaymentTerms = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedTradePaymentTerms($collectSpecifiedTradePaymentTerm));
+        $this->assertSame([], $visitedSpecifiedTradePaymentTerms);
+
+        $model->unsetSpecifiedTradePaymentTerms();
+        $visitedSpecifiedTradePaymentTerms = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedTradePaymentTerms($collectSpecifiedTradePaymentTerm));
+        $this->assertSame([], $visitedSpecifiedTradePaymentTerms);
+
+        // (8) Property SpecifiedFinancialAdjustment - ForEach
+
+        $specifiedFinancialAdjustments = [$specifiedFinancialAdjustmentItem, $testValueForSpecifiedFinancialAdjustmentItem];
+        $model->setSpecifiedFinancialAdjustment($specifiedFinancialAdjustments);
+
+        $visitedSpecifiedFinancialAdjustments = [];
+
+        $collectSpecifiedFinancialAdjustment = static function (
+            FinancialAdjustmentType $specifiedFinancialAdjustment
+        ) use (
+            &$visitedSpecifiedFinancialAdjustments
+        ): void {
+            $visitedSpecifiedFinancialAdjustments[] = $specifiedFinancialAdjustment;
+        };
+
+        $this->assertSame($model, $model->forEachSpecifiedFinancialAdjustment($collectSpecifiedFinancialAdjustment));
+        $this->assertSame($specifiedFinancialAdjustments, $visitedSpecifiedFinancialAdjustments);
+        $this->assertSame($specifiedFinancialAdjustments, $model->getSpecifiedFinancialAdjustment());
+
+        $model->clearSpecifiedFinancialAdjustment();
+        $visitedSpecifiedFinancialAdjustments = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedFinancialAdjustment($collectSpecifiedFinancialAdjustment));
+        $this->assertSame([], $visitedSpecifiedFinancialAdjustments);
+
+        $model->unsetSpecifiedFinancialAdjustment();
+        $visitedSpecifiedFinancialAdjustments = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedFinancialAdjustment($collectSpecifiedFinancialAdjustment));
+        $this->assertSame([], $visitedSpecifiedFinancialAdjustments);
+
+        // (8) Property InvoiceReferencedDocument - ForEach
+
+        $invoiceReferencedDocuments = [$invoiceReferencedDocumentItem, $testValueForInvoiceReferencedDocumentItem];
+        $model->setInvoiceReferencedDocument($invoiceReferencedDocuments);
+
+        $visitedInvoiceReferencedDocuments = [];
+
+        $collectInvoiceReferencedDocument = static function (
+            ReferencedDocumentType $invoiceReferencedDocument
+        ) use (
+            &$visitedInvoiceReferencedDocuments
+        ): void {
+            $visitedInvoiceReferencedDocuments[] = $invoiceReferencedDocument;
+        };
+
+        $this->assertSame($model, $model->forEachInvoiceReferencedDocument($collectInvoiceReferencedDocument));
+        $this->assertSame($invoiceReferencedDocuments, $visitedInvoiceReferencedDocuments);
+        $this->assertSame($invoiceReferencedDocuments, $model->getInvoiceReferencedDocument());
+
+        $model->clearInvoiceReferencedDocument();
+        $visitedInvoiceReferencedDocuments = [];
+
+        $this->assertSame($model, $model->forEachInvoiceReferencedDocument($collectInvoiceReferencedDocument));
+        $this->assertSame([], $visitedInvoiceReferencedDocuments);
+
+        $model->unsetInvoiceReferencedDocument();
+        $visitedInvoiceReferencedDocuments = [];
+
+        $this->assertSame($model, $model->forEachInvoiceReferencedDocument($collectInvoiceReferencedDocument));
+        $this->assertSame([], $visitedInvoiceReferencedDocuments);
+
+        // (8) Property ReceivableSpecifiedTradeAccountingAccount - ForEach
+
+        $receivableSpecifiedTradeAccountingAccounts = [$receivableSpecifiedTradeAccountingAccountItem, $testValueForReceivableSpecifiedTradeAccountingAccountItem];
+        $model->setReceivableSpecifiedTradeAccountingAccount($receivableSpecifiedTradeAccountingAccounts);
+
+        $visitedReceivableSpecifiedTradeAccountingAccounts = [];
+
+        $collectReceivableSpecifiedTradeAccountingAccount = static function (
+            TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
+        ) use (
+            &$visitedReceivableSpecifiedTradeAccountingAccounts
+        ): void {
+            $visitedReceivableSpecifiedTradeAccountingAccounts[] = $receivableSpecifiedTradeAccountingAccount;
+        };
+
+        $this->assertSame($model, $model->forEachReceivableSpecifiedTradeAccountingAccount($collectReceivableSpecifiedTradeAccountingAccount));
+        $this->assertSame($receivableSpecifiedTradeAccountingAccounts, $visitedReceivableSpecifiedTradeAccountingAccounts);
+        $this->assertSame($receivableSpecifiedTradeAccountingAccounts, $model->getReceivableSpecifiedTradeAccountingAccount());
+
+        $model->clearReceivableSpecifiedTradeAccountingAccount();
+        $visitedReceivableSpecifiedTradeAccountingAccounts = [];
+
+        $this->assertSame($model, $model->forEachReceivableSpecifiedTradeAccountingAccount($collectReceivableSpecifiedTradeAccountingAccount));
+        $this->assertSame([], $visitedReceivableSpecifiedTradeAccountingAccounts);
+
+        $model->unsetReceivableSpecifiedTradeAccountingAccount();
+        $visitedReceivableSpecifiedTradeAccountingAccounts = [];
+
+        $this->assertSame($model, $model->forEachReceivableSpecifiedTradeAccountingAccount($collectReceivableSpecifiedTradeAccountingAccount));
+        $this->assertSame([], $visitedReceivableSpecifiedTradeAccountingAccounts);
+
+        // (8) Property SpecifiedAdvancePayment - ForEach
+
+        $specifiedAdvancePayments = [$specifiedAdvancePaymentItem, $testValueForSpecifiedAdvancePaymentItem];
+        $model->setSpecifiedAdvancePayment($specifiedAdvancePayments);
+
+        $visitedSpecifiedAdvancePayments = [];
+
+        $collectSpecifiedAdvancePayment = static function (
+            AdvancePaymentType $specifiedAdvancePayment
+        ) use (
+            &$visitedSpecifiedAdvancePayments
+        ): void {
+            $visitedSpecifiedAdvancePayments[] = $specifiedAdvancePayment;
+        };
+
+        $this->assertSame($model, $model->forEachSpecifiedAdvancePayment($collectSpecifiedAdvancePayment));
+        $this->assertSame($specifiedAdvancePayments, $visitedSpecifiedAdvancePayments);
+        $this->assertSame($specifiedAdvancePayments, $model->getSpecifiedAdvancePayment());
+
+        $model->clearSpecifiedAdvancePayment();
+        $visitedSpecifiedAdvancePayments = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedAdvancePayment($collectSpecifiedAdvancePayment));
+        $this->assertSame([], $visitedSpecifiedAdvancePayments);
+
+        $model->unsetSpecifiedAdvancePayment();
+        $visitedSpecifiedAdvancePayments = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedAdvancePayment($collectSpecifiedAdvancePayment));
+        $this->assertSame([], $visitedSpecifiedAdvancePayments);
+
+        // (9) Property SpecifiedTradeSettlementPaymentMeans - Filter
+
+        $model->setSpecifiedTradeSettlementPaymentMeans($specifiedTradeSettlementPaymentMeans);
+
+        $specifiedTradeSettlementPaymentMeanToKeep = $specifiedTradeSettlementPaymentMeans[1];
+        $visitedSpecifiedTradeSettlementPaymentMeans = [];
+
+        $selectSpecifiedTradeSettlementPaymentMean = static function (
+            TradeSettlementPaymentMeansType $specifiedTradeSettlementPaymentMean
+        ) use (
+            $specifiedTradeSettlementPaymentMeanToKeep,
+            &$visitedSpecifiedTradeSettlementPaymentMeans
+        ): bool {
+            $visitedSpecifiedTradeSettlementPaymentMeans[] = $specifiedTradeSettlementPaymentMean;
+
+            return $specifiedTradeSettlementPaymentMean === $specifiedTradeSettlementPaymentMeanToKeep;
+        };
+
+        $filteredSpecifiedTradeSettlementPaymentMeans = $model->filterSpecifiedTradeSettlementPaymentMeans($selectSpecifiedTradeSettlementPaymentMean);
+
+        $this->assertSame([1 => $specifiedTradeSettlementPaymentMeanToKeep], $filteredSpecifiedTradeSettlementPaymentMeans);
+        $this->assertSame($specifiedTradeSettlementPaymentMeans, $visitedSpecifiedTradeSettlementPaymentMeans);
+        $this->assertSame($specifiedTradeSettlementPaymentMeans, $model->getSpecifiedTradeSettlementPaymentMeans());
+
+        $model->clearSpecifiedTradeSettlementPaymentMeans();
+        $visitedSpecifiedTradeSettlementPaymentMeans = [];
+
+        $filteredSpecifiedTradeSettlementPaymentMeans = $model->filterSpecifiedTradeSettlementPaymentMeans($selectSpecifiedTradeSettlementPaymentMean);
+
+        $this->assertSame([], $filteredSpecifiedTradeSettlementPaymentMeans);
+        $this->assertSame([], $visitedSpecifiedTradeSettlementPaymentMeans);
+
+        $model->unsetSpecifiedTradeSettlementPaymentMeans();
+        $visitedSpecifiedTradeSettlementPaymentMeans = [];
+
+        $filteredSpecifiedTradeSettlementPaymentMeans = $model->filterSpecifiedTradeSettlementPaymentMeans($selectSpecifiedTradeSettlementPaymentMean);
+
+        $this->assertSame([], $filteredSpecifiedTradeSettlementPaymentMeans);
+        $this->assertSame([], $visitedSpecifiedTradeSettlementPaymentMeans);
+
+        // (9) Property ApplicableTradeTax - Filter
+
+        $model->setApplicableTradeTax($applicableTradeTaxes);
+
+        $applicableTradeTaxToKeep = $applicableTradeTaxes[1];
+        $visitedApplicableTradeTaxes = [];
+
+        $selectApplicableTradeTax = static function (
+            TradeTaxType $applicableTradeTax
+        ) use (
+            $applicableTradeTaxToKeep,
+            &$visitedApplicableTradeTaxes
+        ): bool {
+            $visitedApplicableTradeTaxes[] = $applicableTradeTax;
+
+            return $applicableTradeTax === $applicableTradeTaxToKeep;
+        };
+
+        $filteredApplicableTradeTaxes = $model->filterApplicableTradeTaxes($selectApplicableTradeTax);
+
+        $this->assertSame([1 => $applicableTradeTaxToKeep], $filteredApplicableTradeTaxes);
+        $this->assertSame($applicableTradeTaxes, $visitedApplicableTradeTaxes);
+        $this->assertSame($applicableTradeTaxes, $model->getApplicableTradeTax());
+
+        $model->clearApplicableTradeTax();
+        $visitedApplicableTradeTaxes = [];
+
+        $filteredApplicableTradeTaxes = $model->filterApplicableTradeTaxes($selectApplicableTradeTax);
+
+        $this->assertSame([], $filteredApplicableTradeTaxes);
+        $this->assertSame([], $visitedApplicableTradeTaxes);
+
+        $model->unsetApplicableTradeTax();
+        $visitedApplicableTradeTaxes = [];
+
+        $filteredApplicableTradeTaxes = $model->filterApplicableTradeTaxes($selectApplicableTradeTax);
+
+        $this->assertSame([], $filteredApplicableTradeTaxes);
+        $this->assertSame([], $visitedApplicableTradeTaxes);
+
+        // (9) Property SpecifiedTradeAllowanceCharge - Filter
+
+        $model->setSpecifiedTradeAllowanceCharge($specifiedTradeAllowanceCharges);
+
+        $specifiedTradeAllowanceChargeToKeep = $specifiedTradeAllowanceCharges[1];
+        $visitedSpecifiedTradeAllowanceCharges = [];
+
+        $selectSpecifiedTradeAllowanceCharge = static function (
+            TradeAllowanceChargeType $specifiedTradeAllowanceCharge
+        ) use (
+            $specifiedTradeAllowanceChargeToKeep,
+            &$visitedSpecifiedTradeAllowanceCharges
+        ): bool {
+            $visitedSpecifiedTradeAllowanceCharges[] = $specifiedTradeAllowanceCharge;
+
+            return $specifiedTradeAllowanceCharge === $specifiedTradeAllowanceChargeToKeep;
+        };
+
+        $filteredSpecifiedTradeAllowanceCharges = $model->filterSpecifiedTradeAllowanceCharges($selectSpecifiedTradeAllowanceCharge);
+
+        $this->assertSame([1 => $specifiedTradeAllowanceChargeToKeep], $filteredSpecifiedTradeAllowanceCharges);
+        $this->assertSame($specifiedTradeAllowanceCharges, $visitedSpecifiedTradeAllowanceCharges);
+        $this->assertSame($specifiedTradeAllowanceCharges, $model->getSpecifiedTradeAllowanceCharge());
+
+        $model->clearSpecifiedTradeAllowanceCharge();
+        $visitedSpecifiedTradeAllowanceCharges = [];
+
+        $filteredSpecifiedTradeAllowanceCharges = $model->filterSpecifiedTradeAllowanceCharges($selectSpecifiedTradeAllowanceCharge);
+
+        $this->assertSame([], $filteredSpecifiedTradeAllowanceCharges);
+        $this->assertSame([], $visitedSpecifiedTradeAllowanceCharges);
+
+        $model->unsetSpecifiedTradeAllowanceCharge();
+        $visitedSpecifiedTradeAllowanceCharges = [];
+
+        $filteredSpecifiedTradeAllowanceCharges = $model->filterSpecifiedTradeAllowanceCharges($selectSpecifiedTradeAllowanceCharge);
+
+        $this->assertSame([], $filteredSpecifiedTradeAllowanceCharges);
+        $this->assertSame([], $visitedSpecifiedTradeAllowanceCharges);
+
+        // (9) Property SpecifiedLogisticsServiceCharge - Filter
+
+        $model->setSpecifiedLogisticsServiceCharge($specifiedLogisticsServiceCharges);
+
+        $specifiedLogisticsServiceChargeToKeep = $specifiedLogisticsServiceCharges[1];
+        $visitedSpecifiedLogisticsServiceCharges = [];
+
+        $selectSpecifiedLogisticsServiceCharge = static function (
+            LogisticsServiceChargeType $specifiedLogisticsServiceCharge
+        ) use (
+            $specifiedLogisticsServiceChargeToKeep,
+            &$visitedSpecifiedLogisticsServiceCharges
+        ): bool {
+            $visitedSpecifiedLogisticsServiceCharges[] = $specifiedLogisticsServiceCharge;
+
+            return $specifiedLogisticsServiceCharge === $specifiedLogisticsServiceChargeToKeep;
+        };
+
+        $filteredSpecifiedLogisticsServiceCharges = $model->filterSpecifiedLogisticsServiceCharges($selectSpecifiedLogisticsServiceCharge);
+
+        $this->assertSame([1 => $specifiedLogisticsServiceChargeToKeep], $filteredSpecifiedLogisticsServiceCharges);
+        $this->assertSame($specifiedLogisticsServiceCharges, $visitedSpecifiedLogisticsServiceCharges);
+        $this->assertSame($specifiedLogisticsServiceCharges, $model->getSpecifiedLogisticsServiceCharge());
+
+        $model->clearSpecifiedLogisticsServiceCharge();
+        $visitedSpecifiedLogisticsServiceCharges = [];
+
+        $filteredSpecifiedLogisticsServiceCharges = $model->filterSpecifiedLogisticsServiceCharges($selectSpecifiedLogisticsServiceCharge);
+
+        $this->assertSame([], $filteredSpecifiedLogisticsServiceCharges);
+        $this->assertSame([], $visitedSpecifiedLogisticsServiceCharges);
+
+        $model->unsetSpecifiedLogisticsServiceCharge();
+        $visitedSpecifiedLogisticsServiceCharges = [];
+
+        $filteredSpecifiedLogisticsServiceCharges = $model->filterSpecifiedLogisticsServiceCharges($selectSpecifiedLogisticsServiceCharge);
+
+        $this->assertSame([], $filteredSpecifiedLogisticsServiceCharges);
+        $this->assertSame([], $visitedSpecifiedLogisticsServiceCharges);
+
+        // (9) Property SpecifiedTradePaymentTerms - Filter
+
+        $model->setSpecifiedTradePaymentTerms($specifiedTradePaymentTerms);
+
+        $specifiedTradePaymentTermToKeep = $specifiedTradePaymentTerms[1];
+        $visitedSpecifiedTradePaymentTerms = [];
+
+        $selectSpecifiedTradePaymentTerm = static function (
+            TradePaymentTermsType $specifiedTradePaymentTerm
+        ) use (
+            $specifiedTradePaymentTermToKeep,
+            &$visitedSpecifiedTradePaymentTerms
+        ): bool {
+            $visitedSpecifiedTradePaymentTerms[] = $specifiedTradePaymentTerm;
+
+            return $specifiedTradePaymentTerm === $specifiedTradePaymentTermToKeep;
+        };
+
+        $filteredSpecifiedTradePaymentTerms = $model->filterSpecifiedTradePaymentTerms($selectSpecifiedTradePaymentTerm);
+
+        $this->assertSame([1 => $specifiedTradePaymentTermToKeep], $filteredSpecifiedTradePaymentTerms);
+        $this->assertSame($specifiedTradePaymentTerms, $visitedSpecifiedTradePaymentTerms);
+        $this->assertSame($specifiedTradePaymentTerms, $model->getSpecifiedTradePaymentTerms());
+
+        $model->clearSpecifiedTradePaymentTerms();
+        $visitedSpecifiedTradePaymentTerms = [];
+
+        $filteredSpecifiedTradePaymentTerms = $model->filterSpecifiedTradePaymentTerms($selectSpecifiedTradePaymentTerm);
+
+        $this->assertSame([], $filteredSpecifiedTradePaymentTerms);
+        $this->assertSame([], $visitedSpecifiedTradePaymentTerms);
+
+        $model->unsetSpecifiedTradePaymentTerms();
+        $visitedSpecifiedTradePaymentTerms = [];
+
+        $filteredSpecifiedTradePaymentTerms = $model->filterSpecifiedTradePaymentTerms($selectSpecifiedTradePaymentTerm);
+
+        $this->assertSame([], $filteredSpecifiedTradePaymentTerms);
+        $this->assertSame([], $visitedSpecifiedTradePaymentTerms);
+
+        // (9) Property SpecifiedFinancialAdjustment - Filter
+
+        $model->setSpecifiedFinancialAdjustment($specifiedFinancialAdjustments);
+
+        $specifiedFinancialAdjustmentToKeep = $specifiedFinancialAdjustments[1];
+        $visitedSpecifiedFinancialAdjustments = [];
+
+        $selectSpecifiedFinancialAdjustment = static function (
+            FinancialAdjustmentType $specifiedFinancialAdjustment
+        ) use (
+            $specifiedFinancialAdjustmentToKeep,
+            &$visitedSpecifiedFinancialAdjustments
+        ): bool {
+            $visitedSpecifiedFinancialAdjustments[] = $specifiedFinancialAdjustment;
+
+            return $specifiedFinancialAdjustment === $specifiedFinancialAdjustmentToKeep;
+        };
+
+        $filteredSpecifiedFinancialAdjustments = $model->filterSpecifiedFinancialAdjustments($selectSpecifiedFinancialAdjustment);
+
+        $this->assertSame([1 => $specifiedFinancialAdjustmentToKeep], $filteredSpecifiedFinancialAdjustments);
+        $this->assertSame($specifiedFinancialAdjustments, $visitedSpecifiedFinancialAdjustments);
+        $this->assertSame($specifiedFinancialAdjustments, $model->getSpecifiedFinancialAdjustment());
+
+        $model->clearSpecifiedFinancialAdjustment();
+        $visitedSpecifiedFinancialAdjustments = [];
+
+        $filteredSpecifiedFinancialAdjustments = $model->filterSpecifiedFinancialAdjustments($selectSpecifiedFinancialAdjustment);
+
+        $this->assertSame([], $filteredSpecifiedFinancialAdjustments);
+        $this->assertSame([], $visitedSpecifiedFinancialAdjustments);
+
+        $model->unsetSpecifiedFinancialAdjustment();
+        $visitedSpecifiedFinancialAdjustments = [];
+
+        $filteredSpecifiedFinancialAdjustments = $model->filterSpecifiedFinancialAdjustments($selectSpecifiedFinancialAdjustment);
+
+        $this->assertSame([], $filteredSpecifiedFinancialAdjustments);
+        $this->assertSame([], $visitedSpecifiedFinancialAdjustments);
+
+        // (9) Property InvoiceReferencedDocument - Filter
+
+        $model->setInvoiceReferencedDocument($invoiceReferencedDocuments);
+
+        $invoiceReferencedDocumentToKeep = $invoiceReferencedDocuments[1];
+        $visitedInvoiceReferencedDocuments = [];
+
+        $selectInvoiceReferencedDocument = static function (
+            ReferencedDocumentType $invoiceReferencedDocument
+        ) use (
+            $invoiceReferencedDocumentToKeep,
+            &$visitedInvoiceReferencedDocuments
+        ): bool {
+            $visitedInvoiceReferencedDocuments[] = $invoiceReferencedDocument;
+
+            return $invoiceReferencedDocument === $invoiceReferencedDocumentToKeep;
+        };
+
+        $filteredInvoiceReferencedDocuments = $model->filterInvoiceReferencedDocuments($selectInvoiceReferencedDocument);
+
+        $this->assertSame([1 => $invoiceReferencedDocumentToKeep], $filteredInvoiceReferencedDocuments);
+        $this->assertSame($invoiceReferencedDocuments, $visitedInvoiceReferencedDocuments);
+        $this->assertSame($invoiceReferencedDocuments, $model->getInvoiceReferencedDocument());
+
+        $model->clearInvoiceReferencedDocument();
+        $visitedInvoiceReferencedDocuments = [];
+
+        $filteredInvoiceReferencedDocuments = $model->filterInvoiceReferencedDocuments($selectInvoiceReferencedDocument);
+
+        $this->assertSame([], $filteredInvoiceReferencedDocuments);
+        $this->assertSame([], $visitedInvoiceReferencedDocuments);
+
+        $model->unsetInvoiceReferencedDocument();
+        $visitedInvoiceReferencedDocuments = [];
+
+        $filteredInvoiceReferencedDocuments = $model->filterInvoiceReferencedDocuments($selectInvoiceReferencedDocument);
+
+        $this->assertSame([], $filteredInvoiceReferencedDocuments);
+        $this->assertSame([], $visitedInvoiceReferencedDocuments);
+
+        // (9) Property ReceivableSpecifiedTradeAccountingAccount - Filter
+
+        $model->setReceivableSpecifiedTradeAccountingAccount($receivableSpecifiedTradeAccountingAccounts);
+
+        $receivableSpecifiedTradeAccountingAccountToKeep = $receivableSpecifiedTradeAccountingAccounts[1];
+        $visitedReceivableSpecifiedTradeAccountingAccounts = [];
+
+        $selectReceivableSpecifiedTradeAccountingAccount = static function (
+            TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
+        ) use (
+            $receivableSpecifiedTradeAccountingAccountToKeep,
+            &$visitedReceivableSpecifiedTradeAccountingAccounts
+        ): bool {
+            $visitedReceivableSpecifiedTradeAccountingAccounts[] = $receivableSpecifiedTradeAccountingAccount;
+
+            return $receivableSpecifiedTradeAccountingAccount === $receivableSpecifiedTradeAccountingAccountToKeep;
+        };
+
+        $filteredReceivableSpecifiedTradeAccountingAccounts = $model->filterReceivableSpecifiedTradeAccountingAccounts($selectReceivableSpecifiedTradeAccountingAccount);
+
+        $this->assertSame([1 => $receivableSpecifiedTradeAccountingAccountToKeep], $filteredReceivableSpecifiedTradeAccountingAccounts);
+        $this->assertSame($receivableSpecifiedTradeAccountingAccounts, $visitedReceivableSpecifiedTradeAccountingAccounts);
+        $this->assertSame($receivableSpecifiedTradeAccountingAccounts, $model->getReceivableSpecifiedTradeAccountingAccount());
+
+        $model->clearReceivableSpecifiedTradeAccountingAccount();
+        $visitedReceivableSpecifiedTradeAccountingAccounts = [];
+
+        $filteredReceivableSpecifiedTradeAccountingAccounts = $model->filterReceivableSpecifiedTradeAccountingAccounts($selectReceivableSpecifiedTradeAccountingAccount);
+
+        $this->assertSame([], $filteredReceivableSpecifiedTradeAccountingAccounts);
+        $this->assertSame([], $visitedReceivableSpecifiedTradeAccountingAccounts);
+
+        $model->unsetReceivableSpecifiedTradeAccountingAccount();
+        $visitedReceivableSpecifiedTradeAccountingAccounts = [];
+
+        $filteredReceivableSpecifiedTradeAccountingAccounts = $model->filterReceivableSpecifiedTradeAccountingAccounts($selectReceivableSpecifiedTradeAccountingAccount);
+
+        $this->assertSame([], $filteredReceivableSpecifiedTradeAccountingAccounts);
+        $this->assertSame([], $visitedReceivableSpecifiedTradeAccountingAccounts);
+
+        // (9) Property SpecifiedAdvancePayment - Filter
+
+        $model->setSpecifiedAdvancePayment($specifiedAdvancePayments);
+
+        $specifiedAdvancePaymentToKeep = $specifiedAdvancePayments[1];
+        $visitedSpecifiedAdvancePayments = [];
+
+        $selectSpecifiedAdvancePayment = static function (
+            AdvancePaymentType $specifiedAdvancePayment
+        ) use (
+            $specifiedAdvancePaymentToKeep,
+            &$visitedSpecifiedAdvancePayments
+        ): bool {
+            $visitedSpecifiedAdvancePayments[] = $specifiedAdvancePayment;
+
+            return $specifiedAdvancePayment === $specifiedAdvancePaymentToKeep;
+        };
+
+        $filteredSpecifiedAdvancePayments = $model->filterSpecifiedAdvancePayments($selectSpecifiedAdvancePayment);
+
+        $this->assertSame([1 => $specifiedAdvancePaymentToKeep], $filteredSpecifiedAdvancePayments);
+        $this->assertSame($specifiedAdvancePayments, $visitedSpecifiedAdvancePayments);
+        $this->assertSame($specifiedAdvancePayments, $model->getSpecifiedAdvancePayment());
+
+        $model->clearSpecifiedAdvancePayment();
+        $visitedSpecifiedAdvancePayments = [];
+
+        $filteredSpecifiedAdvancePayments = $model->filterSpecifiedAdvancePayments($selectSpecifiedAdvancePayment);
+
+        $this->assertSame([], $filteredSpecifiedAdvancePayments);
+        $this->assertSame([], $visitedSpecifiedAdvancePayments);
+
+        $model->unsetSpecifiedAdvancePayment();
+        $visitedSpecifiedAdvancePayments = [];
+
+        $filteredSpecifiedAdvancePayments = $model->filterSpecifiedAdvancePayments($selectSpecifiedAdvancePayment);
+
+        $this->assertSame([], $filteredSpecifiedAdvancePayments);
+        $this->assertSame([], $visitedSpecifiedAdvancePayments);
     }
 
     /**
@@ -3094,16 +3731,6 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForContractReferencedDocument);
         $this->assertSame($testValueForContractReferencedDocument, $model->getContractReferencedDocument());
 
-        $itemsBeforeForEach = $model->getAdditionalReferencedDocument();
-
-        $this->assertSame($model, $model->forEachAdditionalReferencedDocument(
-            static function (ReferencedDocumentType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getAdditionalReferencedDocument());
-
         // (1) Property AdditionalReferencedDocument - Test set empty array
 
         $additionalReferencedDocumentItems = [];
@@ -3159,18 +3786,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstAdditionalReferencedDocumentOnceItem, $secondAdditionalReferencedDocumentOnceItem);
 
-        $itemsBeforeForEach = $model->getAdditionalReferencedDocument();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachAdditionalReferencedDocument(
-            static function (ReferencedDocumentType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getAdditionalReferencedDocument());
-
         // (7) Property AdditionalReferencedDocument - Clesr
 
         $model->clearAdditionalReferencedDocument();
@@ -3179,12 +3794,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachAdditionalReferencedDocument(
-            static function (ReferencedDocumentType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
 
         // Property GrossPriceProductTradePrice
 
@@ -3217,16 +3826,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(TradePriceType::class, $testValueForNetPriceProductTradePrice);
         $this->assertSame($testValueForNetPriceProductTradePrice, $model->getNetPriceProductTradePrice());
-
-        $itemsBeforeForEach = $model->getUltimateCustomerOrderReferencedDocument();
-
-        $this->assertSame($model, $model->forEachUltimateCustomerOrderReferencedDocument(
-            static function (ReferencedDocumentType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getUltimateCustomerOrderReferencedDocument());
 
         // (1) Property UltimateCustomerOrderReferencedDocument - Test set empty array
 
@@ -3283,18 +3882,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstUltimateCustomerOrderReferencedDocumentOnceItem, $secondUltimateCustomerOrderReferencedDocumentOnceItem);
 
-        $itemsBeforeForEach = $model->getUltimateCustomerOrderReferencedDocument();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachUltimateCustomerOrderReferencedDocument(
-            static function (ReferencedDocumentType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getUltimateCustomerOrderReferencedDocument());
-
         // (7) Property UltimateCustomerOrderReferencedDocument - Clesr
 
         $model->clearUltimateCustomerOrderReferencedDocument();
@@ -3304,11 +3891,147 @@ final class ZffxModelTest extends TestCase
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
 
-        $this->assertSame($model, $model->forEachUltimateCustomerOrderReferencedDocument(
-            static function (ReferencedDocumentType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        // (8) Property AdditionalReferencedDocument - ForEach
+
+        $additionalReferencedDocuments = [$additionalReferencedDocumentItem, $testValueForAdditionalReferencedDocumentItem];
+        $model->setAdditionalReferencedDocument($additionalReferencedDocuments);
+
+        $visitedAdditionalReferencedDocuments = [];
+
+        $collectAdditionalReferencedDocument = static function (
+            ReferencedDocumentType $additionalReferencedDocument
+        ) use (
+            &$visitedAdditionalReferencedDocuments
+        ): void {
+            $visitedAdditionalReferencedDocuments[] = $additionalReferencedDocument;
+        };
+
+        $this->assertSame($model, $model->forEachAdditionalReferencedDocument($collectAdditionalReferencedDocument));
+        $this->assertSame($additionalReferencedDocuments, $visitedAdditionalReferencedDocuments);
+        $this->assertSame($additionalReferencedDocuments, $model->getAdditionalReferencedDocument());
+
+        $model->clearAdditionalReferencedDocument();
+        $visitedAdditionalReferencedDocuments = [];
+
+        $this->assertSame($model, $model->forEachAdditionalReferencedDocument($collectAdditionalReferencedDocument));
+        $this->assertSame([], $visitedAdditionalReferencedDocuments);
+
+        $model->unsetAdditionalReferencedDocument();
+        $visitedAdditionalReferencedDocuments = [];
+
+        $this->assertSame($model, $model->forEachAdditionalReferencedDocument($collectAdditionalReferencedDocument));
+        $this->assertSame([], $visitedAdditionalReferencedDocuments);
+
+        // (8) Property UltimateCustomerOrderReferencedDocument - ForEach
+
+        $ultimateCustomerOrderReferencedDocuments = [$ultimateCustomerOrderReferencedDocumentItem, $testValueForUltimateCustomerOrderReferencedDocumentItem];
+        $model->setUltimateCustomerOrderReferencedDocument($ultimateCustomerOrderReferencedDocuments);
+
+        $visitedUltimateCustomerOrderReferencedDocuments = [];
+
+        $collectUltimateCustomerOrderReferencedDocument = static function (
+            ReferencedDocumentType $ultimateCustomerOrderReferencedDocument
+        ) use (
+            &$visitedUltimateCustomerOrderReferencedDocuments
+        ): void {
+            $visitedUltimateCustomerOrderReferencedDocuments[] = $ultimateCustomerOrderReferencedDocument;
+        };
+
+        $this->assertSame($model, $model->forEachUltimateCustomerOrderReferencedDocument($collectUltimateCustomerOrderReferencedDocument));
+        $this->assertSame($ultimateCustomerOrderReferencedDocuments, $visitedUltimateCustomerOrderReferencedDocuments);
+        $this->assertSame($ultimateCustomerOrderReferencedDocuments, $model->getUltimateCustomerOrderReferencedDocument());
+
+        $model->clearUltimateCustomerOrderReferencedDocument();
+        $visitedUltimateCustomerOrderReferencedDocuments = [];
+
+        $this->assertSame($model, $model->forEachUltimateCustomerOrderReferencedDocument($collectUltimateCustomerOrderReferencedDocument));
+        $this->assertSame([], $visitedUltimateCustomerOrderReferencedDocuments);
+
+        $model->unsetUltimateCustomerOrderReferencedDocument();
+        $visitedUltimateCustomerOrderReferencedDocuments = [];
+
+        $this->assertSame($model, $model->forEachUltimateCustomerOrderReferencedDocument($collectUltimateCustomerOrderReferencedDocument));
+        $this->assertSame([], $visitedUltimateCustomerOrderReferencedDocuments);
+
+        // (9) Property AdditionalReferencedDocument - Filter
+
+        $model->setAdditionalReferencedDocument($additionalReferencedDocuments);
+
+        $additionalReferencedDocumentToKeep = $additionalReferencedDocuments[1];
+        $visitedAdditionalReferencedDocuments = [];
+
+        $selectAdditionalReferencedDocument = static function (
+            ReferencedDocumentType $additionalReferencedDocument
+        ) use (
+            $additionalReferencedDocumentToKeep,
+            &$visitedAdditionalReferencedDocuments
+        ): bool {
+            $visitedAdditionalReferencedDocuments[] = $additionalReferencedDocument;
+
+            return $additionalReferencedDocument === $additionalReferencedDocumentToKeep;
+        };
+
+        $filteredAdditionalReferencedDocuments = $model->filterAdditionalReferencedDocuments($selectAdditionalReferencedDocument);
+
+        $this->assertSame([1 => $additionalReferencedDocumentToKeep], $filteredAdditionalReferencedDocuments);
+        $this->assertSame($additionalReferencedDocuments, $visitedAdditionalReferencedDocuments);
+        $this->assertSame($additionalReferencedDocuments, $model->getAdditionalReferencedDocument());
+
+        $model->clearAdditionalReferencedDocument();
+        $visitedAdditionalReferencedDocuments = [];
+
+        $filteredAdditionalReferencedDocuments = $model->filterAdditionalReferencedDocuments($selectAdditionalReferencedDocument);
+
+        $this->assertSame([], $filteredAdditionalReferencedDocuments);
+        $this->assertSame([], $visitedAdditionalReferencedDocuments);
+
+        $model->unsetAdditionalReferencedDocument();
+        $visitedAdditionalReferencedDocuments = [];
+
+        $filteredAdditionalReferencedDocuments = $model->filterAdditionalReferencedDocuments($selectAdditionalReferencedDocument);
+
+        $this->assertSame([], $filteredAdditionalReferencedDocuments);
+        $this->assertSame([], $visitedAdditionalReferencedDocuments);
+
+        // (9) Property UltimateCustomerOrderReferencedDocument - Filter
+
+        $model->setUltimateCustomerOrderReferencedDocument($ultimateCustomerOrderReferencedDocuments);
+
+        $ultimateCustomerOrderReferencedDocumentToKeep = $ultimateCustomerOrderReferencedDocuments[1];
+        $visitedUltimateCustomerOrderReferencedDocuments = [];
+
+        $selectUltimateCustomerOrderReferencedDocument = static function (
+            ReferencedDocumentType $ultimateCustomerOrderReferencedDocument
+        ) use (
+            $ultimateCustomerOrderReferencedDocumentToKeep,
+            &$visitedUltimateCustomerOrderReferencedDocuments
+        ): bool {
+            $visitedUltimateCustomerOrderReferencedDocuments[] = $ultimateCustomerOrderReferencedDocument;
+
+            return $ultimateCustomerOrderReferencedDocument === $ultimateCustomerOrderReferencedDocumentToKeep;
+        };
+
+        $filteredUltimateCustomerOrderReferencedDocuments = $model->filterUltimateCustomerOrderReferencedDocuments($selectUltimateCustomerOrderReferencedDocument);
+
+        $this->assertSame([1 => $ultimateCustomerOrderReferencedDocumentToKeep], $filteredUltimateCustomerOrderReferencedDocuments);
+        $this->assertSame($ultimateCustomerOrderReferencedDocuments, $visitedUltimateCustomerOrderReferencedDocuments);
+        $this->assertSame($ultimateCustomerOrderReferencedDocuments, $model->getUltimateCustomerOrderReferencedDocument());
+
+        $model->clearUltimateCustomerOrderReferencedDocument();
+        $visitedUltimateCustomerOrderReferencedDocuments = [];
+
+        $filteredUltimateCustomerOrderReferencedDocuments = $model->filterUltimateCustomerOrderReferencedDocuments($selectUltimateCustomerOrderReferencedDocument);
+
+        $this->assertSame([], $filteredUltimateCustomerOrderReferencedDocuments);
+        $this->assertSame([], $visitedUltimateCustomerOrderReferencedDocuments);
+
+        $model->unsetUltimateCustomerOrderReferencedDocument();
+        $visitedUltimateCustomerOrderReferencedDocuments = [];
+
+        $filteredUltimateCustomerOrderReferencedDocuments = $model->filterUltimateCustomerOrderReferencedDocuments($selectUltimateCustomerOrderReferencedDocument);
+
+        $this->assertSame([], $filteredUltimateCustomerOrderReferencedDocuments);
+        $this->assertSame([], $visitedUltimateCustomerOrderReferencedDocuments);
     }
 
     /**
@@ -3490,16 +4213,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(LineTradeSettlementType::class, $model);
 
-        $itemsBeforeForEach = $model->getApplicableTradeTax();
-
-        $this->assertSame($model, $model->forEachApplicableTradeTax(
-            static function (TradeTaxType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getApplicableTradeTax());
-
         // (1) Property ApplicableTradeTax - Test set empty array
 
         $applicableTradeTaxItems = [];
@@ -3555,18 +4268,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstApplicableTradeTaxOnceItem, $secondApplicableTradeTaxOnceItem);
 
-        $itemsBeforeForEach = $model->getApplicableTradeTax();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachApplicableTradeTax(
-            static function (TradeTaxType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getApplicableTradeTax());
-
         // (7) Property ApplicableTradeTax - Clesr
 
         $model->clearApplicableTradeTax();
@@ -3575,12 +4276,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachApplicableTradeTax(
-            static function (TradeTaxType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
 
         // Property BillingSpecifiedPeriod
 
@@ -3597,16 +4292,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(SpecifiedPeriodType::class, $testValueForBillingSpecifiedPeriod);
         $this->assertSame($testValueForBillingSpecifiedPeriod, $model->getBillingSpecifiedPeriod());
-
-        $itemsBeforeForEach = $model->getSpecifiedTradeAllowanceCharge();
-
-        $this->assertSame($model, $model->forEachSpecifiedTradeAllowanceCharge(
-            static function (TradeAllowanceChargeType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTradeAllowanceCharge());
 
         // (1) Property SpecifiedTradeAllowanceCharge - Test set empty array
 
@@ -3663,18 +4348,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstSpecifiedTradeAllowanceChargeOnceItem, $secondSpecifiedTradeAllowanceChargeOnceItem);
 
-        $itemsBeforeForEach = $model->getSpecifiedTradeAllowanceCharge();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachSpecifiedTradeAllowanceCharge(
-            static function (TradeAllowanceChargeType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTradeAllowanceCharge());
-
         // (7) Property SpecifiedTradeAllowanceCharge - Clesr
 
         $model->clearSpecifiedTradeAllowanceCharge();
@@ -3683,12 +4356,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachSpecifiedTradeAllowanceCharge(
-            static function (TradeAllowanceChargeType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
 
         // Property SpecifiedTradeSettlementLineMonetarySummation
 
@@ -3721,16 +4388,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForInvoiceReferencedDocument);
         $this->assertSame($testValueForInvoiceReferencedDocument, $model->getInvoiceReferencedDocument());
-
-        $itemsBeforeForEach = $model->getAdditionalReferencedDocument();
-
-        $this->assertSame($model, $model->forEachAdditionalReferencedDocument(
-            static function (ReferencedDocumentType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getAdditionalReferencedDocument());
 
         // (1) Property AdditionalReferencedDocument - Test set empty array
 
@@ -3787,18 +4444,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstAdditionalReferencedDocumentOnceItem, $secondAdditionalReferencedDocumentOnceItem);
 
-        $itemsBeforeForEach = $model->getAdditionalReferencedDocument();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachAdditionalReferencedDocument(
-            static function (ReferencedDocumentType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getAdditionalReferencedDocument());
-
         // (7) Property AdditionalReferencedDocument - Clesr
 
         $model->clearAdditionalReferencedDocument();
@@ -3807,22 +4452,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachAdditionalReferencedDocument(
-            static function (ReferencedDocumentType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
-
-        $itemsBeforeForEach = $model->getReceivableSpecifiedTradeAccountingAccount();
-
-        $this->assertSame($model, $model->forEachReceivableSpecifiedTradeAccountingAccount(
-            static function (TradeAccountingAccountType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getReceivableSpecifiedTradeAccountingAccount());
 
         // (1) Property ReceivableSpecifiedTradeAccountingAccount - Test set empty array
 
@@ -3879,18 +4508,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstReceivableSpecifiedTradeAccountingAccountOnceItem, $secondReceivableSpecifiedTradeAccountingAccountOnceItem);
 
-        $itemsBeforeForEach = $model->getReceivableSpecifiedTradeAccountingAccount();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachReceivableSpecifiedTradeAccountingAccount(
-            static function (TradeAccountingAccountType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getReceivableSpecifiedTradeAccountingAccount());
-
         // (7) Property ReceivableSpecifiedTradeAccountingAccount - Clesr
 
         $model->clearReceivableSpecifiedTradeAccountingAccount();
@@ -3900,11 +4517,289 @@ final class ZffxModelTest extends TestCase
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
 
-        $this->assertSame($model, $model->forEachReceivableSpecifiedTradeAccountingAccount(
-            static function (TradeAccountingAccountType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        // (8) Property ApplicableTradeTax - ForEach
+
+        $applicableTradeTaxes = [$applicableTradeTaxItem, $testValueForApplicableTradeTaxItem];
+        $model->setApplicableTradeTax($applicableTradeTaxes);
+
+        $visitedApplicableTradeTaxes = [];
+
+        $collectApplicableTradeTax = static function (
+            TradeTaxType $applicableTradeTax
+        ) use (
+            &$visitedApplicableTradeTaxes
+        ): void {
+            $visitedApplicableTradeTaxes[] = $applicableTradeTax;
+        };
+
+        $this->assertSame($model, $model->forEachApplicableTradeTax($collectApplicableTradeTax));
+        $this->assertSame($applicableTradeTaxes, $visitedApplicableTradeTaxes);
+        $this->assertSame($applicableTradeTaxes, $model->getApplicableTradeTax());
+
+        $model->clearApplicableTradeTax();
+        $visitedApplicableTradeTaxes = [];
+
+        $this->assertSame($model, $model->forEachApplicableTradeTax($collectApplicableTradeTax));
+        $this->assertSame([], $visitedApplicableTradeTaxes);
+
+        $model->unsetApplicableTradeTax();
+        $visitedApplicableTradeTaxes = [];
+
+        $this->assertSame($model, $model->forEachApplicableTradeTax($collectApplicableTradeTax));
+        $this->assertSame([], $visitedApplicableTradeTaxes);
+
+        // (8) Property SpecifiedTradeAllowanceCharge - ForEach
+
+        $specifiedTradeAllowanceCharges = [$specifiedTradeAllowanceChargeItem, $testValueForSpecifiedTradeAllowanceChargeItem];
+        $model->setSpecifiedTradeAllowanceCharge($specifiedTradeAllowanceCharges);
+
+        $visitedSpecifiedTradeAllowanceCharges = [];
+
+        $collectSpecifiedTradeAllowanceCharge = static function (
+            TradeAllowanceChargeType $specifiedTradeAllowanceCharge
+        ) use (
+            &$visitedSpecifiedTradeAllowanceCharges
+        ): void {
+            $visitedSpecifiedTradeAllowanceCharges[] = $specifiedTradeAllowanceCharge;
+        };
+
+        $this->assertSame($model, $model->forEachSpecifiedTradeAllowanceCharge($collectSpecifiedTradeAllowanceCharge));
+        $this->assertSame($specifiedTradeAllowanceCharges, $visitedSpecifiedTradeAllowanceCharges);
+        $this->assertSame($specifiedTradeAllowanceCharges, $model->getSpecifiedTradeAllowanceCharge());
+
+        $model->clearSpecifiedTradeAllowanceCharge();
+        $visitedSpecifiedTradeAllowanceCharges = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedTradeAllowanceCharge($collectSpecifiedTradeAllowanceCharge));
+        $this->assertSame([], $visitedSpecifiedTradeAllowanceCharges);
+
+        $model->unsetSpecifiedTradeAllowanceCharge();
+        $visitedSpecifiedTradeAllowanceCharges = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedTradeAllowanceCharge($collectSpecifiedTradeAllowanceCharge));
+        $this->assertSame([], $visitedSpecifiedTradeAllowanceCharges);
+
+        // (8) Property AdditionalReferencedDocument - ForEach
+
+        $additionalReferencedDocuments = [$additionalReferencedDocumentItem, $testValueForAdditionalReferencedDocumentItem];
+        $model->setAdditionalReferencedDocument($additionalReferencedDocuments);
+
+        $visitedAdditionalReferencedDocuments = [];
+
+        $collectAdditionalReferencedDocument = static function (
+            ReferencedDocumentType $additionalReferencedDocument
+        ) use (
+            &$visitedAdditionalReferencedDocuments
+        ): void {
+            $visitedAdditionalReferencedDocuments[] = $additionalReferencedDocument;
+        };
+
+        $this->assertSame($model, $model->forEachAdditionalReferencedDocument($collectAdditionalReferencedDocument));
+        $this->assertSame($additionalReferencedDocuments, $visitedAdditionalReferencedDocuments);
+        $this->assertSame($additionalReferencedDocuments, $model->getAdditionalReferencedDocument());
+
+        $model->clearAdditionalReferencedDocument();
+        $visitedAdditionalReferencedDocuments = [];
+
+        $this->assertSame($model, $model->forEachAdditionalReferencedDocument($collectAdditionalReferencedDocument));
+        $this->assertSame([], $visitedAdditionalReferencedDocuments);
+
+        $model->unsetAdditionalReferencedDocument();
+        $visitedAdditionalReferencedDocuments = [];
+
+        $this->assertSame($model, $model->forEachAdditionalReferencedDocument($collectAdditionalReferencedDocument));
+        $this->assertSame([], $visitedAdditionalReferencedDocuments);
+
+        // (8) Property ReceivableSpecifiedTradeAccountingAccount - ForEach
+
+        $receivableSpecifiedTradeAccountingAccounts = [$receivableSpecifiedTradeAccountingAccountItem, $testValueForReceivableSpecifiedTradeAccountingAccountItem];
+        $model->setReceivableSpecifiedTradeAccountingAccount($receivableSpecifiedTradeAccountingAccounts);
+
+        $visitedReceivableSpecifiedTradeAccountingAccounts = [];
+
+        $collectReceivableSpecifiedTradeAccountingAccount = static function (
+            TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
+        ) use (
+            &$visitedReceivableSpecifiedTradeAccountingAccounts
+        ): void {
+            $visitedReceivableSpecifiedTradeAccountingAccounts[] = $receivableSpecifiedTradeAccountingAccount;
+        };
+
+        $this->assertSame($model, $model->forEachReceivableSpecifiedTradeAccountingAccount($collectReceivableSpecifiedTradeAccountingAccount));
+        $this->assertSame($receivableSpecifiedTradeAccountingAccounts, $visitedReceivableSpecifiedTradeAccountingAccounts);
+        $this->assertSame($receivableSpecifiedTradeAccountingAccounts, $model->getReceivableSpecifiedTradeAccountingAccount());
+
+        $model->clearReceivableSpecifiedTradeAccountingAccount();
+        $visitedReceivableSpecifiedTradeAccountingAccounts = [];
+
+        $this->assertSame($model, $model->forEachReceivableSpecifiedTradeAccountingAccount($collectReceivableSpecifiedTradeAccountingAccount));
+        $this->assertSame([], $visitedReceivableSpecifiedTradeAccountingAccounts);
+
+        $model->unsetReceivableSpecifiedTradeAccountingAccount();
+        $visitedReceivableSpecifiedTradeAccountingAccounts = [];
+
+        $this->assertSame($model, $model->forEachReceivableSpecifiedTradeAccountingAccount($collectReceivableSpecifiedTradeAccountingAccount));
+        $this->assertSame([], $visitedReceivableSpecifiedTradeAccountingAccounts);
+
+        // (9) Property ApplicableTradeTax - Filter
+
+        $model->setApplicableTradeTax($applicableTradeTaxes);
+
+        $applicableTradeTaxToKeep = $applicableTradeTaxes[1];
+        $visitedApplicableTradeTaxes = [];
+
+        $selectApplicableTradeTax = static function (
+            TradeTaxType $applicableTradeTax
+        ) use (
+            $applicableTradeTaxToKeep,
+            &$visitedApplicableTradeTaxes
+        ): bool {
+            $visitedApplicableTradeTaxes[] = $applicableTradeTax;
+
+            return $applicableTradeTax === $applicableTradeTaxToKeep;
+        };
+
+        $filteredApplicableTradeTaxes = $model->filterApplicableTradeTaxes($selectApplicableTradeTax);
+
+        $this->assertSame([1 => $applicableTradeTaxToKeep], $filteredApplicableTradeTaxes);
+        $this->assertSame($applicableTradeTaxes, $visitedApplicableTradeTaxes);
+        $this->assertSame($applicableTradeTaxes, $model->getApplicableTradeTax());
+
+        $model->clearApplicableTradeTax();
+        $visitedApplicableTradeTaxes = [];
+
+        $filteredApplicableTradeTaxes = $model->filterApplicableTradeTaxes($selectApplicableTradeTax);
+
+        $this->assertSame([], $filteredApplicableTradeTaxes);
+        $this->assertSame([], $visitedApplicableTradeTaxes);
+
+        $model->unsetApplicableTradeTax();
+        $visitedApplicableTradeTaxes = [];
+
+        $filteredApplicableTradeTaxes = $model->filterApplicableTradeTaxes($selectApplicableTradeTax);
+
+        $this->assertSame([], $filteredApplicableTradeTaxes);
+        $this->assertSame([], $visitedApplicableTradeTaxes);
+
+        // (9) Property SpecifiedTradeAllowanceCharge - Filter
+
+        $model->setSpecifiedTradeAllowanceCharge($specifiedTradeAllowanceCharges);
+
+        $specifiedTradeAllowanceChargeToKeep = $specifiedTradeAllowanceCharges[1];
+        $visitedSpecifiedTradeAllowanceCharges = [];
+
+        $selectSpecifiedTradeAllowanceCharge = static function (
+            TradeAllowanceChargeType $specifiedTradeAllowanceCharge
+        ) use (
+            $specifiedTradeAllowanceChargeToKeep,
+            &$visitedSpecifiedTradeAllowanceCharges
+        ): bool {
+            $visitedSpecifiedTradeAllowanceCharges[] = $specifiedTradeAllowanceCharge;
+
+            return $specifiedTradeAllowanceCharge === $specifiedTradeAllowanceChargeToKeep;
+        };
+
+        $filteredSpecifiedTradeAllowanceCharges = $model->filterSpecifiedTradeAllowanceCharges($selectSpecifiedTradeAllowanceCharge);
+
+        $this->assertSame([1 => $specifiedTradeAllowanceChargeToKeep], $filteredSpecifiedTradeAllowanceCharges);
+        $this->assertSame($specifiedTradeAllowanceCharges, $visitedSpecifiedTradeAllowanceCharges);
+        $this->assertSame($specifiedTradeAllowanceCharges, $model->getSpecifiedTradeAllowanceCharge());
+
+        $model->clearSpecifiedTradeAllowanceCharge();
+        $visitedSpecifiedTradeAllowanceCharges = [];
+
+        $filteredSpecifiedTradeAllowanceCharges = $model->filterSpecifiedTradeAllowanceCharges($selectSpecifiedTradeAllowanceCharge);
+
+        $this->assertSame([], $filteredSpecifiedTradeAllowanceCharges);
+        $this->assertSame([], $visitedSpecifiedTradeAllowanceCharges);
+
+        $model->unsetSpecifiedTradeAllowanceCharge();
+        $visitedSpecifiedTradeAllowanceCharges = [];
+
+        $filteredSpecifiedTradeAllowanceCharges = $model->filterSpecifiedTradeAllowanceCharges($selectSpecifiedTradeAllowanceCharge);
+
+        $this->assertSame([], $filteredSpecifiedTradeAllowanceCharges);
+        $this->assertSame([], $visitedSpecifiedTradeAllowanceCharges);
+
+        // (9) Property AdditionalReferencedDocument - Filter
+
+        $model->setAdditionalReferencedDocument($additionalReferencedDocuments);
+
+        $additionalReferencedDocumentToKeep = $additionalReferencedDocuments[1];
+        $visitedAdditionalReferencedDocuments = [];
+
+        $selectAdditionalReferencedDocument = static function (
+            ReferencedDocumentType $additionalReferencedDocument
+        ) use (
+            $additionalReferencedDocumentToKeep,
+            &$visitedAdditionalReferencedDocuments
+        ): bool {
+            $visitedAdditionalReferencedDocuments[] = $additionalReferencedDocument;
+
+            return $additionalReferencedDocument === $additionalReferencedDocumentToKeep;
+        };
+
+        $filteredAdditionalReferencedDocuments = $model->filterAdditionalReferencedDocuments($selectAdditionalReferencedDocument);
+
+        $this->assertSame([1 => $additionalReferencedDocumentToKeep], $filteredAdditionalReferencedDocuments);
+        $this->assertSame($additionalReferencedDocuments, $visitedAdditionalReferencedDocuments);
+        $this->assertSame($additionalReferencedDocuments, $model->getAdditionalReferencedDocument());
+
+        $model->clearAdditionalReferencedDocument();
+        $visitedAdditionalReferencedDocuments = [];
+
+        $filteredAdditionalReferencedDocuments = $model->filterAdditionalReferencedDocuments($selectAdditionalReferencedDocument);
+
+        $this->assertSame([], $filteredAdditionalReferencedDocuments);
+        $this->assertSame([], $visitedAdditionalReferencedDocuments);
+
+        $model->unsetAdditionalReferencedDocument();
+        $visitedAdditionalReferencedDocuments = [];
+
+        $filteredAdditionalReferencedDocuments = $model->filterAdditionalReferencedDocuments($selectAdditionalReferencedDocument);
+
+        $this->assertSame([], $filteredAdditionalReferencedDocuments);
+        $this->assertSame([], $visitedAdditionalReferencedDocuments);
+
+        // (9) Property ReceivableSpecifiedTradeAccountingAccount - Filter
+
+        $model->setReceivableSpecifiedTradeAccountingAccount($receivableSpecifiedTradeAccountingAccounts);
+
+        $receivableSpecifiedTradeAccountingAccountToKeep = $receivableSpecifiedTradeAccountingAccounts[1];
+        $visitedReceivableSpecifiedTradeAccountingAccounts = [];
+
+        $selectReceivableSpecifiedTradeAccountingAccount = static function (
+            TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
+        ) use (
+            $receivableSpecifiedTradeAccountingAccountToKeep,
+            &$visitedReceivableSpecifiedTradeAccountingAccounts
+        ): bool {
+            $visitedReceivableSpecifiedTradeAccountingAccounts[] = $receivableSpecifiedTradeAccountingAccount;
+
+            return $receivableSpecifiedTradeAccountingAccount === $receivableSpecifiedTradeAccountingAccountToKeep;
+        };
+
+        $filteredReceivableSpecifiedTradeAccountingAccounts = $model->filterReceivableSpecifiedTradeAccountingAccounts($selectReceivableSpecifiedTradeAccountingAccount);
+
+        $this->assertSame([1 => $receivableSpecifiedTradeAccountingAccountToKeep], $filteredReceivableSpecifiedTradeAccountingAccounts);
+        $this->assertSame($receivableSpecifiedTradeAccountingAccounts, $visitedReceivableSpecifiedTradeAccountingAccounts);
+        $this->assertSame($receivableSpecifiedTradeAccountingAccounts, $model->getReceivableSpecifiedTradeAccountingAccount());
+
+        $model->clearReceivableSpecifiedTradeAccountingAccount();
+        $visitedReceivableSpecifiedTradeAccountingAccounts = [];
+
+        $filteredReceivableSpecifiedTradeAccountingAccounts = $model->filterReceivableSpecifiedTradeAccountingAccounts($selectReceivableSpecifiedTradeAccountingAccount);
+
+        $this->assertSame([], $filteredReceivableSpecifiedTradeAccountingAccounts);
+        $this->assertSame([], $visitedReceivableSpecifiedTradeAccountingAccounts);
+
+        $model->unsetReceivableSpecifiedTradeAccountingAccount();
+        $visitedReceivableSpecifiedTradeAccountingAccounts = [];
+
+        $filteredReceivableSpecifiedTradeAccountingAccounts = $model->filterReceivableSpecifiedTradeAccountingAccounts($selectReceivableSpecifiedTradeAccountingAccount);
+
+        $this->assertSame([], $filteredReceivableSpecifiedTradeAccountingAccounts);
+        $this->assertSame([], $visitedReceivableSpecifiedTradeAccountingAccounts);
     }
 
     /**
@@ -3947,16 +4842,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(AmountType::class, $testValueForAppliedAmount);
         $this->assertSame($testValueForAppliedAmount, $model->getAppliedAmount());
-
-        $itemsBeforeForEach = $model->getAppliedTradeTax();
-
-        $this->assertSame($model, $model->forEachAppliedTradeTax(
-            static function (TradeTaxType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getAppliedTradeTax());
 
         // (1) Property AppliedTradeTax - Test set empty array
 
@@ -4013,18 +4898,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstAppliedTradeTaxOnceItem, $secondAppliedTradeTaxOnceItem);
 
-        $itemsBeforeForEach = $model->getAppliedTradeTax();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachAppliedTradeTax(
-            static function (TradeTaxType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getAppliedTradeTax());
-
         // (7) Property AppliedTradeTax - Clesr
 
         $model->clearAppliedTradeTax();
@@ -4034,11 +4907,76 @@ final class ZffxModelTest extends TestCase
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
 
-        $this->assertSame($model, $model->forEachAppliedTradeTax(
-            static function (TradeTaxType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        // (8) Property AppliedTradeTax - ForEach
+
+        $appliedTradeTaxes = [$appliedTradeTaxItem, $testValueForAppliedTradeTaxItem];
+        $model->setAppliedTradeTax($appliedTradeTaxes);
+
+        $visitedAppliedTradeTaxes = [];
+
+        $collectAppliedTradeTax = static function (
+            TradeTaxType $appliedTradeTax
+        ) use (
+            &$visitedAppliedTradeTaxes
+        ): void {
+            $visitedAppliedTradeTaxes[] = $appliedTradeTax;
+        };
+
+        $this->assertSame($model, $model->forEachAppliedTradeTax($collectAppliedTradeTax));
+        $this->assertSame($appliedTradeTaxes, $visitedAppliedTradeTaxes);
+        $this->assertSame($appliedTradeTaxes, $model->getAppliedTradeTax());
+
+        $model->clearAppliedTradeTax();
+        $visitedAppliedTradeTaxes = [];
+
+        $this->assertSame($model, $model->forEachAppliedTradeTax($collectAppliedTradeTax));
+        $this->assertSame([], $visitedAppliedTradeTaxes);
+
+        $model->unsetAppliedTradeTax();
+        $visitedAppliedTradeTaxes = [];
+
+        $this->assertSame($model, $model->forEachAppliedTradeTax($collectAppliedTradeTax));
+        $this->assertSame([], $visitedAppliedTradeTaxes);
+
+        // (9) Property AppliedTradeTax - Filter
+
+        $model->setAppliedTradeTax($appliedTradeTaxes);
+
+        $appliedTradeTaxToKeep = $appliedTradeTaxes[1];
+        $visitedAppliedTradeTaxes = [];
+
+        $selectAppliedTradeTax = static function (
+            TradeTaxType $appliedTradeTax
+        ) use (
+            $appliedTradeTaxToKeep,
+            &$visitedAppliedTradeTaxes
+        ): bool {
+            $visitedAppliedTradeTaxes[] = $appliedTradeTax;
+
+            return $appliedTradeTax === $appliedTradeTaxToKeep;
+        };
+
+        $filteredAppliedTradeTaxes = $model->filterAppliedTradeTaxes($selectAppliedTradeTax);
+
+        $this->assertSame([1 => $appliedTradeTaxToKeep], $filteredAppliedTradeTaxes);
+        $this->assertSame($appliedTradeTaxes, $visitedAppliedTradeTaxes);
+        $this->assertSame($appliedTradeTaxes, $model->getAppliedTradeTax());
+
+        $model->clearAppliedTradeTax();
+        $visitedAppliedTradeTaxes = [];
+
+        $filteredAppliedTradeTaxes = $model->filterAppliedTradeTaxes($selectAppliedTradeTax);
+
+        $this->assertSame([], $filteredAppliedTradeTaxes);
+        $this->assertSame([], $visitedAppliedTradeTaxes);
+
+        $model->unsetAppliedTradeTax();
+        $visitedAppliedTradeTaxes = [];
+
+        $filteredAppliedTradeTaxes = $model->filterAppliedTradeTaxes($selectAppliedTradeTax);
+
+        $this->assertSame([], $filteredAppliedTradeTaxes);
+        $this->assertSame([], $visitedAppliedTradeTaxes);
     }
 
     /**
@@ -4446,16 +5384,6 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(IDType::class, $testValueForID);
         $this->assertSame($testValueForID, $model->getID());
 
-        $itemsBeforeForEach = $model->getGlobalID();
-
-        $this->assertSame($model, $model->forEachGlobalID(
-            static function (IDType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getGlobalID());
-
         // (1) Property GlobalID - Test set empty array
 
         $globalIDItems = [];
@@ -4511,18 +5439,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstGlobalIDOnceItem, $secondGlobalIDOnceItem);
 
-        $itemsBeforeForEach = $model->getGlobalID();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachGlobalID(
-            static function (IDType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getGlobalID());
-
         // (7) Property GlobalID - Clesr
 
         $model->clearGlobalID();
@@ -4531,12 +5447,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachGlobalID(
-            static function (IDType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
 
         // Property SellerAssignedID
 
@@ -4633,6 +5543,68 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(QuantityType::class, $testValueForUnitQuantity);
         $this->assertSame($testValueForUnitQuantity, $model->getUnitQuantity());
+
+        // (8) Property GlobalID - ForEach
+
+        $globalIDs = [$globalIDItem, $testValueForGlobalIDItem];
+        $model->setGlobalID($globalIDs);
+
+        $visitedGlobalIDs = [];
+
+        $collectGlobalID = static function (IDType $globalID) use (&$visitedGlobalIDs): void {
+            $visitedGlobalIDs[] = $globalID;
+        };
+
+        $this->assertSame($model, $model->forEachGlobalID($collectGlobalID));
+        $this->assertSame($globalIDs, $visitedGlobalIDs);
+        $this->assertSame($globalIDs, $model->getGlobalID());
+
+        $model->clearGlobalID();
+        $visitedGlobalIDs = [];
+
+        $this->assertSame($model, $model->forEachGlobalID($collectGlobalID));
+        $this->assertSame([], $visitedGlobalIDs);
+
+        $model->unsetGlobalID();
+        $visitedGlobalIDs = [];
+
+        $this->assertSame($model, $model->forEachGlobalID($collectGlobalID));
+        $this->assertSame([], $visitedGlobalIDs);
+
+        // (9) Property GlobalID - Filter
+
+        $model->setGlobalID($globalIDs);
+
+        $globalIDToKeep = $globalIDs[1];
+        $visitedGlobalIDs = [];
+
+        $selectGlobalID = static function (IDType $globalID) use ($globalIDToKeep, &$visitedGlobalIDs): bool {
+            $visitedGlobalIDs[] = $globalID;
+
+            return $globalID === $globalIDToKeep;
+        };
+
+        $filteredGlobalIDs = $model->filterGlobalIDs($selectGlobalID);
+
+        $this->assertSame([1 => $globalIDToKeep], $filteredGlobalIDs);
+        $this->assertSame($globalIDs, $visitedGlobalIDs);
+        $this->assertSame($globalIDs, $model->getGlobalID());
+
+        $model->clearGlobalID();
+        $visitedGlobalIDs = [];
+
+        $filteredGlobalIDs = $model->filterGlobalIDs($selectGlobalID);
+
+        $this->assertSame([], $filteredGlobalIDs);
+        $this->assertSame([], $visitedGlobalIDs);
+
+        $model->unsetGlobalID();
+        $visitedGlobalIDs = [];
+
+        $filteredGlobalIDs = $model->filterGlobalIDs($selectGlobalID);
+
+        $this->assertSame([], $filteredGlobalIDs);
+        $this->assertSame([], $visitedGlobalIDs);
     }
 
     /**
@@ -4718,16 +5690,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(SupplyChainConsignmentType::class, $model);
 
-        $itemsBeforeForEach = $model->getSpecifiedLogisticsTransportMovement();
-
-        $this->assertSame($model, $model->forEachSpecifiedLogisticsTransportMovement(
-            static function (LogisticsTransportMovementType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedLogisticsTransportMovement());
-
         // (1) Property SpecifiedLogisticsTransportMovement - Test set empty array
 
         $specifiedLogisticsTransportMovementItems = [];
@@ -4783,18 +5745,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstSpecifiedLogisticsTransportMovementOnceItem, $secondSpecifiedLogisticsTransportMovementOnceItem);
 
-        $itemsBeforeForEach = $model->getSpecifiedLogisticsTransportMovement();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachSpecifiedLogisticsTransportMovement(
-            static function (LogisticsTransportMovementType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedLogisticsTransportMovement());
-
         // (7) Property SpecifiedLogisticsTransportMovement - Clesr
 
         $model->clearSpecifiedLogisticsTransportMovement();
@@ -4804,11 +5754,76 @@ final class ZffxModelTest extends TestCase
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
 
-        $this->assertSame($model, $model->forEachSpecifiedLogisticsTransportMovement(
-            static function (LogisticsTransportMovementType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        // (8) Property SpecifiedLogisticsTransportMovement - ForEach
+
+        $specifiedLogisticsTransportMovements = [$specifiedLogisticsTransportMovementItem, $testValueForSpecifiedLogisticsTransportMovementItem];
+        $model->setSpecifiedLogisticsTransportMovement($specifiedLogisticsTransportMovements);
+
+        $visitedSpecifiedLogisticsTransportMovements = [];
+
+        $collectSpecifiedLogisticsTransportMovement = static function (
+            LogisticsTransportMovementType $specifiedLogisticsTransportMovement
+        ) use (
+            &$visitedSpecifiedLogisticsTransportMovements
+        ): void {
+            $visitedSpecifiedLogisticsTransportMovements[] = $specifiedLogisticsTransportMovement;
+        };
+
+        $this->assertSame($model, $model->forEachSpecifiedLogisticsTransportMovement($collectSpecifiedLogisticsTransportMovement));
+        $this->assertSame($specifiedLogisticsTransportMovements, $visitedSpecifiedLogisticsTransportMovements);
+        $this->assertSame($specifiedLogisticsTransportMovements, $model->getSpecifiedLogisticsTransportMovement());
+
+        $model->clearSpecifiedLogisticsTransportMovement();
+        $visitedSpecifiedLogisticsTransportMovements = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedLogisticsTransportMovement($collectSpecifiedLogisticsTransportMovement));
+        $this->assertSame([], $visitedSpecifiedLogisticsTransportMovements);
+
+        $model->unsetSpecifiedLogisticsTransportMovement();
+        $visitedSpecifiedLogisticsTransportMovements = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedLogisticsTransportMovement($collectSpecifiedLogisticsTransportMovement));
+        $this->assertSame([], $visitedSpecifiedLogisticsTransportMovements);
+
+        // (9) Property SpecifiedLogisticsTransportMovement - Filter
+
+        $model->setSpecifiedLogisticsTransportMovement($specifiedLogisticsTransportMovements);
+
+        $specifiedLogisticsTransportMovementToKeep = $specifiedLogisticsTransportMovements[1];
+        $visitedSpecifiedLogisticsTransportMovements = [];
+
+        $selectSpecifiedLogisticsTransportMovement = static function (
+            LogisticsTransportMovementType $specifiedLogisticsTransportMovement
+        ) use (
+            $specifiedLogisticsTransportMovementToKeep,
+            &$visitedSpecifiedLogisticsTransportMovements
+        ): bool {
+            $visitedSpecifiedLogisticsTransportMovements[] = $specifiedLogisticsTransportMovement;
+
+            return $specifiedLogisticsTransportMovement === $specifiedLogisticsTransportMovementToKeep;
+        };
+
+        $filteredSpecifiedLogisticsTransportMovements = $model->filterSpecifiedLogisticsTransportMovements($selectSpecifiedLogisticsTransportMovement);
+
+        $this->assertSame([1 => $specifiedLogisticsTransportMovementToKeep], $filteredSpecifiedLogisticsTransportMovements);
+        $this->assertSame($specifiedLogisticsTransportMovements, $visitedSpecifiedLogisticsTransportMovements);
+        $this->assertSame($specifiedLogisticsTransportMovements, $model->getSpecifiedLogisticsTransportMovement());
+
+        $model->clearSpecifiedLogisticsTransportMovement();
+        $visitedSpecifiedLogisticsTransportMovements = [];
+
+        $filteredSpecifiedLogisticsTransportMovements = $model->filterSpecifiedLogisticsTransportMovements($selectSpecifiedLogisticsTransportMovement);
+
+        $this->assertSame([], $filteredSpecifiedLogisticsTransportMovements);
+        $this->assertSame([], $visitedSpecifiedLogisticsTransportMovements);
+
+        $model->unsetSpecifiedLogisticsTransportMovement();
+        $visitedSpecifiedLogisticsTransportMovements = [];
+
+        $filteredSpecifiedLogisticsTransportMovements = $model->filterSpecifiedLogisticsTransportMovements($selectSpecifiedLogisticsTransportMovement);
+
+        $this->assertSame([], $filteredSpecifiedLogisticsTransportMovements);
+        $this->assertSame([], $visitedSpecifiedLogisticsTransportMovements);
     }
 
     /**
@@ -4936,16 +5951,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(SupplyChainTradeTransactionType::class, $model);
 
-        $itemsBeforeForEach = $model->getIncludedSupplyChainTradeLineItem();
-
-        $this->assertSame($model, $model->forEachIncludedSupplyChainTradeLineItem(
-            static function (SupplyChainTradeLineItemType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getIncludedSupplyChainTradeLineItem());
-
         // (1) Property IncludedSupplyChainTradeLineItem - Test set empty array
 
         $includedSupplyChainTradeLineItemItems = [];
@@ -5014,18 +6019,6 @@ final class ZffxModelTest extends TestCase
         $this->assertIsBool($hasLatestIncludedSupplyChainTradeLineItem);
         $this->assertTrue($hasLatestIncludedSupplyChainTradeLineItem);
 
-        $itemsBeforeForEach = $model->getIncludedSupplyChainTradeLineItem();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachIncludedSupplyChainTradeLineItem(
-            static function (SupplyChainTradeLineItemType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getIncludedSupplyChainTradeLineItem());
-
         // (7) Property IncludedSupplyChainTradeLineItem - Clesr
 
         $model->clearIncludedSupplyChainTradeLineItem();
@@ -5034,12 +6027,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachIncludedSupplyChainTradeLineItem(
-            static function (SupplyChainTradeLineItemType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
 
         // Property ApplicableHeaderTradeAgreement
 
@@ -5099,6 +6086,77 @@ final class ZffxModelTest extends TestCase
         // Property IncludedSupplyChainTradeLineItemWithCreate
 
         // Property NotLatestIncludedSupplyChainTradeLineItem
+
+        // (8) Property IncludedSupplyChainTradeLineItem - ForEach
+
+        $includedSupplyChainTradeLineItems = [$includedSupplyChainTradeLineItemItem, $testValueForIncludedSupplyChainTradeLineItemItem];
+        $model->setIncludedSupplyChainTradeLineItem($includedSupplyChainTradeLineItems);
+
+        $visitedIncludedSupplyChainTradeLineItems = [];
+
+        $collectIncludedSupplyChainTradeLineItem = static function (
+            SupplyChainTradeLineItemType $includedSupplyChainTradeLineItem
+        ) use (
+            &$visitedIncludedSupplyChainTradeLineItems
+        ): void {
+            $visitedIncludedSupplyChainTradeLineItems[] = $includedSupplyChainTradeLineItem;
+        };
+
+        $this->assertSame($model, $model->forEachIncludedSupplyChainTradeLineItem($collectIncludedSupplyChainTradeLineItem));
+        $this->assertSame($includedSupplyChainTradeLineItems, $visitedIncludedSupplyChainTradeLineItems);
+        $this->assertSame($includedSupplyChainTradeLineItems, $model->getIncludedSupplyChainTradeLineItem());
+
+        $model->clearIncludedSupplyChainTradeLineItem();
+        $visitedIncludedSupplyChainTradeLineItems = [];
+
+        $this->assertSame($model, $model->forEachIncludedSupplyChainTradeLineItem($collectIncludedSupplyChainTradeLineItem));
+        $this->assertSame([], $visitedIncludedSupplyChainTradeLineItems);
+
+        $model->unsetIncludedSupplyChainTradeLineItem();
+        $visitedIncludedSupplyChainTradeLineItems = [];
+
+        $this->assertSame($model, $model->forEachIncludedSupplyChainTradeLineItem($collectIncludedSupplyChainTradeLineItem));
+        $this->assertSame([], $visitedIncludedSupplyChainTradeLineItems);
+
+        // (9) Property IncludedSupplyChainTradeLineItem - Filter
+
+        $model->setIncludedSupplyChainTradeLineItem($includedSupplyChainTradeLineItems);
+
+        $includedSupplyChainTradeLineItemToKeep = $includedSupplyChainTradeLineItems[1];
+        $visitedIncludedSupplyChainTradeLineItems = [];
+
+        $selectIncludedSupplyChainTradeLineItem = static function (
+            SupplyChainTradeLineItemType $includedSupplyChainTradeLineItem
+        ) use (
+            $includedSupplyChainTradeLineItemToKeep,
+            &$visitedIncludedSupplyChainTradeLineItems
+        ): bool {
+            $visitedIncludedSupplyChainTradeLineItems[] = $includedSupplyChainTradeLineItem;
+
+            return $includedSupplyChainTradeLineItem === $includedSupplyChainTradeLineItemToKeep;
+        };
+
+        $filteredIncludedSupplyChainTradeLineItems = $model->filterIncludedSupplyChainTradeLineItems($selectIncludedSupplyChainTradeLineItem);
+
+        $this->assertSame([1 => $includedSupplyChainTradeLineItemToKeep], $filteredIncludedSupplyChainTradeLineItems);
+        $this->assertSame($includedSupplyChainTradeLineItems, $visitedIncludedSupplyChainTradeLineItems);
+        $this->assertSame($includedSupplyChainTradeLineItems, $model->getIncludedSupplyChainTradeLineItem());
+
+        $model->clearIncludedSupplyChainTradeLineItem();
+        $visitedIncludedSupplyChainTradeLineItems = [];
+
+        $filteredIncludedSupplyChainTradeLineItems = $model->filterIncludedSupplyChainTradeLineItems($selectIncludedSupplyChainTradeLineItem);
+
+        $this->assertSame([], $filteredIncludedSupplyChainTradeLineItems);
+        $this->assertSame([], $visitedIncludedSupplyChainTradeLineItems);
+
+        $model->unsetIncludedSupplyChainTradeLineItem();
+        $visitedIncludedSupplyChainTradeLineItems = [];
+
+        $filteredIncludedSupplyChainTradeLineItems = $model->filterIncludedSupplyChainTradeLineItems($selectIncludedSupplyChainTradeLineItem);
+
+        $this->assertSame([], $filteredIncludedSupplyChainTradeLineItems);
+        $this->assertSame([], $visitedIncludedSupplyChainTradeLineItems);
     }
 
     /**
@@ -5686,16 +6744,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(TradePartyType::class, $model);
 
-        $itemsBeforeForEach = $model->getID();
-
-        $this->assertSame($model, $model->forEachID(
-            static function (IDType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getID());
-
         // (1) Property ID - Test set empty array
 
         $iDItems = [];
@@ -5751,18 +6799,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstIDOnceItem, $secondIDOnceItem);
 
-        $itemsBeforeForEach = $model->getID();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachID(
-            static function (IDType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getID());
-
         // (7) Property ID - Clesr
 
         $model->clearID();
@@ -5771,22 +6807,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachID(
-            static function (IDType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
-
-        $itemsBeforeForEach = $model->getGlobalID();
-
-        $this->assertSame($model, $model->forEachGlobalID(
-            static function (IDType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getGlobalID());
 
         // (1) Property GlobalID - Test set empty array
 
@@ -5843,18 +6863,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstGlobalIDOnceItem, $secondGlobalIDOnceItem);
 
-        $itemsBeforeForEach = $model->getGlobalID();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachGlobalID(
-            static function (IDType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getGlobalID());
-
         // (7) Property GlobalID - Clesr
 
         $model->clearGlobalID();
@@ -5863,12 +6871,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachGlobalID(
-            static function (IDType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
 
         // Property Name
 
@@ -5934,16 +6936,6 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(LegalOrganizationType::class, $testValueForSpecifiedLegalOrganization);
         $this->assertSame($testValueForSpecifiedLegalOrganization, $model->getSpecifiedLegalOrganization());
 
-        $itemsBeforeForEach = $model->getDefinedTradeContact();
-
-        $this->assertSame($model, $model->forEachDefinedTradeContact(
-            static function (TradeContactType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getDefinedTradeContact());
-
         // (1) Property DefinedTradeContact - Test set empty array
 
         $definedTradeContactItems = [];
@@ -5999,18 +6991,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstDefinedTradeContactOnceItem, $secondDefinedTradeContactOnceItem);
 
-        $itemsBeforeForEach = $model->getDefinedTradeContact();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachDefinedTradeContact(
-            static function (TradeContactType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getDefinedTradeContact());
-
         // (7) Property DefinedTradeContact - Clesr
 
         $model->clearDefinedTradeContact();
@@ -6019,12 +6999,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachDefinedTradeContact(
-            static function (TradeContactType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
 
         // Property PostalTradeAddress
 
@@ -6057,16 +7031,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(UniversalCommunicationType::class, $testValueForURIUniversalCommunication);
         $this->assertSame($testValueForURIUniversalCommunication, $model->getURIUniversalCommunication());
-
-        $itemsBeforeForEach = $model->getSpecifiedTaxRegistration();
-
-        $this->assertSame($model, $model->forEachSpecifiedTaxRegistration(
-            static function (TaxRegistrationType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTaxRegistration());
 
         // (1) Property SpecifiedTaxRegistration - Test set empty array
 
@@ -6123,18 +7087,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstSpecifiedTaxRegistrationOnceItem, $secondSpecifiedTaxRegistrationOnceItem);
 
-        $itemsBeforeForEach = $model->getSpecifiedTaxRegistration();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachSpecifiedTaxRegistration(
-            static function (TaxRegistrationType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getSpecifiedTaxRegistration());
-
         // (7) Property SpecifiedTaxRegistration - Clesr
 
         $model->clearSpecifiedTaxRegistration();
@@ -6144,11 +7096,271 @@ final class ZffxModelTest extends TestCase
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
 
-        $this->assertSame($model, $model->forEachSpecifiedTaxRegistration(
-            static function (TaxRegistrationType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        // (8) Property ID - ForEach
+
+        $iDs = [$iDItem, $testValueForIDItem];
+        $model->setID($iDs);
+
+        $visitedIDs = [];
+
+        $collectID = static function (IDType $iD) use (&$visitedIDs): void {
+            $visitedIDs[] = $iD;
+        };
+
+        $this->assertSame($model, $model->forEachID($collectID));
+        $this->assertSame($iDs, $visitedIDs);
+        $this->assertSame($iDs, $model->getID());
+
+        $model->clearID();
+        $visitedIDs = [];
+
+        $this->assertSame($model, $model->forEachID($collectID));
+        $this->assertSame([], $visitedIDs);
+
+        $model->unsetID();
+        $visitedIDs = [];
+
+        $this->assertSame($model, $model->forEachID($collectID));
+        $this->assertSame([], $visitedIDs);
+
+        // (8) Property GlobalID - ForEach
+
+        $globalIDs = [$globalIDItem, $testValueForGlobalIDItem];
+        $model->setGlobalID($globalIDs);
+
+        $visitedGlobalIDs = [];
+
+        $collectGlobalID = static function (IDType $globalID) use (&$visitedGlobalIDs): void {
+            $visitedGlobalIDs[] = $globalID;
+        };
+
+        $this->assertSame($model, $model->forEachGlobalID($collectGlobalID));
+        $this->assertSame($globalIDs, $visitedGlobalIDs);
+        $this->assertSame($globalIDs, $model->getGlobalID());
+
+        $model->clearGlobalID();
+        $visitedGlobalIDs = [];
+
+        $this->assertSame($model, $model->forEachGlobalID($collectGlobalID));
+        $this->assertSame([], $visitedGlobalIDs);
+
+        $model->unsetGlobalID();
+        $visitedGlobalIDs = [];
+
+        $this->assertSame($model, $model->forEachGlobalID($collectGlobalID));
+        $this->assertSame([], $visitedGlobalIDs);
+
+        // (8) Property DefinedTradeContact - ForEach
+
+        $definedTradeContacts = [$definedTradeContactItem, $testValueForDefinedTradeContactItem];
+        $model->setDefinedTradeContact($definedTradeContacts);
+
+        $visitedDefinedTradeContacts = [];
+
+        $collectDefinedTradeContact = static function (
+            TradeContactType $definedTradeContact
+        ) use (
+            &$visitedDefinedTradeContacts
+        ): void {
+            $visitedDefinedTradeContacts[] = $definedTradeContact;
+        };
+
+        $this->assertSame($model, $model->forEachDefinedTradeContact($collectDefinedTradeContact));
+        $this->assertSame($definedTradeContacts, $visitedDefinedTradeContacts);
+        $this->assertSame($definedTradeContacts, $model->getDefinedTradeContact());
+
+        $model->clearDefinedTradeContact();
+        $visitedDefinedTradeContacts = [];
+
+        $this->assertSame($model, $model->forEachDefinedTradeContact($collectDefinedTradeContact));
+        $this->assertSame([], $visitedDefinedTradeContacts);
+
+        $model->unsetDefinedTradeContact();
+        $visitedDefinedTradeContacts = [];
+
+        $this->assertSame($model, $model->forEachDefinedTradeContact($collectDefinedTradeContact));
+        $this->assertSame([], $visitedDefinedTradeContacts);
+
+        // (8) Property SpecifiedTaxRegistration - ForEach
+
+        $specifiedTaxRegistrations = [$specifiedTaxRegistrationItem, $testValueForSpecifiedTaxRegistrationItem];
+        $model->setSpecifiedTaxRegistration($specifiedTaxRegistrations);
+
+        $visitedSpecifiedTaxRegistrations = [];
+
+        $collectSpecifiedTaxRegistration = static function (
+            TaxRegistrationType $specifiedTaxRegistration
+        ) use (
+            &$visitedSpecifiedTaxRegistrations
+        ): void {
+            $visitedSpecifiedTaxRegistrations[] = $specifiedTaxRegistration;
+        };
+
+        $this->assertSame($model, $model->forEachSpecifiedTaxRegistration($collectSpecifiedTaxRegistration));
+        $this->assertSame($specifiedTaxRegistrations, $visitedSpecifiedTaxRegistrations);
+        $this->assertSame($specifiedTaxRegistrations, $model->getSpecifiedTaxRegistration());
+
+        $model->clearSpecifiedTaxRegistration();
+        $visitedSpecifiedTaxRegistrations = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedTaxRegistration($collectSpecifiedTaxRegistration));
+        $this->assertSame([], $visitedSpecifiedTaxRegistrations);
+
+        $model->unsetSpecifiedTaxRegistration();
+        $visitedSpecifiedTaxRegistrations = [];
+
+        $this->assertSame($model, $model->forEachSpecifiedTaxRegistration($collectSpecifiedTaxRegistration));
+        $this->assertSame([], $visitedSpecifiedTaxRegistrations);
+
+        // (9) Property ID - Filter
+
+        $model->setID($iDs);
+
+        $iDToKeep = $iDs[1];
+        $visitedIDs = [];
+
+        $selectID = static function (IDType $iD) use ($iDToKeep, &$visitedIDs): bool {
+            $visitedIDs[] = $iD;
+
+            return $iD === $iDToKeep;
+        };
+
+        $filteredIDs = $model->filterIDs($selectID);
+
+        $this->assertSame([1 => $iDToKeep], $filteredIDs);
+        $this->assertSame($iDs, $visitedIDs);
+        $this->assertSame($iDs, $model->getID());
+
+        $model->clearID();
+        $visitedIDs = [];
+
+        $filteredIDs = $model->filterIDs($selectID);
+
+        $this->assertSame([], $filteredIDs);
+        $this->assertSame([], $visitedIDs);
+
+        $model->unsetID();
+        $visitedIDs = [];
+
+        $filteredIDs = $model->filterIDs($selectID);
+
+        $this->assertSame([], $filteredIDs);
+        $this->assertSame([], $visitedIDs);
+
+        // (9) Property GlobalID - Filter
+
+        $model->setGlobalID($globalIDs);
+
+        $globalIDToKeep = $globalIDs[1];
+        $visitedGlobalIDs = [];
+
+        $selectGlobalID = static function (IDType $globalID) use ($globalIDToKeep, &$visitedGlobalIDs): bool {
+            $visitedGlobalIDs[] = $globalID;
+
+            return $globalID === $globalIDToKeep;
+        };
+
+        $filteredGlobalIDs = $model->filterGlobalIDs($selectGlobalID);
+
+        $this->assertSame([1 => $globalIDToKeep], $filteredGlobalIDs);
+        $this->assertSame($globalIDs, $visitedGlobalIDs);
+        $this->assertSame($globalIDs, $model->getGlobalID());
+
+        $model->clearGlobalID();
+        $visitedGlobalIDs = [];
+
+        $filteredGlobalIDs = $model->filterGlobalIDs($selectGlobalID);
+
+        $this->assertSame([], $filteredGlobalIDs);
+        $this->assertSame([], $visitedGlobalIDs);
+
+        $model->unsetGlobalID();
+        $visitedGlobalIDs = [];
+
+        $filteredGlobalIDs = $model->filterGlobalIDs($selectGlobalID);
+
+        $this->assertSame([], $filteredGlobalIDs);
+        $this->assertSame([], $visitedGlobalIDs);
+
+        // (9) Property DefinedTradeContact - Filter
+
+        $model->setDefinedTradeContact($definedTradeContacts);
+
+        $definedTradeContactToKeep = $definedTradeContacts[1];
+        $visitedDefinedTradeContacts = [];
+
+        $selectDefinedTradeContact = static function (
+            TradeContactType $definedTradeContact
+        ) use (
+            $definedTradeContactToKeep,
+            &$visitedDefinedTradeContacts
+        ): bool {
+            $visitedDefinedTradeContacts[] = $definedTradeContact;
+
+            return $definedTradeContact === $definedTradeContactToKeep;
+        };
+
+        $filteredDefinedTradeContacts = $model->filterDefinedTradeContacts($selectDefinedTradeContact);
+
+        $this->assertSame([1 => $definedTradeContactToKeep], $filteredDefinedTradeContacts);
+        $this->assertSame($definedTradeContacts, $visitedDefinedTradeContacts);
+        $this->assertSame($definedTradeContacts, $model->getDefinedTradeContact());
+
+        $model->clearDefinedTradeContact();
+        $visitedDefinedTradeContacts = [];
+
+        $filteredDefinedTradeContacts = $model->filterDefinedTradeContacts($selectDefinedTradeContact);
+
+        $this->assertSame([], $filteredDefinedTradeContacts);
+        $this->assertSame([], $visitedDefinedTradeContacts);
+
+        $model->unsetDefinedTradeContact();
+        $visitedDefinedTradeContacts = [];
+
+        $filteredDefinedTradeContacts = $model->filterDefinedTradeContacts($selectDefinedTradeContact);
+
+        $this->assertSame([], $filteredDefinedTradeContacts);
+        $this->assertSame([], $visitedDefinedTradeContacts);
+
+        // (9) Property SpecifiedTaxRegistration - Filter
+
+        $model->setSpecifiedTaxRegistration($specifiedTaxRegistrations);
+
+        $specifiedTaxRegistrationToKeep = $specifiedTaxRegistrations[1];
+        $visitedSpecifiedTaxRegistrations = [];
+
+        $selectSpecifiedTaxRegistration = static function (
+            TaxRegistrationType $specifiedTaxRegistration
+        ) use (
+            $specifiedTaxRegistrationToKeep,
+            &$visitedSpecifiedTaxRegistrations
+        ): bool {
+            $visitedSpecifiedTaxRegistrations[] = $specifiedTaxRegistration;
+
+            return $specifiedTaxRegistration === $specifiedTaxRegistrationToKeep;
+        };
+
+        $filteredSpecifiedTaxRegistrations = $model->filterSpecifiedTaxRegistrations($selectSpecifiedTaxRegistration);
+
+        $this->assertSame([1 => $specifiedTaxRegistrationToKeep], $filteredSpecifiedTaxRegistrations);
+        $this->assertSame($specifiedTaxRegistrations, $visitedSpecifiedTaxRegistrations);
+        $this->assertSame($specifiedTaxRegistrations, $model->getSpecifiedTaxRegistration());
+
+        $model->clearSpecifiedTaxRegistration();
+        $visitedSpecifiedTaxRegistrations = [];
+
+        $filteredSpecifiedTaxRegistrations = $model->filterSpecifiedTaxRegistrations($selectSpecifiedTaxRegistration);
+
+        $this->assertSame([], $filteredSpecifiedTaxRegistrations);
+        $this->assertSame([], $visitedSpecifiedTaxRegistrations);
+
+        $model->unsetSpecifiedTaxRegistration();
+        $visitedSpecifiedTaxRegistrations = [];
+
+        $filteredSpecifiedTaxRegistrations = $model->filterSpecifiedTaxRegistrations($selectSpecifiedTaxRegistration);
+
+        $this->assertSame([], $filteredSpecifiedTaxRegistrations);
+        $this->assertSame([], $visitedSpecifiedTaxRegistrations);
     }
 
     /**
@@ -6494,16 +7706,6 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(QuantityType::class, $testValueForBasisQuantity);
         $this->assertSame($testValueForBasisQuantity, $model->getBasisQuantity());
 
-        $itemsBeforeForEach = $model->getAppliedTradeAllowanceCharge();
-
-        $this->assertSame($model, $model->forEachAppliedTradeAllowanceCharge(
-            static function (TradeAllowanceChargeType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getAppliedTradeAllowanceCharge());
-
         // (1) Property AppliedTradeAllowanceCharge - Test set empty array
 
         $appliedTradeAllowanceChargeItems = [];
@@ -6559,18 +7761,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstAppliedTradeAllowanceChargeOnceItem, $secondAppliedTradeAllowanceChargeOnceItem);
 
-        $itemsBeforeForEach = $model->getAppliedTradeAllowanceCharge();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachAppliedTradeAllowanceCharge(
-            static function (TradeAllowanceChargeType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getAppliedTradeAllowanceCharge());
-
         // (7) Property AppliedTradeAllowanceCharge - Clesr
 
         $model->clearAppliedTradeAllowanceCharge();
@@ -6579,12 +7769,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachAppliedTradeAllowanceCharge(
-            static function (TradeAllowanceChargeType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
 
         // Property IncludedTradeTax
 
@@ -6601,6 +7785,77 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(TradeTaxType::class, $testValueForIncludedTradeTax);
         $this->assertSame($testValueForIncludedTradeTax, $model->getIncludedTradeTax());
+
+        // (8) Property AppliedTradeAllowanceCharge - ForEach
+
+        $appliedTradeAllowanceCharges = [$appliedTradeAllowanceChargeItem, $testValueForAppliedTradeAllowanceChargeItem];
+        $model->setAppliedTradeAllowanceCharge($appliedTradeAllowanceCharges);
+
+        $visitedAppliedTradeAllowanceCharges = [];
+
+        $collectAppliedTradeAllowanceCharge = static function (
+            TradeAllowanceChargeType $appliedTradeAllowanceCharge
+        ) use (
+            &$visitedAppliedTradeAllowanceCharges
+        ): void {
+            $visitedAppliedTradeAllowanceCharges[] = $appliedTradeAllowanceCharge;
+        };
+
+        $this->assertSame($model, $model->forEachAppliedTradeAllowanceCharge($collectAppliedTradeAllowanceCharge));
+        $this->assertSame($appliedTradeAllowanceCharges, $visitedAppliedTradeAllowanceCharges);
+        $this->assertSame($appliedTradeAllowanceCharges, $model->getAppliedTradeAllowanceCharge());
+
+        $model->clearAppliedTradeAllowanceCharge();
+        $visitedAppliedTradeAllowanceCharges = [];
+
+        $this->assertSame($model, $model->forEachAppliedTradeAllowanceCharge($collectAppliedTradeAllowanceCharge));
+        $this->assertSame([], $visitedAppliedTradeAllowanceCharges);
+
+        $model->unsetAppliedTradeAllowanceCharge();
+        $visitedAppliedTradeAllowanceCharges = [];
+
+        $this->assertSame($model, $model->forEachAppliedTradeAllowanceCharge($collectAppliedTradeAllowanceCharge));
+        $this->assertSame([], $visitedAppliedTradeAllowanceCharges);
+
+        // (9) Property AppliedTradeAllowanceCharge - Filter
+
+        $model->setAppliedTradeAllowanceCharge($appliedTradeAllowanceCharges);
+
+        $appliedTradeAllowanceChargeToKeep = $appliedTradeAllowanceCharges[1];
+        $visitedAppliedTradeAllowanceCharges = [];
+
+        $selectAppliedTradeAllowanceCharge = static function (
+            TradeAllowanceChargeType $appliedTradeAllowanceCharge
+        ) use (
+            $appliedTradeAllowanceChargeToKeep,
+            &$visitedAppliedTradeAllowanceCharges
+        ): bool {
+            $visitedAppliedTradeAllowanceCharges[] = $appliedTradeAllowanceCharge;
+
+            return $appliedTradeAllowanceCharge === $appliedTradeAllowanceChargeToKeep;
+        };
+
+        $filteredAppliedTradeAllowanceCharges = $model->filterAppliedTradeAllowanceCharges($selectAppliedTradeAllowanceCharge);
+
+        $this->assertSame([1 => $appliedTradeAllowanceChargeToKeep], $filteredAppliedTradeAllowanceCharges);
+        $this->assertSame($appliedTradeAllowanceCharges, $visitedAppliedTradeAllowanceCharges);
+        $this->assertSame($appliedTradeAllowanceCharges, $model->getAppliedTradeAllowanceCharge());
+
+        $model->clearAppliedTradeAllowanceCharge();
+        $visitedAppliedTradeAllowanceCharges = [];
+
+        $filteredAppliedTradeAllowanceCharges = $model->filterAppliedTradeAllowanceCharges($selectAppliedTradeAllowanceCharge);
+
+        $this->assertSame([], $filteredAppliedTradeAllowanceCharges);
+        $this->assertSame([], $visitedAppliedTradeAllowanceCharges);
+
+        $model->unsetAppliedTradeAllowanceCharge();
+        $visitedAppliedTradeAllowanceCharges = [];
+
+        $filteredAppliedTradeAllowanceCharges = $model->filterAppliedTradeAllowanceCharges($selectAppliedTradeAllowanceCharge);
+
+        $this->assertSame([], $filteredAppliedTradeAllowanceCharges);
+        $this->assertSame([], $visitedAppliedTradeAllowanceCharges);
     }
 
     /**
@@ -6782,16 +8037,6 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(TextType::class, $testValueForDescription);
         $this->assertSame($testValueForDescription, $model->getDescription());
 
-        $itemsBeforeForEach = $model->getBatchID();
-
-        $this->assertSame($model, $model->forEachBatchID(
-            static function (IDType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getBatchID());
-
         // (1) Property BatchID - Test set empty array
 
         $batchIDItems = [];
@@ -6847,18 +8092,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstBatchIDOnceItem, $secondBatchIDOnceItem);
 
-        $itemsBeforeForEach = $model->getBatchID();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachBatchID(
-            static function (IDType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getBatchID());
-
         // (7) Property BatchID - Clesr
 
         $model->clearBatchID();
@@ -6867,12 +8100,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachBatchID(
-            static function (IDType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
 
         // Property BrandName
 
@@ -6905,16 +8132,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(TextType::class, $testValueForModelName);
         $this->assertSame($testValueForModelName, $model->getModelName());
-
-        $itemsBeforeForEach = $model->getApplicableProductCharacteristic();
-
-        $this->assertSame($model, $model->forEachApplicableProductCharacteristic(
-            static function (ProductCharacteristicType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getApplicableProductCharacteristic());
 
         // (1) Property ApplicableProductCharacteristic - Test set empty array
 
@@ -6971,18 +8188,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstApplicableProductCharacteristicOnceItem, $secondApplicableProductCharacteristicOnceItem);
 
-        $itemsBeforeForEach = $model->getApplicableProductCharacteristic();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachApplicableProductCharacteristic(
-            static function (ProductCharacteristicType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getApplicableProductCharacteristic());
-
         // (7) Property ApplicableProductCharacteristic - Clesr
 
         $model->clearApplicableProductCharacteristic();
@@ -6991,22 +8196,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachApplicableProductCharacteristic(
-            static function (ProductCharacteristicType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
-
-        $itemsBeforeForEach = $model->getDesignatedProductClassification();
-
-        $this->assertSame($model, $model->forEachDesignatedProductClassification(
-            static function (ProductClassificationType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getDesignatedProductClassification());
 
         // (1) Property DesignatedProductClassification - Test set empty array
 
@@ -7063,18 +8252,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstDesignatedProductClassificationOnceItem, $secondDesignatedProductClassificationOnceItem);
 
-        $itemsBeforeForEach = $model->getDesignatedProductClassification();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachDesignatedProductClassification(
-            static function (ProductClassificationType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getDesignatedProductClassification());
-
         // (7) Property DesignatedProductClassification - Clesr
 
         $model->clearDesignatedProductClassification();
@@ -7083,22 +8260,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachDesignatedProductClassification(
-            static function (ProductClassificationType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
-
-        $itemsBeforeForEach = $model->getIndividualTradeProductInstance();
-
-        $this->assertSame($model, $model->forEachIndividualTradeProductInstance(
-            static function (TradeProductInstanceType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getIndividualTradeProductInstance());
 
         // (1) Property IndividualTradeProductInstance - Test set empty array
 
@@ -7155,18 +8316,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstIndividualTradeProductInstanceOnceItem, $secondIndividualTradeProductInstanceOnceItem);
 
-        $itemsBeforeForEach = $model->getIndividualTradeProductInstance();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachIndividualTradeProductInstance(
-            static function (TradeProductInstanceType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getIndividualTradeProductInstance());
-
         // (7) Property IndividualTradeProductInstance - Clesr
 
         $model->clearIndividualTradeProductInstance();
@@ -7175,12 +8324,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachIndividualTradeProductInstance(
-            static function (TradeProductInstanceType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
 
         // Property OriginTradeCountry
 
@@ -7213,16 +8356,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(TradePartyType::class, $testValueForManufacturerTradeParty);
         $this->assertSame($testValueForManufacturerTradeParty, $model->getManufacturerTradeParty());
-
-        $itemsBeforeForEach = $model->getIncludedReferencedProduct();
-
-        $this->assertSame($model, $model->forEachIncludedReferencedProduct(
-            static function (ReferencedProductType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getIncludedReferencedProduct());
 
         // (1) Property IncludedReferencedProduct - Test set empty array
 
@@ -7279,18 +8412,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstIncludedReferencedProductOnceItem, $secondIncludedReferencedProductOnceItem);
 
-        $itemsBeforeForEach = $model->getIncludedReferencedProduct();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachIncludedReferencedProduct(
-            static function (ReferencedProductType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getIncludedReferencedProduct());
-
         // (7) Property IncludedReferencedProduct - Clesr
 
         $model->clearIncludedReferencedProduct();
@@ -7300,11 +8421,351 @@ final class ZffxModelTest extends TestCase
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
 
-        $this->assertSame($model, $model->forEachIncludedReferencedProduct(
-            static function (ReferencedProductType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
+        // (8) Property BatchID - ForEach
+
+        $batchIDs = [$batchIDItem, $testValueForBatchIDItem];
+        $model->setBatchID($batchIDs);
+
+        $visitedBatchIDs = [];
+
+        $collectBatchID = static function (IDType $batchID) use (&$visitedBatchIDs): void {
+            $visitedBatchIDs[] = $batchID;
+        };
+
+        $this->assertSame($model, $model->forEachBatchID($collectBatchID));
+        $this->assertSame($batchIDs, $visitedBatchIDs);
+        $this->assertSame($batchIDs, $model->getBatchID());
+
+        $model->clearBatchID();
+        $visitedBatchIDs = [];
+
+        $this->assertSame($model, $model->forEachBatchID($collectBatchID));
+        $this->assertSame([], $visitedBatchIDs);
+
+        $model->unsetBatchID();
+        $visitedBatchIDs = [];
+
+        $this->assertSame($model, $model->forEachBatchID($collectBatchID));
+        $this->assertSame([], $visitedBatchIDs);
+
+        // (8) Property ApplicableProductCharacteristic - ForEach
+
+        $applicableProductCharacteristics = [$applicableProductCharacteristicItem, $testValueForApplicableProductCharacteristicItem];
+        $model->setApplicableProductCharacteristic($applicableProductCharacteristics);
+
+        $visitedApplicableProductCharacteristics = [];
+
+        $collectApplicableProductCharacteristic = static function (
+            ProductCharacteristicType $applicableProductCharacteristic
+        ) use (
+            &$visitedApplicableProductCharacteristics
+        ): void {
+            $visitedApplicableProductCharacteristics[] = $applicableProductCharacteristic;
+        };
+
+        $this->assertSame($model, $model->forEachApplicableProductCharacteristic($collectApplicableProductCharacteristic));
+        $this->assertSame($applicableProductCharacteristics, $visitedApplicableProductCharacteristics);
+        $this->assertSame($applicableProductCharacteristics, $model->getApplicableProductCharacteristic());
+
+        $model->clearApplicableProductCharacteristic();
+        $visitedApplicableProductCharacteristics = [];
+
+        $this->assertSame($model, $model->forEachApplicableProductCharacteristic($collectApplicableProductCharacteristic));
+        $this->assertSame([], $visitedApplicableProductCharacteristics);
+
+        $model->unsetApplicableProductCharacteristic();
+        $visitedApplicableProductCharacteristics = [];
+
+        $this->assertSame($model, $model->forEachApplicableProductCharacteristic($collectApplicableProductCharacteristic));
+        $this->assertSame([], $visitedApplicableProductCharacteristics);
+
+        // (8) Property DesignatedProductClassification - ForEach
+
+        $designatedProductClassifications = [$designatedProductClassificationItem, $testValueForDesignatedProductClassificationItem];
+        $model->setDesignatedProductClassification($designatedProductClassifications);
+
+        $visitedDesignatedProductClassifications = [];
+
+        $collectDesignatedProductClassification = static function (
+            ProductClassificationType $designatedProductClassification
+        ) use (
+            &$visitedDesignatedProductClassifications
+        ): void {
+            $visitedDesignatedProductClassifications[] = $designatedProductClassification;
+        };
+
+        $this->assertSame($model, $model->forEachDesignatedProductClassification($collectDesignatedProductClassification));
+        $this->assertSame($designatedProductClassifications, $visitedDesignatedProductClassifications);
+        $this->assertSame($designatedProductClassifications, $model->getDesignatedProductClassification());
+
+        $model->clearDesignatedProductClassification();
+        $visitedDesignatedProductClassifications = [];
+
+        $this->assertSame($model, $model->forEachDesignatedProductClassification($collectDesignatedProductClassification));
+        $this->assertSame([], $visitedDesignatedProductClassifications);
+
+        $model->unsetDesignatedProductClassification();
+        $visitedDesignatedProductClassifications = [];
+
+        $this->assertSame($model, $model->forEachDesignatedProductClassification($collectDesignatedProductClassification));
+        $this->assertSame([], $visitedDesignatedProductClassifications);
+
+        // (8) Property IndividualTradeProductInstance - ForEach
+
+        $individualTradeProductInstances = [$individualTradeProductInstanceItem, $testValueForIndividualTradeProductInstanceItem];
+        $model->setIndividualTradeProductInstance($individualTradeProductInstances);
+
+        $visitedIndividualTradeProductInstances = [];
+
+        $collectIndividualTradeProductInstance = static function (
+            TradeProductInstanceType $individualTradeProductInstance
+        ) use (
+            &$visitedIndividualTradeProductInstances
+        ): void {
+            $visitedIndividualTradeProductInstances[] = $individualTradeProductInstance;
+        };
+
+        $this->assertSame($model, $model->forEachIndividualTradeProductInstance($collectIndividualTradeProductInstance));
+        $this->assertSame($individualTradeProductInstances, $visitedIndividualTradeProductInstances);
+        $this->assertSame($individualTradeProductInstances, $model->getIndividualTradeProductInstance());
+
+        $model->clearIndividualTradeProductInstance();
+        $visitedIndividualTradeProductInstances = [];
+
+        $this->assertSame($model, $model->forEachIndividualTradeProductInstance($collectIndividualTradeProductInstance));
+        $this->assertSame([], $visitedIndividualTradeProductInstances);
+
+        $model->unsetIndividualTradeProductInstance();
+        $visitedIndividualTradeProductInstances = [];
+
+        $this->assertSame($model, $model->forEachIndividualTradeProductInstance($collectIndividualTradeProductInstance));
+        $this->assertSame([], $visitedIndividualTradeProductInstances);
+
+        // (8) Property IncludedReferencedProduct - ForEach
+
+        $includedReferencedProducts = [$includedReferencedProductItem, $testValueForIncludedReferencedProductItem];
+        $model->setIncludedReferencedProduct($includedReferencedProducts);
+
+        $visitedIncludedReferencedProducts = [];
+
+        $collectIncludedReferencedProduct = static function (
+            ReferencedProductType $includedReferencedProduct
+        ) use (
+            &$visitedIncludedReferencedProducts
+        ): void {
+            $visitedIncludedReferencedProducts[] = $includedReferencedProduct;
+        };
+
+        $this->assertSame($model, $model->forEachIncludedReferencedProduct($collectIncludedReferencedProduct));
+        $this->assertSame($includedReferencedProducts, $visitedIncludedReferencedProducts);
+        $this->assertSame($includedReferencedProducts, $model->getIncludedReferencedProduct());
+
+        $model->clearIncludedReferencedProduct();
+        $visitedIncludedReferencedProducts = [];
+
+        $this->assertSame($model, $model->forEachIncludedReferencedProduct($collectIncludedReferencedProduct));
+        $this->assertSame([], $visitedIncludedReferencedProducts);
+
+        $model->unsetIncludedReferencedProduct();
+        $visitedIncludedReferencedProducts = [];
+
+        $this->assertSame($model, $model->forEachIncludedReferencedProduct($collectIncludedReferencedProduct));
+        $this->assertSame([], $visitedIncludedReferencedProducts);
+
+        // (9) Property BatchID - Filter
+
+        $model->setBatchID($batchIDs);
+
+        $batchIDToKeep = $batchIDs[1];
+        $visitedBatchIDs = [];
+
+        $selectBatchID = static function (IDType $batchID) use ($batchIDToKeep, &$visitedBatchIDs): bool {
+            $visitedBatchIDs[] = $batchID;
+
+            return $batchID === $batchIDToKeep;
+        };
+
+        $filteredBatchIDs = $model->filterBatchIDs($selectBatchID);
+
+        $this->assertSame([1 => $batchIDToKeep], $filteredBatchIDs);
+        $this->assertSame($batchIDs, $visitedBatchIDs);
+        $this->assertSame($batchIDs, $model->getBatchID());
+
+        $model->clearBatchID();
+        $visitedBatchIDs = [];
+
+        $filteredBatchIDs = $model->filterBatchIDs($selectBatchID);
+
+        $this->assertSame([], $filteredBatchIDs);
+        $this->assertSame([], $visitedBatchIDs);
+
+        $model->unsetBatchID();
+        $visitedBatchIDs = [];
+
+        $filteredBatchIDs = $model->filterBatchIDs($selectBatchID);
+
+        $this->assertSame([], $filteredBatchIDs);
+        $this->assertSame([], $visitedBatchIDs);
+
+        // (9) Property ApplicableProductCharacteristic - Filter
+
+        $model->setApplicableProductCharacteristic($applicableProductCharacteristics);
+
+        $applicableProductCharacteristicToKeep = $applicableProductCharacteristics[1];
+        $visitedApplicableProductCharacteristics = [];
+
+        $selectApplicableProductCharacteristic = static function (
+            ProductCharacteristicType $applicableProductCharacteristic
+        ) use (
+            $applicableProductCharacteristicToKeep,
+            &$visitedApplicableProductCharacteristics
+        ): bool {
+            $visitedApplicableProductCharacteristics[] = $applicableProductCharacteristic;
+
+            return $applicableProductCharacteristic === $applicableProductCharacteristicToKeep;
+        };
+
+        $filteredApplicableProductCharacteristics = $model->filterApplicableProductCharacteristics($selectApplicableProductCharacteristic);
+
+        $this->assertSame([1 => $applicableProductCharacteristicToKeep], $filteredApplicableProductCharacteristics);
+        $this->assertSame($applicableProductCharacteristics, $visitedApplicableProductCharacteristics);
+        $this->assertSame($applicableProductCharacteristics, $model->getApplicableProductCharacteristic());
+
+        $model->clearApplicableProductCharacteristic();
+        $visitedApplicableProductCharacteristics = [];
+
+        $filteredApplicableProductCharacteristics = $model->filterApplicableProductCharacteristics($selectApplicableProductCharacteristic);
+
+        $this->assertSame([], $filteredApplicableProductCharacteristics);
+        $this->assertSame([], $visitedApplicableProductCharacteristics);
+
+        $model->unsetApplicableProductCharacteristic();
+        $visitedApplicableProductCharacteristics = [];
+
+        $filteredApplicableProductCharacteristics = $model->filterApplicableProductCharacteristics($selectApplicableProductCharacteristic);
+
+        $this->assertSame([], $filteredApplicableProductCharacteristics);
+        $this->assertSame([], $visitedApplicableProductCharacteristics);
+
+        // (9) Property DesignatedProductClassification - Filter
+
+        $model->setDesignatedProductClassification($designatedProductClassifications);
+
+        $designatedProductClassificationToKeep = $designatedProductClassifications[1];
+        $visitedDesignatedProductClassifications = [];
+
+        $selectDesignatedProductClassification = static function (
+            ProductClassificationType $designatedProductClassification
+        ) use (
+            $designatedProductClassificationToKeep,
+            &$visitedDesignatedProductClassifications
+        ): bool {
+            $visitedDesignatedProductClassifications[] = $designatedProductClassification;
+
+            return $designatedProductClassification === $designatedProductClassificationToKeep;
+        };
+
+        $filteredDesignatedProductClassifications = $model->filterDesignatedProductClassifications($selectDesignatedProductClassification);
+
+        $this->assertSame([1 => $designatedProductClassificationToKeep], $filteredDesignatedProductClassifications);
+        $this->assertSame($designatedProductClassifications, $visitedDesignatedProductClassifications);
+        $this->assertSame($designatedProductClassifications, $model->getDesignatedProductClassification());
+
+        $model->clearDesignatedProductClassification();
+        $visitedDesignatedProductClassifications = [];
+
+        $filteredDesignatedProductClassifications = $model->filterDesignatedProductClassifications($selectDesignatedProductClassification);
+
+        $this->assertSame([], $filteredDesignatedProductClassifications);
+        $this->assertSame([], $visitedDesignatedProductClassifications);
+
+        $model->unsetDesignatedProductClassification();
+        $visitedDesignatedProductClassifications = [];
+
+        $filteredDesignatedProductClassifications = $model->filterDesignatedProductClassifications($selectDesignatedProductClassification);
+
+        $this->assertSame([], $filteredDesignatedProductClassifications);
+        $this->assertSame([], $visitedDesignatedProductClassifications);
+
+        // (9) Property IndividualTradeProductInstance - Filter
+
+        $model->setIndividualTradeProductInstance($individualTradeProductInstances);
+
+        $individualTradeProductInstanceToKeep = $individualTradeProductInstances[1];
+        $visitedIndividualTradeProductInstances = [];
+
+        $selectIndividualTradeProductInstance = static function (
+            TradeProductInstanceType $individualTradeProductInstance
+        ) use (
+            $individualTradeProductInstanceToKeep,
+            &$visitedIndividualTradeProductInstances
+        ): bool {
+            $visitedIndividualTradeProductInstances[] = $individualTradeProductInstance;
+
+            return $individualTradeProductInstance === $individualTradeProductInstanceToKeep;
+        };
+
+        $filteredIndividualTradeProductInstances = $model->filterIndividualTradeProductInstances($selectIndividualTradeProductInstance);
+
+        $this->assertSame([1 => $individualTradeProductInstanceToKeep], $filteredIndividualTradeProductInstances);
+        $this->assertSame($individualTradeProductInstances, $visitedIndividualTradeProductInstances);
+        $this->assertSame($individualTradeProductInstances, $model->getIndividualTradeProductInstance());
+
+        $model->clearIndividualTradeProductInstance();
+        $visitedIndividualTradeProductInstances = [];
+
+        $filteredIndividualTradeProductInstances = $model->filterIndividualTradeProductInstances($selectIndividualTradeProductInstance);
+
+        $this->assertSame([], $filteredIndividualTradeProductInstances);
+        $this->assertSame([], $visitedIndividualTradeProductInstances);
+
+        $model->unsetIndividualTradeProductInstance();
+        $visitedIndividualTradeProductInstances = [];
+
+        $filteredIndividualTradeProductInstances = $model->filterIndividualTradeProductInstances($selectIndividualTradeProductInstance);
+
+        $this->assertSame([], $filteredIndividualTradeProductInstances);
+        $this->assertSame([], $visitedIndividualTradeProductInstances);
+
+        // (9) Property IncludedReferencedProduct - Filter
+
+        $model->setIncludedReferencedProduct($includedReferencedProducts);
+
+        $includedReferencedProductToKeep = $includedReferencedProducts[1];
+        $visitedIncludedReferencedProducts = [];
+
+        $selectIncludedReferencedProduct = static function (
+            ReferencedProductType $includedReferencedProduct
+        ) use (
+            $includedReferencedProductToKeep,
+            &$visitedIncludedReferencedProducts
+        ): bool {
+            $visitedIncludedReferencedProducts[] = $includedReferencedProduct;
+
+            return $includedReferencedProduct === $includedReferencedProductToKeep;
+        };
+
+        $filteredIncludedReferencedProducts = $model->filterIncludedReferencedProducts($selectIncludedReferencedProduct);
+
+        $this->assertSame([1 => $includedReferencedProductToKeep], $filteredIncludedReferencedProducts);
+        $this->assertSame($includedReferencedProducts, $visitedIncludedReferencedProducts);
+        $this->assertSame($includedReferencedProducts, $model->getIncludedReferencedProduct());
+
+        $model->clearIncludedReferencedProduct();
+        $visitedIncludedReferencedProducts = [];
+
+        $filteredIncludedReferencedProducts = $model->filterIncludedReferencedProducts($selectIncludedReferencedProduct);
+
+        $this->assertSame([], $filteredIncludedReferencedProducts);
+        $this->assertSame([], $visitedIncludedReferencedProducts);
+
+        $model->unsetIncludedReferencedProduct();
+        $visitedIncludedReferencedProducts = [];
+
+        $filteredIncludedReferencedProducts = $model->filterIncludedReferencedProducts($selectIncludedReferencedProduct);
+
+        $this->assertSame([], $filteredIncludedReferencedProducts);
+        $this->assertSame([], $visitedIncludedReferencedProducts);
     }
 
     /**
@@ -7422,16 +8883,6 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(AmountType::class, $testValueForTaxBasisTotalAmount);
         $this->assertSame($testValueForTaxBasisTotalAmount, $model->getTaxBasisTotalAmount());
 
-        $itemsBeforeForEach = $model->getTaxTotalAmount();
-
-        $this->assertSame($model, $model->forEachTaxTotalAmount(
-            static function (AmountType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getTaxTotalAmount());
-
         // (1) Property TaxTotalAmount - Test set empty array
 
         $taxTotalAmountItems = [];
@@ -7487,18 +8938,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstTaxTotalAmountOnceItem, $secondTaxTotalAmountOnceItem);
 
-        $itemsBeforeForEach = $model->getTaxTotalAmount();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachTaxTotalAmount(
-            static function (AmountType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getTaxTotalAmount());
-
         // (7) Property TaxTotalAmount - Clesr
 
         $model->clearTaxTotalAmount();
@@ -7507,12 +8946,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachTaxTotalAmount(
-            static function (AmountType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
 
         // Property RoundingAmount
 
@@ -7577,6 +9010,73 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(AmountType::class, $testValueForDuePayableAmount);
         $this->assertSame($testValueForDuePayableAmount, $model->getDuePayableAmount());
+
+        // (8) Property TaxTotalAmount - ForEach
+
+        $taxTotalAmounts = [$taxTotalAmountItem, $testValueForTaxTotalAmountItem];
+        $model->setTaxTotalAmount($taxTotalAmounts);
+
+        $visitedTaxTotalAmounts = [];
+
+        $collectTaxTotalAmount = static function (AmountType $taxTotalAmount) use (&$visitedTaxTotalAmounts): void {
+            $visitedTaxTotalAmounts[] = $taxTotalAmount;
+        };
+
+        $this->assertSame($model, $model->forEachTaxTotalAmount($collectTaxTotalAmount));
+        $this->assertSame($taxTotalAmounts, $visitedTaxTotalAmounts);
+        $this->assertSame($taxTotalAmounts, $model->getTaxTotalAmount());
+
+        $model->clearTaxTotalAmount();
+        $visitedTaxTotalAmounts = [];
+
+        $this->assertSame($model, $model->forEachTaxTotalAmount($collectTaxTotalAmount));
+        $this->assertSame([], $visitedTaxTotalAmounts);
+
+        $model->unsetTaxTotalAmount();
+        $visitedTaxTotalAmounts = [];
+
+        $this->assertSame($model, $model->forEachTaxTotalAmount($collectTaxTotalAmount));
+        $this->assertSame([], $visitedTaxTotalAmounts);
+
+        // (9) Property TaxTotalAmount - Filter
+
+        $model->setTaxTotalAmount($taxTotalAmounts);
+
+        $taxTotalAmountToKeep = $taxTotalAmounts[1];
+        $visitedTaxTotalAmounts = [];
+
+        $selectTaxTotalAmount = static function (
+            AmountType $taxTotalAmount
+        ) use (
+            $taxTotalAmountToKeep,
+            &$visitedTaxTotalAmounts
+        ): bool {
+            $visitedTaxTotalAmounts[] = $taxTotalAmount;
+
+            return $taxTotalAmount === $taxTotalAmountToKeep;
+        };
+
+        $filteredTaxTotalAmounts = $model->filterTaxTotalAmounts($selectTaxTotalAmount);
+
+        $this->assertSame([1 => $taxTotalAmountToKeep], $filteredTaxTotalAmounts);
+        $this->assertSame($taxTotalAmounts, $visitedTaxTotalAmounts);
+        $this->assertSame($taxTotalAmounts, $model->getTaxTotalAmount());
+
+        $model->clearTaxTotalAmount();
+        $visitedTaxTotalAmounts = [];
+
+        $filteredTaxTotalAmounts = $model->filterTaxTotalAmounts($selectTaxTotalAmount);
+
+        $this->assertSame([], $filteredTaxTotalAmounts);
+        $this->assertSame([], $visitedTaxTotalAmounts);
+
+        $model->unsetTaxTotalAmount();
+        $visitedTaxTotalAmounts = [];
+
+        $filteredTaxTotalAmounts = $model->filterTaxTotalAmounts($selectTaxTotalAmount);
+
+        $this->assertSame([], $filteredTaxTotalAmounts);
+        $this->assertSame([], $visitedTaxTotalAmounts);
     }
 
     /**
@@ -7636,16 +9136,6 @@ final class ZffxModelTest extends TestCase
         $this->assertInstanceOf(AmountType::class, $testValueForAllowanceTotalAmount);
         $this->assertSame($testValueForAllowanceTotalAmount, $model->getAllowanceTotalAmount());
 
-        $itemsBeforeForEach = $model->getTaxTotalAmount();
-
-        $this->assertSame($model, $model->forEachTaxTotalAmount(
-            static function (AmountType $item): void {
-                self::fail('The callback must not be called for an unset array.');
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $model->getTaxTotalAmount());
-
         // (1) Property TaxTotalAmount - Test set empty array
 
         $taxTotalAmountItems = [];
@@ -7701,18 +9191,6 @@ final class ZffxModelTest extends TestCase
         $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
         $this->assertSame($firstTaxTotalAmountOnceItem, $secondTaxTotalAmountOnceItem);
 
-        $itemsBeforeForEach = $model->getTaxTotalAmount();
-        $itemsFromForEach = [];
-
-        $this->assertSame($model, $model->forEachTaxTotalAmount(
-            static function (AmountType $item) use (&$itemsFromForEach): void {
-                $itemsFromForEach[] = $item;
-            }
-        ));
-
-        $this->assertSame($itemsBeforeForEach, $itemsFromForEach);
-        $this->assertSame($itemsBeforeForEach, $model->getTaxTotalAmount());
-
         // (7) Property TaxTotalAmount - Clear
 
         $model->clearTaxTotalAmount();
@@ -7721,12 +9199,6 @@ final class ZffxModelTest extends TestCase
 
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
-
-        $this->assertSame($model, $model->forEachTaxTotalAmount(
-            static function (AmountType $item): void {
-                self::fail('The callback must not be called for an empty array.');
-            }
-        ));
 
         // Property GrandTotalAmount
 
@@ -7759,6 +9231,73 @@ final class ZffxModelTest extends TestCase
 
         $this->assertInstanceOf(AmountType::class, $testValueForTotalAllowanceChargeAmount);
         $this->assertSame($testValueForTotalAllowanceChargeAmount, $model->getTotalAllowanceChargeAmount());
+
+        // (8) Property TaxTotalAmount - ForEach
+
+        $taxTotalAmounts = [$taxTotalAmountItem, $testValueForTaxTotalAmountItem];
+        $model->setTaxTotalAmount($taxTotalAmounts);
+
+        $visitedTaxTotalAmounts = [];
+
+        $collectTaxTotalAmount = static function (AmountType $taxTotalAmount) use (&$visitedTaxTotalAmounts): void {
+            $visitedTaxTotalAmounts[] = $taxTotalAmount;
+        };
+
+        $this->assertSame($model, $model->forEachTaxTotalAmount($collectTaxTotalAmount));
+        $this->assertSame($taxTotalAmounts, $visitedTaxTotalAmounts);
+        $this->assertSame($taxTotalAmounts, $model->getTaxTotalAmount());
+
+        $model->clearTaxTotalAmount();
+        $visitedTaxTotalAmounts = [];
+
+        $this->assertSame($model, $model->forEachTaxTotalAmount($collectTaxTotalAmount));
+        $this->assertSame([], $visitedTaxTotalAmounts);
+
+        $model->unsetTaxTotalAmount();
+        $visitedTaxTotalAmounts = [];
+
+        $this->assertSame($model, $model->forEachTaxTotalAmount($collectTaxTotalAmount));
+        $this->assertSame([], $visitedTaxTotalAmounts);
+
+        // (9) Property TaxTotalAmount - Filter
+
+        $model->setTaxTotalAmount($taxTotalAmounts);
+
+        $taxTotalAmountToKeep = $taxTotalAmounts[1];
+        $visitedTaxTotalAmounts = [];
+
+        $selectTaxTotalAmount = static function (
+            AmountType $taxTotalAmount
+        ) use (
+            $taxTotalAmountToKeep,
+            &$visitedTaxTotalAmounts
+        ): bool {
+            $visitedTaxTotalAmounts[] = $taxTotalAmount;
+
+            return $taxTotalAmount === $taxTotalAmountToKeep;
+        };
+
+        $filteredTaxTotalAmounts = $model->filterTaxTotalAmounts($selectTaxTotalAmount);
+
+        $this->assertSame([1 => $taxTotalAmountToKeep], $filteredTaxTotalAmounts);
+        $this->assertSame($taxTotalAmounts, $visitedTaxTotalAmounts);
+        $this->assertSame($taxTotalAmounts, $model->getTaxTotalAmount());
+
+        $model->clearTaxTotalAmount();
+        $visitedTaxTotalAmounts = [];
+
+        $filteredTaxTotalAmounts = $model->filterTaxTotalAmounts($selectTaxTotalAmount);
+
+        $this->assertSame([], $filteredTaxTotalAmounts);
+        $this->assertSame([], $visitedTaxTotalAmounts);
+
+        $model->unsetTaxTotalAmount();
+        $visitedTaxTotalAmounts = [];
+
+        $filteredTaxTotalAmounts = $model->filterTaxTotalAmounts($selectTaxTotalAmount);
+
+        $this->assertSame([], $filteredTaxTotalAmounts);
+        $this->assertSame([], $visitedTaxTotalAmounts);
     }
 
     /**

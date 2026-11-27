@@ -133,4 +133,16 @@ class SupplyChainConsignmentType
 
         return $this;
     }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(LogisticsTransportMovementType): mixed  $callback
+     * @return array<array-key, LogisticsTransportMovementType>
+     */
+    public function filterSpecifiedLogisticsTransportMovements(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->specifiedLogisticsTransportMovement ?? [], $callback);
+    }
 }

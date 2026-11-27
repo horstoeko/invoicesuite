@@ -637,6 +637,18 @@ class TradeProductType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(IDType): mixed  $callback
+     * @return array<array-key, IDType>
+     */
+    public function filterBatchIDs(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->batchID ?? [], $callback);
+    }
+
+    /**
      * @return null|TextType
      */
     public function getBrandName(): ?TextType
@@ -827,6 +839,18 @@ class TradeProductType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ProductCharacteristicType): mixed  $callback
+     * @return array<array-key, ProductCharacteristicType>
+     */
+    public function filterApplicableProductCharacteristics(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->applicableProductCharacteristic ?? [], $callback);
+    }
+
+    /**
      * @return null|array<ProductClassificationType>
      */
     public function getDesignatedProductClassification(): ?array
@@ -937,6 +961,18 @@ class TradeProductType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(ProductClassificationType): mixed  $callback
+     * @return array<array-key, ProductClassificationType>
+     */
+    public function filterDesignatedProductClassifications(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->designatedProductClassification ?? [], $callback);
+    }
+
+    /**
      * @return null|array<TradeProductInstanceType>
      */
     public function getIndividualTradeProductInstance(): ?array
@@ -1044,6 +1080,18 @@ class TradeProductType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(TradeProductInstanceType): mixed  $callback
+     * @return array<array-key, TradeProductInstanceType>
+     */
+    public function filterIndividualTradeProductInstances(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->individualTradeProductInstance ?? [], $callback);
     }
 
     /**
@@ -1234,5 +1282,17 @@ class TradeProductType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(ReferencedProductType): mixed  $callback
+     * @return array<array-key, ReferencedProductType>
+     */
+    public function filterIncludedReferencedProducts(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->includedReferencedProduct ?? [], $callback);
     }
 }

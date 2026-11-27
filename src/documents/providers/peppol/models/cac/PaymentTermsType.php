@@ -418,6 +418,18 @@ class PaymentTermsType
     }
 
     /**
+     * Filter items using a callback
+     *
+     * @param  callable(PaymentMeansID): mixed  $callback
+     * @return array<array-key, PaymentMeansID>
+     */
+    public function filterPaymentMeansIDs(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->paymentMeansID ?? [], $callback);
+    }
+
+    /**
      * @return null|PrepaidPaymentReferenceID
      */
     public function getPrepaidPaymentReferenceID(): ?PrepaidPaymentReferenceID
@@ -595,6 +607,18 @@ class PaymentTermsType
         }
 
         return $this;
+    }
+
+    /**
+     * Filter items using a callback
+     *
+     * @param  callable(Note): mixed  $callback
+     * @return array<array-key, Note>
+     */
+    public function filterNotes(
+        callable $callback
+    ): array {
+        return InvoiceSuiteArrayUtils::filter($this->note ?? [], $callback);
     }
 
     /**
