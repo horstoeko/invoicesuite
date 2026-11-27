@@ -1,11 +1,11 @@
 services:
   kosit-validator:
-    image: apps4everything/kosit-validator-xrechnung:3.0.2-2
+    image: apps4everything/kosit-validator-xrechnung:3.0.2-3
     ports:
       - '8081:8081'
 
   verapdf-validator:
-    image: verapdf/rest:v1.30.2
+    image: verapdf/rest:v1.30.4
     ports:
       - '8080:8080'
     healthcheck:
