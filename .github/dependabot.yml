@@ -16,10 +16,6 @@ updates:
 
   - package-ecosystem: docker-compose
     directory: /.github/services
-    groups:
-      validation-services:
-        patterns:
-          - '*' # Group all validation service updates into a single larger pull request.
     schedule:
       interval: weekly
     commit-message:
