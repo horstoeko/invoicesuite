@@ -246,7 +246,11 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
             $subType = $embeddedFile->getSubType();
 
             $mimeType = match (true) {
-                $subType instanceof NameObjectStringValue => $subType->getText(),
+                $subType instanceof NameObjectStringValue => preg_replace_callback(
+                    '/#([0-9a-f]{2})/i',
+                    static fn (array $matches): string => InvoiceSuiteStringUtils::chr((int) InvoiceSuiteStringUtils::hexdec($matches[1])),
+                    $subType->value
+                ) ?? '',
                 $subType instanceof SubtypeNameValue => $subType->value,
                 default => '',
             };

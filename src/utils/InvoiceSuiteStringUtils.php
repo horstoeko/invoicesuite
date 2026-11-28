@@ -47,6 +47,18 @@ class InvoiceSuiteStringUtils
     }
 
     /**
+     * Hexadecimal to decimal
+     *
+     * @param  string    $hex_string
+     * @return float|int
+     */
+    public static function hexdec(
+        string $hex_string
+    ): float|int {
+        return hexdec($hex_string);
+    }
+
+    /**
      * Split a string by a string
      *
      * @param  string             $separator
