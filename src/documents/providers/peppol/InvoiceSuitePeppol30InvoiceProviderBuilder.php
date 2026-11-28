@@ -8994,17 +8994,15 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         $this->traceMethodEnter(__METHOD__);
 
         $this
+            ->removeKeyValuePair('mandantefrompaymentterm')
             ->getUblRootObject()
             ->unsetPaymentTerms()
-            ->unsetDueDate();
-
-        foreach ($this->getUblRootObject()->getPaymentMeans() ?? [] as $paymentMean) {
-            if ($paymentMean->getPaymentMandate()?->getID()?->hasObjectFlag('paymenttermmandate')) {
-                $paymentMean->getPaymentMandate()->unsetID();
-            }
-        }
-
-        $this->removeKeyValuePair('mandantefrompaymentterm');
+            ->unsetDueDate()
+            ->forEachPaymentMeans(static function ($paymentMean): void {
+                if ($paymentMean->getPaymentMandate()?->getID()?->hasObjectFlag('paymenttermmandate')) {
+                    $paymentMean->getPaymentMandate()->unsetID();
+                }
+            });
 
         if (
             InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)

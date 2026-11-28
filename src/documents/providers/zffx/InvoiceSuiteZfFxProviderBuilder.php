@@ -14253,19 +14253,16 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ?->getApplicableHeaderTradeSettlement()
             ?->unsetSpecifiedTradeSettlementPaymentMeans();
 
-        $paymentTerms = $this
+        $this
+            ->removeKeyValuePair('mandantefrompaymentmean')
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransaction()
             ?->getApplicableHeaderTradeSettlement()
-            ?->getSpecifiedTradePaymentTerms() ?? [];
-
-        foreach ($paymentTerms as $paymentTerm) {
-            if ($paymentTerm->getDirectDebitMandateID()?->hasObjectFlag('paymentmeanmandate')) {
-                $paymentTerm->unsetDirectDebitMandateID();
-            }
-        }
-
-        $this->removeKeyValuePair('mandantefrompaymentmean');
+            ?->forEachSpecifiedTradePaymentTerms(static function ($paymentTerm): void {
+                if ($paymentTerm->getDirectDebitMandateID()?->hasObjectFlag('paymentmeanmandate')) {
+                    $paymentTerm->unsetDirectDebitMandateID();
+                }
+            });
 
         if ($this->supportsNotAtLeastBasicWlWithTrace(__METHOD__)) {
             return $this;
@@ -14340,19 +14337,16 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newMandate)) {
-            $paymentTerms = $this
+            $this
+                ->removeKeyValuePair('mandantefrompaymentmean')
                 ->getCrossIndustryRootObject()
                 ->getSupplyChainTradeTransaction()
                 ?->getApplicableHeaderTradeSettlement()
-                ?->getSpecifiedTradePaymentTerms() ?? [];
-
-            foreach ($paymentTerms as $paymentTerm) {
-                if ($paymentTerm->getDirectDebitMandateID()?->hasObjectFlag('paymentmeanmandate')) {
-                    $paymentTerm->unsetDirectDebitMandateID();
-                }
-            }
-
-            $this->removeKeyValuePair('mandantefrompaymentmean');
+                ?->forEachSpecifiedTradePaymentTerms(static function ($paymentTerm): void {
+                    if ($paymentTerm->getDirectDebitMandateID()?->hasObjectFlag('paymentmeanmandate')) {
+                        $paymentTerm->unsetDirectDebitMandateID();
+                    }
+                });
         }
 
         $paymentMean = $this

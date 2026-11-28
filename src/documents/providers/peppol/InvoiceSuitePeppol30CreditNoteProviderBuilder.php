@@ -8976,21 +8976,19 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
         $this->traceMethodEnter(__METHOD__);
 
         $this
+            ->removeKeyValuePair('duedatefrompaymentterm')
+            ->removeKeyValuePair('mandantefrompaymentterm')
             ->getUblRootObject()
-            ->unsetPaymentTerms();
+            ->unsetPaymentTerms()
+            ->forEachPaymentMeans(static function ($paymentMean): void {
+                if ($paymentMean->getPaymentMandate()?->getID()?->hasObjectFlag('paymenttermmandate')) {
+                    $paymentMean->getPaymentMandate()->unsetID();
+                }
 
-        foreach ($this->getUblRootObject()->getPaymentMeans() ?? [] as $paymentMean) {
-            if ($paymentMean->getPaymentMandate()?->getID()?->hasObjectFlag('paymenttermmandate')) {
-                $paymentMean->getPaymentMandate()->unsetID();
-            }
-
-            if ($paymentMean->hasObjectFlag('paymenttermduedate')) {
-                $paymentMean->unsetPaymentDueDate()->removeFromObjectFlags('paymenttermduedate');
-            }
-        }
-
-        $this->removeKeyValuePair('duedatefrompaymentterm');
-        $this->removeKeyValuePair('mandantefrompaymentterm');
+                if ($paymentMean->hasObjectFlag('paymenttermduedate')) {
+                    $paymentMean->unsetPaymentDueDate()->removeFromObjectFlags('paymenttermduedate');
+                }
+            });
 
         if (
             InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)
