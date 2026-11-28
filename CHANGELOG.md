@@ -1,3 +1,16 @@
+## v0.0.49
+
+``Previous version v0.0.48``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [4874ff51](https://github.com/horstoeko/invoicesuite/commit/4874ff51) | 2026-11-28 10:48:42 CET | HorstOeko | [ENH] Simplify mandate handling with fluent model methods | 
+| :new:  | [ba8091bf](https://github.com/horstoeko/invoicesuite/commit/ba8091bf) | 2026-11-27 17:46:53 CET | HorstOeko | [ENH] Add callback filters for model array members | 
+| :new:  | [a18ac9dd](https://github.com/horstoeko/invoicesuite/commit/a18ac9dd) | 2026-11-27 14:11:37 CET | HorstOeko | [ENH] Add forEach methods for provider model arrays | 
+| :new:  | [05e464cc](https://github.com/horstoeko/invoicesuite/commit/05e464cc) | 2026-11-27 11:15:46 CET | HorstOeko | [ENH] Complete XML assertions for payment mandate tests | 
+
+:exclamation: _There are 6 internal commit(s)_
+
 ## v0.0.48
 
 ``Previous version v0.0.47``
